@@ -1,0 +1,1 @@
+[system.IO.DriveInfo]::GetDrives()

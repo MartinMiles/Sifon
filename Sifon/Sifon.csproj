@@ -1,0 +1,369 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23EFEEB7-FE12-4DC1-9CEB-C49CE0857571}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sifon</RootNamespace>
+    <AssemblyName>Sifon</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\RssbPlatform.Installer\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\RssbPlatform.Installer\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\WindowsPowerShell\v1.0\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\DataGridViewExtensions.cs" />
+    <Compile Include="Extensions\ListBoxExtensions.cs" />
+    <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="Forms\About\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Backup\Backup.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Backup\Backup.Validation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Backup\IBackupView.cs" />
+    <Compile Include="Forms\Base\AbstractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\AbstractForm.Designer.cs">
+      <DependentUpon>AbstractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Backup\Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Backup\Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\AbstractForm.Validation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>AbstractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\BaseBackupRestorePresenter.cs" />
+    <Compile Include="Forms\Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\ConcreteClassProvider.cs" />
+    <Compile Include="Forms\Base\ConcreteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\IBaseBackupRestoreView.cs" />
+    <Compile Include="Forms\Base\ScriptablePresenter.cs" />
+    <Compile Include="Forms\Initialize\IInitRemote.cs" />
+    <Compile Include="Forms\Initialize\InitRemote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Initialize\InitRemote.Designer.cs">
+      <DependentUpon>InitRemote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Initialize\InitRemotePresenter.cs" />
+    <Compile Include="Forms\MainForm\IMainView.cs" />
+    <Compile Include="Forms\MainForm\Main.ContextMenu.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\Main.Listbox.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\Main.Plugins.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\Main.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\MainPresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Base\AbstractUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Base\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Base\ConcreteUserControlProvider.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Base\ConcreteUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Base\ConcreteUserControl.Designer.cs">
+      <DependentUpon>ConcreteUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\Connectivity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\Connectivity.Designer.cs">
+      <DependentUpon>Connectivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\Connectivity.Tooltips.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Connectivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\Connectivity.Validation.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Connectivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Base\IBaseView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Base\BasePresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\ConnectivityPresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Connectivity\IConnectivityView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Parameters\IParametersView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Parameters\Parameters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Parameters\Parameters.Designer.cs">
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Parameters\Parameters.Tooltips.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Parameters\Parameters.Validation.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Parameters\ParametersPresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Profile\IProfileView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Remote\IRemoteView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Website\IWebsiteView.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Profile\Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Profile\Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Profile\ProfilePresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Profile\Profile.Tooltips.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Profile\Profile.Validation.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Remote\Remote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Remote\Remote.Designer.cs">
+      <DependentUpon>Remote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Remote\RemotePresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Remote\Remote.Tooltips.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Remote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Remote\Remote.Validation.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Remote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Website\Website.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Website\Website.Designer.cs">
+      <DependentUpon>Website.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Website\WebsitePresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Website\Website.Tooltips.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Website.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\UserControls\Website\Website.Validation.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>Website.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Remover\Remover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Remover\Remover.Designer.cs">
+      <DependentUpon>Remover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Remover\Remover.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Remover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Remover\Remover.Validation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Remover.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Restore\Restore.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Restore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Restore\Restore.Validation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>Restore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SqlSettings\SqlSettings.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>SqlSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SqlSettings\SqlSettings.Validation.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>SqlSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statics\ContextMenu.cs" />
+    <Compile Include="Statics\Messages.cs" />
+    <Compile Include="Statics\Pattern.cs" />
+    <Compile Include="Forms\Backup\BackupPresenter.cs" />
+    <Compile Include="Forms\Remover\RemoverPresenter.cs" />
+    <Compile Include="Forms\Remover\IRemoverView.cs" />
+    <Compile Include="Forms\Profiles\IProfilesView.cs" />
+    <Compile Include="Forms\Profiles\ProfilesPresenter.cs" />
+    <Compile Include="Forms\Restore\IRestoreView.cs" />
+    <Compile Include="Forms\Restore\Restore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Restore\Restore.Designer.cs">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Restore\RestorePresenter.cs" />
+    <Compile Include="Forms\SqlSettings\ISqlSettingsView.cs" />
+    <Compile Include="Forms\SqlSettings\SqlSettingsPresenter.cs" />
+    <Compile Include="Forms\MainForm\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Forms\Profiles\Profiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\Profiles.Designer.cs">
+      <DependentUpon>Profiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statics\Tooltips.cs" />
+    <Compile Include="Forms\SqlSettings\SqlSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SqlSettings\SqlSettings.Designer.cs">
+      <DependentUpon>SqlSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnStart.cs" />
+    <EmbeddedResource Include="Forms\About\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Backup\Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
+      <DependentUpon>InitRemote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\UserControls\Connectivity\Connectivity.resx">
+      <DependentUpon>Connectivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\UserControls\Parameters\Parameters.resx">
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\UserControls\Profile\Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\UserControls\Remote\Remote.resx">
+      <DependentUpon>Remote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\UserControls\Website\Website.resx">
+      <DependentUpon>Website.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Remover\Remover.resx">
+      <DependentUpon>Remover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\Main.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Restore\Restore.resx">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\Profiles.resx">
+      <DependentUpon>Profiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Forms\SqlSettings\SqlSettings.resx">
+      <DependentUpon>SqlSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sifon.Abstractions\Sifon.Abstractions.csproj">
+      <Project>{c66674b2-b3e5-4d0d-aaaf-88d857b5d757}</Project>
+      <Name>Sifon.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sifon.Shared\Sifon.Shared.csproj">
+      <Project>{1b57ad6c-0e4a-4062-987a-2df59f682cd8}</Project>
+      <Name>Sifon.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sifon.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

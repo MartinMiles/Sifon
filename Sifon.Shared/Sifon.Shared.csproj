@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B57AD6C-0E4A-4062-987A-2DF59F682CD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sifon.Shared</RootNamespace>
+    <AssemblyName>Sifon.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackupInfo\BackupInfo.cs" />
+    <Compile Include="BackupInfo\BackupInfoExtensions.cs" />
+    <Compile Include="BackupInfo\BackupInfoExtractorFactory.cs" />
+    <Compile Include="BackupInfo\IBackupInfoExtractor.cs" />
+    <Compile Include="BackupInfo\LocalBackupInfoExtractor.cs" />
+    <Compile Include="BackupInfo\PowershellBackupInfoExtractor.cs" />
+    <Compile Include="Base\SuperClass.cs" />
+    <Compile Include="Events\TypedEventArgs.cs" />
+    <Compile Include="Exceptions\RemoteNotInitializedException.cs" />
+    <Compile Include="Exceptions\RemoteTimeoutException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\Models\ProfileExtensions.cs" />
+    <Compile Include="Extensions\Models\SolrInfoExtensions.cs" />
+    <Compile Include="Extensions\Models\SqlServerRecordExtensions.cs" />
+    <Compile Include="Extensions\PSObjectExtensions.cs" />
+    <Compile Include="Extensions\XmlExtension.cs" />
+    <Compile Include="Filesystem\FilesystemFactory.cs" />
+    <Compile Include="Filesystem\IFilesystem.cs" />
+    <Compile Include="Filesystem\LocalFilesystem.cs" />
+    <Compile Include="Formatters\Error\ErrorFormatter.cs" />
+    <Compile Include="Formatters\Output\DataRowFormatter.cs" />
+    <Compile Include="Formatters\Output\GenericObjectFormatter.cs" />
+    <Compile Include="Formatters\Output\IOutputFormatter.cs" />
+    <Compile Include="Formatters\Output\ConsoleOutputFormatter.cs" />
+    <Compile Include="Formatters\Output\StringFormatter.cs" />
+    <Compile Include="Helpers\BindingsHelper.cs" />
+    <Compile Include="Helpers\FakesHelper.cs" />
+    <Compile Include="Helpers\PluginFactory.cs" />
+    <Compile Include="Helpers\PluginHelper.cs" />
+    <Compile Include="Helpers\RegexHelper.cs" />
+    <Compile Include="Helpers\SolrIdentifier.cs" />
+    <Compile Include="Helpers\StaticsHelper.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
+    <Compile Include="Logger\SimpleLog.cs" />
+    <Compile Include="Model\Fake\DirectoryInfo.cs" />
+    <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.Designer.cs">
+      <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fake\DriveInfo.cs" />
+    <Compile Include="Model\Fake\TimeOfQuery.cs" />
+    <Compile Include="Model\PluginMenuItem.cs" />
+    <Compile Include="Model\Profiles\Profile.cs" />
+    <Compile Include="Model\Profiles\SqlServerRecord.cs" />
+    <Compile Include="Model\SolrInfo.cs" />
+    <Compile Include="PowerShell\ProfileRunspaceFactory.cs" />
+    <Compile Include="PowerShell\RemoteScriptCopier.cs" />
+    <Compile Include="PowerShell\ScriptRunner.cs" />
+    <Compile Include="PowerShell\ScriptWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Filesystem\RemoteFilesystem.cs" />
+    <Compile Include="Providers\PowerShellSiteProvider.cs" />
+    <Compile Include="ScriptGenerators\BackupScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\BaseScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\FilesScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\IisScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\ParametersSampleScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\RemoverScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\RestoreScriptGenerator.cs" />
+    <Compile Include="ScriptGenerators\ScriptFactory.cs" />
+    <Compile Include="Providers\Profile\ProfilesProvider.cs" />
+    <Compile Include="Providers\Profile\SqlServerRecordProvider.cs" />
+    <Compile Include="ScriptGenerators\ServiceScriptGenerator.cs" />
+    <Compile Include="Statics\Controls.cs" />
+    <Compile Include="Statics\Settings.cs" />
+    <Compile Include="Statics\Validation.cs" />
+    <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
+    <Compile Include="UserControls\FolderTreeView.ContextMenu.cs">
+      <SubType>UserControl</SubType>
+      <DependentUpon>FolderTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FolderTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FolderTreeView.Designer.cs">
+      <DependentUpon>FolderTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoadingCircle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\LoadingCircle.Designer.cs">
+      <DependentUpon>LoadingCircle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\FormValidation.cs" />
+    <Compile Include="Validation\IFormValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">
+      <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FolderTreeView.resx">
+      <DependentUpon>FolderTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sifon.Abstractions\Sifon.Abstractions.csproj">
+      <Project>{C66674B2-B3E5-4D0D-AAAF-88D857B5D757}</Project>
+      <Name>Sifon.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
