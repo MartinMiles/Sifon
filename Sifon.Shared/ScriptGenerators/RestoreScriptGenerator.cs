@@ -28,6 +28,8 @@ namespace Sifon.Shared.ScriptGenerators
                 GenerateDatabaseScript();
             }
 
+            GenerateServicesScript();
+
             ShowFinalOutput("Restore");
             
             SaveScriptToCacheFile();
@@ -35,11 +37,6 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateFilesystemScript()
         {
-            int progressCalculation = _model.ProcessDatabases ? 60 : 85;
-            int service1 = _model.ProcessDatabases ? 65 : 90;
-            int service2 = _model.ProcessDatabases ? 70 : 95;
-            int service3 = _model.ProcessDatabases ? 70 : 95;
-
             executionScript += _serviceScriptGenerator.Stop(Settings.Services.MarketingAutomation, 10);
             executionScript += _serviceScriptGenerator.Stop(Settings.Services.IndexWorker, 13);
             executionScript += _serviceScriptGenerator.Stop(Settings.Services.ProcessingEngineService, 27);
@@ -72,12 +69,21 @@ namespace Sifon.Shared.ScriptGenerators
                     executionScript += _filesScriptGenerator.Restore(key, key+"Folder", 52 + i*2);
                 }
             }
+        }
+
+        private void GenerateServicesScript()
+        {
+            int progressCalculation = _model.ProcessDatabases ? 60 : 85;
+            int service1 = _model.ProcessDatabases ? 65 : 90;
+            int service2 = _model.ProcessDatabases ? 70 : 94;
+            int service3 = _model.ProcessDatabases ? 75 : 98;
 
             executionScript += _iisScriptGenerator.Start(progressCalculation);
             executionScript += _serviceScriptGenerator.Start(Settings.Services.IndexWorker, service1);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.MarketingAutomation, service2);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.ProcessingEngineService, service3);
-            
+            executionScript += _serviceScriptGenerator.Start(Settings.Services.ProcessingEngineService, service2);
+            executionScript += _serviceScriptGenerator.Start(Settings.Services.MarketingAutomation, service3);
+
+
             if (!_model.ProcessDatabases)
             {
                 executionScript += "Write-Progress -Activity $activity -CurrentOperation 'restore complete.' -PercentComplete 100";

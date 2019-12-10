@@ -89,5 +89,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             var path = await _siteProvider.GetSitePath(e.Value);
             _view.SetWebrootTextbox(path);
         }
+
+        // TODO: Bindings load on init, but if change dropdown to zero index and then back - await GetBindings(SelectedProfile.Website) not called
     }
 }

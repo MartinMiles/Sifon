@@ -21,7 +21,8 @@ namespace Sifon.Shared.Extensions
                 var path = Path.GetFullPath(filePath);
                 return true;
             }
-            catch (PathTooLongException ex)
+            //catch (PathTooLongException ex)
+            catch (Exception ex)
             {
                 return false;
             }

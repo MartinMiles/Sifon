@@ -13,7 +13,7 @@ namespace Sifon.Shared.ScriptGenerators
             
             return $@"
                     $destinationFile = ""$targetFolder\$Website{_suffix}.zip""
-                    Write-Progress -Activity $activity -CurrentOperation 'creating $Website{_suffix} website archive' -PercentComplete {percents}
+                    Write-Progress -Activity $activity -CurrentOperation ""creating $Website{_suffix} website archive"" -PercentComplete {percents}
                     If(Test-path $destinationFile) {{Remove-item $destinationFile}}
                     Add-Type -assembly 'system.io.compression.filesystem'
                     [io.compression.zipfile]::CreateFromDirectory(${siteFolderParamName}, $destinationFile)
@@ -24,7 +24,7 @@ namespace Sifon.Shared.ScriptGenerators
         public string Restore(string zipArchiveParameterName, string destinationFolderParameterName, int percents)
         {
             return $@"
-                    Write-Progress -Activity $activity -CurrentOperation 'restoring {zipArchiveParameterName} web folder from archive' -PercentComplete {percents}
+                    Write-Progress -Activity $activity -CurrentOperation ""restoring ${zipArchiveParameterName} web folder from archive"" -PercentComplete {percents}
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     [System.IO.Compression.ZipFile]::ExtractToDirectory(${zipArchiveParameterName}, ${destinationFolderParameterName})
                     Remove-Item ${destinationFolderParameterName}\BackupInfo.xml

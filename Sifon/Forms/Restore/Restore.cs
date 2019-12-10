@@ -105,6 +105,7 @@ namespace Sifon.Forms.Restore
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             listDatabases.SelectAll();
+            checkDatabases.Checked = listDatabases.SelectedItems.Count > 0;
             SetRestoreButton(RestoreButtonCriteria);
         }
 

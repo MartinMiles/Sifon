@@ -92,7 +92,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             {
                 WebrootFolderChanged(this, new EventArgs<string>(newValue));
             }
-            else
+            else if (comboWebsites.SelectedIndex > 0)
             {
                 ShowError("Validation Error", "Web root does not seem to be a valid path");
             }
