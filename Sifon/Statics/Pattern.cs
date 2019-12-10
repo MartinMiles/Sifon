@@ -2,7 +2,7 @@
 {
     public static class Pattern
     {
-        public const string ColorPattern = @"#COLOR:(\w{2,12})#";
+        public const string ColorPattern = @"#COLOR:(\w{2,12})# *";
 
         public static class Profile
         {

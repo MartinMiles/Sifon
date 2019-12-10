@@ -73,10 +73,11 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateServicesScript()
         {
-            int progressCalculation = _model.ProcessDatabases ? 60 : 85;
-            int service1 = _model.ProcessDatabases ? 65 : 90;
-            int service2 = _model.ProcessDatabases ? 70 : 94;
-            int service3 = _model.ProcessDatabases ? 75 : 98;
+
+            int progressCalculation = 80;
+            int service1 = 85;
+            int service2 = 90;
+            int service3 = 95;
 
             executionScript += _iisScriptGenerator.Start(progressCalculation);
             executionScript += _serviceScriptGenerator.Start(Settings.Services.IndexWorker, service1);
@@ -92,7 +93,7 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateDatabaseScript()
         {
-            string progressCalculation = _model.ProcessWebroot ? "70 + 30" : "0 + 100";
+            string progressCalculation = _model.ProcessWebroot ? "60 + 20" : "0 + 80";
 
             var databaseScript = new StringBuilder(Environment.NewLine);
             databaseScript.AppendLine("$i = 0");
