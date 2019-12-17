@@ -1,5 +1,3 @@
 language: csharp
 solution: Sifon.sln
 os: windows
-mono:
-  - latest
