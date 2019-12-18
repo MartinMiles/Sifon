@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Management.Automation;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
