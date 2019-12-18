@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
 using Sifon.Abstractions.Profiles;
 

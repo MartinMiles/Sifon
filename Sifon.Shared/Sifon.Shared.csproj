@@ -147,6 +147,9 @@
     </Compile>
     <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="Validation\IFormValidation.cs" />
+    <Compile Include="VersionSelector\HashProvider.cs" />
+    <Compile Include="VersionSelector\KernelHash.cs" />
+    <Compile Include="VersionSelector\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">

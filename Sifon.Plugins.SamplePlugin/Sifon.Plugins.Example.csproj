@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LongRunningPlugin\LongRunningPlugin.cs" />
+    <Compile Include="ShareAPI\SharedApiExample.cs" />
     <Compile Include="VisualPlugin\VisualPlugin.cs" />
     <Compile Include="VisualPlugin\AdvancedPluginForm.cs">
       <SubType>Form</SubType>
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\Sifon.Abstractions\Sifon.Abstractions.csproj">
       <Project>{c66674b2-b3e5-4d0d-aaaf-88d857b5d757}</Project>
       <Name>Sifon.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sifon.Shared\Sifon.Shared.csproj">
+      <Project>{1B57AD6C-0E4A-4062-987A-2DF59F682CD8}</Project>
+      <Name>Sifon.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
