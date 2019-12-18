@@ -128,7 +128,7 @@ namespace Sifon.Forms.MainForm
             this.groupBox2.Margin = new System.Windows.Forms.Padding(8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(8, 80, 8, 8);
-            this.groupBox2.Size = new System.Drawing.Size(1410, 598);
+            this.groupBox2.Size = new System.Drawing.Size(1410, 719);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Output";
@@ -158,7 +158,7 @@ namespace Sifon.Forms.MainForm
             // 
             this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(8, 580);
+            this.statusLabel.Location = new System.Drawing.Point(8, 701);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(41, 13);
             this.statusLabel.TabIndex = 9;
@@ -208,7 +208,7 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.Name = "listBoxOutput";
             this.listBoxOutput.ScrollAlwaysVisible = true;
             this.listBoxOutput.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxOutput.Size = new System.Drawing.Size(1394, 472);
+            this.listBoxOutput.Size = new System.Drawing.Size(1394, 589);
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -217,11 +217,12 @@ namespace Sifon.Forms.MainForm
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1410, 598);
+            this.ClientSize = new System.Drawing.Size(1410, 719);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sifon";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.Form_Load);

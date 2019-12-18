@@ -290,6 +290,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Remover";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sitecore remover";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.Remover_Load);

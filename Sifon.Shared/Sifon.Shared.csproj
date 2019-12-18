@@ -77,6 +77,12 @@
     <Compile Include="Formatters\Output\IOutputFormatter.cs" />
     <Compile Include="Formatters\Output\ConsoleOutputFormatter.cs" />
     <Compile Include="Formatters\Output\StringFormatter.cs" />
+    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.Designer.cs">
+      <DependentUpon>VersionSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\BindingsHelper.cs" />
     <Compile Include="Helpers\FakesHelper.cs" />
     <Compile Include="Helpers\PluginFactory.cs" />
@@ -143,6 +149,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">
       <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VersionSelectorDialog\VersionSelector.resx">
+      <DependentUpon>VersionSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderTreeView.resx">
       <DependentUpon>FolderTreeView.cs</DependentUpon>

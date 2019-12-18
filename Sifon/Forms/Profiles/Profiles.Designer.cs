@@ -117,6 +117,7 @@ namespace Sifon.Forms.Profiles
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Profiles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Profiles";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Profiles_FormClosing);
             this.Load += new System.EventHandler(this.FormLoad);

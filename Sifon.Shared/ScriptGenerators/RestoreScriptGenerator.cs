@@ -105,8 +105,26 @@ namespace Sifon.Shared.ScriptGenerators
 
             //TODO: Alter only if exists
             //databaseBackupScript.AppendLine(@"  invoke-sqlcmd -ServerInstance ""$ServerInstance"" -Query ""ALTER DATABASE [$database] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;""");
-            databaseScript.AppendLine(@"   Restore-SqlDatabase -ServerInstance ""$ServerInstance"" -Database ""$database"" -BackupFile ""$targetFolder\$database.bak"" -ReplaceDatabase");
-            databaseScript.AppendLine(@"   Write-Output ""Database $database has been restored""");
+
+            var relocate = false;
+
+            if (relocate)
+            {
+                // TODO: Some of data archives come as "$($database)_Data" others default are "$($database)". Log seems always to be "$($database)_Log"
+
+                databaseScript.AppendLine(@" $sqlServerSnapinVersion = (Get-Command Restore-SqlDatabase).ImplementingType.Assembly.GetName().Version.ToString()  ");
+                databaseScript.AppendLine(@" $assemblySqlServerSmoExtendedFullName = ""Microsoft.SqlServer.SmoExtended, Version=$sqlServerSnapinVersion, Culture=neutral, PublicKeyToken=89845dcd8080cc91""  ");
+                databaseScript.AppendLine(@" $folder = ""c:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA""  "); // TODO: hardcode: find this folder yourself
+                databaseScript.AppendLine(@" $mdf = New-Object ""Microsoft.SqlServer.Management.Smo.RelocateFile, $assemblySqlServerSmoExtendedFullName""(""$($database)"", ""$folder\$database.mdf"")  ");
+                databaseScript.AppendLine(@" $ldf = New-Object ""Microsoft.SqlServer.Management.Smo.RelocateFile, $assemblySqlServerSmoExtendedFullName""(""$($database)_Log"", ""$folder\$database.ldf"")  ");
+                databaseScript.AppendLine(@" restore-sqldatabase -serverinstance ""$ServerInstance"" -database ""$database"" -backupfile ""$targetFolder\$database.bak"" -RelocateFile @($mdf,$ldf)  ");
+            }
+            else
+            {
+                databaseScript.AppendLine(@"   Restore-SqlDatabase -ServerInstance ""$ServerInstance"" -Database ""$database"" -BackupFile ""$targetFolder\$database.bak"" -ReplaceDatabase");
+            }
+
+            databaseScript.AppendLine(@"   Write -Output ""Database $database has been restored""");
             databaseScript.AppendLine("}");
 
             executionScript += databaseScript.ToString();

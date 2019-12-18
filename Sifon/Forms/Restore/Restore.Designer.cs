@@ -232,6 +232,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Restore";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Restore Sitecore instance";
             this.Load += new System.EventHandler(this.Restore_Load);
             this.groupParameters.ResumeLayout(false);
