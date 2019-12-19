@@ -47,7 +47,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             textSolr.Text = selectedProfileSolr ?? String.Empty;
         }
 
-        public void LoadDatabaseServersDropdown(IEnumerable<string> sqlServers, string selectedSqlServerName)
+        public void LoadDatabaseServersDropdown(IEnumerable<string> sqlServers, string selectedSqlServerName = null)
         {
             comboSqlServers.Items.Clear();
             comboSqlServers.Items.Add(Settings.Dropdowns.NotSet);

@@ -29,6 +29,12 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             new WebsitePresenter(this);
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            ShowSiteHostnames(new List<KeyValuePair<string, string>>());
+            base.OnLoad(e);
+        }
+
         public void EnableControls(bool value)
         {
             comboWebsites.Enabled = value;

@@ -23,7 +23,7 @@ namespace Sifon.Shared.Providers.Profile
 
         public void Add(ISqlServerRecord record)
         {
-            _entities = _entities.Append(record as SqlServerRecord);
+            _entities = _entities.Append(record);
         }
 
         public IEnumerable<ISqlServerRecord> Read()
@@ -50,9 +50,9 @@ namespace Sifon.Shared.Providers.Profile
             var root = new XElement(Settings.Xml.SqlServerRecord.NodeListName);
             doc.Add(root);
 
-            foreach (SqlServerRecord profile in _entities)
+            foreach (var record in _entities)
             {
-                root.Add(profile.Save());
+                root.Add(record.Save());
             }
 
             doc.Save(Settings.ProfilesFolder.SqlProfilesPath);

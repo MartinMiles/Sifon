@@ -42,7 +42,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         private async void RedrawForm()
         {
-            _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile.SqlServerRecord.RecordName);
+            _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile?.SqlServerRecord?.RecordName);
             _view.LoadSolrDropdown();
             _view.SetSolrValue(SelectedProfile?.Solr);
 
@@ -117,7 +117,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         private void SqlServersUpdated(object sender, EventArgs e)
         {
             ProfilesService.Read();
-            _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile.SqlServerRecord.RecordName);
+            _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile?.SqlServerRecord?.RecordName);
         }
     }
 }

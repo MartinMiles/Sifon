@@ -215,7 +215,7 @@ namespace Sifon.Shared.Providers.Profile
             newProfile.Name = Settings.Files.DefaultProfileName;
             newProfile.Prefix = Settings.Files.DefaultProfilePrefix;
 
-            newProfile.SetSqlProfile(new SqlServerRecord());
+            //newProfile.SetSqlProfile(new SqlServerRecord());
 
             _profiles = _profiles.Concat(new[] {(Model.Profiles.Profile)newProfile });
             SelectProfile(newProfile);
