@@ -30,7 +30,7 @@ namespace Sifon.Forms.MainForm
 
         internal MainPresenter(IMainView view): base(view)
         {
-            if (SelectedProfile == null)
+            if (!_profilesService.Any)
             {
                 var provider = new ProfilesProvider();
                 provider.CreateOnFirstRun();

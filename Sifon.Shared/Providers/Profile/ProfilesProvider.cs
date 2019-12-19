@@ -8,7 +8,6 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Extensions.Models;
-using Sifon.Shared.Model.Profiles;
 using Sifon.Shared.Statics;
 
 namespace Sifon.Shared.Providers.Profile
@@ -99,16 +98,11 @@ namespace Sifon.Shared.Providers.Profile
             }
         }
 
-        public IProfile SelectedProfile
-        {
-            get
-            {
-                Read();
-                return _profiles.FirstOrDefault(p => p.Selected);
-            }
-        }
+        public IProfile SelectedProfile => _profiles.FirstOrDefault(p => p.Selected);
 
         public ISqlServerRecord SelectedProfileSql => SelectedProfile.SqlServerRecord;
+
+        public bool Any => _profiles.Any();
 
         private Model.Profiles.Profile GetByName(string profileName)
         {
