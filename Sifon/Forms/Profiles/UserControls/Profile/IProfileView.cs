@@ -15,5 +15,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName);
         void SetProfileTextbox(string name);
         void SetPrefixTextbox(string name);
+        void DisplayFirstRunWarning(bool visible);
     }
 }

@@ -22,6 +22,7 @@ namespace Sifon
                     Settings.Scripts.CopyToRemote,
 
                     Settings.Scripts.GetSiteBindings,
+                    Settings.Scripts.GetSiteBindingsByPath,
                     Settings.Scripts.GetBackupInfo,
                     Settings.Scripts.GetSitecoreSites,
                     Settings.Scripts.RestoreInstance,

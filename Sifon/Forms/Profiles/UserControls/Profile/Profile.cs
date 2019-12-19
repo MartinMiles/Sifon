@@ -32,6 +32,13 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             new ProfilePresenter(this);
         }
 
+        public void DisplayFirstRunWarning(bool visible)
+        {
+            labelWarn1.Visible = visible;
+            labelWarn2.Visible = visible;
+            labelWarn3.Visible = visible;
+        }
+
         public void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName)
         {
             comboProfiles.Items.Clear();
@@ -52,7 +59,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             }
 
             UpdateButtonsState();
-        }
+        }   
 
         public void SetProfileTextbox(string name)
         {
@@ -104,5 +111,4 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             }
         }
     }
-   
 }

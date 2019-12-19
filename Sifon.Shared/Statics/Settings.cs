@@ -51,6 +51,7 @@ namespace Sifon.Shared.Statics
             public static string TestSqlServerConnection => Path.Combine(Folders.Core, "Test-SqlServerConnection.ps1");
             public static string GetSitecoreSites => Path.Combine(Folders.Core, "Get-SitecoreSites.ps1");
             public static string GetSiteBindings => Path.Combine(Folders.Core, "Get-SiteBindings.ps1");
+            public static string GetSiteBindingsByPath => Path.Combine(Folders.Core, "Get-SiteBindingsByPath.ps1");
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
             public static string GetSitePath => Path.Combine(Folders.Core, "Get-SitePath.ps1");
@@ -71,8 +72,14 @@ namespace Sifon.Shared.Statics
                 public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
                 public static string GetDirectory => Path.Combine(Folders.CoreFilesystem, "Get-Directory.ps1");
             }
+
         }
-        
+        public static class Files
+        {
+            public static string DefaultProfileName = "Habitat sample website";
+            public static string DefaultProfilePrefix = "Habitat";
+        }
+
         public const string ManualEntry = "== enter manually ==";
 
         public static class Labels

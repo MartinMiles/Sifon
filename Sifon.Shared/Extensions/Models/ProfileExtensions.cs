@@ -10,6 +10,13 @@ namespace Sifon.Shared.Extensions.Models
 {
     public static class ProfileExtensions
     {
+        public static void SetSqlProfile(this IProfile profile, ISqlServerRecord sqlServerRecord)
+        {
+            var provider = new SqlServerRecordProvider();
+            provider.Add(sqlServerRecord);
+            provider.Save();
+        }
+
         public static ISqlServerRecord GetSqlProfile(this IProfile profile)
         {
             return new SqlServerRecordProvider().GetByName(profile.SqlServer);

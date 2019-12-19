@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Shared.Events;
+using Sifon.Shared.Extensions;
+using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
@@ -25,6 +27,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         protected override void Loaded(object sender, EventArgs e)
         {
             _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.Name);
+            _view.DisplayFirstRunWarning(string.IsNullOrWhiteSpace(Presenter.SelectedProfile?.Webroot) && Presenter.SelectedProfile.Name == Settings.Files.DefaultProfileName);
         }
 
         private void ProfileAdded(object sender, EventArgs<Tuple<string, string>> e)

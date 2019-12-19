@@ -44,6 +44,13 @@ namespace Sifon.Shared.Providers
             return _scriptWrapper.Results;
         }
 
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindingsByPath(string webfolder)
+        {
+            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSiteBindingsByPath);
+            await _scriptWrapper.Run(script, new Dictionary<string, dynamic> { { "SitePath", webfolder } });
+            return _scriptWrapper.Results;
+        }
+        
         public async Task<string> GetSitePath(string siteName)
         {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSitePath);
@@ -86,6 +93,7 @@ namespace Sifon.Shared.Providers
             await _scriptWrapperString.Run(script, parameters);
             return _scriptWrapperString.Results;
         }
+
         public async Task<string> GetIDS(string siteName)
         {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetXconnectFolder);

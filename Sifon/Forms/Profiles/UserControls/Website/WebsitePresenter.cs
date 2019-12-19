@@ -7,7 +7,6 @@ using Sifon.Shared.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.Exceptions;
 using Sifon.Shared.Providers;
-using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
@@ -29,15 +28,14 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         private async void WebrootFolderChanged(object sender, EventArgs<string> e)
         {
-            //TODO: should not call at all, or if call then use other script that get site by folder path and only then takes bindings
-            //await GetBindings(e.Value);
+            await GetBindingsByWebfolder(e.Value);
         }
 
-        private async Task GetBindings(string website)
+        private async Task GetBindingsByWebfolder(string webfolder)
         {
             try
             {
-                var bindings = await _siteProvider.GetBindings(website);
+                var bindings = await _siteProvider.GetBindingsByPath(webfolder);
                 _view.ShowSiteHostnames(bindings);
             }
             catch (RemoteNotInitializedException)
@@ -57,8 +55,6 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             //_view.EnableControls(e.Value);
             _view.SetWebsiteDropdownByProfile(SelectedProfile.Website);
             _view.SetWebrootTextbox(SelectedProfile.Webroot);
-
-            await GetBindings(SelectedProfile.Website);
        }
 
         private async Task GetSitecoreSites()
@@ -89,7 +85,5 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             var path = await _siteProvider.GetSitePath(e.Value);
             _view.SetWebrootTextbox(path);
         }
-
-        // TODO: Bindings load on init, but if change dropdown to zero index and then back - await GetBindings(SelectedProfile.Website) not called
     }
 }

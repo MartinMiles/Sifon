@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using Sifon.Forms;
 using Sifon.Forms.MainForm;
 using Sifon.Shared.Exceptions;
 using Sifon.Shared.Logger;

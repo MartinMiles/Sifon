@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelWarn3 = new System.Windows.Forms.Label();
+            this.labelWarn2 = new System.Windows.Forms.Label();
+            this.labelWarn1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textPrefix = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -42,6 +45,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelWarn3);
+            this.groupBox1.Controls.Add(this.labelWarn2);
+            this.groupBox1.Controls.Add(this.labelWarn1);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textPrefix);
             this.groupBox1.Controls.Add(this.buttonDelete);
@@ -56,6 +62,36 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Profiles:";
+            // 
+            // labelWarn3
+            // 
+            this.labelWarn3.AutoSize = true;
+            this.labelWarn3.ForeColor = System.Drawing.Color.Red;
+            this.labelWarn3.Location = new System.Drawing.Point(16, 244);
+            this.labelWarn3.Name = "labelWarn3";
+            this.labelWarn3.Size = new System.Drawing.Size(276, 13);
+            this.labelWarn3.TabIndex = 11;
+            this.labelWarn3.Text = "as well as other parameters before the first run and save !";
+            // 
+            // labelWarn2
+            // 
+            this.labelWarn2.AutoSize = true;
+            this.labelWarn2.ForeColor = System.Drawing.Color.Red;
+            this.labelWarn2.Location = new System.Drawing.Point(16, 228);
+            this.labelWarn2.Name = "labelWarn2";
+            this.labelWarn2.Size = new System.Drawing.Size(279, 13);
+            this.labelWarn2.TabIndex = 10;
+            this.labelWarn2.Text = "Please change the profile name, prefix, website root folder";
+            // 
+            // labelWarn1
+            // 
+            this.labelWarn1.AutoSize = true;
+            this.labelWarn1.ForeColor = System.Drawing.Color.Red;
+            this.labelWarn1.Location = new System.Drawing.Point(16, 209);
+            this.labelWarn1.Name = "labelWarn1";
+            this.labelWarn1.Size = new System.Drawing.Size(63, 13);
+            this.labelWarn1.TabIndex = 9;
+            this.labelWarn1.Text = "WARNING!";
             // 
             // label5
             // 
@@ -152,5 +188,8 @@
         private System.Windows.Forms.TextBox textProfileName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboProfiles;
+        private System.Windows.Forms.Label labelWarn2;
+        private System.Windows.Forms.Label labelWarn1;
+        private System.Windows.Forms.Label labelWarn3;
     }
 }

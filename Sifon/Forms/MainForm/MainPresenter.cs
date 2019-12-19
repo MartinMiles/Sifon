@@ -15,6 +15,7 @@ using Sifon.Shared.Filesystem;
 using Sifon.Shared.Model;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Providers;
+using Sifon.Shared.Providers.Profile;
 using Sifon.Shared.ScriptGenerators;
 using Sifon.Shared.Statics;
 using Sifon.Statics;
@@ -29,6 +30,14 @@ namespace Sifon.Forms.MainForm
 
         internal MainPresenter(IMainView view): base(view)
         {
+            if (SelectedProfile == null)
+            {
+                var provider = new ProfilesProvider();
+                provider.CreateOnFirstRun();
+
+                view.ForceProfileDialogOnFirstRun();
+            }
+
             _superClass = new SuperClass();
             _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
             _filesystem = new FilesystemFactory(SelectedProfile, _view).CreateLocal();

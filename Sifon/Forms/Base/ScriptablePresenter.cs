@@ -22,7 +22,7 @@ namespace Sifon.Forms.Base
         private ScriptWrapper<PSObject> _scriptWrapper;
         protected readonly IMainView _view;
         private readonly ConsoleOutputFormatter _outputFormatter;
-        private readonly IFilesystem _filesystem;
+        private IFilesystem _filesystem;
         protected IBackupRestoreModel model;
 
         protected IProfile SelectedProfile => _profilesService.SelectedProfile;
@@ -33,7 +33,6 @@ namespace Sifon.Forms.Base
             _profilesService = new ProfilesProvider();
             _view.ScriptFinishRequested += ScriptFinishRequested;
             _outputFormatter = new ConsoleOutputFormatter();
-            _filesystem = new FilesystemFactory(SelectedProfile, _view).Create();
         }
 
         private void ScriptFinishRequested(object sender, EventArgs e)
@@ -86,6 +85,8 @@ namespace Sifon.Forms.Base
 
             if (SelectedProfile.RemotingEnabled || scriptFileToDelete.StartsWith(Settings.Folders.Cache))
             {
+                // this cannot be used at constructor as SelectedProfile will be null when no profiles yet are created
+                _filesystem = new FilesystemFactory(SelectedProfile, _view).Create();
                 _filesystem.DeleteFile(scriptFileToDelete);
             }
         }

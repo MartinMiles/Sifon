@@ -67,9 +67,12 @@ namespace Sifon.Forms.Profiles
             _view = profilesView;
             _view.FormSaved += FormSaved;
             _view.BeforeFormClosing += (sender, args) => FormClosing(sender, args);
-            
-            _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
-            _sqlService = new SqlServerRecordProvider();
+
+            if (SelectedProfile != null)
+            {
+                _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
+                _sqlService = new SqlServerRecordProvider();
+            }
         }
 
         private void FormSaved(object sender, EventArgs e)

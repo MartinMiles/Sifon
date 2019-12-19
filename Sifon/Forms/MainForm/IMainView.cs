@@ -28,5 +28,6 @@ namespace Sifon.Forms.MainForm
         void FinishUI();
         void AppendLine(string line, Color? color = null);
         void UpdateProgressBar(int percentComplete, string statusLabelText);
+        void ForceProfileDialogOnFirstRun();
     }
 }

@@ -13,5 +13,6 @@ namespace Sifon.Abstractions.Providers
         Task<string> GetIDS(string siteName);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
         Task<IEnumerable<string>> GetCommerceDatabases(string siteName);
+        Task<IEnumerable<KeyValuePair<string, string>>> GetBindingsByPath(string webfolder);
     }
 }

@@ -8,6 +8,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Extensions.Models;
+using Sifon.Shared.Model.Profiles;
 using Sifon.Shared.Statics;
 
 namespace Sifon.Shared.Providers.Profile
@@ -81,7 +82,7 @@ namespace Sifon.Shared.Providers.Profile
 
         public void UpdateSelected(IProfile profile)
         {
-            var selected = _profiles.FirstOrDefault(p => p==SelectedProfile);
+            var selected = _profiles.FirstOrDefault(p => p.Selected);
             if (selected != null)
             {
                 selected.RemotingEnabled = profile.RemotingEnabled;
@@ -98,7 +99,14 @@ namespace Sifon.Shared.Providers.Profile
             }
         }
 
-        public IProfile SelectedProfile => _profiles.FirstOrDefault(p => p.Selected);
+        public IProfile SelectedProfile
+        {
+            get
+            {
+                Read();
+                return _profiles.FirstOrDefault(p => p.Selected);
+            }
+        }
 
         public ISqlServerRecord SelectedProfileSql => SelectedProfile.SqlServerRecord;
 
@@ -198,6 +206,20 @@ namespace Sifon.Shared.Providers.Profile
             profile.RemoteFolder = String.Empty;
 
             return profile;
+        }
+
+        public void CreateOnFirstRun()
+        {
+            var newProfile = CreateLocal();
+
+            newProfile.Name = Settings.Files.DefaultProfileName;
+            newProfile.Prefix = Settings.Files.DefaultProfilePrefix;
+
+            newProfile.SetSqlProfile(new SqlServerRecord());
+
+            _profiles = _profiles.Concat(new[] {(Model.Profiles.Profile)newProfile });
+            SelectProfile(newProfile);
+            Save();
         }
     }
 }

@@ -88,9 +88,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(15, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.Size = new System.Drawing.Size(99, 13);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Web root folder:";
+            this.label6.Text = "Website root folder:";
             // 
             // label9
             // 

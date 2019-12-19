@@ -160,5 +160,12 @@ namespace Sifon.Forms.MainForm
             statusLabel.Text = statusLabelText;
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
+
+        public void ForceProfileDialogOnFirstRun()
+        {
+            var form = new Profiles.Profiles { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
     }
 }

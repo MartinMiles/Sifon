@@ -6,7 +6,7 @@
 
         public static class Profile
         {
-            public const string Name = @"^[A-Za-z0-9-._]*$";
+            public const string Name = @"^^[A-Za-z0-9-+()@ .,_]*$";
             public const string Prefix = @"^[A-Za-z0-9-._]*$";
         }
         public static class SqlSettings

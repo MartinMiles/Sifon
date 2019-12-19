@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using Sifon.Abstractions.Profiles;
 using Sifon.Shared.Extensions.Models;
 
@@ -8,6 +9,10 @@ namespace Sifon.Shared.Model.Profiles
     {
         protected XmlNode node;
 
+        public SqlServerRecord()
+        {
+        }
+
         public SqlServerRecord(XmlNode _node)
         {
             node = _node;
@@ -16,13 +21,13 @@ namespace Sifon.Shared.Model.Profiles
 
         #region Properties
 
-        public string RecordName { get; set; }
+        public string RecordName { get; set; } = String.Empty;
 
-        public string SqlServer { get; set; }
+        public string SqlServer { get; set; } = String.Empty;
 
-        public string SqlAdminUsername { get; set; }
+        public string SqlAdminUsername { get; set; } = String.Empty;
 
-        public string SqlAdminPassword { get; set; }
+        public string SqlAdminPassword { get; set; } = String.Empty;
 
         #endregion
 

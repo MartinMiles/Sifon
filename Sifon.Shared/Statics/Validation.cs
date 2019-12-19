@@ -13,8 +13,8 @@
         {
             public static class Profile
             {
-                public const string Name = "Profile Name should contain characters, numbers, dots, dashes and underscores\n";
-                public const string Prefix = "Profile Prefix should contain characters, numbers, dots, dashes and underscores\n";
+                public const string Name = "Profile Name may contain only characters, numbers and limited number of other special symbols\n";
+                public const string Prefix = "Profile Prefix may contain only characters, numbers, dots, dashes and underscores\n";
             }
 
             public static class Remote
