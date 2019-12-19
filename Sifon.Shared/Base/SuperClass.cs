@@ -23,7 +23,7 @@ namespace Sifon.Shared.Base
 
         public string AppendEnvironmentToCaption(IProfile profile)
         { 
-            return $" - {profile.Name} - {(profile.RemotingEnabled ? $"REMOTE [{profile.RemoteExecutionHost}]" : "(local instance)")}";
+            return $"{profile.Name} - {(profile.RemotingEnabled ? $"REMOTE [{profile.RemoteExecutionHost}]" : "(local instance)")}";
         }
     }
 }

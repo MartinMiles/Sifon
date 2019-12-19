@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
 using Sifon.Forms.Base;
+using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.About
 {
@@ -32,6 +33,11 @@ namespace Sifon.Forms.About
         {
             var twitter = new ProcessStartInfo("https://twitter.com/SitecoreMartin");
             Process.Start(twitter);
+        }
+
+        private void About_Load(object sender, System.EventArgs e)
+        {
+            Text = Settings.ProductVersion;
         }
     }
 }

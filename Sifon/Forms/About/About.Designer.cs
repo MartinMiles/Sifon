@@ -23,6 +23,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,15 @@
             this.groupBox1.Size = new System.Drawing.Size(403, 338);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(10, 222);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(241, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "- Supports more advanced plugins written in .NET";
             // 
             // label8
             // 
@@ -218,15 +227,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Supports:";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 222);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(241, 13);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "- Supports more advanced plugins written in .NET";
-            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +239,7 @@
             this.Name = "About";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About Sifon v0.9.0 (BETA)";
+            this.Load += new System.EventHandler(this.About_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
