@@ -52,7 +52,12 @@ namespace Sifon.Forms.Profiles
             ProfileChanged(this, new EventArgs<bool>(value));
             EnableSaveButton(value);
         }
-      
+
+        public void ToggleLastTabs(bool enabled)
+        {
+            _view.ToggleLastTabs(enabled);
+        }
+
         #endregion
 
         public void EnableSaveButton(bool value)
@@ -107,11 +112,6 @@ namespace Sifon.Forms.Profiles
         public void FocusOnSaveButton()
         {
             _view.FocusOnSaveButton();
-        }
-
-        public void ToggleLastTabs(bool enabled)
-        {
-            _view.ToggleLastTabs(enabled);
         }
     }
 }

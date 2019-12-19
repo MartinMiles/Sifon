@@ -30,19 +30,6 @@ namespace Sifon.Forms.Profiles
         public Website Website { get; private set; }
         public Connectivity Connectivity { get; private set; }
         public Parameters Parameters { get; private set; }
-        public void FocusOnSaveButton()
-        {
-            buttonSave.Focus();
-        }
-
-        public void ToggleLastTabs(bool enabled)
-        {
-            // this disables last 3 tabs once we switch between local and remote profiles to enforce save
-            for (int i = 2; i <= 4; i++)
-            {
-                tabControl1.TabPages[i].Enabled = enabled;
-            }
-        }
 
         #endregion
 
@@ -57,6 +44,20 @@ namespace Sifon.Forms.Profiles
             if (Profile.ValidateValues() && Parameters.ValidateValues() && Remote.ValidateValues())
             {
                 FormSaved(this, new EventArgs());
+            }
+        }
+
+        public void FocusOnSaveButton()
+        {
+            buttonSave.Focus();
+        }
+
+        public void ToggleLastTabs(bool enabled)
+        {
+            // this disables last 3 tabs once we switch between local and remote profiles to enforce save
+            for (int i = 2; i <= 4; i++)
+            {
+                tabControl1.TabPages[i].Enabled = enabled;
             }
         }
 

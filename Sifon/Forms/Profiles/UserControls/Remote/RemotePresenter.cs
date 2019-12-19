@@ -75,11 +75,11 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         {
             if (Presenter.SelectedProfile != null)
             {
-                _view.SetCheckbox(Presenter.SelectedProfile.RemotingEnabled);
                 _view.SetHostname(Presenter.SelectedProfile.RemoteExecutionHost);
                 _view.SetUsername(Presenter.SelectedProfile.RemoteUsername);
                 _view.SetPassword(Presenter.SelectedProfile.RemotePassword);
                 _view.SetRemoteFolder(Presenter.SelectedProfile.RemoteFolder);
+                _view.SetCheckbox(Presenter.SelectedProfile.RemotingEnabled);
             }
 
             _view.UpdateButtons();
