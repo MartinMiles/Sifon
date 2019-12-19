@@ -37,19 +37,11 @@ namespace Sifon.Forms.Profiles
 
         public void ToggleLastTabs(bool enabled)
         {
-            //TODO: Disable other dabs that depend on remote status
-
-            //tabControl1.TabPages.RemoveAt(4);
-            //tabControl1.TabPages.RemoveAt(3);
-            //tabControl1.TabPages.RemoveAt(2);
-
-            //for (int i = 2; i <= 4; i++)
-            //{
-            //    if(enabled)
-            //        tabControl1.TabPages.[i].Show();
-            //    else
-            //        tabControl1.TabPages[i].Hide();
-            //}
+            // this disables last 3 tabs once we switch between local and remote profiles to enforce save
+            for (int i = 2; i <= 4; i++)
+            {
+                tabControl1.TabPages[i].Enabled = enabled;
+            }
         }
 
         #endregion
