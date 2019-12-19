@@ -35,6 +35,23 @@ namespace Sifon.Forms.Profiles
             buttonSave.Focus();
         }
 
+        public void ToggleLastTabs(bool enabled)
+        {
+            //TODO: Disable other dabs that depend on remote status
+
+            //tabControl1.TabPages.RemoveAt(4);
+            //tabControl1.TabPages.RemoveAt(3);
+            //tabControl1.TabPages.RemoveAt(2);
+
+            //for (int i = 2; i <= 4; i++)
+            //{
+            //    if(enabled)
+            //        tabControl1.TabPages.[i].Show();
+            //    else
+            //        tabControl1.TabPages[i].Hide();
+            //}
+        }
+
         #endregion
 
         private void FormLoad(object sender, EventArgs e)

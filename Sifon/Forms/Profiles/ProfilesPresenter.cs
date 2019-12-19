@@ -108,5 +108,10 @@ namespace Sifon.Forms.Profiles
         {
             _view.FocusOnSaveButton();
         }
+
+        public void ToggleLastTabs(bool enabled)
+        {
+            _view.ToggleLastTabs(enabled);
+        }
     }
 }

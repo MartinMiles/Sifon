@@ -19,6 +19,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 
         void ToggleTestButton(bool enabled);
 
+        event EventHandler<EventArgs<bool>> ToggleLastTabs;
         event EventHandler<EventArgs<string>> RemoteInitialized;
         event EventHandler<EventArgs<IRemoteSettings>> TestRemote;
     }

@@ -12,14 +12,23 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 {
     public partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
+        public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };
         public event EventHandler<EventArgs<string>> RemoteInitialized = delegate { };
         public event EventHandler<EventArgs<IRemoteSettings>> TestRemote = delegate { };
+
+        private bool initialRemotingState;
 
 
         public Remote()
         {
             InitializeComponent();
             new RemotePresenter(this);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            RevealPassword(false);
+            base.OnLoad(e);
         }
 
         public void EnableControls(bool value)
@@ -32,6 +41,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         {
             checkBoxRemote.Checked = enabled;
             EnableRemotingControls(enabled);
+            initialRemotingState = checkBoxRemote.Checked;
         }
 
         public void SetHostname(string hostname)
@@ -59,6 +69,8 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             bool remote = ((CheckBox) sender).Checked;
             ValidateNotEmpty();
             EnableRemotingControls(remote);
+
+            ToggleLastTabs(this, new EventArgs<bool>(remote == initialRemotingState));
         }
 
         private void EnableRemotingControls(bool value)

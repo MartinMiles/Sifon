@@ -27,5 +27,6 @@ namespace Sifon.Forms.Profiles
         #endregion
 
         void FocusOnSaveButton();
+        void ToggleLastTabs(bool enabled);
     }
 }

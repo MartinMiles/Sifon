@@ -21,10 +21,17 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             _view.TestRemote += TestRemote;
         }
 
+        private void ToggleLastTabs(object sender, EventArgs<bool> e)
+        {
+            Presenter.ToggleLastTabs(e.Value);
+        }
+
         protected override void Loaded(object sender, EventArgs e)
         {
             Presenter.ProfileChanged += ProfileChanged;
             SetValues();
+
+            _view.ToggleLastTabs += ToggleLastTabs;
         }
 
         private async void TestRemote(object sender, EventArgs<IRemoteSettings> e)

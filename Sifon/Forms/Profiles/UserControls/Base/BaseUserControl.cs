@@ -19,6 +19,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
             base.OnLoad(e);
             Loaded(this, e);
         }
+
         public override void SetTooltips()
         {
         }
