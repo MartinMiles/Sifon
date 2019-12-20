@@ -30,7 +30,7 @@ namespace Sifon.Forms.Base
 
         public void AppendEnvironmentToCaption(string suffix)
         {
-            Text += suffix;
+            Text += $" - {suffix}";
         }
     }
 }

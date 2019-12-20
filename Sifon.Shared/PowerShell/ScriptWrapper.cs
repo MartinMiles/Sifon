@@ -6,13 +6,14 @@ using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using System.Management.Automation.Runspaces;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Model.Response;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Shared.Exceptions;
 
 namespace Sifon.Shared.PowerShell
 {
-    public class ScriptWrapper<T>
+    public class ScriptWrapper<T> : IScriptWrapperResponse<T>
     {
         private readonly IProfile _profile;
         private readonly ISynchronizeInvoke _invoker;

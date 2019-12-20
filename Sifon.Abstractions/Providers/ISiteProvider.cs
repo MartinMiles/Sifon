@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Model.Response;
 
 namespace Sifon.Abstractions.Providers
 {
@@ -11,8 +12,9 @@ namespace Sifon.Abstractions.Providers
         Task<string> GetSitePath(string siteName);
         Task<string> GetXconnect(string siteName);
         Task<string> GetIDS(string siteName);
+        Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
-        Task<IEnumerable<string>> GetCommerceDatabases(string siteName);
+        Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName);
         Task<IEnumerable<KeyValuePair<string, string>>> GetBindingsByPath(string webfolder);
     }
 }

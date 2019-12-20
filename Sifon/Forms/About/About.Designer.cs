@@ -23,6 +23,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -32,7 +34,6 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label16 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,6 +54,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel4);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -62,7 +65,6 @@
             this.groupBox1.Controls.Add(this.linkLabel2);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.buttonClose);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label6);
@@ -72,9 +74,29 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(403, 338);
+            this.groupBox1.Size = new System.Drawing.Size(397, 393);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(162, 267);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(46, 13);
+            this.linkLabel4.TabIndex = 26;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "Sifon.uk";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 267);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(143, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Website and documentation:";
             // 
             // label9
             // 
@@ -115,7 +137,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(87, 273);
+            this.linkLabel3.Location = new System.Drawing.Point(162, 329);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(86, 13);
             this.linkLabel3.TabIndex = 20;
@@ -126,7 +148,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 291);
+            this.label15.Location = new System.Drawing.Point(10, 346);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 19;
@@ -135,7 +157,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(87, 291);
+            this.linkLabel2.Location = new System.Drawing.Point(162, 346);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(164, 13);
             this.linkLabel2.TabIndex = 18;
@@ -146,37 +168,27 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(90, 308);
+            this.linkLabel1.Location = new System.Drawing.Point(162, 363);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(133, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(102, 13);
             this.linkLabel1.TabIndex = 17;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "http://Blog.MartinMiles.net";
+            this.linkLabel1.Text = "Blog.MartinMiles.net";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 308);
+            this.label16.Location = new System.Drawing.Point(10, 363);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(71, 13);
             this.label16.TabIndex = 16;
             this.label16.Text = "Author\'s blog:";
             // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(308, 302);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.TabIndex = 15;
-            this.buttonClose.Text = "OK";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 274);
+            this.label14.Location = new System.Drawing.Point(10, 329);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 13;
@@ -185,7 +197,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 251);
+            this.label12.Location = new System.Drawing.Point(10, 306);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 13);
             this.label12.TabIndex = 11;
@@ -231,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 351);
+            this.ClientSize = new System.Drawing.Size(424, 409);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -256,7 +268,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel2;
@@ -266,5 +277,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label10;
     }
 }

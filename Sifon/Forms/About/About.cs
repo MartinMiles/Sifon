@@ -19,7 +19,7 @@ namespace Sifon.Forms.About
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var blog = new ProcessStartInfo("http://Blog.MartinMiles.net");
+            var blog = new ProcessStartInfo("https://Blog.MartinMiles.net");
             Process.Start(blog);
         }
 
@@ -38,6 +38,12 @@ namespace Sifon.Forms.About
         private void About_Load(object sender, System.EventArgs e)
         {
             Text = Settings.ProductVersion;
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var website = new ProcessStartInfo("http://Sifon.uk");
+            Process.Start(website);
         }
     }
 }

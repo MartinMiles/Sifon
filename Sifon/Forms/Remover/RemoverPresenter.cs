@@ -62,7 +62,7 @@ namespace Sifon.Forms.Remover
             if (commerceSites.Any())
             {
                 var commerceDatabases = await _siteProvider.GetCommerceDatabases(commerceSites.Select(i => i.Key).Last());
-                _scriptWrapper.Results.AddRange(commerceDatabases);
+                _scriptWrapper.Results.AddRange(commerceDatabases.Results);
             }
 
             _view.PopulateDatabasesListboxForSite(_scriptWrapper.Results.Where(d => !Settings.Databases.ForbiddenDatabases.Contains(d)), _scriptWrapper.Errors.Select(ex => ex.Message));

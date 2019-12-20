@@ -44,6 +44,7 @@
     <Compile Include="Base\ISuperClass.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreModel.cs" />
+    <Compile Include="Model\Response\IScriptWrapperResponse.cs" />
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Plugins\PluginProgress.cs" />
     <Compile Include="PowerShell\IScriptRunner.cs" />

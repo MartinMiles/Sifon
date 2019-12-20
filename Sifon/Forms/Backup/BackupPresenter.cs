@@ -56,8 +56,6 @@ namespace Sifon.Forms.Backup
 
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
 
-            // TODO: Why we have both Settings.Parameters.Prefix and Settings.Parameters.InstancePrefix ?
-
             var parameters = new Dictionary<string, dynamic>
             {
                 { Settings.Parameters.ServerInstance, _profileService.SelectedProfileSql.SqlServer},
@@ -70,7 +68,7 @@ namespace Sifon.Forms.Backup
             if (commerceSites.Any())
             {
                 var commerceDatabases = await _siteProvider.GetCommerceDatabases(commerceSites.Last());
-                _scriptWrapper.Results.AddRange(commerceDatabases);
+                _scriptWrapper.Results.AddRange(commerceDatabases.Results);
             }
 
             _view.PopulateDatabasesListboxForSite(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex=>ex.Message));

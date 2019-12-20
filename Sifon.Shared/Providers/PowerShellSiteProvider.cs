@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Model.Response;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Shared.Extensions;
@@ -76,6 +77,20 @@ namespace Sifon.Shared.Providers
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
+        public async Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix)
+        {
+            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
+
+            var parameters = new Dictionary<string, dynamic>
+            {
+                { Settings.Parameters.ServerInstance, serverInstance},
+                { Settings.Parameters.InstancePrefix, instancePrefix}
+            };
+
+            await _scriptWrapperString.Run(script, parameters);
+            return _scriptWrapperString;
+        }
+
         public async Task<IEnumerable<string>> GetCommerceSites(string siteName)
         {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetCommerceSites);
@@ -85,13 +100,13 @@ namespace Sifon.Shared.Providers
             return _scriptWrapperString.Results;
         }
 
-        public async Task<IEnumerable<string>> GetCommerceDatabases(string siteName)
+        public async Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName)
         {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetCommerceDatabases);
 
             var parameters = new Dictionary<string, dynamic> {{Settings.Parameters.Webroot, siteName}};
             await _scriptWrapperString.Run(script, parameters);
-            return _scriptWrapperString.Results;
+            return _scriptWrapperString;
         }
 
         public async Task<string> GetIDS(string siteName)
