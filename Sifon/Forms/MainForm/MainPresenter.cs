@@ -36,6 +36,7 @@ namespace Sifon.Forms.MainForm
                 provider.CreateOnFirstRun();
 
                 view.ForceProfileDialogOnFirstRun();
+                _profilesService.Read();
             }
 
             _superClass = new SuperClass();

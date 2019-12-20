@@ -6,7 +6,7 @@
 
         public static class Profile
         {
-            public const string Name = @"^^[A-Za-z0-9-+()@ .,_]*$";
+            public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
             public const string Prefix = @"^[A-Za-z0-9-._]*$";
         }
         public static class SqlSettings
@@ -49,6 +49,11 @@
                     /// Works for SQL Server instance.
                     /// </summary>
                     public const string DotsDashesParenthesesBackslash = @"[^\\(\\)\w\d\\\\.-]";
+
+                    /// <summary>
+                    /// Works for profile name.
+                    /// </summary>
+                    public const string ProfileNameDisallowed = @"[^\w\d. \\(\\)+@,-]";
                 }
             }
         }

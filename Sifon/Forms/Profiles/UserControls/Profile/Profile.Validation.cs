@@ -13,9 +13,9 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         public override void AddPassiveValidationHandlers()
         {
-            textProfileName.KeyPress += ValidateNameAndPrefixKeyPress;
+            textProfileName.KeyPress += ValidateNameKeyPress;
             textProfileName.KeyUp += EnsureNameNotChangedForDelete;
-            textPrefix.KeyPress += ValidateNameAndPrefixKeyPress;
+            textPrefix.KeyPress += ValidatePrefixKeyPress;
 
             textProfileName.TextChanged += TextHasChanged;
             textPrefix.TextChanged += TextHasChanged;
@@ -26,10 +26,20 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             UpdateButtonsState();
         }
 
-        private void ValidateNameAndPrefixKeyPress(object sender, KeyPressEventArgs e)
+        private void ValidateNameKeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateKeyPress(e, Pattern.Filter.SpecialCharacters.Except.ProfileNameDisallowed);
+        }
+
+        private void ValidatePrefixKeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateKeyPress(e, Pattern.Filter.SpecialCharacters.Except.DotsDashes);
+        }
+
+        private void ValidateKeyPress(KeyPressEventArgs e, string regexPattern)
         {
             char character = e.KeyChar;
-            if (!char.IsControl(character) && Regex.IsMatch(character.ToString(), Pattern.Filter.SpecialCharacters.Except.DotsDashes))
+            if (!char.IsControl(character) && Regex.IsMatch(character.ToString(), regexPattern))
             {
                 e.Handled = true;
             }
