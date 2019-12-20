@@ -15,3 +15,13 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 - supports plugins both written in PowerShell or compiled .NET libraries
 - plugins are kept in hierarchical order and, in fact, are crowdsourced
 - respects Windows services: marketing automation, xConnect search indexer, processing engine and of course IIS
+
+
+## Downloads and documentation
+
+You may download your copy of Sifon from the [project website](http://sifon.uk "Sifon's Homepage").
+
+
+## License
+
+Sifon is distributed free of charge under [GNU General Public License v3 (GPL-3)](https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License v3 (GPL-3)") license
