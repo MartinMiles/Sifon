@@ -12,11 +12,6 @@ namespace Sifon.Forms.About
             InitializeComponent();
         }
 
-        private void buttonClose_Click(object sender, System.EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var blog = new ProcessStartInfo("https://Blog.MartinMiles.net");
@@ -37,7 +32,7 @@ namespace Sifon.Forms.About
 
         private void About_Load(object sender, System.EventArgs e)
         {
-            Text = Settings.ProductVersion;
+            Text = $"{Settings.ProductVersion} - made in the UK!";
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
