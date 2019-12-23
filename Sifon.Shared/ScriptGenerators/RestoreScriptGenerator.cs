@@ -85,7 +85,7 @@ namespace Sifon.Shared.ScriptGenerators
             executionScript += _serviceScriptGenerator.Start(Settings.Services.MarketingAutomation, service3);
 
 
-            if (!_model.ProcessDatabases)
+            //if (!_model.ProcessDatabases)
             {
                 executionScript += "Write-Progress -Activity $activity -CurrentOperation 'restore complete.' -PercentComplete 100";
             }
@@ -124,7 +124,7 @@ namespace Sifon.Shared.ScriptGenerators
                 databaseScript.AppendLine(@"   Restore-SqlDatabase -ServerInstance ""$ServerInstance"" -Database ""$database"" -BackupFile ""$targetFolder\$database.bak"" -ReplaceDatabase");
             }
 
-            databaseScript.AppendLine(@"   Write -Output ""Database $database has been restored""");
+            databaseScript.AppendLine(@"   Write-Output ""Database $database has been restored""");
             databaseScript.AppendLine("}");
 
             executionScript += databaseScript.ToString();
