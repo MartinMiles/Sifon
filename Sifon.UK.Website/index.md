@@ -6,7 +6,7 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Downloads
 
-You may [download](/download/Sifon_0.93.zip "download Sifon") your copy of Sifon.
+Use this link to [download](/download/Sifon_0.93.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
 
 
 ## Features
