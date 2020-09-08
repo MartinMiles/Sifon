@@ -17,7 +17,7 @@
                 if($service -And $service.Status -ne 'Running')
                 {{
                     Write-Progress -Activity $activity -CurrentOperation 'starting xConnect {serviceName}' -PercentComplete {percents}
-                    net start $service
+                    Start-Service -InputObject $service
                 }}
                 ";
         }
@@ -29,7 +29,7 @@
                     if($service -And $service.Status -eq 'Running')
                     {{
                         Write-Progress -Activity $activity -CurrentOperation 'stopping xConnect {serviceName}' -PercentComplete {percents}
-                        net stop $service
+                        Stop-Service -InputObject $service
                     }}
                 ";
         }
