@@ -54,7 +54,12 @@ namespace Sifon.Shared.ScriptGenerators
 
         public string StopProcess(string processName)
         {
-            return $@"Stop-Process -Name {processName} -Force {Environment.NewLine}";
+            return $@" Try {{
+                                $Process = Get-Process -Name {processName}
+	                            Stop-Process -InputObject $Process -Force
+                        }}
+                        Catch {{ }}
+                    ";
         }
     }
 }
