@@ -360,8 +360,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>rem if not exist "Core" mkdir Core 
-rem xcopy $(SolutionDir)\Core Core /s /e /Y
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
