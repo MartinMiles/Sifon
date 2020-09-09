@@ -13,10 +13,16 @@ namespace Sifon.Shared.Statics
 
         public static class Services
         {
-            // TODO: services name MAY likely vary from the XConnect hostname
             public const string MarketingAutomation = "MarketingAutomationService";
             public const string IndexWorker = "IndexWorker";
             public const string ProcessingEngineService = "ProcessingEngineService";
+        }
+
+        public static class Process
+        {
+            public const string MarketingAutomationEngine = "Sitecore.MAEngine";
+            public const string Indexer = "Sitecore.XConnectSearchIndexer";
+            public const string ProcessingEngine = "Sitecore.ProcessingEngine";
         }
 
         public static class Folders

@@ -37,9 +37,7 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateFilesystemScript()
         {
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.MarketingAutomation, 10);
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.IndexWorker, 13);
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.ProcessingEngineService, 27);
+            executionScript += _serviceScriptGenerator.StopDependentServices();
 
             if (_model.ProcessWebroot)
             {
@@ -73,22 +71,17 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateServicesScript()
         {
-
             int progressCalculation = 80;
             int service1 = 85;
             int service2 = 90;
             int service3 = 95;
 
             executionScript += _iisScriptGenerator.Start(progressCalculation);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.IndexWorker, service1);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.ProcessingEngineService, service2);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.MarketingAutomation, service3);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.IndexWorker, service1);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, service2);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, service3);
 
-
-            //if (!_model.ProcessDatabases)
-            {
-                executionScript += "Write-Progress -Activity $activity -CurrentOperation 'restore complete.' -PercentComplete 100";
-            }
+            executionScript += "Write-Progress -Activity $activity -CurrentOperation 'restore complete.' -PercentComplete 100";
         }
 
         private void GenerateDatabaseScript()

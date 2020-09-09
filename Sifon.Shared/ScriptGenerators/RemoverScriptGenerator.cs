@@ -38,10 +38,8 @@ namespace Sifon.Shared.ScriptGenerators
             {
                 int progressCalculation = _model.ProcessDatabases ? 60 : 90;
 
-                executionScript += _serviceScriptGenerator.Stop(Settings.Services.MarketingAutomation, 10);
-                executionScript += _serviceScriptGenerator.Stop(Settings.Services.IndexWorker, 15);
-                executionScript += _serviceScriptGenerator.Stop(Settings.Services.ProcessingEngineService, 20);
-
+                executionScript += _serviceScriptGenerator.StopDependentServices();
+                
                 executionScript += _iisScriptGenerator.Stop(30);
 
                 if (_model.ProcessWebroot)

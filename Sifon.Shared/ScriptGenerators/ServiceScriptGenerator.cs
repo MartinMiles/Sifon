@@ -1,4 +1,7 @@
-﻿namespace Sifon.Shared.ScriptGenerators
+﻿using System;
+using Sifon.Shared.Statics;
+
+namespace Sifon.Shared.ScriptGenerators
 {
     public class ServiceScriptGenerator
     {
@@ -9,9 +12,24 @@
             _prefix = prefix;
         }
 
-        public string Start(string serviceName, int percents)
+        public string StopDependentServices()
         {
-            // TODO: when getting service also ask to get those that are active
+            string executionScript = String.Empty;
+
+            executionScript += StopService(Settings.Services.MarketingAutomation, 10);
+            executionScript += StopProcess(Settings.Process.MarketingAutomationEngine);
+
+            executionScript += StopService(Settings.Services.IndexWorker, 12);
+            executionScript += StopProcess(Settings.Process.Indexer);
+
+            executionScript += StopService(Settings.Services.ProcessingEngineService, 15);
+            executionScript += StopProcess(Settings.Process.ProcessingEngine);
+
+            return executionScript;
+        }
+
+        public string StartService(string serviceName, int percents)
+        {
             return $@"
                 $service = Get-Service '{_prefix}*-{serviceName}' -ErrorAction SilentlyContinue
                 if($service -And $service.Status -ne 'Running')
@@ -22,7 +40,7 @@
                 ";
         }
 
-        public string Stop(string serviceName, int percents)
+        private string StopService(string serviceName, int percents)
         {
             return $@"
                     $service = Get-Service '{_prefix}*-{serviceName}' -ErrorAction SilentlyContinue
@@ -32,6 +50,11 @@
                         Stop-Service -InputObject $service
                     }}
                 ";
+        }
+
+        public string StopProcess(string processName)
+        {
+            return $@"Stop-Process -Name {processName} -Force {Environment.NewLine}";
         }
     }
 }

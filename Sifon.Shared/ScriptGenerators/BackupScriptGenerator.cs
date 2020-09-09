@@ -32,13 +32,10 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateFilesystemScript()
         {
-
             // TODO: re-work progress calculation
-            string progressCalculation = _model.ProcessDatabases ? "60" : "90";
+            //string progressCalculation = _model.ProcessDatabases ? "60" : "90";
 
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.MarketingAutomation, 10);
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.IndexWorker, 12);
-            executionScript += _serviceScriptGenerator.Stop(Settings.Services.ProcessingEngineService, 15);
+            executionScript += _serviceScriptGenerator.StopDependentServices();
 
             executionScript += _iisScriptGenerator.Stop(18);
 
@@ -68,9 +65,9 @@ namespace Sifon.Shared.ScriptGenerators
 
             executionScript += _iisScriptGenerator.Start(55);
 
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.IndexWorker, 57);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.ProcessingEngineService, 58);
-            executionScript += _serviceScriptGenerator.Start(Settings.Services.MarketingAutomation, 59);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.IndexWorker, 57);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, 58);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, 59);
             
             if (!_model.ProcessDatabases)
             {
