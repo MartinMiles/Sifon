@@ -7,7 +7,8 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Features
 
-- backup, clean, restore selected Sitecore 9.x instance out-of-the-box with nice GUI
+- backup, clean, restore selected Sitecore instance out-of-the-box with nice GUI
+- supports Sitecore XP and XC versions 9.x and 10.0
 - you can choose the above operations for webroot, xConnect, Identity Server sites and all together
 - environment auto-detection: hostnames, bindings, installed Solr instances
 - supports multiple instances on a host via creating and selecting profiles

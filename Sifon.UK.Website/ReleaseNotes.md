@@ -1,5 +1,14 @@
 # Release notes
 
+
+Version **0.94**
+
+- now supports Sitecore 10.0 and Commerce 10.0
+- improved system services operations for stability
+- adjusted Commerce database identification due to 10.0 changes
+- minor bugfixes done
+
+
 Version **0.93**
 
 - supported Sitecore versions selector now available from Shared API
