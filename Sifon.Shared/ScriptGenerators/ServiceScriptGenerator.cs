@@ -54,9 +54,10 @@ namespace Sifon.Shared.ScriptGenerators
 
         public string StopProcess(string processName)
         {
-            return $@" Try {{
-                                $Process = Get-Process -Name {processName}
+            return $@"  Try {{
+                                $Process = Get-Process -Name {processName} -ErrorAction SilentlyContinue
 	                            Stop-Process -InputObject $Process -Force
+				                Write-Output ""Stopping process: "" $Process.Name
                         }}
                         Catch {{ }}
                     ";
