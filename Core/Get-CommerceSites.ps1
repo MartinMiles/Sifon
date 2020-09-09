@@ -27,7 +27,8 @@ $FoundSite = Get-ChildItem IIS:\Sites | Where-Object {$_.Name -eq $Name}
 
     foreach ($Site in $Websites) {
 	
-	  $config = $Site.physicalPath + '\Sitecore.Commerce.Engine.exe.config'
+	  $config = $Site.physicalPath + '\Sitecore.Commerce.Engine.xml'
+    
 
 		  If(Test-Path $config){
 			$Site.physicalPath

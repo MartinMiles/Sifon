@@ -14,6 +14,14 @@ If(Test-Path $config1){
 If(Test-Path $config2){
 
     $json = (Get-Content $config2 -Raw)  | ConvertFrom-Json
-    $json.Policies.'$values'[1].Database
+    #$json.Policies.'$values'[1].Database
+    If(Test-Path $config2){
+
+	$json = (Get-Content $config2 -Raw)  | ConvertFrom-Json
+	#    $json.Policies.'$values'[0].Database
     
+	ForEach ($value in $json.Policies.'$values') {
+		$value.Database
+	}
+    }
 }
