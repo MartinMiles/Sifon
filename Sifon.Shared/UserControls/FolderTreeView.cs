@@ -31,6 +31,7 @@ namespace Sifon.Shared.UserControls
                 _profile = value;
                 _filesystem = new FilesystemFactory(_profile, this).Create();
 
+                // TODO: This call is not awaited (see warning)
                 CreateTree(fileExplorer);
             }
         }
@@ -72,7 +73,7 @@ namespace Sifon.Shared.UserControls
                     returnValue = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 returnValue = false;
             }
@@ -109,7 +110,7 @@ namespace Sifon.Shared.UserControls
                 }
             }
 
-            catch (Exception ex)
+            catch (Exception e)
             {
             }
 

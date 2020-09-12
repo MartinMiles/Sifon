@@ -48,7 +48,6 @@ namespace Sifon.Shared.PowerShell
             }
             catch (PSRemotingTransportException e)
             {
-                int k = 0;
                 //ShowError("Profile with remoting errors out", e.Message);
             }
         }

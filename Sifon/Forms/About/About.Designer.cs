@@ -249,9 +249,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 13);
+            this.label3.Size = new System.Drawing.Size(189, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "- Sitecore XP and XC 9.* ";
+            this.label3.Text = "- Sitecore XP and XC 9.* versions 10.0";
             // 
             // label2
             // 
@@ -273,7 +273,7 @@
             this.MinimizeBox = false;
             this.Name = "About";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About Sifon v0.9.0 (BETA)";
+            this.Text = "About Sifon v0.9.5 (BETA)";
             this.Load += new System.EventHandler(this.About_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

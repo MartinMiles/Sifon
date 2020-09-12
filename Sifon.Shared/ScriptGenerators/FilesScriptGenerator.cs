@@ -5,8 +5,6 @@ namespace Sifon.Shared.ScriptGenerators
 {
     public class FilesScriptGenerator
     {
-        private readonly string _prefix;
-
         public string Backup(string siteFolderParamName, int percents)
         {
             string _suffix = siteFolderParamName != Settings.Parameters.Webroot ? $".{siteFolderParamName}" : String.Empty;
