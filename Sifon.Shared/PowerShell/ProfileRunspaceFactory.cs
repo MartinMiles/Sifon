@@ -39,7 +39,9 @@ namespace Sifon.Shared.PowerShell
         {
             InitialSessionState initial = InitialSessionState.CreateDefault();
             initial.ExecutionPolicy = ExecutionPolicy.Unrestricted;
-            initial.ImportPSModule(new[] { "SQLPS" });
+            
+            //initial.ImportPSModule(new[] { "SQLPS" });
+            initial.ImportPSModule(new[] { "SqlServer" });
             return RunspaceFactory.CreateRunspace(initial);
         }
 

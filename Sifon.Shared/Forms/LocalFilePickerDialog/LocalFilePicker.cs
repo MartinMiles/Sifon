@@ -30,7 +30,6 @@ namespace Sifon.Shared.Forms.LocalFilePickerDialog
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //StartPosition = FormStartPosition.CenterParent;
             Text = Caption;
             textInstanaceToBackup.Text = Label;
             buttonInstall.Text = Button;
@@ -38,17 +37,17 @@ namespace Sifon.Shared.Forms.LocalFilePickerDialog
 
         private void buttonBackupLocation_Click(object sender, EventArgs e)
         {
-            //Thread thread = new Thread((ThreadStart)(() =>
-            //{
+            var dlg = new ThreadSafeOpenPicker
+            {
+                Filter = Filters, DefaultExt = "zip", StartupLocation = new Point(Location.X, Location.Y)
+            };
 
-            var dlg = new ThreadSafeOpenPicker();
-            dlg.Filter = Filters;
-            dlg.DefaultExt = "zip";
-            dlg.StartupLocation = new Point(Location.X, Location.Y);
-            DialogResult res = dlg.ShowDialog();
+            var res = dlg.ShowDialog();
 
             if (res != DialogResult.OK)
+            {
                 return;
+            }
 
             pathTextbox.Text = dlg.FilePath.Trim();
             FilePath = dlg.FilePath.Trim();
@@ -63,36 +62,11 @@ namespace Sifon.Shared.Forms.LocalFilePickerDialog
                 {
                     MessageBox.Show(validationResult, "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                {
+                    buttonInstall.Focus();
+                }
             }
-
-
-            //var dialog = new OpenFileDialog();
-            //    dialog.Filter = Filters;
-
-            //    if (dialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        pathTextbox.Text = dialog.FileName.Trim();
-            //        FilePath = dialog.FileName.Trim();
-
-            //        if (Validation != null)
-            //        {
-            //            string validationResult = Validation(pathTextbox.Text);
-
-            //            buttonInstall.Enabled = string.IsNullOrWhiteSpace(validationResult);
-
-            //            if (!buttonInstall.Enabled)
-            //            {
-            //                MessageBox.Show(validationResult, "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            }
-            //        }
-            //    }
-
-
-            //}));
-
-            //thread.SetApartmentState(ApartmentState.STA);
-            //thread.Start();
-            //thread.Join();
         }
 
         private void buttonInstall_Click(object sender, EventArgs e)

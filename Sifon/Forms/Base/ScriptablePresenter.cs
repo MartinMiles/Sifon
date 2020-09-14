@@ -125,9 +125,11 @@ namespace Sifon.Forms.Base
         {
             if (data.PercentComplete >= 0)
             {
-                var currentOperation = data.CurrentOperation.Replace("  ", " ");
+                var currentOperation = data.CurrentOperation != null
+                    ? $" - {data.CurrentOperation.Replace("  ", " ")}"
+                    : String.Empty;
 
-                _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity} - {currentOperation}");
+                _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity}{currentOperation}");
             }
         }
 
