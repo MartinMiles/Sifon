@@ -73,12 +73,13 @@
     <Compile Include="Filesystem\FilesystemFactory.cs" />
     <Compile Include="Filesystem\IFilesystem.cs" />
     <Compile Include="Filesystem\LocalFilesystem.cs" />
-    <Compile Include="Formatters\Error\ErrorFormatter.cs" />
+    <Compile Include="Formatters\Text\ErrorFormatter.cs" />
     <Compile Include="Formatters\Output\DataRowFormatter.cs" />
     <Compile Include="Formatters\Output\GenericObjectFormatter.cs" />
     <Compile Include="Formatters\Output\IOutputFormatter.cs" />
     <Compile Include="Formatters\Output\ConsoleOutputFormatter.cs" />
     <Compile Include="Formatters\Output\StringFormatter.cs" />
+    <Compile Include="Formatters\Text\GenericTextFormatter.cs" />
     <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.cs">
       <SubType>Form</SubType>
     </Compile>

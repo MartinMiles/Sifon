@@ -29,7 +29,7 @@ namespace Sifon.Shared.Statics
         {
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Profiles");
-            public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Plugins");
+            public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
             public static string Core => Path.Combine(Environment.CurrentDirectory, "Core");
             public static string CoreFilesystem => Path.Combine(Core, "Filesystem");
         }

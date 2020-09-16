@@ -149,6 +149,7 @@ namespace Sifon.Forms.MainForm
         {
             buttonStopScript.Enabled = false;
             comboProfiles.Enabled = true;
+
             statusLabel.Text = "Ready.";
         }
 

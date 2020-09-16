@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sifon.Shared.Formatters.Error
+namespace Sifon.Shared.Formatters.Text
 {
     public class ErrorFormatter
     {

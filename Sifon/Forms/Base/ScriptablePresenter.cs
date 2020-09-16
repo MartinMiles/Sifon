@@ -8,15 +8,16 @@ using Sifon.Abstractions.Profiles;
 using Sifon.Forms.MainForm;
 using Sifon.Shared.Events;
 using Sifon.Shared.Filesystem;
-using Sifon.Shared.Formatters.Error;
 using Sifon.Shared.Formatters.Output;
+using Sifon.Shared.Formatters.Text;
+using Sifon.Shared.Model;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Providers.Profile;
 using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Base
 {
-    internal class ScriptablePresenter
+    internal abstract class ScriptablePresenter
     {
         protected readonly ProfilesProvider _profilesService;
         private ScriptWrapper<PSObject> _scriptWrapper;
@@ -25,7 +26,8 @@ namespace Sifon.Forms.Base
         private IFilesystem _filesystem;
         protected IBackupRestoreModel model;
 
-        private bool mute;
+        private GenericTextFormatter _genericTextFormatter;
+
 
         protected IProfile SelectedProfile => _profilesService.SelectedProfile;
 
@@ -35,13 +37,18 @@ namespace Sifon.Forms.Base
             _profilesService = new ProfilesProvider();
             _view.ScriptFinishRequested += ScriptFinishRequested;
             _outputFormatter = new ConsoleOutputFormatter();
+
+            _genericTextFormatter = new GenericTextFormatter();
         }
+
+        protected abstract PluginMenuItem GetPluginsAndScripts(string baseDirectory);
 
         private void ScriptFinishRequested(object sender, EventArgs e)
         {
             RemoveHandlers();
             _scriptWrapper?.Finish();
             _view.FinishUI();
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
         }
 
         public async void PrepareAndStart(string script, Dictionary<string, dynamic> parameters)
@@ -100,66 +107,35 @@ namespace Sifon.Forms.Base
             ScriptRunnerComplete(this, new EventArgs<string>(sender.ScriptFile));
 
             _view.FinishUI();
-        }
-
-        private void VerifyMuteStatus(string value)
-        {
-            const string muteContent = "Sifon-MuteOutput";
-            const string unmuteContent = "Sifon-UnmuteOutput";
-
-            if (value.IndexOf(muteContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
-            {
-                mute = true;
-            }
-            if (value.IndexOf(unmuteContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
-            {
-                mute = false;
-            }
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
         }
 
         private void ObjectReady(PSObject data)
         {
             string line = _outputFormatter.Format(data);
+            line = _genericTextFormatter.Format(line);
 
-            VerifyMuteStatus(line);
-
-            if (!mute)
-            {
-                _view.AppendLine(line);
-                _view.listBoxChangedFlag = true;
-            }
+            _view.AppendLine(line);
+            _view.listBoxChangedFlag = true;
         }
 
-        private void InformationReady(string message)
+        private void InformationReady(string line)
         {
-            VerifyMuteStatus(message);
-
-            if (!mute)
-            {
-                _view.AppendLine(message);
-            }
+            line = _genericTextFormatter.Format(line);
+            _view.AppendLine(line);
         }
 
-        private void WarningReady(string message)
+        private void WarningReady(string line)
         {
-            VerifyMuteStatus(message);
-
-            if (!mute)
-            {
-                _view.AppendLine(message, Color.Yellow);
-            }
+            line = _genericTextFormatter.Format(line);
+            _view.AppendLine(line, Color.Yellow);
         }
 
         private void ErrorReady(Exception exception)
         {
             string line = new ErrorFormatter().Format(exception.Message);
-
-            VerifyMuteStatus(line);
-
-            if (!mute)
-            {
-                _view.AppendLine(line, Color.Red);
-            }
+            line = _genericTextFormatter.Format(line);
+            _view.AppendLine(line, Color.Red);
         }
 
         private void ProgressReady(ProgressRecord data)

@@ -25,6 +25,7 @@ namespace Sifon.Forms.MainForm
         {
             pluginsToolStripMenuItem.DropDownItems.Clear();
             DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem);
+            pluginsToolStripMenuItem.Text = "Plugins";
         }
 
         private void DirectorySearch(PluginMenuItem menuItem, ToolStripMenuItem parentMenuItem)

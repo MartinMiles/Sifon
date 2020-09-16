@@ -170,7 +170,7 @@ namespace Sifon.Forms.MainForm
                    && (!SelectedProfile.RemotingEnabled || SelectedProfile.RemoteFolder.NotEmpty());
         }
 
-        private PluginMenuItem GetPluginsAndScripts(string baseDirectory)
+        protected override PluginMenuItem GetPluginsAndScripts(string baseDirectory)
         {
             var di = new DirectoryInfo(baseDirectory);
 
@@ -184,6 +184,11 @@ namespace Sifon.Forms.MainForm
 
             foreach (var chilDirectory in di.GetDirectories())
             {
+                if (chilDirectory.Name == ".git")
+                {
+                    continue;
+                }
+
                 menuItem.Children.Add(GetPluginsAndScripts(chilDirectory.FullName));
             }
 
