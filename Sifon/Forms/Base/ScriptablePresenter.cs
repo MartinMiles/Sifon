@@ -25,6 +25,8 @@ namespace Sifon.Forms.Base
         private IFilesystem _filesystem;
         protected IBackupRestoreModel model;
 
+        private bool mute;
+
         protected IProfile SelectedProfile => _profilesService.SelectedProfile;
 
         internal ScriptablePresenter(IMainView view)
@@ -100,25 +102,64 @@ namespace Sifon.Forms.Base
             _view.FinishUI();
         }
 
+        private void VerifyMuteStatus(string value)
+        {
+            const string muteContent = "Sifon-MuteOutput";
+            const string unmuteContent = "Sifon-UnmuteOutput";
+
+            if (value.IndexOf(muteContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
+            {
+                mute = true;
+            }
+            if (value.IndexOf(unmuteContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
+            {
+                mute = false;
+            }
+        }
+
         private void ObjectReady(PSObject data)
         {
-            _view.AppendLine(_outputFormatter.Format(data));
-            _view.listBoxChangedFlag = true;
+            string line = _outputFormatter.Format(data);
+
+            VerifyMuteStatus(line);
+
+            if (!mute)
+            {
+                _view.AppendLine(line);
+                _view.listBoxChangedFlag = true;
+            }
         }
 
         private void InformationReady(string message)
         {
-            _view.AppendLine(message);
+            VerifyMuteStatus(message);
+
+            if (!mute)
+            {
+                _view.AppendLine(message);
+            }
         }
 
         private void WarningReady(string message)
         {
-            _view.AppendLine(message, Color.Yellow);
+            VerifyMuteStatus(message);
+
+            if (!mute)
+            {
+                _view.AppendLine(message, Color.Yellow);
+            }
         }
 
         private void ErrorReady(Exception exception)
         {
-            _view.AppendLine(new ErrorFormatter().Format(exception.Message), Color.Red);
+            string line = new ErrorFormatter().Format(exception.Message);
+
+            VerifyMuteStatus(line);
+
+            if (!mute)
+            {
+                _view.AppendLine(line, Color.Red);
+            }
         }
 
         private void ProgressReady(ProgressRecord data)
