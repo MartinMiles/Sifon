@@ -15,15 +15,18 @@ namespace Sifon.Forms.MainForm
 
         public void AppendLine(string line, Color? color = null)
         {
-            if (color != null)
+            if (!string.IsNullOrWhiteSpace(line))
             {
-                line = $"#COLOR:{color.Value.Name}#{line}";
-            }
+                if (color != null)
+                {
+                    line = $"#COLOR:{color.Value.Name}#{line}";
+                }
 
-            listBoxChangedFlag = true;
-            if (listBoxOutput.Items.Count > 10000) listBoxOutput.Items.RemoveAt(0);
-            listBoxOutput.Items.Add(line);
-            listBoxOutput.TopIndex = listBoxOutput.Items.Count - 1;
+                listBoxChangedFlag = true;
+                if (listBoxOutput.Items.Count > 10000) listBoxOutput.Items.RemoveAt(0);
+                listBoxOutput.Items.Add(line);
+                listBoxOutput.TopIndex = listBoxOutput.Items.Count - 1;
+            }
         }
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
