@@ -1,6 +1,15 @@
 # Release notes
 
 
+Version **0.95**
+
+- new plugin system allows one-click plugins pull and setup from public GitHub repository
+- plugins folder has been renamed to address the above change
+- shared API got new LocalFilePicker control
+- scripts plugins output has reworked to better presentation, also eliminating whitespaces
+- new output muting / unmuting synthax to suppress uncontrolled "output verbose abuse"
+
+
 Version **0.94**
 
 - now supports Sitecore 10.0 and Commerce 10.0

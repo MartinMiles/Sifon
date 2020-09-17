@@ -32,7 +32,7 @@ namespace Sifon.Forms.About
 
         private void About_Load(object sender, System.EventArgs e)
         {
-            Text = $"{Settings.ProductVersion} - made in the UK!";
+            Text = $"{Settings.ProductVersion}";
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
