@@ -70,10 +70,12 @@ namespace Sifon.Forms.Initialize
                 {"Password", remoteSettings.RemotePassword},
                 {"RemoteDirectory", Settings.RemoteDirectory},
                 {"Filenames", FilesToBeCopiedToRemote},
+                {"ModuleFiles", ModulesToBeCopiedToRemote},
             };
         }
 
         private string[] FilesToBeCopiedToRemote => new []{
+
             Settings.Scripts.GetSiteBindings,
             Settings.Scripts.GetSiteBindingsByPath,
             Settings.Scripts.GetBackupInfo,
@@ -96,7 +98,13 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Filesystem.GetDirectory,
             Settings.Scripts.Filesystem.GetDrives,
             Settings.Scripts.Filesystem.GetFiles,
-            Settings.Scripts.Filesystem.VerifyDirectory
+            Settings.Scripts.Filesystem.VerifyDirectory,
+        };
+        private string[] ModulesToBeCopiedToRemote => new[]{
+            Settings.Scripts.Module.ModuleManifest,
+            Settings.Scripts.Module.ModuleDefinition,
+            Settings.Scripts.Module.GetInstanceUrl,
+            Settings.Scripts.Module.DummyFunction
         };
     }
 }

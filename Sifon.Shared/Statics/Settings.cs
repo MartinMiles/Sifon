@@ -30,7 +30,8 @@ namespace Sifon.Shared.Statics
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Profiles");
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
-            public static string Core => Path.Combine(Environment.CurrentDirectory, "Core");
+            public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
+            public static string Module => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Module");
             public static string CoreFilesystem => Path.Combine(Core, "Filesystem");
         }
 
@@ -77,6 +78,14 @@ namespace Sifon.Shared.Statics
                 public static string DeleteFile => Path.Combine(Folders.CoreFilesystem, "Delete-File.ps1");
                 public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
                 public static string GetDirectory => Path.Combine(Folders.CoreFilesystem, "Get-Directory.ps1");
+            }
+
+            public static class Module
+            {
+                public static string ModuleManifest => Path.Combine(Folders.Module, "Sifon.psd1");
+                public static string ModuleDefinition => Path.Combine(Folders.Module, "Sifon.psm1");
+                public static string GetInstanceUrl => Path.Combine(Folders.Module, "Get-InstanceUrl.ps1");
+                public static string DummyFunction => Path.Combine(Folders.Module, "Dummy-Function.ps1");
             }
 
         }
