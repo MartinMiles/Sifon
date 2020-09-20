@@ -66,7 +66,10 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         public void SetWebsiteDropdownByProfile(string website)
         {
-            comboWebsites.SelectedIndex = comboWebsites.Items.Contains(website) ? comboWebsites.Items.IndexOf(website) : 0;
+            if (comboWebsites.Items.Count > 0)
+            {
+                comboWebsites.SelectedIndex = comboWebsites.Items.Contains(website) ? comboWebsites.Items.IndexOf(website) : 0;
+            }
         }
 
         private void buttonWebroot_Click(object sender, EventArgs e)

@@ -57,7 +57,11 @@ namespace Sifon.Forms.Initialize
             var excp = _scriptWrapper.Errors.FirstOrDefault();
             var errorMessage = excp is PSRemotingTransportException ? excp.Message : String.Empty;
 
-            _view.ScriptComplete(result, errorMessage);
+            if (!string.IsNullOrWhiteSpace(result) && result.Contains("|"))
+            {
+                var folders = result.Split('|');
+                _view.ScriptComplete(folders[0], folders[1], errorMessage);
+            }
         }
 
         private Dictionary<string, dynamic> CreateParameters(IRemoteSettings remoteSettings)

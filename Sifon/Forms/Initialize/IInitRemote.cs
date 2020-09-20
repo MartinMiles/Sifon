@@ -9,6 +9,6 @@ namespace Sifon.Forms.Initialize
 
         void UpdateProgressBar(int percentComplete, string statusLabelText);
         //void InitializeComplete();
-        void ScriptComplete(string result, string errorMessage);
+        void ScriptComplete(string scriptsFolder, string moduleFolder, string errorMessage);
     }
 }

@@ -47,7 +47,7 @@ namespace Sifon.Forms.Initialize
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
         
-        public void ScriptComplete(string folder, string errorMessage)
+        public void ScriptComplete(string scriptsFolder, string moduleFolder, string errorMessage)
         {
             if (errorMessage.NotEmpty())
             {
@@ -58,10 +58,12 @@ namespace Sifon.Forms.Initialize
             else
             {
                 buttonDone.DialogResult = DialogResult.Cancel;
-                labelRemoteFolder.Text = $"Remote folder created at [{RemoteSettings.RemoteHostname}]:  {folder}";
+                resultHeading.Text = $"Remote folder for script created at [{RemoteSettings.RemoteHostname}]:";
+                labelScriptsRemoteFolder.Text = scriptsFolder;
+                labelModuleRemoteFolder.Text = moduleFolder;
             }
 
-            RemoteFolder = folder;
+            RemoteFolder = scriptsFolder;
             buttonDone.Enabled = true;
         }
     }
