@@ -74,6 +74,8 @@ namespace Sifon.Forms.MainForm
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             listBoxOutput.Items.Clear();
+            progressBar.Value = 0;
+            progressLabel.Text = String.Empty;
         }
 
         private void myListBox_MouseDown(object sender, MouseEventArgs e)

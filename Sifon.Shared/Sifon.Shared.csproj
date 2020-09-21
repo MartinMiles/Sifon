@@ -80,6 +80,7 @@
     <Compile Include="Formatters\Output\ConsoleOutputFormatter.cs" />
     <Compile Include="Formatters\Output\StringFormatter.cs" />
     <Compile Include="Formatters\Text\GenericTextFormatter.cs" />
+    <Compile Include="Formatters\Text\ProgressFormatter.cs" />
     <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.cs">
       <SubType>Form</SubType>
     </Compile>

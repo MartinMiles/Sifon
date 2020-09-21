@@ -116,28 +116,26 @@ namespace Sifon.Forms.Base
         private void ObjectReady(PSObject data)
         {
             string line = _outputFormatter.Format(data);
-            line = _genericTextFormatter.Format(line);
-
+            line = _genericTextFormatter.FormatOutput(line);
             _view.AppendLine(line);
-            _view.listBoxChangedFlag = true;
         }
 
         private void InformationReady(string line)
         {
-            line = _genericTextFormatter.Format(line);
+            line = _genericTextFormatter.FormatOutput(line);
             _view.AppendLine(line);
         }
 
         private void WarningReady(string line)
         {
-            line = _genericTextFormatter.Format(line);
+            line = _genericTextFormatter.FormatWarning(line);
             _view.AppendLine(line, Color.Yellow);
         }
 
         private void ErrorReady(Exception exception)
         {
             string line = _errorFormatter.Format(exception.Message);
-            line = _genericTextFormatter.Format(line);
+            line = _genericTextFormatter.FormatOutput(line);
             _view.AppendLine(line, Color.Red);
         }
 
