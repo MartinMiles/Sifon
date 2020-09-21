@@ -15,5 +15,6 @@ $manifest = @{
 }
 New-ModuleManifest @manifest
 
+New-Item -ItemType Directory -Path $ModulesDirectory -force
 Get-ChildItem -Path $ModulesDirectory -Include * -File -Recurse | foreach { $_.Delete()}
 Copy-Item -Path "*" -Destination $ModulesDirectory -Recurse
