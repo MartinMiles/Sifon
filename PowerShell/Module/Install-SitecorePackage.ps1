@@ -1,4 +1,4 @@
-Function Install-SitecorePackage($InstanceUrl, $Username, $Password, $Package, $RemoveAfterInstall = $false)
+Function Install-SitecorePackage($InstanceUrl, $Username, $Password, $Package)
 {
     Import-Module -Name SPE
 
@@ -9,4 +9,3 @@ Function Install-SitecorePackage($InstanceUrl, $Username, $Password, $Package, $
     } -Session $session
 }
 
-# Install-SitecorePackage -InstanceUrl "https://platform" -Username "admin" -Password "b" -PackageToInstall "c:\inetpub\wwwroot\platform\App_Data\packages\Sitecore Publishing Module 10.0.0.0 rev. r00568.2697.zip"

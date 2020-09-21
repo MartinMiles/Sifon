@@ -7,3 +7,7 @@ $getInstance = $path + "\Get-InstanceUrl.ps1"
 . $getInstance
 $getInstance = $path + "\Install-SitecorePackage.ps1"
 . $getInstance
+$getInstance = $path + "\Copy-FileToRemote.ps1"
+. $getInstance
+$getInstance = $path + "\Get-ConnectionString.ps1"
+. $getInstance
