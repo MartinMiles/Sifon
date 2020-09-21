@@ -26,8 +26,9 @@ namespace Sifon.Forms.Base
         private IFilesystem _filesystem;
         protected IBackupRestoreModel model;
 
-        private GenericTextFormatter _genericTextFormatter;
-
+        private readonly GenericTextFormatter _genericTextFormatter;
+        private readonly ProgressFormatter _progressFormatter;
+        private readonly ErrorFormatter _errorFormatter;
 
         protected IProfile SelectedProfile => _profilesService.SelectedProfile;
 
@@ -39,6 +40,8 @@ namespace Sifon.Forms.Base
             _outputFormatter = new ConsoleOutputFormatter();
 
             _genericTextFormatter = new GenericTextFormatter();
+            _progressFormatter = new ProgressFormatter();
+            _errorFormatter = new ErrorFormatter();
         }
 
         protected abstract PluginMenuItem GetPluginsAndScripts(string baseDirectory);
@@ -133,20 +136,17 @@ namespace Sifon.Forms.Base
 
         private void ErrorReady(Exception exception)
         {
-            string line = new ErrorFormatter().Format(exception.Message);
+            string line = _errorFormatter.Format(exception.Message);
             line = _genericTextFormatter.Format(line);
             _view.AppendLine(line, Color.Red);
         }
 
         private void ProgressReady(ProgressRecord data)
         {
-            if (data.PercentComplete >= 0)
+            if (data.PercentComplete >= 0 && !_genericTextFormatter.ProgressMuted)
             {
-                var currentOperation = data.CurrentOperation != null
-                    ? $" - {data.CurrentOperation.Replace("  ", " ")}"
-                    : String.Empty;
-
-                _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity}{currentOperation}");
+                string progressMessage = _progressFormatter.Format(data);
+                _view.UpdateProgressBar(data.PercentComplete, progressMessage);
             }
         }
 
