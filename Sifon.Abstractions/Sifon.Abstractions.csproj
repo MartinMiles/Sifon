@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\ISuperClass.cs" />
+    <Compile Include="Encryption\IEncryptor.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreModel.cs" />
     <Compile Include="Model\Response\IScriptWrapperResponse.cs" />

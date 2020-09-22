@@ -3,6 +3,6 @@
     public interface ISettingRecord
     {
         string PortalUsername { get; }
-        string PortalPassword { get; }
+        string PortalPassword { get; set; }
     }
 }

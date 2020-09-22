@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security;
 
 namespace Sifon.Shared.Extensions
 {
@@ -33,6 +34,22 @@ namespace Sifon.Shared.Extensions
                 return source;
 
             return source.Remove(source.LastIndexOf(value));
+        }
+
+        public static SecureString ToSecureString(this string plainString)
+        {
+            if (plainString == null)
+            {
+                return null;
+            }
+
+            var secureString = new SecureString();
+            foreach (char c in plainString.ToCharArray())
+            {
+                secureString.AppendChar(c);
+            }
+
+            return secureString;
         }
     }
 }

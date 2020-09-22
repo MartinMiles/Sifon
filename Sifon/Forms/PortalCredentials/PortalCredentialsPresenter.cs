@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security;
+using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
+using Sifon.Shared.Encryption;
 using Sifon.Shared.Events;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Providers.Profile;
@@ -16,9 +19,9 @@ namespace Sifon.Forms.PortalCredentials
         private readonly IPortalCredentialsView _view;
         private readonly SettingsProvider _settingsProvider;
 
-        private readonly ProfilesProvider _profilesService;
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
         private readonly RemoteScriptCopier _remoteScriptCopier;
+        private readonly IEncryptor _encryptor;
 
         public PortalCredentialsPresenter(IPortalCredentialsView view)
         {
@@ -29,21 +32,28 @@ namespace Sifon.Forms.PortalCredentials
             _view.TestClicked += TestClicked;
             _view.ValuesChanged += ValuesChanged;
 
-            _profilesService = new ProfilesProvider();
-            _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
-            _scriptWrapper = new ScriptWrapper<PSObject>(new ProfilesProvider().SelectedProfile, _view, d => d);
+            var selectedProfile = new ProfilesProvider().SelectedProfile;
+            _remoteScriptCopier = new RemoteScriptCopier(selectedProfile, _view);
+            _scriptWrapper = new ScriptWrapper<PSObject>(selectedProfile, _view, d => d);
+
+            _encryptor = new Encryptor();
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
             var entity = _settingsProvider.Read();
 
+            if (!string.IsNullOrWhiteSpace(entity.PortalPassword))
+            {
+                entity.PortalPassword = _encryptor.Decrypt(entity.PortalPassword);
+            }
+
             _view.SetTextboxValues(entity);
-            // get data and set view
         }
 
         private void ValuesChanged(object sender, EventArgs<ISettingRecord> e)
         {
+            e.Value.PortalPassword = _encryptor.Encrypt(e.Value.PortalPassword);
             _settingsProvider.Save(e.Value);
         }
 

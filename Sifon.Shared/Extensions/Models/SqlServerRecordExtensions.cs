@@ -16,13 +16,6 @@ namespace Sifon.Shared.Extensions.Models
             _this.SqlAdminPassword = node.ChildNodes.GetTextValue(Settings.Xml.SqlServerRecord.SqlAdminPassword, Settings.Xml.Attributes.Value);
         }
 
-        internal static void Parse(this SettingRecord _this, XmlNode node)
-        {
-            _this.PortalUsername = node.ChildNodes.GetTextValue(Settings.Xml.SettingRecord.PortalUsername, Settings.Xml.Attributes.Value);
-            // TODO: Decrypt password
-            _this.PortalPassword = node.ChildNodes.GetTextValue(Settings.Xml.SettingRecord.PortalPassword, Settings.Xml.Attributes.Value);
-        }
-
         public static XElement Save(this ISqlServerRecord _this)
         {
             var root = new XElement(Settings.Xml.SqlServerRecord.NodeName);
