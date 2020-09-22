@@ -120,6 +120,14 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm\MainPresenter.cs" />
+    <Compile Include="Forms\PortalCredentials\IPortalCredentialsView.cs" />
+    <Compile Include="Forms\PortalCredentials\PortalCredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PortalCredentials\PortalCredentials.Designer.cs">
+      <DependentUpon>PortalCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PortalCredentials\PortalCredentialsPresenter.cs" />
     <Compile Include="Forms\Profiles\UserControls\Base\AbstractUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PortalCredentials\PortalCredentials.resx">
+      <DependentUpon>PortalCredentials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profiles\UserControls\Connectivity\Connectivity.resx">
       <DependentUpon>Connectivity.cs</DependentUpon>

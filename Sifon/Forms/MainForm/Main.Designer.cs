@@ -29,6 +29,7 @@ namespace Sifon.Forms.MainForm
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerOutput = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -39,6 +40,7 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
+            this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -61,6 +63,7 @@ namespace Sifon.Forms.MainForm
             this.restoreToolStripMenuItem,
             this.profilesToolStripMenuItem,
             this.pluginsToolStripMenuItem,
+            this.settingsToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -101,6 +104,14 @@ namespace Sifon.Forms.MainForm
             this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
             this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.pluginsToolStripMenuItem.Text = "Plugins";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sitecorePortalCredentialsToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // aboutToolStripMenuItem
             // 
@@ -212,6 +223,13 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
+            // sitecorePortalCredentialsToolStripMenuItem
+            // 
+            this.sitecorePortalCredentialsToolStripMenuItem.Name = "sitecorePortalCredentialsToolStripMenuItem";
+            this.sitecorePortalCredentialsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.sitecorePortalCredentialsToolStripMenuItem.Text = "Sitecore Portal Credentials";
+            this.sitecorePortalCredentialsToolStripMenuItem.Click += new System.EventHandler(this.sitecorePortalCredentialsToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AllowDrop = true;
@@ -256,6 +274,8 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboProfiles;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sitecorePortalCredentialsToolStripMenuItem;
     }
 }
 

@@ -168,5 +168,12 @@ namespace Sifon.Forms.MainForm
             form.ShowDialog();
             form.Dispose();
         }
+
+        private void sitecorePortalCredentialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new PortalCredentials.PortalCredentials { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
     }
 }
