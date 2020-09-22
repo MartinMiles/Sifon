@@ -28,7 +28,7 @@ namespace Sifon.Shared.Statics
         public static class Folders
         {
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
-            public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Profiles");
+            public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
             public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
             public static string Module => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Module");
