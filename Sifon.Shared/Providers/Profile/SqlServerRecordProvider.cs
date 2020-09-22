@@ -3,7 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
+using Sifon.Shared.Encryption;
 using Sifon.Shared.Extensions.Models;
 using Sifon.Shared.Model.Profiles;
 using Sifon.Shared.Statics;
@@ -13,9 +15,12 @@ namespace Sifon.Shared.Providers.Profile
     public class SqlServerRecordProvider
     {
         private IEnumerable<ISqlServerRecord> _entities;
+        private readonly IEncryptor _encryptor;
+
 
         public SqlServerRecordProvider()
         {
+            _encryptor = new Encryptor();
             _entities = Read();
         }
 
@@ -37,7 +42,14 @@ namespace Sifon.Shared.Providers.Profile
 
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
-                    items.Add(new SqlServerRecord(node));
+                    var record = new SqlServerRecord(node);
+
+                    if (!string.IsNullOrWhiteSpace(record.SqlAdminPassword))
+                    {
+                        record.SqlAdminPassword = _encryptor.Decrypt(record.SqlAdminPassword);
+                    }
+
+                    items.Add(record);
                 }
             }
 
@@ -52,6 +64,7 @@ namespace Sifon.Shared.Providers.Profile
 
             foreach (var record in _entities)
             {
+                record.SqlAdminPassword = _encryptor.Encrypt(record.SqlAdminPassword);
                 root.Add(record.Save());
             }
 

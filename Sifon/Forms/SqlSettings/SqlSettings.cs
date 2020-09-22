@@ -26,7 +26,11 @@ namespace Sifon.Forms.SqlSettings
         public string RecordName => textName.Text.Trim();
         public string SqlServer => textInstance.Text.Trim();
         public string SqlAdminUsername => textUsername.Text.Trim();
-        public string SqlAdminPassword => textPassword.Text.Trim();
+        public string SqlAdminPassword
+        {
+            get => textPassword.Text.Trim();
+            set => textPassword.Text = value;
+        }
 
         #endregion
 

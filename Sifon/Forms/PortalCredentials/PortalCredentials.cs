@@ -67,7 +67,7 @@ namespace Sifon.Forms.PortalCredentials
         public string PortalPassword
         {
             get => textPassword.Text.Trim();
-            set { textPassword.Text = value; }
+            set => textPassword.Text = value;
         }
 
         #endregion

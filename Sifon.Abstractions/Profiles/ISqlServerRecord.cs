@@ -8,6 +8,6 @@
 
         string SqlAdminUsername { get; }
 
-        string SqlAdminPassword { get; }
+        string SqlAdminPassword { get; set; }
     }
 }
