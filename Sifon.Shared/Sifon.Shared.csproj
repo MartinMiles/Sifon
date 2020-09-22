@@ -113,6 +113,7 @@
     <Compile Include="Model\Fake\TimeOfQuery.cs" />
     <Compile Include="Model\PluginMenuItem.cs" />
     <Compile Include="Model\Profiles\Profile.cs" />
+    <Compile Include="Model\Profiles\SettingRecord.cs" />
     <Compile Include="Model\Profiles\SqlServerRecord.cs" />
     <Compile Include="Model\SolrInfo.cs" />
     <Compile Include="PowerShell\ProfileRunspaceFactory.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filesystem\RemoteFilesystem.cs" />
     <Compile Include="Providers\PowerShellSiteProvider.cs" />
+    <Compile Include="Providers\Profile\SettingsProvider.cs" />
     <Compile Include="ScriptGenerators\BackupScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\BaseScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\FilesScriptGenerator.cs" />

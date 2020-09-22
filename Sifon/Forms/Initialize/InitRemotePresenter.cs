@@ -91,6 +91,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.GetSitePath,
             Settings.Scripts.TestSolr,
             Settings.Scripts.TestSqlServerConnection,
+            Settings.Scripts.TestPortalCredentials,
             Settings.Scripts.GetXconnectFolder,
             Settings.Scripts.GetCommerceSites,
             Settings.Scripts.GetCommerceDatabases,

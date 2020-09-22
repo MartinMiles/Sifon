@@ -40,6 +40,11 @@
             public const string Username = "Username should contain characters, numbers, dots, dashes and underscores\n";
             public const string Password = "Password should not contain whitespaces\n";
         }
+        public static class PortalCredentials
+        {
+            public const string Username = "Username should be your email address registed with Sitecore\n";
+            public const string Password = "Password should not contain whitespaces\n";
+        }
 
         public static class Backup
         {

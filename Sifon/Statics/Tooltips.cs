@@ -49,6 +49,14 @@
             public const string TestButton = "Tests SQL Server connection with given parameters";
             public const string SaveButton = "Once successfully tested, click this button to add / save the provided details";
         }
+        public static class PortalCredentials
+        {
+            public const string TextUsername = "Your Sitecore Developer Portal username. It is an email you use for Sitecore certification";
+            public const string TextPassword = "Your Sitecore Developer Portal password";
+            public const string RevealLink = "Shows and hides your password";
+            public const string TestButton = "Try your credentials to access Sitecore Developer Portal and see if that works";
+            public const string SaveButton = "Once successfully tested, click this button to add / save the provided credentials";
+        }
 
         public static class Backup
         {

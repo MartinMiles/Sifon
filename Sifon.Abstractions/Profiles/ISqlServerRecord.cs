@@ -4,7 +4,7 @@
     {
         string RecordName { get; }
 
-        string SqlServer { get;  }
+        string SqlServer { get; }
 
         string SqlAdminUsername { get; }
 

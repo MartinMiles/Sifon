@@ -50,6 +50,7 @@
     <Compile Include="PowerShell\IScriptRunner.cs" />
     <Compile Include="Profiles\IProfile.cs" />
     <Compile Include="Profiles\IRemoteSettings.cs" />
+    <Compile Include="Profiles\ISettingRecord.cs" />
     <Compile Include="Profiles\ISqlServerRecord.cs" />
     <Compile Include="Plugins\IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

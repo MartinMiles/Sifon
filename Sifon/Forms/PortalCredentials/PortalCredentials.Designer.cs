@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkReveal = new System.Windows.Forms.LinkLabel();
@@ -43,7 +43,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonTest);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.linkReveal);
@@ -59,15 +59,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Provide your credentials:";
             // 
-            // button1
+            // buttonTest
             // 
-            this.button1.Location = new System.Drawing.Point(129, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Test credentials";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.TestCredentials_Click);
+            this.buttonTest.Location = new System.Drawing.Point(129, 181);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(97, 23);
+            this.buttonTest.TabIndex = 4;
+            this.buttonTest.Text = "Test credentials";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.TestCredentials_Click);
             // 
             // label2
             // 
@@ -93,7 +93,7 @@
             this.linkReveal.Location = new System.Drawing.Point(305, 121);
             this.linkReveal.Name = "linkReveal";
             this.linkReveal.Size = new System.Drawing.Size(42, 13);
-            this.linkReveal.TabIndex = 23;
+            this.linkReveal.TabIndex = 3;
             this.linkReveal.TabStop = true;
             this.linkReveal.Text = "(reveal)";
             this.linkReveal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReveal_LinkClicked);
@@ -103,7 +103,7 @@
             this.textPassword.Location = new System.Drawing.Point(15, 138);
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(323, 20);
-            this.textPassword.TabIndex = 20;
+            this.textPassword.TabIndex = 2;
             // 
             // label4
             // 
@@ -119,7 +119,7 @@
             this.textUsername.Location = new System.Drawing.Point(15, 95);
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(323, 20);
-            this.textUsername.TabIndex = 19;
+            this.textUsername.TabIndex = 1;
             // 
             // label5
             // 
@@ -132,10 +132,11 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSave.Location = new System.Drawing.Point(241, 181);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(97, 23);
-            this.buttonSave.TabIndex = 22;
+            this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Save and close";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -169,6 +170,6 @@
         public System.Windows.Forms.TextBox textUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTest;
     }
 }

@@ -127,6 +127,9 @@
     <Compile Include="Forms\PortalCredentials\PortalCredentials.Designer.cs">
       <DependentUpon>PortalCredentials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PortalCredentials\PortalCredentials.Tooltip.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\PortalCredentials\PortalCredentialsPresenter.cs" />
     <Compile Include="Forms\Profiles\UserControls\Base\AbstractUserControl.cs">
       <SubType>UserControl</SubType>
@@ -359,6 +362,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\PortalCredentials\PortalCredentials.Validation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <None Include="Resources\sifon.jpg" />
   </ItemGroup>
   <ItemGroup />

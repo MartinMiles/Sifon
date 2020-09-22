@@ -92,6 +92,18 @@
         //    }
         //}
 
+        public static class ProfileCredentials
+        {
+            public const string Caption = "Sitecore Portal Credentials Check";
+            public const string Success = "The credential are valid and work well";
+
+            public static class Errors
+            {
+                public const string NoResults = "The request did not return results";
+                public const string IncorrectCredentials = "The credentials are not valid";
+            }
+        }
+
         public static class SqlSettings
         {
             public const string Caption = "SQL Server Connection";

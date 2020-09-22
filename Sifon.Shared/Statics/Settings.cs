@@ -44,6 +44,7 @@ namespace Sifon.Shared.Statics
         {
             public static string ProfilesPath = Path.Combine(Folders.Profiles, "Profiles.xml");
             public static string SqlProfilesPath = Path.Combine(Folders.Profiles, "SQL.xml");
+            public static string SettingsPath = Path.Combine(Folders.Profiles, "Settings.xml");
         }
 
         public static class Scripts
@@ -56,6 +57,7 @@ namespace Sifon.Shared.Statics
             public static string RetrieveSolr => Path.Combine(Folders.Core, "Get-Solr.ps1");
             public static string RestoreInstance => Path.Combine(Folders.Core, "Restore-Instance.ps1");
             public static string TestSqlServerConnection => Path.Combine(Folders.Core, "Test-SqlServerConnection.ps1");
+            public static string TestPortalCredentials => Path.Combine(Folders.Core, "Test-PortalCredentials.ps1");
             public static string GetSitecoreSites => Path.Combine(Folders.Core, "Get-SitecoreSites.ps1");
             public static string GetSiteBindings => Path.Combine(Folders.Core, "Get-SiteBindings.ps1");
             public static string GetSiteBindingsByPath => Path.Combine(Folders.Core, "Get-SiteBindingsByPath.ps1");
@@ -214,6 +216,14 @@ namespace Sifon.Shared.Statics
                 public const string SqlServer = "SqlServer";
                 public const string Parameters = "AdditionalParameters";
                 public const string Parameter = "Parameter";
+            }
+
+            public static class SettingRecord
+            {
+                public const string NodeListName = "settings";
+
+                public const string PortalUsername = "PortalUsername";
+                public const string PortalPassword = "PortalPassword";
             }
 
             public static class SqlServerRecord
