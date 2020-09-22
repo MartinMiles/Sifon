@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Shared.Events;
+using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Base
 {
@@ -31,6 +33,29 @@ namespace Sifon.Forms.Base
         public void AppendEnvironmentToCaption(string suffix)
         {
             Text += $" - {suffix}";
+        }
+
+        protected void RevealPasswordWithinTextbox(TextBox textPassword, LinkLabel linkReveal)
+        {
+            RevealPasswordWithinTextbox(textPassword, linkReveal, linkReveal.Text.Contains(Settings.Labels.Reveal));
+        }
+
+        protected void RevealPasswordWithinTextbox(TextBox textPassword, LinkLabel linkReveal, bool reveal)
+        {
+            textPassword.PasswordChar = reveal ? new char() : '*';
+            linkReveal.Text = reveal ? $"({Settings.Labels.Hide})" : $"({Settings.Labels.Reveal})";
+
+            if (reveal)
+            {
+                linkReveal.Left += 9;
+            }
+            else
+            {
+                linkReveal.Left -= 9;
+            }
+            
+            
+            //linkReveal.Location = new Point(reveal ? 310 : 301, 58);
         }
     }
 }

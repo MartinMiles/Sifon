@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkReveal = new System.Windows.Forms.LinkLabel();
@@ -42,6 +43,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.linkReveal);
@@ -56,6 +58,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Provide your credentials:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(129, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Test credentials";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.TestCredentials_Click);
             // 
             // label2
             // 
@@ -78,7 +90,7 @@
             // linkReveal
             // 
             this.linkReveal.AutoSize = true;
-            this.linkReveal.Location = new System.Drawing.Point(296, 121);
+            this.linkReveal.Location = new System.Drawing.Point(305, 121);
             this.linkReveal.Name = "linkReveal";
             this.linkReveal.Size = new System.Drawing.Size(42, 13);
             this.linkReveal.TabIndex = 23;
@@ -139,6 +151,7 @@
             this.MinimizeBox = false;
             this.Name = "PortalCredentials";
             this.Text = "Sitecore Developer Portal Credentials";
+            this.Load += new System.EventHandler(this.PortalCredentials_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -156,5 +169,6 @@
         public System.Windows.Forms.TextBox textUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -38,8 +38,7 @@ namespace Sifon.Forms.SqlSettings
 
         private void SqlSettings_Load(object sender, EventArgs e)
         {
-            RevealPassword(false);
-
+            RevealPasswordWithinTextbox(textPassword, linkReveal, false);
             FormLoad(this, e);
         }
 
@@ -140,14 +139,7 @@ namespace Sifon.Forms.SqlSettings
         private void RevealPasswordClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var label = (LinkLabel)sender;
-            RevealPassword(label.Text.Contains(Settings.Labels.Reveal));
-        }
-
-        private void RevealPassword(bool reveal)
-        {
-            textPassword.PasswordChar = reveal ? new char() : '*';
-            linkReveal.Text = reveal ? $"({Settings.Labels.Hide})" : $"({Settings.Labels.Reveal})";
-            linkReveal.Location = new Point(reveal ? 310 : 301, 58);
+            RevealPasswordWithinTextbox(textPassword, linkReveal);
         }
     }
 }

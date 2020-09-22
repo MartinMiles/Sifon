@@ -22,6 +22,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkReveal = new System.Windows.Forms.LinkLabel();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textUsername = new System.Windows.Forms.TextBox();
@@ -35,7 +36,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.comboBoxServers = new System.Windows.Forms.ComboBox();
-            this.linkReveal = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SQL Server:";
+            // 
+            // linkReveal
+            // 
+            this.linkReveal.AutoSize = true;
+            this.linkReveal.Location = new System.Drawing.Point(310, 58);
+            this.linkReveal.Name = "linkReveal";
+            this.linkReveal.Size = new System.Drawing.Size(42, 13);
+            this.linkReveal.TabIndex = 16;
+            this.linkReveal.TabStop = true;
+            this.linkReveal.Text = "(reveal)";
+            this.linkReveal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RevealPasswordClicked);
             // 
             // textPassword
             // 
@@ -174,17 +185,6 @@
             this.comboBoxServers.Size = new System.Drawing.Size(253, 21);
             this.comboBoxServers.TabIndex = 1;
             this.comboBoxServers.SelectedIndexChanged += new System.EventHandler(this.comboBoxServers_SelectedIndexChanged);
-            // 
-            // linkReveal
-            // 
-            this.linkReveal.AutoSize = true;
-            this.linkReveal.Location = new System.Drawing.Point(301, 58);
-            this.linkReveal.Name = "linkReveal";
-            this.linkReveal.Size = new System.Drawing.Size(42, 13);
-            this.linkReveal.TabIndex = 16;
-            this.linkReveal.TabStop = true;
-            this.linkReveal.Text = "(reveal)";
-            this.linkReveal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RevealPasswordClicked);
             // 
             // SqlSettings
             // 
