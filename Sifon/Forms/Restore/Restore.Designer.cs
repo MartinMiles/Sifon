@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupParameters = new System.Windows.Forms.GroupBox();
+            this.checkHorizon = new System.Windows.Forms.CheckBox();
+            this.checkPublishing = new System.Windows.Forms.CheckBox();
             this.checkDatabases = new System.Windows.Forms.CheckBox();
             this.checkCommerce = new System.Windows.Forms.CheckBox();
             this.textSourceFolder = new System.Windows.Forms.TextBox();
@@ -50,6 +52,8 @@
             // 
             // groupParameters
             // 
+            this.groupParameters.Controls.Add(this.checkHorizon);
+            this.groupParameters.Controls.Add(this.checkPublishing);
             this.groupParameters.Controls.Add(this.checkDatabases);
             this.groupParameters.Controls.Add(this.checkCommerce);
             this.groupParameters.Controls.Add(this.textSourceFolder);
@@ -69,6 +73,28 @@
             this.groupParameters.TabStop = false;
             this.groupParameters.Text = "Restore databases and site files from an archive folder:";
             // 
+            // checkHorizon
+            // 
+            this.checkHorizon.AutoSize = true;
+            this.checkHorizon.Enabled = false;
+            this.checkHorizon.Location = new System.Drawing.Point(22, 166);
+            this.checkHorizon.Name = "checkHorizon";
+            this.checkHorizon.Size = new System.Drawing.Size(102, 17);
+            this.checkHorizon.TabIndex = 60;
+            this.checkHorizon.Text = "Restore Horizon";
+            this.checkHorizon.UseVisualStyleBackColor = true;
+            // 
+            // checkPublishing
+            // 
+            this.checkPublishing.AutoSize = true;
+            this.checkPublishing.Enabled = false;
+            this.checkPublishing.Location = new System.Drawing.Point(22, 189);
+            this.checkPublishing.Name = "checkPublishing";
+            this.checkPublishing.Size = new System.Drawing.Size(153, 17);
+            this.checkPublishing.TabIndex = 59;
+            this.checkPublishing.Text = "Restore Publishing Service";
+            this.checkPublishing.UseVisualStyleBackColor = true;
+            // 
             // checkDatabases
             // 
             this.checkDatabases.AutoSize = true;
@@ -85,7 +111,7 @@
             // 
             this.checkCommerce.AutoSize = true;
             this.checkCommerce.Enabled = false;
-            this.checkCommerce.Location = new System.Drawing.Point(22, 202);
+            this.checkCommerce.Location = new System.Drawing.Point(22, 212);
             this.checkCommerce.Name = "checkCommerce";
             this.checkCommerce.Size = new System.Drawing.Size(182, 17);
             this.checkCommerce.TabIndex = 58;
@@ -165,7 +191,7 @@
             // 
             this.checkIDS.AutoSize = true;
             this.checkIDS.Enabled = false;
-            this.checkIDS.Location = new System.Drawing.Point(23, 166);
+            this.checkIDS.Location = new System.Drawing.Point(22, 143);
             this.checkIDS.Name = "checkIDS";
             this.checkIDS.Size = new System.Drawing.Size(202, 17);
             this.checkIDS.TabIndex = 57;
@@ -188,7 +214,7 @@
             // 
             this.checkXconnect.AutoSize = true;
             this.checkXconnect.Enabled = false;
-            this.checkXconnect.Location = new System.Drawing.Point(22, 132);
+            this.checkXconnect.Location = new System.Drawing.Point(22, 120);
             this.checkXconnect.Name = "checkXconnect";
             this.checkXconnect.Size = new System.Drawing.Size(162, 17);
             this.checkXconnect.TabIndex = 56;
@@ -260,5 +286,7 @@
         private System.Windows.Forms.CheckBox checkFiles;
         private System.Windows.Forms.CheckBox checkXconnect;
         private System.Windows.Forms.GroupBox groupGrid;
+        private System.Windows.Forms.CheckBox checkHorizon;
+        private System.Windows.Forms.CheckBox checkPublishing;
     }
 }
