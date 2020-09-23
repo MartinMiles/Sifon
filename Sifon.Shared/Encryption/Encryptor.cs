@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using Sifon.Abstractions.Encryption;
 
@@ -11,12 +9,11 @@ namespace Sifon.Shared.Encryption
 {
     public class Encryptor : IEncryptor
     {
-        private readonly SecureString _password;
+        private readonly SaltProvider _saltProvider;
 
         public Encryptor()
         {
-            var saltProvider = new SaltProvider();
-            _password = saltProvider.GenerateSaltPassword();
+            _saltProvider = new SaltProvider();
         }
 
         public string Encrypt(string text)
@@ -145,10 +142,7 @@ namespace Sifon.Shared.Encryption
             }
 
             // Convert decrypted data into a string.
-            var decryptedText = Encoding.Unicode.GetString(unencryptedData, 0, decryptedDataLength);
-
-            // Return decrypted string.  
-            return decryptedText;
+            return Encoding.Unicode.GetString(unencryptedData, 0, decryptedDataLength); 
         }
 
         private PasswordDeriveBytes GetSecretKey(string salt)
@@ -162,7 +156,7 @@ namespace Sifon.Shared.Encryption
             {
                 // The Secret Key will be generated from the specified
                 // password and salt.
-                valuePointer = Marshal.SecureStringToGlobalAllocUnicode(_password);
+                valuePointer = Marshal.SecureStringToGlobalAllocUnicode(_saltProvider.GenerateSaltPassword());
                 return new PasswordDeriveBytes(Marshal.PtrToStringUni(valuePointer), encodedSalt);
             }
             finally
@@ -173,7 +167,7 @@ namespace Sifon.Shared.Encryption
 
         private string GetDefaultSalt()
         {
-            return _password.Length.ToString(CultureInfo.InvariantCulture);
+            return _saltProvider.UUID;
         }
     }
 }

@@ -163,6 +163,8 @@ namespace Sifon.Shared.Statics
             public const string InstancePrefix = "InstancePrefix";
             public const string Username = "Username";
             public const string Password = "Password";
+            public const string PortalCredentials = "PortalCredentials";
+
             //public const string InstanceFolder = "instanceFolder";
 
             // from the forms: backup-remove-restore

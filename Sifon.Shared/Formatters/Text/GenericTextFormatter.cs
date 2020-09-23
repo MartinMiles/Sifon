@@ -13,8 +13,12 @@ namespace Sifon.Shared.Formatters.Text
         const string unmuteProgressContent = "Sifon-UnmuteProgress";
 
         private bool muteWarningFlag;
-        const string muteWarningContent = "Sifon-MuteWarning";
-        const string unmuteWarningContent = "Sifon-UnmuteWarning";
+        const string muteWarningContent = "Sifon-MuteWarnings";
+        const string unmuteWarningContent = "Sifon-UnmuteWarnings";
+
+        private bool muteErrorFlag;
+        const string muteErrorContent = "Sifon-MuteErrors";
+        const string unmuteErrorContent = "Sifon-UnmuteErrors";
 
 
         public bool ProgressMuted => muteProgressFlag;
@@ -36,11 +40,21 @@ namespace Sifon.Shared.Formatters.Text
 
             return IngnoreMuteCommandFromOutput(line);
         }
+        public string FormatError(string line)
+        {
+            UpdateMuteStatus(line);
+
+            line = muteErrorFlag ? String.Empty : line;
+
+            return IngnoreMuteCommandFromOutput(line);
+        }
 
         private string IngnoreMuteCommandFromOutput(string line)
         {
             if (line.IndexOf(muteWarningContent, StringComparison.CurrentCultureIgnoreCase) >= 0
                 || line.IndexOf(unmuteWarningContent, StringComparison.CurrentCultureIgnoreCase) >= 0
+                || line.IndexOf(muteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0
+                || line.IndexOf(unmuteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0
                 || line.IndexOf(muteProgressContent, StringComparison.CurrentCultureIgnoreCase) >= 0
                 || line.IndexOf(unmuteProgressContent, StringComparison.CurrentCultureIgnoreCase) >= 0
                 || line.IndexOf(muteContent, StringComparison.CurrentCultureIgnoreCase) >= 0
@@ -61,6 +75,14 @@ namespace Sifon.Shared.Formatters.Text
             if (value.IndexOf(unmuteWarningContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteWarningFlag = false;
+            }
+            if (value.IndexOf(muteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
+            {
+                muteErrorFlag = true;
+            }
+            if (value.IndexOf(unmuteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
+            {
+                muteErrorFlag = false;
             }
             if (value.IndexOf(muteProgressContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {

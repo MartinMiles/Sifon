@@ -140,6 +140,7 @@ namespace Sifon.Forms.MainForm
         {
             var parameters = new Dictionary<string, dynamic>();
             _profilesService.AddScriptProfileParameters(parameters);
+            _settingsProvider.AddScriptSettingsParameters(parameters);
 
             string script = await LocalOrRemote(e.Value);
             PrepareAndStart(script, parameters);

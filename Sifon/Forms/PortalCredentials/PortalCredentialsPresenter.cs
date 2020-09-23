@@ -21,7 +21,6 @@ namespace Sifon.Forms.PortalCredentials
 
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
         private readonly RemoteScriptCopier _remoteScriptCopier;
-        private readonly IEncryptor _encryptor;
 
         public PortalCredentialsPresenter(IPortalCredentialsView view)
         {
@@ -35,25 +34,16 @@ namespace Sifon.Forms.PortalCredentials
             var selectedProfile = new ProfilesProvider().SelectedProfile;
             _remoteScriptCopier = new RemoteScriptCopier(selectedProfile, _view);
             _scriptWrapper = new ScriptWrapper<PSObject>(selectedProfile, _view, d => d);
-
-            _encryptor = new Encryptor();
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
             var entity = _settingsProvider.Read();
-
-            if (!string.IsNullOrWhiteSpace(entity.PortalPassword))
-            {
-                entity.PortalPassword = _encryptor.Decrypt(entity.PortalPassword);
-            }
-
             _view.SetTextboxValues(entity);
         }
 
         private void ValuesChanged(object sender, EventArgs<ISettingRecord> e)
         {
-            e.Value.PortalPassword = _encryptor.Encrypt(e.Value.PortalPassword);
             _settingsProvider.Save(e.Value);
         }
 

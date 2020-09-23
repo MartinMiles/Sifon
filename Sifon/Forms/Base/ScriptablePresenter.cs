@@ -20,6 +20,7 @@ namespace Sifon.Forms.Base
     internal abstract class ScriptablePresenter
     {
         protected readonly ProfilesProvider _profilesService;
+        protected readonly SettingsProvider _settingsProvider;
         private ScriptWrapper<PSObject> _scriptWrapper;
         protected readonly IMainView _view;
         private readonly ConsoleOutputFormatter _outputFormatter;
@@ -36,6 +37,7 @@ namespace Sifon.Forms.Base
         {
             _view = view;
             _profilesService = new ProfilesProvider();
+            _settingsProvider = new SettingsProvider();
             _view.ScriptFinishRequested += ScriptFinishRequested;
             _outputFormatter = new ConsoleOutputFormatter();
 

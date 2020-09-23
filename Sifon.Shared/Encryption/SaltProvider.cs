@@ -21,7 +21,7 @@ namespace Sifon.Shared.Encryption
             return password;
         }
 
-        private string UUID
+        internal string UUID
         {
             get
             {
