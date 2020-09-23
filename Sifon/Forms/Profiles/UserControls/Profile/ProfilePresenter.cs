@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.Extensions;
@@ -12,7 +13,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
     {
         private readonly IProfileView _view;
 
-        internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.Name);
+        internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.ProfileName);
 
         public ProfilePresenter(IProfileView view) : base(view)
         {
@@ -26,41 +27,50 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         protected override void Loaded(object sender, EventArgs e)
         {
-            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.Name);
-            _view.DisplayFirstRunWarning(string.IsNullOrWhiteSpace(Presenter.SelectedProfile?.Webroot) && Presenter.SelectedProfile.Name == Settings.Files.DefaultProfileName);
+            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
+
+            bool isFirstRun = string.IsNullOrWhiteSpace(Presenter.SelectedProfile?.Webroot) && Presenter.SelectedProfile.ProfileName == Settings.Files.DefaultProfileName;
+            if (isFirstRun)
+            {
+                _view.DisplayFirstRunWarning();
+            }
         }
 
-        private void ProfileAdded(object sender, EventArgs<Tuple<string, string>> e)
+        private void ProfileAdded(object sender, EventArgs<IProfileUserControl> e)
         {
-            ProfilesService.Add(e.Value.Item1, e.Value.Item2);
-            ProfilesService.SelectProfile(e.Value.Item1);
+            ProfilesService.Add(e.Value);
+            ProfilesService.SelectProfile(e.Value.ProfileName);
             ProfilesService.Save();
 
-            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile.Name);
+            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile.ProfileName);
         }
 
-        private void ProfileRenamed(object sender, EventArgs<Tuple<string, string>> e)
+        private void ProfileRenamed(object sender, EventArgs<IProfileUserControl> e)
         {
-            SelectedProfile.Name = e.Value.Item1;
-            SelectedProfile.Prefix = e.Value.Item2;
+            SelectedProfile.ProfileName = e.Value.ProfileName;
+            SelectedProfile.Prefix = e.Value.Prefix;
+            SelectedProfile.AdminUsername = e.Value.AdminUsername;
+            SelectedProfile.AdminPassword = e.Value.AdminPassword;
             ProfilesService.Save();
 
-            _view.LoadProfilesDropdown(Profiles, SelectedProfile.Name);
+            _view.LoadProfilesDropdown(Profiles, SelectedProfile.ProfileName);
         }
 
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
             ProfilesService.SelectProfile(e.Value);
 
-            _view.SetProfileTextbox(SelectedProfile.Name);
-            _view.SetPrefixTextbox(SelectedProfile.Prefix);
+            _view.SetFields(SelectedProfile);
+
+            //_view.SetProfileTextbox(SelectedProfile.Name);
+            //_view.SetPrefixTextbox(SelectedProfile.Prefix);
         }
         private void SelectedProfileDeleted(object sender, EventArgs e)
         {
             ProfilesService.DeleteSelected();
             ProfilesService.Save();
 
-            _view.LoadProfilesDropdown(Profiles, SelectedProfile?.Name);
+            _view.LoadProfilesDropdown(Profiles, SelectedProfile?.ProfileName);
         }
     }
 }

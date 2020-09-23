@@ -29,32 +29,34 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelWarn3 = new System.Windows.Forms.Label();
-            this.labelWarn2 = new System.Windows.Forms.Label();
-            this.labelWarn1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.linkDelete = new System.Windows.Forms.LinkLabel();
+            this.labelAdminPassword = new System.Windows.Forms.Label();
+            this.textAdminPassword = new System.Windows.Forms.TextBox();
+            this.labelAdminUsername = new System.Windows.Forms.Label();
+            this.textAdminUsername = new System.Windows.Forms.TextBox();
+            this.labelPrefix = new System.Windows.Forms.Label();
             this.textPrefix = new System.Windows.Forms.TextBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonRename = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelProfileName = new System.Windows.Forms.Label();
             this.textProfileName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCombo = new System.Windows.Forms.Label();
             this.comboProfiles = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.labelWarn3);
-            this.groupBox1.Controls.Add(this.labelWarn2);
-            this.groupBox1.Controls.Add(this.labelWarn1);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.linkDelete);
+            this.groupBox1.Controls.Add(this.labelAdminPassword);
+            this.groupBox1.Controls.Add(this.textAdminPassword);
+            this.groupBox1.Controls.Add(this.labelAdminUsername);
+            this.groupBox1.Controls.Add(this.textAdminUsername);
+            this.groupBox1.Controls.Add(this.labelPrefix);
             this.groupBox1.Controls.Add(this.textPrefix);
-            this.groupBox1.Controls.Add(this.buttonDelete);
             this.groupBox1.Controls.Add(this.buttonRename);
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.labelProfileName);
             this.groupBox1.Controls.Add(this.textProfileName);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.labelCombo);
             this.groupBox1.Controls.Add(this.comboProfiles);
             this.groupBox1.Location = new System.Drawing.Point(5, 10);
             this.groupBox1.Name = "groupBox1";
@@ -63,65 +65,71 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Profiles:";
             // 
-            // labelWarn3
+            // linkDelete
             // 
-            this.labelWarn3.AutoSize = true;
-            this.labelWarn3.ForeColor = System.Drawing.Color.Red;
-            this.labelWarn3.Location = new System.Drawing.Point(16, 244);
-            this.labelWarn3.Name = "labelWarn3";
-            this.labelWarn3.Size = new System.Drawing.Size(276, 13);
-            this.labelWarn3.TabIndex = 11;
-            this.labelWarn3.Text = "as well as other parameters before the first run and save !";
+            this.linkDelete.AutoSize = true;
+            this.linkDelete.ForeColor = System.Drawing.Color.Red;
+            this.linkDelete.LinkColor = System.Drawing.Color.Red;
+            this.linkDelete.Location = new System.Drawing.Point(16, 255);
+            this.linkDelete.Name = "linkDelete";
+            this.linkDelete.Size = new System.Drawing.Size(112, 13);
+            this.linkDelete.TabIndex = 13;
+            this.linkDelete.TabStop = true;
+            this.linkDelete.Text = "Delete selected profile";
+            this.linkDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // labelWarn2
+            // labelAdminPassword
             // 
-            this.labelWarn2.AutoSize = true;
-            this.labelWarn2.ForeColor = System.Drawing.Color.Red;
-            this.labelWarn2.Location = new System.Drawing.Point(16, 228);
-            this.labelWarn2.Name = "labelWarn2";
-            this.labelWarn2.Size = new System.Drawing.Size(279, 13);
-            this.labelWarn2.TabIndex = 10;
-            this.labelWarn2.Text = "Please change the profile name, prefix, website root folder";
+            this.labelAdminPassword.AutoSize = true;
+            this.labelAdminPassword.Location = new System.Drawing.Point(156, 193);
+            this.labelAdminPassword.Name = "labelAdminPassword";
+            this.labelAdminPassword.Size = new System.Drawing.Size(87, 13);
+            this.labelAdminPassword.TabIndex = 12;
+            this.labelAdminPassword.Text = "Admin password:";
             // 
-            // labelWarn1
+            // textAdminPassword
             // 
-            this.labelWarn1.AutoSize = true;
-            this.labelWarn1.ForeColor = System.Drawing.Color.Red;
-            this.labelWarn1.Location = new System.Drawing.Point(16, 209);
-            this.labelWarn1.Name = "labelWarn1";
-            this.labelWarn1.Size = new System.Drawing.Size(63, 13);
-            this.labelWarn1.TabIndex = 9;
-            this.labelWarn1.Text = "WARNING!";
+            this.textAdminPassword.Location = new System.Drawing.Point(159, 209);
+            this.textAdminPassword.Name = "textAdminPassword";
+            this.textAdminPassword.PasswordChar = '*';
+            this.textAdminPassword.Size = new System.Drawing.Size(125, 20);
+            this.textAdminPassword.TabIndex = 11;
             // 
-            // label5
+            // labelAdminUsername
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Prefix:";
+            this.labelAdminUsername.AutoSize = true;
+            this.labelAdminUsername.Location = new System.Drawing.Point(16, 193);
+            this.labelAdminUsername.Name = "labelAdminUsername";
+            this.labelAdminUsername.Size = new System.Drawing.Size(88, 13);
+            this.labelAdminUsername.TabIndex = 10;
+            this.labelAdminUsername.Text = "Admin username:";
+            // 
+            // textAdminUsername
+            // 
+            this.textAdminUsername.Location = new System.Drawing.Point(19, 209);
+            this.textAdminUsername.Name = "textAdminUsername";
+            this.textAdminUsername.Size = new System.Drawing.Size(125, 20);
+            this.textAdminUsername.TabIndex = 9;
+            // 
+            // labelPrefix
+            // 
+            this.labelPrefix.AutoSize = true;
+            this.labelPrefix.Location = new System.Drawing.Point(16, 138);
+            this.labelPrefix.Name = "labelPrefix";
+            this.labelPrefix.Size = new System.Drawing.Size(120, 13);
+            this.labelPrefix.TabIndex = 8;
+            this.labelPrefix.Text = "Sitecore instance prefix:";
             // 
             // textPrefix
             // 
-            this.textPrefix.Location = new System.Drawing.Point(19, 166);
+            this.textPrefix.Location = new System.Drawing.Point(19, 154);
             this.textPrefix.Name = "textPrefix";
-            this.textPrefix.Size = new System.Drawing.Size(190, 20);
+            this.textPrefix.Size = new System.Drawing.Size(265, 20);
             this.textPrefix.TabIndex = 4;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Location = new System.Drawing.Point(217, 165);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(67, 22);
-            this.buttonDelete.TabIndex = 6;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonRename
             // 
-            this.buttonRename.Location = new System.Drawing.Point(217, 116);
+            this.buttonRename.Location = new System.Drawing.Point(217, 250);
             this.buttonRename.Name = "buttonRename";
             this.buttonRename.Size = new System.Drawing.Size(67, 22);
             this.buttonRename.TabIndex = 5;
@@ -129,30 +137,30 @@
             this.buttonRename.UseVisualStyleBackColor = true;
             this.buttonRename.Click += new System.EventHandler(this.buttonRename_Click);
             // 
-            // label3
+            // labelProfileName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Name:";
+            this.labelProfileName.AutoSize = true;
+            this.labelProfileName.Location = new System.Drawing.Point(16, 89);
+            this.labelProfileName.Name = "labelProfileName";
+            this.labelProfileName.Size = new System.Drawing.Size(68, 13);
+            this.labelProfileName.TabIndex = 4;
+            this.labelProfileName.Text = "Profile name:";
             // 
             // textProfileName
             // 
-            this.textProfileName.Location = new System.Drawing.Point(19, 117);
+            this.textProfileName.Location = new System.Drawing.Point(19, 105);
             this.textProfileName.Name = "textProfileName";
-            this.textProfileName.Size = new System.Drawing.Size(190, 20);
+            this.textProfileName.Size = new System.Drawing.Size(265, 20);
             this.textProfileName.TabIndex = 3;
             // 
-            // label1
+            // labelCombo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Selected profile:";
+            this.labelCombo.AutoSize = true;
+            this.labelCombo.Location = new System.Drawing.Point(16, 29);
+            this.labelCombo.Name = "labelCombo";
+            this.labelCombo.Size = new System.Drawing.Size(83, 13);
+            this.labelCombo.TabIndex = 2;
+            this.labelCombo.Text = "Selected profile:";
             // 
             // comboProfiles
             // 
@@ -180,16 +188,17 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelPrefix;
         private System.Windows.Forms.TextBox textPrefix;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonRename;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelProfileName;
         private System.Windows.Forms.TextBox textProfileName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCombo;
         private System.Windows.Forms.ComboBox comboProfiles;
-        private System.Windows.Forms.Label labelWarn2;
-        private System.Windows.Forms.Label labelWarn1;
-        private System.Windows.Forms.Label labelWarn3;
+        private System.Windows.Forms.Label labelAdminPassword;
+        private System.Windows.Forms.TextBox textAdminPassword;
+        private System.Windows.Forms.Label labelAdminUsername;
+        private System.Windows.Forms.TextBox textAdminUsername;
+        private System.Windows.Forms.LinkLabel linkDelete;
     }
 }

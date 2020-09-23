@@ -19,6 +19,8 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
             textProfileName.TextChanged += TextHasChanged;
             textPrefix.TextChanged += TextHasChanged;
+            textAdminUsername.TextChanged += TextHasChanged;
+            textAdminPassword.TextChanged += TextHasChanged;
         }
 
         private void TextHasChanged(object sender, EventArgs e)
@@ -47,12 +49,16 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         private void EnsureNameNotChangedForDelete(object sender, KeyEventArgs e)
         {
-            buttonDelete.Enabled = textProfileName.Text == comboProfiles.SelectedItem.ToString();
+            linkDelete.Enabled = textProfileName.Text == comboProfiles.SelectedItem.ToString();
         }
 
         private void UpdateButtonsState()
         {
-            bool buttonsEnabled = textProfileName.Text.Length > 0 && textPrefix.Text.Length > 0;
+            bool buttonsEnabled = textProfileName.Text.Length > 0 
+                                  && textPrefix.Text.Length > 0 
+                                  && textAdminUsername.Text.Length > 0 
+                                  && textAdminPassword.Text.Length > 0;
+            
             buttonRename.Enabled = buttonsEnabled;
 
             Presenter.EnableSaveButton(buttonsEnabled);
@@ -69,6 +75,14 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
                 messages.Add(Validation.Profiles.Profile.Name);
             }
             if (!Regex.IsMatch(textPrefix.Text, Pattern.Profile.Prefix))
+            {
+                messages.Add(Validation.Profiles.Profile.Prefix);
+            }
+            if (!Regex.IsMatch(textAdminUsername.Text, Pattern.Profile.AdminUsername))
+            {
+                messages.Add(Validation.Profiles.Profile.Prefix);
+            }
+            if (!Regex.IsMatch(textAdminPassword.Text, Pattern.Profile.AdminPassword))
             {
                 messages.Add(Validation.Profiles.Profile.Prefix);
             }

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using Sifon.Abstractions.Profiles;
+using Sifon.Forms.Other;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.Statics;
@@ -7,12 +10,12 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
-    public partial class Profile : BaseUserControl, IProfileView
+    public partial class Profile : BaseUserControl, IProfileView, IProfileUserControl
     {
         #region Public events
 
-        public event EventHandler<EventArgs<Tuple<string, string>>> ProfileAdded = delegate { };
-        public event EventHandler<EventArgs<Tuple<string, string>>> ProfileRenamed = delegate { };
+        public event EventHandler<EventArgs<IProfileUserControl>> ProfileAdded = delegate { };
+        public event EventHandler<EventArgs<IProfileUserControl>> ProfileRenamed = delegate { };
         public event EventHandler<EventArgs<string>> SelectedProfileChanged = delegate { };
         public event EventHandler<EventArgs> SelectedProfileDeleted = delegate { };
 
@@ -20,9 +23,13 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         #region Expose fields properties
 
-        internal string ProfileName => textProfileName.Text.Trim();
+        public string ProfileName => textProfileName.Text.Trim();
 
-        internal string ProfilePrefix => textPrefix.Text.Trim();
+        public string Prefix => textPrefix.Text.Trim();
+
+        public string AdminUsername => textAdminUsername.Text.Trim();
+
+        public string AdminPassword => textAdminPassword.Text.Trim();
 
         #endregion
 
@@ -32,11 +39,10 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             new ProfilePresenter(this);
         }
 
-        public void DisplayFirstRunWarning(bool visible)
+        public void DisplayFirstRunWarning()
         {
-            labelWarn1.Visible = visible;
-            labelWarn2.Visible = visible;
-            labelWarn3.Visible = visible;
+            var firstRunForm = new FirstTimeRun { StartPosition = FormStartPosition.CenterParent };
+            firstRunForm.ShowDialog();
         }
 
         public void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName)
@@ -61,19 +67,17 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             UpdateButtonsState();
         }   
 
-        public void SetProfileTextbox(string name)
+        public void SetFields(IProfileUserControl profile)
         {
-            textProfileName.Text = name;
-        }
-
-        public void SetPrefixTextbox(string name)
-        {
-            textPrefix.Text = name;
+            textProfileName.Text = profile.ProfileName;
+            textPrefix.Text = profile.Prefix;
+            textAdminUsername.Text = profile.AdminUsername;
+            textAdminPassword.Text = profile.AdminPassword;
         }
 
         private void comboProfiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonDelete.Enabled = comboProfiles.SelectedIndex > 0;
+            linkDelete.Enabled = comboProfiles.SelectedIndex > 0;
             buttonRename.Text = comboProfiles.SelectedIndex > 0 ? Settings.Buttons.Rename : Settings.Buttons.Add;
 
             if (comboProfiles.SelectedIndex > 0)
@@ -84,6 +88,8 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             {
                 textProfileName.Text = String.Empty;
                 textPrefix.Text = String.Empty;
+                textAdminUsername.Text = String.Empty;
+                textAdminPassword.Text = String.Empty;
             }
 
             Presenter.Raise_ProfileChangedEvent(comboProfiles.SelectedIndex > 0);
@@ -97,17 +103,25 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             }
         }
 
-        private Tuple<string, string> ProfilePrefixTuple => new Tuple<string, string>(textProfileName.Text.Trim(), textPrefix.Text.Trim());
+        //private Tuple<string, string> ProfilePrefixTuple => new Tuple<string, string>(textProfileName.Text.Trim(), textPrefix.Text.Trim());
 
         private void buttonRename_Click(object sender, EventArgs e)
         {
             if (comboProfiles.SelectedIndex > 0)
             {
-                ProfileRenamed(this, new EventArgs<Tuple<string, string>>(ProfilePrefixTuple));
+                ProfileRenamed(this, new EventArgs<IProfileUserControl>(this));
             }
             else
             {
-                ProfileAdded(this, new EventArgs<Tuple<string, string>>(ProfilePrefixTuple));
+                ProfileAdded(this, new EventArgs<IProfileUserControl>(this));
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (ShowYesNo(Messages.General.YesNoCaption, Messages.Profiles.ConfirmDeletingProfile))
+            {
+                SelectedProfileDeleted(this, e);
             }
         }
     }

@@ -34,7 +34,7 @@ namespace Sifon.Shared.Model.Profiles
         public string RemotePassword { get; set; }
         public string RemoteFolder { get; set; }
 
-        public string Name { get; set; }
+        public string ProfileName { get; set; }
 
         public bool Selected { get; set; }
 
@@ -49,6 +49,10 @@ namespace Sifon.Shared.Model.Profiles
         public string SqlServer { get; set; }
 
         public string Prefix { get; set; }
+
+        public string AdminUsername { get; set; }
+
+        public string AdminPassword { get; set; }
 
         public Dictionary<string, string> Parameters { get; set; }
 

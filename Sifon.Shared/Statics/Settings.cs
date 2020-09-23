@@ -156,6 +156,8 @@ namespace Sifon.Shared.Statics
             // from profile
             public const string Name = "Name";
             public const string Prefix = "Prefix";
+            public const string AdminUsername = "AdminUsername";
+            public const string AdminPassword = "AdminPassword";
             public const string Website = "Website";
             public const string Webroot = "Webroot";
             public const string Solr = "Solr";
@@ -212,6 +214,8 @@ namespace Sifon.Shared.Statics
                 public const string RemoteFolder = "RemoteFolder";
                 public const string Name = "Name";
                 public const string Prefix = "Prefix";
+                public const string AdminUsername = "AdminUsername";
+                public const string AdminPassword = "AdminPassword";
                 public const string Webroot = "Webroot";
                 public const string Website = "Website";
                 public const string Solr = "Solr";

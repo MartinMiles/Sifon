@@ -15,11 +15,14 @@
             public const string ProfilesDropdown = "Selects current profile, or allows adding a new one";
             public const string ProfileName = "User-friendly name of a profile, as it will be shown across the system";
             public const string Prefix = "This is Sitecore instance prefix for a selected profile";
+            public const string AdminUsername = "This is Sitecore admin username. This username will be also used for SPE Remoting requests (ie. installing packages)";
+            public const string AdminPassword = "This is Sitecore admin password (historically, it was 'b' by default)";
             public const string RenameButton = "Adds new profile or renames already existing with provided name and prefix";
             public const string DeleteButton = "Deletes selected profile";
             public const string SqlServersDropdown = "Selects which SQL Server instance to use with a selected profile";
             public const string SqlConnectionButton = "Use this button for adding a new SQL Server instance or modifying existing one";
             public const string SolrDropdown = "Selects which Solr instance to use with a selected profile";
+            public const string SolrText = "Solr endpoint URL to be used with a current profile";
             public const string WebsitesDropdown = "Selects which IIS Website to use with a selected profile";
             public const string TextWebroot = "Webroot folder for a website selected above";
             public const string ListBindings = "These are all bindings assigned to a selected website (both HTTP and HTTPS)";
@@ -30,6 +33,7 @@
                 public const string Hostname = "IP or hostname of remote machine that has WinRM enabled";
                 public const string Username = "Username for remote machine that has WinRM enabled";
                 public const string Password = "Password for remote machine that has WinRM enabled";
+                public const string RemoteFolder = "The folder on a remote machine where Sifon copies its own assets to ensure the operations";
             }
             public static class Parameters
             {

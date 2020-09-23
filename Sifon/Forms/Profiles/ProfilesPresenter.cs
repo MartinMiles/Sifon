@@ -19,7 +19,7 @@ namespace Sifon.Forms.Profiles
 
         #region Properties
 
-        internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.Name);
+        internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.ProfileName);
 
         internal IProfile SelectedProfile => ProfilesService.SelectedProfile;
 
@@ -89,8 +89,8 @@ namespace Sifon.Forms.Profiles
             profile.RemoteUsername = _view.Remote.RemoteUsername;
             profile.RemotePassword = _view.Remote.RemotePassword;
             profile.RemoteFolder = _view.Remote.RemoteFolder;
-            profile.Name = _view.Profile.ProfileName;
-            profile.Prefix = _view.Profile.ProfilePrefix;
+            profile.ProfileName = _view.Profile.ProfileName;
+            profile.Prefix = _view.Profile.Prefix;
 
             profile.Webroot = _view.Website.Webroot;
 

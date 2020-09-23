@@ -53,9 +53,6 @@ namespace Sifon.Forms.Base
             {
                 linkReveal.Left -= 9;
             }
-            
-            
-            //linkReveal.Location = new Point(reveal ? 310 : 301, 58);
         }
     }
 }

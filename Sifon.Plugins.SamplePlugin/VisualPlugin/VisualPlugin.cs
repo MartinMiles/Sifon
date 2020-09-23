@@ -20,7 +20,7 @@ namespace Sifon.Plugins.Example.VisualPlugin
                 StartPosition = FormStartPosition.CenterParent,
                 Parameters = new Dictionary<string, string>
                 {
-                    {"Name", Profile.Name},
+                    {"Name", Profile.ProfileName},
                     {"Webroot", Profile.Webroot},
                     {"Website", Profile.Website},
                     {"Solr", Profile.Solr},

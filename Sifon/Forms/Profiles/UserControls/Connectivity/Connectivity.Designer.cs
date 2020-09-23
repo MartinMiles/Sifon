@@ -32,13 +32,13 @@
             this.loadingCircle = new MRG.Controls.UI.LoadingCircle();
             this.buttonTest = new System.Windows.Forms.Button();
             this.textSolr = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelSolr = new System.Windows.Forms.Label();
             this.labelSolrGrid = new System.Windows.Forms.Label();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelSolrInstances = new System.Windows.Forms.Label();
             this.comboSqlServers = new System.Windows.Forms.ComboBox();
-            this.comboSolr = new System.Windows.Forms.ComboBox();
-            this.labelSqlConnection = new System.Windows.Forms.Label();
+            this.comboSolrInstances = new System.Windows.Forms.ComboBox();
+            this.labelSqlServers = new System.Windows.Forms.Label();
             this.buttonSqlConnection = new System.Windows.Forms.Button();
             this.groupSQL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -49,13 +49,13 @@
             this.groupSQL.Controls.Add(this.loadingCircle);
             this.groupSQL.Controls.Add(this.buttonTest);
             this.groupSQL.Controls.Add(this.textSolr);
-            this.groupSQL.Controls.Add(this.label10);
+            this.groupSQL.Controls.Add(this.labelSolr);
             this.groupSQL.Controls.Add(this.labelSolrGrid);
             this.groupSQL.Controls.Add(this.dataGrid);
-            this.groupSQL.Controls.Add(this.label4);
+            this.groupSQL.Controls.Add(this.labelSolrInstances);
             this.groupSQL.Controls.Add(this.comboSqlServers);
-            this.groupSQL.Controls.Add(this.comboSolr);
-            this.groupSQL.Controls.Add(this.labelSqlConnection);
+            this.groupSQL.Controls.Add(this.comboSolrInstances);
+            this.groupSQL.Controls.Add(this.labelSqlServers);
             this.groupSQL.Controls.Add(this.buttonSqlConnection);
             this.groupSQL.Location = new System.Drawing.Point(5, 10);
             this.groupSQL.Name = "groupSQL";
@@ -82,9 +82,9 @@
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(224, 133);
+            this.buttonTest.Location = new System.Drawing.Point(224, 135);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(62, 23);
+            this.buttonTest.Size = new System.Drawing.Size(62, 22);
             this.buttonTest.TabIndex = 49;
             this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -97,14 +97,14 @@
             this.textSolr.Size = new System.Drawing.Size(199, 20);
             this.textSolr.TabIndex = 48;
             // 
-            // label10
+            // labelSolr
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 120);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(197, 13);
-            this.label10.TabIndex = 47;
-            this.label10.Text = "Solr URL (selected or manually entered):";
+            this.labelSolr.AutoSize = true;
+            this.labelSolr.Location = new System.Drawing.Point(16, 120);
+            this.labelSolr.Name = "labelSolr";
+            this.labelSolr.Size = new System.Drawing.Size(197, 13);
+            this.labelSolr.TabIndex = 47;
+            this.labelSolr.Text = "Solr URL (selected or manually entered):";
             // 
             // labelSolrGrid
             // 
@@ -131,14 +131,14 @@
             this.dataGrid.TabIndex = 45;
             this.dataGrid.Visible = false;
             // 
-            // label4
+            // labelSolrInstances
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Solr instances:";
+            this.labelSolrInstances.AutoSize = true;
+            this.labelSolrInstances.Location = new System.Drawing.Point(16, 72);
+            this.labelSolrInstances.Name = "labelSolrInstances";
+            this.labelSolrInstances.Size = new System.Drawing.Size(76, 13);
+            this.labelSolrInstances.TabIndex = 6;
+            this.labelSolrInstances.Text = "Solr instances:";
             // 
             // comboSqlServers
             // 
@@ -149,24 +149,24 @@
             this.comboSqlServers.Size = new System.Drawing.Size(199, 21);
             this.comboSqlServers.TabIndex = 16;
             // 
-            // comboSolr
+            // comboSolrInstances
             // 
-            this.comboSolr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboSolr.FormattingEnabled = true;
-            this.comboSolr.Location = new System.Drawing.Point(19, 88);
-            this.comboSolr.Name = "comboSolr";
-            this.comboSolr.Size = new System.Drawing.Size(267, 21);
-            this.comboSolr.TabIndex = 20;
-            this.comboSolr.SelectedIndexChanged += new System.EventHandler(this.comboSolr_SelectedIndexChanged);
+            this.comboSolrInstances.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSolrInstances.FormattingEnabled = true;
+            this.comboSolrInstances.Location = new System.Drawing.Point(19, 88);
+            this.comboSolrInstances.Name = "comboSolrInstances";
+            this.comboSolrInstances.Size = new System.Drawing.Size(267, 21);
+            this.comboSolrInstances.TabIndex = 20;
+            this.comboSolrInstances.SelectedIndexChanged += new System.EventHandler(this.comboSolr_SelectedIndexChanged);
             // 
-            // labelSqlConnection
+            // labelSqlServers
             // 
-            this.labelSqlConnection.AutoSize = true;
-            this.labelSqlConnection.Location = new System.Drawing.Point(16, 23);
-            this.labelSqlConnection.Name = "labelSqlConnection";
-            this.labelSqlConnection.Size = new System.Drawing.Size(105, 13);
-            this.labelSqlConnection.TabIndex = 10;
-            this.labelSqlConnection.Text = "SQL Server instance";
+            this.labelSqlServers.AutoSize = true;
+            this.labelSqlServers.Location = new System.Drawing.Point(16, 23);
+            this.labelSqlServers.Name = "labelSqlServers";
+            this.labelSqlServers.Size = new System.Drawing.Size(105, 13);
+            this.labelSqlServers.TabIndex = 10;
+            this.labelSqlServers.Text = "SQL Server instance";
             // 
             // buttonSqlConnection
             // 
@@ -195,15 +195,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupSQL;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelSolrInstances;
         private System.Windows.Forms.ComboBox comboSqlServers;
-        private System.Windows.Forms.ComboBox comboSolr;
-        private System.Windows.Forms.Label labelSqlConnection;
+        private System.Windows.Forms.ComboBox comboSolrInstances;
+        private System.Windows.Forms.Label labelSqlServers;
         private System.Windows.Forms.Button buttonSqlConnection;
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Label labelSolrGrid;
         public System.Windows.Forms.TextBox textSolr;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelSolr;
         private System.Windows.Forms.Button buttonTest;
         private MRG.Controls.UI.LoadingCircle loadingCircle;
     }

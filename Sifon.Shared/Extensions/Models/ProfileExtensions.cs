@@ -32,9 +32,10 @@ namespace Sifon.Shared.Extensions.Models
             profile.RemoteUsername = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteUsername, Settings.Xml.Attributes.Value);
             profile.RemotePassword = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemotePassword, Settings.Xml.Attributes.Value);
             profile.RemoteFolder = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteFolder, Settings.Xml.Attributes.Value);
-
-            profile.Name = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Name, Settings.Xml.Attributes.Value);
+            profile.ProfileName = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Name, Settings.Xml.Attributes.Value);
             profile.Prefix = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Prefix, Settings.Xml.Attributes.Value);
+            profile.AdminUsername = node.ChildNodes.GetTextValue(Settings.Xml.Profile.AdminUsername, Settings.Xml.Attributes.Value);
+            profile.AdminPassword = node.ChildNodes.GetTextValue(Settings.Xml.Profile.AdminPassword, Settings.Xml.Attributes.Value);
             profile.Webroot = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Webroot, Settings.Xml.Attributes.Value);
             profile.Website = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Website, Settings.Xml.Attributes.Value);
             profile.Solr = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Solr, Settings.Xml.Attributes.Value);
@@ -92,12 +93,20 @@ namespace Sifon.Shared.Extensions.Models
             root.Add(remoteFolder);
 
             var name = new XElement(Settings.Xml.Profile.Name);
-            name.SetAttributeValue(Settings.Xml.Attributes.Value, profile.Name);
+            name.SetAttributeValue(Settings.Xml.Attributes.Value, profile.ProfileName);
             root.Add(name);
 
             var prefix = new XElement(Settings.Xml.Profile.Prefix);
             prefix.SetAttributeValue(Settings.Xml.Attributes.Value, profile.Prefix);
             root.Add(prefix);
+
+            var adminUsername = new XElement(Settings.Xml.Profile.AdminUsername);
+            adminUsername.SetAttributeValue(Settings.Xml.Attributes.Value, profile.AdminUsername);
+            root.Add(adminUsername);
+
+            var adminPassword = new XElement(Settings.Xml.Profile.AdminPassword);
+            adminPassword.SetAttributeValue(Settings.Xml.Attributes.Value, profile.AdminPassword);
+            root.Add(adminPassword);
 
             var website = new XElement(Settings.Xml.Profile.Website);
             website.SetAttributeValue(Settings.Xml.Attributes.Value, profile.Website);

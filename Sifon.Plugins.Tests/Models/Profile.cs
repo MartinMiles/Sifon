@@ -10,8 +10,10 @@ namespace Sifon.Plugins.Tests.Models
         public string RemoteUsername { get; set; }
         public string RemotePassword { get; set; }
         public string RemoteFolder { get; set; }
-        public string Name { get; set; }
+        public string ProfileName { get; set; }
         public string Prefix { get; set; }
+        public string AdminUsername { get; set; }
+        public string AdminPassword { get; set; }
         public bool Selected { get; set; }
         public bool Empty { get; set; }
         public string Website { get; set; }

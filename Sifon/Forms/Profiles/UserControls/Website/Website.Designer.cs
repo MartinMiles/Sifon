@@ -32,9 +32,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelWebsites = new System.Windows.Forms.Label();
+            this.labelWebroot = new System.Windows.Forms.Label();
+            this.labelGrid = new System.Windows.Forms.Label();
             this.comboWebsites = new System.Windows.Forms.ComboBox();
             this.buttonWebroot = new System.Windows.Forms.Button();
             this.textWebroot = new System.Windows.Forms.TextBox();
@@ -45,9 +45,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGrid);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.labelWebsites);
+            this.groupBox3.Controls.Add(this.labelWebroot);
+            this.groupBox3.Controls.Add(this.labelGrid);
             this.groupBox3.Controls.Add(this.comboWebsites);
             this.groupBox3.Controls.Add(this.buttonWebroot);
             this.groupBox3.Controls.Add(this.textWebroot);
@@ -74,32 +74,32 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             this.dataGrid.Size = new System.Drawing.Size(263, 110);
             this.dataGrid.TabIndex = 44;
             // 
-            // label2
+            // labelWebsites
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "IIS website:";
+            this.labelWebsites.AutoSize = true;
+            this.labelWebsites.Location = new System.Drawing.Point(15, 26);
+            this.labelWebsites.Name = "labelWebsites";
+            this.labelWebsites.Size = new System.Drawing.Size(62, 13);
+            this.labelWebsites.TabIndex = 3;
+            this.labelWebsites.Text = "IIS website:";
             // 
-            // label6
+            // labelWebroot
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Website root folder:";
+            this.labelWebroot.AutoSize = true;
+            this.labelWebroot.Location = new System.Drawing.Point(15, 87);
+            this.labelWebroot.Name = "labelWebroot";
+            this.labelWebroot.Size = new System.Drawing.Size(99, 13);
+            this.labelWebroot.TabIndex = 11;
+            this.labelWebroot.Text = "Website root folder:";
             // 
-            // label9
+            // labelGrid
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 139);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(169, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Bindings for the selected instance:";
+            this.labelGrid.AutoSize = true;
+            this.labelGrid.Location = new System.Drawing.Point(15, 139);
+            this.labelGrid.Name = "labelGrid";
+            this.labelGrid.Size = new System.Drawing.Size(169, 13);
+            this.labelGrid.TabIndex = 9;
+            this.labelGrid.Text = "Bindings for the selected instance:";
             // 
             // comboWebsites
             // 
@@ -146,9 +146,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelWebsites;
+        private System.Windows.Forms.Label labelWebroot;
+        private System.Windows.Forms.Label labelGrid;
         private System.Windows.Forms.ComboBox comboWebsites;
         private System.Windows.Forms.Button buttonWebroot;
         private System.Windows.Forms.TextBox textWebroot;

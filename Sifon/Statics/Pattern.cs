@@ -8,6 +8,8 @@
         {
             public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
             public const string Prefix = @"^[A-Za-z0-9-._]*$";
+            public const string AdminUsername = @"^[A-Za-z0-9-._]*$";
+            public const string AdminPassword = @"[^\ ]";
         }
         public static class SqlSettings
         {

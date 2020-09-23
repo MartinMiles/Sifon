@@ -23,9 +23,15 @@ namespace Sifon.Shared.Providers.Profile
 
         #region CRUD
 
-        public void Add(string profileName, string profilePrefix)
+        public void Add(IProfileUserControl p)
         {
-            _profiles = _profiles.Append(new Model.Profiles.Profile {Name = profileName, Prefix = profilePrefix});
+            var profile = new Model.Profiles.Profile
+            {
+                ProfileName = p.ProfileName, Prefix = p.Prefix, AdminUsername = p.AdminUsername,
+                AdminPassword = p.AdminPassword
+            };
+
+            _profiles = _profiles.Append(profile);
         }
 
         public IEnumerable<IProfile> Read()
@@ -64,7 +70,7 @@ namespace Sifon.Shared.Providers.Profile
         public void DeleteSelected()
         {
             var list = _profiles.ToList();
-            var removed = list.Remove(_profiles.First(p => p.Name == SelectedProfile.Name));
+            var removed = list.Remove(_profiles.First(p => p.ProfileName == SelectedProfile.ProfileName));
             if (list.Any())
             {
                 list.First().Selected = true;
@@ -76,7 +82,7 @@ namespace Sifon.Shared.Providers.Profile
 
         public IProfile ProfileByName(string profileName)
         {
-            return _profiles.FirstOrDefault(p => p.Name.Compare(profileName));
+            return _profiles.FirstOrDefault(p => p.ProfileName.Compare(profileName));
         }
 
         public void UpdateSelected(IProfile profile)
@@ -88,7 +94,7 @@ namespace Sifon.Shared.Providers.Profile
                 selected.RemoteExecutionHost = profile.RemoteExecutionHost;
                 selected.RemoteUsername = profile.RemoteUsername;
                 selected.RemotePassword = profile.RemotePassword;
-                selected.Name = profile.Name;
+                selected.ProfileName = profile.ProfileName;
                 selected.Prefix = profile.Prefix;
                 selected.Webroot = profile.Webroot;
                 selected.Website = profile.Website;
@@ -106,7 +112,7 @@ namespace Sifon.Shared.Providers.Profile
 
         private Model.Profiles.Profile GetByName(string profileName)
         {
-            return _profiles.FirstOrDefault(p => p.Name == profileName);
+            return _profiles.FirstOrDefault(p => p.ProfileName == profileName);
         }
 
         public void SelectProfile(string selectedProfileName)
@@ -127,8 +133,10 @@ namespace Sifon.Shared.Providers.Profile
 
         public void AddScriptProfileParameters(Dictionary<string, dynamic> parameters)
         {
-            parameters.Add(Settings.Parameters.Name, SelectedProfile.Name);
+            parameters.Add(Settings.Parameters.Name, SelectedProfile.ProfileName);
             parameters.Add(Settings.Parameters.Prefix, SelectedProfile.Prefix);
+            parameters.Add(Settings.Parameters.AdminUsername, SelectedProfile.AdminUsername);
+            parameters.Add(Settings.Parameters.AdminPassword, SelectedProfile.AdminPassword);
             parameters.Add(Settings.Parameters.Website, SelectedProfile.Website);
             parameters.Add(Settings.Parameters.Webroot, SelectedProfile.Webroot);
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
@@ -206,7 +214,7 @@ namespace Sifon.Shared.Providers.Profile
         {
             var newProfile = CreateLocal();
 
-            newProfile.Name = Settings.Files.DefaultProfileName;
+            newProfile.ProfileName = Settings.Files.DefaultProfileName;
             newProfile.Prefix = Settings.Files.DefaultProfilePrefix;
 
             //newProfile.SetSqlProfile(new SqlServerRecord());

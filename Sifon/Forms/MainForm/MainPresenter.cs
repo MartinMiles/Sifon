@@ -54,12 +54,12 @@ namespace Sifon.Forms.MainForm
             _view.ScriptToolStripClicked += ScriptToolStripClicked;
         }
 
-        private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.Name);
+        private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.ProfileName);
 
         private void Loaded(object sender, EventArgs e)
         {
             var profileNames = JustReadProfileNames;
-            _view.LoadProfilesSelector(profileNames, SelectedProfile.Name);
+            _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
             _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
         }
@@ -160,7 +160,7 @@ namespace Sifon.Forms.MainForm
             //var pluginsMenuItem = GetPluginsAndScripts(Settings.Folders.Plugins);
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
             
-            _view.LoadProfilesSelector(JustReadProfileNames, SelectedProfile.Name);
+            _view.LoadProfilesSelector(JustReadProfileNames, SelectedProfile.ProfileName);
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
         }
 

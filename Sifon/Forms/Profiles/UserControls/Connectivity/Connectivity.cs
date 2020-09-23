@@ -37,9 +37,9 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         public void LoadSolrDropdown()
         {
-            comboSolr.Items.Clear();
-            comboSolr.Items.Add(Settings.ManualEntry);
-            comboSolr.SelectedIndex = 0;
+            comboSolrInstances.Items.Clear();
+            comboSolrInstances.Items.Add(Settings.ManualEntry);
+            comboSolrInstances.SelectedIndex = 0;
         }
 
         public void SetSolrValue(string selectedProfileSolr)
@@ -66,7 +66,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             comboSqlServers.Enabled = value;
             buttonSqlConnection.Enabled = value;
-            comboSolr.Enabled = value;
+            comboSolrInstances.Enabled = value;
             buttonTest.Enabled = value;
             dataGrid.Enabled = value;
         }
@@ -75,7 +75,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             foreach (var solrUrl in solrs.Select(s => s.Url))
             {
-                comboSolr.Items.Add(solrUrl);
+                comboSolrInstances.Items.Add(solrUrl);
             }
 
             var source = new BindingSource {DataSource = solrs};
@@ -166,11 +166,11 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         public void SetSolrDropdownByProfile(string solrUrl)
         {
-            comboSolr.SelectedIndex = 0;
+            comboSolrInstances.SelectedIndex = 0;
 
-            if (solrUrl.NotEmpty() && comboSolr.Items.IndexOf(solrUrl) >= 0)
+            if (solrUrl.NotEmpty() && comboSolrInstances.Items.IndexOf(solrUrl) >= 0)
             {
-                comboSolr.SelectedIndex = comboSolr.Items.IndexOf(solrUrl);
+                comboSolrInstances.SelectedIndex = comboSolrInstances.Items.IndexOf(solrUrl);
             }
         }
 

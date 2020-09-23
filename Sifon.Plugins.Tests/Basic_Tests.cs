@@ -22,7 +22,7 @@ namespace Sifon.Plugins.Tests
 
         private IProfile Profile => new Profile
         {
-            Name = "",
+            ProfileName = "",
             Website = "",
             Webroot = "",
             Solr = "",

@@ -35,12 +35,12 @@
             this.buttonInitialize = new System.Windows.Forms.Button();
             this.checkBoxRemote = new System.Windows.Forms.CheckBox();
             this.textHostname = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelHostname = new System.Windows.Forms.Label();
             this.linkReveal = new System.Windows.Forms.LinkLabel();
             this.textPassword = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.textUsername = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelUsername = new System.Windows.Forms.Label();
             this.groupBoxRemote.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,12 +52,12 @@
             this.groupBoxRemote.Controls.Add(this.buttonInitialize);
             this.groupBoxRemote.Controls.Add(this.checkBoxRemote);
             this.groupBoxRemote.Controls.Add(this.textHostname);
-            this.groupBoxRemote.Controls.Add(this.label10);
+            this.groupBoxRemote.Controls.Add(this.labelHostname);
             this.groupBoxRemote.Controls.Add(this.linkReveal);
             this.groupBoxRemote.Controls.Add(this.textPassword);
-            this.groupBoxRemote.Controls.Add(this.label7);
+            this.groupBoxRemote.Controls.Add(this.labelPassword);
             this.groupBoxRemote.Controls.Add(this.textUsername);
-            this.groupBoxRemote.Controls.Add(this.label8);
+            this.groupBoxRemote.Controls.Add(this.labelUsername);
             this.groupBoxRemote.Location = new System.Drawing.Point(5, 10);
             this.groupBoxRemote.Name = "groupBoxRemote";
             this.groupBoxRemote.Size = new System.Drawing.Size(305, 295);
@@ -119,14 +119,14 @@
             this.textHostname.Size = new System.Drawing.Size(256, 20);
             this.textHostname.TabIndex = 2;
             // 
-            // label10
+            // labelHostname
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 60);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Remote host:";
+            this.labelHostname.AutoSize = true;
+            this.labelHostname.Location = new System.Drawing.Point(17, 60);
+            this.labelHostname.Name = "labelHostname";
+            this.labelHostname.Size = new System.Drawing.Size(70, 13);
+            this.labelHostname.TabIndex = 22;
+            this.labelHostname.Text = "Remote host:";
             // 
             // linkReveal
             // 
@@ -146,14 +146,14 @@
             this.textPassword.Size = new System.Drawing.Size(254, 20);
             this.textPassword.TabIndex = 4;
             // 
-            // label7
+            // labelPassword
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 156);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Password:";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(19, 156);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelPassword.TabIndex = 18;
+            this.labelPassword.Text = "Password:";
             // 
             // textUsername
             // 
@@ -162,14 +162,14 @@
             this.textUsername.Size = new System.Drawing.Size(256, 20);
             this.textUsername.TabIndex = 3;
             // 
-            // label8
+            // labelUsername
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 108);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Username:";
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Location = new System.Drawing.Point(17, 108);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(58, 13);
+            this.labelUsername.TabIndex = 17;
+            this.labelUsername.Text = "Username:";
             // 
             // Remote
             // 
@@ -188,12 +188,12 @@
 
         private System.Windows.Forms.GroupBox groupBoxRemote;
         public System.Windows.Forms.TextBox textHostname;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelHostname;
         private System.Windows.Forms.LinkLabel linkReveal;
         public System.Windows.Forms.TextBox textPassword;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelPassword;
         public System.Windows.Forms.TextBox textUsername;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.CheckBox checkBoxRemote;
         private System.Windows.Forms.Button buttonInitialize;
         public System.Windows.Forms.TextBox textRemoteFolder;

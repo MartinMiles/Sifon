@@ -2,7 +2,7 @@
 
 namespace Sifon.Abstractions.Profiles
 {
-    public interface IProfile
+    public interface IProfile : IProfileUserControl
     {
         bool RemotingEnabled { get; set; }
 
@@ -13,8 +13,13 @@ namespace Sifon.Abstractions.Profiles
         string RemotePassword { get; set; }
         string RemoteFolder { get; set; }
 
-        string Name { get; set; }
+        string ProfileName { get; set; }
+
         string Prefix { get; set; }
+        
+        string AdminUsername { get; set; }
+        
+        string AdminPassword { get; set; }
 
         bool Selected { get; set; }
 
