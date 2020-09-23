@@ -49,12 +49,9 @@ namespace Sifon.Forms.PortalCredentials
 
         private async void TestClicked(object sender, EventArgs<ISettingRecord> e)
         {
-            var parameters = new Dictionary<string, dynamic>
-            {
-                { "PortalUsername", e.Value.PortalUsername},
-                { "PortalPassword", e.Value.PortalPassword}
-            };
-
+            var parameters = new Dictionary<string, dynamic>();
+            _settingsProvider.AddScriptSettingsParameters(parameters);
+           
             _view.ToggleControls(false);
 
             var script = await _remoteScriptCopier.CopyIfRemote(Settings.Scripts.TestPortalCredentials);

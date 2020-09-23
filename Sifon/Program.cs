@@ -30,6 +30,10 @@ namespace Sifon
                     {
                         MessageBox.Show("Remote profile folder is not initialized.\nPlease reinitialize from Profile menu", "Remote Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else
+                    {
+                        MessageBox.Show(e.Message, "Execution Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     SimpleLog.Log(e);
                 }
