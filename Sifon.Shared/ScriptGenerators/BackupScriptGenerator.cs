@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -46,12 +45,21 @@ namespace Sifon.Shared.ScriptGenerators
 
             if (_model.ProcessXconnect)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.XConnect, 40);  
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.XConnect, 30);
             }
 
             if (_model.ProcessIDS)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.IdentityServer, 50);
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.IdentityServer, 40);
+            }
+
+            if (_model.ProcessHorizon)
+            {
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.Horizon, 45);
+            }
+            if (_model.ProcessPublishing)
+            {
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.PublishingService, 50);
             }
 
             if (_model.ProcessCommerce)

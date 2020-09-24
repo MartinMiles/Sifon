@@ -99,7 +99,7 @@ namespace Sifon.Forms.Backup
             checkDatabases.Enabled = enabled;
             checkFiles.Enabled = enabled;
 
-            Cursor = (bool)enabled ? Cursors.Arrow : Cursors.WaitCursor;
+            Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
 
         public void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors)
@@ -116,21 +116,41 @@ namespace Sifon.Forms.Backup
             }
         }
 
-        public void SetCheckboxes(bool site, bool xconnect, bool ids, bool commerceSites)
-        {
-            checkFiles.Enabled = site;
-            checkXconnect.Enabled = xconnect;
-            checkIds.Enabled = ids;
-            checkCommerce.Enabled = commerceSites;
-        }
+        //public void SetCheckboxes(bool site, bool xconnect, bool ids, bool horizon, bool publishing, bool commerceSites)
+        //{
+        //    checkFiles.Enabled = site;
+        //    checkXconnect.Enabled = xconnect;
+        //    checkIds.Enabled = ids;
+        //    checkHorizon.Enabled = horizon;
+        //    checkPublishing.Enabled = publishing;
+        //    checkCommerce.Enabled = commerceSites;
+        //}
 
         // TODO: shared for all backup restore. maybe to base?
-        public void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites)
+
+        public void SetFieldsandCheckboxes(BackupViewModel model)
         {
-            XConnect = xconnectFolder;
-            IdentityServer = idsFolder;
-            CommerceSites = commerceSites;
+            XConnect = model.XConnect;
+            IdentityServer = model.Identity;
+            Horizon = model.Horizon;
+            PublishingService = model.Publishing;
+            CommerceSites = model.CommerceSites;
+
+            checkFiles.Enabled = model.SiteChecked;
+            checkXconnect.Enabled = model.XConnectChecked;
+            checkIds.Enabled = model.IdentityChecked;
+            checkHorizon.Enabled = model.HorizonChecked;
+            checkPublishing.Enabled = model.PublishingChecked;
+            checkCommerce.Enabled = model.CommerceChecked;
+
         }
+
+        //public void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites)
+        //{
+        //    XConnect = xconnectFolder;
+        //    IdentityServer = idsFolder;
+        //    CommerceSites = commerceSites;
+        //}
 
         private void textDestinationFolderToBackup_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -171,10 +191,15 @@ namespace Sifon.Forms.Backup
         public bool ProcessWebroot => checkFiles.Checked;
         public bool ProcessXconnect => checkXconnect.Checked;
         public bool ProcessIDS => checkIds .Checked;
+        public bool ProcessHorizon => checkHorizon .Checked;
+        public bool ProcessPublishing => checkPublishing .Checked;
         public bool ProcessCommerce => checkCommerce.Checked;
 
         public string XConnect { get; private set; }
         public string IdentityServer { get; private set; }
+        public string Horizon { get; private set; }
+
+        public string PublishingService { get; private set; }
         public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
         public string XConnectFolder { get; private set; }
         public string IdentityServerFolder { get; private set; }

@@ -14,4 +14,6 @@ $getInstance = $path + "\Get-ConnectionString.ps1"
 . $getInstance
 $getInstance = $path + "\Download-Resource.ps1"
 . $getInstance
+$getInstance = $path + "\Get-SiteFolder.ps1"
+. $getInstance
 

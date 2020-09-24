@@ -157,6 +157,8 @@ namespace Sifon.Shared.Providers.Profile
             parameters.Add(Settings.Parameters.IdentityServer, model.IdentityServer);
             parameters.Add(Settings.Parameters.XConnectFolder, model.XConnectFolder);
             parameters.Add(Settings.Parameters.IdentityServerFolder, model.IdentityServerFolder);
+            parameters.Add(Settings.Parameters.Horizon, model.Horizon);
+            parameters.Add(Settings.Parameters.PublishingService, model.PublishingService);
             parameters.Add(Settings.Parameters.TargetFolder, model.DestinationFolder);
             parameters.Add(Settings.Parameters.Databases, model.SelectedDatabases);
         }

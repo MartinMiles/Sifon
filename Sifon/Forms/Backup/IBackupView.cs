@@ -16,7 +16,13 @@ namespace Sifon.Forms.Backup
         void PopulateHostnamesListboxForSite(IEnumerable<KeyValuePair<string, string>> hostnames);
         void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors);
         void EnableDisableMainButton(bool? b);
-        void SetCheckboxes(bool site, bool xconnect, bool ids, bool commerceSites);
-        void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites);
+
+        
+        void SetFieldsandCheckboxes(BackupViewModel model);
+
+
+        //void SetCheckboxes(BackupViewModel model);
+        //void SetCheckboxes(bool site, bool xconnect, bool ids,bool horizon, bool publishing, bool commerceSites);
+        //void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites);
     }
 }

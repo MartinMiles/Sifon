@@ -91,6 +91,16 @@ namespace Sifon.Forms.MainForm
                 await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.IdentityServer, SelectedProfile, _view);
             }
 
+            if (model.Horizon.NotEmpty())
+            {
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.Horizon, SelectedProfile, _view);
+            }
+
+            if (model.PublishingService.NotEmpty())
+            {
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.PublishingService, SelectedProfile, _view);
+            }
+
             if (model.CommerceSites != null && model.CommerceSites.Any())
             {
                 foreach (var commerceSite in model.CommerceSites)

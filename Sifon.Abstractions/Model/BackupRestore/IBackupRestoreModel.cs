@@ -11,9 +11,13 @@ namespace Sifon.Abstractions.Model.BackupRestore
         bool ProcessWebroot { get; }
         bool ProcessXconnect { get; }
         bool ProcessIDS { get; }
+        bool ProcessPublishing { get; }
+        bool ProcessHorizon { get; }
         bool ProcessCommerce { get; }
         string XConnect { get; }
         string IdentityServer { get; }
+        string Horizon { get; }
+        string PublishingService { get; }
         string XConnectFolder { get; }
         string IdentityServerFolder { get; }
         IEnumerable<KeyValuePair<string, string>> CommerceSites { get; }

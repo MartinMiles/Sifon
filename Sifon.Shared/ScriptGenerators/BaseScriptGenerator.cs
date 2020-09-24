@@ -61,6 +61,8 @@ namespace Sifon.Shared.ScriptGenerators
 	                    [string]${Settings.Parameters.XConnect},           
 	                    [string]${Settings.Parameters.XConnectFolder},           
 	                    [string]${Settings.Parameters.IdentityServer},
+	                    [string]${Settings.Parameters.Horizon},
+	                    [string]${Settings.Parameters.PublishingService},
 	                    [string]${Settings.Parameters.IdentityServerFolder},
 	                    [string]${Settings.Parameters.TargetFolder},
 	                    [string[]]${Settings.Parameters.Databases},

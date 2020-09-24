@@ -4,7 +4,7 @@ using Sifon.Abstractions.Model.Response;
 
 namespace Sifon.Abstractions.Providers
 {
-    public interface  ISiteProvider
+    public interface ISiteProvider
     {
         Task<IEnumerable<string>> GetSitecoreSites();
 
@@ -12,6 +12,8 @@ namespace Sifon.Abstractions.Providers
         Task<string> GetSitePath(string siteName);
         Task<string> GetXconnect(string siteName);
         Task<string> GetIDS(string siteName);
+        Task<string> GetHorizon(string siteName);
+        Task<string> GetPublishingService(string siteName);
         Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
         Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName);

@@ -155,9 +155,13 @@ namespace Sifon.Forms.Restore
         public bool ProcessWebroot => checkFiles.Checked;
         public bool ProcessXconnect => checkXconnect.Checked;
         public bool ProcessIDS => checkIDS.Checked;
+        public bool ProcessHorizon => checkHorizon.Checked;
+        public bool ProcessPublishing => checkPublishing.Checked;
         public bool ProcessCommerce => checkCommerce.Checked;
         public string XConnect { get; private set; }
         public string IdentityServer { get; private set; }
+        public string Horizon { get; private set; }
+        public string PublishingService { get; private set; }
         public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
 
         public string XConnectFolder { get; private set; }

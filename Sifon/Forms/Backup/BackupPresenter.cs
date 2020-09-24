@@ -49,10 +49,25 @@ namespace Sifon.Forms.Backup
 
             var xconnectFolder = await _siteProvider.GetXconnect(e.Value);
             var idsFolder = await _siteProvider.GetIDS(e.Value);
+            var horizonFolder = await _siteProvider.GetHorizon(e.Value);
+            var publishingFolder = await _siteProvider.GetPublishingService(e.Value);
             var commerceSites = await _siteProvider.GetCommerceSites(e.Value);
 
-            _view.SetXConnctAndIdentity(xconnectFolder, idsFolder, commerceSites.Select(s => new KeyValuePair<string, string>(s, s)));
-            _view.SetCheckboxes(true, xconnectFolder.NotEmpty(), idsFolder.NotEmpty(), commerceSites.Any());
+            var backupViewModel = new BackupViewModel
+            {
+                SiteChecked = true,
+                XConnect = xconnectFolder,
+                Identity = idsFolder,
+                Horizon = horizonFolder,
+                Publishing = publishingFolder,
+                CommerceSites = commerceSites.Select(s => new KeyValuePair<string, string>(s, s))
+            };
+
+            _view.SetFieldsandCheckboxes(backupViewModel);
+
+            //_view.SetXConnctAndIdentity(xconnectFolder, idsFolder, commerceSites.Select(s => new KeyValuePair<string, string>(s, s)));
+            //_view.SetCheckboxes(backupViewModel);
+            //_view.SetCheckboxes(true, xconnectFolder.NotEmpty(), idsFolder.NotEmpty(), horizonFolder.NotEmpty(), publishingFolder.NotEmpty(), commerceSites.Any());
 
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
 

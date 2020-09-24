@@ -67,6 +67,7 @@
       <SubType>Form</SubType>
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Backup\BackupViewModel.cs" />
     <Compile Include="Forms\Backup\IBackupView.cs" />
     <Compile Include="Forms\Base\AbstractForm.cs">
       <SubType>Form</SubType>

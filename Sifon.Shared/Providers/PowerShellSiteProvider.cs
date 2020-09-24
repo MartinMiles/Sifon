@@ -124,5 +124,25 @@ namespace Sifon.Shared.Providers
             await _scriptWrapperString.Run(script, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
+
+        public async Task<string> GetHorizon(string siteName)
+        {
+            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetHorizonFolder);
+
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName }};
+
+            await _scriptWrapperString.Run(script, parameters);
+            return _scriptWrapperString.Results.FirstOrDefault();
+        }
+
+        public async Task<string> GetPublishingService(string siteName)
+        {
+            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetPublishingServiceFolder);
+
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName}};
+
+            await _scriptWrapperString.Run(script, parameters);
+            return _scriptWrapperString.Results.FirstOrDefault();
+        }
     }
 }

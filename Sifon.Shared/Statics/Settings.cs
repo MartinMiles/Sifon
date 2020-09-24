@@ -65,6 +65,8 @@ namespace Sifon.Shared.Statics
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
             public static string GetSitePath => Path.Combine(Folders.Core, "Get-SitePath.ps1");
             public static string GetXconnectFolder => Path.Combine(Folders.Core, "Get-XconnectFolder.ps1");
+            public static string GetHorizonFolder => Path.Combine(Folders.Core, "Get-HorizonFolder.ps1");
+            public static string GetPublishingServiceFolder => Path.Combine(Folders.Core, "Get-PublishingServiceFolder.ps1");
             public static string GetCommerceSites => Path.Combine(Folders.Core, "Get-CommerceSites.ps1");
             public static string GetCommerceDatabases => Path.Combine(Folders.Core, "Get-CommerceDatabases.ps1");
 
@@ -177,6 +179,8 @@ namespace Sifon.Shared.Statics
 
             public const string XConnect = "XConnect";
             public const string IdentityServer = "IdentityServer";
+            public const string Horizon = "Horizon";
+            public const string PublishingService = "PublishingService";
             public const string XConnectFolder = "XConnectFolder";
             public const string IdentityServerFolder = "IdentityServerFolder";
 
