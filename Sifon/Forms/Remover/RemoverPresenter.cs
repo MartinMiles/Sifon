@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sifon.Abstractions.PowerShell;
+using Sifon.Forms.Backup;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.PowerShell;
@@ -72,14 +73,23 @@ namespace Sifon.Forms.Remover
 
         private async void InstanceChanged(object sender, EventArgs<string> e)
         {
-            var folderPath = await _siteProvider.GetSitePath(e.Value);
-            var xconnectFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetXconnect(e.Value);
-            var idsFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetIDS(e.Value);
+            //var folderPath = await _siteProvider.GetSitePath(e.Value);
+            //var xconnectFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetXconnect(e.Value);
+            //var idsFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetIDS(e.Value);
+            //var horizonFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetHorizon(e.Value);
+            //var publishingFolder = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetPublishingService(e.Value);
 
-            var _commerceSites = await _siteProvider.GetCommerceSites(e.Value);
-            commerceSites = _commerceSites.Select(s => new KeyValuePair<string, string>(s, s));
-            
-            _view.SetWebfoldersAndCheckboxes(folderPath, xconnectFolder, idsFolder, commerceSites);
+            commerceSites = (await _siteProvider.GetCommerceSites(e.Value)).Select(s => new KeyValuePair<string, string>(s, s));
+
+            var model = new BackupViewModel();
+            model.Sitecore = await _siteProvider.GetSitePath(e.Value);
+            model.XConnect = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetXconnect(e.Value);
+            model.Identity = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetIDS(e.Value);
+            model.Horizon = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetHorizon(e.Value);
+            model.Publishing = e.Value == Settings.ManualEntry ? String.Empty : await _siteProvider.GetPublishingService(e.Value);
+            model.CommerceSites = commerceSites;
+
+            _view.SetWebfoldersAndCheckboxes(model);
 
             string databaseSearchPrefix = e.Value == Settings.ManualEntry ? String.Empty : _profileService.SelectedProfile.Prefix;
             UpdateDatabasesListbox(databaseSearchPrefix);

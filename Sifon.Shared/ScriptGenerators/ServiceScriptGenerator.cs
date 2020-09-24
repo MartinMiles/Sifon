@@ -24,6 +24,8 @@ namespace Sifon.Shared.ScriptGenerators
 
             executionScript += StopService(Settings.Services.ProcessingEngineService, 15);
             executionScript += StopProcess(Settings.Process.ProcessingEngine);
+            
+            executionScript += StopProcess(Settings.Process.PublishingHost);
 
             return executionScript;
         }
@@ -55,9 +57,11 @@ namespace Sifon.Shared.ScriptGenerators
         public string StopProcess(string processName)
         {
             return $@"  Try {{
-                                $Process = Get-Process -Name {processName} -ErrorAction SilentlyContinue
-	                            Stop-Process -InputObject $Process -Force
-				                Write-Output ""Stopping $Process""
+                                $Process = get-process -Name ""{processName}"" -ErrorAction SilentlyContinue
+                                if($Process){{
+                                  Stop-Process -InputObject $Process -Force
+                                    Write-Output ""Process {processName} has been terminated.""
+                                }}
                         }}
                         Catch {{ }}
                     ";

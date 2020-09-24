@@ -73,10 +73,17 @@ namespace Sifon.Shared.ScriptGenerators
 
             executionScript += _iisScriptGenerator.Start(55);
 
-            executionScript += _serviceScriptGenerator.StartService(Settings.Services.IndexWorker, 57);
-            executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, 58);
-            executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, 59);
-            
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.IndexWorker, 56);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, 57);
+            executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, 58);
+
+            if (_model.ProcessPublishing)
+            {
+                //TODO: Own starting script from plugin
+                //Start-Process -FilePath $exe  -NoNewWindow
+                //executionScript += _serviceScriptGenerator.StartService(Settings.Process.PublishingHost, 59);
+            }
+
             if (!_model.ProcessDatabases)
             {
                 executionScript += "Write-Progress -Activity $activity -CurrentOperation 'backup complete.' -PercentComplete 100";

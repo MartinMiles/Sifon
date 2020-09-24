@@ -23,6 +23,7 @@ namespace Sifon.Shared.Statics
             public const string MarketingAutomationEngine = "Sitecore.MAEngine";
             public const string Indexer = "Sitecore.XConnectSearchIndexer";
             public const string ProcessingEngine = "Sitecore.ProcessingEngine";
+            public const string PublishingHost = "Sitecore.Framework.Publishing.Host";
         }
 
         public static class Folders
@@ -180,7 +181,9 @@ namespace Sifon.Shared.Statics
             public const string XConnect = "XConnect";
             public const string IdentityServer = "IdentityServer";
             public const string Horizon = "Horizon";
+            public const string HorizonFolder = "HorizonFolder";
             public const string PublishingService = "PublishingService";
+            public const string PublishingServiceFolder = "PublishingServiceFolder";
             public const string XConnectFolder = "XConnectFolder";
             public const string IdentityServerFolder = "IdentityServerFolder";
 

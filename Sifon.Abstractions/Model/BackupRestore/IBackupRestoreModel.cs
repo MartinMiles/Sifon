@@ -17,7 +17,9 @@ namespace Sifon.Abstractions.Model.BackupRestore
         string XConnect { get; }
         string IdentityServer { get; }
         string Horizon { get; }
+        string HorizonFolder { get; }
         string PublishingService { get; }
+        string PublishingServiceFolder { get; }
         string XConnectFolder { get; }
         string IdentityServerFolder { get; }
         IEnumerable<KeyValuePair<string, string>> CommerceSites { get; }

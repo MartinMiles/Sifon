@@ -7,6 +7,7 @@ namespace Sifon.Forms.Backup
     public class BackupViewModel
     {
         public bool SiteChecked { get; set; }
+        public string Sitecore { get; set; }
 
         public bool IdentityChecked => Identity.NotEmpty();
         public string Identity { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sifon.Forms.Backup;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
 
@@ -16,6 +17,8 @@ namespace Sifon.Forms.Remover
         void ToggleControls(bool enabled);
         void PopulateInstancesDropdown(IEnumerable<string> sitecoreInstances);
         void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors);
-        void SetWebfoldersAndCheckboxes(string name, string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites);
+
+        void SetWebfoldersAndCheckboxes(BackupViewModel model);
+        //void SetWebfoldersAndCheckboxes(string name, string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites);
     }
 }

@@ -70,26 +70,47 @@ namespace Sifon.Forms.Restore
 
         public void SetXConnctAndIdentity(IEnumerable<KeyValuePair<string, string>> list)
         {
-            var site = list.FirstOrDefault(i => !CheckSite(i.Key) && !i.Key.Contains(Settings.Parameters.XConnect) && !i.Key.Contains(Settings.Parameters.IdentityServer));
+            var site = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key));
             var xconnect = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
             var identityPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
+
+            var horizonPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
+            var publishingPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
 
             SitecoreInstance = site.Key;
             XConnect = xconnect.Key;
             XConnectFolder = xconnect.Value;
             IdentityServer = identityPath.Key;
             IdentityServerFolder = identityPath.Value;
-            CommerceSites = list.Where(i => CheckSite(i.Key));
 
+            Horizon = horizonPath.Key;
+            HorizonFolder = horizonPath.Value;
+            PublishingService = publishingPath.Key;
+            PublishingServiceFolder = publishingPath.Value;
+
+            CommerceSites = list.Where(i => CheckCommerceSite(i.Key));
+
+            // TODO: and here
             checkFiles.Enabled = SitecoreInstance != null && SitecoreInstance != null;
             checkXconnect.Enabled = XConnect != null && XConnectFolder != null;
             checkIDS.Enabled = IdentityServer != null && IdentityServerFolder != null;
+            checkHorizon.Enabled = Horizon != null && Horizon != null;
+            checkPublishing.Enabled = PublishingService != null && PublishingService != null;
             checkCommerce.Enabled = CommerceSites != null && CommerceSites.Any();
 
             stateSitesReady = true;
         }
 
-        private bool CheckSite(string site)
+        private bool IsMainSitecoreSite(string key)
+        {
+            return !CheckCommerceSite(key)
+                   && !key.Contains(Settings.Parameters.XConnect)
+                   && !key.Contains(Settings.Parameters.IdentityServer)
+                   && !key.Contains(Settings.Parameters.Horizon)
+                   && !key.Contains(Settings.Parameters.PublishingService);
+        }
+
+        private bool CheckCommerceSite(string site)
         {
             string[] commerceSites = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
             return commerceSites.Any(s => site.Contains(s));
@@ -161,7 +182,9 @@ namespace Sifon.Forms.Restore
         public string XConnect { get; private set; }
         public string IdentityServer { get; private set; }
         public string Horizon { get; private set; }
+        public string HorizonFolder { get; private set; }
         public string PublishingService { get; private set; }
+        public string PublishingServiceFolder { get; private set; }
         public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
 
         public string XConnectFolder { get; private set; }

@@ -49,14 +49,24 @@ namespace Sifon.Shared.ScriptGenerators
 
                 if (_model.ProcessIDS)
                 {
-                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.IdentityServerFolder, 53);
+                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.IdentityServerFolder, 43);
                 }
 
                 if (_model.ProcessXconnect)
                 {
                     executionScript += $@"{Environment.NewLine}Start-Sleep -Seconds 2";
-                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.XConnectFolder, 50);
+                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.XConnectFolder, 45);
                 }
+
+                if (_model.ProcessHorizon)
+                {
+                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.Horizon, 47);
+                }
+                if (_model.ProcessPublishing)
+                {
+                    executionScript += _filesScriptGenerator.Remove(Settings.Parameters.PublishingService, 50);
+                }
+
 
                 if (_model.ProcessCommerce)
                 {

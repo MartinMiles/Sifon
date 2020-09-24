@@ -57,6 +57,19 @@ namespace Sifon.Shared.ScriptGenerators
                     .Restore(Settings.Parameters.IdentityServer, Settings.Parameters.IdentityServerFolder, 50);
             }
 
+
+            if (_model.ProcessHorizon)
+            {
+                executionScript += _filesScriptGenerator
+                    .Restore(Settings.Parameters.Horizon, Settings.Parameters.HorizonFolder, 48);
+            }
+
+            if (_model.ProcessPublishing)
+            {
+                executionScript += _filesScriptGenerator
+                    .Restore(Settings.Parameters.PublishingService, Settings.Parameters.PublishingServiceFolder, 50);
+            }
+
             if (_model.ProcessCommerce)
             {
                 for(int i = 0; i < _model.CommerceSites.Count(); i++)

@@ -198,6 +198,8 @@ namespace Sifon.Forms.Backup
         public string XConnect { get; private set; }
         public string IdentityServer { get; private set; }
         public string Horizon { get; private set; }
+        public string HorizonFolder { get; }                // not used - implemented only for interface compliance with restore
+        public string PublishingServiceFolder { get; }      // not used - implemented only for interface compliance with restore
 
         public string PublishingService { get; private set; }
         public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
