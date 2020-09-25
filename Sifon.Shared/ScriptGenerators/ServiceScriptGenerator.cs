@@ -41,6 +41,16 @@ namespace Sifon.Shared.ScriptGenerators
                 }}
                 ";
         }
+        public string StartPublishingService(string publishingServiceFolder)
+        {
+            return $@"
+                Push-Location
+                Set-Location -Path ${publishingServiceFolder}
+                Write-Output ""Now starting Publishing Service process...""
+                Start-Process -FilePath ${publishingServiceFolder}\Sitecore.Framework.Publishing.Host.exe -NoNewWindow
+                Pop-Location
+                ";
+        }
 
         private string StopService(string serviceName, int percents)
         {

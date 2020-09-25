@@ -94,6 +94,11 @@ namespace Sifon.Shared.ScriptGenerators
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, service2);
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, service3);
 
+            if (_model.ProcessPublishing)
+            {
+                executionScript += _serviceScriptGenerator.StartPublishingService(Settings.Parameters.PublishingServiceFolder);
+            }
+
             executionScript += "Write-Progress -Activity $activity -CurrentOperation 'restore complete.' -PercentComplete 100";
         }
 
