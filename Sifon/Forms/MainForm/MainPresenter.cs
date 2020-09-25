@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Model.BackupRestore;
@@ -35,6 +36,8 @@ namespace Sifon.Forms.MainForm
                 var provider = new ProfilesProvider();
                 provider.CreateOnFirstRun();
 
+                InstallModuleOnfirstRun();
+
                 view.ForceProfileDialogOnFirstRun();
                 _profilesService.Read();
             }
@@ -52,6 +55,13 @@ namespace Sifon.Forms.MainForm
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
             _view.ScriptToolStripClicked += ScriptToolStripClicked;
+        }
+
+        private void InstallModuleOnfirstRun()
+        {
+            var ps = PowerShell.Create();
+            ps.AddCommand(".\\PowerShell\\Module\\_deploy_to_modules.ps1");
+            ps.Invoke();
         }
 
         private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.ProfileName);

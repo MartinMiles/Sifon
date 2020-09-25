@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
-using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Encryption;
 using Sifon.Shared.Events;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Providers.Profile;
