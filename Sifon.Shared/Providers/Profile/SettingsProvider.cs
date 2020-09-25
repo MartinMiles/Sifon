@@ -25,19 +25,19 @@ namespace Sifon.Shared.Providers.Profile
 
         public ISettingRecord Read()
         {
-            if (!File.Exists(Settings.ProfilesFolder.SettingsPath))
+            _entity = new SettingRecord();
+
+            if (File.Exists(Settings.ProfilesFolder.SettingsPath))
             {
-                throw new FileNotFoundException($"Settings file missing at: {Settings.ProfilesFolder.SettingsPath}");
-            }
+                var doc = new XmlDocument();
+                doc.Load(Settings.ProfilesFolder.SettingsPath);
 
-            var doc = new XmlDocument();
-            doc.Load(Settings.ProfilesFolder.SettingsPath);
+                _entity = new SettingRecord(doc.DocumentElement);
 
-            _entity = new SettingRecord(doc.DocumentElement);
-
-            if (!string.IsNullOrWhiteSpace(_entity.PortalPassword))
-            {
-                _entity.PortalPassword = _encryptor.Decrypt(_entity.PortalPassword);
+                if (!string.IsNullOrWhiteSpace(_entity.PortalPassword))
+                {
+                    _entity.PortalPassword = _encryptor.Decrypt(_entity.PortalPassword);
+                }
             }
 
             return _entity;

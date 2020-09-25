@@ -34,7 +34,7 @@ namespace Sifon.Forms.PortalCredentials
         {
             if (name == textUsername.Name)
             {
-                return Pattern.Filter.SpecialCharacters.Except.DotsDashes;
+                return Pattern.Filter.SpecialCharacters.Except.DotsDashesAmpersand;
             }
             if (name == textPassword.Name)
             {

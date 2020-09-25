@@ -53,6 +53,11 @@
                     /// Works for SQL Server record name.
                     /// </summary>
                     public const string DotsDashes = @"[^\w\d.-]";
+                    
+                    /// <summary>
+                    /// Works for email name.
+                    /// </summary>
+                    public const string DotsDashesAmpersand = @"[^\w\d.-@]";
 
                     /// <summary>
                     /// Works for SQL Server instance.
