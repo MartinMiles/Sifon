@@ -41,7 +41,7 @@ namespace Sifon.Shared.PowerShell
             initial.ExecutionPolicy = ExecutionPolicy.Unrestricted;
             
             initial.ImportPSModule(new[] { "SqlServer" });
-            initial.ImportPSModule(new[] { "Sifon" });
+            initial.ImportPSModule(new[] { "c:\\Program Files\\WindowsPowerShell\\Modules\\Sifon\\Sifon.psm1" });
             return RunspaceFactory.CreateRunspace(initial);
         }
 
