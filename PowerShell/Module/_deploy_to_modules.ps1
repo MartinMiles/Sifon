@@ -1,5 +1,6 @@
 $ModulesDirectory = "c:\Program Files\WindowsPowerShell\Modules\Sifon"
-$psd1 = (split-path -parent $MyInvocation.MyCommand.Definition) + "\Sifon.psd1"
+$sourceFolder = split-path -parent $MyInvocation.MyCommand.Definition
+$psd1 = "$sourceFolder\Sifon.psd1"
 
 $manifest = @{
 	Path 			    = $psd1
@@ -18,4 +19,4 @@ New-ModuleManifest @manifest
 
 New-Item -ItemType Directory -Path $ModulesDirectory -force
 Get-ChildItem -Path $ModulesDirectory -Include * -File -Recurse | foreach { $_.Delete()}
-Copy-Item -Path "*" -Destination $ModulesDirectory -Recurse
+Copy-Item -Path "$sourceFolder\*" -Destination $ModulesDirectory -Recurse
