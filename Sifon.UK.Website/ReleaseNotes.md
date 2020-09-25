@@ -1,5 +1,18 @@
 # Release notes
 
+Version **0.96**
+
+- a PowerShell module for Sifon has introduced with commonly called functions
+- now Sifon is aware of Horizon and Pushishing Service and carefully does backup, cleanup and restore for those
+- new "Settings" menu with an option to add your Sitecore developer's credentials
+- a feature to test credentials and store and pass them into a script already in an encrypted way
+- now Sifon is capable of dowloading Sitecore resources in one clickfrom any script via a module function
+- this module is auto-installed into a system PowerShell folder on the first run
+- profile editor now also asks for Sitecore instance admin username and password
+- folder rename: Core scripts now went under PowerShell/Core along with Module folder
+- added more mute synthaxes for: warnings, errors and for muting nested progress streams that break yours
+- plenty of minor bugfixes and improvements
+
 
 Version **0.95**
 

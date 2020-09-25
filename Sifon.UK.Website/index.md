@@ -6,21 +6,23 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Downloads
 
-Use this link to [download](/download/Sifon_0.95.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
+Use this link to [download](/download/Sifon_0.96.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
 
 
 ## Features
 
 - functions with Sitecore versions 9.x and 10.0
 - backup, clean, restore selected Sitecore instance out-of-the-box with nice GUI
-- you can choose the above operations for webroot, xConnect, Identity Server sites and all together
+- you can choose the above operations for webroot, xConnect, Identity Server, Horizon and Publishing Service sites (or them all)
+- support Sitecore Commerce of both 9.x and 10.x versions
 - environment auto-detection: hostnames, bindings, installed Solr instances
 - supports multiple instances on a host via creating and selecting profiles
 - all the above can be done on remote VM via WinRM (WsMan) with remote profile
 - supports plugins both written in PowerShell or compiled .NET libraries
+- plugins can use API for downloading and consuming resources from Sitecore Developers Portal
 - plugins are kept in hierarchical order and, in fact, may be crowdsourced
 - respects Windows services: marketing automation, xConnect search indexer, processing engine and of course IIS
-- support Sitecore Commerce of both 9.x and 10.x versions
+
 
 
 ## Documentation
