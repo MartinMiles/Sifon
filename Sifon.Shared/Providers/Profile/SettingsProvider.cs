@@ -64,7 +64,10 @@ namespace Sifon.Shared.Providers.Profile
 
         public void AddScriptSettingsParameters(Dictionary<string, object> parameters)
         {
-            TestScriptSettingsParameters(parameters, _entity.PortalUsername, _entity.PortalPassword);
+            if (_entity.PortalUsername.NotEmpty() && _entity.PortalPassword.NotEmpty())
+            {
+                TestScriptSettingsParameters(parameters, _entity.PortalUsername, _entity.PortalPassword);
+            }
         }
 
         public void TestScriptSettingsParameters(Dictionary<string, object> parameters, string username, string password)
