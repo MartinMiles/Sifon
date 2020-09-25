@@ -50,7 +50,7 @@ namespace Sifon.Forms.PortalCredentials
         private async void TestClicked(object sender, EventArgs<ISettingRecord> e)
         {
             var parameters = new Dictionary<string, dynamic>();
-            _settingsProvider.AddScriptSettingsParameters(parameters);
+            _settingsProvider.TestScriptSettingsParameters(parameters, e.Value.PortalUsername, e.Value.PortalPassword);
            
             _view.ToggleControls(false);
 
@@ -77,11 +77,6 @@ namespace Sifon.Forms.PortalCredentials
             else
             {
                 _view.ShowError(Messages.ProfileCredentials.Caption, Messages.ProfileCredentials.Errors.IncorrectCredentials);
-            }
-
-            if (errors.Any())
-            {
-                _view.ShowError(Messages.ProfileCredentials.Caption, errors.First());
             }
         }
     }

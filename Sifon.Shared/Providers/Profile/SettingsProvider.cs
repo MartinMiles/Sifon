@@ -64,8 +64,12 @@ namespace Sifon.Shared.Providers.Profile
 
         public void AddScriptSettingsParameters(Dictionary<string, object> parameters)
         {
-            var password = _entity.PortalPassword.ToSecureString();
-            var credential= new System.Management.Automation.PSCredential(_entity.PortalUsername, password);
+            TestScriptSettingsParameters(parameters, _entity.PortalUsername, _entity.PortalPassword);
+        }
+
+        public void TestScriptSettingsParameters(Dictionary<string, object> parameters, string username, string password)
+        {
+            var credential = new System.Management.Automation.PSCredential(username, password.ToSecureString());
             parameters.Add(Settings.Parameters.PortalCredentials, credential);
         }
     }

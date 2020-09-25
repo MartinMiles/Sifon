@@ -62,7 +62,11 @@ namespace Sifon.Forms.PortalCredentials
 
         #region ISettingRecord implementation
 
-        public string PortalUsername => textUsername.Text.Trim();
+        public string PortalUsername
+        {
+            get => textUsername.Text.Trim();
+            set => textUsername.Text = value;
+        }
 
         public string PortalPassword
         {

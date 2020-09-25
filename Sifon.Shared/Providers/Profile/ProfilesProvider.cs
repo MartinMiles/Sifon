@@ -220,8 +220,8 @@ namespace Sifon.Shared.Providers.Profile
 
             newProfile.ProfileName = Settings.Files.DefaultProfileName;
             newProfile.Prefix = Settings.Files.DefaultProfilePrefix;
-
-            //newProfile.SetSqlProfile(new SqlServerRecord());
+            newProfile.AdminUsername = "admin";
+            newProfile.AdminPassword = "b";
 
             _profiles = _profiles.Concat(new[] {(Model.Profiles.Profile)newProfile });
             SelectProfile(newProfile);
