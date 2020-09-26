@@ -1,5 +1,16 @@
 # Release notes
 
+Version **0.97**
+
+- now supports and correctly handles instances installations outside of `inetpub\wwwroot` folder
+- this is mostly stabilized release of all previous features, critically reviewed and corrected
+- on a first run there is no default profile set up for you (previously is was: habitat), now truly new user experience
+- improvements within external plugins; also a new plugin to install SPE 6.1.1 with Remoting enabled in one click
+- now Sifon module has two functions for package installation: 
+    1. `Install-SitecorePackage` - universal and slow, creating temporal page (to get into Context) with module installation logic
+    2. `Install-SitecorePackageUsingRemoting` - new, reliable and fast, but requires SPE with Remoting enabled on target
+
+
 Version **0.96**
 
 - a PowerShell module for Sifon has introduced with commonly called functions
