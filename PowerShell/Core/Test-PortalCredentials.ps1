@@ -2,7 +2,10 @@ param(
 	$PortalCredentials
 )
 
-$file = (Get-Location).Path + "\Downloads\Sitecore.Platform.Assemblies 10.0.0 rev. 004346.zip"
+$DownloadsFolderPath = (Get-Location).Path + "\Downloads"
+New-Item -ItemType Directory -Force -Path $DownloadsFolderPath | Out-Null
+
+$file = "$DownloadsFolderPath\Sitecore.Platform.Assemblies 10.0.0 rev. 004346.zip"
 
 $PortalCredentials
 
