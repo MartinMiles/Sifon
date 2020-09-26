@@ -92,17 +92,18 @@ namespace Sifon.Forms.Profiles
             profile.ProfileName = _view.Profile.ProfileName;
             profile.Prefix = _view.Profile.Prefix;
 
-            profile.Webroot = _view.Website.Webroot;
+            profile.Webroot = _view.Website?.Webroot ?? "";
 
-            if (_view.Website.SelectedSite != null)
+            if (_view.Website?.SelectedSite != null)
             {
                 profile.Website = _view.Website.SelectedSite == Settings.Dropdowns.NotSet ? "" : _view.Website.SelectedSite;
             }
 
-            profile.Solr = _view.Connectivity.Solr == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Solr;
-            profile.SqlServer = _view.Connectivity.Sql == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Sql;
+            profile.Solr = _view.Connectivity == null ||_view.Connectivity.Solr == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Solr;
+            profile.SqlServer = _view.Connectivity == null || _view.Connectivity.Sql == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Sql;
 
-            profile.Parameters = _view.Parameters.Values;
+
+            profile.Parameters = _view.Parameters != null ? _view.Parameters.Values : new Dictionary<string, string>();
 
             ProfilesService.UpdateSelected(profile);
             ProfilesService.Save();

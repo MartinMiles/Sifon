@@ -4,8 +4,6 @@ using System.Linq;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
@@ -29,7 +27,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         {
             _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
 
-            bool isFirstRun = string.IsNullOrWhiteSpace(Presenter.SelectedProfile?.Webroot) && Presenter.SelectedProfile.ProfileName == Settings.Files.DefaultProfileName;
+            bool isFirstRun = Presenter?.SelectedProfile == null;
             if (isFirstRun)
             {
                 _view.DisplayFirstRunWarning();
@@ -59,11 +57,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
             ProfilesService.SelectProfile(e.Value);
-
             _view.SetFields(SelectedProfile);
-
-            //_view.SetProfileTextbox(SelectedProfile.Name);
-            //_view.SetPrefixTextbox(SelectedProfile.Prefix);
         }
         private void SelectedProfileDeleted(object sender, EventArgs e)
         {

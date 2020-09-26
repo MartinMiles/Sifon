@@ -17,6 +17,8 @@ namespace Sifon.Forms.Profiles.UserControls.Parameters
 
         protected override void Loaded(object sender, EventArgs e)
         {
+            if (Presenter.SelectedProfile == null) return;
+
             Presenter.ProfileChanged += ProfileChanged;
             _view.DownloadSampleScriptClicked += DownloadSampleScriptClicked;
             _view.SetValues(Presenter.SelectedProfile.Parameters);
@@ -32,7 +34,10 @@ namespace Sifon.Forms.Profiles.UserControls.Parameters
 
         private void ProfileChanged(object sender, EventArgs<bool> e)
         {
-            _view.SetValues(Presenter.SelectedProfile.Parameters);
+            if (Presenter.SelectedProfile != null)
+            {
+                _view.SetValues(Presenter.SelectedProfile.Parameters);
+            }
         }
 
         // button status - 

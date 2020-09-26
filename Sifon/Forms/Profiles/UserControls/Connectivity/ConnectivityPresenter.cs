@@ -42,36 +42,42 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         private async void RedrawForm()
         {
-            _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile?.SqlServerRecord?.RecordName);
-            _view.LoadSolrDropdown();
-            _view.SetSolrValue(SelectedProfile?.Solr);
-
-            _solrIdentifier = new SolrIdentifier(SelectedProfile, _view);
-            _solrIdentifier.OnProgressReady += (sender, args) => _view.UpdateProgress(args.Value);
-
-            if (!SelectedProfile.RemotingEnabled || SelectedProfile.RemoteFolder.NotEmpty())
+            if (SelectedProfile != null)
             {
-                _view.ShowSpinnerHideGrid(true);
+                _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile.SqlServerRecord?.RecordName);
+                _view.LoadSolrDropdown();
+                _view.SetSolrValue(SelectedProfile?.Solr);
 
-                try
-                {
-                    _view.SetSolrGrid(await _solrIdentifier.Identify(), SelectedProfile.RemotingEnabled);
-                    _view.SetSolrDropdownByProfile(SelectedProfile?.Solr);
-                }
-                catch (RemoteNotInitializedException)
-                {
-                    ShowConnectivityError();
-                }
-                catch 
-                {
-                    // need to silently continue here
-                }
+                _solrIdentifier = new SolrIdentifier(SelectedProfile, _view);
+                _solrIdentifier.OnProgressReady += (sender, args) => _view.UpdateProgress(args.Value);
 
-                _view.ShowSpinnerHideGrid(false);
-            }
-            else
-            {
-                _view.NotifyRemoteNotInitialized();
+                if (!SelectedProfile.RemotingEnabled || SelectedProfile.RemoteFolder.NotEmpty())
+                {
+                    _view.ShowSpinnerHideGrid(true);
+
+                    try
+                    {
+                        if (SelectedProfile != null)
+                        {
+                            _view.SetSolrGrid(await _solrIdentifier.Identify(), SelectedProfile?.RemotingEnabled ?? false);
+                            _view.SetSolrDropdownByProfile(SelectedProfile?.Solr);
+                        }
+                    }
+                    catch (RemoteNotInitializedException)
+                    {
+                        ShowConnectivityError();
+                    }
+                    catch
+                    {
+                        // need to silently continue here
+                    }
+
+                    _view.ShowSpinnerHideGrid(false);
+                }
+                else
+                {
+                    _view.NotifyRemoteNotInitialized();
+                }
             }
         }
 
@@ -107,6 +113,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         
         private void ProfileChanged(object sender, EventArgs<bool> e)
         {
+            if (SelectedProfile == null) return;
+
             _view.ShowSpinnerHideGrid(true);
 
             RedrawForm();

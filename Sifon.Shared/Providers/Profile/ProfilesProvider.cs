@@ -213,19 +213,5 @@ namespace Sifon.Shared.Providers.Profile
 
             return profile;
         }
-
-        public void CreateOnFirstRun()
-        {
-            var newProfile = CreateLocal();
-
-            newProfile.ProfileName = Settings.Files.DefaultProfileName;
-            newProfile.Prefix = Settings.Files.DefaultProfilePrefix;
-            newProfile.AdminUsername = "admin";
-            newProfile.AdminPassword = "b";
-
-            _profiles = _profiles.Concat(new[] {(Model.Profiles.Profile)newProfile });
-            SelectProfile(newProfile);
-            Save();
-        }
     }
 }

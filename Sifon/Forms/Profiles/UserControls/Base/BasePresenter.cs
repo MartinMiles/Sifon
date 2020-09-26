@@ -25,8 +25,8 @@ namespace Sifon.Forms.Profiles.UserControls.Base
 
         protected ProfilesPresenter Presenter => _view.Presenter;
 
-        protected ProfilesProvider ProfilesService => Presenter.ProfilesService;
-        internal IProfile SelectedProfile => ProfilesService.SelectedProfile;
+        protected ProfilesProvider ProfilesService => Presenter?.ProfilesService;
+        internal IProfile SelectedProfile => ProfilesService?.SelectedProfile;
 
         protected abstract void Loaded(object sender, EventArgs e);
 

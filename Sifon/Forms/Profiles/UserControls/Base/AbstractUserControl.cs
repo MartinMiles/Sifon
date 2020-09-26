@@ -12,7 +12,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
         {
             get
             {
-                var form = Parent.Parent.Parent as Form;
+                var form = Parent?.Parent?.Parent as Form;
                 if (form is Profiles profiles)
                 {
                     return profiles.Presenter;

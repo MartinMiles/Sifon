@@ -94,11 +94,6 @@ namespace Sifon.Shared.Statics
             }
 
         }
-        public static class Files
-        {
-            public static string DefaultProfileName = "Habitat sample website";
-            public static string DefaultProfilePrefix = "Habitat";
-        }
 
         public const string ManualEntry = "== enter manually ==";
 

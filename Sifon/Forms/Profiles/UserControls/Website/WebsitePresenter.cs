@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Providers;
@@ -73,10 +74,13 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         private async void ProfileChanged(object sender, EventArgs<bool> e)
         {
             _view.EnableControls(e.Value);
-            _view.SetWebsiteDropdownByProfile(SelectedProfile.Website);
-            _view.SetWebrootTextbox(SelectedProfile.Webroot);
+            _view.SetWebsiteDropdownByProfile(SelectedProfile?.Website);
+            _view.SetWebrootTextbox(SelectedProfile?.Webroot);
 
-            var bindings = await _siteProvider.GetBindings(SelectedProfile.Website);
+            var bindings = SelectedProfile != null
+                ? await _siteProvider.GetBindings(SelectedProfile.Website)
+                : new Dictionary<string, string>();
+
             _view.ShowSiteHostnames(bindings);
         }
         

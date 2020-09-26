@@ -56,7 +56,10 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         public void SetWebrootTextbox(string path)
         {
-            textWebroot.Text = path;
+            if(path.NotEmpty())
+            {
+                textWebroot.Text = path;
+            }
         }
 
         public void ShowSiteHostnames(IEnumerable<KeyValuePair<string, string>> hostnames)
@@ -68,7 +71,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         {
             if (comboWebsites.Items.Count > 0)
             {
-                comboWebsites.SelectedIndex = comboWebsites.Items.Contains(website) ? comboWebsites.Items.IndexOf(website) : 0;
+                comboWebsites.SelectedIndex = website != null && comboWebsites.Items.Contains(website) ? comboWebsites.Items.IndexOf(website) : 0;
             }
         }
 

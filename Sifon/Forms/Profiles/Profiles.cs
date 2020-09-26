@@ -11,17 +11,34 @@ namespace Sifon.Forms.Profiles
     public partial class Profiles : BaseForm, IProfilesView
     {
         private bool modifiedFlag = false;
+        private bool isFirstRunFlag;
+
         public event EventHandler<EventArgs> FormSaved = delegate { };
         
         internal ProfilesPresenter Presenter { get; private set; }
 
+        #region Constructors
+
+        public Profiles(bool firstRun)
+        {
+            isFirstRunFlag = firstRun;
+            ctor();
+        }
+
         public Profiles()
+        {
+            ctor();
+        }
+
+        private void ctor()
         {
             InitializeComponent();
             Presenter = new ProfilesPresenter(this);
 
             PopulateTabsWithUsercontrols();
         }
+
+        #endregion
 
         #region Access properties
 
@@ -41,7 +58,7 @@ namespace Sifon.Forms.Profiles
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (Profile.ValidateValues() && Parameters.ValidateValues() && Remote.ValidateValues())
+            if (Profile.ValidateValues() && (Parameters == null || Parameters.ValidateValues()) && (Remote == null || Remote.ValidateValues()))
             {
                 FormSaved(this, new EventArgs());
             }
@@ -65,17 +82,32 @@ namespace Sifon.Forms.Profiles
         {
             tabProfile.Controls.Add(Profile = new UserControls.Profile.Profile());
             tabRemote.Controls.Add(Remote = new Remote());
-            tabWebsite.Controls.Add(Website = new Website());
-            tabConnectivity.Controls.Add(Connectivity = new Connectivity());
-            tabParameters.Controls.Add(Parameters = new Parameters());
+
+            if (!isFirstRunFlag)
+            {
+                tabWebsite.Controls.Add(Website = new Website());
+                tabConnectivity.Controls.Add(Connectivity = new Connectivity());
+                tabParameters.Controls.Add(Parameters = new Parameters());
+            }
+            else
+            {
+                tabControl1.Controls.Remove(tabWebsite);
+                tabControl1.Controls.Remove(tabConnectivity);
+                tabControl1.Controls.Remove(tabParameters);
+            }
         }
 
         private void PreloadTabs()
         {
             tabProfile.Show();
             tabRemote.Show();
-            tabWebsite.Show();
-            tabConnectivity.Show();
+            
+            if (!isFirstRunFlag)
+            {
+                tabWebsite.Show();
+                tabConnectivity.Show();
+                tabParameters.Show();
+            }
         }
 
         public void EnableSaveButton(bool value)
@@ -91,7 +123,7 @@ namespace Sifon.Forms.Profiles
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == Keys.Escape && modifiedFlag && ShowYesNo("Changes not saved", "Are you sure you would like to leae without saving the changes?"))
+            if (keyData == Keys.Escape && modifiedFlag && ShowYesNo("Changes not saved", "Are you sure you would like to leave without saving the changes?"))
             {
                 CloseDialog();
                 return true;

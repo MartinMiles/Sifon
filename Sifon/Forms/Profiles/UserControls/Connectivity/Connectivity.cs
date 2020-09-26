@@ -73,6 +73,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         public void SetSolrGrid(IEnumerable<SolrInfo> solrs, bool isRemote)
         {
+            if (solrs == null) return;
+
             foreach (var solrUrl in solrs.Select(s => s.Url))
             {
                 comboSolrInstances.Items.Add(solrUrl);

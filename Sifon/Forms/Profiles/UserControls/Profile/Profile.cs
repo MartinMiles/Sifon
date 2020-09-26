@@ -103,8 +103,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             }
         }
 
-        //private Tuple<string, string> ProfilePrefixTuple => new Tuple<string, string>(textProfileName.Text.Trim(), textPrefix.Text.Trim());
-
         private void buttonRename_Click(object sender, EventArgs e)
         {
             if (comboProfiles.SelectedIndex > 0)

@@ -15,7 +15,6 @@ using Sifon.Shared.Extensions;
 using Sifon.Shared.Filesystem;
 using Sifon.Shared.Model;
 using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers;
 using Sifon.Shared.Providers.Profile;
 using Sifon.Shared.ScriptGenerators;
 using Sifon.Shared.Statics;
@@ -26,7 +25,6 @@ namespace Sifon.Forms.MainForm
     internal class MainPresenter : ScriptablePresenter
     {
         private readonly ISuperClass _superClass;
-        private readonly ISiteProvider _siteProvider;
         private readonly IFilesystem _filesystem;
 
         internal MainPresenter(IMainView view): base(view)
@@ -34,7 +32,7 @@ namespace Sifon.Forms.MainForm
             if (!_profilesService.Any)
             {
                 var provider = new ProfilesProvider();
-                provider.CreateOnFirstRun();
+                provider.Save();
 
                 InstallModuleOnfirstRun();
 
@@ -43,7 +41,6 @@ namespace Sifon.Forms.MainForm
             }
 
             _superClass = new SuperClass();
-            _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
             _filesystem = new FilesystemFactory(SelectedProfile, _view).CreateLocal();
 
 
@@ -55,6 +52,7 @@ namespace Sifon.Forms.MainForm
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
             _view.ScriptToolStripClicked += ScriptToolStripClicked;
+            
         }
 
         private void InstallModuleOnfirstRun()
@@ -177,9 +175,7 @@ namespace Sifon.Forms.MainForm
 
         private void ProfilesToolStripClicked(object sender, EventArgs e)
         {
-            //var pluginsMenuItem = GetPluginsAndScripts(Settings.Folders.Plugins);
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
-            
             _view.LoadProfilesSelector(JustReadProfileNames, SelectedProfile.ProfileName);
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
         }

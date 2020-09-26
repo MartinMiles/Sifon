@@ -14,10 +14,13 @@ namespace Sifon.Extensions
             dataGrid.RowHeadersVisible = false;
             dataGrid.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGrid.DataSource = hostnames;
-            dataGrid.Columns[0].HeaderText = columnNames[0];
-            dataGrid.Columns[1].HeaderText = columnNames[1];
-            dataGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (dataGrid.Columns.Count > 0)
+            {
+                dataGrid.Columns[0].HeaderText = columnNames[0];
+                dataGrid.Columns[1].HeaderText = columnNames[1];
+                dataGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                dataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
 
         public static void SetButtonColumnEnable(this DataGridView dataGrid, int columnIndex, bool enabled)
