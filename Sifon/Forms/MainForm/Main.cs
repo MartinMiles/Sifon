@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Shared.Events;
+using Sifon.Shared.Exceptions;
 using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.MainForm
@@ -174,6 +175,18 @@ namespace Sifon.Forms.MainForm
             var form = new PortalCredentials.PortalCredentials { StartPosition = FormStartPosition.CenterParent };
             form.ShowDialog();
             form.Dispose();
+        }
+
+        private void containersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void TerminateAsEmptyProfile()
+        {
+            MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

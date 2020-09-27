@@ -66,10 +66,17 @@ namespace Sifon.Forms.MainForm
 
         private void Loaded(object sender, EventArgs e)
         {
-            var profileNames = JustReadProfileNames;
-            _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
-            _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+            if (SelectedProfile != null)
+            {
+                var profileNames = JustReadProfileNames;
+                _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
+                _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
+                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+            }
+            else
+            {
+                _view.TerminateAsEmptyProfile();
+            }
         }
 
         private string CaptionSuffix => _superClass.AppendEnvironmentToCaption(_profilesService.SelectedProfile);

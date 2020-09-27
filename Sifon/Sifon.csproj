@@ -95,6 +95,12 @@
     </Compile>
     <Compile Include="Forms\Base\IBaseBackupRestoreView.cs" />
     <Compile Include="Forms\Base\ScriptablePresenter.cs" />
+    <Compile Include="Forms\Containers\DockerProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Containers\DockerProfiles.Designer.cs">
+      <DependentUpon>DockerProfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Initialize\IInitRemote.cs" />
     <Compile Include="Forms\Initialize\InitRemote.cs">
       <SubType>Form</SubType>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Backup\Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Containers\DockerProfiles.resx">
+      <DependentUpon>DockerProfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
