@@ -123,7 +123,7 @@ namespace Sifon.Forms.MainForm
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
             this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
-            this.menuContainerPlugins.Text = "Plugins / Scripts";
+            this.menuContainerPlugins.Text = "Plugins / Actions";
             this.menuContainerPlugins.Click += new System.EventHandler(this.menuContainersPlugins_Click);
             // 
             // pluginsToolStripMenuItem
