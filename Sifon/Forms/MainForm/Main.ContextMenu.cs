@@ -17,13 +17,13 @@ namespace Sifon.Forms.MainForm
         public void InitListboxContexMenu()
         {
             var toolStripMenuItem1 = new ToolStripMenuItem { Text = Statics.ContextMenu.CopyClipboard };
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            toolStripMenuItem1.Click += contextMenu_CopyLineToClipboard_Click;
 
             var toolStripMenuItem3 = new ToolStripMenuItem { Text = Statics.ContextMenu.SaveToFile };
-            toolStripMenuItem3.Click += toolStripMenuItem3_Click;
+            toolStripMenuItem3.Click += contextMenu_SaveToOutput_Click;
 
             var toolStripMenuItem2 = new ToolStripMenuItem { Text = Statics.ContextMenu.ClearAll };
-            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
+            toolStripMenuItem2.Click += contextMenu_Clear_Click;
 
             collectionRoundMenuStrip = new ContextMenuStrip();
             collectionRoundMenuStrip.Items.AddRange(new ToolStripItem[]
@@ -34,7 +34,7 @@ namespace Sifon.Forms.MainForm
             listBoxOutput.MouseDown += myListBox_MouseDown;
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void contextMenu_CopyLineToClipboard_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(GetOutputLines(true));
         }
@@ -53,7 +53,7 @@ namespace Sifon.Forms.MainForm
             return builder.ToString();
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void contextMenu_SaveToOutput_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "*.log|*.txt";
@@ -71,7 +71,7 @@ namespace Sifon.Forms.MainForm
             }
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void contextMenu_Clear_Click(object sender, EventArgs e)
         {
             listBoxOutput.Items.Clear();
             progressBar.Value = 0;

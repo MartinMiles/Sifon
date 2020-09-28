@@ -28,6 +28,9 @@ namespace Sifon.Forms.MainForm
             this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.containersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profilesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuContainerPlugins = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +44,6 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.containersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -100,6 +102,29 @@ namespace Sifon.Forms.MainForm
             this.profilesToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.profilesToolStripMenuItem.Text = "Profiles";
             this.profilesToolStripMenuItem.Click += new System.EventHandler(this.profilesToolStripMenuItem_Click);
+            // 
+            // containersToolStripMenuItem
+            // 
+            this.containersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profilesToolStripMenuItem1,
+            this.menuContainerPlugins});
+            this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
+            this.containersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.containersToolStripMenuItem.Text = "Containers";
+            // 
+            // profilesToolStripMenuItem1
+            // 
+            this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.profilesToolStripMenuItem1.Text = "Profiles";
+            this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
+            // 
+            // menuContainerPlugins
+            // 
+            this.menuContainerPlugins.Name = "menuContainerPlugins";
+            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
+            this.menuContainerPlugins.Text = "Plugins / Scripts";
+            this.menuContainerPlugins.Click += new System.EventHandler(this.menuContainersPlugins_Click);
             // 
             // pluginsToolStripMenuItem
             // 
@@ -232,13 +257,6 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
-            // containersToolStripMenuItem
-            // 
-            this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
-            this.containersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.containersToolStripMenuItem.Text = "Containers";
-            this.containersToolStripMenuItem.Click += new System.EventHandler(this.containersToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AllowDrop = true;
@@ -286,6 +304,8 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sitecorePortalCredentialsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem containersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuContainerPlugins;
     }
 }
 

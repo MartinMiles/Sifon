@@ -26,6 +26,38 @@ namespace Sifon.Forms.MainForm
             pluginsToolStripMenuItem.DropDownItems.Clear();
             DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem);
             pluginsToolStripMenuItem.Text = "Plugins";
+
+            MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
+        }
+
+        private void MoveContainerPluginsIntoTheirOwnMenu(ToolStripMenuItem pluginsToolStripMenuItem)
+        {
+            var menuItemContainers = FindMenuItemByTopLevelName(pluginsToolStripMenuItem, "Containers");
+            if (menuItemContainers != null)
+            {
+                menuContainerPlugins.DropDownItems.Clear();
+
+                var copy = new ToolStripItem[menuItemContainers.DropDownItems.Count];
+                menuItemContainers.DropDownItems.CopyTo(copy,0);
+                foreach (var child in copy)
+                {
+                    menuContainerPlugins.DropDownItems.Add(child);
+                }
+                pluginsToolStripMenuItem.DropDownItems.Remove(menuItemContainers);
+            }
+        }
+
+        private ToolStripMenuItem FindMenuItemByTopLevelName(ToolStripMenuItem pluginsToolStripMenuItem, string name)
+        {
+            foreach (ToolStripMenuItem menuItem in pluginsToolStripMenuItem.DropDownItems)
+            {
+                if (menuItem.Text == name)
+                {
+                    return menuItem;
+                }
+            }
+
+            return null;
         }
 
         private void DirectorySearch(PluginMenuItem menuItem, ToolStripMenuItem parentMenuItem)

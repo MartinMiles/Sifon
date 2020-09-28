@@ -178,18 +178,23 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
-        private void containersToolStripMenuItem_Click(object sender, EventArgs e)
+        public void TerminateAsEmptyProfile()
+        {
+            MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void menuContainersProfiles_Click(object sender, EventArgs e)
         {
             var form = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
             form.ShowDialog();
             form.Dispose();
         }
 
-        public void TerminateAsEmptyProfile()
+        private void menuContainersPlugins_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            DialogResult = DialogResult.Cancel;
-            Close();
+
         }
     }
 }
