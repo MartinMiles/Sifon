@@ -91,7 +91,15 @@ namespace Sifon.Shared.Statics
                 public static string ModuleManifest => Path.Combine(Folders.Module, "Sifon.psd1");
                 public static string ModuleDefinition => Path.Combine(Folders.Module, "Sifon.psm1");
                 public static string GetInstanceUrl => Path.Combine(Folders.Module, "Get-InstanceUrl.ps1");
-                public static string DummyFunction => Path.Combine(Folders.Module, "Dummy-Function.ps1");
+                public static string DownloadResourceScript => Path.Combine(Folders.Module, "Download-Resource.ps1");
+                public static string DownloadResourceJson => Path.Combine(Folders.Module, "Download-Resource.json");
+                public static string InstallSitecorePackage => Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
+                public static string CopyFileToRemote => Path.Combine(Folders.Module, "Copy-FileToRemote.ps1");
+                public static string GetSiteFolder => Path.Combine(Folders.Module, "Get-SiteFolder.ps1");
+                public static string VerifyPortalCredentials => Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");
+                public static string GetConnectionString => Path.Combine(Folders.Module, "Get-ConnectionString.ps1");
+                public static string InstallSitecorePackageUsingRemoting => Path.Combine(Folders.Module, "Install-SitecorePackageUsingRemoting.ps1");
+
             }
 
         }

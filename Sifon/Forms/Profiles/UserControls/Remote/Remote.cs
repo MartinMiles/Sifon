@@ -12,7 +12,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 {
     public partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
-        public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };
+        public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };       // TODO: remove later
         public event EventHandler<EventArgs<string>> RemoteInitialized = delegate { };
         public event EventHandler<EventArgs<IRemoteSettings>> TestRemote = delegate { };
 
@@ -70,7 +70,8 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             ValidateNotEmpty();
             EnableRemotingControls(remote);
 
-            ToggleLastTabs(this, new EventArgs<bool>(remote == initialRemotingState));
+            // this is commented out after last tabs are removed until first two have been submitted
+            //ToggleLastTabs(this, new EventArgs<bool>(remote == initialRemotingState));
         }
 
         private void EnableRemotingControls(bool value)

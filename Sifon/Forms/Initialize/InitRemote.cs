@@ -58,7 +58,7 @@ namespace Sifon.Forms.Initialize
             else
             {
                 buttonDone.DialogResult = DialogResult.Cancel;
-                resultHeading.Text = $"Remote folder for script created at [{RemoteSettings.RemoteHostname}]:";
+                resultHeading.Text = $"Remote folders for script and module created at [{RemoteSettings.RemoteHostname}]:";
                 labelScriptsRemoteFolder.Text = scriptsFolder;
                 labelModuleRemoteFolder.Text = moduleFolder;
             }

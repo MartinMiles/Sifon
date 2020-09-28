@@ -111,7 +111,14 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.ModuleManifest,
             Settings.Scripts.Module.ModuleDefinition,
             Settings.Scripts.Module.GetInstanceUrl,
-            Settings.Scripts.Module.DummyFunction
+            Settings.Scripts.Module.DownloadResourceScript,
+            Settings.Scripts.Module.DownloadResourceJson,
+            Settings.Scripts.Module.InstallSitecorePackage,
+            Settings.Scripts.Module.CopyFileToRemote,
+            Settings.Scripts.Module.GetSiteFolder,
+            Settings.Scripts.Module.VerifyPortalCredentials,
+            Settings.Scripts.Module.GetConnectionString,
+            Settings.Scripts.Module.InstallSitecorePackageUsingRemoting
         };
     }
 }
