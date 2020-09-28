@@ -67,6 +67,7 @@
     <Compile Include="Events\TypedEventArgs.cs" />
     <Compile Include="Exceptions\RemoteNotInitializedException.cs" />
     <Compile Include="Exceptions\RemoteTimeoutException.cs" />
+    <Compile Include="Extensions\Models\ContainerProfileExtensions.cs" />
     <Compile Include="Extensions\Models\SettingRecordExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\Models\ProfileExtensions.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Model\Fake\DriveInfo.cs" />
     <Compile Include="Model\Fake\TimeOfQuery.cs" />
     <Compile Include="Model\PluginMenuItem.cs" />
+    <Compile Include="Model\Profiles\ContainerProfile.cs" />
     <Compile Include="Model\Profiles\Profile.cs" />
     <Compile Include="Model\Profiles\SettingRecord.cs" />
     <Compile Include="Model\Profiles\SqlServerRecord.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filesystem\RemoteFilesystem.cs" />
     <Compile Include="Providers\PowerShellSiteProvider.cs" />
+    <Compile Include="Providers\Profile\ContainersProvider.cs" />
     <Compile Include="Providers\Profile\SettingsProvider.cs" />
     <Compile Include="ScriptGenerators\BackupScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\BaseScriptGenerator.cs" />

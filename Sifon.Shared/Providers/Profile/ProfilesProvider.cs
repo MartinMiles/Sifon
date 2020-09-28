@@ -38,10 +38,10 @@ namespace Sifon.Shared.Providers.Profile
         {
             var items = new List<Model.Profiles.Profile>();
 
-            if (File.Exists(Settings.ProfilesFolder.ProfilesPath))
+            if (File.Exists(Settings.SettingsFolder.ProfilesPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.ProfilesFolder.ProfilesPath);
+                doc.Load(Settings.SettingsFolder.ProfilesPath);
 
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
@@ -64,7 +64,7 @@ namespace Sifon.Shared.Providers.Profile
                 root.Add(profile.Save());
             }
 
-            doc.Save(Settings.ProfilesFolder.ProfilesPath);
+            doc.Save(Settings.SettingsFolder.ProfilesPath);
         }
 
         public void DeleteSelected()

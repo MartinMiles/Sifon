@@ -7,7 +7,7 @@ namespace Sifon.Shared.Statics
 {
     public static class Settings
     {
-        public const string ProductVersion = "Sifon v0.97 (BETA)";
+        public const string ProductVersion = "Sifon v0.98 (BETA)";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
 
@@ -41,9 +41,10 @@ namespace Sifon.Shared.Statics
             public static string BackupInfo => Path.Combine(Folders.Cache, "BackupInfoFile.xml");
         }
 
-        public static class ProfilesFolder
+        public static class SettingsFolder
         {
             public static string ProfilesPath = Path.Combine(Folders.Profiles, "Profiles.xml");
+            public static string ContainersPath = Path.Combine(Folders.Profiles, "Containers.xml");
             public static string SqlProfilesPath = Path.Combine(Folders.Profiles, "SQL.xml");
             public static string SettingsPath = Path.Combine(Folders.Profiles, "Settings.xml");
         }
@@ -165,6 +166,13 @@ namespace Sifon.Shared.Statics
             public const string Password = "Password";
             public const string PortalCredentials = "PortalCredentials";
 
+            //from containers
+            public const string ProfileName = "ProfileName";
+            public const string Repository = "Repository";
+            public const string Folder = "Folder";
+            //public const string AdminPassword = "AdminPassword";
+            public const string SaPassword = "SaPassword";
+
             //public const string InstanceFolder = "instanceFolder";
 
             // from the forms: backup-remove-restore
@@ -224,6 +232,18 @@ namespace Sifon.Shared.Statics
                 public const string SqlServer = "SqlServer";
                 public const string Parameters = "AdditionalParameters";
                 public const string Parameter = "Parameter";
+            }
+
+            public static class ContainerProfile
+            {
+                public const string NodeListName = "containers";
+                public const string NodeName = "profile";
+
+                public const string ProfileName = "ProfileName";
+                public const string Repository = "Repository";
+                public const string Folder = "Folder";
+                public const string AdminPassword = "AdminPassword";
+                public const string SaPassword = "SaPassword";
             }
 
             public static class SettingRecord

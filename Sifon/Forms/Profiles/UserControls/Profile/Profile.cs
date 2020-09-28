@@ -38,7 +38,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             InitializeComponent();
             new ProfilePresenter(this);
         }
-
+        
         public void DisplayFirstRunWarning()
         {
             var firstRunForm = new FirstTimeRun { StartPosition = FormStartPosition.CenterParent };

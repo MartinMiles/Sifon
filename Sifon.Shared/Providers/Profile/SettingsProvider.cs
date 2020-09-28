@@ -27,10 +27,10 @@ namespace Sifon.Shared.Providers.Profile
         {
             _entity = new SettingRecord();
 
-            if (File.Exists(Settings.ProfilesFolder.SettingsPath))
+            if (File.Exists(Settings.SettingsFolder.SettingsPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.ProfilesFolder.SettingsPath);
+                doc.Load(Settings.SettingsFolder.SettingsPath);
 
                 _entity = new SettingRecord(doc.DocumentElement);
 
@@ -57,7 +57,7 @@ namespace Sifon.Shared.Providers.Profile
             password.SetAttributeValue(Settings.Xml.Attributes.Value, _encryptor.Encrypt(settingRecord.PortalPassword));
             root.Add(password);
 
-            doc.Save(Settings.ProfilesFolder.SettingsPath);
+            doc.Save(Settings.SettingsFolder.SettingsPath);
         }
 
         #endregion

@@ -45,6 +45,13 @@
             public const string Username = "Username should be your email address registed with Sitecore\n";
             public const string Password = "Password should not contain whitespaces\n";
         }
+        public static class DockerProfiles
+        {
+            public const string Name = "Profile name contains invalid characters\n";
+            public const string RepositoryUrl = "Repository URl name contains invalid characters\n";
+            public const string Folder= "Folder name contains invalid characters\n";
+            public const string Password = "Password should not contain whitespaces\n";
+        }
 
         public static class Backup
         {

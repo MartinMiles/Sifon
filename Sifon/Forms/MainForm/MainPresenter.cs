@@ -166,6 +166,7 @@ namespace Sifon.Forms.MainForm
             var parameters = new Dictionary<string, dynamic>();
             _profilesService.AddScriptProfileParameters(parameters);
             _settingsProvider.AddScriptSettingsParameters(parameters);
+            _containersProvider.AddContainersParameters(parameters);
 
             string script = await LocalOrRemote(e.Value);
             PrepareAndStart(script, parameters);
@@ -183,8 +184,16 @@ namespace Sifon.Forms.MainForm
         private void ProfilesToolStripClicked(object sender, EventArgs e)
         {
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
-            _view.LoadProfilesSelector(JustReadProfileNames, SelectedProfile.ProfileName);
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
+
+            if (SelectedProfile != null)
+            {
+                _view.LoadProfilesSelector(JustReadProfileNames, SelectedProfile.ProfileName);
+            }
+            else
+            {
+                _view.TerminateAsEmptyProfile();
+            }
         }
 
         private bool ToolStripsEnabled(IEnumerable<string> profileNames)

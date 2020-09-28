@@ -53,6 +53,24 @@
             public const string TestButton = "Tests SQL Server connection with given parameters";
             public const string SaveButton = "Once successfully tested, click this button to add / save the provided details";
         }
+        public static class DockerProfiles
+        {
+            public const string Profiles = "All the available container profiles are presented here. Select the first value in order to add a new one.";
+
+            public const string ProfileName = "The name of profile to be used";
+            public const string RepositoryUrl = "This is a GitHub repository link where docker-compose is configured";
+            public const string RepositoryFolder = "An optional parameter for a folder within the above repository, if docker-compose isn't located at the root level";
+            public const string AdminPassword = "Sitecore instance admin password (the one traditionally used to be 'b')";
+            public const string SaPassword = "SQL Server 'sa' administrative password";
+
+            public const string RevealAdmin = "Shows and hides Sitecore instance admin password in this field";
+            public const string RevealSa = "Shows and hides SQL Server 'sa' password in this field";
+            public const string Delete = "Clicking this link deleted currently selected container profile";
+
+
+            public const string Defaults = "Click this button to set default values pointing to a 'getting-started' demo XP0 template";
+            public const string AddRename = "Save the changes to the fields above";
+        }
         public static class PortalCredentials
         {
             public const string TextUsername = "Your Sitecore Developer Portal username. It is an email you use for Sitecore certification";

@@ -14,12 +14,8 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         event EventHandler<EventArgs> SelectedProfileDeleted;
 
         void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName);
-        //void SetProfileTextbox(string name);
-        //void SetPrefixTextbox(string name);
-
 
         void SetFields(IProfileUserControl profile);
-
 
         void DisplayFirstRunWarning();
     }

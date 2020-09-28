@@ -49,6 +49,7 @@
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Plugins\PluginProgress.cs" />
     <Compile Include="PowerShell\IScriptRunner.cs" />
+    <Compile Include="Profiles\IContainerProfile.cs" />
     <Compile Include="Profiles\IProfile.cs" />
     <Compile Include="Profiles\IProfileUserControl.cs" />
     <Compile Include="Profiles\IRemoteSettings.cs" />

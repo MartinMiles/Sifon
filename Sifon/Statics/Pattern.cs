@@ -4,6 +4,13 @@
     {
         public const string ColorPattern = @"#COLOR:(\w{2,12})# *";
 
+        public static class DockerProfile
+        {
+            public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
+            public const string RepositoryUrl = @"^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?";
+            public const string Folder = @"^[A-Za-z0-9-._]*$";
+            public const string Password = @"[^\ ]";
+        }
         public static class Profile
         {
             public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
@@ -44,6 +51,11 @@
 
                 public static class Except
                 {
+                    /// <summary>
+                    /// Works for PowerShell parameter name.
+                    /// </summary>
+                    public const string ForbiddenInURL = @"[<>\{\}\\]";
+                    
                     /// <summary>
                     /// Works for PowerShell parameter name.
                     /// </summary>

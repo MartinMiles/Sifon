@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
+using Sifon.Forms.Containers;
 using Sifon.Shared.Events;
 using Sifon.Shared.Exceptions;
 using Sifon.Shared.Statics;
@@ -179,7 +180,9 @@ namespace Sifon.Forms.MainForm
 
         private void containersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var form = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
         }
 
         public void TerminateAsEmptyProfile()

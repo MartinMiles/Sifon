@@ -35,10 +35,10 @@ namespace Sifon.Shared.Providers.Profile
         {
             var items = new List<ISqlServerRecord>();
 
-            if (File.Exists(Settings.ProfilesFolder.SqlProfilesPath))
+            if (File.Exists(Settings.SettingsFolder.SqlProfilesPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.ProfilesFolder.SqlProfilesPath);
+                doc.Load(Settings.SettingsFolder.SqlProfilesPath);
 
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
@@ -68,7 +68,7 @@ namespace Sifon.Shared.Providers.Profile
                 root.Add(record.Save());
             }
 
-            doc.Save(Settings.ProfilesFolder.SqlProfilesPath);
+            doc.Save(Settings.SettingsFolder.SqlProfilesPath);
         }
 
         public void Delete(string name)

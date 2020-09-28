@@ -21,6 +21,8 @@ namespace Sifon.Forms.Base
     {
         protected readonly ProfilesProvider _profilesService;
         protected readonly SettingsProvider _settingsProvider;
+        protected readonly ContainersProvider _containersProvider;
+
         private ScriptWrapper<PSObject> _scriptWrapper;
         protected readonly IMainView _view;
         private readonly ConsoleOutputFormatter _outputFormatter;
@@ -38,6 +40,7 @@ namespace Sifon.Forms.Base
             _view = view;
             _profilesService = new ProfilesProvider();
             _settingsProvider = new SettingsProvider();
+            _containersProvider = new ContainersProvider();
             _view.ScriptFinishRequested += ScriptFinishRequested;
             _outputFormatter = new ConsoleOutputFormatter();
 
