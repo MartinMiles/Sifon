@@ -163,6 +163,7 @@ namespace Sifon.Forms.MainForm
 
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
+            var _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
 
             var parameters = new Dictionary<string, dynamic>();
             _profilesService.AddScriptProfileParameters(parameters);
@@ -174,11 +175,11 @@ namespace Sifon.Forms.MainForm
 
             foreach (var metadataPair in metacodeResultsDictionary)
             {
+                // if we used external control to ask for file, add it then with a provided param
                 if (metadataPair.Value is string && ((string)metadataPair.Value).IsValidFilePath())
                 {
                     string localFile = (string) metadataPair.Value;
 
-                    var _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
                     var resultedPath = await _remoteScriptCopier.CopyIfRemote(localFile);
 
                     parameters.Add(metadataPair.Key.Trim('$'), resultedPath);
@@ -186,6 +187,17 @@ namespace Sifon.Forms.MainForm
             }
 
             string script = await LocalOrRemote(e.Value);
+            
+            var scriptDependencies = metacode.IdentifyDependencies();
+            foreach (string dependency in scriptDependencies)
+            {
+                string dependencyFile = $"{Path.GetDirectoryName(e.Value)}\\{dependency}";
+                if (File.Exists(dependencyFile))
+                {
+                    await _remoteScriptCopier.CopyIfRemote(dependencyFile);
+                }
+            }
+
             PrepareAndStart(script, parameters);
         }
 

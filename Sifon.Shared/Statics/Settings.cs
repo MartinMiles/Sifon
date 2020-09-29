@@ -51,7 +51,13 @@ namespace Sifon.Shared.Statics
 
         public static class Regex
         {
-            public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\".*\")*)\\)";
+            public static class Plugins
+            {
+                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\".*\")*)\\)";
+
+                public static string Dependencies = "###\\s*Dependencies:\\s*(.*)";
+                public static string DependenciesToExtract  = "\\\"([^\"]*)\\\"";
+            }
         }
 
         public static class Scripts

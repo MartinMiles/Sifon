@@ -24,10 +24,10 @@ namespace Sifon.Shared.Metacode
         public Dictionary<string, object> ExecuteMetacode()
         {
             var dynamicResultsDictionary = new Dictionary<string, object>();
+            var regex = new Regex(Settings.Regex.Plugins.MetacodeSynthax);
 
             foreach (string line in _meta)
             {
-                var regex = new Regex(Settings.Regex.MetacodeSynthax);
                 var match = regex.Match(line);
                 if (match.Success)
                 {
@@ -56,6 +56,42 @@ namespace Sifon.Shared.Metacode
             }
 
             return dynamicResultsDictionary;
+        }
+
+        public IEnumerable<string> IdentifyDependencies()
+        {
+            var list = new List<string>();
+
+            var regex = new Regex(Settings.Regex.Plugins.DependenciesToExtract);
+
+            foreach (string line in _meta)
+            {
+                if (line.StartsWith("### Dependencies:"))
+                {
+                    var matchCollection = regex.Matches(line);
+
+                    foreach (Match match in matchCollection)
+                    {
+                        var files = match.Groups[1].Value;
+                        if (!string.IsNullOrWhiteSpace(files))
+                        {
+                            var paramsArray = files.Split(',');
+                            foreach (string parameter in paramsArray)
+                            {
+                                list.Add(parameter.Trim().Trim('\"'));
+                            }
+                        }
+                    }
+
+                    //var match = regex.Match(line);
+                    //if (match.Success)
+                    //{
+
+                    //}
+                }
+            }
+
+            return list;
         }
     }
 }
