@@ -110,14 +110,17 @@ namespace Sifon.Shared.Providers.Profile
         public void AddContainersParameters(Dictionary<string, object> parameters)
         {
             Read();
-                
-            parameters.Add(Settings.Parameters.ProfileName, SelectedProfile.ProfileName);
-            parameters.Add(Settings.Parameters.Repository, SelectedProfile.Repository);
-            parameters.Add(Settings.Parameters.Folder, SelectedProfile.Folder);
-                
-            // Commented as an item with this key already coming from a profile, it's ok since they don't intersect
-            //parameters.Add(Settings.Parameters.AdminPassword, SelectedProfile.AdminPassword);
-            parameters.Add(Settings.Parameters.SaPassword, SelectedProfile.SaPassword);
+
+            if (SelectedProfile != null)
+            {
+                parameters.Add(Settings.Parameters.ProfileName, SelectedProfile.ProfileName);
+                parameters.Add(Settings.Parameters.Repository, SelectedProfile.Repository);
+                parameters.Add(Settings.Parameters.Folder, SelectedProfile.Folder);
+                    
+                // Commented as an item with this key already coming from a profile, it's ok since they don't intersect
+                //parameters.Add(Settings.Parameters.AdminPassword, SelectedProfile.AdminPassword);
+                parameters.Add(Settings.Parameters.SaPassword, SelectedProfile.SaPassword);
+            }
         }
     }
 }
