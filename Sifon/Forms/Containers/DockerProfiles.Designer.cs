@@ -242,7 +242,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DockerProfiles";
-            this.Text = "Containers Profiles - (experimental)";
+            this.Text = "Containers Profiles - (experimental, local only)";
             this.Load += new System.EventHandler(this.DockerProfiles_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
