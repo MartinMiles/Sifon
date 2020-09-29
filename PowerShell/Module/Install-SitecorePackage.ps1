@@ -24,7 +24,7 @@ Function Install-Sitecorepackage {
     $urlInstallModules = "$Hostbase/$aspx" + "?modules=" + $moduleToInstall
 
     try { Invoke-RestMethod $urlInstallModules -TimeoutSec 720 }
-    catch { Write-error "Filed to make a request to package installer." }
+    catch { Write-error "Failed to make a request to package installer." }
 
     Remove-Item -Path "$Webroot\$aspx" -Force
 }
