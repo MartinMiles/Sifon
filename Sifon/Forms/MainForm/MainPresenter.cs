@@ -6,13 +6,13 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Model.BackupRestore;
-using Sifon.Abstractions.Providers;
 using Sifon.Forms.Base;
 using Sifon.Shared.BackupInfo;
 using Sifon.Shared.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Filesystem;
+using Sifon.Shared.Metacode;
 using Sifon.Shared.Model;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Providers.Profile;
@@ -163,10 +163,27 @@ namespace Sifon.Forms.MainForm
 
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
+
             var parameters = new Dictionary<string, dynamic>();
             _profilesService.AddScriptProfileParameters(parameters);
             _settingsProvider.AddScriptSettingsParameters(parameters);
             _containersProvider.AddContainersParameters(parameters);
+
+            var metacode = new MetacodeHelper(e.Value);
+            var metacodeResultsDictionary = metacode.ExecuteMetacode();
+
+            foreach (var metadataPair in metacodeResultsDictionary)
+            {
+                if (metadataPair.Value is string && ((string)metadataPair.Value).IsValidFilePath())
+                {
+                    string localFile = (string) metadataPair.Value;
+
+                    var _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
+                    var resultedPath = await _remoteScriptCopier.CopyIfRemote(localFile);
+
+                    parameters.Add(metadataPair.Key.Trim('$'), resultedPath);
+                }
+            }
 
             string script = await LocalOrRemote(e.Value);
             PrepareAndStart(script, parameters);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 using Sifon.Shared.UserControls.ThreadSafeFilePicker;
 
@@ -26,7 +25,26 @@ namespace Sifon.Shared.Forms.LocalFilePickerDialog
             InitializeComponent();
         }
 
-        
+        // This method is to be called from a Sifon PowerShell metadata started with tripple-hash character, as described below:
+        // ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Caption","Label","Archives|*.zip","Button")
+        public string GetFile(string caption, string label, string filters,  string button)
+        {
+            Caption = caption;
+            Label = label;
+            Filters = filters;
+            Button = button;
+
+            StartPosition = FormStartPosition.CenterParent;
+
+            Validation = s => "";
+
+            if (ShowDialog() == DialogResult.OK)
+            {
+                return FilePath;
+            }
+
+            return null;
+        }
 
         private void Form_Load(object sender, EventArgs e)
         {

@@ -114,6 +114,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.DownloadResourceScript,
             Settings.Scripts.Module.DownloadResourceJson,
             Settings.Scripts.Module.InstallSitecorePackage,
+            Settings.Scripts.Module.InstallSitecorePackageAspx,
             Settings.Scripts.Module.CopyFileToRemote,
             Settings.Scripts.Module.GetSiteFolder,
             Settings.Scripts.Module.VerifyPortalCredentials,

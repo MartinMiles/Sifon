@@ -49,6 +49,11 @@ namespace Sifon.Shared.Statics
             public static string SettingsPath = Path.Combine(Folders.Profiles, "Settings.xml");
         }
 
+        public static class Regex
+        {
+            public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\".*\")*)\\)";
+        }
+
         public static class Scripts
         {
             public static string InitializeRemote => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
@@ -94,6 +99,7 @@ namespace Sifon.Shared.Statics
                 public static string DownloadResourceScript => Path.Combine(Folders.Module, "Download-Resource.ps1");
                 public static string DownloadResourceJson => Path.Combine(Folders.Module, "Download-Resource.json");
                 public static string InstallSitecorePackage => Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
+                public static string InstallSitecorePackageAspx => Path.Combine(Folders.Module, "Install-SitecorePackage.aspx");
                 public static string CopyFileToRemote => Path.Combine(Folders.Module, "Copy-FileToRemote.ps1");
                 public static string GetSiteFolder => Path.Combine(Folders.Module, "Get-SiteFolder.ps1");
                 public static string VerifyPortalCredentials => Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");

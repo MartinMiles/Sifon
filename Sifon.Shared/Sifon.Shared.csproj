@@ -107,6 +107,8 @@
     <Compile Include="Helpers\StaticsHelper.cs" />
     <Compile Include="Helpers\TaskHelper.cs" />
     <Compile Include="Logger\SimpleLog.cs" />
+    <Compile Include="Metacode\DynamicCodeRunner.cs" />
+    <Compile Include="Metacode\MetacodeHelper.cs" />
     <Compile Include="Model\Fake\DirectoryInfo.cs" />
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
       <SubType>Form</SubType>
