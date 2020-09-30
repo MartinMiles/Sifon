@@ -82,12 +82,6 @@ namespace Sifon.Shared.Metacode
                             }
                         }
                     }
-
-                    //var match = regex.Match(line);
-                    //if (match.Success)
-                    //{
-
-                    //}
                 }
             }
 
