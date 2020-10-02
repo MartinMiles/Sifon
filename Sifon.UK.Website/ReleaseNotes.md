@@ -1,5 +1,18 @@
 # Release notes
 
+Version **0.98**
+
+- first basic option for containers with Sitecore 10.0 has added, including easy clone and setup, profile switching
+- container scripts now show under Containers menu, rather than under Plugins - 
+- container scripts added for: set up Hyper-V and containers support, pulling the code, building and running Sitecore in Docker
+- some plugins and Sifon in general tested against the remote instance and numerous issies indentified and fixed
+- many existing plugins adjusted, thus only working with the latest (0.98 or newer) version of Sifon
+- minor bugs on running first time and initial configuration
+- added meta code supports to plugins scripts to comply with remote execition where UI isn't available: 
+    1. executing GUI user input and automatically pass it to either local or remote script with a variable of choice
+    2. specifying dependencies for those plugins that aren't just one script file: associated diles are also copied to remote
+
+
 Version **0.97**
 
 - now supports and correctly handles instances installations outside of `inetpub\wwwroot` folder

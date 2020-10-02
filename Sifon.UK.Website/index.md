@@ -6,7 +6,7 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Downloads
 
-Use this link to [download](/download/Sifon_0.97.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
+Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
 
 
 ## Features
@@ -15,6 +15,7 @@ Use this link to [download](/download/Sifon_0.97.zip "download Sifon") your copy
 - backup, clean, restore selected Sitecore instance out-of-the-box with nice GUI
 - you can choose the above operations for webroot, xConnect, Identity Server, Horizon and Publishing Service sites (or them all)
 - support Sitecore Commerce of both 9.x and 10.x versions
+- basic support for Sitecore in containers with Docker
 - supports and correctly handles instances installations outside of "inetpub\wwwroot" folder
 - environment auto-detection: hostnames, bindings, installed Solr instances
 - supports multiple instances on a host via creating and selecting profiles
