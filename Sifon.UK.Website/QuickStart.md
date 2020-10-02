@@ -11,6 +11,10 @@ Please watch these videos in order to underdtand how to set up a profile and per
 #### 02. How to remove and then fully restore Sitecore instance (both XP and XC) along with all databases
 <p><iframe width="500" height="281" src="https://www.youtube.com/embed/40aE9anPLck?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
+#### 03. Sitecore 10 and containers goes MUCH easier with Sifon
+<p><iframe width="500" height="281" src="https://www.youtube.com/embed/hrqsCEL56aM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+
 
 
 <br/><br/>
