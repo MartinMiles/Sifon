@@ -2,7 +2,14 @@
 
 The range of potential use cases is wider than my imagination, so I am writing the list of plugins to create, oj just simply areas to think about. Please let me know if  you have some ideas,so that I can add them to a wish-list.
 
+
+
+#### A demo of how plugins work with Sifon on an example of Publishing Service insallation
+<p><iframe width="500" height="281" src="https://www.youtube.com/embed/_wClAjFrFLg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
 <br/><br/>
+
+
 
 **Installation**
 
