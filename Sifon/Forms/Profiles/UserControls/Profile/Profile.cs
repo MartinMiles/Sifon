@@ -23,13 +23,29 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         #region Expose fields properties
 
-        public string ProfileName => textProfileName.Text.Trim();
+        public string ProfileName
+        {
+            get => textProfileName.Text.Trim();
+            set => textProfileName.Text = value;
+        }
 
-        public string Prefix => textPrefix.Text.Trim();
+        public string Prefix
+        {
+            get => textPrefix.Text.Trim();
+            set => textPrefix.Text = value;
+        }
 
-        public string AdminUsername => textAdminUsername.Text.Trim();
+        public string AdminUsername
+        {
+            get => textAdminUsername.Text.Trim();
+            set => textAdminUsername.Text = value;
+        }
 
-        public string AdminPassword => textAdminPassword.Text.Trim();
+        public string AdminPassword
+        {
+            get => textAdminPassword.Text.Trim();
+            set => textAdminPassword.Text = value;
+        }
 
         #endregion
 
@@ -95,6 +111,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             Presenter.Raise_ProfileChangedEvent(comboProfiles.SelectedIndex > 0);
         }
 
+        //TODO: Test why is inactive?
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (ShowYesNo(Messages.General.YesNoCaption, Messages.Profiles.ConfirmDeletingProfile))

@@ -85,7 +85,7 @@ namespace Sifon.Forms.Profiles
             var profile = ProfilesService.CreateProfile();
 
             profile.RemotingEnabled = _view.Remote.RemotingEnabled;
-            profile.RemoteExecutionHost = _view.Remote.RemoteHostname;
+            profile.RemoteHost = _view.Remote.RemoteHost;
             profile.RemoteUsername = _view.Remote.RemoteUsername;
             profile.RemotePassword = _view.Remote.RemotePassword;
             profile.RemoteFolder = _view.Remote.RemoteFolder;

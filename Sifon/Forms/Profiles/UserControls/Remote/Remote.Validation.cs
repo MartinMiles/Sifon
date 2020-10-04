@@ -40,7 +40,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         {
             var messages = new List<string>();
 
-            if (RemotingEnabled && !RemoteHostname.NotEmpty())
+            if (RemotingEnabled && !RemoteHost.NotEmpty())
             {
                 messages.Add(Validation.Profiles.Remote.HostnameNotEmpty);
             }

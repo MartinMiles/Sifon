@@ -2,6 +2,15 @@
 {
     public static class Messages
     {
+        public static class Program
+        {
+            public const string NoRemoteFolder = "Remote profile folder is not initialized. \n\nSifon will copy all the required assets into its folder under user's Documents on the remote profile host. \n\nWould you like to re-initialize it?";
+            public const string ExecutionError = "Execution Error";
+            public const string RemoteExecutionError = "Remote Profile Execution Error";
+            public const string CannotContinue = "It is not possible to go on without initializing remote folder for selected profile\n\nExiting Sifon ...";
+            public const string InitializeFailure = "Something went wrong during profile remote host initialization\n\nPlease verify your remote host settings and try again";
+        }
+
         public static class Activities
         {
             public const string Backup = "Performing instance backup";
@@ -84,13 +93,6 @@
                 }
             }
         }
-        //public static class Errors
-        //{
-        //    public static class Main
-        //    {
-        //        public const string BackupInfoMissing = "BackupInfo.xml not found in archive";
-        //    }
-        //}
 
         public static class ProfileCredentials
         {

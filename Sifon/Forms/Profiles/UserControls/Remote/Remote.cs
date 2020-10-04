@@ -12,12 +12,48 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 {
     public partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
+        private bool initialRemotingState;
+
+        #region Public events
         public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };       // TODO: remove later
         public event EventHandler<EventArgs<string>> RemoteInitialized = delegate { };
         public event EventHandler<EventArgs<IRemoteSettings>> TestRemote = delegate { };
 
-        private bool initialRemotingState;
+        #endregion
 
+        #region Expose fields properties
+
+        public bool RemotingEnabled
+        {
+            get => checkBoxRemote.Checked;
+            set => checkBoxRemote.Checked = value;
+        }
+
+        public string RemoteHost
+        {
+            get => textHostname.Text.Trim();
+            set => textHostname.Text = value;
+        }
+
+        public string RemoteUsername
+        {
+            get => textUsername.Text.Trim();
+            set => textUsername.Text = value;
+        }
+
+        public string RemotePassword
+        {
+            get => textPassword.Text.Trim();
+            set => textPassword.Text = value;
+        }
+
+        public string RemoteFolder
+        {
+            get => textRemoteFolder.Text.Trim();
+            set => textRemoteFolder.Text = value;
+        }
+
+        #endregion
 
         public Remote()
         {
@@ -130,15 +166,5 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         {
             buttonTest.Enabled = enabled;
         }
-
-        #region IRemoteSettings implementation
-
-        public bool RemotingEnabled => checkBoxRemote.Checked;
-        public string RemoteHostname => textHostname.Text.Trim();
-        public string RemoteUsername => textUsername.Text.Trim();
-        public string RemotePassword => textPassword.Text.Trim();
-        public string RemoteFolder => textRemoteFolder.Text.Trim();
-
-        #endregion
     }
 }

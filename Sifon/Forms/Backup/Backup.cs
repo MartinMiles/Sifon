@@ -116,16 +116,6 @@ namespace Sifon.Forms.Backup
             }
         }
 
-        //public void SetCheckboxes(bool site, bool xconnect, bool ids, bool horizon, bool publishing, bool commerceSites)
-        //{
-        //    checkFiles.Enabled = site;
-        //    checkXconnect.Enabled = xconnect;
-        //    checkIds.Enabled = ids;
-        //    checkHorizon.Enabled = horizon;
-        //    checkPublishing.Enabled = publishing;
-        //    checkCommerce.Enabled = commerceSites;
-        //}
-
         // TODO: shared for all backup restore. maybe to base?
 
         public void SetFieldsandCheckboxes(BackupViewModel model)

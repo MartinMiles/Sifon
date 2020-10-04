@@ -41,7 +41,7 @@ namespace Sifon.Forms.Restore
                 var files = _filesystem.GetFiles(selectedFolder, ".zip");
                 var list = await GetInputForGrid(files);
                 _view.ShowDatagrid(list);
-                _view.SetXConnctAndIdentity(list);
+                _view.SetOtherSites(list);
             }
             else
             {

@@ -112,6 +112,7 @@
             this.Controls.Add(this.buttonDone);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.progressBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InitRemote";

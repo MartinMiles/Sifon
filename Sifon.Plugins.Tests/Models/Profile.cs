@@ -6,7 +6,7 @@ namespace Sifon.Plugins.Tests.Models
     public class Profile : IProfile
     {
         public bool RemotingEnabled { get; set; }
-        public string RemoteExecutionHost { get; set; }
+        public string RemoteHost { get; set; }
         public string RemoteUsername { get; set; }
         public string RemotePassword { get; set; }
         public string RemoteFolder { get; set; }

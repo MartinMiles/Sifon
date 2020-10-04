@@ -69,7 +69,7 @@ namespace Sifon.Forms.Initialize
             return new Dictionary<string, dynamic>
             {
                 {"Activity", Settings.Initialize.ProgressActivityName},
-                {"RemoteHost", remoteSettings.RemoteHostname},
+                {"RemoteHost", remoteSettings.RemoteHost},
                 {"Username", remoteSettings.RemoteUsername},
                 {"Password", remoteSettings.RemotePassword},
                 {"RemoteDirectory", Settings.RemoteDirectory},

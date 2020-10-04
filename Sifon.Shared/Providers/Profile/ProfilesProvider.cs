@@ -91,7 +91,7 @@ namespace Sifon.Shared.Providers.Profile
             if (selected != null)
             {
                 selected.RemotingEnabled = profile.RemotingEnabled;
-                selected.RemoteExecutionHost = profile.RemoteExecutionHost;
+                selected.RemoteHost = profile.RemoteHost;
                 selected.RemoteUsername = profile.RemoteUsername;
                 selected.RemotePassword = profile.RemotePassword;
                 selected.ProfileName = profile.ProfileName;
@@ -194,7 +194,7 @@ namespace Sifon.Shared.Providers.Profile
             var profile = CreateProfile();
 
             profile.RemotingEnabled = remoteSettings.RemotingEnabled;
-            profile.RemoteExecutionHost = remoteSettings.RemoteHostname;
+            profile.RemoteHost = remoteSettings.RemoteHost;
             profile.RemoteUsername = remoteSettings.RemoteUsername;
             profile.RemotePassword = remoteSettings.RemotePassword;
             profile.RemoteFolder = remoteSettings.RemoteFolder;
@@ -206,7 +206,7 @@ namespace Sifon.Shared.Providers.Profile
             var profile = CreateProfile();
 
             profile.RemotingEnabled = false;
-            profile.RemoteExecutionHost = String.Empty;
+            profile.RemoteHost = String.Empty;
             profile.RemoteUsername = String.Empty;
             profile.RemotePassword = String.Empty;
             profile.RemoteFolder = String.Empty;

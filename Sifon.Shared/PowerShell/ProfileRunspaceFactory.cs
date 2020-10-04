@@ -28,7 +28,7 @@ namespace Sifon.Shared.PowerShell
                 connectionInfo.OperationTimeout = _profile.OperationTimeout * 1000;
                 connectionInfo.OpenTimeout = _profile.ConnectionTimeout * 1000; 
                 connectionInfo.Credential = new PSCredential(_profile.RemoteUsername, GetSecureString(_profile.RemotePassword));
-                connectionInfo.ComputerName = _profile.RemoteExecutionHost;
+                connectionInfo.ComputerName = _profile.RemoteHost;
                 return RunspaceFactory.CreateRunspace(connectionInfo);
             }
 

@@ -24,7 +24,7 @@ namespace Sifon.Shared.PowerShell
         public RemoteScriptCopier(IProfile profile, ISynchronizeInvoke invoke)
         {
             _profile = profile;
-            _remoteMachine = profile.RemoteExecutionHost;
+            _remoteMachine = profile.RemoteHost;
             _username = profile.RemoteUsername;
             _password = profile.RemotePassword;
 

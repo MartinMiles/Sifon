@@ -28,7 +28,7 @@ namespace Sifon.Shared.Extensions.Models
             profile.Empty = node.BoolAttribute(Settings.Xml.Attributes.Empty);
 
             profile.RemotingEnabled = node.BoolAttribute(Settings.Xml.Attributes.RemotingEnabled);
-            profile.RemoteExecutionHost = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteExecutionHost, Settings.Xml.Attributes.Value);
+            profile.RemoteHost = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteExecutionHost, Settings.Xml.Attributes.Value);
             profile.RemoteUsername = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteUsername, Settings.Xml.Attributes.Value);
             profile.RemotePassword = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemotePassword, Settings.Xml.Attributes.Value);
             profile.RemoteFolder = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteFolder, Settings.Xml.Attributes.Value);
@@ -77,7 +77,7 @@ namespace Sifon.Shared.Extensions.Models
             }
 
             var remoteHost = new XElement(Settings.Xml.Profile.RemoteExecutionHost);
-            remoteHost.SetAttributeValue(Settings.Xml.Attributes.Value, profile.RemoteExecutionHost);
+            remoteHost.SetAttributeValue(Settings.Xml.Attributes.Value, profile.RemoteHost);
             root.Add(remoteHost);
 
             var remoteUsername = new XElement(Settings.Xml.Profile.RemoteUsername);

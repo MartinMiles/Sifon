@@ -2,12 +2,12 @@
 {
     public interface IProfileUserControl
     {
-        string ProfileName { get; }
+        string ProfileName { get; set; }
 
-        string Prefix { get; }
+        string Prefix { get; set; }
 
-        string AdminUsername { get; }
+        string AdminUsername { get; set; }
 
-        string AdminPassword { get; }
+        string AdminPassword { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace Sifon.Forms.Initialize
     {
         public event EventHandler<EventArgs> FormLoaded = delegate { };
 
-        //public string RemoteHostname { get; set; }
         public IRemoteSettings RemoteSettings  { get; set; }
 
         public string RemoteFolder { get; private set; }
@@ -24,7 +23,7 @@ namespace Sifon.Forms.Initialize
         {
             new InitRemotePresenter(this, RemoteSettings);
 
-            Text = $"Initializing {RemoteSettings.RemoteHostname}";
+            Text = $"Initializing {RemoteSettings.RemoteHost}";
             
             //labelStatus.Visible = false;
 
@@ -58,7 +57,7 @@ namespace Sifon.Forms.Initialize
             else
             {
                 buttonDone.DialogResult = DialogResult.Cancel;
-                resultHeading.Text = $"Remote folders for script and module created at [{RemoteSettings.RemoteHostname}]:";
+                resultHeading.Text = $"Remote folders for script and module created at [{RemoteSettings.RemoteHost}]:";
                 labelScriptsRemoteFolder.Text = scriptsFolder;
                 labelModuleRemoteFolder.Text = moduleFolder;
             }

@@ -44,15 +44,7 @@ namespace Sifon.Forms.Base
         {
             textPassword.PasswordChar = reveal ? new char() : '*';
             linkReveal.Text = reveal ? $"({Settings.Labels.Hide})" : $"({Settings.Labels.Reveal})";
-
-            if (reveal)
-            {
-                linkReveal.Left += 9;
-            }
-            else
-            {
-                linkReveal.Left -= 9;
-            }
+            linkReveal.Left = reveal ? linkReveal.Left + 9 : linkReveal.Left - 9;
         }
     }
 }

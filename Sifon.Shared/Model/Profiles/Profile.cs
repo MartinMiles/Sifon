@@ -27,7 +27,7 @@ namespace Sifon.Shared.Model.Profiles
 
         public bool RemotingEnabled { get; set; }
 
-        public string RemoteExecutionHost { get; set; }
+        public string RemoteHost { get; set; }
 
         public string RemoteUsername { get; set; }
 

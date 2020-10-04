@@ -75,7 +75,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         {
             if (Presenter.SelectedProfile != null)
             {
-                _view.SetHostname(Presenter.SelectedProfile.RemoteExecutionHost);
+                _view.SetHostname(Presenter.SelectedProfile.RemoteHost);
                 _view.SetUsername(Presenter.SelectedProfile.RemoteUsername);
                 _view.SetPassword(Presenter.SelectedProfile.RemotePassword);
                 _view.SetRemoteFolder(Presenter.SelectedProfile.RemoteFolder);

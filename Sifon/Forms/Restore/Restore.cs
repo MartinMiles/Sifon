@@ -68,7 +68,7 @@ namespace Sifon.Forms.Restore
             stateGridReady = true;
         }
 
-        public void SetXConnctAndIdentity(IEnumerable<KeyValuePair<string, string>> list)
+        public void SetOtherSites(IEnumerable<KeyValuePair<string, string>> list)
         {
             var site = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key));
             var xconnect = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));

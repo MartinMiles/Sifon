@@ -2,10 +2,10 @@
 {
     public interface IRemoteSettings
     {
-        bool RemotingEnabled { get; }
-        string RemoteHostname { get; }
-        string RemoteUsername { get; }
-        string RemotePassword { get; }
-        string RemoteFolder { get; }
+        bool RemotingEnabled { get; set; }
+        string RemoteHost { get; set; }
+        string RemoteUsername { get; set; }
+        string RemotePassword { get; set; }
+        string RemoteFolder { get; set; }
     }
 }
