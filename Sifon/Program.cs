@@ -2,7 +2,6 @@ using System;
 using System.Windows.Forms;
 using Sifon.Forms.Initialize;
 using Sifon.Forms.MainForm;
-using Sifon.Shared.Events;
 using Sifon.Shared.Exceptions;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Logger;
@@ -14,7 +13,7 @@ namespace Sifon
 {
     static class Program
     {
-        private static IFormValidation _formValidation = new FormValidation();
+        private static readonly IFormValidation FormValidation = new FormValidation();
 
         [STAThread]
         static void Main()
@@ -37,7 +36,7 @@ namespace Sifon
                     if (e.InnerException is RemoteNotInitializedException)
                     {
                         
-                        if (_formValidation.ShowYesNo(Messages.General.YesNoCaption, Messages.Program.NoRemoteFolder))
+                        if (FormValidation.ShowYesNo(Messages.General.YesNoCaption, Messages.Program.NoRemoteFolder))
                         {
                             var initializeForm = new InitRemote
                             {
@@ -52,17 +51,17 @@ namespace Sifon
                             }
                             else
                             {
-                                _formValidation.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinue);
+                                FormValidation.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinue);
                             }
                         }
                         else
                         {
-                            _formValidation.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinue);
+                            FormValidation.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinue);
                         }
                     }
                     else
                     {
-                        _formValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinue);
+                        FormValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinue);
                     }
 
                     SimpleLog.Log(e);
