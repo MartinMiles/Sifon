@@ -161,7 +161,7 @@
             this.textDestinationFolderToBackup.Name = "textDestinationFolderToBackup";
             this.textDestinationFolderToBackup.Size = new System.Drawing.Size(230, 20);
             this.textDestinationFolderToBackup.TabIndex = 26;
-            this.textDestinationFolderToBackup.Validating += new System.ComponentModel.CancelEventHandler(this.textDestinationFolderToBackup_Validating);
+            this.textDestinationFolderToBackup.Validating += new System.ComponentModel.CancelEventHandler(this.textDestinationFolder_Validating);
             // 
             // label2
             // 

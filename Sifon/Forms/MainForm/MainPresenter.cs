@@ -144,7 +144,7 @@ namespace Sifon.Forms.MainForm
             PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
         }
 
-        private async void RestoreToolStripClicked(object sender, EventArgs<IRestore> e)
+        private async void RestoreToolStripClicked(object sender, EventArgs<IRestoreViewModel> e)
         {
             var model = e.Value;
 

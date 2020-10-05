@@ -16,7 +16,7 @@ namespace Sifon.Forms.MainForm
         event EventHandler<EventArgs> ProfilesToolStripClicked;
         event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked;
         event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked;
-        event EventHandler<EventArgs<IRestore>> RestoreToolStripClicked;
+        event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked;
         event EventHandler<EventArgs<string>> ScriptToolStripClicked;
 
         void LoadProfilesSelector(IEnumerable<string> profiles, string selectedProfileName);

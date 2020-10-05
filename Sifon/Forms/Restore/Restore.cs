@@ -13,7 +13,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Restore
 {
-    public partial class Restore : BaseForm, IRestoreView, IRestore
+    public partial class Restore : BaseForm, IRestoreView, IRestoreViewModel
     {
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
         public event EventHandler<EventArgs<string>> FolderSelected = delegate { };
@@ -23,41 +23,23 @@ namespace Sifon.Forms.Restore
         public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Restore;
         public string DestinationFolder => textSourceFolder.Text.TrimEnd('\\');
 
-        public bool WebsiteChecked
-        {
-            get => checkFiles.Checked;
-            set => checkFiles.Checked = value;
-        }
+        #region IBackupRestoreCheckboxes implementation
 
-        public bool XConnectChecked
-        {
-            get => checkXconnect.Checked;
-            set => checkXconnect.Checked = value;
-        }
-        
-        public bool IdentityChecked
-        {
-            get => checkIDS.Checked;
-            set => checkIDS.Checked = value;
-        }
+        public bool WebsiteChecked => checkFiles.Checked;
 
-        public bool PublishingChecked
-        {
-            get => checkHorizon.Checked;
-            set => checkHorizon.Checked = value;
-        }
+        public bool XConnectChecked => checkXconnect.Checked;
 
-        public bool HorizonChecked
-        {
-            get => checkPublishing.Checked;
-            set => checkPublishing.Checked = value;
-        }
+        public bool IdentityChecked => checkIDS.Checked;
 
-        public bool CommerceChecked
-        {
-            get => checkCommerce.Checked;
-            set => checkCommerce.Checked = value;
-        }
+        public bool PublishingChecked => checkHorizon.Checked;
+
+        public bool HorizonChecked => checkPublishing.Checked;
+
+        public bool CommerceChecked => checkCommerce.Checked;
+
+        #endregion
+
+        #region IRestoreZips implementation
 
         public string WebsiteZip { get; private set; }
         public string XConnectZip { get; private set; }
@@ -65,15 +47,25 @@ namespace Sifon.Forms.Restore
         public string HorizonZip { get; private set; }
         public string PublishingZip { get; private set; }
 
-        public string WebsiteFolder { get;  set; }
-        public string XConnectFolder { get;  set; }
-        public string IdentityFolder { get;  set; }
-        public string HorizonFolder { get;  set; }
-        public string PublishingFolder { get;  set; }
-        public Dictionary<string, string> CommerceSites { get;  set; }
+        #endregion
+
+        #region IBackupRestoreFolders implementation
+
+        public string WebsiteFolder { get; private set; }
+        public string XConnectFolder { get; private set; }
+        public string IdentityFolder { get; private set; }
+        public string HorizonFolder { get; private set; }
+        public string PublishingFolder { get; private set; }
+        public Dictionary<string, string> CommerceSites { get; private set; }
+
+        #endregion
+
+        #region IDatabase implementation
 
         public bool ProcessDatabases => checkDatabases.Checked;
         public string[] Databases => listDatabases.Selected().Select(d => d.TrimEnd(".bak")).ToArray();
+
+        #endregion
 
         #endregion
 
@@ -126,15 +118,8 @@ namespace Sifon.Forms.Restore
             stateGridReady = true;
         }
 
-        // TODO: Should recieve interface
-        public void SetOtherSites(IRestore model)
+        public void SetOtherSites(IRestoreViewModel model)
         {
-            //var site = model.WebsiteFolder; // list.FirstOrDefault(i => IsMainSitecoreSite(i.Key));
-            //var xconnect = model.XConnectFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
-            //var identityPath = model.IdentityFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
-            //var horizonPath = model.HorizonFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
-            //var publishingPath = model.PublishingFolder; //list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
-
             WebsiteZip = model.WebsiteZip;
             WebsiteFolder = model.WebsiteFolder;
 
@@ -159,54 +144,10 @@ namespace Sifon.Forms.Restore
             checkPublishing.Enabled = model.PublishingZip.NotEmpty();
             checkCommerce.Enabled = model.CommerceSites.Any();
 
-            //model.WebsiteChecked = model.WebsiteZip.NotEmpty();
-            //model.XConnectChecked = model.XConnectZip.NotEmpty();
-            //model.IdentityChecked = model.IdentityZip.NotEmpty();
-            //model.HorizonChecked = model.HorizonZip.NotEmpty();
-            //model.PublishingChecked = model.PublishingZip.NotEmpty();
-            //model.CommerceChecked = model.CommerceSites.Any()
-
             DisplayDatabases(model.Databases);
 
             stateSitesReady = true;
         }
-
-        //public void SetOtherSites(IEnumerable<KeyValuePair<string, string>> list)
-        //{
-        //    var site = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key)); 
-        //    var xconnect = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
-        //    var identityPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
-        //    var horizonPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
-        //    var publishingPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
-
-        //    SitecoreInstanceZip = site.Key;
-
-        //    XConnectZip = xconnect.Key;
-        //    XConnectFolder = xconnect.Value;
-
-        //    IdentityZip = identityPath.Key;
-        //    IdentityFolder = identityPath.Value;
-
-        //    HorizonZip = horizonPath.Key;
-        //    HorizonFolder = horizonPath.Value;
-
-        //    PublishingServiceZip = publishingPath.Key;
-        //    PublishingFolder = publishingPath.Value;
-
-        //    CommerceSites = list.Where(i => CheckCommerceSite(i.Key));
-
-        //    // TODO: checkboxes
-        //    checkFiles.Enabled = SitecoreInstanceZip != null && SitecoreInstanceZip != null;
-        //    checkXconnect.Enabled = XConnectZip != null && XConnectFolder != null;
-        //    checkIDS.Enabled = IdentityZip != null && IdentityFolder != null;
-        //    checkHorizon.Enabled = HorizonZip != null && HorizonZip != null;
-        //    checkPublishing.Enabled = PublishingServiceZip != null && PublishingServiceZip != null;
-        //    checkCommerce.Enabled = CommerceSites.Any();
-
-        //    stateSitesReady = true;
-        //}
-
-
 
         protected void ToggleControls(bool enabled)
         {
@@ -258,9 +199,7 @@ namespace Sifon.Forms.Restore
         {
             DialogResult = DialogResult.Cancel;
         }
-
-
-
+        
         #region Loading State - to be reworked ort moved into base class
 
         private bool stateDatabaseReady;

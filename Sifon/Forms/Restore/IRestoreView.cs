@@ -16,6 +16,6 @@ namespace Sifon.Forms.Restore
         void SetRestoreButton(bool? enabled);
         void SetRestoreButtonTitle(string loading);
         void ShowDatagrid(IEnumerable<KeyValuePair<string, string>> list, string[] columns);
-        void SetOtherSites(IRestore model);
+        void SetOtherSites(IRestoreViewModel model);
     }
 }

@@ -11,7 +11,6 @@ namespace Sifon.Shared.ScriptGenerators
 {
     internal class RestoreScriptGenerator : BaseScriptGenerator, IScript
     {
-        //private string ArchiveName => $"{_model.WebsiteZip.Replace($"{_model.DestinationFolder}\\", "").Replace(".zip", "")}";
         public override string Script { get; protected set; }
 
         internal RestoreScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)

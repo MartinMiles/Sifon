@@ -20,7 +20,7 @@ namespace Sifon.Forms.MainForm
         public event EventHandler<EventArgs> ProfilesToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked = delegate { };
-        public event EventHandler<EventArgs<IRestore>> RestoreToolStripClicked = delegate { };
+        public event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked = delegate { };
         public event EventHandler<EventArgs<string>> ScriptToolStripClicked = delegate { };
 
         #endregion
@@ -104,7 +104,7 @@ namespace Sifon.Forms.MainForm
             var restoreForm = new Restore.Restore { StartPosition = FormStartPosition.CenterParent };
             if (restoreForm.ShowDialog() == DialogResult.OK)
             {
-                RestoreToolStripClicked(this, new EventArgs<IRestore>(restoreForm));
+                RestoreToolStripClicked(this, new EventArgs<IRestoreViewModel>(restoreForm));
             }
             restoreForm.Dispose();
         }

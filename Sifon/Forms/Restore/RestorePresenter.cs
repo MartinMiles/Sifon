@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
-using Sifon.Forms.Backup;
 using Sifon.Forms.Base;
 using Sifon.Shared.BackupInfo;
 using Sifon.Shared.Events;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Filesystem;
 using Sifon.Shared.Statics;
+using Sifon.ViewModels;
 
 namespace Sifon.Forms.Restore
 {
@@ -56,7 +56,7 @@ namespace Sifon.Forms.Restore
             _view.SetRestoreButton(null);
         }
 
-        private async Task<IRestore> BuildViewModel(string selectedFolder)
+        private async Task<IRestoreViewModel> BuildViewModel(string selectedFolder)
         {
             var archives = _filesystem.GetFiles(selectedFolder, ".bak");
             //_view.DisplayDatabases(archives.Select(f => f.Value));

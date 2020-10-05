@@ -4,16 +4,16 @@ namespace Sifon.Abstractions.Model.BackupRestore
 {
     public interface IBackupRestoreFolders
     {
-        string WebsiteFolder { get; set; }
+        string WebsiteFolder { get; }
 
-        string IdentityFolder { get; set; }
+        string IdentityFolder { get; }
 
-        string XConnectFolder { get; set; }
+        string XConnectFolder { get; }
 
-        string HorizonFolder { get; set; }
+        string HorizonFolder { get; }
 
-        string PublishingFolder { get; set; }
+        string PublishingFolder { get; }
 
-        Dictionary<string, string> CommerceSites { get; set; }
+        Dictionary<string, string> CommerceSites { get; }
     }
 }

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Statics;
+using Sifon.ViewModels;
 
 namespace Sifon.Forms.Backup
 {
@@ -93,16 +93,14 @@ namespace Sifon.Forms.Backup
                 _scriptWrapper.Results.AddRange(commerceDatabases.Results);
             }
 
-            if (!_scriptWrapper.Errors.Any())
+            if (_scriptWrapper.Errors.Any())
             {
-                viewModel.Databases = _scriptWrapper.Results.ToArray();
-            }
-            else
-            {
-                // TODO: separeate display errors from rendering databases on a form class
+                _view.DisplayErrors(_scriptWrapper.Errors.Select(ex => ex.Message));
+                return;
             }
 
-            _view.PopulateDatabasesListboxForSite(viewModel, _scriptWrapper.Errors.Select(ex => ex.Message));
+            viewModel.Databases = _scriptWrapper.Results.ToArray();
+            _view.PopulateDatabasesListboxForSite(viewModel);
         }
 
         private void ClosingForm(object sender, EventArgs e)

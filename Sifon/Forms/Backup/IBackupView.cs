@@ -15,14 +15,10 @@ namespace Sifon.Forms.Backup
         void ToggleControls(bool enabled);
         void PopulateInstancesDropdown(IEnumerable<string> sitecoreInstances);
         void PopulateHostnamesListboxForSite(IEnumerable<KeyValuePair<string, string>> hostnames, string[] columnNames);
-        void PopulateDatabasesListboxForSite(IDatabase viewModel, IEnumerable<string> errors);
+        void PopulateDatabasesListboxForSite(IDatabase viewModel);
+        void DisplayErrors(IEnumerable<string> errors);
         void EnableDisableMainButton(bool? b);
         
         void SetFieldsAndCheckboxes(IBackupRestoreFolders model);
-
-
-        //void SetCheckboxes(BackupViewModel model);
-        //void SetCheckboxes(bool site, bool xconnect, bool ids,bool horizon, bool publishing, bool commerceSites);
-        //void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites);
     }
 }

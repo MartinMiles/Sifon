@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Sifon.Abstractions.Model.BackupRestore;
 
-namespace Sifon.Forms.Backup
+namespace Sifon.ViewModels
 {
     public class BackupRemoverViewModel : IBackupRemoverViewModel
     {

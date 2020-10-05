@@ -16,6 +16,7 @@ namespace Sifon.Forms.Base
         {
             return _formValidation.ShowYesNo(caption, message);
         }
+
         public void ShowInfo(string caption, string message)
         {
             _formValidation.ShowInfo(caption, message);

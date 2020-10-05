@@ -10,7 +10,7 @@
 
         bool HorizonChecked { get; }
 
-        bool PublishingChecked { get;  }
+        bool PublishingChecked { get; }
 
         bool CommerceChecked { get; }
     }

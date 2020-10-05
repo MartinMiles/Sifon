@@ -42,38 +42,15 @@ namespace Sifon.Forms.Remover
 
         public Dictionary<string, string> CommerceSites { get; set; }
 
+        public string WebsiteFolder => textWebfolder.Text.TrimEnd('\\');
+   
+        public string XConnectFolder => textXConnectFolder.Text.TrimEnd('\\');
 
-        public string WebsiteFolder
-        {
-            get => textWebfolder.Text.TrimEnd('\\');
-            set => textWebfolder.Text = value;
-        }
+        public string IdentityFolder => textIdsFolder.Text.TrimEnd('\\');
 
-        //TODO: setters
+        public string HorizonFolder => textHorizonFolder.Text.TrimEnd('\\');
 
-        public string XConnectFolder // => textXConnectFolder.Text.TrimEnd('\\');
-        {
-            get => textXConnectFolder.Text.TrimEnd('\\');
-            set => textXConnectFolder.Text = value;
-        }
-
-        public string IdentityFolder //=> textIdsFolder.Text.TrimEnd('\\');
-        {
-            get => textIdsFolder.Text.TrimEnd('\\');
-            set => textIdsFolder.Text = value;
-        }
-
-        public string HorizonFolder
-        {
-            get => textHorizonFolder.Text.TrimEnd('\\');
-            set => textHorizonFolder.Text = value;
-        }
-
-        public string PublishingFolder
-        {
-            get => textPublishingFolder.Text.TrimEnd('\\');
-            set => textPublishingFolder.Text = value;
-        }
+        public string PublishingFolder => textPublishingFolder.Text.TrimEnd('\\');
 
         #endregion
 
@@ -354,7 +331,7 @@ namespace Sifon.Forms.Remover
             ClosingForm(this, new EventArgs());
         }
         
-        #region Loading State - to be reworked ort moved into base class
+        #region Loading State - to be reworked or moved into base class
 
         private bool stateDatabaseReady;
         private bool stateSitesReady;

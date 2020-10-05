@@ -33,7 +33,7 @@ namespace Sifon.Forms.Backup
         {
             if (InstanceChanged != null)
             {
-                await InstanceChanged(sender, new EventArgs<string>(WebsiteZip));
+                await InstanceChanged(sender, new EventArgs<string>(Website));
             }
         }
 
@@ -60,18 +60,22 @@ namespace Sifon.Forms.Backup
             checkFiles.Checked = textDestinationFolderToBackup.Text.Length > 0;
         }
 
-        #endregion
-
-        public void ValidateAndRun(IEnumerable<string> validationMessages)
+        private void checkFiles_CheckedChanged(object sender, EventArgs e)
         {
-            if (!ShowValidationError(validationMessages)) return;
-
-            if (!listDatabases.IsEmpty() || ShowYesNo(Messages.Backup.ConfirmDatabases.Caption, Messages.Backup.ConfirmDatabases.Message))
-            {
-                ToggleControls(false);
-                DialogResult = DialogResult.OK;
-            }
+            EnableDisableMainButton();
         }
+
+        private void checkDatabases_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableDisableMainButton();
+        }
+
+        private void Backup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Raise_FormClosing();
+        }
+
+        #endregion
 
         public void PopulateInstancesDropdown(IEnumerable<string> sitecoreInstances)
         {
@@ -103,22 +107,24 @@ namespace Sifon.Forms.Backup
             Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
 
-        //public void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors)
-        public void PopulateDatabasesListboxForSite(IDatabase viewModel, IEnumerable<string> errors)
+        public void DisplayErrors(IEnumerable<string> errors)
+        {
+           if (errors.Any())
+            {
+                ShowError(Messages.Backup.RetrievingDatabasesFailed, errors.First());
+            }
+        }
+
+        public void PopulateDatabasesListboxForSite(IDatabase viewModel)
         {
             listDatabases.Items.Clear();
             foreach (string databaseName in viewModel.Databases)
             {
                 listDatabases.Items.Add(databaseName);
             }
-
-            if (errors.Any())
-            {
-                ShowError(Messages.Backup.RetrievingDatabasesFailed, errors.First());
-            }
         }
 
-        public void SetFieldsAndCheckboxes(IBackupRestoreFolders model) //
+        public void SetFieldsAndCheckboxes(IBackupRestoreFolders model)
         {
             XConnectFolder = model.XConnectFolder;
             IdentityFolder = model.IdentityFolder;
@@ -134,7 +140,7 @@ namespace Sifon.Forms.Backup
             checkCommerce.Enabled = model.CommerceSites.Any();
         }
 
-        private void textDestinationFolderToBackup_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void textDestinationFolder_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var textBox = sender as TextBox;
             if (textBox.Text.Trim() == String.Empty)
@@ -144,14 +150,15 @@ namespace Sifon.Forms.Backup
             }
         }
 
-        private void checkFiles_CheckedChanged(object sender, EventArgs e)
+        public void ValidateAndRun(IEnumerable<string> validationMessages)
         {
-            EnableDisableMainButton();
-        }
+            if (!ShowValidationError(validationMessages)) return;
 
-        private void checkDatabases_CheckedChanged(object sender, EventArgs e)
-        {
-            EnableDisableMainButton();
+            if (!listDatabases.IsEmpty() || ShowYesNo(Messages.Backup.ConfirmDatabases.Caption, Messages.Backup.ConfirmDatabases.Message))
+            {
+                ToggleControls(false);
+                DialogResult = DialogResult.OK;
+            }
         }
 
         public override void CloseDialog()
@@ -159,17 +166,15 @@ namespace Sifon.Forms.Backup
             DialogResult = DialogResult.Cancel;
         }
 
-        private void Backup_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Raise_FormClosing();
-        }
+        public string Website => comboInstances.SelectedItem.ToString();
 
         #region IBackupRemoverViewModel implementation
 
         public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Backup;
         public string DestinationFolder => textDestinationFolderToBackup.Text.TrimEnd('\\');
 
-        public bool ProcessDatabases => checkDatabases.Checked;
+        #region IBackupRestoreCheckboxes
+
         public bool WebsiteChecked => checkFiles.Checked;
         public bool XConnectChecked => checkXconnect.Checked;
         public bool IdentityChecked => checkIds .Checked;
@@ -177,21 +182,26 @@ namespace Sifon.Forms.Backup
         public bool HorizonChecked => checkPublishing .Checked;
         public bool CommerceChecked => checkCommerce.Checked;
 
-        public string WebsiteZip => comboInstances.SelectedItem.ToString();
+        #endregion
 
-        //public string XConnectZip { get; private set; }
-        //public string IdentityZip { get; private set; }
-        //public string HorizonZip { get; private set; }
-        //public string PublishingZip { get; private set; }
-        public Dictionary<string, string> CommerceSites { get; set; }
+        #region IBackupRestoreFolders
 
-        public string WebsiteFolder { get; set; }
-        public string XConnectFolder { get; set; }
-        public string IdentityFolder { get; set; }
-        public string HorizonFolder { get; set; }                // not used - implemented only for interface compliance with restore
-        public string PublishingFolder { get; set; }      // not used - implemented only for interface compliance with restore
+        public string WebsiteFolder => throw new NotImplementedException();
+        public string XConnectFolder { get; private set; }
+        public string IdentityFolder { get; private set; }
+        public string HorizonFolder { get; private set; }
+        public string PublishingFolder { get; private set; }
+        public Dictionary<string, string> CommerceSites { get; private set; }
+        
+        #endregion
+
+        #region IDatabase
+
+        public bool ProcessDatabases => checkDatabases.Checked;
 
         public string[] Databases => listDatabases.Selected();
+
+        #endregion
 
         #endregion
     }

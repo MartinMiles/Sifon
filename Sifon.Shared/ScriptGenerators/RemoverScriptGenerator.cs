@@ -11,7 +11,6 @@ namespace Sifon.Shared.ScriptGenerators
 {
     internal class RemoverScriptGenerator : BaseScriptGenerator, IScript
     {
-        //public override string Script => Path.Combine(Settings.Folders.Cache, $"Cleaner_{_model.WebsiteZip}_{DateTime.Now:yyyy-MM-dd}.ps1");
         public override string Script { get; protected set; }
 
         internal RemoverScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)
