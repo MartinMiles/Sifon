@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
 using Sifon.Shared.PowerShell;
 using Sifon.Shared.Statics;
 
@@ -12,18 +12,17 @@ namespace Sifon.Forms.Backup
 {
     internal class BackupPresenter : BaseBackupRestorePresenter
     {
+        private bool sitesReady = false;
+        private bool databasesReady = false;
         private readonly IBackupView _view;
         private  ScriptWrapper<string> _scriptWrapper;
-
-        private bool sitesReady = false;
-        private bool daytabasesReady = false;
 
         internal BackupPresenter(IBackupView backupView) : base(backupView)
         {
             _view = backupView;
             _view.FormLoaded += Loaded;
             _view.InstanceChanged += async (s, e) => { await InstanceChanged(s, e as EventArgs<string>); };
-            _view.ValidateBeforeClose += ValidateBeforeClose;
+            _view.ValidateBeforeClose += ValidateBeforeClose; // TODO: test async / await
             _view.BeforeFormClosing += ClosingForm;
         }
 
@@ -45,30 +44,38 @@ namespace Sifon.Forms.Backup
             _view.ToggleControls(false);
 
             var bindings = await _siteProvider.GetBindings(e.Value);
-            _view.PopulateHostnamesListboxForSite(bindings);
+            _view.PopulateHostnamesListboxForSite(bindings, new[] { "Protocol", "Hostname" });
 
-            var xconnectFolder = await _siteProvider.GetXconnect(e.Value);
-            var idsFolder = await _siteProvider.GetIDS(e.Value);
-            var horizonFolder = await _siteProvider.GetHorizon(e.Value);
-            var publishingFolder = await _siteProvider.GetPublishingService(e.Value);
-            var commerceSites = await _siteProvider.GetCommerceSites(e.Value);
+            var viewModel = await BuildViewModel(e.Value);
+            _view.SetFieldsAndCheckboxes(viewModel);
 
-            var backupViewModel = new BackupViewModel
+            await PopulateDatabases(viewModel);
+
+            _view.ToggleControls(true);
+            _view.EnableDisableMainButton(true);
+            _view.EnableDisableMainButton(null);
+        }
+
+        private async Task<BackupRemoverViewModel> BuildViewModel(string siteName)
+        {
+            var xconnectFolder = await _siteProvider.GetXconnect(siteName);
+            var idsFolder = await _siteProvider.GetIDS(siteName);
+            var horizonFolder = await _siteProvider.GetHorizon(siteName);
+            var publishingFolder = await _siteProvider.GetPublishingService(siteName);
+            var commerceSites = await _siteProvider.GetCommerceSites(siteName);
+
+            return new BackupRemoverViewModel
             {
-                SiteChecked = true,
-                XConnect = xconnectFolder,
-                Identity = idsFolder,
-                Horizon = horizonFolder,
-                Publishing = publishingFolder,
-                CommerceSites = commerceSites.Select(s => new KeyValuePair<string, string>(s, s))
+                XConnectFolder = xconnectFolder,
+                IdentityFolder = idsFolder,
+                HorizonFolder = horizonFolder,
+                PublishingFolder = publishingFolder,
+                CommerceSites = commerceSites.ToDictionary(s => s, s => s)
             };
+        }
 
-            _view.SetFieldsandCheckboxes(backupViewModel);
-
-            //_view.SetXConnctAndIdentity(xconnectFolder, idsFolder, commerceSites.Select(s => new KeyValuePair<string, string>(s, s)));
-            //_view.SetCheckboxes(backupViewModel);
-            //_view.SetCheckboxes(true, xconnectFolder.NotEmpty(), idsFolder.NotEmpty(), horizonFolder.NotEmpty(), publishingFolder.NotEmpty(), commerceSites.Any());
-
+        private async Task PopulateDatabases(BackupRemoverViewModel viewModel)
+        {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
 
             var parameters = new Dictionary<string, dynamic>
@@ -80,17 +87,22 @@ namespace Sifon.Forms.Backup
             _scriptWrapper = new ScriptWrapper<string>(SelectedProfile, _view, d => d.ToString());
             await _scriptWrapper.Run(script, parameters);
 
-            if (commerceSites.Any())
+            if (viewModel.CommerceSites.Any())
             {
-                var commerceDatabases = await _siteProvider.GetCommerceDatabases(commerceSites.Last());
+                var commerceDatabases = await _siteProvider.GetCommerceDatabases(viewModel.CommerceSites.Last().Value);
                 _scriptWrapper.Results.AddRange(commerceDatabases.Results);
             }
 
-            _view.PopulateDatabasesListboxForSite(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex=>ex.Message));
+            if (!_scriptWrapper.Errors.Any())
+            {
+                viewModel.Databases = _scriptWrapper.Results.ToArray();
+            }
+            else
+            {
+                // TODO: separeate display errors from rendering databases on a form class
+            }
 
-            _view.ToggleControls(true);
-            _view.EnableDisableMainButton(true);
-            _view.EnableDisableMainButton(null);
+            _view.PopulateDatabasesListboxForSite(viewModel, _scriptWrapper.Errors.Select(ex => ex.Message));
         }
 
         private void ClosingForm(object sender, EventArgs e)

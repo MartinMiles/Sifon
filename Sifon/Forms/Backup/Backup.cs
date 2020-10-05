@@ -6,11 +6,12 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
+using Sifon.Shared.Extensions;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Backup
 {
-    public partial class Backup : BaseForm, IBackupView, IBackupRestoreModel
+    public partial class Backup : BaseForm, IBackupView, IBackupRemoverViewModel
     {
         public event AsyncEventHandler<EventArgs<string>> InstanceChanged;
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
@@ -32,7 +33,7 @@ namespace Sifon.Forms.Backup
         {
             if (InstanceChanged != null)
             {
-                await InstanceChanged(sender, new EventArgs<string>(SitecoreInstance));
+                await InstanceChanged(sender, new EventArgs<string>(WebsiteZip));
             }
         }
 
@@ -87,9 +88,9 @@ namespace Sifon.Forms.Backup
             EnableDisableMainButton();
         }
 
-        public void PopulateHostnamesListboxForSite(IEnumerable<KeyValuePair<string, string>> hostnames)
+        public void PopulateHostnamesListboxForSite(IEnumerable<KeyValuePair<string, string>> hostnames, string[] columnNames)
         {
-            dataGrid.ShowDataGrid(hostnames, new[] { "Protocol", "Hostname" });
+            dataGrid.ShowDataGrid(hostnames, columnNames);
         }
 
         public void ToggleControls(bool enabled)
@@ -102,45 +103,36 @@ namespace Sifon.Forms.Backup
             Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
 
-        public void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors)
+        //public void PopulateDatabasesListboxForSite(IEnumerable<string> databaseNames, IEnumerable<string> errors)
+        public void PopulateDatabasesListboxForSite(IDatabase viewModel, IEnumerable<string> errors)
         {
             listDatabases.Items.Clear();
-            foreach (string databaseName in databaseNames)
+            foreach (string databaseName in viewModel.Databases)
             {
                 listDatabases.Items.Add(databaseName);
             }
 
             if (errors.Any())
             {
-                ShowError("Retrieving databases error", errors.First());
+                ShowError(Messages.Backup.RetrievingDatabasesFailed, errors.First());
             }
         }
 
-        // TODO: shared for all backup restore. maybe to base?
-
-        public void SetFieldsandCheckboxes(BackupViewModel model)
+        public void SetFieldsAndCheckboxes(IBackupRestoreFolders model) //
         {
-            XConnect = model.XConnect;
-            IdentityServer = model.Identity;
-            Horizon = model.Horizon;
-            PublishingService = model.Publishing;
+            XConnectFolder = model.XConnectFolder;
+            IdentityFolder = model.IdentityFolder;
+            HorizonFolder = model.HorizonFolder;
+            PublishingFolder = model.PublishingFolder;
             CommerceSites = model.CommerceSites;
 
-            checkFiles.Enabled = model.SiteChecked;
-            checkXconnect.Enabled = model.XConnectChecked;
-            checkIds.Enabled = model.IdentityChecked;
-            checkHorizon.Enabled = model.HorizonChecked;
-            checkPublishing.Enabled = model.PublishingChecked;
-            checkCommerce.Enabled = model.CommerceChecked;
-
+            checkFiles.Enabled = true;
+            checkXconnect.Enabled = model.XConnectFolder.NotEmpty();
+            checkIds.Enabled = model.IdentityFolder.NotEmpty();
+            checkHorizon.Enabled = model.HorizonFolder.NotEmpty();
+            checkPublishing.Enabled = model.PublishingFolder.NotEmpty();
+            checkCommerce.Enabled = model.CommerceSites.Any();
         }
-
-        //public void SetXConnctAndIdentity(string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites)
-        //{
-        //    XConnect = xconnectFolder;
-        //    IdentityServer = idsFolder;
-        //    CommerceSites = commerceSites;
-        //}
 
         private void textDestinationFolderToBackup_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -172,30 +164,34 @@ namespace Sifon.Forms.Backup
             Raise_FormClosing();
         }
 
-        #region IBackupRestoreModel implementation
+        #region IBackupRemoverViewModel implementation
 
         public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Backup;
         public string DestinationFolder => textDestinationFolderToBackup.Text.TrimEnd('\\');
-        public string SitecoreInstance => comboInstances.SelectedItem.ToString();
+
         public bool ProcessDatabases => checkDatabases.Checked;
-        public bool ProcessWebroot => checkFiles.Checked;
-        public bool ProcessXconnect => checkXconnect.Checked;
-        public bool ProcessIDS => checkIds .Checked;
-        public bool ProcessHorizon => checkHorizon .Checked;
-        public bool ProcessPublishing => checkPublishing .Checked;
-        public bool ProcessCommerce => checkCommerce.Checked;
+        public bool WebsiteChecked => checkFiles.Checked;
+        public bool XConnectChecked => checkXconnect.Checked;
+        public bool IdentityChecked => checkIds .Checked;
+        public bool PublishingChecked => checkHorizon .Checked;
+        public bool HorizonChecked => checkPublishing .Checked;
+        public bool CommerceChecked => checkCommerce.Checked;
 
-        public string XConnect { get; private set; }
-        public string IdentityServer { get; private set; }
-        public string Horizon { get; private set; }
-        public string HorizonFolder { get; }                // not used - implemented only for interface compliance with restore
-        public string PublishingServiceFolder { get; }      // not used - implemented only for interface compliance with restore
+        public string WebsiteZip => comboInstances.SelectedItem.ToString();
 
-        public string PublishingService { get; private set; }
-        public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
-        public string XConnectFolder { get; private set; }
-        public string IdentityServerFolder { get; private set; }
-        public string[] SelectedDatabases => listDatabases.Selected();
+        //public string XConnectZip { get; private set; }
+        //public string IdentityZip { get; private set; }
+        //public string HorizonZip { get; private set; }
+        //public string PublishingZip { get; private set; }
+        public Dictionary<string, string> CommerceSites { get; set; }
+
+        public string WebsiteFolder { get; set; }
+        public string XConnectFolder { get; set; }
+        public string IdentityFolder { get; set; }
+        public string HorizonFolder { get; set; }                // not used - implemented only for interface compliance with restore
+        public string PublishingFolder { get; set; }      // not used - implemented only for interface compliance with restore
+
+        public string[] Databases => listDatabases.Selected();
 
         #endregion
     }

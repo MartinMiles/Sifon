@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Model.BackupRestore;
+using Sifon.Forms.Backup;
 using Sifon.Forms.Base;
 using Sifon.Shared.BackupInfo;
 using Sifon.Shared.Events;
@@ -35,21 +37,83 @@ namespace Sifon.Forms.Restore
 
             if (selectedFolder.NotEmpty() && directoryExists)
             {
-                var archives = _filesystem.GetFiles(selectedFolder, ".bak");
-                _view.LoadFolder(archives.Select(f => f.Value));
+                //var archives = _filesystem.GetFiles(selectedFolder, ".bak");
+                //_view.DisplayDatabases(archives.Select(f => f.Value));
 
-                var files = _filesystem.GetFiles(selectedFolder, ".zip");
-                var list = await GetInputForGrid(files);
-                _view.ShowDatagrid(list);
-                _view.SetOtherSites(list);
+                //var files = _filesystem.GetFiles(selectedFolder, ".zip");
+                //var list = await GetInputForGrid(files);
+                //_view.ShowDatagrid(list, new[] { "Backup archive files location", "Destination folder to restore" });
+
+                var iRestoreModel = await BuildViewModel(selectedFolder);
+                _view.SetOtherSites(iRestoreModel);
             }
             else
             {
-                _view.LoadFolder(new string[]{});
+                _view.DisplayDatabases(new string[]{});
             }
 
             _view.SetRestoreButtonTitle(Settings.Buttons.Restore);
             _view.SetRestoreButton(null);
+        }
+
+        private async Task<IRestore> BuildViewModel(string selectedFolder)
+        {
+            var archives = _filesystem.GetFiles(selectedFolder, ".bak");
+            //_view.DisplayDatabases(archives.Select(f => f.Value));
+
+            var files = _filesystem.GetFiles(selectedFolder, ".zip");
+            var list = await GetInputForGrid(files);
+
+            _view.ShowDatagrid(list, new[] { "Backup archive files location", "Destination folder to restore" });
+
+            //var xconnectFolder = await _siteProvider.GetXconnect(siteName);
+            //var idsFolder = await _siteProvider.GetIDS(siteName);
+            //var horizonFolder = await _siteProvider.GetHorizon(siteName);
+            //var publishingFolder = await _siteProvider.GetPublishingService(siteName);
+            //var commerceSites = await _siteProvider.GetCommerceSites(siteName);
+
+            return new RestoreViewModel
+            {
+                WebsiteZip = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key)).Key,
+                XConnectZip = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect)).Key,
+                IdentityZip = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer)).Key,
+                HorizonZip = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon)).Key,
+                PublishingZip = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService)).Key,
+                
+                WebsiteFolder =  list.FirstOrDefault(i => IsMainSitecoreSite(i.Key)).Value,
+                XConnectFolder = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect)).Value,
+                IdentityFolder = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer)).Value,
+                HorizonFolder = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon)).Value,
+                PublishingFolder = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService)).Value,
+                CommerceSites = list.Where(i => CheckCommerceSite(i.Key)).ToDictionary(s => s.Key, s => s.Value),
+
+                ProcessDatabases = archives.Any(),
+                Databases = archives.Select(f => f.Value).ToArray()
+            };
+            
+            //checkXconnect.Enabled = XConnectZip != null && XConnectFolder != null;
+            //checkIDS.Enabled = IdentityZip != null && IdentityFolder != null;
+            //checkHorizon.Enabled = HorizonZip != null && HorizonZip != null;
+            //checkPublishing.Enabled = PublishingZip != null && PublishingZip != null;
+            //checkCommerce.Enabled = CommerceSites.Any();
+
+            //return model;
+        }
+
+
+        private bool IsMainSitecoreSite(string key)
+        {
+            return !CheckCommerceSite(key)
+                   && !key.Contains(Settings.Parameters.XConnect)
+                   && !key.Contains(Settings.Parameters.IdentityServer)
+                   && !key.Contains(Settings.Parameters.Horizon)
+                   && !key.Contains(Settings.Parameters.PublishingService);
+        }
+
+        private bool CheckCommerceSite(string site)
+        {
+            string[] commerceSites = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
+            return commerceSites.Any(s => site.Contains(s));
         }
 
         private async Task<IEnumerable<KeyValuePair<string, string>>> GetInputForGrid(Dictionary<string, string> files)

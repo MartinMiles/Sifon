@@ -90,30 +90,30 @@ namespace Sifon.Forms.MainForm
         #region Backup-Remove-Restore
 
 
-        private async void BackupToolStripClicked(object sender, EventArgs<IBackupRestoreModel> e)
+        private async void BackupToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
         {
             model = e.Value;
 
-            await BackupInfoExtensions.CreateBackupInfo(model.SitecoreInstance, SelectedProfile.Webroot, SelectedProfile, _view);
+            await BackupInfoExtensions.CreateBackupInfo(SelectedProfile.Website, SelectedProfile.Webroot, SelectedProfile, _view);
 
-            if (model.XConnect.NotEmpty())
+            if (model.XConnectFolder.NotEmpty())
             {
-                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.XConnect, SelectedProfile, _view);
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.XConnectFolder, SelectedProfile, _view);
             }
 
-            if (model.IdentityServer.NotEmpty())
+            if (model.IdentityFolder.NotEmpty())
             {
-                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.IdentityServer, SelectedProfile, _view);
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.IdentityFolder, SelectedProfile, _view);
             }
 
-            if (model.Horizon.NotEmpty())
+            if (model.HorizonFolder.NotEmpty())
             {
-                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.Horizon, SelectedProfile, _view);
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.HorizonFolder, SelectedProfile, _view);
             }
 
-            if (model.PublishingService.NotEmpty())
+            if (model.PublishingFolder.NotEmpty())
             {
-                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.PublishingService, SelectedProfile, _view);
+                await BackupInfoExtensions.CreateBackupInfo(string.Empty, model.PublishingFolder, SelectedProfile, _view);
             }
 
             if (model.CommerceSites != null && model.CommerceSites.Any())
@@ -124,38 +124,36 @@ namespace Sifon.Forms.MainForm
                 }
             }
 
-            var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.Activity, Messages.Activities.Backup } };
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Backup }};
             _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddScriptModelParameters(parameters, model);
+            _profilesService.AddBackupRemoveParameters(parameters, model);
             _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
             PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
         }
 
-        private async void RemoveToolStripClicked(object sender, EventArgs<IBackupRestoreModel> e)
+        private async void RemoveToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
         {
             var model = e.Value;
 
-            var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.Activity, Messages.Activities.Remove } };
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Remove }};
             _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddScriptModelParameters(parameters, model);
+            _profilesService.AddBackupRemoveParameters(parameters, model);
             _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
             PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
         }
 
-        private async void RestoreToolStripClicked(object sender, EventArgs<IBackupRestoreModel> e)
+        private async void RestoreToolStripClicked(object sender, EventArgs<IRestore> e)
         {
             var model = e.Value;
 
-            var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.Activity, Messages.Activities.Restore } };
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Restore }};
             _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddScriptModelParameters(parameters, model);
+            _profilesService.AddBackupRemoveParameters(parameters, model);
+            _profilesService.AddRestoreParameters(parameters, model);
             _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
-
-            // pass zip archive as $Website into restore script (a minor hack)
-            parameters[Settings.Parameters.Website] = model.SitecoreInstance;
-
+            
             PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
          }
 

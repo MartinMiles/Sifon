@@ -12,10 +12,10 @@ namespace Sifon.Shared.ScriptGenerators
 {
     internal abstract class BaseScriptGenerator
     {
-        protected internal readonly IBackupRestoreModel _model;
+        protected internal readonly IBackupRemoverViewModel _model;
         protected internal string executionScript = String.Empty;
 
-        public abstract string Script { get; }
+        public abstract string Script { get; protected set; }
         protected internal ProfilesProvider _profilesService;
         protected internal ServiceScriptGenerator _serviceScriptGenerator;
         protected internal IisScriptGenerator _iisScriptGenerator;
@@ -23,7 +23,7 @@ namespace Sifon.Shared.ScriptGenerators
 
         protected Dictionary<string, string> CommerceSitesParameters => _model.CommerceSites.ToDictionary(s => Path.GetFileName(s.Value), s => s.Key);
 
-        protected internal BaseScriptGenerator(IBackupRestoreModel model, IProfile profile)
+        protected internal BaseScriptGenerator(IBackupRemoverViewModel model, IProfile profile)
         {
             _model = model;
 

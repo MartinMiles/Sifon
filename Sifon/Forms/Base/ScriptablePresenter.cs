@@ -27,7 +27,7 @@ namespace Sifon.Forms.Base
         protected readonly IMainView _view;
         private readonly ConsoleOutputFormatter _outputFormatter;
         private IFilesystem _filesystem;
-        protected IBackupRestoreModel model;
+        protected IBackupRemoverViewModel model;
 
         private readonly GenericTextFormatter _genericTextFormatter;
         private readonly ProgressFormatter _progressFormatter;

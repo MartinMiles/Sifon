@@ -13,10 +13,69 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Restore
 {
-    public partial class Restore : BaseForm, IRestoreView, IBackupRestoreModel
+    public partial class Restore : BaseForm, IRestoreView, IRestore
     {
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
         public event EventHandler<EventArgs<string>> FolderSelected = delegate { };
+
+        #region IBackupRestoreModel implementation
+
+        public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Restore;
+        public string DestinationFolder => textSourceFolder.Text.TrimEnd('\\');
+
+        public bool WebsiteChecked
+        {
+            get => checkFiles.Checked;
+            set => checkFiles.Checked = value;
+        }
+
+        public bool XConnectChecked
+        {
+            get => checkXconnect.Checked;
+            set => checkXconnect.Checked = value;
+        }
+        
+        public bool IdentityChecked
+        {
+            get => checkIDS.Checked;
+            set => checkIDS.Checked = value;
+        }
+
+        public bool PublishingChecked
+        {
+            get => checkHorizon.Checked;
+            set => checkHorizon.Checked = value;
+        }
+
+        public bool HorizonChecked
+        {
+            get => checkPublishing.Checked;
+            set => checkPublishing.Checked = value;
+        }
+
+        public bool CommerceChecked
+        {
+            get => checkCommerce.Checked;
+            set => checkCommerce.Checked = value;
+        }
+
+        public string WebsiteZip { get; private set; }
+        public string XConnectZip { get; private set; }
+        public string IdentityZip { get; private set; }
+        public string HorizonZip { get; private set; }
+        public string PublishingZip { get; private set; }
+
+        public string WebsiteFolder { get;  set; }
+        public string XConnectFolder { get;  set; }
+        public string IdentityFolder { get;  set; }
+        public string HorizonFolder { get;  set; }
+        public string PublishingFolder { get;  set; }
+        public Dictionary<string, string> CommerceSites { get;  set; }
+
+        public bool ProcessDatabases => checkDatabases.Checked;
+        public string[] Databases => listDatabases.Selected().Select(d => d.TrimEnd(".bak")).ToArray();
+
+        #endregion
 
         public Restore()
         {
@@ -29,20 +88,7 @@ namespace Sifon.Forms.Restore
             Raise_FormLoaded();
         }
 
-        private void buttonBackupLocation_Click(object sender, EventArgs e)
-        {
-            SetRestoreButtonTitle(Settings.Buttons.Loading);
-            Raise_FolderBrowserClicked(textSourceFolder, false);
-            //SetRestoreButton(false);
-        }
-
-        private void textSourceFolder_TextChanged(object sender, EventArgs e)
-        {
-            ResetState();
-            FolderSelected(this, new EventArgs<string>(textSourceFolder.Text));
-        }
-
-        public void LoadFolder(IEnumerable<string> databaseBackups)
+        public void DisplayDatabases(IEnumerable<string> databaseBackups)
         {
             listDatabases.Items.Clear();
             foreach (string file in databaseBackups)
@@ -60,61 +106,107 @@ namespace Sifon.Forms.Restore
             StateDatabaseReady = true;
         }
 
-        public void ShowDatagrid(IEnumerable<KeyValuePair<string, string>> list)
+        private void buttonBackupLocation_Click(object sender, EventArgs e)
+        {
+            SetRestoreButtonTitle(Settings.Buttons.Loading);
+            Raise_FolderBrowserClicked(textSourceFolder, false);
+            //SetRestoreButton(false);
+        }
+
+        private void textSourceFolder_TextChanged(object sender, EventArgs e)
+        {
+            ResetState();
+            FolderSelected(this, new EventArgs<string>(textSourceFolder.Text));
+        }
+
+        public void ShowDatagrid(IEnumerable<KeyValuePair<string, string>> list, string[] columns)
         {
             groupGrid.Text = list.Any() ? Messages.Restore.RestoreTargetFound : Messages.Restore.RestoreTargetNotFound;
-            dataGrid.ShowDataGrid(list, new[] { "Backup archive files location", "Destination folder to restore" });
-
+            dataGrid.ShowDataGrid(list, columns);
             stateGridReady = true;
         }
 
-        public void SetOtherSites(IEnumerable<KeyValuePair<string, string>> list)
+        // TODO: Should recieve interface
+        public void SetOtherSites(IRestore model)
         {
-            var site = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key));
-            var xconnect = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
-            var identityPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
+            //var site = model.WebsiteFolder; // list.FirstOrDefault(i => IsMainSitecoreSite(i.Key));
+            //var xconnect = model.XConnectFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
+            //var identityPath = model.IdentityFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
+            //var horizonPath = model.HorizonFolder; // list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
+            //var publishingPath = model.PublishingFolder; //list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
 
-            var horizonPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
-            var publishingPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
+            WebsiteZip = model.WebsiteZip;
+            WebsiteFolder = model.WebsiteFolder;
 
-            SitecoreInstance = site.Key;
-            XConnect = xconnect.Key;
-            XConnectFolder = xconnect.Value;
-            IdentityServer = identityPath.Key;
-            IdentityServerFolder = identityPath.Value;
+            XConnectZip = model.XConnectZip;
+            XConnectFolder = model.XConnectFolder;
 
-            Horizon = horizonPath.Key;
-            HorizonFolder = horizonPath.Value;
-            PublishingService = publishingPath.Key;
-            PublishingServiceFolder = publishingPath.Value;
+            IdentityZip = model.IdentityZip;
+            IdentityFolder = model.IdentityFolder;
 
-            CommerceSites = list.Where(i => CheckCommerceSite(i.Key));
+            HorizonZip = model.HorizonZip;
+            HorizonFolder = model.HorizonFolder;
 
-            // TODO: and here
-            checkFiles.Enabled = SitecoreInstance != null && SitecoreInstance != null;
-            checkXconnect.Enabled = XConnect != null && XConnectFolder != null;
-            checkIDS.Enabled = IdentityServer != null && IdentityServerFolder != null;
-            checkHorizon.Enabled = Horizon != null && Horizon != null;
-            checkPublishing.Enabled = PublishingService != null && PublishingService != null;
-            checkCommerce.Enabled = CommerceSites != null && CommerceSites.Any();
+            PublishingZip = model.PublishingZip;
+            PublishingFolder = model.PublishingFolder;
+
+            CommerceSites = model.CommerceSites;
+
+            checkFiles.Enabled = model.WebsiteZip.NotEmpty();
+            checkXconnect.Enabled = model.XConnectZip.NotEmpty();
+            checkIDS.Enabled = model.IdentityZip.NotEmpty();
+            checkHorizon.Enabled = model.HorizonZip.NotEmpty();
+            checkPublishing.Enabled = model.PublishingZip.NotEmpty();
+            checkCommerce.Enabled = model.CommerceSites.Any();
+
+            //model.WebsiteChecked = model.WebsiteZip.NotEmpty();
+            //model.XConnectChecked = model.XConnectZip.NotEmpty();
+            //model.IdentityChecked = model.IdentityZip.NotEmpty();
+            //model.HorizonChecked = model.HorizonZip.NotEmpty();
+            //model.PublishingChecked = model.PublishingZip.NotEmpty();
+            //model.CommerceChecked = model.CommerceSites.Any()
+
+            DisplayDatabases(model.Databases);
 
             stateSitesReady = true;
         }
 
-        private bool IsMainSitecoreSite(string key)
-        {
-            return !CheckCommerceSite(key)
-                   && !key.Contains(Settings.Parameters.XConnect)
-                   && !key.Contains(Settings.Parameters.IdentityServer)
-                   && !key.Contains(Settings.Parameters.Horizon)
-                   && !key.Contains(Settings.Parameters.PublishingService);
-        }
+        //public void SetOtherSites(IEnumerable<KeyValuePair<string, string>> list)
+        //{
+        //    var site = list.FirstOrDefault(i => IsMainSitecoreSite(i.Key)); 
+        //    var xconnect = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.XConnect));
+        //    var identityPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.IdentityServer));
+        //    var horizonPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.Horizon));
+        //    var publishingPath = list.FirstOrDefault(i => i.Key.Contains(Settings.Parameters.PublishingService));
 
-        private bool CheckCommerceSite(string site)
-        {
-            string[] commerceSites = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
-            return commerceSites.Any(s => site.Contains(s));
-        }
+        //    SitecoreInstanceZip = site.Key;
+
+        //    XConnectZip = xconnect.Key;
+        //    XConnectFolder = xconnect.Value;
+
+        //    IdentityZip = identityPath.Key;
+        //    IdentityFolder = identityPath.Value;
+
+        //    HorizonZip = horizonPath.Key;
+        //    HorizonFolder = horizonPath.Value;
+
+        //    PublishingServiceZip = publishingPath.Key;
+        //    PublishingFolder = publishingPath.Value;
+
+        //    CommerceSites = list.Where(i => CheckCommerceSite(i.Key));
+
+        //    // TODO: checkboxes
+        //    checkFiles.Enabled = SitecoreInstanceZip != null && SitecoreInstanceZip != null;
+        //    checkXconnect.Enabled = XConnectZip != null && XConnectFolder != null;
+        //    checkIDS.Enabled = IdentityZip != null && IdentityFolder != null;
+        //    checkHorizon.Enabled = HorizonZip != null && HorizonZip != null;
+        //    checkPublishing.Enabled = PublishingServiceZip != null && PublishingServiceZip != null;
+        //    checkCommerce.Enabled = CommerceSites.Any();
+
+        //    stateSitesReady = true;
+        //}
+
+
 
         protected void ToggleControls(bool enabled)
         {
@@ -167,31 +259,7 @@ namespace Sifon.Forms.Restore
             DialogResult = DialogResult.Cancel;
         }
 
-        #region IBackupRestoreModel implementation
 
-        public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Restore;
-        public string DestinationFolder => textSourceFolder.Text.TrimEnd('\\');
-        public string SitecoreInstance { get; private set; }
-        public bool ProcessDatabases => checkDatabases.Checked;
-        public bool ProcessWebroot => checkFiles.Checked;
-        public bool ProcessXconnect => checkXconnect.Checked;
-        public bool ProcessIDS => checkIDS.Checked;
-        public bool ProcessHorizon => checkHorizon.Checked;
-        public bool ProcessPublishing => checkPublishing.Checked;
-        public bool ProcessCommerce => checkCommerce.Checked;
-        public string XConnect { get; private set; }
-        public string IdentityServer { get; private set; }
-        public string Horizon { get; private set; }
-        public string HorizonFolder { get; private set; }
-        public string PublishingService { get; private set; }
-        public string PublishingServiceFolder { get; private set; }
-        public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
-
-        public string XConnectFolder { get; private set; }
-        public string IdentityServerFolder { get; private set; }
-        public string[] SelectedDatabases => listDatabases.Selected().Select(d => d.TrimEnd(".bak")).ToArray();
-
-        #endregion
 
         #region Loading State - to be reworked ort moved into base class
 

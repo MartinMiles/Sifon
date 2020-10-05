@@ -31,9 +31,9 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.buttonBrowseHorizon = new System.Windows.Forms.Button();
             this.textHorizonFolder = new System.Windows.Forms.TextBox();
-            this.checkHorizon = new System.Windows.Forms.CheckBox();
-            this.buttonBrowsePublishing = new System.Windows.Forms.Button();
             this.textPublishingFolder = new System.Windows.Forms.TextBox();
+            this.buttonBrowsePublishing = new System.Windows.Forms.Button();
+            this.checkHorizon = new System.Windows.Forms.CheckBox();
             this.checkPublishing = new System.Windows.Forms.CheckBox();
             this.checkCommerce = new System.Windows.Forms.CheckBox();
             this.buttonBrowseIDS = new System.Windows.Forms.Button();
@@ -164,6 +164,7 @@
             this.buttonBrowseHorizon.Text = "...";
             this.buttonBrowseHorizon.UseVisualStyleBackColor = true;
             this.buttonBrowseHorizon.Visible = false;
+            this.buttonBrowseHorizon.Click += new System.EventHandler(this.buttonBrowseHorizon_Click);
             // 
             // textHorizonFolder
             // 
@@ -174,16 +175,14 @@
             this.textHorizonFolder.TabIndex = 53;
             this.textHorizonFolder.Visible = false;
             // 
-            // checkHorizon
+            // textPublishingFolder
             // 
-            this.checkHorizon.AutoSize = true;
-            this.checkHorizon.Location = new System.Drawing.Point(18, 245);
-            this.checkHorizon.Name = "checkHorizon";
-            this.checkHorizon.Size = new System.Drawing.Size(95, 17);
-            this.checkHorizon.TabIndex = 52;
-            this.checkHorizon.Text = "Clean Horizon:";
-            this.checkHorizon.UseVisualStyleBackColor = true;
-            this.checkHorizon.Visible = false;
+            this.textPublishingFolder.Location = new System.Drawing.Point(18, 320);
+            this.textPublishingFolder.Name = "textPublishingFolder";
+            this.textPublishingFolder.ReadOnly = true;
+            this.textPublishingFolder.Size = new System.Drawing.Size(322, 20);
+            this.textPublishingFolder.TabIndex = 50;
+            this.textPublishingFolder.Visible = false;
             // 
             // buttonBrowsePublishing
             // 
@@ -195,15 +194,19 @@
             this.buttonBrowsePublishing.Text = "...";
             this.buttonBrowsePublishing.UseVisualStyleBackColor = true;
             this.buttonBrowsePublishing.Visible = false;
+            this.buttonBrowsePublishing.Click += new System.EventHandler(this.buttonBrowsePublishing_Click);
             // 
-            // textPublishingFolder
+            // checkHorizon
             // 
-            this.textPublishingFolder.Location = new System.Drawing.Point(18, 320);
-            this.textPublishingFolder.Name = "textPublishingFolder";
-            this.textPublishingFolder.ReadOnly = true;
-            this.textPublishingFolder.Size = new System.Drawing.Size(322, 20);
-            this.textPublishingFolder.TabIndex = 50;
-            this.textPublishingFolder.Visible = false;
+            this.checkHorizon.AutoSize = true;
+            this.checkHorizon.Location = new System.Drawing.Point(18, 245);
+            this.checkHorizon.Name = "checkHorizon";
+            this.checkHorizon.Size = new System.Drawing.Size(95, 17);
+            this.checkHorizon.TabIndex = 52;
+            this.checkHorizon.Text = "Clean Horizon:";
+            this.checkHorizon.UseVisualStyleBackColor = true;
+            this.checkHorizon.Visible = false;
+            this.checkHorizon.CheckedChanged += new System.EventHandler(this.checkHorizon_CheckedChanged);
             // 
             // checkPublishing
             // 
@@ -215,6 +218,7 @@
             this.checkPublishing.Text = "Clean Publishing Service:";
             this.checkPublishing.UseVisualStyleBackColor = true;
             this.checkPublishing.Visible = false;
+            this.checkPublishing.CheckedChanged += new System.EventHandler(this.checkPublishing_CheckedChanged);
             // 
             // checkCommerce
             // 

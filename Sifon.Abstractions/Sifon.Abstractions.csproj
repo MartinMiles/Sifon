@@ -44,7 +44,12 @@
     <Compile Include="Base\ISuperClass.cs" />
     <Compile Include="Encryption\IEncryptor.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
-    <Compile Include="Model\BackupRestore\IBackupRestoreModel.cs" />
+    <Compile Include="Model\BackupRestore\IBackupRestoreCheckboxes.cs" />
+    <Compile Include="Model\BackupRestore\IBackupRestoreFolders.cs" />
+    <Compile Include="Model\BackupRestore\IBackupRemoverViewModel.cs" />
+    <Compile Include="Model\BackupRestore\IDatabase.cs" />
+    <Compile Include="Model\BackupRestore\IRestore.cs" />
+    <Compile Include="Model\BackupRestore\IRestoreZips.cs" />
     <Compile Include="Model\Response\IScriptWrapperResponse.cs" />
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Plugins\PluginProgress.cs" />

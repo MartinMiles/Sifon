@@ -67,7 +67,7 @@
       <SubType>Form</SubType>
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Backup\BackupViewModel.cs" />
+    <Compile Include="Forms\Backup\BackupRemoverViewModel.cs" />
     <Compile Include="Forms\Backup\IBackupView.cs" />
     <Compile Include="Forms\Base\AbstractForm.cs">
       <SubType>Form</SubType>
@@ -269,6 +269,7 @@
       <SubType>Form</SubType>
       <DependentUpon>Restore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Restore\RestoreViewModel.cs" />
     <Compile Include="Forms\SqlSettings\SqlSettings.Tooltips.cs">
       <SubType>Form</SubType>
       <DependentUpon>SqlSettings.cs</DependentUpon>

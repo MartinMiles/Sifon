@@ -7,7 +7,7 @@ namespace Sifon.Shared.Statics
 {
     public static class Settings
     {
-        public const string ProductVersion = "Sifon v0.98 (BETA)";
+        public const string ProductVersion = "Sifon v0.99 (BETA)";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
 

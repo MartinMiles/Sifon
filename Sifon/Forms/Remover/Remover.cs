@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
-using Sifon.Forms.Backup;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
 using Sifon.Shared.Extensions;
@@ -14,14 +13,78 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Remover
 {
-    public partial class Remover : BaseForm, IRemoverView, IBackupRestoreModel
+    public partial class Remover : BaseForm, IRemoverView, IBackupRemoverViewModel
     {
-        public event EventHandler<EventArgs> FormLoaded = delegate { };
+        public event EventHandler<EventArgs> FormLoaded = delegate { }; // TODO: Remove in favor of base or it should be that?
         public event EventHandler<EventArgs<string>> InstanceChanged = delegate { };
         public event EventHandler<EventArgs<string>> DatabaseFilterChanged = delegate { };
         public event EventHandler<EventArgs> ClosingForm = delegate { };
 
         private string SelectedHostname => (string)comboInstances.SelectedItem;
+
+        #region IBackupRestoreModel implementation
+
+        public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Remove;
+        public string DestinationFolder => textWebfolder.Text.TrimEnd('\\');
+
+        #region IBackupRestoreCheckboxes implementation
+
+        public bool WebsiteChecked => checkFiles.Checked;
+        public bool XConnectChecked => checkXconnect.Checked;
+        public bool IdentityChecked => checkIDS.Checked;
+        public bool PublishingChecked => checkHorizon.Checked;
+        public bool HorizonChecked => checkPublishing.Checked;
+        public bool CommerceChecked => checkCommerce.Checked;
+
+        #endregion
+
+        #region IBackupRestoreFolders
+
+        public Dictionary<string, string> CommerceSites { get; set; }
+
+
+        public string WebsiteFolder
+        {
+            get => textWebfolder.Text.TrimEnd('\\');
+            set => textWebfolder.Text = value;
+        }
+
+        //TODO: setters
+
+        public string XConnectFolder // => textXConnectFolder.Text.TrimEnd('\\');
+        {
+            get => textXConnectFolder.Text.TrimEnd('\\');
+            set => textXConnectFolder.Text = value;
+        }
+
+        public string IdentityFolder //=> textIdsFolder.Text.TrimEnd('\\');
+        {
+            get => textIdsFolder.Text.TrimEnd('\\');
+            set => textIdsFolder.Text = value;
+        }
+
+        public string HorizonFolder
+        {
+            get => textHorizonFolder.Text.TrimEnd('\\');
+            set => textHorizonFolder.Text = value;
+        }
+
+        public string PublishingFolder
+        {
+            get => textPublishingFolder.Text.TrimEnd('\\');
+            set => textPublishingFolder.Text = value;
+        }
+
+        #endregion
+
+        #region IDatabase implementation
+
+        public bool ProcessDatabases => checkDatabases.Checked;
+        public string[] Databases => listDatabases.Selected();
+
+        #endregion
+
+        #endregion
 
         public Remover()
         {
@@ -68,7 +131,7 @@ namespace Sifon.Forms.Remover
 
             if (errors.Any())
             {
-                ShowError("Retrieving databases error", errors.First());
+                ShowError(Messages.Backup.RetrievingDatabasesFailed, errors.First());
             }
 
             StateDatabaseReady = true;  
@@ -97,94 +160,58 @@ namespace Sifon.Forms.Remover
             }
         }
 
-        public void SetWebfoldersAndCheckboxes(BackupViewModel model)
+        public void SetWebfoldersAndCheckboxes(IBackupRestoreFolders model)
         {
-            checkFiles.Checked = model.Sitecore.NotEmpty();
+            checkFiles.Checked = model.WebsiteFolder.NotEmpty();
 
-            if (model.Sitecore != null)
+            if (model.WebsiteFolder != null)
             {
-                textWebfolder.Text = model.Sitecore;
+                textWebfolder.Text = model.WebsiteFolder;
             }
 
             //TODO: Move this logic into model's booleans
-            checkFiles.Visible = model.Sitecore != null || comboInstances.SelectedIndex == 0;
-            textWebfolder.Visible = model.Sitecore != null || comboInstances.SelectedIndex == 0;
-            buttonBrowseWebfolder.Visible = model.Sitecore != null || comboInstances.SelectedIndex == 0;
+            checkFiles.Visible = model.WebsiteFolder != null || comboInstances.SelectedIndex == 0;
+            textWebfolder.Visible = model.WebsiteFolder != null || comboInstances.SelectedIndex == 0;
+            buttonBrowseWebfolder.Visible = model.WebsiteFolder != null || comboInstances.SelectedIndex == 0;
 
-            if (model.XConnect != null)
+            if (model.XConnectFolder.NotEmpty())
             {
-                textXConnectFolder.Text = model.XConnect;
+                textXConnectFolder.Text = model.XConnectFolder;
             }
 
-            checkXconnect.Visible = model.XConnect != null || comboInstances.SelectedIndex == 0;
-            textXConnectFolder.Visible = model.XConnect != null || comboInstances.SelectedIndex == 0;
-            buttonBrowseXconnect.Visible = model.XConnect != null || comboInstances.SelectedIndex == 0;
+            checkXconnect.Visible = model.XConnectFolder.NotEmpty() || comboInstances.SelectedIndex == 0;
+            textXConnectFolder.Visible = model.XConnectFolder.NotEmpty() || comboInstances.SelectedIndex == 0;
+            buttonBrowseXconnect.Visible = model.XConnectFolder.NotEmpty() || comboInstances.SelectedIndex == 0;
 
-            if (model.Identity != null)
+            if (model.IdentityFolder != null)
             {
-                textIdsFolder.Text = model.Identity;
+                textIdsFolder.Text = model.IdentityFolder;
             }
-            checkIDS.Visible = model.Identity != null || comboInstances.SelectedIndex == 0;
-            textIdsFolder.Visible = model.Identity != null || comboInstances.SelectedIndex == 0;
-            buttonBrowseIDS.Visible = model.Identity != null || comboInstances.SelectedIndex == 0;
+            checkIDS.Visible = model.IdentityFolder != null || comboInstances.SelectedIndex == 0;
+            textIdsFolder.Visible = model.IdentityFolder != null || comboInstances.SelectedIndex == 0;
+            buttonBrowseIDS.Visible = model.IdentityFolder != null || comboInstances.SelectedIndex == 0;
 
-            if (model.Horizon != null)
+            if (model.HorizonFolder != null)
             {
-                textHorizonFolder.Text = model.Horizon;
+                textHorizonFolder.Text = model.HorizonFolder;
             }
-            checkHorizon.Visible = model.Horizon != null || comboInstances.SelectedIndex == 0;
-            textHorizonFolder.Visible = model.Horizon != null || comboInstances.SelectedIndex == 0;
-            buttonBrowseHorizon.Visible = model.Horizon != null || comboInstances.SelectedIndex == 0;
+            checkHorizon.Visible = model.HorizonFolder != null || comboInstances.SelectedIndex == 0;
+            textHorizonFolder.Visible = model.HorizonFolder != null || comboInstances.SelectedIndex == 0;
+            buttonBrowseHorizon.Visible = model.HorizonFolder != null || comboInstances.SelectedIndex == 0;
 
-            if (model.Publishing != null)
+            if (model.PublishingFolder != null)
             {
-                textPublishingFolder.Text = model.Publishing;
+                textPublishingFolder.Text = model.PublishingFolder;
             }
-            checkPublishing.Visible = model.Publishing != null || comboInstances.SelectedIndex == 0;
-            textPublishingFolder.Visible = model.Publishing != null || comboInstances.SelectedIndex == 0;
-            buttonBrowsePublishing.Visible = model.Publishing != null || comboInstances.SelectedIndex == 0;
-
+            checkPublishing.Visible = model.PublishingFolder != null || comboInstances.SelectedIndex == 0;
+            textPublishingFolder.Visible = model.PublishingFolder != null || comboInstances.SelectedIndex == 0;
+            buttonBrowsePublishing.Visible = model.PublishingFolder != null || comboInstances.SelectedIndex == 0;
 
             CommerceSites = model.CommerceSites;
             checkCommerce.Visible = CommerceSites != null && CommerceSites.Any();
 
             StateSitesReady = true;
         }
-
-        //public void SetWebfoldersAndCheckboxes(string name, string xconnectFolder, string idsFolder, IEnumerable<KeyValuePair<string, string>> commerceSites)
-        //{
-        //    checkFiles.Checked = name.NotEmpty();
-
-        //    if (name != null)
-        //    {
-        //        textWebfolder.Text = name;
-        //    }
-        //    checkFiles.Visible = name != null || comboInstances.SelectedIndex == 0;
-        //    textWebfolder.Visible = name != null || comboInstances.SelectedIndex == 0;
-        //    buttonBrowseWebfolder.Visible = name != null || comboInstances.SelectedIndex == 0;
-
-        //    if (xconnectFolder != null)
-        //    {
-        //        textXConnectFolder.Text = xconnectFolder;
-        //    }
-
-        //    checkXconnect.Visible = xconnectFolder != null || comboInstances.SelectedIndex == 0;
-        //    textXConnectFolder.Visible = xconnectFolder != null || comboInstances.SelectedIndex == 0;
-        //    buttonBrowseXconnect.Visible = xconnectFolder != null || comboInstances.SelectedIndex == 0;
-
-        //    if (idsFolder != null)
-        //    {
-        //        textIdsFolder.Text = idsFolder;
-        //    }
-        //    checkIDS.Visible = idsFolder != null || comboInstances.SelectedIndex == 0;
-        //    textIdsFolder.Visible = idsFolder != null || comboInstances.SelectedIndex == 0;
-        //    buttonBrowseIDS.Visible = idsFolder != null || comboInstances.SelectedIndex == 0;
-
-        //    CommerceSites = commerceSites;
-        //    checkCommerce.Visible = CommerceSites != null && CommerceSites.Any();
-
-        //    StateSitesReady = true;
-        //}
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -234,31 +261,42 @@ namespace Sifon.Forms.Remover
             DatabaseFilterChanged(this, new EventArgs<string>(((TextBox)sender).Text.Trim()));
         }
 
+        #region Checkboxes enabling / disabling
+
         private void checkFiles_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            textWebfolder.ReadOnly = !checkBox.Checked;
-            buttonBrowseWebfolder.Enabled = checkBox.Checked;
-
-            EnableDisableMainButton();
+            CheckBoxChanged(sender as CheckBox, textWebfolder, buttonBrowseWebfolder);
         }
+
         private void checkXconnect_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            textXConnectFolder.ReadOnly = !checkBox.Checked;
-            buttonBrowseXconnect.Enabled = checkBox.Checked;
-
-            EnableDisableMainButton();
+            CheckBoxChanged(sender as CheckBox, textXConnectFolder, buttonBrowseXconnect);
         }
 
         private void checkIDS_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            textIdsFolder.ReadOnly = !checkBox.Checked;
-            buttonBrowseIDS.Enabled = checkBox.Checked;
+            CheckBoxChanged(sender as CheckBox, textIdsFolder, buttonBrowseIDS);
+        }
 
+        private void checkHorizon_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxChanged(sender as CheckBox, textHorizonFolder, buttonBrowseHorizon);
+        }
+
+        private void checkPublishing_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxChanged(sender as CheckBox, textPublishingFolder, buttonBrowsePublishing);
+        }
+
+        private void CheckBoxChanged(CheckBox checkBox, TextBox textbox, Button button)
+        {
+            textbox.ReadOnly = !checkBox.Checked;
+            button.Enabled = checkBox.Checked;
             EnableDisableMainButton();
         }
+
+        #endregion
+
         private void checkDatabases_CheckedChanged(object sender, EventArgs e)
         {
             var checkBox = sender as CheckBox;
@@ -266,6 +304,8 @@ namespace Sifon.Forms.Remover
 
             EnableDisableMainButton();
         }
+
+        #region Browse buttons handlers
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
@@ -281,6 +321,18 @@ namespace Sifon.Forms.Remover
         {
             Raise_FolderBrowserClicked(textIdsFolder, false);
         }
+
+        private void buttonBrowseHorizon_Click(object sender, EventArgs e)
+        {
+            Raise_FolderBrowserClicked(textHorizonFolder, false);
+        }
+
+        private void buttonBrowsePublishing_Click(object sender, EventArgs e)
+        {
+            Raise_FolderBrowserClicked(textPublishingFolder, false);
+        }
+
+        #endregion
 
         private void listDatabases_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -301,44 +353,7 @@ namespace Sifon.Forms.Remover
         {
             ClosingForm(this, new EventArgs());
         }
-
-        #region IBackupRestoreModel implementation
-
-        public EmbeddedActivity EmbeddedActivity => EmbeddedActivity.Remove;
-        public string DestinationFolder => textWebfolder.Text.TrimEnd('\\');
-        public string SitecoreInstance => comboInstances.SelectedItem.ToString();
-        public bool ProcessDatabases => checkDatabases.Checked;
-        public bool ProcessWebroot => checkFiles.Checked;
-        public bool ProcessXconnect => checkXconnect.Checked;
-        public bool ProcessIDS => checkIDS.Checked;
-        public bool ProcessHorizon => checkHorizon.Checked;
-        public bool ProcessPublishing => checkPublishing.Checked;
-        public bool ProcessCommerce => checkCommerce.Checked;
-        public string XConnect { get; private set; }
-        public string IdentityServer { get; private set; }
-
-        public string Horizon => textHorizonFolder.Text.TrimEnd('\\');
-        public string PublishingService => textPublishingFolder.Text.TrimEnd('\\');
-        public string HorizonFolder { get; }                // not used - implemented only for interface compliance with restore
-        public string PublishingServiceFolder { get; }      // not used - implemented only for interface compliance with restore
-
-        //{
-
-        //    private set;
-        //}
-        //public string PublishingService { get; private set; }
-        public IEnumerable<KeyValuePair<string, string>> CommerceSites { get; private set; }
-
-
-        //TODO: Why folders? unify or remove if possible
-        public string XConnectFolder => textXConnectFolder.Text.TrimEnd('\\');
-        public string IdentityServerFolder => textIdsFolder.Text.TrimEnd('\\');
-
-
-        public string[] SelectedDatabases => listDatabases.Selected();
-
-        #endregion
-
+        
         #region Loading State - to be reworked ort moved into base class
 
         private bool stateDatabaseReady;
@@ -375,6 +390,7 @@ namespace Sifon.Forms.Remover
         {
             Cursor = ready ? Cursors.Arrow : Cursors.WaitCursor;
         }
+
 
         #endregion
     }

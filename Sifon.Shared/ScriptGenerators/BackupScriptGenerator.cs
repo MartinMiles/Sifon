@@ -11,10 +11,12 @@ namespace Sifon.Shared.ScriptGenerators
 {
     internal class BackupScriptGenerator : BaseScriptGenerator, IScript
     {
-        public override string Script => Path.Combine(Settings.Folders.Cache, $"Backup_{_model.SitecoreInstance}_{DateTime.Now:yyyy-MM-dd}.ps1");
+        public override string Script { get; protected set; }
 
-        internal BackupScriptGenerator(IBackupRestoreModel model, IProfile profile) : base(model, profile)
+        internal BackupScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)
         {
+            Script = Path.Combine(Settings.Folders.Cache, $"Backup_{profile.Website}_{DateTime.Now:yyyy-MM-dd}.ps1");
+
             executionScript = GenerateParameters(CommerceSitesParameters);
 
             GenerateFilesystemScript();
@@ -38,33 +40,33 @@ namespace Sifon.Shared.ScriptGenerators
 
             executionScript += _iisScriptGenerator.Stop(18);
 
-            if (_model.ProcessWebroot)
+            if (_model.WebsiteChecked)
             {
                 executionScript += _filesScriptGenerator.Backup(Settings.Parameters.Webroot, 20);
             }
 
-            if (_model.ProcessXconnect)
+            if (_model.XConnectChecked)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.XConnect, 30);
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.XConnectFolder, 30);
             }
 
-            if (_model.ProcessIDS)
+            if (_model.IdentityChecked)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.IdentityServer, 40);
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.IdentityServerFolder, 40);
             }
 
-            if (_model.ProcessHorizon)
+            if (_model.PublishingChecked)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.Horizon, 45);
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.HorizonFolder, 45);
             }
-            if (_model.ProcessPublishing)
+            if (_model.HorizonChecked)
             {
-                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.PublishingService, 50);
+                executionScript += _filesScriptGenerator.Backup(Settings.Parameters.PublishingServiceFolder, 50);
             }
 
-            if (_model.ProcessCommerce)
+            if (_model.CommerceChecked)
             {
-                for (int i = 0; i < _model.CommerceSites.Count(); i++)
+                for (int i = 0; i < _model.CommerceSites.Count; i++)
                 {
                     var folderName = CommerceSitesParameters.ElementAt(i).Key;
                     executionScript += _filesScriptGenerator.Backup(folderName, 50+i);
@@ -77,7 +79,7 @@ namespace Sifon.Shared.ScriptGenerators
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, 57);
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, 58);
 
-            if (_model.ProcessPublishing)
+            if (_model.HorizonChecked)
             {
                 //TODO: Own starting script from plugin
                 //Start-Process -FilePath $exe  -NoNewWindow
@@ -92,7 +94,7 @@ namespace Sifon.Shared.ScriptGenerators
 
         private void GenerateDatabaseScript()
         {
-            string progressCalculation = _model.ProcessWebroot ? "60 + 40" : "0 + 100";
+            string progressCalculation = _model.WebsiteChecked ? "60 + 40" : "0 + 100";
 
             var databaseScript = new StringBuilder(Environment.NewLine);
             databaseScript.AppendLine("$i = 0");

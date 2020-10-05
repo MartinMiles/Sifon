@@ -64,7 +64,6 @@ namespace Sifon.Forms.Containers
 
         #endregion
 
-
         public DockerProfiles()
         {
             InitializeComponent();

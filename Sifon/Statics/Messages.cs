@@ -35,7 +35,9 @@
 
         public static class Backup
         {
+            public const string RetrievingDatabasesFailed = "Retrieving databases error";
             public const string Failed = "Backup failed";
+
             public static class ConfirmDatabases
             {
                 public const string Caption = "Databases not selected";

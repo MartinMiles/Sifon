@@ -7,7 +7,7 @@ namespace Sifon.Shared.ScriptGenerators
 {
     public class ScriptFactory
     {
-        public static IScript Create(IBackupRestoreModel model, IProfile profile)
+        public static IScript Create(IBackupRemoverViewModel model, IProfile profile)
         {
             switch (model.EmbeddedActivity)
             {

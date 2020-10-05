@@ -151,18 +151,25 @@ namespace Sifon.Shared.Providers.Profile
             }
         }
         
-        public void AddScriptModelParameters(Dictionary<string, dynamic> parameters, IBackupRestoreModel model)
+        public void AddBackupRemoveParameters(Dictionary<string, dynamic> parameters, IBackupRemoverViewModel model)
         {
-            parameters.Add(Settings.Parameters.XConnect, model.XConnect);
-            parameters.Add(Settings.Parameters.IdentityServer, model.IdentityServer);
-            parameters.Add(Settings.Parameters.XConnectFolder, model.XConnectFolder);
-            parameters.Add(Settings.Parameters.IdentityServerFolder, model.IdentityServerFolder);
-            parameters.Add(Settings.Parameters.Horizon, model.Horizon);
-            parameters.Add(Settings.Parameters.HorizonFolder, model.HorizonFolder);
-            parameters.Add(Settings.Parameters.PublishingService, model.PublishingService);
-            parameters.Add(Settings.Parameters.PublishingServiceFolder, model.PublishingServiceFolder);
             parameters.Add(Settings.Parameters.TargetFolder, model.DestinationFolder);
-            parameters.Add(Settings.Parameters.Databases, model.SelectedDatabases);
+            parameters.Add(Settings.Parameters.XConnectFolder, model.XConnectFolder);
+            parameters.Add(Settings.Parameters.IdentityServerFolder, model.IdentityFolder);
+            parameters.Add(Settings.Parameters.HorizonFolder, model.HorizonFolder);
+            parameters.Add(Settings.Parameters.PublishingServiceFolder, model.PublishingFolder);
+            parameters.Add(Settings.Parameters.Databases, model.Databases);
+        }
+
+        public void AddRestoreParameters(Dictionary<string, dynamic> parameters, IRestoreZips model)
+        {
+            // pass zip archive as $Website into restore script (a minor hack)
+            parameters[Settings.Parameters.Website] = model.WebsiteZip;
+
+            parameters.Add(Settings.Parameters.XConnect, model.XConnectZip);
+            parameters.Add(Settings.Parameters.IdentityServer, model.IdentityZip);
+            parameters.Add(Settings.Parameters.Horizon, model.HorizonZip);
+            parameters.Add(Settings.Parameters.PublishingService, model.PublishingZip);
         }
 
         public void AddCommerceScriptParameters(Dictionary<string, dynamic> parameters, IEnumerable<KeyValuePair<string, string>> commerceSites)
