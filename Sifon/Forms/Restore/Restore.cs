@@ -118,7 +118,7 @@ namespace Sifon.Forms.Restore
             stateGridReady = true;
         }
 
-        public void SetOtherSites(IRestoreViewModel model)
+        public void SetSites(IRestoreViewModel model)
         {
             WebsiteZip = model.WebsiteZip;
             WebsiteFolder = model.WebsiteFolder;

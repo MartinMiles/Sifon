@@ -79,7 +79,7 @@ namespace Sifon.Shared.ScriptGenerators
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.ProcessingEngineService, 57);
             executionScript += _serviceScriptGenerator.StartService(Settings.Services.MarketingAutomation, 58);
 
-            if (_model.HorizonChecked)
+            if (_model.PublishingChecked)
             {
                 //TODO: Own starting script from plugin
                 //Start-Process -FilePath $exe  -NoNewWindow

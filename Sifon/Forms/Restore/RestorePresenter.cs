@@ -37,15 +37,8 @@ namespace Sifon.Forms.Restore
 
             if (selectedFolder.NotEmpty() && directoryExists)
             {
-                //var archives = _filesystem.GetFiles(selectedFolder, ".bak");
-                //_view.DisplayDatabases(archives.Select(f => f.Value));
-
-                //var files = _filesystem.GetFiles(selectedFolder, ".zip");
-                //var list = await GetInputForGrid(files);
-                //_view.ShowDatagrid(list, new[] { "Backup archive files location", "Destination folder to restore" });
-
                 var iRestoreModel = await BuildViewModel(selectedFolder);
-                _view.SetOtherSites(iRestoreModel);
+                _view.SetSites(iRestoreModel);
             }
             else
             {
@@ -59,18 +52,10 @@ namespace Sifon.Forms.Restore
         private async Task<IRestoreViewModel> BuildViewModel(string selectedFolder)
         {
             var archives = _filesystem.GetFiles(selectedFolder, ".bak");
-            //_view.DisplayDatabases(archives.Select(f => f.Value));
-
             var files = _filesystem.GetFiles(selectedFolder, ".zip");
             var list = await GetInputForGrid(files);
 
             _view.ShowDatagrid(list, new[] { "Backup archive files location", "Destination folder to restore" });
-
-            //var xconnectFolder = await _siteProvider.GetXconnect(siteName);
-            //var idsFolder = await _siteProvider.GetIDS(siteName);
-            //var horizonFolder = await _siteProvider.GetHorizon(siteName);
-            //var publishingFolder = await _siteProvider.GetPublishingService(siteName);
-            //var commerceSites = await _siteProvider.GetCommerceSites(siteName);
 
             return new RestoreViewModel
             {
@@ -90,16 +75,7 @@ namespace Sifon.Forms.Restore
                 ProcessDatabases = archives.Any(),
                 Databases = archives.Select(f => f.Value).ToArray()
             };
-            
-            //checkXconnect.Enabled = XConnectZip != null && XConnectFolder != null;
-            //checkIDS.Enabled = IdentityZip != null && IdentityFolder != null;
-            //checkHorizon.Enabled = HorizonZip != null && HorizonZip != null;
-            //checkPublishing.Enabled = PublishingZip != null && PublishingZip != null;
-            //checkCommerce.Enabled = CommerceSites.Any();
-
-            //return model;
         }
-
 
         private bool IsMainSitecoreSite(string key)
         {
