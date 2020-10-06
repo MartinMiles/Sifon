@@ -7,7 +7,7 @@ using Sifon.Forms.Profiles.UserControls.Website;
 
 namespace Sifon.Forms.Profiles
 {
-    public interface IProfilesView : ISynchronizeInvoke
+    internal interface IProfilesView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs> FormSaved;
         event EventHandler<EventArgs> BeforeFormClosing;

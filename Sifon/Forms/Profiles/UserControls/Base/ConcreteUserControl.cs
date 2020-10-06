@@ -1,6 +1,6 @@
 ﻿namespace Sifon.Forms.Profiles.UserControls.Base
 {
-    public partial class ConcreteUserControl : AbstractUserControl
+    internal partial class ConcreteUserControl : AbstractUserControl
     {
         public ConcreteUserControl()
         {

@@ -13,7 +13,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Restore
 {
-    public partial class Restore : BaseForm, IRestoreView, IRestoreViewModel
+    internal partial class Restore : BaseForm, IRestoreView, IRestoreViewModel
     {
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
         public event EventHandler<EventArgs<string>> FolderSelected = delegate { };

@@ -5,7 +5,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Containers
 {
-    public interface IDockerProfilesView
+    internal interface IDockerProfilesView
     {
         event EventHandler<EventArgs> Loaded;
         event EventHandler<EventArgs<IContainerProfile>> ProfileAdded;

@@ -7,7 +7,7 @@ using Sifon.Abstractions.Encryption;
 
 namespace Sifon.Shared.Encryption
 {
-    public class Encryptor : IEncryptor
+    internal class Encryptor : IEncryptor
     {
         private readonly SaltProvider _saltProvider;
 

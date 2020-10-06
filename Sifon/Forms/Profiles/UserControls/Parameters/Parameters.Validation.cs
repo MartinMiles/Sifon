@@ -9,7 +9,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {
-    public partial class Parameters
+    internal partial class Parameters
     {
         #region Passive validation on text changed and character entered
 

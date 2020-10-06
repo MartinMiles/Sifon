@@ -1,6 +1,9 @@
-﻿namespace Sifon.Statics
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Tests")]
+namespace Sifon.Statics
 {
-    public static class Pattern
+    internal static class Pattern
     {
         public const string ColorPattern = @"#COLOR:(\w{2,12})# *";
 

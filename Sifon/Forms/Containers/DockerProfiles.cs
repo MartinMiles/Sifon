@@ -10,7 +10,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Containers
 {
-    public partial class DockerProfiles : BaseForm, IDockerProfilesView, IContainerProfile
+    internal partial class DockerProfiles : BaseForm, IDockerProfilesView, IContainerProfile
     {
         #region Public events
 
@@ -60,7 +60,7 @@ namespace Sifon.Forms.Containers
             set => throw new NotImplementedException();
         }
 
-        public ProfilesPresenter Presenter => throw new NotImplementedException();
+        internal ProfilesPresenter Presenter => throw new NotImplementedException();
 
         #endregion
 

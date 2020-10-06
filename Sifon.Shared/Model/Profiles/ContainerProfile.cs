@@ -4,7 +4,7 @@ using Sifon.Shared.Extensions.Models;
 
 namespace Sifon.Shared.Model.Profiles
 {
-    public class ContainerProfile : IContainerProfile
+    internal class ContainerProfile : IContainerProfile
     {
         protected XmlNode _node;
 

@@ -5,7 +5,7 @@ using Sifon.Shared.Extensions.Models;
 
 namespace Sifon.Shared.Model.Profiles
 {
-    public class SettingRecord : ISettingRecord
+    internal class SettingRecord : ISettingRecord
     {
         protected XmlNode node;
 

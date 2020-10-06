@@ -11,7 +11,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.PortalCredentials
 {
-    public class PortalCredentialsPresenter
+    internal class PortalCredentialsPresenter
     {
         private readonly IPortalCredentialsView _view;
         private readonly SettingsProvider _settingsProvider;

@@ -10,7 +10,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
-    public partial class Profile : BaseUserControl, IProfileView, IProfileUserControl
+    internal partial class Profile : BaseUserControl, IProfileView, IProfileUserControl
     {
         #region Public events
 

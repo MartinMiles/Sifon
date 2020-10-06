@@ -5,12 +5,11 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Containers;
 using Sifon.Shared.Events;
-using Sifon.Shared.Exceptions;
 using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.MainForm
 {
-    public partial class Main : Form, IMainView
+    internal partial class Main : Form, IMainView
     {
         #region Events
 

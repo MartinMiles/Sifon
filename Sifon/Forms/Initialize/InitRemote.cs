@@ -6,7 +6,7 @@ using Sifon.Shared.Extensions;
 
 namespace Sifon.Forms.Initialize
 {
-    public partial class InitRemote : BaseForm, InitRemoteView
+    internal partial class InitRemote : BaseForm, InitRemoteView
     {
         public event EventHandler<EventArgs> FormLoaded = delegate { };
 

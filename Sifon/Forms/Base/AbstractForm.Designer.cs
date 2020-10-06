@@ -1,6 +1,6 @@
 ﻿namespace Sifon.Forms.Base
 {
-    public partial class AbstractForm
+    partial class AbstractForm
     {
         private System.ComponentModel.IContainer components = null;
 

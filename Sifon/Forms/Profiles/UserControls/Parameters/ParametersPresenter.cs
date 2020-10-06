@@ -5,7 +5,7 @@ using Sifon.Shared.ScriptGenerators;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {
-    public class ParametersPresenter : BasePresenter
+    internal class ParametersPresenter : BasePresenter
     {
         private readonly IParametersView _view;
         private ParametersSampleScriptGenerator _parametersSampleScriptGenerator;

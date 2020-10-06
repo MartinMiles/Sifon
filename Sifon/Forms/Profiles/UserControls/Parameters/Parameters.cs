@@ -10,7 +10,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {
-    public partial class Parameters : BaseUserControl, IParametersView
+    internal partial class Parameters : BaseUserControl, IParametersView
     {
         public event EventHandler<EventArgs> DownloadSampleScriptClicked = delegate { };
 

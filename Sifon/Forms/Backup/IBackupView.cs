@@ -7,7 +7,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Backup
 {
-    public interface IBackupView : IBaseBackupRestoreView, ISynchronizeInvoke
+    internal interface IBackupView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
         event BaseForm.AsyncEventHandler<EventArgs<string>> InstanceChanged;
         event EventHandler<EventArgs<string>> ValidateBeforeClose;

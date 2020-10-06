@@ -7,7 +7,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Restore
 {
-    public interface IRestoreView : IBaseBackupRestoreView, ISynchronizeInvoke
+    internal interface IRestoreView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
         event EventHandler<EventArgs<string>> FolderSelected;
         event EventHandler<EventArgs<string>> ValidateBeforeClose;

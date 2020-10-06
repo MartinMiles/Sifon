@@ -9,7 +9,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
-    public partial class Website : BaseUserControl, IWebsiteView
+    internal partial class Website : BaseUserControl, IWebsiteView
     {
         public event EventHandler<EventArgs<string>> SelectedWebsiteChanged = delegate { };
         public event EventHandler<EventArgs<string>> WebrootFolderChanged = delegate { };

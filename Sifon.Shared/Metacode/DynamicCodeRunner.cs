@@ -1,12 +1,11 @@
 ﻿using System;
 using System.CodeDom.Compiler;
-using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace Sifon.Shared.Metacode
 {
-    public class DynamicCodeRunner
+    internal class DynamicCodeRunner
     {
         public static dynamic RunWithClassicSharpCodeProvider(string type, string method, object[] parameters)
         {

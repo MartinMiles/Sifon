@@ -7,7 +7,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
-    public class ProfilePresenter : BasePresenter
+    internal class ProfilePresenter : BasePresenter
     {
         private readonly IProfileView _view;
 

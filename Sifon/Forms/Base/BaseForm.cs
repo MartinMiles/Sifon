@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Shared.Events;
@@ -7,7 +6,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Base
 {
-    public class BaseForm : AbstractForm
+    internal class BaseForm : AbstractForm
     {
         public delegate Task AsyncEventHandler<T>(object sender, EventArgs e);
 

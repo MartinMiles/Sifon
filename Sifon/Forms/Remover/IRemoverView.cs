@@ -7,7 +7,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Remover
 {
-    public interface IRemoverView : IBaseBackupRestoreView, ISynchronizeInvoke
+    internal interface IRemoverView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
         event EventHandler<EventArgs> FormLoaded;
         event EventHandler<EventArgs<string>> InstanceChanged;

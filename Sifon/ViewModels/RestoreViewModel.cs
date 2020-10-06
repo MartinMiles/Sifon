@@ -2,7 +2,7 @@
 
 namespace Sifon.ViewModels
 {
-    public class RestoreViewModel : BackupRemoverViewModel, IRestoreViewModel
+    internal class RestoreViewModel : BackupRemoverViewModel, IRestoreViewModel
     {
         public string WebsiteZip { get; set; }
         public string XConnectZip { get; set; }

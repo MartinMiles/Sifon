@@ -10,7 +10,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Initialize
 {
-    public class InitRemotePresenter
+    internal class InitRemotePresenter
     {
         private readonly InitRemoteView _view;
         private readonly ScriptWrapper<string> _scriptWrapper;

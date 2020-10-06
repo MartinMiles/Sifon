@@ -6,7 +6,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
-    public interface IProfileView : IBaseView
+    internal interface IProfileView : IBaseView
     {
         event EventHandler<EventArgs<IProfileUserControl>> ProfileAdded;
         event EventHandler<EventArgs<IProfileUserControl>> ProfileRenamed;

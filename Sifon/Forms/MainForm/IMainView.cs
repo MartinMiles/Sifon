@@ -8,7 +8,7 @@ using Sifon.Shared.Model;
 
 namespace Sifon.Forms.MainForm
 {
-    public interface IMainView : ISynchronizeInvoke
+    internal interface IMainView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs> FormLoaded;
         event EventHandler<EventArgs> ScriptFinishRequested;

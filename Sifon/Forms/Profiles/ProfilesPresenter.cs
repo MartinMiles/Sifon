@@ -10,7 +10,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles
 {
-    public class ProfilesPresenter
+    internal class ProfilesPresenter
     {
         private readonly IProfilesView _view;
         private readonly SqlServerRecordProvider _sqlService;

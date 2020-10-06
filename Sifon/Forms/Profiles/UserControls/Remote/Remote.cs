@@ -10,7 +10,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {
-    public partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
+    internal partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
         private bool initialRemotingState;
 

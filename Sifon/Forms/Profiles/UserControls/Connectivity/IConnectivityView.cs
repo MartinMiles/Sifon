@@ -7,7 +7,7 @@ using Sifon.Shared.Model;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {
-    public interface IConnectivityView : IBaseView, ISynchronizeInvoke
+    internal interface IConnectivityView : IBaseView, ISynchronizeInvoke
     {
         event EventHandler<EventArgs> SqlServersUpdated;
         event EventHandler<EventArgs<string>> TestSolr;

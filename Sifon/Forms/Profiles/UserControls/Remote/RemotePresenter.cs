@@ -9,7 +9,7 @@ using Sifon.Shared.PowerShell;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {
-    public class RemotePresenter : BasePresenter
+    internal class RemotePresenter : BasePresenter
     {
         private readonly IRemoteView _view;
         private ScriptWrapper<string> _scriptWrapper;

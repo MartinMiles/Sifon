@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using Sifon.Extensions;
 using Sifon.Shared.Extensions;
 using Sifon.Shared.Statics;
-using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {

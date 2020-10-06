@@ -13,7 +13,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Remover
 {
-    public partial class Remover : BaseForm, IRemoverView, IBackupRemoverViewModel
+    internal partial class Remover : BaseForm, IRemoverView, IBackupRemoverViewModel
     {
         public event EventHandler<EventArgs> FormLoaded = delegate { }; // TODO: Remove in favor of base or it should be that?
         public event EventHandler<EventArgs<string>> InstanceChanged = delegate { };

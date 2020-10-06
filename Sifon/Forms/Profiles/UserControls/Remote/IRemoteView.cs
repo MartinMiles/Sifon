@@ -7,7 +7,7 @@ using Sifon.Shared.Validation;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {
-    public interface IRemoteView : IBaseView, IFormValidation, ISynchronizeInvoke
+    internal interface IRemoteView : IBaseView, IFormValidation, ISynchronizeInvoke
     {
         void EnableControls(bool eValue);
         void UpdateButtons();

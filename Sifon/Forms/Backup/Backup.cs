@@ -11,7 +11,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Backup
 {
-    public partial class Backup : BaseForm, IBackupView, IBackupRemoverViewModel
+    internal partial class Backup : BaseForm, IBackupView, IBackupRemoverViewModel
     {
         public event AsyncEventHandler<EventArgs<string>> InstanceChanged;
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };

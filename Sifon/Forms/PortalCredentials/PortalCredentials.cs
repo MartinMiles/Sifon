@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
 using Sifon.Shared.Events;
-using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.PortalCredentials
 {
-    public partial class PortalCredentials : BaseForm, IPortalCredentialsView, ISettingRecord
+    internal partial class PortalCredentials : BaseForm, IPortalCredentialsView, ISettingRecord
     {
         public event EventHandler<EventArgs> FormLoad = delegate { };
         public event EventHandler<EventArgs<ISettingRecord>> TestClicked = delegate { };

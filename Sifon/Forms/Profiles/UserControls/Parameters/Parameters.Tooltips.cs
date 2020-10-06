@@ -3,7 +3,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {
-    public partial class Parameters
+    internal partial class Parameters
     {
         public override void SetTooltips()
         {

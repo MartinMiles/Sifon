@@ -1,6 +1,6 @@
 ﻿namespace Sifon.Statics
 {
-    public static class Messages
+    internal static class Messages
     {
         public static class Program
         {

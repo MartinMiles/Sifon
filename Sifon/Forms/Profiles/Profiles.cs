@@ -8,7 +8,7 @@ using Sifon.Forms.Profiles.UserControls.Website;
 
 namespace Sifon.Forms.Profiles
 {
-    public partial class Profiles : BaseForm, IProfilesView
+    internal partial class Profiles : BaseForm, IProfilesView
     {
         private bool modifiedFlag = false;
         private bool isFirstRunFlag;

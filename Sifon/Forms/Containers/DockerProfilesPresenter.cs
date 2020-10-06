@@ -5,7 +5,7 @@ using Sifon.Shared.Providers.Profile;
 
 namespace Sifon.Forms.Containers
 {
-    public class DockerProfilesPresenter
+    internal class DockerProfilesPresenter
     {
         private readonly IDockerProfilesView _view;
         private readonly ContainersProvider _containersProvider;

@@ -9,7 +9,7 @@ using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.SqlSettings
 {
-    public partial class SqlSettings : BaseForm, ISqlSettingsView, ISqlServerRecord
+    internal partial class SqlSettings : BaseForm, ISqlSettingsView, ISqlServerRecord
     {
         public event EventHandler<EventArgs<string>> SelectedRecordChanged = delegate { };
         public event EventHandler<EventArgs<Tuple<string, ISqlServerRecord>>> SqlRecordRenamed = delegate { };

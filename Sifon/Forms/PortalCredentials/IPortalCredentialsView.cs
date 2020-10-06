@@ -5,7 +5,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.PortalCredentials
 {
-    public interface IPortalCredentialsView : ISynchronizeInvoke
+    internal interface IPortalCredentialsView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs<ISettingRecord>> TestClicked;
         event EventHandler<EventArgs<ISettingRecord>> ValuesChanged;

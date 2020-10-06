@@ -6,7 +6,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Base
 {
-    public abstract class BasePresenter
+    internal abstract class BasePresenter
     {
         private readonly IBaseView _view;
         protected readonly IFormValidation _formValidation;
@@ -23,7 +23,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
             _formValidation = new FormValidation();
         }
 
-        protected ProfilesPresenter Presenter => _view.Presenter;
+        internal ProfilesPresenter Presenter => _view.Presenter;
 
         protected ProfilesProvider ProfilesService => Presenter?.ProfilesService;
         internal IProfile SelectedProfile => ProfilesService?.SelectedProfile;

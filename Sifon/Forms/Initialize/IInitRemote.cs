@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Sifon.Forms.Initialize
 {
-    public interface  InitRemoteView : ISynchronizeInvoke
+    internal interface  InitRemoteView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs> FormLoaded;
 

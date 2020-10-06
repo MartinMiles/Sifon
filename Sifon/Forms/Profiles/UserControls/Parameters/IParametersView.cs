@@ -4,7 +4,7 @@ using Sifon.Forms.Profiles.UserControls.Base;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {
-    public interface IParametersView : IBaseView
+    internal interface IParametersView : IBaseView
     {
         event EventHandler<EventArgs> DownloadSampleScriptClicked;
         void SetValues(Dictionary<string, string> parameters);

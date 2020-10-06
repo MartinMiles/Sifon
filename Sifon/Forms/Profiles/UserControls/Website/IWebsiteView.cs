@@ -6,7 +6,7 @@ using Sifon.Shared.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
-    public interface IWebsiteView : IBaseView, ISynchronizeInvoke
+    internal interface IWebsiteView : IBaseView, ISynchronizeInvoke
     {
         event EventHandler<EventArgs<string>> SelectedWebsiteChanged;
         event EventHandler<EventArgs<string>> WebrootFolderChanged;

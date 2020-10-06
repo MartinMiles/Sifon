@@ -3,7 +3,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 
 namespace Sifon.ViewModels
 {
-    public class BackupRemoverViewModel : IBackupRemoverViewModel
+    internal class BackupRemoverViewModel : IBackupRemoverViewModel
     {
         public EmbeddedActivity EmbeddedActivity { get; set; }
         public string DestinationFolder { get; set; }

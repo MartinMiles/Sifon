@@ -4,7 +4,7 @@ using Sifon.Shared.Validation;
 
 namespace Sifon.Forms.Profiles.UserControls.Base
 {
-    public class BaseUserControl : AbstractUserControl, IBaseView, IFormValidation
+    internal class BaseUserControl : AbstractUserControl, IBaseView, IFormValidation
     {
         public event EventHandler<EventArgs> Loaded = delegate { };
         private readonly IFormValidation _formValidation;

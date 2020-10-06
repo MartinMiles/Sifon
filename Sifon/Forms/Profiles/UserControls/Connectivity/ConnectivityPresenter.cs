@@ -14,7 +14,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {
-    public class ConnectivityPresenter : BasePresenter
+    internal class ConnectivityPresenter : BasePresenter
     {
         private readonly IConnectivityView _view;
         private ScriptWrapper<SolrInfo> _scriptWrapper;

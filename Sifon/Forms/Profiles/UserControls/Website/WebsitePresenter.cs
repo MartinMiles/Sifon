@@ -11,7 +11,7 @@ using Sifon.Shared.Providers;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
-    public class WebsitePresenter : BasePresenter
+    internal class WebsitePresenter : BasePresenter
     {
         private readonly IWebsiteView _view;
         private readonly ISuperClass _superClass;

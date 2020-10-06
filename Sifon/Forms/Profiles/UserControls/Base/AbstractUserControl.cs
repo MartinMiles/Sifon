@@ -5,7 +5,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
 {
     [TypeDescriptionProvider(typeof(ConcreteUserControlProvider))]
 
-    public abstract class AbstractUserControl : UserControl
+    internal abstract class AbstractUserControl : UserControl
     {
 
         public ProfilesPresenter Presenter

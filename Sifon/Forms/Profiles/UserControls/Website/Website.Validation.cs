@@ -1,6 +1,6 @@
 ﻿namespace Sifon.Forms.Profiles.UserControls.Website
 {
-    public partial class Website
+    internal partial class Website
     {
         public override void AddPassiveValidationHandlers()
         {

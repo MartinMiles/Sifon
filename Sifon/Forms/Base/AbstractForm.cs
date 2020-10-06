@@ -5,7 +5,7 @@ using Sifon.Shared.Validation;
 namespace Sifon.Forms.Base
 {
     [TypeDescriptionProvider(typeof(ConcreteClassProvider))]
-    public abstract partial class AbstractForm : Form, IFormValidation
+    internal abstract partial class AbstractForm : Form, IFormValidation
     {
         protected AbstractForm()
         {

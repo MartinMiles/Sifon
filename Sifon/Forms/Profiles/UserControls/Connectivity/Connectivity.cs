@@ -15,7 +15,7 @@ using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {
-    public partial class Connectivity : BaseUserControl, IConnectivityView
+    internal partial class Connectivity : BaseUserControl, IConnectivityView
     {
         public event EventHandler<EventArgs> SqlServersUpdated = delegate { };
         public event EventHandler<EventArgs<string>> TestSolr = delegate { };

@@ -2,7 +2,7 @@
 
 namespace Sifon.Forms.Profiles.UserControls.Base
 {
-    public interface IBaseView
+    internal interface IBaseView
     {
         event EventHandler<EventArgs> Loaded;
 
