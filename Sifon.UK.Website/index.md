@@ -32,8 +32,8 @@ Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy
 Please go through the documentation in order to get the max from using Sifon
 
 - [Quick start guide](/QuickStart.md "Quick start guide")
-- [Plugins library](/PluginsLibraryRoadmap.md "Plugins library") (roadmap)
-- Creating PowerShell plugins
+- [Plugins library](/PluginsLibrary.md "Plugins library")
+- [Creating a PowerShell plugins](/CreatingPlugin.md "Creating a PowerShell plugins")
 - Creating .NET compiled DLL plugins
 - Using Shared API
 - [Release notes](/ReleaseNotes.md "Release notes")

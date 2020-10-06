@@ -7,6 +7,12 @@ The range of potential use cases is wider than my imagination, so I am writing t
 #### A demo of how plugins work with Sifon on an example of Publishing Service insallation
 <p><iframe width="500" height="281" src="https://www.youtube.com/embed/_wClAjFrFLg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
+<br/>
+
+#### Another demo of Horizon 10.0 installtion with a plugin
+<p><iframe width="500" height="281" src="https://www.youtube.com/embed/YINq7sIlV6Q?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+
 <br/><br/>
 
 
