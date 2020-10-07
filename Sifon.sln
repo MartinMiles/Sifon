@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sifon.Plugins.Example", "Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sifon.Plugins.Tests", "Sifon.Plugins.Tests\Sifon.Plugins.Tests.csproj", "{CC04547F-A970-46D7-90EA-0EF7933D47AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sifon.Code", "Sifon.Shared\Sifon.Code.csproj", "{1B57AD6C-0E4A-4062-987A-2DF59F682CD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sifon.Code", "Sifon.Code\Sifon.Code.csproj", "{1B57AD6C-0E4A-4062-987A-2DF59F682CD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sifon.UK.Website", "Sifon.UK.Website\Sifon.UK.Website.csproj", "{54C707B5-1D2E-4866-8ECB-A8255F4C9834}"
 EndProject
