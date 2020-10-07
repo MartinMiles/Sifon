@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Validation;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Code.Events;
-using Sifon.Code.Validation;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {

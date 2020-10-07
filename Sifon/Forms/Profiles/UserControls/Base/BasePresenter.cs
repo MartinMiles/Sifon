@@ -1,5 +1,6 @@
 ﻿using System;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Validation;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Validation;
 using Sifon.Statics;
@@ -10,7 +11,6 @@ namespace Sifon.Forms.Profiles.UserControls.Base
     {
         private readonly IBaseView _view;
         protected readonly IFormValidation _formValidation;
-
 
         protected BasePresenter(IBaseView view)
         {

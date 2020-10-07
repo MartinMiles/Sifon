@@ -25,7 +25,7 @@ namespace Sifon.Forms.Restore
             _view.ValidateBeforeClose += ValidateBeforeClose;
             _filesystem = _filesystemFactory.Create();
 
-            var backupInfoExtractorFactory = new BackupInfoExtractorFactory(SelectedProfile, _view);
+            var backupInfoExtractorFactory = new BackupInfoExtractorFactory(_profileService.SelectedProfile, _view);
             _backupInfoExtractor = backupInfoExtractorFactory.Create();
         }
 

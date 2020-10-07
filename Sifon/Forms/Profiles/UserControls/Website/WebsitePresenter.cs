@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Base;
+using System.Windows.Forms;
+using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Base;
 using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Providers;
+using Sifon.Code.Statics;
+using Sifon.Shared.Forms.FolderBrowserDialog;
+using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
     internal class WebsitePresenter : BasePresenter
     {
         private readonly IWebsiteView _view;
-        private readonly ISuperClass _superClass;
         protected ISiteProvider _siteProvider;
 
         public WebsitePresenter(IWebsiteView view) : base(view)
         {
             _view = view;
-            _superClass = new SuperClass();
            
             _view.SelectedWebsiteChanged += SelectedWebsiteChanged;
             _view.WebrootFolderChanged += WebrootFolderChanged;
-            _view.FolderBrowserClicked += (sender, args) => _view.SetWebrootTextbox(_superClass.ShowFolderBrowser(SelectedProfile, false));
+            _view.FolderBrowserClicked += (sender, args) => _view.SetWebrootTextbox(ShowFolderSelector(SelectedProfile, false));
+        }
+
+        private string ShowFolderSelector(IProfile profile, bool allowNewFolders)
+        {
+            var browser = new FolderBrowser(profile, allowNewFolders) { StartPosition = FormStartPosition.CenterParent };
+            return browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
         }
 
         private async void WebrootFolderChanged(object sender, EventArgs<string> e)

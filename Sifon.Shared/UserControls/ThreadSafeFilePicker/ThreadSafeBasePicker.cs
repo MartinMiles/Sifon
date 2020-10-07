@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Sifon.Code.UserControls.ThreadSafeFilePicker
+namespace Sifon.Shared.UserControls.ThreadSafeFilePicker
 {
     public class ThreadSafeBasePicker
     {

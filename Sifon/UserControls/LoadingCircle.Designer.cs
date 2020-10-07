@@ -24,7 +24,7 @@
 // OF SUCH DAMAGE.
 //
 
-namespace MRG.Controls.UI
+namespace Sifon.UserControls
 {
     partial class LoadingCircle
     {

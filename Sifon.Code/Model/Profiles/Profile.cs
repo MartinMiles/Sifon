@@ -63,6 +63,8 @@ namespace Sifon.Code.Model.Profiles
 
         public int OperationTimeout { get; } = 60 * 5;
 
+        public string WindowCaptionSuffix => $"{ProfileName} - {(RemotingEnabled ? $"REMOTE [{RemoteHost}]" : "(local instance)")}";
+
         public override string ToString()
         {
             return Prefix;

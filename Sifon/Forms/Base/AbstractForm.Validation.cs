@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sifon.Abstractions.Validation;
 using Sifon.Code.Validation;
 
 namespace Sifon.Forms.Base

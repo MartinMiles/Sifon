@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Code.VersionSelector;
 
-namespace Sifon.Code.Forms.VersionSelectorDialog
+namespace Sifon.Shared.Forms.VersionSelectorDialog
 {
     public partial class VersionSelector : Form
     {

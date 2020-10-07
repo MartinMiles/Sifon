@@ -67,6 +67,13 @@
       <SubType>Form</SubType>
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
+    <Compile Include="UserControls\LoadingCircle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\LoadingCircle.Designer.cs">
+      <DependentUpon>LoadingCircle.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BackupRemoverViewModel.cs" />
     <Compile Include="Forms\Backup\IBackupView.cs" />
     <Compile Include="Forms\Base\AbstractForm.cs">
@@ -387,6 +394,10 @@
     <ProjectReference Include="..\Sifon.Code\Sifon.Code.csproj">
       <Project>{1b57ad6c-0e4a-4062-987a-2df59f682cd8}</Project>
       <Name>Sifon.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sifon.Shared\Sifon.Shared.csproj">
+      <Project>{47596ab0-a414-495d-a92c-2db7238a7135}</Project>
+      <Name>Sifon.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

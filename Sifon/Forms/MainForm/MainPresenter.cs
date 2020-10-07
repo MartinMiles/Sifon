@@ -4,11 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Model.BackupRestore;
+using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
-using Sifon.Code.Base;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Filesystem;
@@ -24,7 +23,6 @@ namespace Sifon.Forms.MainForm
 {
     internal class MainPresenter : ScriptablePresenter
     {
-        private readonly ISuperClass _superClass;
         private readonly IFilesystem _filesystem;
 
         internal MainPresenter(IMainView view): base(view)
@@ -40,9 +38,7 @@ namespace Sifon.Forms.MainForm
                 _profilesService.Read();
             }
 
-            _superClass = new SuperClass();
             _filesystem = new FilesystemFactory(SelectedProfile, _view).CreateLocal();
-
 
             _view.FormLoaded += Loaded;
             _view.SelectedProfileChanged += SelectedProfileChanged;
@@ -78,8 +74,6 @@ namespace Sifon.Forms.MainForm
                 _view.TerminateAsEmptyProfile();
             }
         }
-
-        private string CaptionSuffix => _superClass.AppendEnvironmentToCaption(_profilesService.SelectedProfile);
 
         private async Task<string> LocalOrRemote(string script)
         {
@@ -203,7 +197,7 @@ namespace Sifon.Forms.MainForm
         {
             _profilesService.SelectProfile(e.Value);
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
-            _view.SetCaption(CaptionSuffix);
+            _view.SetCaption(_profilesService.SelectedProfile.WindowCaptionSuffix);
 
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
         }

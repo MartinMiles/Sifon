@@ -39,8 +39,6 @@ namespace Sifon.Code.Helpers
             return _scriptWrapper.Results.Where(r => r.Directory.NotEmpty() && r.Version != null);
         }
 
- 
-
         public void Finish()
         {
             _scriptWrapper.Finish();

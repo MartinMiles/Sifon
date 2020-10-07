@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using Sifon.Abstractions.Validation;
 using Sifon.Code.Validation;
 
 namespace Sifon.Forms.Base

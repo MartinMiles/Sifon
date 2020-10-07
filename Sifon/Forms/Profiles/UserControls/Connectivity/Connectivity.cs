@@ -10,8 +10,8 @@ using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Model;
 using Sifon.Code.Statics;
-using Sifon.Code.UserControls;
 using Sifon.Statics;
+using Sifon.UserControls;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {
@@ -157,9 +157,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
             if (item != null && e.ColumnIndex == 1 || e.ColumnIndex == 2)
             {
-                var cell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var path = cell.Value as string;
-                if (path.NotEmpty())
+                var cell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewDisableButtonCell;
+                if (cell != null && cell.Enabled && ((string)cell.Value).NotEmpty())
                 {
                     Process.Start(e.ColumnIndex == 2 ? item.Directory : item.Url);
                 }

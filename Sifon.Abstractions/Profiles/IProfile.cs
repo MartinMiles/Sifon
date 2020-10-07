@@ -23,5 +23,7 @@ namespace Sifon.Abstractions.Profiles
         int ConnectionTimeout { get; }
 
         int OperationTimeout { get; }
+
+        string WindowCaptionSuffix { get; }
     }
 }

@@ -67,6 +67,10 @@
       <Project>{1B57AD6C-0E4A-4062-987A-2DF59F682CD8}</Project>
       <Name>Sifon.Code</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sifon.Shared\Sifon.Shared.csproj">
+      <Project>{47596ab0-a414-495d-a92c-2db7238a7135}</Project>
+      <Name>Sifon.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VisualPlugin\AdvancedPluginForm.resx">

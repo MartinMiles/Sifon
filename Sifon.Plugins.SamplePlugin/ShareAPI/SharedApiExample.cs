@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Forms.FolderBrowserDialog;
-using Sifon.Code.Forms.VersionSelectorDialog;
+using Sifon.Shared.Forms.FolderBrowserDialog;
+using Sifon.Shared.Forms.VersionSelectorDialog;
 
 namespace Sifon.Plugins.Example.ShareAPI
 {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Sifon.Code.UserControls;
+using Sifon.Shared.UserControls;
+using Sifon.UserControls;
 
 namespace Sifon.Extensions
 {

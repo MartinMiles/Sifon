@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sifon.Code.Validation
+namespace Sifon.Abstractions.Validation
 {
     public interface IFormValidation
     {

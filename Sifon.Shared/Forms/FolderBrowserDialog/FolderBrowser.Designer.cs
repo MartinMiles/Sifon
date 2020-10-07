@@ -1,6 +1,6 @@
-﻿using Sifon.Code.UserControls;
+﻿using Sifon.Shared.UserControls;
 
-namespace Sifon.Code.Forms.FolderBrowserDialog
+namespace Sifon.Shared.Forms.FolderBrowserDialog
 {
     partial class FolderBrowser
     {

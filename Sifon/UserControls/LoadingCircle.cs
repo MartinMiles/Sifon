@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace MRG.Controls.UI
+namespace Sifon.UserControls
 {
     public partial class LoadingCircle : Control
     {

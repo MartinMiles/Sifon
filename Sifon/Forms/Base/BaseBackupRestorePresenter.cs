@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Base;
+using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Base;
 using Sifon.Code.Events;
 using Sifon.Code.Filesystem;
-using Sifon.Code.Helpers;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
+using Sifon.Shared.Forms.FolderBrowserDialog;
 
 namespace Sifon.Forms.Base
 {
@@ -23,29 +22,33 @@ namespace Sifon.Forms.Base
         protected readonly ISiteProvider _siteProvider;
 
         private readonly IBaseBackupRestoreView _view;
-        private readonly ISuperClass _superClass;
 
-        protected IProfile SelectedProfile => _profileService.SelectedProfile;
+        //protected IProfile SelectedProfile => _profileService.SelectedProfile;
 
         internal BaseBackupRestorePresenter(IBaseBackupRestoreView view)
         {
-            _superClass = new SuperClass();
+            _profileService = new ProfilesProvider();
+            var profile = _profileService.SelectedProfile;
 
             _view = view;
             _view.FormLoaded += Loaded;
-            _view.FolderBrowserClicked += (sender, e) => e.Value1.Text = _superClass.ShowFolderBrowser(SelectedProfile, e.Value2);
+            _view.FolderBrowserClicked += (sender, e) => e.Value1.Text = ShowFolderSelector(profile, e.Value2);
+            _view.AppendEnvironmentToCaption(_profileService.SelectedProfile.WindowCaptionSuffix);
 
-            _profileService = new ProfilesProvider();
-            _filesystemFactory = new FilesystemFactory(SelectedProfile, _view);
+            _filesystemFactory = new FilesystemFactory(profile, _view);
             _remoteScriptCopier = new RemoteScriptCopier(_profileService.SelectedProfile, _view);
 
-            _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
+            _siteProvider = new PowerShellSiteProvider(profile, _view);
+        }
+
+        private string ShowFolderSelector(IProfile profile, bool allowNewFolders)
+        {
+            var browser = new FolderBrowser(profile, allowNewFolders) { StartPosition = FormStartPosition.CenterParent };
+            return browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
         }
 
         private void Loaded(object sender, EventArgs e)
         {
-            string suffix = _superClass.AppendEnvironmentToCaption(_profileService.SelectedProfile);
-            _view.AppendEnvironmentToCaption(suffix);
         }
 
         #region Validation used on both Backup and Restore presenters

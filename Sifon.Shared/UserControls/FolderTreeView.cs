@@ -5,14 +5,16 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Validation;
+using Sifon.Code.Events;
 using Sifon.Code.Filesystem;
 using Sifon.Code.Validation;
 
-namespace Sifon.Code.UserControls
+namespace Sifon.Shared.UserControls
 {
     public partial class FolderTreeView : UserControl, IFormValidation
     {
-        public event EventHandler<Events.EventArgs<string>> DoubleClicked = delegate { };
+        public event EventHandler<EventArgs<string>> DoubleClicked = delegate { };
         public event EventHandler<EventArgs> EditFinished = delegate { };
         public event EventHandler<EventArgs> CancelSent = delegate { };
 
@@ -237,7 +239,7 @@ namespace Sifon.Code.UserControls
 
             if (node != null)
             {
-                DoubleClicked(this, new Events.EventArgs<string>(node.Tag as string));
+                DoubleClicked(this, new Sifon.Code.Events.EventArgs<string>(node.Tag as string));
             }
         }
 

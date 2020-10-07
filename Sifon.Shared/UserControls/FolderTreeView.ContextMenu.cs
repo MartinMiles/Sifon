@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Sifon.Code.UserControls
+namespace Sifon.Shared.UserControls
 {
     public partial class FolderTreeView
     {

@@ -61,7 +61,6 @@
     <Compile Include="BackupInfo\IBackupInfoExtractor.cs" />
     <Compile Include="BackupInfo\LocalBackupInfoExtractor.cs" />
     <Compile Include="BackupInfo\PowershellBackupInfoExtractor.cs" />
-    <Compile Include="Base\SuperClass.cs" />
     <Compile Include="Encryption\Encryptor.cs" />
     <Compile Include="Encryption\SaltProvider.cs" />
     <Compile Include="Events\TypedEventArgs.cs" />
@@ -86,18 +85,6 @@
     <Compile Include="Formatters\Output\StringFormatter.cs" />
     <Compile Include="Formatters\Text\GenericTextFormatter.cs" />
     <Compile Include="Formatters\Text\ProgressFormatter.cs" />
-    <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.Designer.cs">
-      <DependentUpon>LocalFilePicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.Designer.cs">
-      <DependentUpon>VersionSelector.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\BindingsHelper.cs" />
     <Compile Include="Helpers\FakesHelper.cs" />
     <Compile Include="Helpers\PluginFactory.cs" />
@@ -110,12 +97,6 @@
     <Compile Include="Metacode\DynamicCodeRunner.cs" />
     <Compile Include="Metacode\MetacodeHelper.cs" />
     <Compile Include="Model\Fake\DirectoryInfo.cs" />
-    <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.Designer.cs">
-      <DependentUpon>FolderBrowser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\Fake\DriveInfo.cs" />
     <Compile Include="Model\Fake\TimeOfQuery.cs" />
     <Compile Include="Model\PluginMenuItem.cs" />
@@ -144,48 +125,12 @@
     <Compile Include="Providers\Profile\ProfilesProvider.cs" />
     <Compile Include="Providers\Profile\SqlServerRecordProvider.cs" />
     <Compile Include="ScriptGenerators\ServiceScriptGenerator.cs" />
-    <Compile Include="Statics\Controls.cs" />
     <Compile Include="Statics\Settings.cs" />
     <Compile Include="Statics\Validation.cs" />
-    <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
-    <Compile Include="UserControls\FolderTreeView.ContextMenu.cs">
-      <SubType>UserControl</SubType>
-      <DependentUpon>FolderTreeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\FolderTreeView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\FolderTreeView.Designer.cs">
-      <DependentUpon>FolderTreeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\LoadingCircle.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UserControls\LoadingCircle.Designer.cs">
-      <DependentUpon>LoadingCircle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ThreadSafeFilePicker\ThreadSafeBasePicker.cs" />
-    <Compile Include="UserControls\ThreadSafeFilePicker\ThreadSafeOpenPicker.cs" />
-    <Compile Include="UserControls\ThreadSafeFilePicker\ThreadSafeSavePicker.cs" />
     <Compile Include="Validation\FormValidation.cs" />
-    <Compile Include="Validation\IFormValidation.cs" />
     <Compile Include="VersionSelector\HashProvider.cs" />
     <Compile Include="VersionSelector\KernelHash.cs" />
     <Compile Include="VersionSelector\Settings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">
-      <DependentUpon>FolderBrowser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LocalFilePickerDialog\LocalFilePicker.resx">
-      <DependentUpon>LocalFilePicker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VersionSelectorDialog\VersionSelector.resx">
-      <DependentUpon>VersionSelector.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\FolderTreeView.resx">
-      <DependentUpon>FolderTreeView.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

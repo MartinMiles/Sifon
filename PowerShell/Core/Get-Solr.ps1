@@ -46,7 +46,7 @@ For ($i=0; $i -le $Ports.Length; $i++)
     
     $RestError = $null
     Try {
-      $response = Invoke-RestMethod -Uri $Url -Method Get -ErrorVariable RestError -ErrorAction SilentlyContinue -TimeoutSec 2
+      $response = Invoke-RestMethod -Uri $Url -Method Get -ErrorVariable RestError -ErrorAction SilentlyContinue -TimeoutSec 1
     } Catch {
       $RestError = $_
     }

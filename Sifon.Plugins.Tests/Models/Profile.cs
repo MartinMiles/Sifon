@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sifon.Abstractions.Profiles;
 
 namespace Sifon.Plugins.Tests.Models
@@ -32,5 +33,6 @@ namespace Sifon.Plugins.Tests.Models
 
         public int ConnectionTimeout { get; } = 30;
         public int OperationTimeout { get; } = 5 * 60;
+        public string WindowCaptionSuffix => throw new NotImplementedException();
     }
 }

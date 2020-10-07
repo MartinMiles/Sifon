@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupSQL = new System.Windows.Forms.GroupBox();
-            this.loadingCircle = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle = new Sifon.UserControls.LoadingCircle();
             this.buttonTest = new System.Windows.Forms.Button();
             this.textSolr = new System.Windows.Forms.TextBox();
             this.labelSolr = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@
             this.loadingCircle.RotationSpeed = 100;
             this.loadingCircle.Size = new System.Drawing.Size(75, 23);
             this.loadingCircle.SpokeThickness = 2;
-            this.loadingCircle.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircle.StylePreset = Sifon.UserControls.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle.TabIndex = 50;
             this.loadingCircle.Text = "loadingCircle1";
             // 
@@ -205,6 +205,6 @@
         public System.Windows.Forms.TextBox textSolr;
         private System.Windows.Forms.Label labelSolr;
         private System.Windows.Forms.Button buttonTest;
-        private MRG.Controls.UI.LoadingCircle loadingCircle;
+        private Sifon.UserControls.LoadingCircle loadingCircle;
     }
 }

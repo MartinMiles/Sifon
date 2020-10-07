@@ -84,7 +84,7 @@ namespace Sifon.Forms.Backup
                 { Settings.Parameters.InstancePrefix, _profileService.SelectedProfile.Prefix}
             };
 
-            _scriptWrapper = new ScriptWrapper<string>(SelectedProfile, _view, d => d.ToString());
+            _scriptWrapper = new ScriptWrapper<string>(_profileService.SelectedProfile, _view, d => d.ToString());
             await _scriptWrapper.Run(script, parameters);
 
             if (viewModel.CommerceSites.Any())

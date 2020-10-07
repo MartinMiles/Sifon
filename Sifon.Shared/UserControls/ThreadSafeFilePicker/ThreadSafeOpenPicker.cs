@@ -2,53 +2,43 @@
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Sifon.Code.UserControls.ThreadSafeFilePicker
+namespace Sifon.Shared.UserControls.ThreadSafeFilePicker
 {
-    public class ThreadSafeSavePicker : ThreadSafeBasePicker
+    public class ThreadSafeOpenPicker : ThreadSafeBasePicker
     {
         /// <summary>
-        /// Uses the open file dialog in an STA thread in order to get rid of the STA/MTA issue with the open file dialog
+        /// uses the open file dialog in an STA thread in order to get rid of the STA/MTA issue with the open file dialog
         /// </summary>
         public override DialogResult ShowDialog()
         {
-            var dlgRes = DialogResult.Cancel;
+            DialogResult dlgRes = DialogResult.Cancel;
 
-            var theThread = new Thread((ThreadStart)delegate
+            Thread theThread = new Thread((ThreadStart)delegate
             {
-                var saveFileDialog = new SaveFileDialog { RestoreDirectory = true };
+                OpenFileDialog ofd = new OpenFileDialog
+                {
+                    Multiselect = false,
+                    RestoreDirectory = true
+                };
 
                 if (!string.IsNullOrEmpty(FilePath))
-                {
-                    saveFileDialog.FileName = FilePath;
-                }
-
+                    ofd.FileName = FilePath;
                 if (!string.IsNullOrEmpty(Filter))
-                {
-                    saveFileDialog.Filter = Filter;
-                }
-
+                    ofd.Filter = Filter;
                 if (!string.IsNullOrEmpty(DefaultExt))
-                {
-                    saveFileDialog.DefaultExt = DefaultExt;
-                }
-
+                    ofd.DefaultExt = DefaultExt;
                 if (!string.IsNullOrEmpty(Title))
-                {
-                    saveFileDialog.Title = Title;
-                }
-
+                    ofd.Title = Title;
                 if (!string.IsNullOrEmpty(InitialDirectory))
-                {
-                    saveFileDialog.InitialDirectory = InitialDirectory;
-                }
+                    ofd.InitialDirectory = InitialDirectory;
 
                 //Create a layout dialog instance on the current thread to align the file dialog
-                var frmLayout = new Form();
+                Form frmLayout = new Form();
 
                 if (StartupLocation != null)
                 {
                     //set the hidden layout form to manual form start position
-                    frmLayout.StartPosition = FormStartPosition.Manual;
+                    frmLayout.StartPosition = FormStartPosition.CenterParent;
 
                     //set the location of the form
                     frmLayout.Location = StartupLocation;
@@ -59,28 +49,26 @@ namespace Sifon.Code.UserControls.ThreadSafeFilePicker
                 frmLayout.Width = 0;
                 frmLayout.Height = 0;
 
-                //show the dialog 
-                dlgRes = saveFileDialog.ShowDialog(frmLayout);
+                dlgRes = ofd.ShowDialog(frmLayout);
 
                 if (dlgRes == DialogResult.OK)
                 {
-                    FilePath = saveFileDialog.FileName;
+                    FilePath = ofd.FileName;
                 }
             });
 
             try
             {
-                //set STA as the Save file dialog needs it to work
+                //set STA as the Open file dialog needs it to work
                 theThread.TrySetApartmentState(ApartmentState.STA);
+
+                //start the thread
                 theThread.Start();
 
                 // Wait for thread to get started
-                while (!theThread.IsAlive)
-                {
-                    Thread.Sleep(1);
-                }
+                while (!theThread.IsAlive) { Thread.Sleep(1); }
 
-                // Wait a tick more
+                // Wait a tick more (@see: http://scn.sap.com/thread/45710)
                 Thread.Sleep(1);
 
                 //wait for the dialog thread to finish
@@ -88,12 +76,12 @@ namespace Sifon.Code.UserControls.ThreadSafeFilePicker
 
                 DialogSuccess = true;
             }
-            catch (Exception e)
+            catch (Exception err)
             {
                 DialogSuccess = false;
             }
 
-            return dlgRes;
+            return (dlgRes);
         }
     }
 }

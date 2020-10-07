@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Code.Forms.FolderBrowserDialog
+namespace Sifon.Shared.Forms.FolderBrowserDialog
 {
     public partial class FolderBrowser : Form
     {
@@ -19,6 +19,8 @@ namespace Sifon.Code.Forms.FolderBrowserDialog
             folderTreeView.Profile = profile;
 
             buttonNewFolder.Visible = allowCreateNewFolder;
+
+            Text = Statics.Controls.FolderBrowser.Caption + profile.WindowCaptionSuffix;
         }
 
         private void buttonNewFolder_Click(object sender, EventArgs e)

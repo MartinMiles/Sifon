@@ -7,7 +7,8 @@
             public const string NoRemoteFolder = "Remote profile folder is not initialized. \n\nSifon will copy all the required assets into its folder under user's Documents on the remote profile host. \n\nWould you like to re-initialize it?";
             public const string ExecutionError = "Execution Error";
             public const string RemoteExecutionError = "Remote Profile Execution Error";
-            public const string CannotContinue = "It is not possible to go on without initializing remote folder for selected profile\n\nExiting Sifon ...";
+            public const string CannotContinueGeneric = "Something went wrong. Please see the log file for more details\n\nExiting Sifon ...";
+            public const string CannotContinueRemoting = "It is not possible to go on without initializing remote folder for selected profile\n\nExiting Sifon ...";
             public const string InitializeFailure = "Something went wrong during profile remote host initialization\n\nPlease verify your remote host settings and try again";
         }
 

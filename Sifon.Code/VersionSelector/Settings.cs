@@ -4,7 +4,7 @@ namespace Sifon.Code.VersionSelector
 {
     public static class Settings
     {
-        internal static List<KernelHash> Hashes => new List<KernelHash>
+        public static List<KernelHash> Hashes => new List<KernelHash>
         {
             new KernelHash { Version = "Sitecore 9.0.2", Original = "7405e3c517ce09d6a2c1f003eba9834e" },
             new KernelHash { Version = "Sitecore 9.1.0", Original = "69f5809374d4f3aff22746a96ddc8c9f" },

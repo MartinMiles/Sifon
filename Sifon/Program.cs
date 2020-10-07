@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Sifon.Abstractions.Validation;
 using Sifon.Forms.Initialize;
 using Sifon.Forms.MainForm;
 using Sifon.Code.Exceptions;
@@ -51,17 +52,17 @@ namespace Sifon
                             }
                             else
                             {
-                                FormValidation.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinue);
+                                FormValidation.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinueRemoting);
                             }
                         }
                         else
                         {
-                            FormValidation.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinue);
+                            FormValidation.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinueRemoting);
                         }
                     }
                     else
                     {
-                        FormValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinue);
+                        FormValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinueGeneric);
                     }
 
                     SimpleLog.Log(e);

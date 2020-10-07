@@ -1,4 +1,4 @@
-﻿namespace Sifon.Code.Forms.LocalFilePickerDialog
+﻿namespace Sifon.Shared.Forms.LocalFilePickerDialog
 {
     partial class LocalFilePicker
     {

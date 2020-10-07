@@ -105,12 +105,6 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             _view.ToggleControls(true);
         }
 
-        private void FormClosing(object sender, EventArgs e)
-        {
-            _scriptWrapper?.Finish();
-            _solrIdentifier.Finish();
-        }
-        
         private void ProfileChanged(object sender, EventArgs<bool> e)
         {
             if (SelectedProfile == null) return;
@@ -126,6 +120,12 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             ProfilesService.Read();
             _view.LoadDatabaseServersDropdown(Presenter.SqlServerNames, SelectedProfile?.SqlServerRecord?.RecordName);
+        }
+
+        private void FormClosing(object sender, EventArgs e)
+        {
+            _scriptWrapper?.Finish();
+            _solrIdentifier.Finish();
         }
     }
 }
