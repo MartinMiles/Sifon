@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -17,7 +18,8 @@ namespace Sifon.Code.Metacode
             parms.ReferencedAssemblies.Add(typeof(Form).Assembly.Location);
             parms.GenerateInMemory = true;
 
-            string assemblyPath = Assembly.GetExecutingAssembly().Location.Replace("\\", "\\\\");
+            string assemblyPath = Assembly.GetExecutingAssembly().Location
+                .Replace("Code", "Shared").Replace("\\", "\\\\");
 
             var classCode = @"
 using System;
@@ -55,6 +57,12 @@ namespace DynamicNamespace
             
             var assembly = compilerResults.CompiledAssembly;
             dynamic inst = assembly.CreateInstance("DynamicNamespace.DynamicClass");
+
+            if (!File.Exists(assemblyPath))
+            {
+                throw new FileNotFoundException($"Referenced assembly not found at: {assemblyPath}");
+            }
+
             return inst.ExecuteDynamicMethod(assemblyPath, type, method, parameters);
         }
     }

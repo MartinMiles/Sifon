@@ -33,11 +33,10 @@ namespace Sifon.Forms.Base
             _view = view;
             _view.FormLoaded += Loaded;
             _view.FolderBrowserClicked += (sender, e) => e.Value1.Text = ShowFolderSelector(profile, e.Value2);
-            _view.AppendEnvironmentToCaption(_profileService.SelectedProfile.WindowCaptionSuffix);
+            _view.AppendEnvironmentToCaption(profile.WindowCaptionSuffix);
 
             _filesystemFactory = new FilesystemFactory(profile, _view);
-            _remoteScriptCopier = new RemoteScriptCopier(_profileService.SelectedProfile, _view);
-
+            _remoteScriptCopier = new RemoteScriptCopier(profile, _view);
             _siteProvider = new PowerShellSiteProvider(profile, _view);
         }
 
