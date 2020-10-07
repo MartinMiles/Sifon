@@ -1,6 +1,7 @@
 # Creating a PowerShell plugin
 
-A plugin is just a simple PowerShell script with a traditional .PS1 file extension: as you got used to them. But what is important - any pluging excutes in a context of currently selected Profile, either running on a local machine or on remote computer by the means of PowerShell remoting. There is nothing extra for a developer to do (apart from accepting script parameters) - Sifon will care about the rest.
+A plugin is just a simple PowerShell script with a traditional `.PS1` file extension: as you got used to them. 
+But what is indeed important to understand - each plugin excutes in a context of a currently selected Profile, either running on a local machine or on remote computer by the means of PowerShell remoting. There is nothing extra for a developer to do (apart from accepting script parameters) - Sifon will care about the rest.
 
 And of course due to that you can call these plugins scripts directly in the most cases. What sifon does for you on top of that is creating a context and taking care about parameters to be passed. This alone saves so much time, indeed!
 
@@ -56,6 +57,7 @@ Some facts about parameters:
 
 
 
+<br/>
 
 ## Meta information
 
@@ -79,9 +81,10 @@ The reason behind give feature is that plugins are developed at and cloned from 
 
 `### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Sifon Package Installer for Sitecore","Pick up the package to install:","Archives|*.zip","Install")`
 
-Finally, a bit complicated example of shared API usage. This gets explained at API page.
+Finally, a bit complicated example of shared API usage. This gets explained in details at [API page](/API.md "API page").
 
 
+<br/>
 
 ## Container plugins
 
