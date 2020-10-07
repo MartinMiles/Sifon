@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Forms.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 using Sifon.ViewModels;
 
 namespace Sifon.Forms.Remover

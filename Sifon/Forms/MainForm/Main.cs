@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Containers;
-using Sifon.Shared.Events;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.MainForm
 {

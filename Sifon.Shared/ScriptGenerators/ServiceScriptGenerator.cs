@@ -1,7 +1,7 @@
 ﻿using System;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.ScriptGenerators
+namespace Sifon.Code.ScriptGenerators
 {
     public class ServiceScriptGenerator
     {

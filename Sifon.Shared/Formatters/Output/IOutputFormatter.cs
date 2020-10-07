@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.Formatters.Output
+﻿namespace Sifon.Code.Formatters.Output
 {
     internal interface IOutputFormatter
     {

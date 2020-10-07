@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
-using Sifon.Shared.Logger;
-using Sifon.Shared.Statics;
+using Sifon.Code.Logger;
+using Sifon.Code.Statics;
 using Sifon.Statics;
 
 namespace Sifon

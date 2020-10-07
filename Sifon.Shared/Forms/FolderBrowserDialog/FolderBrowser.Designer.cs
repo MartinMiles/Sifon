@@ -1,6 +1,6 @@
-﻿using Sifon.Shared.UserControls;
+﻿using Sifon.Code.UserControls;
 
-namespace Sifon.Shared.Forms.FolderBrowserDialog
+namespace Sifon.Code.Forms.FolderBrowserDialog
 {
     partial class FolderBrowser
     {
@@ -24,7 +24,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
         private void InitializeComponent()
         {
             this.buttonSelect = new System.Windows.Forms.Button();
-            this.folderTreeView = new Sifon.Shared.UserControls.FolderTreeView();
+            this.folderTreeView = new FolderTreeView();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonNewFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();

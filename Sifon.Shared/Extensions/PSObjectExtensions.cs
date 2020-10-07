@@ -5,7 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using Newtonsoft.Json;
 
-namespace Sifon.Shared.Extensions
+namespace Sifon.Code.Extensions
 {
     public static class PSObjectExtensions
     {

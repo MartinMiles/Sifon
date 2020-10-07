@@ -6,11 +6,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Extensions;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Model;
-using Sifon.Shared.Statics;
-using Sifon.Shared.UserControls;
+using Sifon.Code.Events;
+using Sifon.Code.Extensions;
+using Sifon.Code.Model;
+using Sifon.Code.Statics;
+using Sifon.Code.UserControls;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity

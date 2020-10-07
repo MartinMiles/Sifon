@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Helpers;
 
 namespace Tests
 {

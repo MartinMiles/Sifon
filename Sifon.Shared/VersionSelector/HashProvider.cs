@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace Sifon.Shared.VersionSelector
+namespace Sifon.Code.VersionSelector
 {
     public class HashProvider
     {

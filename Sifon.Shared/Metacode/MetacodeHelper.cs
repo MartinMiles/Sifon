@@ -2,10 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Metacode
+namespace Sifon.Code.Metacode
 {
     public class MetacodeHelper
     {

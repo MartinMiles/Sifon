@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Sifon.Shared")]
+[assembly: AssemblyTitle("Sifon.Code")]
 [assembly: AssemblyDescription("PowerShell host for Sitecore that allows running plugins in a context of switchable profiles")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Martin Miles")]

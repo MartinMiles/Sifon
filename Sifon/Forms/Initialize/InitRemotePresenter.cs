@@ -4,9 +4,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Initialize
 {

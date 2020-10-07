@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Events;
-using Sifon.Shared.Providers;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Providers;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Profiles
 {

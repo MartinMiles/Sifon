@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.Model
+﻿namespace Sifon.Code.Model
 {
     public class SolrInfo
     {

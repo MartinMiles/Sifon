@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Helpers;
 using Sifon.Statics;
 
 namespace Tests

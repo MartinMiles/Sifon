@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     public class RegexHelper
     {

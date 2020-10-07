@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Extensions;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Backup
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.PowerShell;
+using Sifon.Code.PowerShell;
 
 namespace Tests
 {

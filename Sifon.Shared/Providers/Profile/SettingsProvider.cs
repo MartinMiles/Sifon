@@ -3,12 +3,12 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Encryption;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Model.Profiles;
-using Sifon.Shared.Statics;
+using Sifon.Code.Encryption;
+using Sifon.Code.Model.Profiles;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Providers.Profile
+namespace Sifon.Code.Providers.Profile
 {
     public class SettingsProvider
     {

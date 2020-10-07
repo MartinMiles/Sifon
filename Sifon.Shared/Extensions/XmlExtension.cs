@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace Sifon.Shared.Extensions
+namespace Sifon.Code.Extensions
 {
     public static class XmlExtension
     {

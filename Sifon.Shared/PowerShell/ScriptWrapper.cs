@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using Sifon.Abstractions.Model.Response;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Exceptions;
+using Sifon.Code.Exceptions;
 
-namespace Sifon.Shared.PowerShell
+namespace Sifon.Code.PowerShell
 {
     public class ScriptWrapper<T> : IScriptWrapperResponse<T>
     {

@@ -2,10 +2,10 @@
 using System.Linq;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Exceptions;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.PowerShell;
+using Sifon.Code.Events;
+using Sifon.Code.Exceptions;
+using Sifon.Code.Extensions;
+using Sifon.Code.PowerShell;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {

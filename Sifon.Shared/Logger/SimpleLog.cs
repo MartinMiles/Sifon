@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Sifon.Shared.Logger
+namespace Sifon.Code.Logger
 {
  
     /// Just write to a file using static methods. By default, the file is named e.g. "2013_04_21.log" and is written to the current working directory. 

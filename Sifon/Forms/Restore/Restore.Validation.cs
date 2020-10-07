@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using Sifon.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Restore
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sifon.Shared.Exceptions
+namespace Sifon.Code.Exceptions
 {
     public class RemoteNotInitializedException : Exception
     {

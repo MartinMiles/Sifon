@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.BackupInfo;
+using Sifon.Code.BackupInfo;
 
 namespace Tests
 {

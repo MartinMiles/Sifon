@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.ScriptGenerators
+﻿namespace Sifon.Code.ScriptGenerators
 {
     public class IisScriptGenerator
     {

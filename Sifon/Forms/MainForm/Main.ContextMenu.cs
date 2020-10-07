@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Helpers;
 using Sifon.Statics;
 
 namespace Sifon.Forms.MainForm

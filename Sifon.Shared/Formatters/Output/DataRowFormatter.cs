@@ -2,7 +2,7 @@
 using System.Management.Automation;
 using System.Text;
 
-namespace Sifon.Shared.Formatters.Output
+namespace Sifon.Code.Formatters.Output
 {
     internal class DataRowFormatter : IOutputFormatter
     {

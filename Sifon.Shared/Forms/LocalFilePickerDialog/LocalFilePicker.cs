@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Sifon.Shared.UserControls.ThreadSafeFilePicker;
+using Sifon.Code.UserControls.ThreadSafeFilePicker;
 
-namespace Sifon.Shared.Forms.LocalFilePickerDialog
+namespace Sifon.Code.Forms.LocalFilePickerDialog
 {
     public partial class LocalFilePicker : Form
     {

@@ -1,8 +1,8 @@
 ﻿using System.Security;
 using System.Management;
-using Sifon.Shared.Extensions;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Encryption
+namespace Sifon.Code.Encryption
 {
     internal class SaltProvider
     {

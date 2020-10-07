@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public class BackupInfoExtractorFactory
     {

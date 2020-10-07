@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.VersionSelector
+﻿namespace Sifon.Code.VersionSelector
 {
     internal class KernelHash
     {

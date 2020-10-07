@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sifon.Shared.Events
+namespace Sifon.Code.Events
 {
     public class EventArgs<T> : EventArgs
     {

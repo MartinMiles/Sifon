@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.ScriptGenerators
+namespace Sifon.Code.ScriptGenerators
 {
     internal abstract class BaseScriptGenerator
     {

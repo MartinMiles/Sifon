@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
-using Sifon.Shared.Validation;
+using Sifon.Code.Validation;
 
 namespace Sifon.Forms.Base
 {

@@ -3,7 +3,7 @@ using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Sifon.Shared.Metacode
+namespace Sifon.Code.Metacode
 {
     internal class DynamicCodeRunner
     {

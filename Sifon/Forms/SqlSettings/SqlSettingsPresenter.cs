@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Events;
-using Sifon.Shared.Helpers;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Helpers;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 using Sifon.Statics;
 
 namespace Sifon.Forms.SqlSettings

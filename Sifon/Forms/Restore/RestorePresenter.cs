@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
-using Sifon.Shared.BackupInfo;
-using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Filesystem;
-using Sifon.Shared.Statics;
+using Sifon.Code.BackupInfo;
+using Sifon.Code.Events;
+using Sifon.Code.Extensions;
+using Sifon.Code.Filesystem;
+using Sifon.Code.Statics;
 using Sifon.ViewModels;
 
 namespace Sifon.Forms.Restore

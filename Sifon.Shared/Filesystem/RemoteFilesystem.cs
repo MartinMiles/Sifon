@@ -7,28 +7,28 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Statics;
-using DriveInfo = Sifon.Shared.Model.Fake.DriveInfo;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
+using DriveInfo = Sifon.Code.Model.Fake.DriveInfo;
 
-namespace Sifon.Shared.Filesystem
+namespace Sifon.Code.Filesystem
 {
     public class RemoteFilesystem : IFilesystem
     {
         private readonly RemoteScriptCopier _remoteScriptCopier;
         private readonly ScriptWrapper<bool> _scriptWrapperBool;
         private readonly ScriptWrapper<string> _scriptWrapper;
-        private readonly ScriptWrapper<DriveInfo> _scriptWrapperDrive;
-        private readonly ScriptWrapper<Sifon.Shared.Model.Fake.DirectoryInfo> _scriptWrapperDirectory;
+        private readonly ScriptWrapper<Model.Fake.DriveInfo> _scriptWrapperDrive;
+        private readonly ScriptWrapper<Model.Fake.DirectoryInfo> _scriptWrapperDirectory;
         
         public RemoteFilesystem(IProfile profile, ISynchronizeInvoke invoke)
         {
             _remoteScriptCopier = new RemoteScriptCopier(profile, invoke);
             _scriptWrapperBool = new ScriptWrapper<bool>(profile, invoke, d => bool.Parse(d.ToString()));
             _scriptWrapper = new ScriptWrapper<string>(profile, invoke, d => d.ToString());
-            _scriptWrapperDrive = new ScriptWrapper<DriveInfo>(profile, invoke, Convert<DriveInfo>);
-            _scriptWrapperDirectory = new ScriptWrapper<Sifon.Shared.Model.Fake.DirectoryInfo>(profile, invoke, Convert<Sifon.Shared.Model.Fake.DirectoryInfo>);
+            _scriptWrapperDrive = new ScriptWrapper<Model.Fake.DriveInfo>(profile, invoke, Convert<Model.Fake.DriveInfo>);
+            _scriptWrapperDirectory = new ScriptWrapper<Model.Fake.DirectoryInfo>(profile, invoke, Convert<Model.Fake.DirectoryInfo>);
         }
 
         public async Task<bool> CreateDirectory(string directoryPath)

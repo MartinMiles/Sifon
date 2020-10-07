@@ -2,10 +2,10 @@
 using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Sifon.Shared.Helpers;
-using Sifon.Shared.Statics;
+using Sifon.Code.Helpers;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public class LocalBackupInfoExtractor : IBackupInfoExtractor
     {

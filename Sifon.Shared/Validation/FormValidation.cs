@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Sifon.Shared.Validation
+namespace Sifon.Code.Validation
 {
     public class FormValidation : IFormValidation
     {

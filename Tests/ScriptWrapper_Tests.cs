@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Statics;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Statics;
 
 namespace Tests
 {

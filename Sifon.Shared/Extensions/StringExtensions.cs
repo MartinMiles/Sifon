@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security;
 
-namespace Sifon.Shared.Extensions
+namespace Sifon.Code.Extensions
 {
     public static class StringExtensions
     {

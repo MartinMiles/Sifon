@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     internal static class StaticsHelper
     {

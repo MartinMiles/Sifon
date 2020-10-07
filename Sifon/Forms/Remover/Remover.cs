@@ -6,9 +6,9 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
 using Sifon.Forms.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Extensions;
+using Sifon.Code.Statics;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Remover

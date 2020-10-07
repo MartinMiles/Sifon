@@ -1,8 +1,8 @@
 ﻿using System;
 using Sifon.Abstractions.Plugins;
-using Sifon.Shared.Providers.Profile;
+using Sifon.Code.Providers.Profile;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     internal class PluginFactory
     {

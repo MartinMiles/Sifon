@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Management.Automation;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Model.Fake;
+using Sifon.Code.Model.Fake;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     public class FakesHelper
     {

@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.Forms.VersionSelectorDialog
+﻿namespace Sifon.Code.Forms.VersionSelectorDialog
 {
     partial class VersionSelector
     {

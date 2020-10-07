@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public static class BackupInfoExtensions
     {

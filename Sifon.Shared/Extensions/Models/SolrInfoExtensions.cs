@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Sifon.Shared.Helpers;
-using Sifon.Shared.Model;
+using Sifon.Code.Helpers;
+using Sifon.Code.Model;
 
-namespace Sifon.Shared.Extensions.Models
+namespace Sifon.Code.Extensions.Models
 {
     public static class SolrInfoExtensions
     {

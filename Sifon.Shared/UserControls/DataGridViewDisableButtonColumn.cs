@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace Sifon.Shared.UserControls
+namespace Sifon.Code.UserControls
 {
     public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
     {

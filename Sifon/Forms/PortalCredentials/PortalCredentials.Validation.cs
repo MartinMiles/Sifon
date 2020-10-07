@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sifon.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 using Sifon.Statics;
 
 namespace Sifon.Forms.PortalCredentials

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Sifon.Abstractions.Model.Response;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Statics;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Providers
+namespace Sifon.Code.Providers
 {
     public class PowerShellSiteProvider : ISiteProvider
     {

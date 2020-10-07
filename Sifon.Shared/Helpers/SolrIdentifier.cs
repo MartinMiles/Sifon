@@ -5,14 +5,14 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Extensions.Models;
-using Sifon.Shared.Model;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Extensions.Models;
+using Sifon.Code.Model;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     public class SolrIdentifier
     {

@@ -1,5 +1,5 @@
 ﻿using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Model.Profiles;
+using Sifon.Code.Model.Profiles;
 
 namespace Tests
 {

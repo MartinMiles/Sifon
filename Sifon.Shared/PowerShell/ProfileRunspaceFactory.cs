@@ -5,7 +5,7 @@ using System.Security;
 using Microsoft.PowerShell;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Shared.PowerShell
+namespace Sifon.Code.PowerShell
 {
     internal class ProfileRunspaceFactory
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Sifon.Abstractions.Plugins;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     public class PluginHelper
     {

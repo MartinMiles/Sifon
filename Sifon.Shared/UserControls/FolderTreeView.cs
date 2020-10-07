@@ -5,10 +5,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Filesystem;
-using Sifon.Shared.Validation;
+using Sifon.Code.Filesystem;
+using Sifon.Code.Validation;
 
-namespace Sifon.Shared.UserControls
+namespace Sifon.Code.UserControls
 {
     public partial class FolderTreeView : UserControl, IFormValidation
     {

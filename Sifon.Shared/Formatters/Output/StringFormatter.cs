@@ -1,6 +1,6 @@
 ﻿using System.Management.Automation;
 
-namespace Sifon.Shared.Formatters.Output
+namespace Sifon.Code.Formatters.Output
 {
     internal class StringFormatter :IOutputFormatter
     {

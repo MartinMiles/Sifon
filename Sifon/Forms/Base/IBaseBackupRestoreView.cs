@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Sifon.Shared.Events;
+using Sifon.Code.Events;
 
 namespace Sifon.Forms.Base
 {

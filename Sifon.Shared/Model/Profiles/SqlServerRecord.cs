@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Extensions.Models;
+using Sifon.Code.Extensions.Models;
 
-namespace Sifon.Shared.Model.Profiles
+namespace Sifon.Code.Model.Profiles
 {
     internal class SqlServerRecord : ISqlServerRecord
     {

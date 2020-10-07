@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Sifon.Shared.Model.Fake
+namespace Sifon.Code.Model.Fake
 {
     internal class DriveInfo
     {

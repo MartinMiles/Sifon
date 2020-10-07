@@ -3,7 +3,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.ScriptGenerators;
 
-namespace Sifon.Shared.ScriptGenerators
+namespace Sifon.Code.ScriptGenerators
 {
     public class ScriptFactory
     {

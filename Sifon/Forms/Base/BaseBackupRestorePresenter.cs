@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Shared.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Filesystem;
-using Sifon.Shared.Helpers;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Base;
+using Sifon.Code.Events;
+using Sifon.Code.Filesystem;
+using Sifon.Code.Helpers;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Providers;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Base
 {

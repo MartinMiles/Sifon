@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
 namespace Sifon.Extensions
 {

@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
-using Sifon.Shared.Events;
-using Sifon.Shared.Helpers;
-using Sifon.Shared.Model;
+using Sifon.Code.Events;
+using Sifon.Code.Helpers;
+using Sifon.Code.Model;
 
 namespace Sifon.Forms.MainForm
 {

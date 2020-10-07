@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Helpers;
 
-namespace Sifon.Shared.Statics
+namespace Sifon.Code.Statics
 {
     public static class Settings
     {

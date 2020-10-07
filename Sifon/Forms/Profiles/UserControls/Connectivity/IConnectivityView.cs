@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Model;
+using Sifon.Code.Events;
+using Sifon.Code.Model;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {

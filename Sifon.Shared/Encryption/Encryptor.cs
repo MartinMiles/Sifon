@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Sifon.Abstractions.Encryption;
 
-namespace Sifon.Shared.Encryption
+namespace Sifon.Code.Encryption
 {
     internal class Encryptor : IEncryptor
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
+using Sifon.Code.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {

@@ -4,8 +4,8 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Other;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Statics;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Shared.Forms.FolderBrowserDialog
+namespace Sifon.Code.Forms.FolderBrowserDialog
 {
     public partial class FolderBrowser : Form
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 
-namespace Sifon.Shared.Formatters.Text
+namespace Sifon.Code.Formatters.Text
 {
     public class ProgressFormatter
     {

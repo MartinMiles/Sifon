@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
+using Sifon.Code.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public interface IBackupInfoExtractor
     {

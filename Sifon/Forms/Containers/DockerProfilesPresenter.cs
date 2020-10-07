@@ -1,7 +1,7 @@
 ﻿using System;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Events;
-using Sifon.Shared.Providers.Profile;
+using Sifon.Code.Events;
+using Sifon.Code.Providers.Profile;
 
 namespace Sifon.Forms.Containers
 {

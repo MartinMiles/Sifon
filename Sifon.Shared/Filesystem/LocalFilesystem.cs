@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Helpers;
 
-namespace Sifon.Shared.Filesystem
+namespace Sifon.Code.Filesystem
 {
     public class LocalFilesystem : IFilesystem
     {

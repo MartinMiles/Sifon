@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Sifon.Shared.VersionSelector;
+using Sifon.Code.VersionSelector;
 
-namespace Sifon.Shared.Forms.VersionSelectorDialog
+namespace Sifon.Code.Forms.VersionSelectorDialog
 {
     public partial class VersionSelector : Form
     {

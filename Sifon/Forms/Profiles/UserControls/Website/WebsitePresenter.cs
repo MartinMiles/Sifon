@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Providers;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Exceptions;
-using Sifon.Shared.Providers;
+using Sifon.Code.Base;
+using Sifon.Code.Events;
+using Sifon.Code.Exceptions;
+using Sifon.Code.Providers;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {

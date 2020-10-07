@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
-using Sifon.Shared.Extensions;
+using Sifon.Code.Extensions;
 
 namespace Sifon.Forms.Initialize
 {

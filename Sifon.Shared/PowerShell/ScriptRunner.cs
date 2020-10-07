@@ -7,9 +7,9 @@ using System.Management.Automation.Runspaces;
 using System.Threading;
 using System.Threading.Tasks;
 using Sifon.Abstractions.PowerShell;
-using Sifon.Shared.Exceptions;
+using Sifon.Code.Exceptions;
 
-namespace Sifon.Shared.PowerShell
+namespace Sifon.Code.PowerShell
 {
     internal class ScriptRunner : IScriptRunner
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Sifon.Shared.Filesystem
+namespace Sifon.Code.Filesystem
 {
     public interface IFilesystem
     {

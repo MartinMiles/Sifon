@@ -4,9 +4,9 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Initialize;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Extensions;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {

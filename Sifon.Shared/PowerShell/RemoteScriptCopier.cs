@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Model.Profiles;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
+using Sifon.Code.Model.Profiles;
 
-namespace Sifon.Shared.PowerShell
+namespace Sifon.Code.PowerShell
 {
     public class RemoteScriptCopier
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Sifon.Shared.Helpers
+namespace Sifon.Code.Helpers
 {
     internal class TaskHelper<T>
     {

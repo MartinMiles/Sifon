@@ -2,7 +2,7 @@
 using System.Linq;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Shared.ScriptGenerators
+namespace Sifon.Code.ScriptGenerators
 {
     public class ParametersSampleScriptGenerator
     {

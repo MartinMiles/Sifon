@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sifon.Shared.VersionSelector
+namespace Sifon.Code.VersionSelector
 {
     public static class Settings
     {

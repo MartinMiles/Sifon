@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using Sifon.Abstractions.Base;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Forms.FolderBrowserDialog;
-using Sifon.Shared.Statics;
+using Sifon.Code.Forms.FolderBrowserDialog;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.Base
+namespace Sifon.Code.Base
 {
     public class SuperClass : ISuperClass
     {

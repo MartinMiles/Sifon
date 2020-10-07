@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public class BackupInfo
     {

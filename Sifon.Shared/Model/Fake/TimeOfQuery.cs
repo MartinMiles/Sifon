@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sifon.Shared.Model.Fake
+namespace Sifon.Code.Model.Fake
 {
     internal class QueryTime
     {

@@ -6,14 +6,14 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.MainForm;
-using Sifon.Shared.Events;
-using Sifon.Shared.Filesystem;
-using Sifon.Shared.Formatters.Output;
-using Sifon.Shared.Formatters.Text;
-using Sifon.Shared.Model;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Filesystem;
+using Sifon.Code.Formatters.Output;
+using Sifon.Code.Formatters.Text;
+using Sifon.Code.Model;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Base
 {

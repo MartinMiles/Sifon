@@ -5,9 +5,9 @@ using System.Text;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.ScriptGenerators;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.ScriptGenerators
+namespace Sifon.Code.ScriptGenerators
 {
     internal class RestoreScriptGenerator : BaseScriptGenerator, IScript
     {

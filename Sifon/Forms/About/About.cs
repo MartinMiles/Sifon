@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
 using Sifon.Forms.Base;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.About
 {

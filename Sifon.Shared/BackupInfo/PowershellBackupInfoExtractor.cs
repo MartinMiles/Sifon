@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.PowerShell;
-using Sifon.Shared.Statics;
+using Sifon.Code.PowerShell;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.BackupInfo
+namespace Sifon.Code.BackupInfo
 {
     public class PowershellBackupInfoExtractor : IBackupInfoExtractor
     {

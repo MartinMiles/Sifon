@@ -1,7 +1,7 @@
 ﻿using System;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Events;
-using Sifon.Shared.ScriptGenerators;
+using Sifon.Code.Events;
+using Sifon.Code.ScriptGenerators;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {

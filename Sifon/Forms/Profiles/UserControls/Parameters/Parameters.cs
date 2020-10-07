@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Sifon.Extensions;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Parameters
 {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Shared.Providers.Profile;
+using Sifon.Code.Providers.Profile;
 
 [TestClass]
 public class ProfileTest

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Sifon.Shared.Model
+namespace Sifon.Code.Model
 {
     public class PluginMenuItem
     {

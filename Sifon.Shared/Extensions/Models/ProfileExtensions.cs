@@ -3,10 +3,10 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Providers.Profile;
-using Sifon.Shared.Statics;
+using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
-namespace Sifon.Shared.Extensions.Models
+namespace Sifon.Code.Extensions.Models
 {
     public static class ProfileExtensions
     {

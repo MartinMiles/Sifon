@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.Statics
+﻿namespace Sifon.Code.Statics
 {
     public static class Controls
     {

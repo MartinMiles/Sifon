@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sifon.Shared.Events;
-using Sifon.Shared.Statics;
+using Sifon.Code.Events;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Base
 {

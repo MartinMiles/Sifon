@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Helpers;
+using Sifon.Code.Extensions;
+using Sifon.Code.Helpers;
 using Sifon.Statics;
 
 namespace Sifon.Forms.MainForm

@@ -5,12 +5,12 @@ using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Encryption;
-using Sifon.Shared.Extensions.Models;
-using Sifon.Shared.Model.Profiles;
-using Sifon.Shared.Statics;
+using Sifon.Code.Encryption;
+using Sifon.Code.Model.Profiles;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions.Models;
 
-namespace Sifon.Shared.Providers.Profile
+namespace Sifon.Code.Providers.Profile
 {
     public class SqlServerRecordProvider
     {

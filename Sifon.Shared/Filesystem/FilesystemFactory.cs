@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Sifon.Abstractions.Profiles;
 
-namespace Sifon.Shared.Filesystem
+namespace Sifon.Code.Filesystem
 {
     public class FilesystemFactory
     {

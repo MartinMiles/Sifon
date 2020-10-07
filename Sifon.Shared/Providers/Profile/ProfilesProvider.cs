@@ -6,11 +6,11 @@ using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
-using Sifon.Shared.Extensions;
-using Sifon.Shared.Extensions.Models;
-using Sifon.Shared.Statics;
+using Sifon.Code.Statics;
+using Sifon.Code.Extensions;
+using Sifon.Code.Extensions.Models;
 
-namespace Sifon.Shared.Providers.Profile
+namespace Sifon.Code.Providers.Profile
 {
     public class ProfilesProvider
     {

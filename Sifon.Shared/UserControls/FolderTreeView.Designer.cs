@@ -1,4 +1,4 @@
-﻿namespace Sifon.Shared.UserControls
+﻿namespace Sifon.Code.UserControls
 {
     partial class FolderTreeView
     {

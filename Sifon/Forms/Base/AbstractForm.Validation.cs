@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Sifon.Shared.Validation;
+using Sifon.Code.Validation;
 
 namespace Sifon.Forms.Base
 {
