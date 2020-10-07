@@ -6,7 +6,7 @@ There are some components ready for to be used with Sifon from within a plugin s
 
 # LocalFilePicker
 
-This component allow picking up a file on a local (to Sifon) filesystem and passes it further ahead. An file validation is optional prior to sending a selected file further ahead.
+This component allows picking up a file on a local (to Sifon) filesystem and passes it further ahead. A file validation is optional prior to sending a selected file further ahead.
 
 
 **Library:** `Sifon.Shared`
