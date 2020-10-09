@@ -30,7 +30,7 @@ namespace Sifon.Forms.SqlSettings
         private void NameAndPrefixKeyPress(object sender, KeyPressEventArgs e)
         {
             char character = e.KeyChar;
-            if (!char.IsControl(character) && Regex.IsMatch(character.ToString(), GetFilterPattern(((TextBox)sender).Name)))
+             if (!char.IsControl(character) && Regex.IsMatch(character.ToString(), GetFilterPattern(((TextBox)sender).Name)))
             {
                 e.Handled = true;   // Stop the character from being entered into the control since it is illegal.
             }
@@ -40,7 +40,7 @@ namespace Sifon.Forms.SqlSettings
         {
             if (name == textName.Name)
             {
-                return Pattern.Filter.SpecialCharacters.Except.DotsDashes;
+                return Pattern.Filter.SpecialCharacters.Except.DotsDashesSpaces;
             }
             if (name == textInstance.Name)
             {

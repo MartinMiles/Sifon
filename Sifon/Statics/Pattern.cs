@@ -65,9 +65,14 @@ namespace Sifon.Statics
                     public const string Underscores = @"[^\w\d_]";
                     
                     /// <summary>
-                    /// Works for SQL Server record name.
+                    /// Works for profile prefix.
                     /// </summary>
                     public const string DotsDashes = @"[^\w\d.-]";
+                                        
+                    /// <summary>
+                    /// Works for SQL Server record name.
+                    /// </summary>
+                    public const string DotsDashesSpaces = @"[^\w\d .-]";
                     
                     /// <summary>
                     /// Works for email name.
