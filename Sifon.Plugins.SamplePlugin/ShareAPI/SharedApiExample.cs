@@ -28,7 +28,7 @@ namespace Sifon.Plugins.Example.ShareAPI
             var version = String.Empty;
             string selectedPath = String.Empty;
 
-            var versionSelector = new VersionSelector { StartPosition = FormStartPosition.CenterParent, KernelPath = KernelPath };
+            var versionSelector = new VersionSelector { StartPosition = FormStartPosition.CenterParent, _kernelPath = KernelPath };
 
             if (versionSelector.ShowDialog() == DialogResult.OK)
             {

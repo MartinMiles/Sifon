@@ -131,6 +131,7 @@
     <Compile Include="VersionSelector\HashProvider.cs" />
     <Compile Include="VersionSelector\KernelHash.cs" />
     <Compile Include="VersionSelector\Settings.cs" />
+    <Compile Include="VersionSelector\VersionDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

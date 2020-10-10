@@ -12,6 +12,7 @@ using Sifon.Code.Validation;
 
 namespace Sifon.Shared.UserControls
 {
+    //TODO: Maybe some base control would work here rather than UserControl so that it will share validation wrappers?
     public partial class FolderTreeView : UserControl, IFormValidation
     {
         public event EventHandler<EventArgs<string>> DoubleClicked = delegate { };

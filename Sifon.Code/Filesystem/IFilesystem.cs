@@ -23,5 +23,6 @@ namespace Sifon.Code.Filesystem
         Task<bool> DeleteFile(string directory);
 
         Task<bool> DeleteDirectory(string nodeFullPath);
+        Task<string> GetHashMd5(string kernelPath);
     }
 }

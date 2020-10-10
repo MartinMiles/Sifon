@@ -36,19 +36,9 @@ namespace Sifon.Code.Metacode
                     var type = match.Groups[2].Value;
                     var method = match.Groups[3].Value;
                     var methodParameters = match.Groups[4].Value;
+                    var list = ExtractParameters(parameters, methodParameters);
 
-                    var list = new List<object>();
-                    if (!string.IsNullOrWhiteSpace(methodParameters))
-                    {
-                        var paramsArray = methodParameters.Split(',');
-                        
-                        foreach (string parameter in paramsArray)
-                        {
-                            list.Add(ExpandProfileValues(parameter.Trim().Trim('\"'), parameters));
-                        }
-                    }
-
-                    var dynamicMethodOutput = DynamicCodeRunner.RunWithClassicSharpCodeProvider(type, method, list.ToArray());
+                    var dynamicMethodOutput = DynamicCodeRunner.RunWithClassicSharpCodeProvider(type, method, list);
                     if (output.NotEmpty() && dynamicMethodOutput != null)
                     {
                         dynamicResultsDictionary.Add(output, dynamicMethodOutput);
@@ -59,7 +49,35 @@ namespace Sifon.Code.Metacode
             return dynamicResultsDictionary;
         }
 
-        private string ExpandProfileValues(string parameter, IDictionary<string, dynamic> parameters)
+        private object[] ExtractParameters(IDictionary<string, dynamic> parameters, string methodParameters)
+        {
+            var list = new List<object>();
+            if (!string.IsNullOrWhiteSpace(methodParameters))
+            {
+                var paramsArray = methodParameters.Split(',');
+                var stringValuePattern = new Regex(@"\""[^[\]]*\""");
+
+                foreach (string parameter in paramsArray)
+                {
+                    if (stringValuePattern.IsMatch(parameter))
+                    {
+                        list.Add(ExpandTokensWithinStringValues(parameter.Trim().Trim('\"'), parameters));
+                    }
+                    else
+                    {
+                        string key = parameter.Trim().Trim('$');
+                        if (parameters.ContainsKey(key))
+                        {
+                            list.Add(parameters[key]);
+                        }
+                    }
+                }
+            }
+
+            return list.ToArray();
+        }
+
+        private string ExpandTokensWithinStringValues(string parameter, IDictionary<string, dynamic> parameters)
         {
             foreach (var param in parameters)
             {

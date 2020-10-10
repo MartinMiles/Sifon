@@ -140,6 +140,7 @@ namespace Sifon.Code.Providers.Profile
             parameters.Add(Settings.Parameters.Website, SelectedProfile.Website);
             parameters.Add(Settings.Parameters.Webroot, SelectedProfile.Webroot);
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
+            parameters.Add("Profile", SelectedProfile);
 
             parameters.Add(Settings.Parameters.ServerInstance, SelectedProfileSql.SqlServer);
             parameters.Add(Settings.Parameters.Username, SelectedProfileSql.SqlAdminUsername);

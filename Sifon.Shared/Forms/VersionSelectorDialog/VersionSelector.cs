@@ -1,62 +1,60 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.VersionSelector;
+using Sifon.Code.Filesystem;
 using Sifon.Code.VersionSelector;
 
 namespace Sifon.Shared.Forms.VersionSelectorDialog
 {
     public partial class VersionSelector : Form
     {
-        public string KernelPath { private get; set; }
-
-        private readonly HashProvider _hashProvider;
+        private IProfile _profile;
+        public string _kernelPath;
 
         public IKernelHash SelectedVersion { get; private set; }
 
         public VersionSelector()
         {
             InitializeComponent();
-
-            _hashProvider = new HashProvider();
         }
 
-        private void Form_Load(object sender, EventArgs e)
+        private async void Form_Load(object sender, EventArgs e)
         {
             PopulateDropbox();
 
             comboVersions.SelectedIndex = 0;
 
-            if (File.Exists(KernelPath))
+            EnableControls(false);
+
+            var versionDetector = new VersionDetector(_profile, this);
+            var kernelHash = await versionDetector.Identify(_kernelPath);
+
+            if (kernelHash != null)
             {
-                var hash = _hashProvider.CalculateMD5(KernelPath);
-
-                var kernelHash = Settings.Hashes.FirstOrDefault(h => h.Original == hash);
-
-                if (kernelHash != null)
-                {
-                    comboVersions.SelectedValue = kernelHash.Version;
-                    versionLabel.Text = versionLabel.Text.Replace(":", " (automatically detected):");
-                }
+                comboVersions.SelectedValue = kernelHash.Version;
+                versionLabel.Text = versionLabel.Text.Replace(":", " (automatically detected):");
             }
+
+            EnableControls(true);
         }
 
-        public IKernelHash GetVersion(string kernelPath, string caption, string label, string buttonText)
+        public IKernelHash GetVersion(string kernelPath, string caption, string label, string buttonText, IProfile profile)
         {
-            KernelPath = kernelPath;
+            _kernelPath = kernelPath;
+            _profile = profile;
+
             buttonSelect.Text = buttonText ?? buttonSelect.Text;
-            Text = caption;
             groupParameters.Text = label;
 
             StartPosition = FormStartPosition.CenterParent;
+            ShowDialog();
+            return SelectedVersion;
+        }
 
-            if (ShowDialog() == DialogResult.OK)
-            {
-                return SelectedVersion;
-            }
-
-            throw new ArgumentOutOfRangeException();
+        private void EnableControls(bool enabled)
+        {
+            groupParameters.Enabled = enabled;
         }
 
         private void PopulateDropbox()

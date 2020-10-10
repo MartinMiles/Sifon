@@ -53,7 +53,7 @@ namespace Sifon.Code.Statics
         {
             public static class Plugins
             {
-                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\".*\")*)\\)";
+                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
 
                 public static string Dependencies = "###\\s*Dependencies:\\s*(.*)";
                 public static string DependenciesToExtract  = "\\\"([^\"]*)\\\"";
@@ -87,6 +87,7 @@ namespace Sifon.Code.Statics
 
             public static class Filesystem
             {
+                public static string GetHashMD5 => Path.Combine(Folders.CoreFilesystem, "Get-HashMD5.ps1");
                 public static string GetFiles => Path.Combine(Folders.CoreFilesystem, "Get-Files.ps1");
                 public static string CreateDirectory => Path.Combine(Folders.CoreFilesystem, "Create-Directory.ps1");   
                 public static string VerifyDirectory => Path.Combine(Folders.CoreFilesystem, "Verify-Directory.ps1");   

@@ -10,7 +10,6 @@ using Sifon.Abstractions.Profiles;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
-using DriveInfo = Sifon.Code.Model.Fake.DriveInfo;
 
 namespace Sifon.Code.Filesystem
 {
@@ -125,6 +124,14 @@ namespace Sifon.Code.Filesystem
             var parameters = new Dictionary<string, dynamic> { { "Type", parameter }, { "Directory", directoryPath } };
             _scriptWrapper.RunSync(script, parameters);
             return _scriptWrapper.Results;
+        }
+
+        public async Task<string> GetHashMd5(string KernelPath)
+        {
+            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.GetHashMD5);
+            var parameters = new Dictionary<string, dynamic> { { "Filepath", KernelPath } };
+            await _scriptWrapper.Run(script, parameters);
+            return _scriptWrapper.Results.FirstOrDefault();
         }
     }
 }

@@ -8,6 +8,11 @@ namespace Sifon.Code.VersionSelector
     {
         public string CalculateMD5(string filename)
         {
+            if (!File.Exists(filename))
+            {
+                return null;
+            }
+
             using (var md5 = MD5.Create())
             {
                 using (var stream = File.OpenRead(filename))

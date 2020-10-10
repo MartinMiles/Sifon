@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Code.Helpers;
+using Sifon.Code.VersionSelector;
 
 namespace Sifon.Code.Filesystem
 {
@@ -115,6 +116,12 @@ namespace Sifon.Code.Filesystem
             {
                 return false;
             }
+        }
+
+        public async Task<string> GetHashMd5(string kernelPath)
+        {
+            var hashProvider = new HashProvider();
+            return await TaskHelper<string>.AsyncPattern(hashProvider.CalculateMD5, kernelPath);
         }
     }
 }

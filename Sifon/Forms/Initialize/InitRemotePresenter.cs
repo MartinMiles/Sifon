@@ -105,6 +105,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Filesystem.GetDirectory,
             Settings.Scripts.Filesystem.GetDrives,
             Settings.Scripts.Filesystem.GetFiles,
+            Settings.Scripts.Filesystem.GetHashMD5,
             Settings.Scripts.Filesystem.VerifyDirectory,
         };
         private string[] ModulesToBeCopiedToRemote => new[]{
