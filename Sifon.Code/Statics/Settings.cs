@@ -155,6 +155,10 @@ namespace Sifon.Code.Statics
         {
             public static string[] ForbiddenDatabases = {"master", "tempdb", "model", "msdb"};
         }
+        public static class Sites
+        {
+            public static string[] Commerce = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
+        }
 
         public static class XConnect
         {

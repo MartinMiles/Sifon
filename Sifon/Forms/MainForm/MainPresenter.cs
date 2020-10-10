@@ -5,7 +5,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
-using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
 using Sifon.Code.Events;
@@ -163,7 +162,7 @@ namespace Sifon.Forms.MainForm
             _containersProvider.AddContainersParameters(parameters);
 
             var metacode = new MetacodeHelper(e.Value);
-            var metacodeResultsDictionary = metacode.ExecuteMetacode();
+            var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters);
 
             foreach (var metadataPair in metacodeResultsDictionary)
             {
@@ -175,6 +174,10 @@ namespace Sifon.Forms.MainForm
                     var resultedPath = await _remoteScriptCopier.CopyIfRemote(localFile);
 
                     parameters.Add(metadataPair.Key.Trim('$'), resultedPath);
+                }
+                else
+                {
+                    parameters.Add(metadataPair.Key.Trim('$'), metadataPair.Value);
                 }
             }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
 using Sifon.Abstractions.Profiles;
@@ -33,7 +32,7 @@ namespace Sifon.Plugins.Example.ShareAPI
 
             if (versionSelector.ShowDialog() == DialogResult.OK)
             {
-                version = versionSelector.SelectedVersion;
+                version = versionSelector.SelectedVersion.Product;
                 var browser = new FolderBrowser(Profile, true) { StartPosition = FormStartPosition.CenterParent, Text = "Select folder" };
                 selectedPath = browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
             }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.VersionSelector;
 using Sifon.Code.VersionSelector;
 
 namespace Sifon.Shared.Forms.VersionSelectorDialog
@@ -12,7 +13,7 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
 
         private readonly HashProvider _hashProvider;
 
-        public string SelectedVersion { get; private set; }
+        public IKernelHash SelectedVersion { get; private set; }
 
         public VersionSelector()
         {
@@ -27,11 +28,7 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
 
             comboVersions.SelectedIndex = 0;
 
-            if (!File.Exists(KernelPath))
-            {
-                MessageBox.Show($"File does not exist at path: \n {KernelPath}", "Kernel missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            if (File.Exists(KernelPath))
             {
                 var hash = _hashProvider.CalculateMD5(KernelPath);
 
@@ -39,26 +36,41 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
 
                 if (kernelHash != null)
                 {
-                    comboVersions.SelectedItem = kernelHash.Version;
-                    versionLabel.Text = versionLabel.Text.Replace(":", " (automatically detected:");
+                    comboVersions.SelectedValue = kernelHash.Version;
+                    versionLabel.Text = versionLabel.Text.Replace(":", " (automatically detected):");
                 }
             }
+        }
+
+        public IKernelHash GetVersion(string kernelPath, string caption, string label, string buttonText)
+        {
+            KernelPath = kernelPath;
+            buttonSelect.Text = buttonText ?? buttonSelect.Text;
+            Text = caption;
+            groupParameters.Text = label;
+
+            StartPosition = FormStartPosition.CenterParent;
+
+            if (ShowDialog() == DialogResult.OK)
+            {
+                return SelectedVersion;
+            }
+
+            throw new ArgumentOutOfRangeException();
         }
 
         private void PopulateDropbox()
         {
             comboVersions.Items.Clear();
-            comboVersions.Items.Add("=== not detected ===");
-
-            foreach (var version in Settings.Hashes.Select(h => h.Version))
-            {
-                comboVersions.Items.Add(version);
-            }
+            comboVersions.DataSource = Settings.Hashes;
+            comboVersions.DisplayMember = "Product";
+            comboVersions.ValueMember = "Version";
         }
 
         private void buttonPatch_Click(object sender, EventArgs e)
         {
-            SelectedVersion = comboVersions.SelectedIndex > 0 ? comboVersions.SelectedItem.ToString() : String.Empty;
+            var selectedVersion = comboVersions.SelectedItem as KernelHash;
+            SelectedVersion = selectedVersion;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -21,7 +22,7 @@ namespace Sifon.Code.Metacode
             _meta = File.ReadAllLines(scriptPath).Where(l => l.StartsWith("###")).Select(s => s.Trim());
         }
 
-        public Dictionary<string, object> ExecuteMetacode()
+        public Dictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters)
         {
             var dynamicResultsDictionary = new Dictionary<string, object>();
             var regex = new Regex(Settings.Regex.Plugins.MetacodeSynthax);
@@ -43,7 +44,7 @@ namespace Sifon.Code.Metacode
                         
                         foreach (string parameter in paramsArray)
                         {
-                            list.Add(parameter.Trim('\"'));
+                            list.Add(ExpandProfileValues(parameter.Trim().Trim('\"'), parameters));
                         }
                     }
 
@@ -56,6 +57,19 @@ namespace Sifon.Code.Metacode
             }
 
             return dynamicResultsDictionary;
+        }
+
+        private string ExpandProfileValues(string parameter, IDictionary<string, dynamic> parameters)
+        {
+            foreach (var param in parameters)
+            {
+                if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(parameter, $"${param.Key}", CompareOptions.IgnoreCase) >= 0)
+                {
+                    parameter = Regex.Replace(parameter, $"\\${param.Key}", param.Value, RegexOptions.IgnoreCase);
+                }
+            }
+
+            return parameter;
         }
 
         public IEnumerable<string> IdentifyDependencies()

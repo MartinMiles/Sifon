@@ -30,7 +30,7 @@ namespace DynamicNamespace
 {
     public class DynamicClass
     {
-        public string ExecuteDynamicMethod(string assemblyPath, string type, string method, object[] parameters) 
+        public dynamic ExecuteDynamicMethod(string assemblyPath, string type, string method, object[] parameters) 
         {
             Assembly a = null;
             a = Assembly.LoadFrom(assemblyPath); 
@@ -38,8 +38,7 @@ namespace DynamicNamespace
             Type classType = a.GetType(type);
             object obj = Activator.CreateInstance(classType);
             MethodInfo mi = classType.GetMethod(method);
-            string str123 = (string) mi.Invoke(obj, parameters);
-            return str123;  
+            return mi.Invoke(obj, parameters);
         }
     }
 }";

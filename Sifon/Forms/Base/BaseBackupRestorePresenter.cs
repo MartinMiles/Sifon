@@ -23,8 +23,6 @@ namespace Sifon.Forms.Base
 
         private readonly IBaseBackupRestoreView _view;
 
-        //protected IProfile SelectedProfile => _profileService.SelectedProfile;
-
         internal BaseBackupRestorePresenter(IBaseBackupRestoreView view)
         {
             _profileService = new ProfilesProvider();

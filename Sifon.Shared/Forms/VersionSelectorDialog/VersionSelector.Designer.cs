@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupParameters = new System.Windows.Forms.GroupBox();
-            this.buttonPatch = new System.Windows.Forms.Button();
+            this.buttonSelect = new System.Windows.Forms.Button();
             this.versionLabel = new System.Windows.Forms.Label();
             this.comboVersions = new System.Windows.Forms.ComboBox();
             this.groupParameters.SuspendLayout();
@@ -37,7 +37,7 @@
             // 
             // groupParameters
             // 
-            this.groupParameters.Controls.Add(this.buttonPatch);
+            this.groupParameters.Controls.Add(this.buttonSelect);
             this.groupParameters.Controls.Add(this.versionLabel);
             this.groupParameters.Controls.Add(this.comboVersions);
             this.groupParameters.Location = new System.Drawing.Point(12, 12);
@@ -47,16 +47,16 @@
             this.groupParameters.TabStop = false;
             this.groupParameters.Text = "Please select Sitecore version:";
             // 
-            // buttonPatch
+            // buttonSelect
             // 
-            this.buttonPatch.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonPatch.Location = new System.Drawing.Point(172, 87);
-            this.buttonPatch.Name = "buttonPatch";
-            this.buttonPatch.Size = new System.Drawing.Size(75, 23);
-            this.buttonPatch.TabIndex = 2;
-            this.buttonPatch.Text = "Select";
-            this.buttonPatch.UseVisualStyleBackColor = true;
-            this.buttonPatch.Click += new System.EventHandler(this.buttonPatch_Click);
+            this.buttonSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSelect.Location = new System.Drawing.Point(172, 87);
+            this.buttonSelect.Name = "buttonSelect";
+            this.buttonSelect.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelect.TabIndex = 2;
+            this.buttonSelect.Text = "Select";
+            this.buttonSelect.UseVisualStyleBackColor = true;
+            this.buttonSelect.Click += new System.EventHandler(this.buttonPatch_Click);
             // 
             // versionLabel
             // 
@@ -96,7 +96,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupParameters;
-        private System.Windows.Forms.Button buttonPatch;
+        private System.Windows.Forms.Button buttonSelect;
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.ComboBox comboVersions;
     }

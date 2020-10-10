@@ -88,8 +88,7 @@ namespace Sifon.Forms.Restore
 
         private bool CheckCommerceSite(string site)
         {
-            string[] commerceSites = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
-            return commerceSites.Any(s => site.Contains(s));
+            return Settings.Sites.Commerce.Any(site.Contains);
         }
 
         private async Task<IEnumerable<KeyValuePair<string, string>>> GetInputForGrid(Dictionary<string, string> files)

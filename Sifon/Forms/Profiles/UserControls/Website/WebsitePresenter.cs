@@ -8,9 +8,7 @@ using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Providers;
-using Sifon.Code.Statics;
 using Sifon.Shared.Forms.FolderBrowserDialog;
-using Sifon.Shared.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {

@@ -4,6 +4,9 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ![Sifon](https://raw.githubusercontent.com/wiki/MartinMiles/Sifon/img/main.png "Sifon main interface") 
 
+
+<br/>
+
 ## Downloads
 
 Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
@@ -51,7 +54,16 @@ Please go through the documentation in order to get the max from using Sifon
 - [Release notes](/ReleaseNotes.md "Release notes")
 - [Known issues](/KnownIssues.md "Known issues")
 
-<br/><br/>
+<br/>
+
+## Impressive features to arrive later
+
+- abilty to build own solutions images with Docker
+- mass content migration utility between environments
+- restore Sitecore from backup into another clean machine
+
+
+<br/>
 
 ## License
 

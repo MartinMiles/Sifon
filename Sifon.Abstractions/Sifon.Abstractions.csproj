@@ -64,6 +64,7 @@
     <Compile Include="Providers\ISiteProvider.cs" />
     <Compile Include="ScriptGenerators\IScript.cs" />
     <Compile Include="Validation\IFormValidation.cs" />
+    <Compile Include="VersionSelector\IKernelHash.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
