@@ -32,7 +32,7 @@ namespace Sifon.Plugins.Example.ShareAPI
 
             if (versionSelector.ShowDialog() == DialogResult.OK)
             {
-                version = versionSelector.SelectedVersion.Product;
+                version = versionSelector._selectedVersion.Product;
                 var browser = new FolderBrowser(Profile, true) { StartPosition = FormStartPosition.CenterParent, Text = "Select folder" };
                 selectedPath = browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
             }

@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.VersionSelector;
-using Sifon.Code.Filesystem;
 using Sifon.Code.VersionSelector;
 
 namespace Sifon.Shared.Forms.VersionSelectorDialog
@@ -11,8 +10,7 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
     {
         private IProfile _profile;
         public string _kernelPath;
-
-        public IKernelHash SelectedVersion { get; private set; }
+        public IKernelHash _selectedVersion;
 
         public VersionSelector()
         {
@@ -49,7 +47,7 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
 
             StartPosition = FormStartPosition.CenterParent;
             ShowDialog();
-            return SelectedVersion;
+            return _selectedVersion;
         }
 
         private void EnableControls(bool enabled)
@@ -68,7 +66,7 @@ namespace Sifon.Shared.Forms.VersionSelectorDialog
         private void buttonPatch_Click(object sender, EventArgs e)
         {
             var selectedVersion = comboVersions.SelectedItem as KernelHash;
-            SelectedVersion = selectedVersion;
+            _selectedVersion = selectedVersion;
         }
     }
 }

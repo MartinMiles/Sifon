@@ -11,6 +11,7 @@ namespace Sifon.Code.Metacode
     public class MetacodeHelper
     {
         private readonly IEnumerable<string> _meta;
+        private readonly string[] powerShellBooleans = { "$true", "$false" };
 
         public MetacodeHelper(string scriptPath)
         {
@@ -59,13 +60,20 @@ namespace Sifon.Code.Metacode
 
                 foreach (string parameter in paramsArray)
                 {
-                    if (stringValuePattern.IsMatch(parameter))
+                    var param = parameter.Trim();
+                    string key = param.Trim('$');
+
+                    if (stringValuePattern.IsMatch(param))
                     {
-                        list.Add(ExpandTokensWithinStringValues(parameter.Trim().Trim('\"'), parameters));
+                        list.Add(ExpandTokensWithinStringValues(param.Trim('\"'), parameters));
+                    }
+                    else if(powerShellBooleans.Contains(param.ToLower()))
+                    {
+                        bool boolValue = bool.TryParse(key, out boolValue) && boolValue;
+                        list.Add(boolValue);
                     }
                     else
                     {
-                        string key = parameter.Trim().Trim('$');
                         if (parameters.ContainsKey(key))
                         {
                             list.Add(parameters[key]);

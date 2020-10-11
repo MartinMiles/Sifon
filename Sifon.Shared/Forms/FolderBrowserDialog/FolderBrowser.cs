@@ -8,18 +8,22 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
     {
         public string SelectedPath { get; private set; }
 
-        public FolderBrowser(IProfile profile, bool allowCreateNewFolder = false)
+        // empty constructor needed for meta-language execution
+        public FolderBrowser()
         {
             InitializeComponent();
-
-            folderTreeView.CancelSent += CancelSent;
-            folderTreeView.EditFinished += EditFinished;
-
             folderTreeView.ShowFiles = false;
+        }
+
+        public FolderBrowser(IProfile profile, bool allowCreateNewFolder = false) : this()
+        {
+            Init(profile, allowCreateNewFolder);
+        }
+
+        private void Init(IProfile profile, bool allowCreateNewFolder)
+        {
             folderTreeView.Profile = profile;
-
             buttonNewFolder.Visible = allowCreateNewFolder;
-
             Text = Statics.Controls.FolderBrowser.Caption + profile.WindowCaptionSuffix;
         }
 
@@ -29,16 +33,15 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             folderTreeView.MakeNewFolder();
         }
 
-        private void EditFinished(object sender, EventArgs e)
+        public string GetFolder(IProfile profile, bool allowCreateNewFolder = false)
         {
-            buttonNewFolder.Enabled = true;
+            Init(profile, allowCreateNewFolder);
+
+            StartPosition = FormStartPosition.CenterParent;
+            ShowDialog();
+            return SelectedPath;
         }
 
-        private void CancelSent(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-        
         private void buttonSelect_Click(object sender, EventArgs e)
         {
             SelectedPath = folderTreeView.SelectedPath;
