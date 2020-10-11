@@ -45,6 +45,7 @@ namespace Sifon.Forms.SqlSettings
         private void FormLoad(object sender, EventArgs e)
         {
             _view.PopulateServersDropdown(ServerRecords, _profilesService.SelectedProfile.SqlServer);
+            _view.ToggleRemoteWarning(_profilesService.SelectedProfile.RemotingEnabled);
         }
 
         private void SelectedRecordChanged(object sender, EventArgs<string> e)

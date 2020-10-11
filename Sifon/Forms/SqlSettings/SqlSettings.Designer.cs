@@ -22,6 +22,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelWarning3 = new System.Windows.Forms.Label();
+            this.labelWarning2 = new System.Windows.Forms.Label();
+            this.labelWarning1 = new System.Windows.Forms.Label();
             this.linkReveal = new System.Windows.Forms.LinkLabel();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +45,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelWarning3);
+            this.groupBox1.Controls.Add(this.labelWarning2);
+            this.groupBox1.Controls.Add(this.labelWarning1);
             this.groupBox1.Controls.Add(this.linkReveal);
             this.groupBox1.Controls.Add(this.textPassword);
             this.groupBox1.Controls.Add(this.label4);
@@ -59,6 +65,36 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SQL Server:";
+            // 
+            // labelWarning3
+            // 
+            this.labelWarning3.AutoSize = true;
+            this.labelWarning3.Enabled = false;
+            this.labelWarning3.Location = new System.Drawing.Point(7, 131);
+            this.labelWarning3.Name = "labelWarning3";
+            this.labelWarning3.Size = new System.Drawing.Size(177, 13);
+            this.labelWarning3.TabIndex = 19;
+            this.labelWarning3.Text = "profile, not the one where Sifon runs";
+            // 
+            // labelWarning2
+            // 
+            this.labelWarning2.AutoSize = true;
+            this.labelWarning2.Enabled = false;
+            this.labelWarning2.Location = new System.Drawing.Point(7, 118);
+            this.labelWarning2.Name = "labelWarning2";
+            this.labelWarning2.Size = new System.Drawing.Size(175, 13);
+            this.labelWarning2.TabIndex = 18;
+            this.labelWarning2.Text = "the machine specified at the remote";
+            // 
+            // labelWarning1
+            // 
+            this.labelWarning1.AutoSize = true;
+            this.labelWarning1.Enabled = false;
+            this.labelWarning1.Location = new System.Drawing.Point(7, 105);
+            this.labelWarning1.Name = "labelWarning1";
+            this.labelWarning1.Size = new System.Drawing.Size(177, 13);
+            this.labelWarning1.TabIndex = 17;
+            this.labelWarning1.Text = "IMPORTANT: Instance is realtive to";
             // 
             // linkReveal
             // 
@@ -125,7 +161,7 @@
             // 
             // textInstance
             // 
-            this.textInstance.Location = new System.Drawing.Point(6, 75);
+            this.textInstance.Location = new System.Drawing.Point(10, 75);
             this.textInstance.Name = "textInstance";
             this.textInstance.Size = new System.Drawing.Size(164, 20);
             this.textInstance.TabIndex = 11;
@@ -133,7 +169,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 58);
+            this.label2.Location = new System.Drawing.Point(7, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 2;
@@ -141,7 +177,7 @@
             // 
             // textName
             // 
-            this.textName.Location = new System.Drawing.Point(6, 32);
+            this.textName.Location = new System.Drawing.Point(10, 32);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(164, 20);
             this.textName.TabIndex = 10;
@@ -149,7 +185,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 15);
+            this.label1.Location = new System.Drawing.Point(7, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 0;
@@ -180,9 +216,9 @@
             // 
             this.comboBoxServers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxServers.FormattingEnabled = true;
-            this.comboBoxServers.Location = new System.Drawing.Point(9, 28);
+            this.comboBoxServers.Location = new System.Drawing.Point(10, 28);
             this.comboBoxServers.Name = "comboBoxServers";
-            this.comboBoxServers.Size = new System.Drawing.Size(253, 21);
+            this.comboBoxServers.Size = new System.Drawing.Size(252, 21);
             this.comboBoxServers.TabIndex = 1;
             this.comboBoxServers.SelectedIndexChanged += new System.EventHandler(this.comboBoxServers_SelectedIndexChanged);
             // 
@@ -223,5 +259,8 @@
         private System.Windows.Forms.ComboBox comboBoxServers;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.LinkLabel linkReveal;
+        private System.Windows.Forms.Label labelWarning3;
+        private System.Windows.Forms.Label labelWarning2;
+        private System.Windows.Forms.Label labelWarning1;
     }
 }

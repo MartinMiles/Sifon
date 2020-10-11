@@ -19,7 +19,7 @@ namespace Sifon.Forms.SqlSettings
         void ShowInfo(string caption, string message);
         void ShowError(string caption, string message);
         void ToggleControls(bool enabled);
-
+        void ToggleRemoteWarning(bool enabled);
         void SetSqlServerName(string name);
         void SetSqlInstance(string instanceName);
         void SetSqlUsername(string username);

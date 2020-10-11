@@ -101,6 +101,13 @@ namespace Sifon.Forms.SqlSettings
             textPassword.Text = password;
         }
 
+        public void ToggleRemoteWarning(bool enabled)
+        {
+            labelWarning1.Visible = enabled;
+            labelWarning2.Visible = enabled;
+            labelWarning3.Visible = enabled;
+        }
+
         public void ToggleControls(bool enabled)
         {
             comboBoxServers.Enabled = enabled;
