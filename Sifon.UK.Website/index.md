@@ -9,7 +9,7 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Downloads
 
-Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
+Use this link to [download](/download/Sifon_0.99a.zip "download Sifon") your copy of Sifon. The source code is available at [GitHub](https://github.com/MartinMiles/Sifon "Sifon GitHub repository").
 
 
 <br/>
@@ -17,9 +17,9 @@ Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy
 ## Features
 
 - functions with Sitecore versions 9.x and 10.0
-- backup, clean, restore selected Sitecore instance out-of-the-box with nice GUI
+- performs backup, clean, restore operations against selected Sitecore instance out-of-the-box with nice GUI
 - you can choose the above operations for webroot, xConnect, Identity Server, Horizon and Publishing Service sites (or them all)
-- support Sitecore Commerce of both 9.x and 10.x versions
+- supports Sitecore Commerce of both 9.x and 10.x versions
 - basic support for Sitecore in containers with Docker
 - supports and correctly handles instances installations outside `inetpub\wwwroot` folder
 - environment auto-detection: hostnames, bindings, installed Solr instances
@@ -34,7 +34,7 @@ Use this link to [download](/download/Sifon_0.98.zip "download Sifon") your copy
 
 ## Getting started
 
-Please take a look at this video before the first run, as it explains important bits, such as setting up a profile on the first run and what Profiles are. It also show you hpw to obtain the lates collection of plugins from a [public GitHib plugins repository](https://github.com/MartinMiles/Sifon.Plugins "public GitHib plugins repository"), how to configure containers for the first run of Sitecore 10 XP0 and also how to perform local and remote backups.
+Please take a look at this video before the first run, as it explains important bits, such as setting up a profile on the first run and what Profiles are. It also shows you how to obtain the latesy collection of plugins from a [public GitHib plugins repository](https://github.com/MartinMiles/Sifon.Plugins "public GitHib plugins repository"), how to configure containers for the first run of Sitecore 10 XP0 and also how to perform local and remote backups.
 
 <p><iframe width="800" height="450" src="https://www.youtube.com/embed/rjF2yeLu5Yc?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
@@ -58,10 +58,11 @@ Please go through the documentation in order to get the max from using Sifon
 
 ## Impressive features to arrive later
 
-- abilty to build own solutions images with Docker
+- an ability to build own solutions images with Docker
+- navigating interactively deep into containers
 - mass content migration utility between environments
 - restore Sitecore from backup into another clean machine
-
+- anything else, suggested by you
 
 <br/>
 

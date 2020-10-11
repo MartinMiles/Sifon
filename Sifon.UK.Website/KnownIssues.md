@@ -1,10 +1,10 @@
 # Known issues
 
-- Restore databases over network share is not yet supported, even if you map a drive. However, restoring just websites works well
-- switching between remote and local should update env. specific parameters ie. sites, solr instances, etc: after Initialize procedure completes (the remote folder is defined)
+- Restore databases over network share is not yet supported, even if you map a drive. However, restoring websites only works well
 - reveal button does not work well on remote tab
-- save and close button is stil disabled even after all scripts complete working
-
+- minor non-critical UI leftovers
+- strict tie for plugins versioning realtive to actual version Sifon not yet enforced
+- documentation is bit messy and not always actual to the state of project and plugins
 
 <br/><br/>
 [<- Home](/ "Home")	
