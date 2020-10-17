@@ -77,7 +77,6 @@ namespace Sifon.Code.Statics
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
             public static string GetSitePath => Path.Combine(Folders.Core, "Get-SitePath.ps1");
-            public static string GetXconnectFolder => Path.Combine(Folders.Core, "Get-XconnectFolder.ps1");
             public static string GetHorizonFolder => Path.Combine(Folders.Core, "Get-HorizonFolder.ps1");
             public static string GetPublishingServiceFolder => Path.Combine(Folders.Core, "Get-PublishingServiceFolder.ps1");
             public static string GetCommerceSites => Path.Combine(Folders.Core, "Get-CommerceSites.ps1");
@@ -115,6 +114,14 @@ namespace Sifon.Code.Statics
 
             }
 
+        }
+
+        public static class Module
+        {
+            public static class Functions
+            {
+                public static string GetSiteFolder = "Get-SiteFolder";
+            }
         }
 
         public const string ManualEntry = "== enter manually ==";
@@ -161,20 +168,6 @@ namespace Sifon.Code.Statics
             public static string[] Commerce = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
         }
 
-        public static class XConnect
-        {
-            public const string ConfigRelativePath = @"App_Config\ConnectionStrings.config";
-            public const string NodePath = "/connectionStrings/add[@name='xconnect.collection']";
-            public const string AttributeName = "connectionString";
-        }
-
-        public static class IDS
-        {
-            public const string ConfigRelativePath = @"App_Config\Sitecore\Owin.Authentication.IdentityServer\Sitecore.Owin.Authentication.IdentityServer.config";
-            public static string NodePath = "/configuration/sitecore/sc.variable[@name='identityServerAuthority']";
-            public const string AttributeName = "value";
-        }
-
         public static class Parameters
         {
             // from profile
@@ -216,11 +209,8 @@ namespace Sifon.Code.Statics
             public const string IdentityServerFolder = "IdentityServerFolder";
 
             public const string Hostname = "Hostname";
-            public const string ConfigRelativePath = "ConfigRelativePath";
-            public const string XPath = "XPath";
-            public const string AttributeName = "AttributeName";
-            public const string By = "By";
-            
+            public const string Type = "type";
+
             public static Dictionary<string, string> AsDictionary()
             {
                 return StaticsHelper.AsDictionary(typeof(Parameters));

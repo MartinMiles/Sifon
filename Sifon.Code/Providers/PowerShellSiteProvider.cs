@@ -51,29 +51,29 @@ namespace Sifon.Code.Providers
             await _scriptWrapper.Run(script, new Dictionary<string, dynamic> { { "SitePath", webfolder } });
             return _scriptWrapper.Results;
         }
-        
+
         public async Task<string> GetSitePath(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSitePath);
-            var parameters = new Dictionary<string, dynamic> {{Settings.Parameters.By, "sitename"},{Settings.Parameters.Name, siteName}};
-            await _scriptWrapperString.Run(script, parameters);
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName }};
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
         public async Task<string> GetXconnect(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetXconnectFolder);
-
             var parameters = new Dictionary<string, dynamic>
-            {
-                {Settings.Parameters.Name, siteName},
-                {Settings.Parameters.ConfigRelativePath, Settings.XConnect.ConfigRelativePath},
-                {Settings.Parameters.XPath, Settings.XConnect.NodePath},
-                {Settings.Parameters.AttributeName, Settings.XConnect.AttributeName}
+                {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.XConnect }};
 
-            };
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            return _scriptWrapperString.Results.FirstOrDefault();
+        }
 
-            await _scriptWrapperString.Run(script, parameters);
+        public async Task<string> GetIDS(string siteName)
+        {
+            var parameters = new Dictionary<string, dynamic>
+                { { Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.IdentityServer}};
+
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
@@ -107,22 +107,6 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic> {{Settings.Parameters.Webroot, siteName}};
             await _scriptWrapperString.Run(script, parameters);
             return _scriptWrapperString;
-        }
-
-        public async Task<string> GetIDS(string siteName)
-        {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetXconnectFolder);
-
-            var parameters = new Dictionary<string, dynamic>
-            {
-                {Settings.Parameters.Name, siteName},
-                {Settings.Parameters.ConfigRelativePath, Settings.IDS.ConfigRelativePath},
-                {Settings.Parameters.XPath, Settings.IDS.NodePath},
-                {Settings.Parameters.AttributeName, Settings.IDS.AttributeName}
-            };
-
-            await _scriptWrapperString.Run(script, parameters);
-            return _scriptWrapperString.Results.FirstOrDefault();
         }
 
         public async Task<string> GetHorizon(string siteName)

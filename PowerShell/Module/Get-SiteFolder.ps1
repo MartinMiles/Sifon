@@ -1,31 +1,41 @@
-Function Get-SiteFolder($Name, $By)
-{
-    Import-Module WebAdministration
+Import-Module WebAdministration
+Function Get-SiteFolder($name, $type) {
 
-    IF($By -eq 'sitename')
-    {
-        $FoundSite = Get-ChildItem IIS:\Sites | Where-Object {$_.Name -eq $Name} 
+    if($type -eq 'XConnect'){
+
+        $ConfigRelativePath = "App_Config\ConnectionStrings.config"
+        $XPath = "/connectionStrings/add[@name='xconnect.collection']"
+        $AttributeName = "connectionString"
     }
-    
-    IF($By -eq 'hostname')
-    {
-        $Websites = Get-ChildItem IIS:\Sites
-        foreach ($Site in $Websites) 
-        {
-            foreach ($Binding in $Site.Bindings.Collection) 
-            {
-                If($Binding.bindingInformation -Match ":$Name$")
-                {
-                    $FoundSite = $Site
-                }
+    elseif ($type -eq 'IdentityServer'){
+
+        $ConfigRelativePath = "App_Config\Sitecore\Owin.Authentication.IdentityServer\Sitecore.Owin.Authentication.IdentityServer.config"
+        $XPath = "/configuration/sitecore/sc.variable[@name='identityServerAuthority']"
+        $AttributeName = "value"
+    }    
+
+    If($name){
+
+        $FoundSite = Get-ChildItem IIS:\Sites | Where-Object {$_.Name -eq $name} 
+
+        If($FoundSite.physicalPath){
+
+            if($ConfigRelativePath -eq $null){
+                $FoundSite.physicalPath
+                exit
             }
+
+            $file = $FoundSite.physicalPath + '\' + $ConfigRelativePath
+
+            If(Test-Path $file){
+            
+                $node = Select-Xml -Path $file -XPath $XPath
+                $XconnectURL = $node | Select-Object -ExpandProperty Node | select -ExpandProperty $AttributeName
+                $Hostname =  ([System.Uri]$XconnectURL).Host
+                
+                Get-ChildItem IIS:\Sites | where { $_.Bindings.Collection.bindingInformation -Match ":$Hostname$" } | select -ExpandProperty physicalPath
+
+            }  
         }
     }
-
-    If($FoundSite.physicalPath)
-    {
-        return $FoundSite.physicalPath.trim('\')
-    }
 }
-
-

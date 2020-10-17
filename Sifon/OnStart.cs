@@ -33,7 +33,6 @@ namespace Sifon
                     Settings.Scripts.TestSolr,
                     Settings.Scripts.TestSqlServerConnection,
                     Settings.Scripts.TestPortalCredentials,
-                    Settings.Scripts.GetXconnectFolder,
                     Settings.Scripts.GetHorizonFolder,
                     Settings.Scripts.GetPublishingServiceFolder,
                     Settings.Scripts.GetCommerceSites,
