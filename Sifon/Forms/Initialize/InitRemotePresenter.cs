@@ -88,7 +88,6 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.RetrieveDatabases,
             Settings.Scripts.RetrieveSolr,
             Settings.Scripts.SaveBackupInfo,
-            Settings.Scripts.GetSitePath,
             Settings.Scripts.TestSolr,
             Settings.Scripts.TestSqlServerConnection,
             Settings.Scripts.TestPortalCredentials,

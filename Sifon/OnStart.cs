@@ -28,7 +28,6 @@ namespace Sifon
                     Settings.Scripts.RestoreInstance,
                     Settings.Scripts.RetrieveDatabases,
                     Settings.Scripts.RetrieveSolr,
-                    Settings.Scripts.GetSitePath,
                     Settings.Scripts.SaveBackupInfo,
                     Settings.Scripts.TestSolr,
                     Settings.Scripts.TestSqlServerConnection,
