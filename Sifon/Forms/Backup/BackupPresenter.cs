@@ -6,6 +6,7 @@ using Sifon.Forms.Base;
 using Sifon.Code.Events;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
+using Sifon.Statics;
 using Sifon.ViewModels;
 
 namespace Sifon.Forms.Backup
@@ -44,7 +45,7 @@ namespace Sifon.Forms.Backup
             _view.ToggleControls(false);
 
             var bindings = await _siteProvider.GetBindings(e.Value);
-            _view.PopulateHostnamesListboxForSite(bindings, new[] { "Protocol", "Hostname" });
+            _view.PopulateHostnamesListboxForSite(bindings, ControlSettings.Grid.HostnameColumns);
 
             var viewModel = await BuildViewModel(e.Value);
             _view.SetFieldsAndCheckboxes(viewModel);

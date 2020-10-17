@@ -40,15 +40,7 @@ namespace Sifon.Code.Providers
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSiteBindings);
-            await _scriptWrapper.Run(script, new Dictionary<string, dynamic> {{ "SiteName", siteName }});
-            return _scriptWrapper.Results;
-        }
-
-        public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindingsByPath(string webfolder)
-        {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSiteBindingsByPath);
-            await _scriptWrapper.Run(script, new Dictionary<string, dynamic> { { "SitePath", webfolder } });
+            await _scriptWrapper.Run(Settings.Module.Functions.GetBindings, new Dictionary<string, dynamic> {{ "SiteNameOrPath", siteName }});
             return _scriptWrapper.Results;
         }
 

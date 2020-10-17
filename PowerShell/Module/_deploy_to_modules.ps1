@@ -11,7 +11,7 @@ $manifest = @{
 	GUID 			    = 'e382b374-6ffb-4ae7-9b40-0f99518640ad'
 	ModuleVersion 		= '0.99'
 	PowerShellVersion 	= '5.1'
-	FunctionsToExport 	= 'Copy-FileToRemote','Download-Resource','Get-ConnectionString','Get-InstanceUrl','Get-SiteFolder','Install-SitecorePackage','Install-SitecorePackageUsingRemoting','Verify-PortalCredentials'
+	FunctionsToExport 	= 'Copy-FileToRemote','Download-Resource','Get-ConnectionString','Get-InstanceUrl','Get-SiteFolder','Install-SitecorePackage','Install-SitecorePackageUsingRemoting','Verify-PortalCredentials','Get-SiteBindings'
 	ReleaseNotes 		= 'Accompanies Sifon. You may obtain your copy from https://Sifon.UK'
 	RootModule 		    = 'Sifon.psm1'
 }

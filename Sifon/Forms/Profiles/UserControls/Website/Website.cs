@@ -6,6 +6,7 @@ using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
+using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
@@ -31,7 +32,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         protected override void OnLoad(EventArgs e)
         {
-            ShowSiteHostnames(new List<KeyValuePair<string, string>>());
+            ShowSiteHostnames(new List<KeyValuePair<string, string>>(), ControlSettings.Grid.HostnameColumns);
             base.OnLoad(e);
         }
 
@@ -62,9 +63,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             }
         }
 
-        public void ShowSiteHostnames(IEnumerable<KeyValuePair<string, string>> hostnames)
+        public void ShowSiteHostnames(IEnumerable<KeyValuePair<string, string>> hostnames, string[] columnNames)
         {
-            dataGrid.ShowDataGrid(hostnames, new[] { "Protocol", "Hostname" });
+            dataGrid.ShowDataGrid(hostnames, columnNames);
         }
 
         public void SetWebsiteDropdownByProfile(string website)

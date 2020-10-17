@@ -1,6 +1,10 @@
 Import-Module WebAdministration
 Function Get-SiteFolder($name, $type) {
 
+    $ConfigRelativePath = $null
+    $XPath = $null
+    $AttributeName = $null
+
     if($type -eq 'XConnect'){
 
         $ConfigRelativePath = "App_Config\ConnectionStrings.config"
@@ -21,7 +25,7 @@ Function Get-SiteFolder($name, $type) {
         If($FoundSite.physicalPath){
 
             if($ConfigRelativePath -eq $null){
-                $FoundSite.physicalPath
+                return $FoundSite.physicalPath
                 exit
             }
 
@@ -33,8 +37,7 @@ Function Get-SiteFolder($name, $type) {
                 $XconnectURL = $node | Select-Object -ExpandProperty Node | select -ExpandProperty $AttributeName
                 $Hostname =  ([System.Uri]$XconnectURL).Host
                 
-                Get-ChildItem IIS:\Sites | where { $_.Bindings.Collection.bindingInformation -Match ":$Hostname$" } | select -ExpandProperty physicalPath
-
+                return Get-ChildItem IIS:\Sites | where { $_.Bindings.Collection.bindingInformation -Match ":$Hostname$" } | select -ExpandProperty physicalPath
             }  
         }
     }

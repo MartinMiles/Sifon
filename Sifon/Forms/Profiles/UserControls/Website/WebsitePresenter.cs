@@ -9,6 +9,8 @@ using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Providers;
 using Sifon.Shared.Forms.FolderBrowserDialog;
+using Sifon.Shared.Statics;
+using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
@@ -34,15 +36,10 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         private async void WebrootFolderChanged(object sender, EventArgs<string> e)
         {
-            await GetBindingsByWebfolder(e.Value);
-        }
-
-        private async Task GetBindingsByWebfolder(string webfolder)
-        {
             try
             {
-                var bindings = await _siteProvider.GetBindingsByPath(webfolder);
-                _view.ShowSiteHostnames(bindings);
+                var bindings = await _siteProvider.GetBindings(e.Value);
+                _view.ShowSiteHostnames(bindings, ControlSettings.Grid.HostnameColumns);
             }
             catch (RemoteNotInitializedException)
             {
@@ -86,13 +83,17 @@ namespace Sifon.Forms.Profiles.UserControls.Website
                 ? await _siteProvider.GetBindings(SelectedProfile.Website)
                 : new Dictionary<string, string>();
 
-            _view.ShowSiteHostnames(bindings);
+            _view.ShowSiteHostnames(bindings, ControlSettings.Grid.HostnameColumns);
         }
         
         private async void SelectedWebsiteChanged(object sender, EventArgs<string> e)
         {
+            _view.EnableControls(false);
+
             var path = await _siteProvider.GetSitePath(e.Value);
             _view.SetWebrootTextbox(path);
+
+            _view.EnableControls(true);
         }
     }
 }

@@ -22,11 +22,12 @@ $getInstance = $path + "\Get-SiteFolder.ps1"
 $getInstance = $path + "\Install-SitecorePackage.ps1"
 . $getInstance
 
-
 $getInstance = $path + "\Install-SitecorePackageUsingRemoting.ps1"
 . $getInstance
 
-
 $getInstance = $path + "\Verify-PortalCredentials.ps1"
+. $getInstance
+
+$getInstance = $path + "\Get-SiteBindings.ps1"
 . $getInstance
 

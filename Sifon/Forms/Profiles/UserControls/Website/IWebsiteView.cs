@@ -15,7 +15,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         void EnableControls(bool eValue);
         void LoadWebsitesDropdown(IEnumerable<string> sites);
         void SetWebrootTextbox(string path);
-        void ShowSiteHostnames(IEnumerable<KeyValuePair<string, string>> hostnames);
+        void ShowSiteHostnames(IEnumerable<KeyValuePair<string, string>> hostnames, string[] columnNames);
         void SetWebsiteDropdownByProfile(string website);
     }
 }

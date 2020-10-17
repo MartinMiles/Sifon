@@ -17,6 +17,5 @@ namespace Sifon.Abstractions.Providers
         Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
         Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName);
-        Task<IEnumerable<KeyValuePair<string, string>>> GetBindingsByPath(string webfolder);
     }
 }
