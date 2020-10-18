@@ -74,9 +74,6 @@ namespace Sifon.Code.Statics
             public static string GetSitecoreSites => Path.Combine(Folders.Core, "Get-SitecoreSites.ps1");
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
-            public static string GetHorizonFolder => Path.Combine(Folders.Core, "Get-HorizonFolder.ps1");
-            public static string GetPublishingServiceFolder => Path.Combine(Folders.Core, "Get-PublishingServiceFolder.ps1");
-            public static string GetCommerceSites => Path.Combine(Folders.Core, "Get-CommerceSites.ps1");
             public static string GetCommerceDatabases => Path.Combine(Folders.Core, "Get-CommerceDatabases.ps1");
 
             // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed

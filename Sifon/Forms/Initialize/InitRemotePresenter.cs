@@ -89,9 +89,6 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.TestSolr,
             Settings.Scripts.TestSqlServerConnection,
             Settings.Scripts.TestPortalCredentials,
-            Settings.Scripts.GetHorizonFolder,
-            Settings.Scripts.GetPublishingServiceFolder,
-            Settings.Scripts.GetCommerceSites,
             Settings.Scripts.GetCommerceDatabases,
 
             Settings.Scripts.Filesystem.RenameDirectory,

@@ -85,10 +85,10 @@ namespace Sifon.Code.Providers
 
         public async Task<IEnumerable<string>> GetCommerceSites(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetCommerceSites);
+            var parameters = new Dictionary<string, dynamic>
+                {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, "Commerce" }};
 
-            var parameters = new Dictionary<string, dynamic> {{Settings.Parameters.Name, siteName}};
-            await _scriptWrapperString.Run(script, parameters);
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results;
         }
 
@@ -103,21 +103,19 @@ namespace Sifon.Code.Providers
 
         public async Task<string> GetHorizon(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetHorizonFolder);
+            var parameters = new Dictionary<string, dynamic>
+                {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.Horizon }};
 
-            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName }};
-
-            await _scriptWrapperString.Run(script, parameters);
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
         public async Task<string> GetPublishingService(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetPublishingServiceFolder);
+            var parameters = new Dictionary<string, dynamic>
+                {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.PublishingService }};
 
-            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName}};
-
-            await _scriptWrapperString.Run(script, parameters);
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
     }

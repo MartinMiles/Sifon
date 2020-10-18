@@ -102,7 +102,13 @@ namespace Sifon.Forms.Backup
             textDestinationFolderToBackup.Enabled = enabled;
             comboInstances.Enabled = enabled;
             checkDatabases.Enabled = enabled;
+
             checkFiles.Enabled = enabled;
+            checkXconnect.Enabled = enabled;
+            checkIds.Enabled = enabled;
+            checkHorizon.Enabled = enabled;
+            checkPublishing.Enabled = enabled;
+            checkCommerce.Enabled = enabled;
 
             Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
