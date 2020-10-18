@@ -71,7 +71,6 @@ namespace Sifon.Code.Statics
             public static string RestoreInstance => Path.Combine(Folders.Core, "Restore-Instance.ps1");
             public static string TestSqlServerConnection => Path.Combine(Folders.Core, "Test-SqlServerConnection.ps1");
             public static string TestPortalCredentials => Path.Combine(Folders.Core, "Test-PortalCredentials.ps1");
-            public static string GetSitecoreSites => Path.Combine(Folders.Core, "Get-SitecoreSites.ps1");
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
             public static string GetCommerceDatabases => Path.Combine(Folders.Core, "Get-CommerceDatabases.ps1");
@@ -116,6 +115,7 @@ namespace Sifon.Code.Statics
             {
                 public static string GetSiteFolder = "Get-SiteFolder";
                 public static string GetBindings = "Get-SiteBindings";
+                public static string GetSitecoreSites = "Get-SitecoreSites";
             }
         }
 

@@ -33,9 +33,8 @@ namespace Sifon.Code.Providers
 
         public async Task<IEnumerable<string>> GetSitecoreSites()
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetSitecoreSites);
-            await _scriptWrapper.Run(script);
-            return _scriptWrapper.Results.Select(s => s.Key);
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetSitecoreSites);
+            return _scriptWrapperString.Results;
         }
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string siteName)

@@ -31,3 +31,6 @@ $getInstance = $path + "\Verify-PortalCredentials.ps1"
 $getInstance = $path + "\Get-SiteBindings.ps1"
 . $getInstance
 
+$getInstance = $path + "\Get-SitecoreSites.ps1"
+. $getInstance
+

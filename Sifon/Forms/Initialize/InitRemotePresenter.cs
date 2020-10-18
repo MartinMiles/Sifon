@@ -81,7 +81,6 @@ namespace Sifon.Forms.Initialize
         private string[] FilesToBeCopiedToRemote => new []{
 
             Settings.Scripts.GetBackupInfo,
-            Settings.Scripts.GetSitecoreSites,
             Settings.Scripts.RestoreInstance,
             Settings.Scripts.RetrieveDatabases,
             Settings.Scripts.RetrieveSolr,
