@@ -9,6 +9,7 @@ using Sifon.Code.Events;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
+using Sifon.Statics;
 using Sifon.ViewModels;
 
 namespace Sifon.Forms.Remover
@@ -90,8 +91,7 @@ namespace Sifon.Forms.Remover
 
             _view.ToggleControls(false);
 
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.GetDatabases, parameters);
 
             if (_commerceSites.Any())
             {

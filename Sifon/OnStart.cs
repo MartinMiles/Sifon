@@ -23,7 +23,6 @@ namespace Sifon
 
                     Settings.Scripts.GetBackupInfo,
                     Settings.Scripts.RestoreInstance,
-                    Settings.Scripts.RetrieveDatabases,
                     Settings.Scripts.RetrieveSolr,
                     Settings.Scripts.SaveBackupInfo,
                     Settings.Scripts.TestSolr,

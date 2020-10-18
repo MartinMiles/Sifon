@@ -65,7 +65,6 @@ namespace Sifon.Code.Statics
             public static string InitializeRemote => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
             public static string CopyToRemote => Path.Combine(Folders.Core, "Copy-ScriptToRemote.ps1");
 
-            public static string RetrieveDatabases => Path.Combine(Folders.Core, "Get-Databases.ps1");
             public static string TestSolr => Path.Combine(Folders.Core, "Test-Solr.ps1");
             public static string RetrieveSolr => Path.Combine(Folders.Core, "Get-Solr.ps1");
             public static string RestoreInstance => Path.Combine(Folders.Core, "Restore-Instance.ps1");

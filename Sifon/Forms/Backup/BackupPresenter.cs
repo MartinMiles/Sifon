@@ -77,8 +77,6 @@ namespace Sifon.Forms.Backup
 
         private async Task PopulateDatabases(BackupRemoverViewModel viewModel, string selectedSiteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
-
             var selectedSitePrefix = _profileService.FindPrefixByName(selectedSiteName);
 
             var parameters = new Dictionary<string, dynamic>
@@ -88,7 +86,7 @@ namespace Sifon.Forms.Backup
             };
 
             _scriptWrapper = new ScriptWrapper<string>(_profileService.SelectedProfile, _view, d => d.ToString());
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.GetDatabases, parameters);
 
             if (viewModel.CommerceSites.Any())
             {

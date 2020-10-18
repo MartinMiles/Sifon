@@ -18,7 +18,7 @@ Function Get-SiteFolder($name, $type) {
         $AttributeName = "value"
     }    
     elseif ($type -eq 'Commerce'){
-        return Get-ChildItem IIS:\Sites | where { (Test-Path($_.physicalPath + '\assets\config.json')) -OR (Test-Path( $_.physicalPath + '\Sitecore.Commerce.Engine.xml'))} | % { $_.physicalPath }
+        return Get-ChildItem IIS:\Sites | where { (Test-Path($_.physicalPath + '\assets\config.json')) -OR (Test-Path( $_.physicalPath + '\Sitecore.Commerce.Engine.xml'))}  | sort -Property physicalPath -Descending | % { $_.physicalPath }
     }
     elseif ($type -eq 'Horizon'){
 
