@@ -16,6 +16,7 @@ namespace Sifon.Forms.Backup
         public event AsyncEventHandler<EventArgs<string>> InstanceChanged;
         public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
 
+
         internal Backup()
         {
             InitializeComponent();
@@ -29,10 +30,13 @@ namespace Sifon.Forms.Backup
             Raise_FormLoaded();
         }
 
+        private string _siteDropdownRecentValue;
+
         private async void comboInstances_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (InstanceChanged != null)
+            if (_siteDropdownRecentValue != Website && InstanceChanged != null)
             {
+                _siteDropdownRecentValue = Website;
                 await InstanceChanged(sender, new EventArgs<string>(Website));
             }
         }
@@ -104,11 +108,6 @@ namespace Sifon.Forms.Backup
             checkDatabases.Enabled = enabled;
 
             checkFiles.Enabled = enabled;
-            checkXconnect.Enabled = enabled;
-            checkIds.Enabled = enabled;
-            checkHorizon.Enabled = enabled;
-            checkPublishing.Enabled = enabled;
-            checkCommerce.Enabled = enabled;
 
             Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }

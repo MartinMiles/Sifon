@@ -35,7 +35,7 @@ namespace Sifon.Forms.Backup
             var instances = await _siteProvider.GetSitecoreSites();
             _view.PopulateInstancesDropdown(instances);
 
-            _view.ToggleControls(true);
+            //_view.ToggleControls(true);
         }
 
         private async Task InstanceChanged(object sender, EventArgs<string> e)
@@ -50,7 +50,7 @@ namespace Sifon.Forms.Backup
             var viewModel = await BuildViewModel(e.Value);
             _view.SetFieldsAndCheckboxes(viewModel);
 
-            await PopulateDatabases(viewModel);
+            await PopulateDatabases(viewModel, e.Value);
 
             _view.ToggleControls(true);
             _view.EnableDisableMainButton(true);
@@ -75,14 +75,16 @@ namespace Sifon.Forms.Backup
             };
         }
 
-        private async Task PopulateDatabases(BackupRemoverViewModel viewModel)
+        private async Task PopulateDatabases(BackupRemoverViewModel viewModel, string selectedSiteName)
         {
             var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
+
+            var selectedSitePrefix = _profileService.FindPrefixByName(selectedSiteName);
 
             var parameters = new Dictionary<string, dynamic>
             {
                 { Settings.Parameters.ServerInstance, _profileService.SelectedProfileSql.SqlServer},
-                { Settings.Parameters.InstancePrefix, _profileService.SelectedProfile.Prefix}
+                { Settings.Parameters.InstancePrefix, selectedSitePrefix}
             };
 
             _scriptWrapper = new ScriptWrapper<string>(_profileService.SelectedProfile, _view, d => d.ToString());

@@ -116,6 +116,7 @@ namespace Sifon.Code.Statics
                 public static string GetSiteFolder = "Get-SiteFolder";
                 public static string GetBindings = "Get-SiteBindings";
                 public static string GetSitecoreSites = "Get-SitecoreSites";
+                public static string GetDatabases = "Get-Databases";
             }
         }
 

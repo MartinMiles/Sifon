@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBackup = new System.Windows.Forms.GroupBox();
+            this.checkPublishing = new System.Windows.Forms.CheckBox();
+            this.checkHorizon = new System.Windows.Forms.CheckBox();
             this.checkCommerce = new System.Windows.Forms.CheckBox();
             this.checkIds = new System.Windows.Forms.CheckBox();
             this.checkXconnect = new System.Windows.Forms.CheckBox();
@@ -48,8 +50,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkSelectAll = new System.Windows.Forms.LinkLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkPublishing = new System.Windows.Forms.CheckBox();
-            this.checkHorizon = new System.Windows.Forms.CheckBox();
             this.groupBackup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -77,6 +77,28 @@
             this.groupBackup.TabIndex = 0;
             this.groupBackup.TabStop = false;
             this.groupBackup.Text = "Sitecore instance backup parameters:";
+            // 
+            // checkPublishing
+            // 
+            this.checkPublishing.AutoSize = true;
+            this.checkPublishing.Enabled = false;
+            this.checkPublishing.Location = new System.Drawing.Point(9, 120);
+            this.checkPublishing.Name = "checkPublishing";
+            this.checkPublishing.Size = new System.Drawing.Size(113, 17);
+            this.checkPublishing.TabIndex = 50;
+            this.checkPublishing.Text = "Publishing Service";
+            this.checkPublishing.UseVisualStyleBackColor = true;
+            // 
+            // checkHorizon
+            // 
+            this.checkHorizon.AutoSize = true;
+            this.checkHorizon.Enabled = false;
+            this.checkHorizon.Location = new System.Drawing.Point(155, 100);
+            this.checkHorizon.Name = "checkHorizon";
+            this.checkHorizon.Size = new System.Drawing.Size(62, 17);
+            this.checkHorizon.TabIndex = 49;
+            this.checkHorizon.Text = "Horizon";
+            this.checkHorizon.UseVisualStyleBackColor = true;
             // 
             // checkCommerce
             // 
@@ -264,28 +286,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // checkPublishing
-            // 
-            this.checkPublishing.AutoSize = true;
-            this.checkPublishing.Enabled = false;
-            this.checkPublishing.Location = new System.Drawing.Point(9, 120);
-            this.checkPublishing.Name = "checkPublishing";
-            this.checkPublishing.Size = new System.Drawing.Size(113, 17);
-            this.checkPublishing.TabIndex = 50;
-            this.checkPublishing.Text = "Publishing Service";
-            this.checkPublishing.UseVisualStyleBackColor = true;
-            // 
-            // checkHorizon
-            // 
-            this.checkHorizon.AutoSize = true;
-            this.checkHorizon.Enabled = false;
-            this.checkHorizon.Location = new System.Drawing.Point(155, 100);
-            this.checkHorizon.Name = "checkHorizon";
-            this.checkHorizon.Size = new System.Drawing.Size(62, 17);
-            this.checkHorizon.TabIndex = 49;
-            this.checkHorizon.Text = "Horizon";
-            this.checkHorizon.UseVisualStyleBackColor = true;
             // 
             // Backup
             // 

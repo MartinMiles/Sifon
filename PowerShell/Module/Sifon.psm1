@@ -34,3 +34,6 @@ $getInstance = $path + "\Get-SiteBindings.ps1"
 $getInstance = $path + "\Get-SitecoreSites.ps1"
 . $getInstance
 
+$getInstance = $path + "\Get-Databases.ps1"
+. $getInstance
+

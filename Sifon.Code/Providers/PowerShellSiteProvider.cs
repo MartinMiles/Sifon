@@ -68,18 +68,16 @@ namespace Sifon.Code.Providers
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
-        public async Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix)
+        public async Task<IEnumerable<string>> GetDatabases(string serverInstance, string instancePrefix)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveDatabases);
-
             var parameters = new Dictionary<string, dynamic>
             {
                 { Settings.Parameters.ServerInstance, serverInstance},
                 { Settings.Parameters.InstancePrefix, instancePrefix}
             };
 
-            await _scriptWrapperString.Run(script, parameters);
-            return _scriptWrapperString;
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetDatabases, parameters);
+            return _scriptWrapperString.Results;
         }
 
         public async Task<IEnumerable<string>> GetCommerceSites(string siteName)

@@ -14,7 +14,7 @@ namespace Sifon.Abstractions.Providers
         Task<string> GetIDS(string siteName);
         Task<string> GetHorizon(string siteName);
         Task<string> GetPublishingService(string siteName);
-        Task<IScriptWrapperResponse<string>> GetDatabases(string serverInstance, string instancePrefix);
+        Task<IEnumerable<string>> GetDatabases(string serverInstance, string instancePrefix);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
         Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName);
     }

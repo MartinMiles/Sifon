@@ -221,5 +221,10 @@ namespace Sifon.Code.Providers.Profile
 
             return profile;
         }
+
+        public string FindPrefixByName(string siteName)
+        {
+            return _profiles.FirstOrDefault(p => p.Website.Equals(siteName, StringComparison.InvariantCultureIgnoreCase))?.Prefix;
+        }
     }
 }
