@@ -27,7 +27,6 @@ namespace Sifon
                     Settings.Scripts.SaveBackupInfo,
                     Settings.Scripts.TestSolr,
                     Settings.Scripts.TestSqlServerConnection,
-                    Settings.Scripts.TestPortalCredentials,
 
                     Settings.Scripts.Filesystem.RenameDirectory,
                     Settings.Scripts.Filesystem.CreateDirectory,

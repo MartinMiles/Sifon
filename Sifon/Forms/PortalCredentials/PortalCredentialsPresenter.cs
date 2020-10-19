@@ -51,8 +51,7 @@ namespace Sifon.Forms.PortalCredentials
            
             _view.ToggleControls(false);
 
-            var script = await _remoteScriptCopier.CopyIfRemote(Settings.Scripts.TestPortalCredentials);
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.TestPortalCredentials, parameters);
 
             ValidateResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
 
