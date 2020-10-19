@@ -34,13 +34,9 @@ add-type @"
     {
         $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
         $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
-
-        #Throw "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
-        #Write-Output "Failed $port.Port"
     }
     else {
     
-        #Write-Output "Success $port.Port"
         $path = $response.solr_home 
         $version = $response.lucene | Select-Object -Property solr-spec-version 
         #$version| Get-Member

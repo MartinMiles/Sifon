@@ -9,20 +9,18 @@ using Sifon.Code.Events;
 using Sifon.Code.Extensions.Models;
 using Sifon.Code.Model;
 using Sifon.Code.PowerShell;
-using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
+using Sifon.Code.Statics;
 
 namespace Sifon.Code.Helpers
 {
     public class SolrIdentifier
     {
-        private readonly RemoteScriptCopier _remoteScriptCopier;
         private readonly ScriptWrapper<SolrInfo> _scriptWrapper;
         public event EventHandler<EventArgs<int>> OnProgressReady = delegate { };
 
         public SolrIdentifier(IProfile profile, ISynchronizeInvoke invoke)
         {
-            _remoteScriptCopier = new RemoteScriptCopier(profile, invoke);
             _scriptWrapper = new ScriptWrapper<SolrInfo>(profile, invoke, SolrInfoExtensions.Convert);
             _scriptWrapper.ProgressReady += ProgressReady;
         }
@@ -34,8 +32,7 @@ namespace Sifon.Code.Helpers
 
         public async Task<IEnumerable<SolrInfo>> Identify()
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.RetrieveSolr);
-            await _scriptWrapper.Run(script);
+            await _scriptWrapper.Run(Settings.Module.Functions.FindSolrInstances);
             return _scriptWrapper.Results.Where(r => r.Directory.NotEmpty() && r.Version != null);
         }
 

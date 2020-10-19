@@ -80,8 +80,6 @@ namespace Sifon.Forms.Initialize
 
         private string[] FilesToBeCopiedToRemote => new []{
 
-            Settings.Scripts.RestoreInstance,
-            Settings.Scripts.RetrieveSolr,
             Settings.Scripts.TestSolr,
 
             Settings.Scripts.Filesystem.RenameDirectory,
@@ -116,6 +114,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.TestSqlServerConnection,
             Settings.Scripts.Module.ExtractBackupInfo,
             Settings.Scripts.Module.SaveBackupInfo,
+            Settings.Scripts.Module.FindSolrInstances,
         };
     }
 }
