@@ -17,7 +17,6 @@ namespace Sifon.Forms.PortalCredentials
         private readonly SettingsProvider _settingsProvider;
 
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
-        private readonly RemoteScriptCopier _remoteScriptCopier;
 
         public PortalCredentialsPresenter(IPortalCredentialsView view)
         {
@@ -29,7 +28,6 @@ namespace Sifon.Forms.PortalCredentials
             _view.ValuesChanged += ValuesChanged;
 
             var selectedProfile = new ProfilesProvider().SelectedProfile;
-            _remoteScriptCopier = new RemoteScriptCopier(selectedProfile, _view);
             _scriptWrapper = new ScriptWrapper<PSObject>(selectedProfile, _view, d => d);
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Model.BackupRestore;
@@ -142,9 +143,9 @@ namespace Sifon.Code.Providers.Profile
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
             parameters.Add("Profile", SelectedProfile);
 
+            var credential = new PSCredential(SelectedProfileSql.SqlAdminUsername, SelectedProfileSql.SqlAdminPassword.ToSecureString());
+            parameters.Add(Settings.Parameters.SqlCredentials, credential);
             parameters.Add(Settings.Parameters.ServerInstance, SelectedProfileSql.SqlServer);
-            parameters.Add(Settings.Parameters.Username, SelectedProfileSql.SqlAdminUsername);
-            parameters.Add(Settings.Parameters.Password, SelectedProfileSql.SqlAdminPassword);
 
             foreach (var parameter in SelectedProfile.Parameters)
             {

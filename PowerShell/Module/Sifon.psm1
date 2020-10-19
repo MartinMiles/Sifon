@@ -43,3 +43,5 @@ $getInstance = $path + "\Get-CommerceDatabases.ps1"
 $getInstance = $path + "\Test-PortalCredentials.ps1"
 . $getInstance
 
+$getInstance = $path + "\Test-SqlServerConnection.ps1"
+. $getInstance

@@ -68,7 +68,6 @@ namespace Sifon.Code.Statics
             public static string TestSolr => Path.Combine(Folders.Core, "Test-Solr.ps1");
             public static string RetrieveSolr => Path.Combine(Folders.Core, "Get-Solr.ps1");
             public static string RestoreInstance => Path.Combine(Folders.Core, "Restore-Instance.ps1");
-            public static string TestSqlServerConnection => Path.Combine(Folders.Core, "Test-SqlServerConnection.ps1");
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
 
@@ -118,6 +117,7 @@ namespace Sifon.Code.Statics
                 public static string GetDatabases = "Get-Databases";
                 public static string GetCommerceDatabases = "Get-CommerceDatabases";
                 public static string TestPortalCredentials = "Test-PortalCredentials";
+                public static string TestSqlServerConnection = "Test-SqlServerConnection";
             }
         }
 
@@ -177,8 +177,12 @@ namespace Sifon.Code.Statics
             public const string Solr = "Solr";
             public const string ServerInstance = "ServerInstance";
             public const string InstancePrefix = "InstancePrefix";
+
+            // TODO: Check usage and remove - gone into SqlCredentials
             public const string Username = "Username";
             public const string Password = "Password";
+
+            public const string SqlCredentials = "SqlCredentials";
             public const string PortalCredentials = "PortalCredentials";
 
             //from containers

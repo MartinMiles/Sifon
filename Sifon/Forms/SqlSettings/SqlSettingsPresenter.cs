@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Events;
+using Sifon.Code.Extensions;
 using Sifon.Code.Helpers;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
@@ -60,16 +61,13 @@ namespace Sifon.Forms.SqlSettings
 
         private async void TestClicked(object sender, EventArgs<ISqlServerRecord> e)
         {
-            var parameters = new Dictionary<string, dynamic>
-            {
-                { "ServerInstance", e.Value.SqlServer },
-                { "Username", e.Value.SqlAdminUsername},
-                { "Password", e.Value.SqlAdminPassword}
-            };
+            var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.ServerInstance, e.Value.SqlServer }};
+            var credentials = new PSCredential(e.Value.SqlAdminUsername, e.Value.SqlAdminPassword.ToSecureString());
+            parameters.Add(Settings.Parameters.SqlCredentials, credentials);
 
             _view.ToggleControls(false);
 
-            var script = await _remoteScriptCopier.CopyIfRemote(Settings.Scripts.TestSqlServerConnection);
+            var script = await _remoteScriptCopier.CopyIfRemote(Settings.Module.Functions.TestSqlServerConnection);
             await _scriptWrapper.Run(script, parameters);
 
             ValidateResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
