@@ -32,24 +32,21 @@ namespace Sifon.Code.BackupInfo
                 {"OutputFile", $@"{backupInfo.Webroot}\{Settings.BackupInfoFile}"}
             };
 
-            var script =  _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.SaveBackupInfo);
-
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.SaveBackupInfo, parameters);
             return true;
         }
 
         public async Task<BackupInfo> GetFromArchive(string file)
         {
-            var _folderToExtract = await _remoteScriptCopier.GetRemoteFolder();
+            var folderToExtract = await _remoteScriptCopier.GetRemoteFolder();
             var parameters = new Dictionary<string, dynamic>
             {
                 {"file", file},
                 {"info", Settings.BackupInfoFile},
-                {"extractToFile", $@"{_folderToExtract}\{Settings.BackupInfoFile}"}
+                {"extractToFile", $@"{folderToExtract}\{Settings.BackupInfoFile}"}
             };
 
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetBackupInfo);
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.ExtractBackupInfo, parameters);
 
             return BackupInfoExtensions.Parse(_scriptWrapper.Results.FirstOrDefault());
         }

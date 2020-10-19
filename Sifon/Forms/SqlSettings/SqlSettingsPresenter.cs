@@ -61,14 +61,13 @@ namespace Sifon.Forms.SqlSettings
 
         private async void TestClicked(object sender, EventArgs<ISqlServerRecord> e)
         {
+            _view.ToggleControls(false);
+
             var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.ServerInstance, e.Value.SqlServer }};
             var credentials = new PSCredential(e.Value.SqlAdminUsername, e.Value.SqlAdminPassword.ToSecureString());
             parameters.Add(Settings.Parameters.SqlCredentials, credentials);
-
-            _view.ToggleControls(false);
-
-            var script = await _remoteScriptCopier.CopyIfRemote(Settings.Module.Functions.TestSqlServerConnection);
-            await _scriptWrapper.Run(script, parameters);
+            
+            await _scriptWrapper.Run(Settings.Module.Functions.TestSqlServerConnection, parameters);
 
             ValidateResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
 

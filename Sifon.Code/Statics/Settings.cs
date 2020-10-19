@@ -68,8 +68,8 @@ namespace Sifon.Code.Statics
             public static string TestSolr => Path.Combine(Folders.Core, "Test-Solr.ps1");
             public static string RetrieveSolr => Path.Combine(Folders.Core, "Get-Solr.ps1");
             public static string RestoreInstance => Path.Combine(Folders.Core, "Restore-Instance.ps1");
-            public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
-            public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
+                
+            //public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
 
             // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed
 
@@ -97,13 +97,27 @@ namespace Sifon.Code.Statics
                 public static string InstallSitecorePackage => Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
                 public static string InstallSitecorePackageAspx => Path.Combine(Folders.Module, "Install-SitecorePackage.aspx");
                 public static string CopyFileToRemote => Path.Combine(Folders.Module, "Copy-FileToRemote.ps1");
-                public static string GetSiteFolder => Path.Combine(Folders.Module, "Get-SiteFolder.ps1");
+                
                 public static string VerifyPortalCredentials => Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");
                 public static string GetConnectionString => Path.Combine(Folders.Module, "Get-ConnectionString.ps1");
                 public static string InstallSitecorePackageUsingRemoting => Path.Combine(Folders.Module, "Install-SitecorePackageUsingRemoting.ps1");
 
-            }
+                //TODO: Finish with others
+                public static string GetSiteFolder => Combine(Settings.Module.Functions.GetSiteFolder);
+                public static string GetBindings => Combine(Settings.Module.Functions.GetBindings);
+                public static string GetSitecoreSites => Combine(Settings.Module.Functions.GetSitecoreSites);
+                public static string GetDatabases => Combine(Settings.Module.Functions.GetDatabases);
+                public static string GetCommerceDatabases => Combine(Settings.Module.Functions.GetCommerceDatabases);
+                public static string TestPortalCredentials => Combine(Settings.Module.Functions.TestPortalCredentials);
+                public static string TestSqlServerConnection => Combine(Settings.Module.Functions.TestSqlServerConnection);
+                public static string ExtractBackupInfo => Combine(Settings.Module.Functions.ExtractBackupInfo);
+                public static string SaveBackupInfo => Combine(Settings.Module.Functions.SaveBackupInfo);
 
+                private static string Combine(string moduleParam)
+                {
+                    return Path.Combine(Folders.Module, $"{moduleParam}.ps1");
+                }
+            }
         }
 
         // TODO: Unite with other modules
@@ -118,6 +132,8 @@ namespace Sifon.Code.Statics
                 public static string GetCommerceDatabases = "Get-CommerceDatabases";
                 public static string TestPortalCredentials = "Test-PortalCredentials";
                 public static string TestSqlServerConnection = "Test-SqlServerConnection";
+                public static string ExtractBackupInfo = "Extract-BackupInfo";
+                public static string SaveBackupInfo = "Save-BackupInfo";
             }
         }
 

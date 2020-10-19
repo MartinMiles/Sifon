@@ -14,8 +14,6 @@ $Session = New-PSSession -ComputerName $RemoteHost -Credential $Cred
 
 $remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
 
-#[string]$result
-
 If ($Filenames)
 {	
 	Write-Progress -Activity $Activity -Status "Remote folder created" -PercentComplete 1
@@ -26,8 +24,6 @@ If ($Filenames)
 		$File = Split-Path $Filenames[$i] -leaf
 		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete (($i) * 50 / $Filenames.Length);
 	}
-
-	#$result = $remotePath
 }
 
 $ModulesPath = Invoke-Command -Session $session -ScriptBlock { New-Item -ItemType Directory -Path "$Env:Programfiles\WindowsPowerShell\Modules\Sifon" -Force }

@@ -45,3 +45,10 @@ $getInstance = $path + "\Test-PortalCredentials.ps1"
 
 $getInstance = $path + "\Test-SqlServerConnection.ps1"
 . $getInstance
+
+$getInstance = $path + "\Extract-BackupInfo.ps1"
+. $getInstance
+
+$getInstance = $path + "\Save-BackupInfo.ps1"
+. $getInstance
+

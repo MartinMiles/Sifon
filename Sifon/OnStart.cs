@@ -21,10 +21,8 @@ namespace Sifon
                     Settings.Scripts.InitializeRemote,
                     Settings.Scripts.CopyToRemote,
 
-                    Settings.Scripts.GetBackupInfo,
                     Settings.Scripts.RestoreInstance,
                     Settings.Scripts.RetrieveSolr,
-                    Settings.Scripts.SaveBackupInfo,
                     Settings.Scripts.TestSolr,
 
                     Settings.Scripts.Filesystem.RenameDirectory,

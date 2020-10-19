@@ -80,10 +80,8 @@ namespace Sifon.Forms.Initialize
 
         private string[] FilesToBeCopiedToRemote => new []{
 
-            Settings.Scripts.GetBackupInfo,
             Settings.Scripts.RestoreInstance,
             Settings.Scripts.RetrieveSolr,
-            Settings.Scripts.SaveBackupInfo,
             Settings.Scripts.TestSolr,
 
             Settings.Scripts.Filesystem.RenameDirectory,
@@ -105,10 +103,19 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.InstallSitecorePackage,
             Settings.Scripts.Module.InstallSitecorePackageAspx,
             Settings.Scripts.Module.CopyFileToRemote,
-            Settings.Scripts.Module.GetSiteFolder,
             Settings.Scripts.Module.VerifyPortalCredentials,
             Settings.Scripts.Module.GetConnectionString,
-            Settings.Scripts.Module.InstallSitecorePackageUsingRemoting
+            Settings.Scripts.Module.InstallSitecorePackageUsingRemoting,
+
+            Settings.Scripts.Module.GetSiteFolder,
+            Settings.Scripts.Module.GetBindings,
+            Settings.Scripts.Module.GetSitecoreSites,
+            Settings.Scripts.Module.GetDatabases,
+            Settings.Scripts.Module.GetCommerceDatabases,
+            Settings.Scripts.Module.TestPortalCredentials,
+            Settings.Scripts.Module.TestSqlServerConnection,
+            Settings.Scripts.Module.ExtractBackupInfo,
+            Settings.Scripts.Module.SaveBackupInfo,
         };
     }
 }
