@@ -80,8 +80,6 @@ namespace Sifon.Forms.Initialize
 
         private string[] FilesToBeCopiedToRemote => new []{
 
-            Settings.Scripts.TestSolr,
-
             Settings.Scripts.Filesystem.RenameDirectory,
             Settings.Scripts.Filesystem.CreateDirectory,
             Settings.Scripts.Filesystem.DeleteDirectory,
@@ -92,6 +90,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Filesystem.GetHashMD5,
             Settings.Scripts.Filesystem.VerifyDirectory,
         };
+
         private string[] ModulesToBeCopiedToRemote => new[]{
             Settings.Scripts.Module.ModuleManifest,
             Settings.Scripts.Module.ModuleDefinition,
@@ -115,6 +114,7 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.ExtractBackupInfo,
             Settings.Scripts.Module.SaveBackupInfo,
             Settings.Scripts.Module.FindSolrInstances,
+            Settings.Scripts.Module.TestSolrEndpoint,
         };
     }
 }

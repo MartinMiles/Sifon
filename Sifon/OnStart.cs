@@ -21,8 +21,6 @@ namespace Sifon
                     Settings.Scripts.InitializeRemote,
                     Settings.Scripts.CopyToRemote,
 
-                    Settings.Scripts.TestSolr,
-
                     Settings.Scripts.Filesystem.RenameDirectory,
                     Settings.Scripts.Filesystem.CreateDirectory,
                     Settings.Scripts.Filesystem.DeleteDirectory,

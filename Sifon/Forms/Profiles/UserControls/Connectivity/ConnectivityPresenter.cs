@@ -88,10 +88,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             _remoteScriptCopier = new RemoteScriptCopier(SelectedProfile, _view);
             _scriptWrapper = new ScriptWrapper<SolrInfo>(SelectedProfile, _view, SolrInfoExtensions.Convert);
 
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.TestSolr);
-            var parameters = new Dictionary<string, dynamic> {{"Url", $"{e.Value}/admin/info/system?wt=json"} };
-
-            await _scriptWrapper.Run(script, parameters);
+            await _scriptWrapper.Run(Settings.Module.Functions.TestSolrEndpoint, new Dictionary<string, dynamic> { { "Url", e.Value } });
 
             if (_scriptWrapper.Results.Any())
             {

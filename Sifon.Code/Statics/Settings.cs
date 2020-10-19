@@ -65,8 +65,6 @@ namespace Sifon.Code.Statics
             public static string InitializeRemote => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
             public static string CopyToRemote => Path.Combine(Folders.Core, "Copy-ScriptToRemote.ps1");
 
-            public static string TestSolr => Path.Combine(Folders.Core, "Test-Solr.ps1");
-
             // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed
 
             public static class Filesystem
@@ -109,6 +107,7 @@ namespace Sifon.Code.Statics
                 public static string ExtractBackupInfo => Combine(Settings.Module.Functions.ExtractBackupInfo);
                 public static string SaveBackupInfo => Combine(Settings.Module.Functions.SaveBackupInfo);
                 public static string FindSolrInstances => Combine(Settings.Module.Functions.FindSolrInstances);
+                public static string TestSolrEndpoint => Combine(Settings.Module.Functions.TestSolrEndpoint);
 
                 private static string Combine(string moduleParam)
                 {
@@ -132,6 +131,7 @@ namespace Sifon.Code.Statics
                 public static string ExtractBackupInfo = "Extract-BackupInfo";
                 public static string SaveBackupInfo = "Save-BackupInfo";
                 public static string FindSolrInstances = "Find-SolrInstances";
+                public static string TestSolrEndpoint = "Test-SolrEndpoint";
             }
         }
 

@@ -55,4 +55,6 @@ $getInstance = $path + "\Save-BackupInfo.ps1"
 $getInstance = $path + "\Find-SolrInstances.ps1"
 . $getInstance
 
+$getInstance = $path + "\Test-SolrEndpoint.ps1"
+. $getInstance
 
