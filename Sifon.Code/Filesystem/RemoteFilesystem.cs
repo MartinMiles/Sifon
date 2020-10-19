@@ -32,38 +32,32 @@ namespace Sifon.Code.Filesystem
 
         public async Task<bool> CreateDirectory(string directoryPath)
         {
-            var script =  _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.CreateDirectory);
-            await _scriptWrapperBool.Run(script, new Dictionary<string, dynamic> { { "Directory", directoryPath } });
-            return _scriptWrapperBool.Results.FirstOrDefault();
+            await _scriptWrapperDirectory.Run("New-Item", new Dictionary<string, dynamic> {{ "ItemType", "directory" }, { "Path", directoryPath }});
+            return _scriptWrapperDirectory.Results.Any();
         }
 
         public async Task<bool> DeleteDirectory(string directoryPath)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.DeleteDirectory);
-            await _scriptWrapperBool.Run(script, new Dictionary<string, dynamic> { { "Directory", directoryPath } });
-            return _scriptWrapperBool.Results.FirstOrDefault();
+            await _scriptWrapperBool.Run("Remove-Item", new Dictionary<string, dynamic> {{ "LiteralPath", directoryPath },{"Force",null},{ "Recurse",null}});
+            return !_scriptWrapperBool.Errors.Any();
         }
 
         public async Task<bool> DeleteFile(string file)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.DeleteFile);
-            await _scriptWrapperBool.Run(script, new Dictionary<string, dynamic> { { "File", file } });
+            await _scriptWrapperBool.Run("Remove-Item", new Dictionary<string, dynamic> {{ "Path", file },{ "Force", null },{ "Recurse", null }});
             return _scriptWrapperBool.Results.FirstOrDefault();
         }
 
-
         public async Task<bool> DirectoryExists(string directoryPath)
         {
-            string script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.VerifyDirectory);
-            await _scriptWrapperBool.Run(script, new Dictionary<string, dynamic> { { "Directory", directoryPath } });
+            await _scriptWrapperBool.Run("Test-Path", new Dictionary<string, dynamic> { { "Path", directoryPath } });
             return _scriptWrapperBool.Results.FirstOrDefault();
         }
 
         public async Task<bool> RenameDirectory(string oldPath, string newPath)
         {
-            var script =  _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.RenameDirectory);
-            var parameters = new Dictionary<string, dynamic> {{ "OldPath", oldPath }, { "NewPath", newPath }};
-            await _scriptWrapperBool.Run(script, parameters);
+            var parameters = new Dictionary<string, dynamic> {{ "path", oldPath }, { "newName", newPath }};
+            await _scriptWrapperBool.Run("Rename-Item", parameters);
             return _scriptWrapperBool.Results.FirstOrDefault();
         }
       

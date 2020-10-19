@@ -155,8 +155,10 @@ namespace Sifon.Shared.UserControls
             var directoryName = await _filesystem.GetDirectoryName(node.FullPath);
             if (directoryName != null && ShowYesNo("Delete folder", $"Are you sure you want to delete the folder:\n\n{directoryName}?"))
             {
-                await _filesystem.DeleteDirectory(node.FullPath);
-                node.Remove();
+                if (await _filesystem.DeleteDirectory(node.FullPath))
+                {
+                    node.Remove();
+                }
             }
         }
 

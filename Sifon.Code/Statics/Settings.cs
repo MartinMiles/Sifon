@@ -53,10 +53,11 @@ namespace Sifon.Code.Statics
         {
             public static class Plugins
             {
-                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
+                public static string MetacodeSynthax =
+                    "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
 
                 public static string Dependencies = "###\\s*Dependencies:\\s*(.*)";
-                public static string DependenciesToExtract  = "\\\"([^\"]*)\\\"";
+                public static string DependenciesToExtract = "\\\"([^\"]*)\\\"";
             }
         }
 
@@ -71,11 +72,6 @@ namespace Sifon.Code.Statics
             {
                 public static string GetHashMD5 => Path.Combine(Folders.CoreFilesystem, "Get-HashMD5.ps1");
                 public static string GetFiles => Path.Combine(Folders.CoreFilesystem, "Get-Files.ps1");
-                public static string CreateDirectory => Path.Combine(Folders.CoreFilesystem, "Create-Directory.ps1");   
-                public static string VerifyDirectory => Path.Combine(Folders.CoreFilesystem, "Verify-Directory.ps1");   
-                public static string RenameDirectory => Path.Combine(Folders.CoreFilesystem, "Rename-Directory.ps1");   
-                public static string DeleteDirectory => Path.Combine(Folders.CoreFilesystem, "Delete-Directory.ps1");
-                public static string DeleteFile => Path.Combine(Folders.CoreFilesystem, "Delete-File.ps1");
                 public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
                 public static string GetDirectory => Path.Combine(Folders.CoreFilesystem, "Get-Directory.ps1");
             }
@@ -88,13 +84,22 @@ namespace Sifon.Code.Statics
                 public static string GetInstanceUrl => Path.Combine(Folders.Module, "Get-InstanceUrl.ps1");
                 public static string DownloadResourceScript => Path.Combine(Folders.Module, "Download-Resource.ps1");
                 public static string DownloadResourceJson => Path.Combine(Folders.Module, "Download-Resource.json");
-                public static string InstallSitecorePackage => Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
-                public static string InstallSitecorePackageAspx => Path.Combine(Folders.Module, "Install-SitecorePackage.aspx");
+
+                public static string InstallSitecorePackage =>
+                    Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
+
+                public static string InstallSitecorePackageAspx =>
+                    Path.Combine(Folders.Module, "Install-SitecorePackage.aspx");
+
                 public static string CopyFileToRemote => Path.Combine(Folders.Module, "Copy-FileToRemote.ps1");
-                
-                public static string VerifyPortalCredentials => Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");
+
+                public static string VerifyPortalCredentials =>
+                    Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");
+
                 public static string GetConnectionString => Path.Combine(Folders.Module, "Get-ConnectionString.ps1");
-                public static string InstallSitecorePackageUsingRemoting => Path.Combine(Folders.Module, "Install-SitecorePackageUsingRemoting.ps1");
+
+                public static string InstallSitecorePackageUsingRemoting =>
+                    Path.Combine(Folders.Module, "Install-SitecorePackageUsingRemoting.ps1");
 
                 //TODO: Finish with others
                 public static string GetSiteFolder => Combine(Settings.Module.Functions.GetSiteFolder);
@@ -103,7 +108,10 @@ namespace Sifon.Code.Statics
                 public static string GetDatabases => Combine(Settings.Module.Functions.GetDatabases);
                 public static string GetCommerceDatabases => Combine(Settings.Module.Functions.GetCommerceDatabases);
                 public static string TestPortalCredentials => Combine(Settings.Module.Functions.TestPortalCredentials);
-                public static string TestSqlServerConnection => Combine(Settings.Module.Functions.TestSqlServerConnection);
+
+                public static string TestSqlServerConnection =>
+                    Combine(Settings.Module.Functions.TestSqlServerConnection);
+
                 public static string ExtractBackupInfo => Combine(Settings.Module.Functions.ExtractBackupInfo);
                 public static string SaveBackupInfo => Combine(Settings.Module.Functions.SaveBackupInfo);
                 public static string FindSolrInstances => Combine(Settings.Module.Functions.FindSolrInstances);
@@ -174,9 +182,10 @@ namespace Sifon.Code.Statics
         {
             public static string[] ForbiddenDatabases = {"master", "tempdb", "model", "msdb"};
         }
+
         public static class Sites
         {
-            public static string[] Commerce = { "Authoring", "Ops", "Shops", "Minions", "BizFx" };
+            public static string[] Commerce = {"Authoring", "Ops", "Shops", "Minions", "BizFx"};
         }
 
         public static class Parameters
@@ -202,7 +211,9 @@ namespace Sifon.Code.Statics
             //from containers
             public const string ProfileName = "ProfileName";
             public const string Repository = "Repository";
+
             public const string Folder = "Folder";
+
             //public const string AdminPassword = "AdminPassword";
             public const string SaPassword = "SaPassword";
 

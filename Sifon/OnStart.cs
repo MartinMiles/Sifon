@@ -11,7 +11,8 @@ namespace Sifon
 {
     internal class OnStart
     {
-        internal bool IsValid {
+        internal bool IsValid
+        {
             get
             {
                 EnsureFoldersExist(new[] { Settings.Folders.Cache, Settings.Folders.Profiles, Settings.Folders.Plugins });
@@ -21,15 +22,10 @@ namespace Sifon
                     Settings.Scripts.InitializeRemote,
                     Settings.Scripts.CopyToRemote,
 
-                    Settings.Scripts.Filesystem.RenameDirectory,
-                    Settings.Scripts.Filesystem.CreateDirectory,
-                    Settings.Scripts.Filesystem.DeleteDirectory,
-                    Settings.Scripts.Filesystem.DeleteFile,
                     Settings.Scripts.Filesystem.GetDirectory,
                     Settings.Scripts.Filesystem.GetDrives,
                     Settings.Scripts.Filesystem.GetFiles,
                     Settings.Scripts.Filesystem.GetHashMD5,
-                    Settings.Scripts.Filesystem.VerifyDirectory
                 });
             }
         }

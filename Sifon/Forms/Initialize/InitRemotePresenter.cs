@@ -80,15 +80,10 @@ namespace Sifon.Forms.Initialize
 
         private string[] FilesToBeCopiedToRemote => new []{
 
-            Settings.Scripts.Filesystem.RenameDirectory,
-            Settings.Scripts.Filesystem.CreateDirectory,
-            Settings.Scripts.Filesystem.DeleteDirectory,
-            Settings.Scripts.Filesystem.DeleteFile,
             Settings.Scripts.Filesystem.GetDirectory,
             Settings.Scripts.Filesystem.GetDrives,
             Settings.Scripts.Filesystem.GetFiles,
             Settings.Scripts.Filesystem.GetHashMD5,
-            Settings.Scripts.Filesystem.VerifyDirectory,
         };
 
         private string[] ModulesToBeCopiedToRemote => new[]{
