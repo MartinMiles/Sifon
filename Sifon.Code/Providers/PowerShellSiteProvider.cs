@@ -91,10 +91,8 @@ namespace Sifon.Code.Providers
 
         public async Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.GetCommerceDatabases);
-
-            var parameters = new Dictionary<string, dynamic> {{Settings.Parameters.Webroot, siteName}};
-            await _scriptWrapperString.Run(script, parameters);
+            var parameters = new Dictionary<string, dynamic> {{ "AuthoringWebroot", siteName}};
+            await _scriptWrapperString.Run(Settings.Module.Functions.GetCommerceDatabases, parameters);
             return _scriptWrapperString;
         }
 

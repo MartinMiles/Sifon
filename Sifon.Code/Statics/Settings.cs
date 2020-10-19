@@ -72,7 +72,6 @@ namespace Sifon.Code.Statics
             public static string TestPortalCredentials => Path.Combine(Folders.Core, "Test-PortalCredentials.ps1");
             public static string GetBackupInfo => Path.Combine(Folders.Core, "Get-BackupInfo.ps1");
             public static string SaveBackupInfo => Path.Combine(Folders.Core, "Save-BackupInfo.ps1");
-            public static string GetCommerceDatabases => Path.Combine(Folders.Core, "Get-CommerceDatabases.ps1");
 
             // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed
 
@@ -116,6 +115,7 @@ namespace Sifon.Code.Statics
                 public static string GetBindings = "Get-SiteBindings";
                 public static string GetSitecoreSites = "Get-SitecoreSites";
                 public static string GetDatabases = "Get-Databases";
+                public static string GetCommerceDatabases = "Get-CommerceDatabases";
             }
         }
 
@@ -206,6 +206,7 @@ namespace Sifon.Code.Statics
             public const string Hostname = "Hostname";
             public const string Type = "type";
 
+            //todo: check if the below correct - and move out unwanted
             public static Dictionary<string, string> AsDictionary()
             {
                 return StaticsHelper.AsDictionary(typeof(Parameters));

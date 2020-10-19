@@ -37,3 +37,6 @@ $getInstance = $path + "\Get-SitecoreSites.ps1"
 $getInstance = $path + "\Get-Databases.ps1"
 . $getInstance
 
+$getInstance = $path + "\Get-CommerceDatabases.ps1"
+. $getInstance
+
