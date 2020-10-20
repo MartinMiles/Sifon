@@ -25,18 +25,10 @@ namespace Sifon.Shared.UserControls
         public bool ShowFiles { get; set; }
         public string SelectedPath => fileExplorer.SelectedNode.Tag as string;
 
-        private IProfile _profile;
-        public IProfile Profile
+        public async Task InitAndShow(IProfile profile)
         {
-            private get { return _profile;}
-            set
-            {
-                _profile = value;
-                _filesystem = new FilesystemFactory(_profile, this).Create();
-
-                // TODO: This call is not awaited (see warning)
-                CreateTree(fileExplorer);
-            }
+            _filesystem = new FilesystemFactory(profile, this).Create();
+            await CreateTree(fileExplorer);
         }
 
         public FolderTreeView()

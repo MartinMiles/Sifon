@@ -20,9 +20,9 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             Init(profile, allowCreateNewFolder);
         }
 
-        private void Init(IProfile profile, bool allowCreateNewFolder)
+        private async void Init(IProfile profile, bool allowCreateNewFolder)
         {
-            folderTreeView.Profile = profile;
+            await folderTreeView.InitAndShow(profile);
             buttonNewFolder.Visible = allowCreateNewFolder;
             Text = Statics.Controls.FolderBrowser.Caption + profile.WindowCaptionSuffix;
         }
