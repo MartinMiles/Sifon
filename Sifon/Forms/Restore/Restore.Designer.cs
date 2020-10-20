@@ -40,7 +40,7 @@
             this.buttonBackupLocation = new System.Windows.Forms.Button();
             this.buttonRestore = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkIDS = new System.Windows.Forms.CheckBox();
+            this.checkIdentity = new System.Windows.Forms.CheckBox();
             this.checkFiles = new System.Windows.Forms.CheckBox();
             this.checkXconnect = new System.Windows.Forms.CheckBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
@@ -63,7 +63,7 @@
             this.groupParameters.Controls.Add(this.buttonBackupLocation);
             this.groupParameters.Controls.Add(this.buttonRestore);
             this.groupParameters.Controls.Add(this.label5);
-            this.groupParameters.Controls.Add(this.checkIDS);
+            this.groupParameters.Controls.Add(this.checkIdentity);
             this.groupParameters.Controls.Add(this.checkFiles);
             this.groupParameters.Controls.Add(this.checkXconnect);
             this.groupParameters.Location = new System.Drawing.Point(13, 13);
@@ -187,16 +187,16 @@
             this.label5.TabIndex = 52;
             this.label5.Text = "Folder to restore from:";
             // 
-            // checkIDS
+            // checkIdentity
             // 
-            this.checkIDS.AutoSize = true;
-            this.checkIDS.Enabled = false;
-            this.checkIDS.Location = new System.Drawing.Point(22, 143);
-            this.checkIDS.Name = "checkIDS";
-            this.checkIDS.Size = new System.Drawing.Size(202, 17);
-            this.checkIDS.TabIndex = 57;
-            this.checkIDS.Text = "Restore Identity Server website folder";
-            this.checkIDS.UseVisualStyleBackColor = true;
+            this.checkIdentity.AutoSize = true;
+            this.checkIdentity.Enabled = false;
+            this.checkIdentity.Location = new System.Drawing.Point(22, 143);
+            this.checkIdentity.Name = "checkIdentity";
+            this.checkIdentity.Size = new System.Drawing.Size(202, 17);
+            this.checkIdentity.TabIndex = 57;
+            this.checkIdentity.Text = "Restore Identity Server website folder";
+            this.checkIdentity.UseVisualStyleBackColor = true;
             // 
             // checkFiles
             // 
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Button buttonBackupLocation;
         private System.Windows.Forms.Button buttonRestore;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkIDS;
+        private System.Windows.Forms.CheckBox checkIdentity;
         private System.Windows.Forms.CheckBox checkFiles;
         private System.Windows.Forms.CheckBox checkXconnect;
         private System.Windows.Forms.GroupBox groupGrid;

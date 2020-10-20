@@ -29,7 +29,7 @@ namespace Sifon.Forms.Restore
 
         public bool XConnectChecked => checkXconnect.Checked;
 
-        public bool IdentityChecked => checkIDS.Checked;
+        public bool IdentityChecked => checkIdentity.Checked;
 
         public bool PublishingChecked => checkHorizon.Checked;
 
@@ -139,7 +139,7 @@ namespace Sifon.Forms.Restore
 
             checkFiles.Enabled = model.WebsiteZip.NotEmpty();
             checkXconnect.Enabled = model.XConnectZip.NotEmpty();
-            checkIDS.Enabled = model.IdentityZip.NotEmpty();
+            checkIdentity.Enabled = model.IdentityZip.NotEmpty();
             checkHorizon.Enabled = model.HorizonZip.NotEmpty();
             checkPublishing.Enabled = model.PublishingZip.NotEmpty();
             checkCommerce.Enabled = model.CommerceSites.Any();

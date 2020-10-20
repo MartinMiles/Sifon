@@ -92,10 +92,17 @@
         public static class Restore
         {
             public const string SourceFolder = "Folder that contains backup to be restored";
-            public const string Webfolder = "Identifies webfrolder from a webroot backup, if available";
+            public const string ArchivesGrid = "This area contains all the website arhives done as the part of prevoius backup and ready to restore";
+
+            public const string Website = "Checking this box will restore the main website with Sitecore";
+            public const string XConnect = "Checking this box will restore XConnect website";
+            public const string Identity = "Checking this box will restore Identity Server website";
+            public const string Horizon = "Checking this box will restore Horizon website";
+            public const string Publishing = "Checking this box will restore Publishing Service website";
+            public const string Commerce = "Checking this box will restore all the Sitecore Commerce websites";
+
             public const string ListDatabases = "List of databases identified at selected backup folder, if available";
             public const string RestoreButton = "This button closes this dialog and runs restore process";
-            public const string DestinationFolder = "A folder that was used for creating a backup of filesystem \nWebsite files will be restored into this deirectory";
         }
 
         public static class Remove
