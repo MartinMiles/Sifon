@@ -52,7 +52,7 @@ namespace Sifon.Forms.Base
 
         private List<string> _validationMessages;
 
-        protected async void ValidateBeforeClose(object sender, EventArgs<string> e)
+        protected async Task ValidateBeforeClose(object sender, EventArgs<string> e)
         {
             _view.ValidateAndRun(await ValidateForm(e.Value));
         }

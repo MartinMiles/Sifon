@@ -23,7 +23,7 @@ namespace Sifon.Forms.Backup
             _view = backupView;
             _view.FormLoaded += Loaded;
             _view.InstanceChanged += async (s, e) => { await InstanceChanged(s, e as EventArgs<string>); };
-            _view.ValidateBeforeClose += ValidateBeforeClose; // TODO: test async / await
+            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e); };
             _view.BeforeFormClosing += ClosingForm;
         }
 

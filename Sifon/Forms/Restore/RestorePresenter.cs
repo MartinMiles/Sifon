@@ -22,7 +22,7 @@ namespace Sifon.Forms.Restore
         {
             _view = view;
             _view.FolderSelected += FolderSelected;
-            _view.ValidateBeforeClose += ValidateBeforeClose;
+            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e); };
             _filesystem = _filesystemFactory.Create();
 
             var backupInfoExtractorFactory = new BackupInfoExtractorFactory(_profileService.SelectedProfile, _view);
