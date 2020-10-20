@@ -123,11 +123,6 @@ namespace Sifon.Code.Statics
             public const string Solr = "Solr";
             public const string ServerInstance = "ServerInstance";
             public const string InstancePrefix = "InstancePrefix";
-
-            // TODO: Check usage and remove - gone into SqlCredentials
-            public const string Username = "Username";
-            public const string Password = "Password";
-
             public const string SqlCredentials = "SqlCredentials";
             public const string PortalCredentials = "PortalCredentials";
 

@@ -49,8 +49,6 @@ namespace Sifon.Code.ScriptGenerators
             return $@"param(
             	        #Comes from profile
 	                    [string]${Settings.Parameters.ServerInstance},
-                        [string]${Settings.Parameters.Username},
-	                    [string]${Settings.Parameters.Password},
 	                    [string]${Settings.Parameters.Website}, # ex. instanceName,
 	                    [string]${Settings.Parameters.Webroot}, # ex. instanceFolder,
 
