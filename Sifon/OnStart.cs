@@ -21,11 +21,6 @@ namespace Sifon
                 {
                     Settings.Scripts.InitializeRemote,
                     Settings.Scripts.CopyToRemote,
-
-                    Settings.Scripts.Filesystem.GetDirectory,
-                    Settings.Scripts.Filesystem.GetDrives,
-                    Settings.Scripts.Filesystem.GetFiles,
-                    Settings.Scripts.Filesystem.GetHashMD5,
                 });
             }
         }

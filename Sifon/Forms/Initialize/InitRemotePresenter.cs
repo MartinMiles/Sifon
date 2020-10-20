@@ -73,20 +73,13 @@ namespace Sifon.Forms.Initialize
                 {"Username", remoteSettings.RemoteUsername},
                 {"Password", remoteSettings.RemotePassword},
                 {"RemoteDirectory", Settings.RemoteDirectory},
-                {"Filenames", FilesToBeCopiedToRemote},
+                {"Filenames", new string[0]},   //TODO: remove parameter and from script als0
                 {"ModuleFiles", ModulesToBeCopiedToRemote},
             };
         }
 
-        private string[] FilesToBeCopiedToRemote => new []{
-
-            Settings.Scripts.Filesystem.GetDirectory,
-            Settings.Scripts.Filesystem.GetDrives,
-            Settings.Scripts.Filesystem.GetFiles,
-            Settings.Scripts.Filesystem.GetHashMD5,
-        };
-
         private string[] ModulesToBeCopiedToRemote => new[]{
+
             Settings.Scripts.Module.ModuleManifest,
             Settings.Scripts.Module.ModuleDefinition,
             Settings.Scripts.Module.GetInstanceUrl,
@@ -110,6 +103,9 @@ namespace Sifon.Forms.Initialize
             Settings.Scripts.Module.SaveBackupInfo,
             Settings.Scripts.Module.FindSolrInstances,
             Settings.Scripts.Module.TestSolrEndpoint,
+            Settings.Scripts.Module.GetDrives,
+            Settings.Scripts.Module.GetFiles,
+            Settings.Scripts.Module.GetHashMD5
         };
     }
 }

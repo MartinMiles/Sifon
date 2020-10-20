@@ -4,7 +4,6 @@ param(
 	[string]$Username,
 	[string]$Password,
 	[string]$RemoteDirectory,
-	[string[]]$Filenames,
 	[string[]]$ModuleFiles
 )
 
@@ -14,17 +13,18 @@ $Session = New-PSSession -ComputerName $RemoteHost -Credential $Cred
 
 $remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
 
-If ($Filenames)
-{	
-	Write-Progress -Activity $Activity -Status "Remote folder created" -PercentComplete 1
+Write-Progress -Activity $Activity -Status "Remote folder created" -PercentComplete 1
+
+# If ($Filenames)
+# {	
 	
-	For ($i=0; $i -lt $Filenames.Length; $i++) 
-	{
-  		Copy-Item -Path $Filenames[$i] -Destination $remotePath.FullName -ToSession $session
-		$File = Split-Path $Filenames[$i] -leaf
-		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete (($i) * 50 / $Filenames.Length);
-	}
-}
+# 	For ($i=0; $i -lt $Filenames.Length; $i++) 
+# 	{
+#   		Copy-Item -Path $Filenames[$i] -Destination $remotePath.FullName -ToSession $session
+# 		$File = Split-Path $Filenames[$i] -leaf
+# 		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete (($i) * 50 / $Filenames.Length);
+# 	}
+# }
 
 $ModulesPath = Invoke-Command -Session $session -ScriptBlock { New-Item -ItemType Directory -Path "$Env:Programfiles\WindowsPowerShell\Modules\Sifon" -Force }
 if($ModuleFiles){
@@ -33,7 +33,7 @@ if($ModuleFiles){
 	{
   		Copy-Item -Path $ModuleFiles[$i] -Destination $ModulesPath.FullName -ToSession $session
 		$File = Split-Path $ModuleFiles[$i] -leaf
-		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete (($i) * 50 / $ModuleFiles.Length + 50);
+		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete ($i * 100 / $ModuleFiles.Length);
 	}
 
 	Write-Output "$remotePath|$ModulesPath"

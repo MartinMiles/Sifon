@@ -69,14 +69,13 @@ namespace Sifon.Code.Filesystem
 
         public async Task<Dictionary<string, DriveType>> GetDrives()
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.GetDrives);
-            await _scriptWrapperDrive.Run(script);
+            await _scriptWrapperDrive.Run(Settings.Module.Functions.GetDrives);
             return _scriptWrapperDrive.Results.ToDictionary(d => d.Name, d => d.DriveType);
         }
 
         public Dictionary<string, string> GetDirectories(string directoryPath)
         {
-            IEnumerable<string> fullNames = GetFilesystemObjects(directoryPath, "Directory");
+            var fullNames = GetFilesystemObjects(directoryPath, "Directory");
 
             var dictionary = new Dictionary<string, string>();
             foreach (var fullName in fullNames)
@@ -107,24 +106,21 @@ namespace Sifon.Code.Filesystem
 
         public async Task<string> GetDirectoryName(string directoryPath)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.GetDirectory);
-            await _scriptWrapperDirectory.Run(script, new Dictionary<string, dynamic> { { "Directory", directoryPath } });
+            await _scriptWrapperDirectory.Run("Get-Item", new Dictionary<string, dynamic> {{ "Path", directoryPath }});
             return _scriptWrapperDirectory.Results.FirstOrDefault()?.Name;
         }
 
         private IEnumerable<string> GetFilesystemObjects(string directoryPath, string parameter)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.GetFiles);
             var parameters = new Dictionary<string, dynamic> { { "Type", parameter }, { "Directory", directoryPath } };
-            _scriptWrapper.RunSync(script, parameters);
+            _scriptWrapper.RunSync(Settings.Module.Functions.GetFiles, parameters);
             return _scriptWrapper.Results;
         }
 
-        public async Task<string> GetHashMd5(string KernelPath)
+        public async Task<string> GetHashMd5(string kernelPath)
         {
-            var script = _remoteScriptCopier.UseProfileFolderIfRemote(Settings.Scripts.Filesystem.GetHashMD5);
-            var parameters = new Dictionary<string, dynamic> { { "Filepath", KernelPath } };
-            await _scriptWrapper.Run(script, parameters);
+            var parameters = new Dictionary<string, dynamic> { { "Filepath", kernelPath } };
+            await _scriptWrapper.Run(Settings.Module.Functions.GetHashMD5, parameters);
             return _scriptWrapper.Results.FirstOrDefault();
         }
     }

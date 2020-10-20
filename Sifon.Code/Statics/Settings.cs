@@ -68,13 +68,12 @@ namespace Sifon.Code.Statics
 
             // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed
 
-            public static class Filesystem
-            {
-                public static string GetHashMD5 => Path.Combine(Folders.CoreFilesystem, "Get-HashMD5.ps1");
-                public static string GetFiles => Path.Combine(Folders.CoreFilesystem, "Get-Files.ps1");
-                public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
-                public static string GetDirectory => Path.Combine(Folders.CoreFilesystem, "Get-Directory.ps1");
-            }
+            //public static class Filesystem
+            //{
+            //    public static string GetHashMD5 => Path.Combine(Folders.CoreFilesystem, "Get-HashMD5.ps1");
+            //    public static string GetFiles => Path.Combine(Folders.CoreFilesystem, "Get-Files.ps1");
+            //    public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
+            //}
 
             //TODO: unite with other modules statics
             public static class Module
@@ -116,6 +115,9 @@ namespace Sifon.Code.Statics
                 public static string SaveBackupInfo => Combine(Settings.Module.Functions.SaveBackupInfo);
                 public static string FindSolrInstances => Combine(Settings.Module.Functions.FindSolrInstances);
                 public static string TestSolrEndpoint => Combine(Settings.Module.Functions.TestSolrEndpoint);
+                public static string GetDrives => Combine(Settings.Module.Functions.GetDrives);
+                public static string GetFiles => Combine(Settings.Module.Functions.GetFiles);
+                public static string GetHashMD5 => Combine(Settings.Module.Functions.GetHashMD5);
 
                 private static string Combine(string moduleParam)
                 {
@@ -140,6 +142,9 @@ namespace Sifon.Code.Statics
                 public static string SaveBackupInfo = "Save-BackupInfo";
                 public static string FindSolrInstances = "Find-SolrInstances";
                 public static string TestSolrEndpoint = "Test-SolrEndpoint";
+                public static string GetDrives = "Get-Drives";
+                public static string GetFiles = "Get-Files";
+                public static string GetHashMD5 = "Get-HashMD5";
             }
         }
 

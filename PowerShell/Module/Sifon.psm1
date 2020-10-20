@@ -58,3 +58,11 @@ $getInstance = $path + "\Find-SolrInstances.ps1"
 $getInstance = $path + "\Test-SolrEndpoint.ps1"
 . $getInstance
 
+$getInstance = $path + "\Get-Drives.ps1"
+. $getInstance
+
+$getInstance = $path + "\Get-Files.ps1"
+. $getInstance
+
+$getInstance = $path + "\Get-HashMD5.ps1"
+. $getInstance
