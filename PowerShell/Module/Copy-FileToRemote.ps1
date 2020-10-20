@@ -1,9 +1,6 @@
-Function Copy-FileToRemote([string]$RemoteHost, [string]$Username, [string]$Password, [string]$RemoteDirectory, [string]$Filename)
+Function Copy-FileToRemote([string]$RemoteHost, [PSCredential]$Credentials, [string]$RemoteDirectory, [string]$Filename)
 {
-	$pass = ConvertTo-SecureString -AsPlainText $Password -Force
-	$Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $Username,$pass
-	$Session = New-PSSession -ComputerName $RemoteHost -Credential $Cred
-
+	$Session = New-PSSession -ComputerName $RemoteHost -Credential $Credentials
 	$remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
 
 	If ($Filename){

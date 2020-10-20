@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Providers.Profile;
@@ -65,8 +66,7 @@ namespace Sifon.Code.PowerShell
         Dictionary<string, dynamic> Parameters => new Dictionary<string, dynamic>
         {
             {"RemoteHost", _remoteMachine},
-            {"Username", _username},        //TODO: To secure credentials
-            {"Password", _password},
+            {"Credentials", new PSCredential(_username, _password.ToSecureString())},
             {"RemoteDirectory", Settings.RemoteDirectory}
         };
     }
