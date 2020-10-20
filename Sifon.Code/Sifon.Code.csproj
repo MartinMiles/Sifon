@@ -100,6 +100,7 @@
     <Compile Include="Model\Fake\DriveInfo.cs" />
     <Compile Include="Model\Fake\TimeOfQuery.cs" />
     <Compile Include="Model\PluginMenuItem.cs" />
+    <Compile Include="Model\ProductVersion.cs" />
     <Compile Include="Model\Profiles\ContainerProfile.cs" />
     <Compile Include="Model\Profiles\Profile.cs" />
     <Compile Include="Model\Profiles\SettingRecord.cs" />

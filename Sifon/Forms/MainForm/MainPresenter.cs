@@ -42,7 +42,6 @@ namespace Sifon.Forms.MainForm
             _view.FormLoaded += Loaded;
             _view.SelectedProfileChanged += SelectedProfileChanged;
             _view.ProfilesToolStripClicked += ProfilesToolStripClicked;
-
             _view.BackupToolStripClicked += BackupToolStripClicked;
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
@@ -53,7 +52,9 @@ namespace Sifon.Forms.MainForm
         private void InstallModuleOnfirstRun()
         {
             var ps = PowerShell.Create();
-            ps.AddCommand(".\\PowerShell\\Module\\_deploy_to_modules.ps1");
+
+            // TODO: replace with folders
+            ps.AddCommand($".\\PowerShell\\Module\\{Modules.Files.Installer}");
             ps.Invoke();
         }
 
@@ -163,6 +164,8 @@ namespace Sifon.Forms.MainForm
 
             var metacode = new MetacodeHelper(e.Value);
             var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters);
+
+            bool isCompatibleVersion = metacode.IsCompatibleVersion;
 
             foreach (var metadataPair in metacodeResultsDictionary)
             {

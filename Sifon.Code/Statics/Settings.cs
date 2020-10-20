@@ -7,7 +7,8 @@ namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string ProductVersion = "Sifon v0.99 (BETA)";
+        public const string VersionNumber = "0.99";
+        public static readonly string ProductVersion = $"Sifon v{VersionNumber} (BETA)";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
 
@@ -50,12 +51,15 @@ namespace Sifon.Code.Statics
 
         public static class Regex
         {
-            public static class Plugins
+            public static class Metacode
             {
-                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
-
-                public static string Dependencies = "###\\s*Dependencies:\\s*(.*)";
-                public static string DependenciesToExtract = "\\\"([^\"]*)\\\"";
+                public const string Name = @"^###\s*(?i)Name(?-i):\s*(.*)$";
+                public const string Description = @"^###\s*(?i)Description(?-i):\s*(.*)$";
+                public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d{2})";
+                public const string ExecutableFunction = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
+                public const string Parameter = @"\""[^[\]]*\""";
+                //public const string Dependencies = "###\\s*Dependencies:\\s*(.*)";
+                public const string DependenciesToExtract = "\\\"([^\"]*)\\\"";
             }
         }
 

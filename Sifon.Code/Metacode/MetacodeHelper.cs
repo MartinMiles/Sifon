@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
+using Sifon.Code.Helpers;
+using Sifon.Code.Model;
 
 namespace Sifon.Code.Metacode
 {
@@ -12,6 +14,34 @@ namespace Sifon.Code.Metacode
     {
         private readonly IEnumerable<string> _meta;
         private readonly string[] powerShellBooleans = { "$true", "$false" };
+
+        #region Properties
+
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
+        public bool IsCompatibleVersion
+        {
+            get
+            {
+                var regex = new Regex(Settings.Regex.Metacode.Compatibility);
+
+                foreach (string line in _meta)
+                {
+                    var match = regex.Match(line);
+                    if (match.Success)
+                    {
+                        var minimalSupported = new ProductVersion(match.Groups[1].Value);
+                        var thisProduct = new ProductVersion(Settings.VersionNumber);
+                        return thisProduct >= minimalSupported;
+                    }
+                }
+
+                return true;
+            }
+        }
+
+        #endregion
 
         public MetacodeHelper(string scriptPath)
         {
@@ -21,12 +51,27 @@ namespace Sifon.Code.Metacode
             }
 
             _meta = File.ReadAllLines(scriptPath).Where(l => l.StartsWith("###")).Select(s => s.Trim());
+
+            ReadScriptNameAndDescription();
         }
 
+        private void ReadScriptNameAndDescription()
+        {
+            if (_meta.Any())
+            {
+                Name = new RegexHelper(Settings.Regex.Metacode.Name).Extract(_meta.ElementAt(0));
+
+                if (_meta.Count() > 1)
+                {
+                    Description = new RegexHelper(Settings.Regex.Metacode.Description).Extract(_meta.ElementAt(1));
+                }
+            }
+        }
+        
         public Dictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters)
         {
             var dynamicResultsDictionary = new Dictionary<string, object>();
-            var regex = new Regex(Settings.Regex.Plugins.MetacodeSynthax);
+            var regex = new Regex(Settings.Regex.Metacode.ExecutableFunction);
 
             foreach (string line in _meta)
             {
@@ -56,7 +101,7 @@ namespace Sifon.Code.Metacode
             if (!string.IsNullOrWhiteSpace(methodParameters))
             {
                 var paramsArray = methodParameters.Split(',');
-                var stringValuePattern = new Regex(@"\""[^[\]]*\""");
+                var stringValuePattern = new Regex(Settings.Regex.Metacode.Parameter);
 
                 foreach (string parameter in paramsArray)
                 {
@@ -102,7 +147,7 @@ namespace Sifon.Code.Metacode
         {
             var list = new List<string>();
 
-            var regex = new Regex(Settings.Regex.Plugins.DependenciesToExtract);
+            var regex = new Regex(Settings.Regex.Metacode.DependenciesToExtract);
 
             foreach (string line in _meta)
             {

@@ -13,7 +13,6 @@ namespace Sifon.Code.Statics
             internal const string VerifyPortalCredentials = "Verify-PortalCredentials";
             internal const string GetConnectionString = "Get-ConnectionString";
             internal const string InstallSitecorePackageUsingRemoting = "Install-SitecorePackageUsingRemoting";
-
             internal const string GetSiteFolder = "Get-SiteFolder";
             internal const string GetBindings = "Get-SiteBindings";
             internal const string GetSitecoreSites = "Get-SitecoreSites";
@@ -32,6 +31,8 @@ namespace Sifon.Code.Statics
 
         public static class Files
         {
+            public const string Installer = "_deploy_to_modules.ps1";
+
             public static string ModuleManifest => Path.Combine(Settings.Folders.Module, "Sifon.psd1");
             public static string ModuleDefinition => Path.Combine(Settings.Folders.Module, "Sifon.psm1");
             public static string GetInstanceUrl => Combine(Functions.GetInstanceUrl);
@@ -43,8 +44,6 @@ namespace Sifon.Code.Statics
             public static string VerifyPortalCredentials => Combine(Functions.VerifyPortalCredentials);
             public static string GetConnectionString => Combine(Functions.GetConnectionString);
             public static string InstallSitecorePackageUsingRemoting => Combine(Functions.InstallSitecorePackageUsingRemoting);
-
-            //TODO: Finish with others
             public static string GetSiteFolder => Combine(Functions.GetSiteFolder);
             public static string GetBindings => Combine(Functions.GetBindings);
             public static string GetSitecoreSites => Combine(Functions.GetSitecoreSites);

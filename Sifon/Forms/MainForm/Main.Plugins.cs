@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
 using Sifon.Code.Events;
 using Sifon.Code.Helpers;
+using Sifon.Code.Metacode;
 using Sifon.Code.Model;
 
 namespace Sifon.Forms.MainForm
@@ -65,7 +66,7 @@ namespace Sifon.Forms.MainForm
             {
                 parentMenuItem.Name = menuItem.DirectoryFullPath;
 
-                if (menuItem.DirectoryName == "Sifon.Plugins")
+                if (menuItem.DirectoryName == "Sifon.Plugins") //TODO:
                 {
                     menuItem.DirectoryName = parentMenuItem.Text;
                 }
@@ -111,48 +112,20 @@ namespace Sifon.Forms.MainForm
         {
             foreach (var fileInfo in scripts)
             {
-                var nameAndDescription = ReadScriptNameAndDescription(fileInfo.Key);
-
-                var newToolStripMenuItem = new ToolStripMenuItem
+                var metacode = new MetacodeHelper(fileInfo.Key);
+                if (metacode.IsCompatibleVersion)
                 {
-                    Name = fileInfo.Key,
-                    Text = nameAndDescription?.Item1 ?? fileInfo.Value,
-                    Size = MenuSize,
-                    ToolTipText = nameAndDescription?.Item2 ?? String.Empty
-
-                };
-                newToolStripMenuItem.Click += scriptToolStripMenuItemToolStripMenuItem_Click;
-                dirToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
-            }
-        }
-
-        private Tuple<string, string> ReadScriptNameAndDescription(string FilePath)
-        {
-            const string namePattern = @"^###\s*(?i)Name(?-i):\s*(.*)$";
-            const string descPattern = @"^###\s*(?i)Description(?-i):\s*(.*)$";
-
-            var tuple = new Tuple<string, string>(null, null);
-
-            if (File.Exists(FilePath))
-            {
-                var lines = File.ReadLines(FilePath);
-                if (lines.Any())
-                {
-                    var firstLine = lines.ElementAt(0);
-
-                    var name = new RegexHelper(namePattern).Extract(firstLine);
-                    tuple = new Tuple<string, string>(name, null);
-
-                    if (lines.Count() > 1)
+                    var newToolStripMenuItem = new ToolStripMenuItem
                     {
-                        var secondLine = lines.ElementAt(1);
-                        var description = new RegexHelper(descPattern).Extract(secondLine);
-                        tuple = new Tuple<string, string>(name, description);
-                    }
+                        Name = fileInfo.Key,
+                        Text = metacode.Name ?? fileInfo.Value,
+                        Size = MenuSize,
+                        ToolTipText = metacode.Description ?? String.Empty
+                    };
+                    newToolStripMenuItem.Click += scriptToolStripMenuItemToolStripMenuItem_Click;
+                    dirToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
                 }
             }
-
-            return tuple;
         }
 
         private void scriptToolStripMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,8 +138,8 @@ namespace Sifon.Forms.MainForm
         {
             FieldInfo f1 = typeof(Control).GetField("EventClick", BindingFlags.Static | BindingFlags.NonPublic);
             object obj = f1.GetValue(b);
-            PropertyInfo pi = b.GetType().GetProperty("Events", BindingFlags.NonPublic | BindingFlags.Instance);
-            EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
+            var pi = b.GetType().GetProperty("Events", BindingFlags.NonPublic | BindingFlags.Instance);
+            var list = (EventHandlerList)pi.GetValue(b, null);
             list.RemoveHandler(obj, list[obj]);
         }
 
