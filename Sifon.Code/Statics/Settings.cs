@@ -87,7 +87,7 @@ namespace Sifon.Code.Statics
         public static class Buttons
         {
             public const string Add = "Add";
-            public const string Rename = "Rename";
+            public const string Change = "Change";
             public const string SaveAndClose = "Save and close";
 
             public const string Backup = "Backup";

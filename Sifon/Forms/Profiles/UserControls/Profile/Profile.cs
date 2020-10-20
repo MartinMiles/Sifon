@@ -94,7 +94,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         private void comboProfiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             linkDelete.Enabled = comboProfiles.SelectedIndex > 0;
-            buttonRename.Text = comboProfiles.SelectedIndex > 0 ? Settings.Buttons.Rename : Settings.Buttons.Add;
+            buttonRename.Text = comboProfiles.SelectedIndex > 0 ? Settings.Buttons.Change : Settings.Buttons.Add;
 
             if (comboProfiles.SelectedIndex > 0)
             {
