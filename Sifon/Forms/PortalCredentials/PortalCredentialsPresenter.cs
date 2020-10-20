@@ -49,7 +49,7 @@ namespace Sifon.Forms.PortalCredentials
            
             _view.ToggleControls(false);
 
-            await _scriptWrapper.Run(Settings.Module.Functions.TestPortalCredentials, parameters);
+            await _scriptWrapper.Run(Modules.Functions.TestPortalCredentials, parameters);
 
             ValidateResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
 

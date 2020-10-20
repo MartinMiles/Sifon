@@ -19,7 +19,6 @@ namespace Sifon.Forms.SqlSettings
         private readonly SqlServerRecordProvider _sqlService;
         private readonly ProfilesProvider _profilesService;
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
-        private readonly RemoteScriptCopier _remoteScriptCopier;
         private readonly FakesHelper _fakesHelper;
 
         public SqlSettingsPresenter(ISqlSettingsView sqlSettingsView)
@@ -37,7 +36,6 @@ namespace Sifon.Forms.SqlSettings
             _view.SqlRecordDeleted += SqlRecordDeleted;
             _view.ClosingForm += ClosingForm;
 
-            _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
             _scriptWrapper = new ScriptWrapper<PSObject>(new ProfilesProvider().SelectedProfile, _view, d => d);
         }
 
@@ -67,7 +65,7 @@ namespace Sifon.Forms.SqlSettings
             var credentials = new PSCredential(e.Value.SqlAdminUsername, e.Value.SqlAdminPassword.ToSecureString());
             parameters.Add(Settings.Parameters.SqlCredentials, credentials);
             
-            await _scriptWrapper.Run(Settings.Module.Functions.TestSqlServerConnection, parameters);
+            await _scriptWrapper.Run(Modules.Functions.TestSqlServerConnection, parameters);
 
             ValidateResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
 

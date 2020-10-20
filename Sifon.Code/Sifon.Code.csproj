@@ -125,6 +125,7 @@
     <Compile Include="Providers\Profile\ProfilesProvider.cs" />
     <Compile Include="Providers\Profile\SqlServerRecordProvider.cs" />
     <Compile Include="ScriptGenerators\ServiceScriptGenerator.cs" />
+    <Compile Include="Statics\Modules.cs" />
     <Compile Include="Statics\Settings.cs" />
     <Compile Include="Statics\Validation.cs" />
     <Compile Include="Validation\FormValidation.cs" />

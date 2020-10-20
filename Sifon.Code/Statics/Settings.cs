@@ -33,7 +33,6 @@ namespace Sifon.Code.Statics
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
             public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
             public static string Module => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Module");
-            public static string CoreFilesystem => Path.Combine(Core, "Filesystem");
         }
 
         public static class CacheFolder
@@ -53,8 +52,7 @@ namespace Sifon.Code.Statics
         {
             public static class Plugins
             {
-                public static string MetacodeSynthax =
-                    "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
+                public static string MetacodeSynthax = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
 
                 public static string Dependencies = "###\\s*Dependencies:\\s*(.*)";
                 public static string DependenciesToExtract = "\\\"([^\"]*)\\\"";
@@ -63,88 +61,9 @@ namespace Sifon.Code.Statics
 
         public static class Scripts
         {
-            public static string InitializeRemote => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
-            public static string CopyToRemote => Path.Combine(Folders.Core, "Copy-ScriptToRemote.ps1");
-
-            // When adding new script to here, consider adding them to Sifon.Forms.Initialize.InitRemotePresenter.FilesToBeCopiedToRemote if needed
-
-            //public static class Filesystem
-            //{
-            //    public static string GetHashMD5 => Path.Combine(Folders.CoreFilesystem, "Get-HashMD5.ps1");
-            //    public static string GetFiles => Path.Combine(Folders.CoreFilesystem, "Get-Files.ps1");
-            //    public static string GetDrives => Path.Combine(Folders.CoreFilesystem, "Get-Drives.ps1");
-            //}
-
-            //TODO: unite with other modules statics
-            public static class Module
+            public static class Remote
             {
-                public static string ModuleManifest => Path.Combine(Folders.Module, "Sifon.psd1");
-                public static string ModuleDefinition => Path.Combine(Folders.Module, "Sifon.psm1");
-                public static string GetInstanceUrl => Path.Combine(Folders.Module, "Get-InstanceUrl.ps1");
-                public static string DownloadResourceScript => Path.Combine(Folders.Module, "Download-Resource.ps1");
-                public static string DownloadResourceJson => Path.Combine(Folders.Module, "Download-Resource.json");
-
-                public static string InstallSitecorePackage =>
-                    Path.Combine(Folders.Module, "Install-SitecorePackage.ps1");
-
-                public static string InstallSitecorePackageAspx =>
-                    Path.Combine(Folders.Module, "Install-SitecorePackage.aspx");
-
-                public static string CopyFileToRemote => Path.Combine(Folders.Module, "Copy-FileToRemote.ps1");
-
-                public static string VerifyPortalCredentials =>
-                    Path.Combine(Folders.Module, "Verify-PortalCredentials.ps1");
-
-                public static string GetConnectionString => Path.Combine(Folders.Module, "Get-ConnectionString.ps1");
-
-                public static string InstallSitecorePackageUsingRemoting =>
-                    Path.Combine(Folders.Module, "Install-SitecorePackageUsingRemoting.ps1");
-
-                //TODO: Finish with others
-                public static string GetSiteFolder => Combine(Settings.Module.Functions.GetSiteFolder);
-                public static string GetBindings => Combine(Settings.Module.Functions.GetBindings);
-                public static string GetSitecoreSites => Combine(Settings.Module.Functions.GetSitecoreSites);
-                public static string GetDatabases => Combine(Settings.Module.Functions.GetDatabases);
-                public static string GetCommerceDatabases => Combine(Settings.Module.Functions.GetCommerceDatabases);
-                public static string TestPortalCredentials => Combine(Settings.Module.Functions.TestPortalCredentials);
-
-                public static string TestSqlServerConnection =>
-                    Combine(Settings.Module.Functions.TestSqlServerConnection);
-
-                public static string ExtractBackupInfo => Combine(Settings.Module.Functions.ExtractBackupInfo);
-                public static string SaveBackupInfo => Combine(Settings.Module.Functions.SaveBackupInfo);
-                public static string FindSolrInstances => Combine(Settings.Module.Functions.FindSolrInstances);
-                public static string TestSolrEndpoint => Combine(Settings.Module.Functions.TestSolrEndpoint);
-                public static string GetDrives => Combine(Settings.Module.Functions.GetDrives);
-                public static string GetFiles => Combine(Settings.Module.Functions.GetFiles);
-                public static string GetHashMD5 => Combine(Settings.Module.Functions.GetHashMD5);
-
-                private static string Combine(string moduleParam)
-                {
-                    return Path.Combine(Folders.Module, $"{moduleParam}.ps1");
-                }
-            }
-        }
-
-        // TODO: Unite with other modules
-        public static class Module
-        {
-            public static class Functions
-            {
-                public static string GetSiteFolder = "Get-SiteFolder";
-                public static string GetBindings = "Get-SiteBindings";
-                public static string GetSitecoreSites = "Get-SitecoreSites";
-                public static string GetDatabases = "Get-Databases";
-                public static string GetCommerceDatabases = "Get-CommerceDatabases";
-                public static string TestPortalCredentials = "Test-PortalCredentials";
-                public static string TestSqlServerConnection = "Test-SqlServerConnection";
-                public static string ExtractBackupInfo = "Extract-BackupInfo";
-                public static string SaveBackupInfo = "Save-BackupInfo";
-                public static string FindSolrInstances = "Find-SolrInstances";
-                public static string TestSolrEndpoint = "Test-SolrEndpoint";
-                public static string GetDrives = "Get-Drives";
-                public static string GetFiles = "Get-Files";
-                public static string GetHashMD5 = "Get-HashMD5";
+                public static string Initialize => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
             }
         }
 

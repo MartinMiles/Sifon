@@ -15,7 +15,6 @@ namespace Sifon.Code.Filesystem
 {
     public class RemoteFilesystem : IFilesystem
     {
-        private readonly RemoteScriptCopier _remoteScriptCopier;
         private readonly ScriptWrapper<bool> _scriptWrapperBool;
         private readonly ScriptWrapper<string> _scriptWrapper;
         private readonly ScriptWrapper<Model.Fake.DriveInfo> _scriptWrapperDrive;
@@ -23,7 +22,6 @@ namespace Sifon.Code.Filesystem
         
         public RemoteFilesystem(IProfile profile, ISynchronizeInvoke invoke)
         {
-            _remoteScriptCopier = new RemoteScriptCopier(profile, invoke);
             _scriptWrapperBool = new ScriptWrapper<bool>(profile, invoke, d => bool.Parse(d.ToString()));
             _scriptWrapper = new ScriptWrapper<string>(profile, invoke, d => d.ToString());
             _scriptWrapperDrive = new ScriptWrapper<Model.Fake.DriveInfo>(profile, invoke, Convert<Model.Fake.DriveInfo>);
@@ -69,7 +67,7 @@ namespace Sifon.Code.Filesystem
 
         public async Task<Dictionary<string, DriveType>> GetDrives()
         {
-            await _scriptWrapperDrive.Run(Settings.Module.Functions.GetDrives);
+            await _scriptWrapperDrive.Run(Modules.Functions.GetDrives);
             return _scriptWrapperDrive.Results.ToDictionary(d => d.Name, d => d.DriveType);
         }
 
@@ -113,14 +111,14 @@ namespace Sifon.Code.Filesystem
         private IEnumerable<string> GetFilesystemObjects(string directoryPath, string parameter)
         {
             var parameters = new Dictionary<string, dynamic> { { "Type", parameter }, { "Directory", directoryPath } };
-            _scriptWrapper.RunSync(Settings.Module.Functions.GetFiles, parameters);
+            _scriptWrapper.RunSync(Modules.Functions.GetFiles, parameters);
             return _scriptWrapper.Results;
         }
 
         public async Task<string> GetHashMd5(string kernelPath)
         {
             var parameters = new Dictionary<string, dynamic> { { "Filepath", kernelPath } };
-            await _scriptWrapper.Run(Settings.Module.Functions.GetHashMD5, parameters);
+            await _scriptWrapper.Run(Modules.Functions.GetHashMD5, parameters);
             return _scriptWrapper.Results.FirstOrDefault();
         }
     }

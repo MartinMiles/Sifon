@@ -32,6 +32,7 @@ namespace Sifon.Code.PowerShell
             _scriptWrapper = new ScriptWrapper<string>(fakeLocalProfile, invoke, d => d.ToString());
         }
         
+        //todo: is it used at all?
         public string UseProfileFolderIfRemote(string scriptPath)
         {
             return _profile.RemotingEnabled && _profile.RemoteFolder.NotEmpty() 
@@ -43,9 +44,12 @@ namespace Sifon.Code.PowerShell
         {
             if (_profile.RemotingEnabled)
             {
+                var remoteFolder = await GetRemoteFolder();
+
                 var parameters = Parameters;
                 parameters.Add("Filename", scriptPath);
-                await _scriptWrapper.Run(Settings.Scripts.CopyToRemote, parameters);
+                parameters["RemoteDirectory"] = remoteFolder;
+                await _scriptWrapper.Run(Modules.Functions.CopyFileToRemote, parameters);
                 return _scriptWrapper.Results.FirstOrDefault();
             }
 
@@ -54,14 +58,14 @@ namespace Sifon.Code.PowerShell
 
         public async Task<string> GetRemoteFolder()
         {
-            await _scriptWrapper.Run(Settings.Scripts.CopyToRemote, Parameters);
+            await _scriptWrapper.Run(Modules.Functions.CopyFileToRemote, Parameters);
             return _scriptWrapper.Results.FirstOrDefault();
         }
 
         Dictionary<string, dynamic> Parameters => new Dictionary<string, dynamic>
         {
             {"RemoteHost", _remoteMachine},
-            {"Username", _username},
+            {"Username", _username},        //TODO: To secure credentials
             {"Password", _password},
             {"RemoteDirectory", Settings.RemoteDirectory}
         };

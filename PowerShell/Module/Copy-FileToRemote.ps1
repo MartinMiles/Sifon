@@ -4,12 +4,12 @@ Function Copy-FileToRemote([string]$RemoteHost, [string]$Username, [string]$Pass
 	$Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $Username,$pass
 	$Session = New-PSSession -ComputerName $RemoteHost -Credential $Cred
 
-	#$remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
+	$remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
 
 	If ($Filename){
 		Copy-Item -Path $Filename -Destination $RemoteDirectory -ToSession $session
-		#$File = Split-Path $Filename -leaf
-		#write-Output $remotePath\$File
+		$File = Split-Path $Filename -leaf
+		write-Output $remotePath\$File
 	}
 	else{
 		Write-Output $remotePath

@@ -17,11 +17,7 @@ namespace Sifon
             {
                 EnsureFoldersExist(new[] { Settings.Folders.Cache, Settings.Folders.Profiles, Settings.Folders.Plugins });
 
-                return ValidateFilesPresent(new[]
-                {
-                    Settings.Scripts.InitializeRemote,
-                    Settings.Scripts.CopyToRemote,
-                });
+                return ValidateFilesPresentOnLocal(new[] { Settings.Scripts.Remote.Initialize });
             }
         }
 
@@ -36,13 +32,13 @@ namespace Sifon
             }
         }
 
-        private bool ValidateFilesPresent(string[] files)
+        private bool ValidateFilesPresentOnLocal(string[] files)
         {
             foreach (string file in files)
             {
                 if (!File.Exists(file))
                 {
-                    MessageBox.Show($"Requred file is missed by an expected path{Environment.NewLine}{file}",
+                    MessageBox.Show($"Requred file is missed by an expected path {Environment.NewLine}{file}",
                         "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return false;

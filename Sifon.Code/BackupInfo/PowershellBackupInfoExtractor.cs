@@ -32,7 +32,7 @@ namespace Sifon.Code.BackupInfo
                 {"OutputFile", $@"{backupInfo.Webroot}\{Settings.BackupInfoFile}"}
             };
 
-            await _scriptWrapper.Run(Settings.Module.Functions.SaveBackupInfo, parameters);
+            await _scriptWrapper.Run(Modules.Functions.SaveBackupInfo, parameters);
             return true;
         }
 
@@ -46,7 +46,7 @@ namespace Sifon.Code.BackupInfo
                 {"extractToFile", $@"{folderToExtract}\{Settings.BackupInfoFile}"}
             };
 
-            await _scriptWrapper.Run(Settings.Module.Functions.ExtractBackupInfo, parameters);
+            await _scriptWrapper.Run(Modules.Functions.ExtractBackupInfo, parameters);
 
             return BackupInfoExtensions.Parse(_scriptWrapper.Results.FirstOrDefault());
         }

@@ -51,7 +51,7 @@ namespace Sifon.Forms.Initialize
 
         private async void FormLoaded(object sender, EventArgs e)
         {
-            await _scriptWrapper.Run(Settings.Scripts.InitializeRemote, _parameters);
+            await _scriptWrapper.Run(Settings.Scripts.Remote.Initialize, _parameters);
 
             var result = _scriptWrapper.Results.FirstOrDefault();
             var excp = _scriptWrapper.Errors.FirstOrDefault();
@@ -70,42 +70,13 @@ namespace Sifon.Forms.Initialize
             {
                 {"Activity", Settings.Initialize.ProgressActivityName},
                 {"RemoteHost", remoteSettings.RemoteHost},
-                {"Username", remoteSettings.RemoteUsername},
+
+                //TODO: Safe credentials - ?
+                { "Username", remoteSettings.RemoteUsername},
                 {"Password", remoteSettings.RemotePassword},
                 {"RemoteDirectory", Settings.RemoteDirectory},
-                {"Filenames", new string[0]},   //TODO: remove parameter and from script als0
-                {"ModuleFiles", ModulesToBeCopiedToRemote},
+                {"ModuleFiles", Modules.ToBeCopiedToRemote},
             };
         }
-
-        private string[] ModulesToBeCopiedToRemote => new[]{
-
-            Settings.Scripts.Module.ModuleManifest,
-            Settings.Scripts.Module.ModuleDefinition,
-            Settings.Scripts.Module.GetInstanceUrl,
-            Settings.Scripts.Module.DownloadResourceScript,
-            Settings.Scripts.Module.DownloadResourceJson,
-            Settings.Scripts.Module.InstallSitecorePackage,
-            Settings.Scripts.Module.InstallSitecorePackageAspx,
-            Settings.Scripts.Module.CopyFileToRemote,
-            Settings.Scripts.Module.VerifyPortalCredentials,
-            Settings.Scripts.Module.GetConnectionString,
-            Settings.Scripts.Module.InstallSitecorePackageUsingRemoting,
-
-            Settings.Scripts.Module.GetSiteFolder,
-            Settings.Scripts.Module.GetBindings,
-            Settings.Scripts.Module.GetSitecoreSites,
-            Settings.Scripts.Module.GetDatabases,
-            Settings.Scripts.Module.GetCommerceDatabases,
-            Settings.Scripts.Module.TestPortalCredentials,
-            Settings.Scripts.Module.TestSqlServerConnection,
-            Settings.Scripts.Module.ExtractBackupInfo,
-            Settings.Scripts.Module.SaveBackupInfo,
-            Settings.Scripts.Module.FindSolrInstances,
-            Settings.Scripts.Module.TestSolrEndpoint,
-            Settings.Scripts.Module.GetDrives,
-            Settings.Scripts.Module.GetFiles,
-            Settings.Scripts.Module.GetHashMD5
-        };
     }
 }

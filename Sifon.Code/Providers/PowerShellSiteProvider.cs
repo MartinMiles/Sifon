@@ -16,13 +16,11 @@ namespace Sifon.Code.Providers
     {
         private readonly ScriptWrapper<string> _scriptWrapperString;
         private readonly ScriptWrapper<KeyValuePair<string, string>> _scriptWrapper;
-        private readonly RemoteScriptCopier _remoteScriptCopier;
 
         public PowerShellSiteProvider(IProfile profile, ISynchronizeInvoke invoke)
         {
             _scriptWrapperString = new ScriptWrapper<string>(profile, invoke, d => d.ToString());
             _scriptWrapper = new ScriptWrapper<KeyValuePair<string, string>>(profile, invoke, Convert);
-            _remoteScriptCopier = new RemoteScriptCopier(profile, invoke);
         }
 
         private KeyValuePair<string, string> Convert(PSObject pso)
@@ -33,20 +31,20 @@ namespace Sifon.Code.Providers
 
         public async Task<IEnumerable<string>> GetSitecoreSites()
         {
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSitecoreSites);
+            await _scriptWrapperString.Run(Modules.Functions.GetSitecoreSites);
             return _scriptWrapperString.Results;
         }
 
         public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string siteName)
         {
-            await _scriptWrapper.Run(Settings.Module.Functions.GetBindings, new Dictionary<string, dynamic> {{ "SiteNameOrPath", siteName }});
+            await _scriptWrapper.Run(Modules.Functions.GetBindings, new Dictionary<string, dynamic> {{ "SiteNameOrPath", siteName }});
             return _scriptWrapper.Results;
         }
 
         public async Task<string> GetSitePath(string siteName)
         {
             var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Name, siteName }};
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
@@ -55,7 +53,7 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic>
                 {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.XConnect }};
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
@@ -64,7 +62,7 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic>
                 { { Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.IdentityServer}};
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
@@ -76,7 +74,7 @@ namespace Sifon.Code.Providers
                 { Settings.Parameters.InstancePrefix, instancePrefix}
             };
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetDatabases, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetDatabases, parameters);
             return _scriptWrapperString.Results;
         }
 
@@ -85,14 +83,14 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic>
                 {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, "Commerce" }};
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results;
         }
 
         public async Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName)
         {
             var parameters = new Dictionary<string, dynamic> {{ "AuthoringWebroot", siteName}};
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetCommerceDatabases, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetCommerceDatabases, parameters);
             return _scriptWrapperString;
         }
 
@@ -101,7 +99,7 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic>
                 {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.Horizon }};
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
 
@@ -110,7 +108,7 @@ namespace Sifon.Code.Providers
             var parameters = new Dictionary<string, dynamic>
                 {{ Settings.Parameters.Name, siteName },{ Settings.Parameters.Type, Settings.Parameters.PublishingService }};
 
-            await _scriptWrapperString.Run(Settings.Module.Functions.GetSiteFolder, parameters);
+            await _scriptWrapperString.Run(Modules.Functions.GetSiteFolder, parameters);
             return _scriptWrapperString.Results.FirstOrDefault();
         }
     }

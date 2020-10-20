@@ -34,8 +34,6 @@ namespace Sifon.Forms.Backup
             
             var instances = await _siteProvider.GetSitecoreSites();
             _view.PopulateInstancesDropdown(instances);
-
-            //_view.ToggleControls(true);
         }
 
         private async Task InstanceChanged(object sender, EventArgs<string> e)
@@ -86,7 +84,7 @@ namespace Sifon.Forms.Backup
             };
 
             _scriptWrapper = new ScriptWrapper<string>(_profileService.SelectedProfile, _view, d => d.ToString());
-            await _scriptWrapper.Run(Settings.Module.Functions.GetDatabases, parameters);
+            await _scriptWrapper.Run(Modules.Functions.GetDatabases, parameters);
 
             if (viewModel.CommerceSites.Any())
             {

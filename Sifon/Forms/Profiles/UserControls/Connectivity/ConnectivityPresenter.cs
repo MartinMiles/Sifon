@@ -19,7 +19,6 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         private readonly IConnectivityView _view;
         private ScriptWrapper<SolrInfo> _scriptWrapper;
         private SolrIdentifier _solrIdentifier;
-        private RemoteScriptCopier _remoteScriptCopier;
 
         public ConnectivityPresenter(IConnectivityView view) : base(view)
         {
@@ -85,10 +84,9 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             _view.ToggleControls(false);
 
-            _remoteScriptCopier = new RemoteScriptCopier(SelectedProfile, _view);
             _scriptWrapper = new ScriptWrapper<SolrInfo>(SelectedProfile, _view, SolrInfoExtensions.Convert);
 
-            await _scriptWrapper.Run(Settings.Module.Functions.TestSolrEndpoint, new Dictionary<string, dynamic> { { "Url", e.Value } });
+            await _scriptWrapper.Run(Modules.Functions.TestSolrEndpoint, new Dictionary<string, dynamic> {{ "Url", e.Value }});
 
             if (_scriptWrapper.Results.Any())
             {

@@ -9,7 +9,6 @@ using Sifon.Code.Events;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
-using Sifon.Statics;
 using Sifon.ViewModels;
 
 namespace Sifon.Forms.Remover
@@ -85,13 +84,13 @@ namespace Sifon.Forms.Remover
         {
             var parameters = new Dictionary<string, dynamic>
             {
-                {"ServerInstance", _profileService.SelectedProfileSql.SqlServer},
+                { "ServerInstance", _profileService.SelectedProfileSql.SqlServer},
                 { "InstancePrefix", filterValue }
             };
 
             _view.ToggleControls(false);
 
-            await _scriptWrapper.Run(Settings.Module.Functions.GetDatabases, parameters);
+            await _scriptWrapper.Run(Modules.Functions.GetDatabases, parameters);
 
             if (_commerceSites.Any())
             {
