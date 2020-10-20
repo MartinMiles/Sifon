@@ -12,15 +12,12 @@ using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class SqlServerRecordProvider
+    public class SqlServerRecordProvider : BaseEncryptedProvider
     {
         private IEnumerable<ISqlServerRecord> _entities;
-        private readonly IEncryptor _encryptor;
-
 
         public SqlServerRecordProvider()
         {
-            _encryptor = new Encryptor();
             _entities = Read();
         }
 
@@ -46,7 +43,7 @@ namespace Sifon.Code.Providers.Profile
 
                     if (!string.IsNullOrWhiteSpace(record.SqlAdminPassword))
                     {
-                        record.SqlAdminPassword = _encryptor.Decrypt(record.SqlAdminPassword);
+                        record.SqlAdminPassword = Encryptor.Decrypt(record.SqlAdminPassword);
                     }
 
                     items.Add(record);
@@ -64,7 +61,7 @@ namespace Sifon.Code.Providers.Profile
 
             foreach (var record in _entities)
             {
-                record.SqlAdminPassword = _encryptor.Encrypt(record.SqlAdminPassword);
+                record.SqlAdminPassword = Encryptor.Encrypt(record.SqlAdminPassword);
                 root.Add(record.Save());
             }
 

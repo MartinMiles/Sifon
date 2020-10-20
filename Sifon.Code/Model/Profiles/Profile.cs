@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
+using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Extensions.Models;
 
@@ -15,10 +16,10 @@ namespace Sifon.Code.Model.Profiles
         {
         }
 
-        public Profile(XmlNode _node)
+        public Profile(XmlNode _node, IEncryptor encryptor)
         {
             node = _node;
-            this.Parse(_node);
+            this.Parse(_node,encryptor);
         }
 
         #endregion
@@ -32,6 +33,7 @@ namespace Sifon.Code.Model.Profiles
         public string RemoteUsername { get; set; }
 
         public string RemotePassword { get; set; }
+
         public string RemoteFolder { get; set; }
 
         public string ProfileName { get; set; }

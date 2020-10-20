@@ -10,14 +10,12 @@ using Sifon.Code.Extensions;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class SettingsProvider
+    public class SettingsProvider : BaseEncryptedProvider
     {
         private ISettingRecord _entity;
-        private readonly Encryptor _encryptor;
 
         public SettingsProvider()
         {
-            _encryptor = new Encryptor();
             _entity = Read();
         }
 
@@ -36,7 +34,7 @@ namespace Sifon.Code.Providers.Profile
 
                 if (!string.IsNullOrWhiteSpace(_entity.PortalPassword))
                 {
-                    _entity.PortalPassword = _encryptor.Decrypt(_entity.PortalPassword);
+                    _entity.PortalPassword = Encryptor.Decrypt(_entity.PortalPassword);
                 }
             }
 
@@ -54,7 +52,7 @@ namespace Sifon.Code.Providers.Profile
             root.Add(username);
 
             var password = new XElement(Settings.Xml.SettingRecord.PortalPassword);
-            password.SetAttributeValue(Settings.Xml.Attributes.Value, _encryptor.Encrypt(settingRecord.PortalPassword));
+            password.SetAttributeValue(Settings.Xml.Attributes.Value, Encryptor.Encrypt(settingRecord.PortalPassword));
             root.Add(password);
 
             doc.Save(Settings.SettingsFolder.SettingsPath);

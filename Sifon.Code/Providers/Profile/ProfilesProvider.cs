@@ -13,9 +13,9 @@ using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class ProfilesProvider
+    public class ProfilesProvider : BaseEncryptedProvider
     {
-        private IEnumerable<Model.Profiles.Profile> _profiles;
+        private IEnumerable<IProfile> _profiles;
 
         public ProfilesProvider()
         {
@@ -32,21 +32,25 @@ namespace Sifon.Code.Providers.Profile
                 AdminPassword = p.AdminPassword
             };
 
+
             _profiles = _profiles.Append(profile);
         }
 
         public IEnumerable<IProfile> Read()
         {
-            var items = new List<Model.Profiles.Profile>();
+            var items = new List<IProfile>();
 
             if (File.Exists(Settings.SettingsFolder.ProfilesPath))
             {
                 var doc = new XmlDocument();
                 doc.Load(Settings.SettingsFolder.ProfilesPath);
 
-                foreach (XmlNode node in doc.DocumentElement.ChildNodes)
-                {
-                    items.Add(new Model.Profiles.Profile(node));
+                if(doc.DocumentElement != null)
+                { 
+                    foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+                    {
+                        items.Add(new Model.Profiles.Profile(node, Encryptor));
+                    }
                 }
             }
 
@@ -60,9 +64,9 @@ namespace Sifon.Code.Providers.Profile
             var root = new XElement(Settings.Xml.Profile.NodeListName);
             doc.Add(root);
 
-            foreach (Model.Profiles.Profile profile in _profiles)
+            foreach (IProfile profile in _profiles)
             {
-                root.Add(profile.Save());
+                root.Add(profile.Save(Encryptor));
             }
 
             doc.Save(Settings.SettingsFolder.ProfilesPath);
@@ -111,7 +115,7 @@ namespace Sifon.Code.Providers.Profile
 
         public bool Any => _profiles.Any();
 
-        private Model.Profiles.Profile GetByName(string profileName)
+        private IProfile GetByName(string profileName)
         {
             return _profiles.FirstOrDefault(p => p.ProfileName == profileName);
         }

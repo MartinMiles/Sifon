@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -10,19 +11,12 @@ namespace Sifon.Code.Extensions.Models
 {
     public static class ProfileExtensions
     {
-        //public static void SetSqlProfile(this IProfile profile, ISqlServerRecord sqlServerRecord)
-        //{
-        //    var provider = new SqlServerRecordProvider();
-        //    provider.Add(sqlServerRecord);
-        //    provider.Save();
-        //}
-
         public static ISqlServerRecord GetSqlProfile(this IProfile profile)
         {
             return new SqlServerRecordProvider().GetByName(profile.SqlServer);
         }
 
-        public static void Parse(this IProfile profile, XmlNode node)
+        public static void Parse(this IProfile profile, XmlNode node, IEncryptor encryptor)
         {
             profile.Selected = node.BoolAttribute(Settings.Xml.Attributes.Selected);
             profile.Empty = node.BoolAttribute(Settings.Xml.Attributes.Empty);
@@ -30,12 +24,12 @@ namespace Sifon.Code.Extensions.Models
             profile.RemotingEnabled = node.BoolAttribute(Settings.Xml.Attributes.RemotingEnabled);
             profile.RemoteHost = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteExecutionHost, Settings.Xml.Attributes.Value);
             profile.RemoteUsername = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteUsername, Settings.Xml.Attributes.Value);
-            profile.RemotePassword = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemotePassword, Settings.Xml.Attributes.Value);
+            profile.RemotePassword = encryptor.Decrypt(node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemotePassword, Settings.Xml.Attributes.Value));
             profile.RemoteFolder = node.ChildNodes.GetTextValue(Settings.Xml.Profile.RemoteFolder, Settings.Xml.Attributes.Value);
             profile.ProfileName = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Name, Settings.Xml.Attributes.Value);
             profile.Prefix = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Prefix, Settings.Xml.Attributes.Value);
             profile.AdminUsername = node.ChildNodes.GetTextValue(Settings.Xml.Profile.AdminUsername, Settings.Xml.Attributes.Value);
-            profile.AdminPassword = node.ChildNodes.GetTextValue(Settings.Xml.Profile.AdminPassword, Settings.Xml.Attributes.Value);
+            profile.AdminPassword = encryptor.Decrypt(node.ChildNodes.GetTextValue(Settings.Xml.Profile.AdminPassword, Settings.Xml.Attributes.Value));
             profile.Webroot = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Webroot, Settings.Xml.Attributes.Value);
             profile.Website = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Website, Settings.Xml.Attributes.Value);
             profile.Solr = node.ChildNodes.GetTextValue(Settings.Xml.Profile.Solr, Settings.Xml.Attributes.Value);
@@ -58,7 +52,7 @@ namespace Sifon.Code.Extensions.Models
             return parameters;
         }
 
-        public static XElement Save(this IProfile profile)
+        public static XElement Save(this IProfile profile, IEncryptor encryptor)
         {
             var root = new XElement(Settings.Xml.Profile.NodeName);
             if (profile.Selected)
@@ -85,7 +79,7 @@ namespace Sifon.Code.Extensions.Models
             root.Add(remoteUsername);
 
             var remotePassword = new XElement(Settings.Xml.Profile.RemotePassword);
-            remotePassword.SetAttributeValue(Settings.Xml.Attributes.Value, profile.RemotePassword);
+            remotePassword.SetAttributeValue(Settings.Xml.Attributes.Value, encryptor.Encrypt(profile.RemotePassword));
             root.Add(remotePassword);
 
             var remoteFolder = new XElement(Settings.Xml.Profile.RemoteFolder);
@@ -105,7 +99,7 @@ namespace Sifon.Code.Extensions.Models
             root.Add(adminUsername);
 
             var adminPassword = new XElement(Settings.Xml.Profile.AdminPassword);
-            adminPassword.SetAttributeValue(Settings.Xml.Attributes.Value, profile.AdminPassword);
+            adminPassword.SetAttributeValue(Settings.Xml.Attributes.Value, encryptor.Encrypt(profile.AdminPassword));
             root.Add(adminPassword);
 
             var website = new XElement(Settings.Xml.Profile.Website);

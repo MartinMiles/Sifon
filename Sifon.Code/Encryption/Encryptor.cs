@@ -18,6 +18,11 @@ namespace Sifon.Code.Encryption
 
         public string Encrypt(string text)
         {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return text;
+            }
+
             return Encrypt(text, GetDefaultSalt());
         }
 
@@ -92,9 +97,9 @@ namespace Sifon.Code.Encryption
 
         public string Decrypt(string encryptedText, string salt)
         {
-            if (encryptedText == null)
+            if (string.IsNullOrWhiteSpace(encryptedText))
             {
-                return null;
+                return encryptedText;
             }
 
             RijndaelManaged rijndaelCipher;
