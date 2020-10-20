@@ -25,7 +25,6 @@ namespace Sifon.Forms.MainForm
         {
             pluginsToolStripMenuItem.DropDownItems.Clear();
             DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem);
-            pluginsToolStripMenuItem.Text = "Plugins";
 
             MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
         }
@@ -65,6 +64,12 @@ namespace Sifon.Forms.MainForm
             try
             {
                 parentMenuItem.Name = menuItem.DirectoryFullPath;
+
+                if (menuItem.DirectoryName == "Sifon.Plugins")
+                {
+                    menuItem.DirectoryName = parentMenuItem.Text;
+                }
+
                 parentMenuItem.Text = menuItem.DirectoryName;
 
                 AddScriptsToMenu(menuItem.Scripts, parentMenuItem);
