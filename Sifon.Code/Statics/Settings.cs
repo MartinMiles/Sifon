@@ -33,7 +33,7 @@ namespace Sifon.Code.Statics
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
             public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
-            public static string Module => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Module");
+            public static string Module => Path.Combine(Environment.CurrentDirectory, Modules.Directory);
         }
 
         public static class CacheFolder

@@ -29,6 +29,8 @@ namespace Sifon.Code.Statics
             internal const string GetHashMD5 = "Get-HashMD5";
         }
 
+        public const string Directory = "PowerShell\\Module";
+
         public static class Files
         {
             public const string Installer = "_deploy_to_modules.ps1";
@@ -78,7 +80,6 @@ namespace Sifon.Code.Statics
             Files.VerifyPortalCredentials,
             Files.GetConnectionString,
             Files.InstallSitecorePackageUsingRemoting,
-
             Files.GetSiteFolder,
             Files.GetBindings,
             Files.GetSitecoreSites,

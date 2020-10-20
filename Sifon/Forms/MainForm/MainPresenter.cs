@@ -52,9 +52,7 @@ namespace Sifon.Forms.MainForm
         private void InstallModuleOnfirstRun()
         {
             var ps = PowerShell.Create();
-
-            // TODO: replace with folders
-            ps.AddCommand($".\\PowerShell\\Module\\{Modules.Files.Installer}");
+            ps.AddCommand($".\\{Modules.Directory}\\{Modules.Files.Installer}");
             ps.Invoke();
         }
 
