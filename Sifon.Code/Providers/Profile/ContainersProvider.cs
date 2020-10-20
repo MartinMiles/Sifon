@@ -57,7 +57,7 @@ namespace Sifon.Code.Providers.Profile
         public void Save()
         {
             var doc = new XDocument();
-            var root = new XElement(Settings.Xml.ContainerProfile.NodeListName);
+            var root = new XElement(Xml.ContainerProfile.NodeListName);
             doc.Add(root);
 
             foreach (ContainerProfile profile in _profiles)

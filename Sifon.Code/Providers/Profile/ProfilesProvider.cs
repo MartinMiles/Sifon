@@ -61,7 +61,7 @@ namespace Sifon.Code.Providers.Profile
         public void Save()
         {
             var doc = new XDocument();
-            var root = new XElement(Settings.Xml.Profile.NodeListName);
+            var root = new XElement(Xml.Profile.NodeListName);
             doc.Add(root);
 
             foreach (IProfile profile in _profiles)

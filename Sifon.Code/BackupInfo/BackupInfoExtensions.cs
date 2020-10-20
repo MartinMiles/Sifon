@@ -26,20 +26,20 @@ namespace Sifon.Code.BackupInfo
 
         public static void Parse(this BackupInfo backupInfo, XmlElement doc)
         {
-            backupInfo.Webroot = doc.ChildNodes.GetTextValue(Settings.Xml.Backup_Info.Webroot, Settings.Xml.Attributes.Value);
-            backupInfo.SitecoreInstance = doc.ChildNodes.GetTextValue(Settings.Xml.Backup_Info.SitecoreInstance, Settings.Xml.Attributes.Value);
+            backupInfo.Webroot = doc.ChildNodes.GetTextValue(Xml.Backup_Info.Webroot, Xml.Attributes.Value);
+            backupInfo.SitecoreInstance = doc.ChildNodes.GetTextValue(Xml.Backup_Info.SitecoreInstance, Xml.Attributes.Value);
         }
 
         public static XElement Serialize(this BackupInfo backupInfo)
         {
-            var root = new XElement(Settings.Xml.Backup_Info.NodeName);
+            var root = new XElement(Xml.Backup_Info.NodeName);
 
-            var webroot = new XElement(Settings.Xml.Backup_Info.Webroot);
-            webroot.SetAttributeValue(Settings.Xml.Attributes.Value, backupInfo.Webroot);
+            var webroot = new XElement(Xml.Backup_Info.Webroot);
+            webroot.SetAttributeValue(Xml.Attributes.Value, backupInfo.Webroot);
             root.Add(webroot);
 
-            var instance = new XElement(Settings.Xml.Backup_Info.SitecoreInstance);
-            instance.SetAttributeValue(Settings.Xml.Attributes.Value, backupInfo.SitecoreInstance);
+            var instance = new XElement(Xml.Backup_Info.SitecoreInstance);
+            instance.SetAttributeValue(Xml.Attributes.Value, backupInfo.SitecoreInstance);
             root.Add(instance);
 
             return root;

@@ -130,6 +130,7 @@
     <Compile Include="Statics\Modules.cs" />
     <Compile Include="Statics\Settings.cs" />
     <Compile Include="Statics\Validation.cs" />
+    <Compile Include="Statics\Xml.cs" />
     <Compile Include="Validation\FormValidation.cs" />
     <Compile Include="VersionSelector\HashProvider.cs" />
     <Compile Include="VersionSelector\KernelHash.cs" />

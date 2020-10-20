@@ -3,9 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Encryption;
 using Sifon.Code.Model.Profiles;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions.Models;
@@ -56,7 +54,7 @@ namespace Sifon.Code.Providers.Profile
         public void Save()
         {
             var doc = new XDocument();
-            var root = new XElement(Settings.Xml.SqlServerRecord.NodeListName);
+            var root = new XElement(Xml.SqlServerRecord.NodeListName);
             doc.Add(root);
 
             foreach (var record in _entities)

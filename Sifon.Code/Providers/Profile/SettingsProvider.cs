@@ -44,15 +44,15 @@ namespace Sifon.Code.Providers.Profile
         public void Save(ISettingRecord settingRecord)
         {
             var doc = new XDocument();
-            var root = new XElement(Settings.Xml.SettingRecord.NodeListName);
+            var root = new XElement(Xml.SettingRecord.NodeListName);
             doc.Add(root);
 
-            var username = new XElement(Settings.Xml.SettingRecord.PortalUsername);
-            username.SetAttributeValue(Settings.Xml.Attributes.Value, settingRecord.PortalUsername);
+            var username = new XElement(Xml.SettingRecord.PortalUsername);
+            username.SetAttributeValue(Xml.Attributes.Value, settingRecord.PortalUsername);
             root.Add(username);
 
-            var password = new XElement(Settings.Xml.SettingRecord.PortalPassword);
-            password.SetAttributeValue(Settings.Xml.Attributes.Value, Encryptor.Encrypt(settingRecord.PortalPassword));
+            var password = new XElement(Xml.SettingRecord.PortalPassword);
+            password.SetAttributeValue(Xml.Attributes.Value, Encryptor.Encrypt(settingRecord.PortalPassword));
             root.Add(password);
 
             doc.Save(Settings.SettingsFolder.SettingsPath);

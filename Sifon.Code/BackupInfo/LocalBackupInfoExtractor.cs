@@ -27,12 +27,12 @@ namespace Sifon.Code.BackupInfo
                     var entry = archive.GetEntry(Settings.BackupInfoFile);
                     if (entry != null)
                     {
-                        entry.ExtractToFile(Settings.CacheFolder.BackupInfo, true);
+                        entry.ExtractToFile(Xml.Backup_Info.FilePath, true);
 
-                        if (File.Exists(Settings.CacheFolder.BackupInfo))
+                        if (File.Exists(Xml.Backup_Info.FilePath))
                         {
-                            var info = new BackupInfo(Settings.CacheFolder.BackupInfo);
-                            File.Delete(Settings.CacheFolder.BackupInfo);
+                            var info = new BackupInfo(Xml.Backup_Info.FilePath);
+                            File.Delete(Xml.Backup_Info.FilePath);
 
                             return info;
                         }
