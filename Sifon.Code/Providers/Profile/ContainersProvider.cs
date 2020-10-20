@@ -119,7 +119,7 @@ namespace Sifon.Code.Providers.Profile
                     
                 // Commented as an item with this key already coming from a profile, it's ok since they don't intersect
                 //parameters.Add(Settings.Parameters.AdminPassword, SelectedProfile.AdminPassword);
-                parameters.Add(Settings.Parameters.SaPassword, SelectedProfile.SaPassword);
+                parameters.Add(Settings.CotainerParameters.SaPassword, SelectedProfile.SaPassword);
             }
         }
     }

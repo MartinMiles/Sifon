@@ -13,6 +13,7 @@ using Sifon.Code.Events;
 using Sifon.Code.Helpers;
 using Sifon.Code.Metacode;
 using Sifon.Code.Model;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.MainForm
 {
@@ -66,7 +67,7 @@ namespace Sifon.Forms.MainForm
             {
                 parentMenuItem.Name = menuItem.DirectoryFullPath;
 
-                if (menuItem.DirectoryName == "Sifon.Plugins") //TODO:
+                if (menuItem.DirectoryName == Settings.Plugins.Directory)
                 {
                     menuItem.DirectoryName = parentMenuItem.Text;
                 }

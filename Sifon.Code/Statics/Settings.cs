@@ -31,9 +31,14 @@ namespace Sifon.Code.Statics
         {
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
-            public static string Plugins => Path.Combine(Environment.CurrentDirectory, "Sifon.Plugins");
+            public static string Plugins => Path.Combine(Environment.CurrentDirectory, Settings.Plugins.Directory);
             public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
             public static string Module => Path.Combine(Environment.CurrentDirectory, Modules.Directory);
+        }
+
+        public static class Plugins
+        {
+            public const string Directory = "Sifon.Plugins";
         }
 
         internal static class SettingsFolder
@@ -111,6 +116,11 @@ namespace Sifon.Code.Statics
             public static string[] Commerce = {"Authoring", "Ops", "Shops", "Minions", "BizFx"};
         }
 
+        public static class CotainerParameters
+        {
+            public const string SaPassword = "SaPassword";
+        }
+
         public static class Parameters
         {
             // from profile
@@ -133,7 +143,6 @@ namespace Sifon.Code.Statics
             public const string Folder = "Folder";
 
             //public const string AdminPassword = "AdminPassword";
-            public const string SaPassword = "SaPassword";
 
             //public const string InstanceFolder = "instanceFolder";
 

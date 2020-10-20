@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using Sifon.Abstractions.Profiles;
+using Sifon.Code.Extensions;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -70,10 +71,7 @@ namespace Sifon.Forms.Initialize
             {
                 {"Activity", Settings.Initialize.ProgressActivityName},
                 {"RemoteHost", remoteSettings.RemoteHost},
-
-                //TODO: Safe credentials - ?
-                { "Username", remoteSettings.RemoteUsername},
-                {"Password", remoteSettings.RemotePassword},
+                {"Credentials", new PSCredential(remoteSettings.RemoteUsername, remoteSettings.RemotePassword.ToSecureString())},
                 {"RemoteDirectory", Settings.RemoteDirectory},
                 {"ModuleFiles", Modules.ToBeCopiedToRemote},
             };
