@@ -32,7 +32,7 @@ namespace Sifon.Code.Statics
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, Settings.Plugins.Directory);
-            public static string Core => Path.Combine(Environment.CurrentDirectory, "PowerShell\\Core");
+            public static string PowerShell => Path.Combine(Environment.CurrentDirectory, "PowerShell");
             public static string Module => Path.Combine(Environment.CurrentDirectory, Modules.Directory);
         }
 
@@ -67,7 +67,7 @@ namespace Sifon.Code.Statics
         {
             public static class Remote
             {
-                public static string Initialize => Path.Combine(Folders.Core, "Initialize-Remote.ps1");
+                public static string Initialize => Path.Combine(Folders.PowerShell, "Initialize-Remote.ps1");
             }
         }
 
