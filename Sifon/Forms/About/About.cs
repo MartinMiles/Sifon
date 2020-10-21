@@ -47,16 +47,5 @@ namespace Sifon.Forms.About
             var website = new ProcessStartInfo("https://t.me/SitecoreTelegram");
             Process.Start(website);
         }
-
-        private void groupBox1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics gfx = e.Graphics;
-            var p = new Pen(Color.Gray, 1);
-            gfx.DrawLine(p, 0, 5, 0, e.ClipRectangle.Height - 2);
-            gfx.DrawLine(p, 0, 5, 10, 5);
-            gfx.DrawLine(p, 10, 5, e.ClipRectangle.Width - 2, 5);
-            gfx.DrawLine(p, e.ClipRectangle.Width - 2, 5, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2);
-            gfx.DrawLine(p, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2, 0, e.ClipRectangle.Height - 2);
-        }
     }
 }
