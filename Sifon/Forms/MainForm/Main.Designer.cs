@@ -22,6 +22,7 @@ namespace Sifon.Forms.MainForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,14 +116,14 @@ namespace Sifon.Forms.MainForm
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
             this.profilesToolStripMenuItem1.Text = "Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(164, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             this.menuContainerPlugins.Click += new System.EventHandler(this.menuContainersPlugins_Click);
             // 
@@ -265,6 +266,7 @@ namespace Sifon.Forms.MainForm
             this.ClientSize = new System.Drawing.Size(1410, 719);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
