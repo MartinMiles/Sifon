@@ -121,8 +121,6 @@ namespace Sifon.Forms.Remover
             linkSelectAll.Visible = listDatabases.Items.Count > 0;
         }
 
-        // TODO: why not active - smth got missed out? TEST WITH new
-        //protected void ScriptComplete()
         public void FinishUI()
         {
             textDatabasePrefix.Enabled = true;

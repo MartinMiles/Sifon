@@ -111,15 +111,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             Presenter.Raise_ProfileChangedEvent(comboProfiles.SelectedIndex > 0);
         }
 
-        //TODO: Test why is inactive?
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            if (ShowYesNo(Messages.General.YesNoCaption, Messages.Profiles.ConfirmDeletingProfile))
-            {
-                SelectedProfileDeleted(this, e);
-            }
-        }
-
         private void buttonRename_Click(object sender, EventArgs e)
         {
             if (comboProfiles.SelectedIndex > 0)

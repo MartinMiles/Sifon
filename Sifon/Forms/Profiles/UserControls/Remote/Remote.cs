@@ -13,7 +13,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
     internal partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
         #region Public events
-        public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };       // TODO: remove later
+        public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };
         public event EventHandler<EventArgs<string>> RemoteInitialized = delegate { };
         public event EventHandler<EventArgs<IRemoteSettings>> TestRemote = delegate { };
 

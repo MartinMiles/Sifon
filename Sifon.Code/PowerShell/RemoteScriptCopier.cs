@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
@@ -9,7 +7,6 @@ using Sifon.Abstractions.Profiles;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
-using Sifon.Code.Model.Profiles;
 
 namespace Sifon.Code.PowerShell
 {
@@ -33,14 +30,6 @@ namespace Sifon.Code.PowerShell
             _scriptWrapper = new ScriptWrapper<string>(fakeLocalProfile, invoke, d => d.ToString());
         }
         
-        //todo: is it used at all?
-        public string UseProfileFolderIfRemote(string scriptPath)
-        {
-            return _profile.RemotingEnabled && _profile.RemoteFolder.NotEmpty() 
-                ? Path.Combine(_profile.RemoteFolder, Path.GetFileName(scriptPath))
-                : scriptPath;
-        }
-
         public async Task<string> CopyIfRemote(string scriptPath)
         {
             if (_profile.RemotingEnabled)

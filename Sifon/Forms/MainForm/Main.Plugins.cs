@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -48,16 +47,15 @@ namespace Sifon.Forms.MainForm
             }
         }
 
-        private ToolStripMenuItem FindMenuItemByTopLevelName(ToolStripMenuItem pluginsToolStripMenuItem, string name)
+        private ToolStripMenuItem FindMenuItemByTopLevelName(ToolStripMenuItem pluginsMenuItem, string name)
         {
-            foreach (ToolStripMenuItem menuItem in pluginsToolStripMenuItem.DropDownItems)
+            foreach (ToolStripMenuItem menuItem in pluginsMenuItem.DropDownItems)
             {
                 if (menuItem.Text == name)
                 {
                     return menuItem;
                 }
             }
-
             return null;
         }
 

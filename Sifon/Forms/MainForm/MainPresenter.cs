@@ -31,7 +31,7 @@ namespace Sifon.Forms.MainForm
                 var provider = new ProfilesProvider();
                 provider.Save();
 
-                InstallModuleOnfirstRun();
+                InstallModuleOnFirstRun();
 
                 view.ForceProfileDialogOnFirstRun();
                 _profilesService.Read();
@@ -49,7 +49,7 @@ namespace Sifon.Forms.MainForm
             
         }
 
-        private void InstallModuleOnfirstRun()
+        private void InstallModuleOnFirstRun()
         {
             var ps = PowerShell.Create();
             ps.AddCommand($".\\{Modules.Directory}\\{Modules.Files.Installer}");

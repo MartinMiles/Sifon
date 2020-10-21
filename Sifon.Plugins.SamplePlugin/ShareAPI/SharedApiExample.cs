@@ -10,8 +10,6 @@ namespace Sifon.Plugins.Example.ShareAPI
 {
     public class SharedApiExample : BasePlugin, IPlugin
     {
-        // TODO: Rename to API Factory
-
         public SharedApiExample(IProfile profile) : base(profile)
         {
         }
