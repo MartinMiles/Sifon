@@ -23,9 +23,7 @@ namespace Sifon.Forms.Initialize
         {
             new InitRemotePresenter(this, RemoteSettings);
 
-            Text = $"Initializing {RemoteSettings.RemoteHost}";
-            
-            //labelStatus.Visible = false;
+            Text = $"Initializing Sifon on {RemoteSettings.RemoteHost}";
 
             FormLoaded(this, new EventArgs());
         }
