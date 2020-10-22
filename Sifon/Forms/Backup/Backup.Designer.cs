@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Backup));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkSelectAll = new System.Windows.Forms.LinkLabel();
+            this.listDatabases = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkDatabases = new System.Windows.Forms.CheckBox();
             this.groupBackup = new System.Windows.Forms.GroupBox();
             this.checkPublishing = new System.Windows.Forms.CheckBox();
             this.checkHorizon = new System.Windows.Forms.CheckBox();
@@ -43,18 +49,67 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkFiles = new System.Windows.Forms.CheckBox();
             this.comboInstances = new System.Windows.Forms.ComboBox();
-            this.checkDatabases = new System.Windows.Forms.CheckBox();
             this.buttonBackup = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listDatabases = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.linkSelectAll = new System.Windows.Forms.LinkLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox1.SuspendLayout();
             this.groupBackup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.linkSelectAll);
+            this.groupBox1.Controls.Add(this.listDatabases);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.checkDatabases);
+            this.groupBox1.Location = new System.Drawing.Point(314, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(281, 343);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Instance databases:";
+            // 
+            // linkSelectAll
+            // 
+            this.linkSelectAll.AutoSize = true;
+            this.linkSelectAll.Location = new System.Drawing.Point(175, 27);
+            this.linkSelectAll.Name = "linkSelectAll";
+            this.linkSelectAll.Size = new System.Drawing.Size(100, 13);
+            this.linkSelectAll.TabIndex = 14;
+            this.linkSelectAll.TabStop = true;
+            this.linkSelectAll.Text = "select all databases";
+            this.linkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // listDatabases
+            // 
+            this.listDatabases.FormattingEnabled = true;
+            this.listDatabases.Location = new System.Drawing.Point(12, 74);
+            this.listDatabases.Name = "listDatabases";
+            this.listDatabases.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listDatabases.Size = new System.Drawing.Size(263, 251);
+            this.listDatabases.TabIndex = 12;
+            this.listDatabases.SelectedIndexChanged += new System.EventHandler(this.listDatabases_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Select databases for backup:";
+            // 
+            // checkDatabases
+            // 
+            this.checkDatabases.AutoSize = true;
+            this.checkDatabases.Location = new System.Drawing.Point(15, 26);
+            this.checkDatabases.Name = "checkDatabases";
+            this.checkDatabases.Size = new System.Drawing.Size(158, 17);
+            this.checkDatabases.TabIndex = 10;
+            this.checkDatabases.Text = "Backup selected databases";
+            this.checkDatabases.UseVisualStyleBackColor = true;
+            this.checkDatabases.CheckedChanged += new System.EventHandler(this.checkDatabases_CheckedChanged);
             // 
             // groupBackup
             // 
@@ -218,17 +273,6 @@
             this.comboInstances.TabIndex = 7;
             this.comboInstances.SelectedIndexChanged += new System.EventHandler(this.comboInstances_SelectedIndexChanged);
             // 
-            // checkDatabases
-            // 
-            this.checkDatabases.AutoSize = true;
-            this.checkDatabases.Location = new System.Drawing.Point(15, 26);
-            this.checkDatabases.Name = "checkDatabases";
-            this.checkDatabases.Size = new System.Drawing.Size(158, 17);
-            this.checkDatabases.TabIndex = 10;
-            this.checkDatabases.Text = "Backup selected databases";
-            this.checkDatabases.UseVisualStyleBackColor = true;
-            this.checkDatabases.CheckedChanged += new System.EventHandler(this.checkDatabases_CheckedChanged);
-            // 
             // buttonBackup
             // 
             this.buttonBackup.Enabled = false;
@@ -239,49 +283,6 @@
             this.buttonBackup.Text = "Backup";
             this.buttonBackup.UseVisualStyleBackColor = true;
             this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Select databases for backup:";
-            // 
-            // listDatabases
-            // 
-            this.listDatabases.FormattingEnabled = true;
-            this.listDatabases.Location = new System.Drawing.Point(12, 74);
-            this.listDatabases.Name = "listDatabases";
-            this.listDatabases.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listDatabases.Size = new System.Drawing.Size(263, 251);
-            this.listDatabases.TabIndex = 12;
-            this.listDatabases.SelectedIndexChanged += new System.EventHandler(this.listDatabases_SelectedIndexChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.linkSelectAll);
-            this.groupBox1.Controls.Add(this.listDatabases);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.checkDatabases);
-            this.groupBox1.Location = new System.Drawing.Point(314, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(281, 343);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Instance databases:";
-            // 
-            // linkSelectAll
-            // 
-            this.linkSelectAll.AutoSize = true;
-            this.linkSelectAll.Location = new System.Drawing.Point(175, 27);
-            this.linkSelectAll.Name = "linkSelectAll";
-            this.linkSelectAll.Size = new System.Drawing.Size(100, 13);
-            this.linkSelectAll.TabIndex = 14;
-            this.linkSelectAll.TabStop = true;
-            this.linkSelectAll.Text = "select all databases";
-            this.linkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // errorProvider1
             // 
@@ -297,6 +298,7 @@
             this.Controls.Add(this.groupBackup);
             this.Controls.Add(this.buttonBackup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Backup";
@@ -304,11 +306,11 @@
             this.Text = "Backup Sitecore instance";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Backup_FormClosing);
             this.Load += new System.EventHandler(this.Loaded);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBackup.ResumeLayout(false);
             this.groupBackup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 

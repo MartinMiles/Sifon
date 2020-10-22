@@ -143,6 +143,7 @@ namespace Sifon.Forms.MainForm
             // 
             // sitecorePortalCredentialsToolStripMenuItem
             // 
+            this.sitecorePortalCredentialsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sitecorePortalCredentialsToolStripMenuItem.Name = "sitecorePortalCredentialsToolStripMenuItem";
             this.sitecorePortalCredentialsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.sitecorePortalCredentialsToolStripMenuItem.Text = "Sitecore Portal Credentials";

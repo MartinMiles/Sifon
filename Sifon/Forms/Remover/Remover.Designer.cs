@@ -21,6 +21,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Remover));
             this.groupDatabases = new System.Windows.Forms.GroupBox();
             this.checkDatabases = new System.Windows.Forms.CheckBox();
             this.textDatabasePrefix = new System.Windows.Forms.TextBox();
@@ -365,6 +366,7 @@
             this.Controls.Add(this.groupDatabases);
             this.Controls.Add(this.groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Remover";
