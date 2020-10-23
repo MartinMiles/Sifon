@@ -1,4 +1,4 @@
-﻿namespace Sifon.UK.Website.Empty
+﻿namespace Sifon.UK.Website
 {
     public class MvcApplication : System.Web.HttpApplication
     {

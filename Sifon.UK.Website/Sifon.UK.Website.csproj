@@ -101,10 +101,21 @@
   <ItemGroup>
     <Content Include="index.md" />
     <Content Include="KnownIssues.md" />
+    <Content Include="download\Sifon_0.93.zip" />
+    <Content Include="download\Sifon_0.94.zip" />
+    <Content Include="download\Sifon_0.95.zip" />
+    <Content Include="download\Sifon_0.96.zip" />
+    <Content Include="download\Sifon_0.97.zip" />
+    <Content Include="download\Sifon_0.98.zip" />
+    <Content Include="download\Sifon_0.99a.zip" />
+    <Content Include="API.md" />
+    <Content Include="CreatingPlugin.md" />
+    <Content Include="Library.md" />
     <None Include="packages.config" />
-    <Content Include="PluginsLibraryRoadmap.md" />
     <Content Include="QuickStart.md" />
     <Content Include="ReleaseNotes.md" />
+    <Content Include="PluginsLibrary.md" />
+    <Content Include="Remoting.md" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
