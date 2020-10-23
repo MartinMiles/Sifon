@@ -1,8 +1,6 @@
 ﻿namespace Sifon.Abstractions.Profiles
 {
-    public interface ISettingRecord
+    public interface ISettingRecord : IPortalCredentials, ICrashDetails
     {
-        string PortalUsername { get; }
-        string PortalPassword { get; set; }
     }
 }

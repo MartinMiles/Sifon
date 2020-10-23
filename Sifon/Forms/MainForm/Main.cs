@@ -176,6 +176,12 @@ namespace Sifon.Forms.MainForm
             form.ShowDialog();
             form.Dispose();
         }
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var form = new SettingsForm.SettingsForm { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
 
         public void TerminateAsEmptyProfile()
         {
@@ -189,11 +195,6 @@ namespace Sifon.Forms.MainForm
             var form = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
             form.ShowDialog();
             form.Dispose();
-        }
-
-        private void menuContainersPlugins_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

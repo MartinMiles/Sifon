@@ -6,11 +6,10 @@ using Sifon.Code.Events;
 
 namespace Sifon.Forms.PortalCredentials
 {
-    internal partial class PortalCredentials : BaseForm, IPortalCredentialsView, ISettingRecord
+    internal partial class PortalCredentials : BaseForm, IPortalCredentialsView, IPortalCredentials
     {
-        public event EventHandler<EventArgs> FormLoad = delegate { };
-        public event EventHandler<EventArgs<ISettingRecord>> TestClicked = delegate { };
-        public event EventHandler<EventArgs<ISettingRecord>> ValuesChanged = delegate { };
+        public event EventHandler<EventArgs<IPortalCredentials>> TestClicked = delegate { };
+        public event EventHandler<EventArgs<IPortalCredentials>> ValuesChanged = delegate { };
 
         public PortalCredentials()
         {
@@ -21,14 +20,14 @@ namespace Sifon.Forms.PortalCredentials
         private void PortalCredentials_Load(object sender, EventArgs e)
         {
             RevealPasswordWithinTextbox(textPassword, linkReveal, false);
-            FormLoad(this, e);
+            Raise_FormLoaded();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (!ValidateForm()) return;
 
-            ValuesChanged(this, new EventArgs<ISettingRecord>(this));
+            ValuesChanged(this, new EventArgs<IPortalCredentials>(this));
         }
 
         private void linkReveal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,7 +39,7 @@ namespace Sifon.Forms.PortalCredentials
         {
             if (!ValidateForm()) return;
 
-            TestClicked(this, new EventArgs<ISettingRecord>(this));
+            TestClicked(this, new EventArgs<IPortalCredentials>(this));
         }
 
         public void SetTextboxValues(ISettingRecord entity)

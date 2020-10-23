@@ -80,6 +80,12 @@
             public const string SaveButton = "Once successfully tested, click this button to add / save the provided credentials";
         }
 
+        public static class SettingsForm
+        {
+            public const string CrashLogCheckbox = "Please leave this box checked in order to help me making Sifon better by receiving anonymous crash logs from you";
+            public const string DoneButton = "Clicking this button saves the changes and closes this dialog";
+        }
+
         public static class Backup
         {
             public const string DestinationFolder = "Backup will be stored into this folder";

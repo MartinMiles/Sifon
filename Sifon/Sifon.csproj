@@ -70,6 +70,27 @@
       <SubType>Form</SubType>
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Base\IBaseForm.cs" />
+    <Compile Include="Forms\Feedback\Feedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Feedback\Feedback.Designer.cs">
+      <DependentUpon>Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\ISettingsFormView.cs" />
+    <Compile Include="Forms\SettingsForm\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.Tooltip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsForm.Validation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
     <Compile Include="Statics\ControlSettings.cs" />
     <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="UserControls\LoadingCircle.cs">
@@ -338,6 +359,9 @@
     <EmbeddedResource Include="Forms\Containers\DockerProfiles.resx">
       <DependentUpon>DockerProfiles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Feedback\Feedback.resx">
+      <DependentUpon>Feedback.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profiles\Profiles.resx">
       <DependentUpon>Profiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Events;
+using Sifon.Forms.Base;
 
 namespace Sifon.Forms.PortalCredentials
 {
-    internal interface IPortalCredentialsView : ISynchronizeInvoke
+    internal interface IPortalCredentialsView : ISynchronizeInvoke, IBaseForm
     {
-        event EventHandler<EventArgs<ISettingRecord>> TestClicked;
-        event EventHandler<EventArgs<ISettingRecord>> ValuesChanged;
-        event EventHandler<EventArgs> FormLoad;
+        event EventHandler<EventArgs<IPortalCredentials>> TestClicked;
+        event EventHandler<EventArgs<IPortalCredentials>> ValuesChanged;
 
         void SetTextboxValues(ISettingRecord entity);
         void ToggleControls(bool enabled);

@@ -35,6 +35,7 @@ namespace Sifon.Forms.MainForm
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerOutput = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -125,7 +126,6 @@ namespace Sifon.Forms.MainForm
             this.menuContainerPlugins.Name = "menuContainerPlugins";
             this.menuContainerPlugins.Size = new System.Drawing.Size(164, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
-            this.menuContainerPlugins.Click += new System.EventHandler(this.menuContainersPlugins_Click);
             // 
             // pluginsToolStripMenuItem
             // 
@@ -136,7 +136,8 @@ namespace Sifon.Forms.MainForm
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sitecorePortalCredentialsToolStripMenuItem});
+            this.sitecorePortalCredentialsToolStripMenuItem,
+            this.settingsToolStripMenuItem1});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -148,6 +149,13 @@ namespace Sifon.Forms.MainForm
             this.sitecorePortalCredentialsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.sitecorePortalCredentialsToolStripMenuItem.Text = "Sitecore Portal Credentials";
             this.sitecorePortalCredentialsToolStripMenuItem.Click += new System.EventHandler(this.sitecorePortalCredentialsToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem1
+            // 
+            this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
+            this.settingsToolStripMenuItem1.Text = "Application Settings";
+            this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -309,6 +317,7 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem containersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuContainerPlugins;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
     }
 }
 

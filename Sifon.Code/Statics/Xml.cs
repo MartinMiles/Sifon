@@ -52,6 +52,7 @@ namespace Sifon.Code.Statics
 
             public const string PortalUsername = "PortalUsername";
             public const string PortalPassword = "PortalPassword";
+            public const string SendCrashDetails = "SendCrashDetails";
         }
 
         public static class SqlServerRecord

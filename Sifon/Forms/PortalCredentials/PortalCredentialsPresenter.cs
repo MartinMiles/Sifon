@@ -23,7 +23,7 @@ namespace Sifon.Forms.PortalCredentials
             _view = view;
             _settingsProvider = new SettingsProvider();
 
-            _view.FormLoad += FormLoad;
+            _view.FormLoaded += FormLoad;
             _view.TestClicked += TestClicked;
             _view.ValuesChanged += ValuesChanged;
 
@@ -37,12 +37,12 @@ namespace Sifon.Forms.PortalCredentials
             _view.SetTextboxValues(entity);
         }
 
-        private void ValuesChanged(object sender, EventArgs<ISettingRecord> e)
+        private void ValuesChanged(object sender, EventArgs<IPortalCredentials> e)
         {
-            _settingsProvider.Save(e.Value);
+            _settingsProvider.SaveCredentials(e.Value);
         }
 
-        private async void TestClicked(object sender, EventArgs<ISettingRecord> e)
+        private async void TestClicked(object sender, EventArgs<IPortalCredentials> e)
         {
             var parameters = new Dictionary<string, dynamic>();
             _settingsProvider.TestScriptSettingsParameters(parameters, e.Value.PortalUsername, e.Value.PortalPassword);

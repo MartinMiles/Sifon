@@ -3,13 +3,14 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Encryption;
 using Sifon.Code.Model.Profiles;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
+using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
+    //TODO: Add interface and use it instead
     public class SettingsProvider : BaseEncryptedProvider
     {
         private ISettingRecord _entity;
@@ -41,20 +42,25 @@ namespace Sifon.Code.Providers.Profile
             return _entity;
         }
 
-        public void Save(ISettingRecord settingRecord)
+        public void SaveCredentials(IPortalCredentials portalCredentials)
+        {
+            _entity.PortalUsername = portalCredentials.PortalUsername;
+            _entity.PortalPassword = portalCredentials.PortalPassword;
+
+            SaveSettings();
+        }
+
+        public void SaveCrashDetails(ICrashDetails crashDetails)
+        {
+            _entity.SendCrashDetails = crashDetails.SendCrashDetails;
+
+            SaveSettings();
+        }
+
+        private void SaveSettings()
         {
             var doc = new XDocument();
-            var root = new XElement(Xml.SettingRecord.NodeListName);
-            doc.Add(root);
-
-            var username = new XElement(Xml.SettingRecord.PortalUsername);
-            username.SetAttributeValue(Xml.Attributes.Value, settingRecord.PortalUsername);
-            root.Add(username);
-
-            var password = new XElement(Xml.SettingRecord.PortalPassword);
-            password.SetAttributeValue(Xml.Attributes.Value, Encryptor.Encrypt(settingRecord.PortalPassword));
-            root.Add(password);
-
+            doc.Add(_entity.Save(Encryptor));
             doc.Save(Settings.SettingsFolder.SettingsPath);
         }
 
