@@ -29,106 +29,111 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.labelFeedback = new System.Windows.Forms.Label();
+            this.textFeedback = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.textEmail = new System.Windows.Forms.TextBox();
+            this.labelFullnme = new System.Windows.Forms.Label();
+            this.textFullname = new System.Windows.Forms.TextBox();
+            this.labelGiudance = new System.Windows.Forms.Label();
+            this.buttonSubmit = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.label4);
-            this.groupBox.Controls.Add(this.textBox3);
-            this.groupBox.Controls.Add(this.label3);
-            this.groupBox.Controls.Add(this.textBox2);
-            this.groupBox.Controls.Add(this.label2);
-            this.groupBox.Controls.Add(this.textBox1);
-            this.groupBox.Controls.Add(this.label1);
-            this.groupBox.Controls.Add(this.buttonSave);
+            this.groupBox.Controls.Add(this.labelFeedback);
+            this.groupBox.Controls.Add(this.textFeedback);
+            this.groupBox.Controls.Add(this.labelEmail);
+            this.groupBox.Controls.Add(this.textEmail);
+            this.groupBox.Controls.Add(this.labelFullnme);
+            this.groupBox.Controls.Add(this.textFullname);
+            this.groupBox.Controls.Add(this.labelGiudance);
+            this.groupBox.Controls.Add(this.buttonSubmit);
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(341, 264);
+            this.groupBox.Size = new System.Drawing.Size(335, 308);
             this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Program settings:";
             // 
-            // buttonSave
+            // labelFeedback
             // 
-            this.buttonSave.Location = new System.Drawing.Point(241, 221);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 0;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.labelFeedback.AutoSize = true;
+            this.labelFeedback.Location = new System.Drawing.Point(25, 157);
+            this.labelFeedback.Name = "labelFeedback";
+            this.labelFeedback.Size = new System.Drawing.Size(125, 13);
+            this.labelFeedback.TabIndex = 7;
+            this.labelFeedback.Text = "Your feedback message:";
             // 
-            // label1
+            // textFeedback
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.textFeedback.Location = new System.Drawing.Point(28, 173);
+            this.textFeedback.Multiline = true;
+            this.textFeedback.Name = "textFeedback";
+            this.textFeedback.Size = new System.Drawing.Size(288, 79);
+            this.textFeedback.TabIndex = 6;
             // 
-            // textBox1
+            // labelEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 20);
-            this.textBox1.TabIndex = 2;
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(25, 110);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(99, 13);
+            this.labelEmail.TabIndex = 5;
+            this.labelEmail.Text = "Your email address:";
             // 
-            // label2
+            // textEmail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.textEmail.Location = new System.Drawing.Point(28, 126);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(288, 20);
+            this.textEmail.TabIndex = 4;
             // 
-            // label3
+            // labelFullnme
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.labelFullnme.AutoSize = true;
+            this.labelFullnme.Location = new System.Drawing.Point(25, 59);
+            this.labelFullnme.Name = "labelFullnme";
+            this.labelFullnme.Size = new System.Drawing.Size(61, 13);
+            this.labelFullnme.TabIndex = 3;
+            this.labelFullnme.Text = "Your name:";
             // 
-            // textBox2
+            // textFullname
             // 
-            this.textBox2.Location = new System.Drawing.Point(28, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 20);
-            this.textBox2.TabIndex = 4;
+            this.textFullname.Location = new System.Drawing.Point(28, 75);
+            this.textFullname.Name = "textFullname";
+            this.textFullname.Size = new System.Drawing.Size(288, 20);
+            this.textFullname.TabIndex = 2;
             // 
-            // label4
+            // labelGiudance
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 157);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "label4";
+            this.labelGiudance.AutoSize = true;
+            this.labelGiudance.Location = new System.Drawing.Point(25, 32);
+            this.labelGiudance.Name = "labelGiudance";
+            this.labelGiudance.Size = new System.Drawing.Size(288, 13);
+            this.labelGiudance.TabIndex = 1;
+            this.labelGiudance.Text = "Please enter your feedback. I do respond to your proposals.";
             // 
-            // textBox3
+            // buttonSubmit
             // 
-            this.textBox3.Location = new System.Drawing.Point(28, 173);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(288, 20);
-            this.textBox3.TabIndex = 6;
+            this.buttonSubmit.Location = new System.Drawing.Point(241, 270);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonSubmit.TabIndex = 0;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Feedback
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 294);
+            this.ClientSize = new System.Drawing.Size(360, 332);
             this.Controls.Add(this.groupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Feedback";
             this.Text = "Feedback";
             this.groupBox.ResumeLayout(false);
@@ -140,13 +145,13 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Label labelFeedback;
+        private System.Windows.Forms.TextBox textFeedback;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.TextBox textEmail;
+        private System.Windows.Forms.Label labelFullnme;
+        private System.Windows.Forms.TextBox textFullname;
+        private System.Windows.Forms.Label labelGiudance;
     }
 }

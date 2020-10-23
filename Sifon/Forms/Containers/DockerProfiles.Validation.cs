@@ -41,7 +41,7 @@ namespace Sifon.Forms.Containers
             if (name == textProfileName.Name)
             {
                 return Pattern.Filter.SpecialCharacters.Except.ProfileNameDisallowed;
-            }            
+            }
             if (name == textRepositoryUrl.Name)
             {
                 return Pattern.Filter.SpecialCharacters.Except.ForbiddenInURL;

@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Tests")]
 namespace Sifon.Statics
@@ -6,6 +7,17 @@ namespace Sifon.Statics
     internal static class Pattern
     {
         public const string ColorPattern = @"#COLOR:(\w{2,12})# *";
+
+
+        public static class Feedback
+        {
+            public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
+
+            public const string Fullname = @"^[A-Za-z0-9-+()@ .,_']*$";
+            public const string Email = @"^[A-Za-z0-9-+()@ .,_]*$";
+            public const string FeedbackMessage = @"(.*?)";
+
+        }
 
         public static class DockerProfile
         {
@@ -35,19 +47,21 @@ namespace Sifon.Statics
             public const string Password = @"[^\ ]";
         }
 
-
         public static class PowerShell
         {
             public const string ParameterName = @"^[a-zA-Z$_][a-zA-Z0-9$_]*$";
         }
+
+        public const string DoNotFilter = "^$";
 
         public static class Filter
         {
             /// <summary>
             /// Works for passwords
             /// </summary>
-            public const string Whitespaces = @"[\ ]";
-            
+
+            public const string Whitespaces = @" ";
+
             public static class SpecialCharacters
             {
                 public const string All = @"[^\w\d]";
@@ -65,6 +79,11 @@ namespace Sifon.Statics
                     public const string Underscores = @"[^\w\d_]";
                     
                     /// <summary>
+                    /// Works for first name.
+                    /// </summary>
+                    public const string DotsDashesApostrophes = @"[^\w\d.\- \']";
+                    
+                    /// <summary>
                     /// Works for profile prefix.
                     /// </summary>
                     public const string DotsDashes = @"[^\w\d.-]";
@@ -77,7 +96,7 @@ namespace Sifon.Statics
                     /// <summary>
                     /// Works for email name.
                     /// </summary>
-                    public const string DotsDashesAmpersand = @"[^\w\d.-@]";
+                    public const string DotsDashesAt = @"[^\w\d.-_@]";
 
                     /// <summary>
                     /// Works for SQL Server instance.

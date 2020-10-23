@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Sifon.Extensions;
 using Sifon.Code.Statics;
+using Sifon.Extensions;
 using Sifon.Statics;
 
-namespace Sifon.Forms.PortalCredentials
+namespace Sifon.Forms.Feedback
 {
-    partial class PortalCredentials
+    partial class Feedback
     {
         #region Passive validation on text changed and character entered
 
         protected override void AddPassiveValidationHandlers()
         {
-            textUsername.KeyPress += NameAndPrefixKeyPress;
-            textPassword.KeyPress += NameAndPrefixKeyPress;
+            textFullname.KeyPress += NameAndPrefixKeyPress;
+            textEmail.KeyPress += NameAndPrefixKeyPress;
+            textFeedback.KeyPress += NameAndPrefixKeyPress;
 
-            textUsername.TextChanged += TextHasChanged;
-            textPassword.TextChanged += TextHasChanged;
+            textFullname.TextChanged += TextHasChanged;
+            textEmail.TextChanged += TextHasChanged;
+            textFeedback.TextChanged += TextHasChanged;
         }
 
         private void NameAndPrefixKeyPress(object sender, KeyPressEventArgs e)
@@ -32,25 +34,27 @@ namespace Sifon.Forms.PortalCredentials
 
         private string GetFilterPattern(string name)
         {
-            if (name == textUsername.Name)
+            if (name == textFullname.Name)
+            {
+                return Pattern.Filter.SpecialCharacters.Except.DotsDashesApostrophes;
+            }
+
+            if (name == textEmail.Name)
             {
                 return Pattern.Filter.SpecialCharacters.Except.DotsDashesAt;
             }
-            if (name == textPassword.Name)
+
+            if (name == textFeedback.Name)
             {
-                return Pattern.Filter.Whitespaces;
+                return Pattern.DoNotFilter;
             }
 
             throw new ArgumentOutOfRangeException($"Control is not supporthe for passive validation: {name}");
         }
 
-
         private void UpdateButtonsState()
         {
-            bool buttonsEnabled = textUsername.Text.Length > 0 && textPassword.Text.Length > 0;
-
-            buttonTest.Enabled = buttonsEnabled;
-            buttonSave.Enabled = buttonsEnabled;
+            buttonSubmit.Enabled = textFullname.Text.Length > 0 && textEmail.Text.Length > 0 && textFeedback.Text.Length > 0;
         }
 
         private void TextHasChanged(object sender, EventArgs e)
@@ -64,19 +68,25 @@ namespace Sifon.Forms.PortalCredentials
 
         private List<string> _validationMessages;
 
-
         private bool ValidateForm()
         {
             _validationMessages = new List<string>();
 
-            if (!textUsername.ValidateRegex(Pattern.PortalCredentials.Username))
+            if (!textFullname.ValidateRegex(Pattern.Feedback.Fullname))
             {
-                _validationMessages.Add(Validation.PortalCredentials.Username);
+                _validationMessages.Add(Validation.Feedback.Fullname);
             }
-            if (!textPassword.ValidateRegex(Pattern.PortalCredentials.Password))
+
+            if (!textEmail.ValidateRegex(Pattern.Feedback.Email))
             {
-                _validationMessages.Add(Validation.PortalCredentials.Password);
+                _validationMessages.Add(Validation.Feedback.Email);
             }
+
+            if (!textFeedback.ValidateRegex(Pattern.Feedback.FeedbackMessage))
+            {
+                _validationMessages.Add(Validation.Feedback.FeedbackMessage);
+            }
+
             return ShowValidationError(_validationMessages);
         }
 

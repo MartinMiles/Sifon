@@ -117,15 +117,6 @@ namespace Sifon.Forms.MainForm
             ProfilesToolStripClicked(this, new EventArgs());
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var about = new About.About { StartPosition = FormStartPosition.CenterParent };
-            if (about.ShowDialog() == DialogResult.OK)
-            {
-                about.Dispose();
-            }
-        }
-        
         #endregion
 
         public void BeginUI()
@@ -195,6 +186,24 @@ namespace Sifon.Forms.MainForm
             var form = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
             form.ShowDialog();
             form.Dispose();
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var about = new About.About { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
+        }
+
+        private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new Feedback.Feedback { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
         }
     }
 }

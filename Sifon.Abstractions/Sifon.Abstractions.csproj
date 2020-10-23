@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encryption\IEncryptor.cs" />
+    <Compile Include="Forms\IFeedback.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreCheckboxes.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreFolders.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Profiles\ISqlServerRecord.cs" />
     <Compile Include="Plugins\IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\IApiProvider.cs" />
     <Compile Include="Providers\ISiteProvider.cs" />
     <Compile Include="ScriptGenerators\IScript.cs" />
     <Compile Include="Validation\IFormValidation.cs" />

@@ -9,6 +9,13 @@
             public const string ShouldNotBeEmpty = "should not be empty";
         }
 
+        public static class Feedback
+        {
+            public const string Fullname = "Name is not in correct format";
+            public const string Email = "Invalid email";
+            public const string FeedbackMessage = "Feedback not in correct format";
+        }
+
         public static class Profiles
         {
             public static class Profile
