@@ -99,6 +99,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
+    <Compile Include="Forms\Updates\CheckUpdates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Updates\CheckUpdates.Designer.cs">
+      <DependentUpon>CheckUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Updates\CheckUpdatesPresenter.cs" />
+    <Compile Include="Forms\Updates\ICheckUpdatesView.cs" />
     <Compile Include="Statics\ControlSettings.cs" />
     <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="UserControls\LoadingCircle.cs">
@@ -409,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Updates\CheckUpdates.resx">
+      <DependentUpon>CheckUpdates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

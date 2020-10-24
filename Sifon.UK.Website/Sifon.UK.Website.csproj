@@ -129,6 +129,7 @@
     <Content Include="API.md" />
     <Content Include="CreatingPlugin.md" />
     <Content Include="Library.md" />
+    <Content Include="download\version.json" />
     <None Include="packages.config" />
     <Content Include="QuickStart.md" />
     <Content Include="ReleaseNotes.md" />

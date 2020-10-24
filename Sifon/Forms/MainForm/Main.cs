@@ -6,6 +6,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Containers;
 using Sifon.Code.Events;
 using Sifon.Code.Statics;
+using Sifon.Forms.Updates;
 
 namespace Sifon.Forms.MainForm
 {
@@ -200,6 +201,15 @@ namespace Sifon.Forms.MainForm
         private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var about = new Feedback.Feedback { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
+        }
+
+        private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new CheckUpdates { StartPosition = FormStartPosition.CenterParent };
             if (about.ShowDialog() == DialogResult.OK)
             {
                 about.Dispose();

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sifon.Abstractions.Forms;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
 using Sifon.Code.Providers;
-using Sifon.Code.Providers.Profile;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Feedback
 {
