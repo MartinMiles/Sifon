@@ -29,6 +29,7 @@ namespace Sifon.Code.Statics
 
         public static class Folders
         {
+            public static string Logs = Path.Combine(Environment.CurrentDirectory, "Logs");
             public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
             public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
             public static string Plugins => Path.Combine(Environment.CurrentDirectory, Settings.Plugins.Directory);
@@ -39,6 +40,11 @@ namespace Sifon.Code.Statics
         public static class Plugins
         {
             public const string Directory = "Sifon.Plugins";
+        }
+
+        public static class LogsFolder
+        {
+            public const string LogFilenamePrefix = "SifonLog_";
         }
 
         internal static class SettingsFolder

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
@@ -14,7 +15,7 @@ namespace Sifon.Forms.PortalCredentials
     internal class PortalCredentialsPresenter
     {
         private readonly IPortalCredentialsView _view;
-        private readonly SettingsProvider _settingsProvider;
+        private readonly ISettingsProvider _settingsProvider;
 
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
 

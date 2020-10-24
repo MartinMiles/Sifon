@@ -8,8 +8,6 @@ namespace Sifon.Forms.Initialize
 {
     internal partial class InitRemote : BaseForm, InitRemoteView
     {
-        public event EventHandler<EventArgs> FormLoaded = delegate { };
-
         public IRemoteSettings RemoteSettings  { get; set; }
 
         public string RemoteFolder { get; private set; }
@@ -25,7 +23,7 @@ namespace Sifon.Forms.Initialize
 
             Text = $"Initializing Sifon on {RemoteSettings.RemoteHost}";
 
-            FormLoaded(this, new EventArgs());
+            Raise_FormLoaded();
         }
 
         private void done_Click(object sender, EventArgs e)

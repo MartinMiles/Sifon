@@ -1,5 +1,6 @@
 ﻿using System;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
 using Sifon.Code.Providers.Profile;
 
@@ -8,7 +9,7 @@ namespace Sifon.Forms.SettingsForm
     internal class SettingsFormPresenter
     {
         private readonly ISettingsFormView _view;
-        private readonly SettingsProvider _settingsProvider;
+        private readonly ISettingsProvider _settingsProvider;
 
         public SettingsFormPresenter(ISettingsFormView view)
         {

@@ -3,6 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Model.Profiles;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
@@ -10,8 +11,7 @@ using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    //TODO: Add interface and use it instead
-    public class SettingsProvider : BaseEncryptedProvider
+    public class SettingsProvider : BaseEncryptedProvider, ISettingsProvider
     {
         private ISettingRecord _entity;
 
@@ -66,7 +66,7 @@ namespace Sifon.Code.Providers.Profile
 
         #endregion
 
-        public void AddScriptSettingsParameters(Dictionary<string, object> parameters)
+        public void AddScriptSettingsParameters(IDictionary<string, object> parameters)
         {
             Read();
 
@@ -76,7 +76,7 @@ namespace Sifon.Code.Providers.Profile
             }
         }
 
-        public void TestScriptSettingsParameters(Dictionary<string, object> parameters, string username, string password)
+        public void TestScriptSettingsParameters(IDictionary<string, object> parameters, string username, string password)
         {
             var credential = new System.Management.Automation.PSCredential(username, password.ToSecureString());
             parameters.Add(Settings.Parameters.PortalCredentials, credential);

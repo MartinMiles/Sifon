@@ -90,8 +90,7 @@ namespace Sifon
 
         public void EnableLogger()
         {
-            //TODO: to folders
-            SimpleLog.SetLogFile(".\\Logs", "SifonLog_");
+            SimpleLog.SetLogFile(Settings.Folders.Logs, Settings.LogsFolder.LogFilenamePrefix);
         }
     }
 }

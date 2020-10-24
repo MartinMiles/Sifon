@@ -15,7 +15,6 @@ namespace Sifon.Forms.Remover
 {
     internal partial class Remover : BaseForm, IRemoverView, IBackupRemoverViewModel
     {
-        public event EventHandler<EventArgs> FormLoaded = delegate { }; // TODO: Remove in favor of base or it should be that?
         public event EventHandler<EventArgs<string>> InstanceChanged = delegate { };
         public event EventHandler<EventArgs<string>> DatabaseFilterChanged = delegate { };
         public event EventHandler<EventArgs> ClosingForm = delegate { };
@@ -74,7 +73,7 @@ namespace Sifon.Forms.Remover
         private void Remover_Load(object sender, EventArgs e)
         {
             ResetState();
-            FormLoaded.Invoke(this, e);
+            Raise_FormLoaded();
         }
 
         private void comboInstances_SelectedIndexChanged(object sender, EventArgs e)

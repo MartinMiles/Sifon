@@ -5,6 +5,7 @@ using System.Management.Automation;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Forms.MainForm;
 using Sifon.Code.Events;
 using Sifon.Code.Filesystem;
@@ -20,7 +21,7 @@ namespace Sifon.Forms.Base
     internal abstract class ScriptablePresenter
     {
         protected readonly ProfilesProvider _profilesService;
-        protected readonly SettingsProvider _settingsProvider;
+        protected readonly ISettingsProvider _settingsProvider;
         protected readonly ContainersProvider _containersProvider;
 
         private ScriptWrapper<PSObject> _scriptWrapper;
