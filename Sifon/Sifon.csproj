@@ -85,6 +85,14 @@
     </Compile>
     <Compile Include="Forms\Feedback\FeedbackPresenter.cs" />
     <Compile Include="Forms\Feedback\IFeedbackView.cs" />
+    <Compile Include="Forms\Prerequsites\IPrerequisitesView.cs" />
+    <Compile Include="Forms\Prerequsites\Prerequsites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prerequsites\Prerequsites.Designer.cs">
+      <DependentUpon>Prerequsites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prerequsites\PrerequsitesPresenter.cs" />
     <Compile Include="Forms\SettingsForm\ISettingsFormView.cs" />
     <Compile Include="Forms\SettingsForm\SettingsForm.cs">
       <SubType>Form</SubType>
@@ -157,7 +165,7 @@
     </Compile>
     <Compile Include="Forms\Containers\DockerProfilesPresenter.cs" />
     <Compile Include="Forms\Containers\IDockerProfilesView.cs" />
-    <Compile Include="Forms\Initialize\IInitRemote.cs" />
+    <Compile Include="Forms\Initialize\InitRemoteView.cs" />
     <Compile Include="Forms\Initialize\InitRemote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PortalCredentials\PortalCredentials.resx">
       <DependentUpon>PortalCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prerequsites\Prerequsites.resx">
+      <DependentUpon>Prerequsites.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profiles\UserControls\Connectivity\Connectivity.resx">
       <DependentUpon>Connectivity.cs</DependentUpon>

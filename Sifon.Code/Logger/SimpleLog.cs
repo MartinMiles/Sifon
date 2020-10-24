@@ -518,8 +518,8 @@ namespace Sifon.Code.Logger
                     result = SetLogDir(logDir, true);
 
                 // Check if logging works with new settings
-                if (result == null && check)
-                    result = Check();
+                //if (result == null && check)
+                //    result = Check();
             }
             catch (Exception ex)
             {

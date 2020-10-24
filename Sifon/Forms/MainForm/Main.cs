@@ -215,5 +215,14 @@ namespace Sifon.Forms.MainForm
                 about.Dispose();
             }
         }
+
+        private void chechPrerequsitesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new Prerequsites.Prerequsites { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
+        }
     }
 }

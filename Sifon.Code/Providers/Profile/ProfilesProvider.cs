@@ -13,6 +13,7 @@ using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
+    //TODO: find all calls and use IProfilesProvider instead of ProfilesProvider
     public class ProfilesProvider : BaseEncryptedProvider
     {
         private IEnumerable<IProfile> _profiles;

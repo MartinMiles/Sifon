@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Encryption\IEncryptor.cs" />
     <Compile Include="Forms\IFeedback.cs" />
+    <Compile Include="Forms\IPrerequisites.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreCheckboxes.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreFolders.cs" />

@@ -8,5 +8,19 @@ namespace Sifon.Forms.Other
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            var about = new Prerequsites.Prerequsites { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

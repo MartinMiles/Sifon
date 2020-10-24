@@ -29,9 +29,25 @@ namespace Sifon.Forms.Initialize
             _parameters = CreateParameters(remoteSettings);
 
             _view.FormLoaded += FormLoaded;
+
             _scriptWrapper = new ScriptWrapper<string>(_profile, _view, d => d?.ToString());
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
+        }
+
+        private async void FormLoaded(object sender, EventArgs e)
+        {
+            await _scriptWrapper.Run(Settings.Scripts.Remote.Initialize, _parameters);
+
+            var result = _scriptWrapper.Results.FirstOrDefault();
+            var excp = _scriptWrapper.Errors.FirstOrDefault();
+            var errorMessage = excp is PSRemotingTransportException ? excp.Message : String.Empty;
+
+            if (!string.IsNullOrWhiteSpace(result) && result.Contains("|"))
+            {
+                var folders = result.Split('|');
+                _view.ScriptComplete(folders[0], folders[1], errorMessage);
+            }
         }
 
         private void ErrorReady(Exception exception)
@@ -47,21 +63,6 @@ namespace Sifon.Forms.Initialize
             if (data.Activity == Settings.Initialize.ProgressActivityName)
             {
                 _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity} - {data.StatusDescription}");
-            }
-        }
-
-        private async void FormLoaded(object sender, EventArgs e)
-        {
-            await _scriptWrapper.Run(Settings.Scripts.Remote.Initialize, _parameters);
-
-            var result = _scriptWrapper.Results.FirstOrDefault();
-            var excp = _scriptWrapper.Errors.FirstOrDefault();
-            var errorMessage = excp is PSRemotingTransportException ? excp.Message : String.Empty;
-
-            if (!string.IsNullOrWhiteSpace(result) && result.Contains("|"))
-            {
-                var folders = result.Split('|');
-                _view.ScriptComplete(folders[0], folders[1], errorMessage);
             }
         }
 

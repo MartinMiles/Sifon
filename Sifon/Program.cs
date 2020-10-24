@@ -31,6 +31,7 @@ namespace Sifon
                     SimpleLog.Info("Sifon started.");
 
                     Application.Run(new Main());
+                    SimpleLog.Info("Sifon finished.");
                 }
                 catch (Exception e)
                 {
@@ -63,6 +64,7 @@ namespace Sifon
                     else
                     {
                         FormValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinueGeneric);
+                        FormValidation.ShowError(e.Message, $"{e.Message}{Environment.NewLine}{e.StackTrace}");
                     }
 
                     SimpleLog.Log(e);

@@ -27,6 +27,8 @@ namespace Sifon.Code.Statics
             internal const string GetDrives = "Get-Drives";
             internal const string GetFiles = "Get-Files";
             internal const string GetHashMD5 = "Get-HashMD5";
+            public const string CheckPrerequisites = "Check-Prerequisites";
+            public const string InstallPrerequisites = "Install-Prerequisites";
         }
 
         public const string Directory = "PowerShell\\Module";
@@ -59,7 +61,10 @@ namespace Sifon.Code.Statics
             public static string TestSolrEndpoint => Combine(Functions.TestSolrEndpoint);
             public static string GetDrives => Combine(Functions.GetDrives);
             public static string GetFiles => Combine(Functions.GetFiles);
-            public static string GetHashMD5 => Combine(Functions.GetHashMD5);
+            public static string GetHashMD5 => Combine(Functions.CheckPrerequisites);
+            public static string CheckPrerequisites => Combine(Functions.CheckPrerequisites);
+            public static string InstallPrerequisites => Combine(Functions.InstallPrerequisites);
+
 
             private static string Combine(string moduleParam, string ext = null)
             {
@@ -93,7 +98,9 @@ namespace Sifon.Code.Statics
             Files.TestSolrEndpoint,
             Files.GetDrives,
             Files.GetFiles,
-            Files.GetHashMD5
+            Files.GetHashMD5,
+            Files.CheckPrerequisites,
+            Files.InstallPrerequisites
         };
     }
 }

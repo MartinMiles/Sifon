@@ -66,7 +66,7 @@ namespace Sifon.Code.PowerShell
 
             powerShell = System.Management.Automation.PowerShell.Create();
             powerShell.Runspace = runSpace;
-
+            
             var command = new Command(script);
             if (parameters != null)
             {

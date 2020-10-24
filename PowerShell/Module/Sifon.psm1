@@ -66,3 +66,9 @@ $getInstance = $path + "\Get-Files.ps1"
 
 $getInstance = $path + "\Get-HashMD5.ps1"
 . $getInstance
+
+$getInstance = $path + "\Install-Prerequisites.ps1"
+. $getInstance
+
+$getInstance = $path + "\Check-Prerequisites.ps1"
+. $getInstance

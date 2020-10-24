@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
@@ -52,6 +53,12 @@ namespace Sifon.Forms.MainForm
         private void InstallModuleOnFirstRun()
         {
             var ps = PowerShell.Create();
+            ps.AddCommand("Set-ExecutionPolicy")
+                .AddArgument("Unrestricted")
+                .AddParameter("Scope", "CurrentUser");
+            ps.Invoke();
+
+            ps = PowerShell.Create();
             ps.AddCommand($".\\{Modules.Directory}\\{Modules.Files.Installer}");
             ps.Invoke();
         }
