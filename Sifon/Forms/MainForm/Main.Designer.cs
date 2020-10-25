@@ -49,7 +49,6 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.chechPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -141,8 +140,7 @@ namespace Sifon.Forms.MainForm
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sitecorePortalCredentialsToolStripMenuItem,
-            this.settingsToolStripMenuItem1,
-            this.chechPrerequsitesToolStripMenuItem});
+            this.settingsToolStripMenuItem1});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -296,13 +294,6 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
-            // chechPrerequsitesToolStripMenuItem
-            // 
-            this.chechPrerequsitesToolStripMenuItem.Name = "chechPrerequsitesToolStripMenuItem";
-            this.chechPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.chechPrerequsitesToolStripMenuItem.Text = "Install Prerequsites";
-            this.chechPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.chechPrerequsitesToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AllowDrop = true;
@@ -357,7 +348,6 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem sendFeedbackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkUpdatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem chechPrerequsitesToolStripMenuItem;
     }
 }
 

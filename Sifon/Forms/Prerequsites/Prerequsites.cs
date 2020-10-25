@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Sifon.Abstractions.Forms;
 using Sifon.Code.Events;
 using Sifon.Forms.Base;
@@ -51,6 +52,7 @@ namespace Sifon.Forms.Prerequsites
             checkGit.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
+            Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
 
         public void UpdateProgressBar(int percentComplete, string statusLabelText)
@@ -58,7 +60,6 @@ namespace Sifon.Forms.Prerequsites
             if (percentComplete < 0) return;
 
             progressBar.Value = percentComplete;
-            //labelStatus.Text = statusLabelText;
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
 
@@ -68,26 +69,42 @@ namespace Sifon.Forms.Prerequsites
             checkGit.Checked = bools.Item2;
 
             EnableControls(true);
+            buttonInstall.Focus();
         }
 
-        public void ScriptComplete(string errorMessage)
+        public void Success(Tuple<bool, bool> installationResult)
         {
-            //if (errorMessage.NotEmpty())
-            //{
-            //    buttonDone.Text = "Cancel";
-            //    ShowError("Connectivity error", errorMessage);
-            //    buttonDone.DialogResult = DialogResult.OK;
-            //}
-            //else
-            //{
-            //    buttonDone.DialogResult = DialogResult.Cancel;
-            //    resultHeading.Text = $"Remote folders for script and module created at [{RemoteSettings.RemoteHost}]:";
-            //    labelScriptsRemoteFolder.Text = scriptsFolder;
-            //    labelModuleRemoteFolder.Text = moduleFolder;
-            //}
+            checkChocolatey.Checked = installationResult.Item1;
+            checkGit.Checked = installationResult.Item2;
 
-            //RemoteFolder = scriptsFolder;
-            //buttonDone.Enabled = true;
+            ShowInfo("Success", "Prerequsites have been installed");
+            EnableControls(true);
+            buttonInstall.Visible = false;
+            buttonClose.Focus();
+        }
+
+        public void Error(Exception e)
+        {
+            ShowError("An error has occured", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void checkChocolatey_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateInstallButton();
+        }
+
+        private void checkGit_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateInstallButton();
+        }
+        private void UpdateInstallButton()
+        {
+            buttonInstall.Enabled = checkChocolatey.Checked || checkGit.Checked;
         }
     }
 }

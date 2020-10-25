@@ -1,31 +1,44 @@
 function Install-Prerequisites
 {
+    function Is-ChocoInstalled
+    {
+        try {
+                choco -v
+                return $true
+        }
+        catch {
+            return $false
+        }
+    }
+
     function Install-Chocolatey 
     {    
-        [CmdletBinding(SupportsShouldProcess = $True)]
+        #[CmdletBinding(SupportsShouldProcess = $True)]
         param ()
-        Write-FPLog -Category Info -Message "verifying chocolatey is installed"
-        if ((powershell choco -v) -eq $null)
+        if (!(Is-ChocoInstalled))
         {
-            Write-FPLog -Category Info -Message "installing chocolatey..."
             try {
-                iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-                choco feature enable -n=allowGlobalConfirmation
-                return $true
+                iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
+                
+                if (Is-ChocoInstalled)
+                {
+                    choco feature enable -n=allowGlobalConfirmation  | Out-Null
+                    return $true
+                }
             }
             catch {
-                Write-FPLog -Category Error -Message $_.Exception.Message
+                $_.Exception.Message
             }
         }
         else {
-            Write-FPLog -Category Info -Message "chocolatey is already installed"
+            return $true
         }
         return $false;
     }
 
     function Install-Git
     {
-        cinst git
+        choco install git.install -version 1.9.5.20150114 --force  | Out-Null
         return $true
     }
 

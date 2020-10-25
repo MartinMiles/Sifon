@@ -55,12 +55,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             new ProfilePresenter(this);
         }
         
-        public void DisplayFirstRunWarning()
-        {
-            var firstRunForm = new FirstTimeRun { StartPosition = FormStartPosition.CenterParent };
-            firstRunForm.ShowDialog();
-        }
-
         public void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName)
         {
             comboProfiles.Items.Clear();

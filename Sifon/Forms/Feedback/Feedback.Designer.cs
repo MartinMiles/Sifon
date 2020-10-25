@@ -136,6 +136,7 @@
             this.MinimizeBox = false;
             this.Name = "Feedback";
             this.Text = "Feedback";
+            this.Load += new System.EventHandler(this.Feedback_Load);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             this.ResumeLayout(false);

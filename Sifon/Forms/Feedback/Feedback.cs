@@ -15,6 +15,10 @@ namespace Sifon.Forms.Feedback
             new FeedbackPresenter(this);
         }
 
+        private void Feedback_Load(object sender, EventArgs e)
+        {
+            buttonSubmit.Enabled = false;
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (!ValidateForm()) return;

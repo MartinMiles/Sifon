@@ -12,5 +12,7 @@ namespace Sifon.Forms.Prerequsites
 
         void UpdateProgressBar(int percentComplete, string statusLabelText);
         void UpdateView(Tuple<bool, bool> firstOrDefault);
+        void Success(Tuple<bool, bool> firstOrDefault);
+        void Error(Exception firstOrDefault);
     }
 }

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 using Sifon.Abstractions.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Events;
@@ -42,7 +40,18 @@ namespace Sifon.Forms.Prerequsites
 
         private async void InstallClicked(object sender, EventArgs<IPrerequisites> e)
         {
-            var results = await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites);
+            await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites);
+
+            if (_scriptWrapper.Errors.Any())
+            {
+                _view.Error(_scriptWrapper.Errors.FirstOrDefault());
+            }
+            else
+            {
+                _view.Success(_scriptWrapper.Results.FirstOrDefault());
+            }
+
+
 
             //var result = _scriptWrapper.Results.FirstOrDefault();
             //var excp = _scriptWrapper.Errors.FirstOrDefault();
@@ -71,10 +80,7 @@ namespace Sifon.Forms.Prerequsites
 
         private void ProgressReady(ProgressRecord data)
         {
-            if (data.Activity == Settings.Initialize.ProgressActivityName)
-            {
-                _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity} - {data.StatusDescription}");
-            }
+            _view.UpdateProgressBar(data.PercentComplete, $"{data.Activity} - {data.StatusDescription}");
         }
 
         private void ErrorReady(Exception exception)

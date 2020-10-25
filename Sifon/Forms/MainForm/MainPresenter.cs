@@ -32,7 +32,7 @@ namespace Sifon.Forms.MainForm
                 var provider = new ProfilesProvider();
                 provider.Save();
 
-                InstallModuleOnFirstRun();
+                view.ShowFirstRunDialog();
 
                 view.ForceProfileDialogOnFirstRun();
                 _profilesService.Read();
@@ -50,18 +50,7 @@ namespace Sifon.Forms.MainForm
             
         }
 
-        private void InstallModuleOnFirstRun()
-        {
-            var ps = PowerShell.Create();
-            ps.AddCommand("Set-ExecutionPolicy")
-                .AddArgument("Unrestricted")
-                .AddParameter("Scope", "CurrentUser");
-            ps.Invoke();
 
-            ps = PowerShell.Create();
-            ps.AddCommand($".\\{Modules.Directory}\\{Modules.Files.Installer}");
-            ps.Invoke();
-        }
 
         private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.ProfileName);
 

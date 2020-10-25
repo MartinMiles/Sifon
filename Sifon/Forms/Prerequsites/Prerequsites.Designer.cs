@@ -34,6 +34,7 @@
             this.buttonInstall = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.checkChocolatey.TabIndex = 1;
             this.checkChocolatey.Text = "Chocolatey";
             this.checkChocolatey.UseVisualStyleBackColor = true;
+            this.checkChocolatey.CheckedChanged += new System.EventHandler(this.checkChocolatey_CheckedChanged);
             // 
             // checkGit
             // 
@@ -64,13 +66,14 @@
             this.checkGit.Location = new System.Drawing.Point(16, 56);
             this.checkGit.Name = "checkGit";
             this.checkGit.Size = new System.Drawing.Size(131, 17);
-            this.checkGit.TabIndex = 0;
+            this.checkGit.TabIndex = 2;
             this.checkGit.Text = "Git (for getting plugins)";
             this.checkGit.UseVisualStyleBackColor = true;
+            this.checkGit.CheckedChanged += new System.EventHandler(this.checkGit_CheckedChanged);
             // 
             // buttonInstall
             // 
-            this.buttonInstall.Location = new System.Drawing.Point(218, 172);
+            this.buttonInstall.Location = new System.Drawing.Point(135, 171);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(75, 23);
             this.buttonInstall.TabIndex = 3;
@@ -96,11 +99,22 @@
             this.progressBar.Size = new System.Drawing.Size(280, 23);
             this.progressBar.TabIndex = 11;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(216, 171);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 4;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // Prerequsites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(303, 206);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.buttonInstall);
@@ -126,5 +140,6 @@
         private System.Windows.Forms.CheckBox checkGit;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

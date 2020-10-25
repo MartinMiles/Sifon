@@ -6,6 +6,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Containers;
 using Sifon.Code.Events;
 using Sifon.Code.Statics;
+using Sifon.Forms.Other;
 using Sifon.Forms.Updates;
 
 namespace Sifon.Forms.MainForm
@@ -153,6 +154,12 @@ namespace Sifon.Forms.MainForm
             progressBar.Value = percentComplete;
             statusLabel.Text = statusLabelText;
             progressLabel.Text = $"Progress: {percentComplete}%";
+        }
+
+        public void ShowFirstRunDialog()
+        {
+            var firstRunForm = new FirstTimeRun { StartPosition = FormStartPosition.CenterParent };
+            firstRunForm.ShowDialog();
         }
 
         public void ForceProfileDialogOnFirstRun()

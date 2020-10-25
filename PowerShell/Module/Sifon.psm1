@@ -1,6 +1,5 @@
 Set-StrictMode -Version 2.0
 #Requires -RunAsAdministrator
-#Requires -Modules WebAdministration
 
 $path = (split-path $MyInvocation.MyCommand.Path) 
 

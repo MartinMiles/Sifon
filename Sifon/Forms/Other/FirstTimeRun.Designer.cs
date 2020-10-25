@@ -35,10 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonPrerequsites = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonUnderstand = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,10 +104,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonPrerequsites);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonUnderstand);
             this.groupBox1.Controls.Add(this.labelWarn1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.labelWarn2);
@@ -121,16 +121,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "WARNING!";
             // 
-            // button2
+            // buttonPrerequsites
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(19, 214);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Prerequsites check";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonPrerequsites.Location = new System.Drawing.Point(19, 214);
+            this.buttonPrerequsites.Name = "buttonPrerequsites";
+            this.buttonPrerequsites.Size = new System.Drawing.Size(114, 23);
+            this.buttonPrerequsites.TabIndex = 1;
+            this.buttonPrerequsites.Text = "Prerequsites check";
+            this.buttonPrerequsites.UseVisualStyleBackColor = true;
+            this.buttonPrerequsites.Click += new System.EventHandler(this.buttonPrerequsites_Click);
             // 
             // label5
             // 
@@ -152,16 +151,16 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "Most Sifon features will not become available until at least ";
             // 
-            // button1
+            // buttonUnderstand
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(183, 214);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "I understand that";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonUnderstand.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonUnderstand.Location = new System.Drawing.Point(183, 214);
+            this.buttonUnderstand.Name = "buttonUnderstand";
+            this.buttonUnderstand.Size = new System.Drawing.Size(114, 23);
+            this.buttonUnderstand.TabIndex = 2;
+            this.buttonUnderstand.Text = "I understand that";
+            this.buttonUnderstand.UseVisualStyleBackColor = true;
+            this.buttonUnderstand.Click += new System.EventHandler(this.buttonUnderstand_Click);
             // 
             // FirstTimeRun
             // 
@@ -174,6 +173,7 @@
             this.MinimizeBox = false;
             this.Name = "FirstTimeRun";
             this.Text = "Welcome to Sifon!";
+            this.Load += new System.EventHandler(this.FirstTimeRun_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -189,9 +189,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonUnderstand;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonPrerequsites;
     }
 }

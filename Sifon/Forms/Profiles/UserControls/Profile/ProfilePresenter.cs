@@ -26,12 +26,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         protected override void Loaded(object sender, EventArgs e)
         {
             _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
-
-            bool isFirstRun = Presenter?.SelectedProfile == null;
-            if (isFirstRun)
-            {
-                _view.DisplayFirstRunWarning();
-            }
         }
 
         private void ProfileAdded(object sender, EventArgs<IProfileUserControl> e)
