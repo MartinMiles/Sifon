@@ -45,5 +45,10 @@ namespace Sifon.Forms.Base
             linkReveal.Text = reveal ? $"({Settings.Labels.Hide})" : $"({Settings.Labels.Reveal})";
             linkReveal.Left = reveal ? linkReveal.Left + 9 : linkReveal.Left - 9;
         }
+
+        protected void SetWaitCursor(bool isWaiting)
+        {
+            Cursor = isWaiting ? Cursors.WaitCursor : Cursors.Arrow;
+        }
     }
 }

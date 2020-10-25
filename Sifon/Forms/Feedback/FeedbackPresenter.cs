@@ -27,9 +27,15 @@ namespace Sifon.Forms.Feedback
 
         private async void SubmitClicked(object sender, EventArgs<IFeedback> e)
         {
-            var result = await _apiProvider.SendFeedback<IFeedback, string>(e.Value);
-
-            _view.UpdateResult(result);
+            try
+            {
+                var result = await _apiProvider.SendFeedback<IFeedback, string>(e.Value);
+                _view.UpdateResult(result);
+            }
+            catch (Exception exception)
+            {
+                _view.ProcessError(exception);
+            }
         }
     }
 }

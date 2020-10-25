@@ -52,7 +52,7 @@ namespace Sifon.Forms.Prerequsites
             checkGit.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
-            Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
+            SetWaitCursor(!enabled);
         }
 
         public void UpdateProgressBar(int percentComplete, string statusLabelText)

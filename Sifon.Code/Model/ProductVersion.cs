@@ -43,7 +43,6 @@ namespace Sifon.Code.Model
             {
                 if (a.Minor == b.Minor)
                 {
-                    //TODO: rework
                     return !(a.Alpha && !b.Alpha);
                 }
 

@@ -339,7 +339,8 @@ namespace Sifon.Forms.Remover
             set
             {
                 stateDatabaseReady = value;
-                SetCursor(stateDatabaseReady && stateSitesReady);
+                SetWaitCursor(!(stateDatabaseReady && stateSitesReady));
+
             }
         }
         private bool StateSitesReady
@@ -348,7 +349,8 @@ namespace Sifon.Forms.Remover
             set
             {
                 stateSitesReady = value;
-                SetCursor(stateDatabaseReady && stateSitesReady);
+                SetWaitCursor(!(stateDatabaseReady && stateSitesReady));
+
             }
         }
 
@@ -356,14 +358,14 @@ namespace Sifon.Forms.Remover
         {
             stateDatabaseReady = false;
             stateSitesReady = false;
-            SetCursor(false);
+            SetWaitCursor(true);
         }
 
 
-        private void SetCursor(bool ready)
-        {
-            Cursor = ready ? Cursors.Arrow : Cursors.WaitCursor;
-        }
+        //private void SetCursor(bool ready)
+        //{
+        //    Cursor = ready ? Cursors.Arrow : Cursors.WaitCursor;
+        //}
 
 
         #endregion

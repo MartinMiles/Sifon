@@ -44,6 +44,12 @@ namespace Sifon.Forms.Updates
             buttonCheck.Enabled = true;
         }
 
+        public void ProcessError(Exception e)
+        {
+            string message = e.Message + Environment.NewLine + e.InnerException?.Message ?? "";
+            ShowError("An error occured", message);
+        }
+
         private void linkDownload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var url = ((LinkLabel) sender).Text;

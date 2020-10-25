@@ -54,6 +54,12 @@ namespace Sifon.Forms.Feedback
             EnableControls(true);
         }
 
+        public void ProcessError(Exception e)
+        {
+            string message = e.Message + Environment.NewLine + e.InnerException?.Message ?? "";
+            ShowError("An error occured", message);
+        }
+
         #region IFeedback
 
         public string Fullname

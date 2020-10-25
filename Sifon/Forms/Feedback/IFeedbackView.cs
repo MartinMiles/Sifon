@@ -10,5 +10,6 @@ namespace Sifon.Forms.Feedback
         event EventHandler<EventArgs<IFeedback>> SubmitClicked;
 
         void UpdateResult(string errorMessage);
+        void ProcessError(Exception exception);
     }
 }

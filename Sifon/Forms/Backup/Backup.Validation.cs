@@ -38,7 +38,7 @@ namespace Sifon.Forms.Backup
                 buttonBackup.Enabled = (bool) enabled && FolderNotEmpty;
                 buttonBackup.Text = (bool)enabled ? Settings.Buttons.Backup : Settings.Buttons.Loading;
                 buttonBackup.Text = (bool)enabled ? Settings.Buttons.Backup : Settings.Buttons.Loading;
-                Cursor = (bool)enabled ? Cursors.Arrow : Cursors.WaitCursor;
+                SetWaitCursor(!(bool)enabled);
             }
         }
 

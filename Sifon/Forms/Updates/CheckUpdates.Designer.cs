@@ -52,10 +52,10 @@
             this.linkDownload.AutoSize = true;
             this.linkDownload.Location = new System.Drawing.Point(19, 53);
             this.linkDownload.Name = "linkDownload";
-            this.linkDownload.Size = new System.Drawing.Size(228, 13);
+            this.linkDownload.Size = new System.Drawing.Size(252, 13);
             this.linkDownload.TabIndex = 2;
             this.linkDownload.TabStop = true;
-            this.linkDownload.Text = "http://beta.sifon.uk/download/Sifon_0.99a.zip";
+            this.linkDownload.Text = "http://<HOSTNAME>/<FOLDER>/Sifon_X.YYa.zip";
             this.linkDownload.Visible = false;
             this.linkDownload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDownload_LinkClicked);
             // 

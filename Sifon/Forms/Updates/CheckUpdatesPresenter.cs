@@ -10,7 +10,7 @@ namespace Sifon.Forms.Updates
     {
         private readonly ICheckUpdatesView _view;
         private readonly IApiProvider _apiProvider;
-        
+
         public CheckUpdatesPresenter(ICheckUpdatesView view)
         {
             _view = view;
@@ -21,9 +21,16 @@ namespace Sifon.Forms.Updates
 
         private async void CheckClicked(object sender, EventArgs e)
         {
-            var version = await _apiProvider.FindLatestVersion<ProductVersion>();
-            var thisProduct = new ProductVersion(Settings.VersionNumber);
-            _view.UpdateResult(version, Settings.Api.HostBase, version <= thisProduct);
+            try
+            {
+                var version = await _apiProvider.FindLatestVersion<ProductVersion>();
+                var thisProduct = new ProductVersion(Settings.VersionNumber);
+                _view.UpdateResult(version, Settings.Api.HostBase, version <= thisProduct);
+            }
+            catch (Exception exception)
+            {
+                _view.ProcessError(exception);
+            }
         }
     }
 }

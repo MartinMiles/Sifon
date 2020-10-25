@@ -7,5 +7,6 @@ namespace Sifon.Forms.Updates
     {
         event EventHandler<EventArgs> CheckClicked;
         void UpdateResult(ProductVersion version, string hostBase, bool newerAvailable);
+        void ProcessError(Exception exception);
     }
 }

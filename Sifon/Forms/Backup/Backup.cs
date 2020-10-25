@@ -108,8 +108,7 @@ namespace Sifon.Forms.Backup
             checkDatabases.Enabled = enabled;
 
             checkFiles.Enabled = enabled;
-
-            Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
+            SetWaitCursor(!enabled);
         }
 
         public void DisplayErrors(IEnumerable<string> errors)
