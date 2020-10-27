@@ -69,7 +69,17 @@ namespace Sifon.Forms.Prerequsites
             checkGit.Checked = bools.Item2;
 
             EnableControls(true);
-            buttonInstall.Focus();
+            
+            if (bools.Item1 && bools.Item2)
+            {
+                labelCheckResult.Text = "You've already got all the necessary prerequsites ";
+                buttonClose.Focus();
+                buttonInstall.Enabled = false;
+            }
+            else
+            {
+                buttonInstall.Focus();
+            }
         }
 
         public void Success(Tuple<bool, bool> installationResult)
