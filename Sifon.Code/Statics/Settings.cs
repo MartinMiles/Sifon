@@ -7,7 +7,7 @@ namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string VersionNumber = "0.99a";
+        public const string VersionNumber = "0.99";
         public static readonly string ProductVersion = $"Sifon v{VersionNumber} (BETA)";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
@@ -184,9 +184,13 @@ namespace Sifon.Code.Statics
 
         public static class Api
         {
+#if DEBUG
             public const string HostBase = "http://beta.Sifon.UK";
-
+#else
+            public const string HostBase = "https://Sifon.UK";
+#endif
             public const string Feedback = "api/Feedback";
+            public const string SendException = "api/Exception";
             public const string UpdateVersion = "/download/version.json";
         }
     }

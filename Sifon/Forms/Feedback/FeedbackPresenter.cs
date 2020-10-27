@@ -1,9 +1,8 @@
 ﻿using System;
 using Sifon.Abstractions.Forms;
 using Sifon.Abstractions.Providers;
+using Sifon.ApiClient.Providers;
 using Sifon.Code.Events;
-using Sifon.Code.Providers;
-using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Feedback
 {

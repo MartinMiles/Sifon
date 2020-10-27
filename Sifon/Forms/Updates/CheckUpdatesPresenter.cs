@@ -1,7 +1,8 @@
 ﻿using System;
 using Sifon.Abstractions.Providers;
+using Sifon.ApiClient.Providers;
+using Sifon.Code.Logger;
 using Sifon.Code.Model;
-using Sifon.Code.Providers;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Updates
@@ -19,6 +20,7 @@ namespace Sifon.Forms.Updates
             _apiProvider = new ApiProvider<bool>();
         }
 
+        //TODO: Consider using monad to simplify the below
         private async void CheckClicked(object sender, EventArgs e)
         {
             try
@@ -30,6 +32,14 @@ namespace Sifon.Forms.Updates
             catch (Exception exception)
             {
                 _view.ProcessError(exception);
+
+                SimpleLog.Log(exception);
+
+                var submitResult = await _apiProvider.SendException(exception);
+                if (!string.IsNullOrWhiteSpace(submitResult))
+                {
+                    SimpleLog.Log("[WebAPI endpoint]: " + submitResult);
+                }
             }
         }
     }

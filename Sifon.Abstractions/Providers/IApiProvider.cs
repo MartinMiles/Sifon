@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Sifon.Abstractions.Providers
 {
@@ -6,5 +7,6 @@ namespace Sifon.Abstractions.Providers
     {
         Task<U> SendFeedback<T, U>(T t);
         Task<U> FindLatestVersion<U>();
+        Task<string> SendException(Exception e);
     }
 }

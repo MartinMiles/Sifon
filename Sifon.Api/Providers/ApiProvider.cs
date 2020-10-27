@@ -6,22 +6,25 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Sifon.Abstractions.Providers;
+using Sifon.ApiClient.Handlers;
+using Sifon.Code.Encryption;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
 
-namespace Sifon.Code.Providers
+namespace Sifon.ApiClient.Providers
 {
     public class ApiProvider<T> : IApiProvider
     {
-        public ApiProvider()
-        {
-        }
+        public string UUID => new SaltProvider().UUID;
 
-        // some code potentially could move up to base provider, and use factory with types pattern matching
+        #region Exposed public API
 
         public async Task<U> SendFeedback<T, U>(T t)
         {
-            var content = new FormUrlEncodedContent(t.ToDictionary<string>().AsEnumerable());
+            var dict = t.ToDictionary<string>();
+            dict.Add("UUID", UUID);
+
+            var content = new FormUrlEncodedContent(dict.AsEnumerable());
             var httpResponseMessage = await MakeApiCall(Settings.Api.HostBase, Settings.Api.Feedback, content);
             return await FetchResult<U>(httpResponseMessage);
         }
@@ -32,20 +35,37 @@ namespace Sifon.Code.Providers
             return await FetchResult<U>(httpResponseMessage);
         }
 
-        public async Task<HttpResponseMessage> MakeGetCall(string host, string api)
+        public async Task<string> SendException(Exception e)
+        {
+            var dict = new Dictionary<string, string> {
+                {"UUID", UUID}, {"Version", Settings.VersionNumber}, {"Message", e.Message}, {"StackTrace", e.StackTrace}
+            };
+
+            var content = new FormUrlEncodedContent(dict.AsEnumerable());
+            var httpResponseMessage = await MakeApiCall(Settings.Api.HostBase, Settings.Api.SendException, content);
+            return await FetchResult<string>(httpResponseMessage);
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private async Task<HttpResponseMessage> MakeGetCall(string host, string api)
         {
             var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }) { BaseAddress = new Uri(host) };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             return await client.GetAsync(api);
         }
-        public async Task<HttpResponseMessage> MakeApiCall(string host, string api, FormUrlEncodedContent content)
+        private async Task<HttpResponseMessage> MakeApiCall(string host, string api, FormUrlEncodedContent content)
         {
-            var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }) { BaseAddress = new Uri(host) };
+            var client = new HttpClient(new RetryHandler(new TrafficEncryptionHandler(new HttpClientHandler())));
+            client.BaseAddress = new Uri(host);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             return await client.PostAsync(api, content); 
         }
 
-        public async Task<U> FetchResult<U>(HttpResponseMessage result)
+        private async Task<U> FetchResult<U>(HttpResponseMessage result)
         {
             if (result.IsSuccessStatusCode)
             {
@@ -54,5 +74,7 @@ namespace Sifon.Code.Providers
             }
             return default(U);
         }
+
+        #endregion
     }
 }

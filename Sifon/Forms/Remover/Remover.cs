@@ -361,13 +361,6 @@ namespace Sifon.Forms.Remover
             SetWaitCursor(true);
         }
 
-
-        //private void SetCursor(bool ready)
-        //{
-        //    Cursor = ready ? Cursors.Arrow : Cursors.WaitCursor;
-        //}
-
-
         #endregion
     }
 }

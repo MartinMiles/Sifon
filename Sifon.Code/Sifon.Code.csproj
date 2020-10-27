@@ -113,7 +113,6 @@
     <Compile Include="PowerShell\ScriptWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filesystem\RemoteFilesystem.cs" />
-    <Compile Include="Providers\ApiProvider.cs" />
     <Compile Include="Providers\PowerShellSiteProvider.cs" />
     <Compile Include="Providers\Profile\BaseEncryptedProvider.cs" />
     <Compile Include="Providers\Profile\ContainersProvider.cs" />

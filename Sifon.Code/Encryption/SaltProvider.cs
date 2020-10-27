@@ -4,7 +4,7 @@ using Sifon.Code.Extensions;
 
 namespace Sifon.Code.Encryption
 {
-    internal class SaltProvider
+    public class SaltProvider
     {
         internal SecureString GenerateSaltPassword()
         {
@@ -21,7 +21,7 @@ namespace Sifon.Code.Encryption
             return password;
         }
 
-        internal string UUID
+        public string UUID
         {
             get
             {
