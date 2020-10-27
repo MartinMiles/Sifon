@@ -14,7 +14,7 @@ namespace Sifon.Statics
             public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
 
             public const string Fullname = @"^[A-Za-z0-9-+()@ .,_']*$";
-            public const string Email = @"^[A-Za-z0-9-+()@ .,_]*$";
+            // using MailAddress in order to validate email instead of Regex
             public const string FeedbackMessage = @"(.*?)";
 
         }

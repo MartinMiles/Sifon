@@ -40,8 +40,6 @@ namespace Sifon.Forms.Updates
                 linkDownload.Visible = true;
                 linkDownload.Text = $"{hostBase}{version.DownloadUrl}";
             }
-
-            buttonCheck.Enabled = true;
         }
 
         public void ProcessError(Exception e)

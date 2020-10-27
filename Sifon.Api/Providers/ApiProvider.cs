@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace Sifon.ApiClient.Providers
 {
     public class ApiProvider<T> : IApiProvider
     {
+        public bool EnableSendingExceptions { private get; set; }
+
         public string UUID => new SaltProvider().UUID;
 
         #region Exposed public API
@@ -25,24 +29,30 @@ namespace Sifon.ApiClient.Providers
             dict.Add("UUID", UUID);
 
             var content = new FormUrlEncodedContent(dict.AsEnumerable());
+
             var httpResponseMessage = await MakeApiCall(Settings.Api.HostBase, Settings.Api.Feedback, content);
+            httpResponseMessage.EnsureSuccessStatusCode();
             return await FetchResult<U>(httpResponseMessage);
         }
 
         public async Task<U> FindLatestVersion<U>()
         {
             var httpResponseMessage = await MakeGetCall(Settings.Api.HostBase, Settings.Api.UpdateVersion);
+            httpResponseMessage.EnsureSuccessStatusCode();
             return await FetchResult<U>(httpResponseMessage);
         }
 
         public async Task<string> SendException(Exception e)
         {
+            if (!EnableSendingExceptions) return String.Empty;
+
             var dict = new Dictionary<string, string> {
                 {"UUID", UUID}, {"Version", Settings.VersionNumber}, {"Message", e.Message}, {"StackTrace", e.StackTrace}
             };
 
             var content = new FormUrlEncodedContent(dict.AsEnumerable());
             var httpResponseMessage = await MakeApiCall(Settings.Api.HostBase, Settings.Api.SendException, content);
+            httpResponseMessage.EnsureSuccessStatusCode();
             return await FetchResult<string>(httpResponseMessage);
         }
 

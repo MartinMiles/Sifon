@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sifon.Code.Statics;
@@ -77,7 +78,7 @@ namespace Sifon.Forms.Feedback
                 _validationMessages.Add(Validation.Feedback.Fullname);
             }
 
-            if (!textEmail.ValidateRegex(Pattern.Feedback.Email))
+            if (!ValidateEmail(textEmail.Text))
             {
                 _validationMessages.Add(Validation.Feedback.Email);
             }
@@ -91,5 +92,18 @@ namespace Sifon.Forms.Feedback
         }
 
         #endregion
+
+        private bool ValidateEmail(string email)
+        {
+            try
+            {
+                var address = new MailAddress(email).Address;
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
     }
 }
