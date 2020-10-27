@@ -110,6 +110,7 @@
             // textPassword
             // 
             this.textPassword.Location = new System.Drawing.Point(187, 75);
+            this.textPassword.MaxLength = 255;
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(156, 20);
             this.textPassword.TabIndex = 13;
@@ -126,6 +127,7 @@
             // textUsername
             // 
             this.textUsername.Location = new System.Drawing.Point(187, 32);
+            this.textUsername.MaxLength = 255;
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(156, 20);
             this.textUsername.TabIndex = 12;
@@ -162,6 +164,7 @@
             // textInstance
             // 
             this.textInstance.Location = new System.Drawing.Point(10, 75);
+            this.textInstance.MaxLength = 255;
             this.textInstance.Name = "textInstance";
             this.textInstance.Size = new System.Drawing.Size(164, 20);
             this.textInstance.TabIndex = 11;
@@ -178,6 +181,7 @@
             // textName
             // 
             this.textName.Location = new System.Drawing.Point(10, 32);
+            this.textName.MaxLength = 255;
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(164, 20);
             this.textName.TabIndex = 10;

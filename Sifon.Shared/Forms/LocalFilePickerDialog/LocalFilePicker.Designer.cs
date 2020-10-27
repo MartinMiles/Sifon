@@ -47,6 +47,7 @@
             // pathTextbox
             // 
             this.pathTextbox.Location = new System.Drawing.Point(12, 35);
+            this.pathTextbox.MaxLength = 255;
             this.pathTextbox.Name = "pathTextbox";
             this.pathTextbox.Size = new System.Drawing.Size(330, 20);
             this.pathTextbox.TabIndex = 28;

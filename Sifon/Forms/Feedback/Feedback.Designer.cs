@@ -69,6 +69,7 @@
             // textFeedback
             // 
             this.textFeedback.Location = new System.Drawing.Point(28, 173);
+            this.textFeedback.MaxLength = 16000;
             this.textFeedback.Multiline = true;
             this.textFeedback.Name = "textFeedback";
             this.textFeedback.Size = new System.Drawing.Size(288, 79);
@@ -86,6 +87,7 @@
             // textEmail
             // 
             this.textEmail.Location = new System.Drawing.Point(28, 126);
+            this.textEmail.MaxLength = 255;
             this.textEmail.Name = "textEmail";
             this.textEmail.Size = new System.Drawing.Size(288, 20);
             this.textEmail.TabIndex = 4;
@@ -102,6 +104,7 @@
             // textFullname
             // 
             this.textFullname.Location = new System.Drawing.Point(28, 75);
+            this.textFullname.MaxLength = 127;
             this.textFullname.Name = "textFullname";
             this.textFullname.Size = new System.Drawing.Size(288, 20);
             this.textFullname.TabIndex = 2;

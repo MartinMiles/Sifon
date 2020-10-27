@@ -122,6 +122,7 @@
             // textSourceFolder
             // 
             this.textSourceFolder.Location = new System.Drawing.Point(23, 51);
+            this.textSourceFolder.MaxLength = 255;
             this.textSourceFolder.Name = "textSourceFolder";
             this.textSourceFolder.Size = new System.Drawing.Size(234, 20);
             this.textSourceFolder.TabIndex = 50;

@@ -235,6 +235,7 @@
             // textDestinationFolderToBackup
             // 
             this.textDestinationFolderToBackup.Location = new System.Drawing.Point(9, 168);
+            this.textDestinationFolderToBackup.MaxLength = 255;
             this.textDestinationFolderToBackup.Name = "textDestinationFolderToBackup";
             this.textDestinationFolderToBackup.Size = new System.Drawing.Size(230, 20);
             this.textDestinationFolderToBackup.TabIndex = 26;

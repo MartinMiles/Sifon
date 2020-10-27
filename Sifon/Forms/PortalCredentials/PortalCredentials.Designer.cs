@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.buttonTest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,8 +40,6 @@
             this.textUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,24 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Provide your credentials:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(334, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "you still need to consider and maintain all the appropriate precautions.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(331, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Please note: despite the below password stored as an encrypted text";
             // 
             // buttonTest
             // 
@@ -105,6 +123,7 @@
             // textPassword
             // 
             this.textPassword.Location = new System.Drawing.Point(15, 181);
+            this.textPassword.MaxLength = 128;
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(323, 20);
             this.textPassword.TabIndex = 2;
@@ -121,6 +140,7 @@
             // textUsername
             // 
             this.textUsername.Location = new System.Drawing.Point(15, 138);
+            this.textUsername.MaxLength = 255;
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(323, 20);
             this.textUsername.TabIndex = 1;
@@ -144,24 +164,6 @@
             this.buttonSave.Text = "Save and close";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(331, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Please note: despite the below password stored as an encrypted text";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(334, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "you still need to consider and maintain all the appropriate precautions.";
             // 
             // PortalCredentials
             // 

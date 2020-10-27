@@ -120,6 +120,7 @@
             // textRepositoryFolder
             // 
             this.textRepositoryFolder.Location = new System.Drawing.Point(15, 216);
+            this.textRepositoryFolder.MaxLength = 255;
             this.textRepositoryFolder.Name = "textRepositoryFolder";
             this.textRepositoryFolder.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textRepositoryFolder.Size = new System.Drawing.Size(318, 20);
@@ -137,6 +138,7 @@
             // textRepositoryUrl
             // 
             this.textRepositoryUrl.Location = new System.Drawing.Point(15, 173);
+            this.textRepositoryUrl.MaxLength = 255;
             this.textRepositoryUrl.Name = "textRepositoryUrl";
             this.textRepositoryUrl.Size = new System.Drawing.Size(318, 20);
             this.textRepositoryUrl.TabIndex = 24;
@@ -166,6 +168,7 @@
             // textSaPassword
             // 
             this.textSaPassword.Location = new System.Drawing.Point(183, 285);
+            this.textSaPassword.MaxLength = 50;
             this.textSaPassword.Name = "textSaPassword";
             this.textSaPassword.PasswordChar = '*';
             this.textSaPassword.Size = new System.Drawing.Size(150, 20);
@@ -183,6 +186,7 @@
             // textAdminPassword
             // 
             this.textAdminPassword.Location = new System.Drawing.Point(15, 285);
+            this.textAdminPassword.MaxLength = 50;
             this.textAdminPassword.Name = "textAdminPassword";
             this.textAdminPassword.PasswordChar = '*';
             this.textAdminPassword.Size = new System.Drawing.Size(150, 20);
@@ -210,6 +214,7 @@
             // textProfileName
             // 
             this.textProfileName.Location = new System.Drawing.Point(15, 115);
+            this.textProfileName.MaxLength = 127;
             this.textProfileName.Name = "textProfileName";
             this.textProfileName.Size = new System.Drawing.Size(318, 20);
             this.textProfileName.TabIndex = 16;

@@ -82,6 +82,7 @@
             // textDatabasePrefix
             // 
             this.textDatabasePrefix.Location = new System.Drawing.Point(17, 89);
+            this.textDatabasePrefix.MaxLength = 50;
             this.textDatabasePrefix.Name = "textDatabasePrefix";
             this.textDatabasePrefix.Size = new System.Drawing.Size(270, 20);
             this.textDatabasePrefix.TabIndex = 35;
@@ -170,6 +171,7 @@
             // textHorizonFolder
             // 
             this.textHorizonFolder.Location = new System.Drawing.Point(18, 265);
+            this.textHorizonFolder.MaxLength = 255;
             this.textHorizonFolder.Name = "textHorizonFolder";
             this.textHorizonFolder.ReadOnly = true;
             this.textHorizonFolder.Size = new System.Drawing.Size(322, 20);
@@ -179,6 +181,7 @@
             // textPublishingFolder
             // 
             this.textPublishingFolder.Location = new System.Drawing.Point(18, 320);
+            this.textPublishingFolder.MaxLength = 255;
             this.textPublishingFolder.Name = "textPublishingFolder";
             this.textPublishingFolder.ReadOnly = true;
             this.textPublishingFolder.Size = new System.Drawing.Size(322, 20);
@@ -247,6 +250,7 @@
             // textIdsFolder
             // 
             this.textIdsFolder.Location = new System.Drawing.Point(18, 210);
+            this.textIdsFolder.MaxLength = 255;
             this.textIdsFolder.Name = "textIdsFolder";
             this.textIdsFolder.ReadOnly = true;
             this.textIdsFolder.Size = new System.Drawing.Size(322, 20);
@@ -268,6 +272,7 @@
             // textXConnectFolder
             // 
             this.textXConnectFolder.Location = new System.Drawing.Point(18, 155);
+            this.textXConnectFolder.MaxLength = 255;
             this.textXConnectFolder.Name = "textXConnectFolder";
             this.textXConnectFolder.ReadOnly = true;
             this.textXConnectFolder.Size = new System.Drawing.Size(322, 20);
@@ -312,6 +317,7 @@
             // textWebfolder
             // 
             this.textWebfolder.Location = new System.Drawing.Point(18, 100);
+            this.textWebfolder.MaxLength = 255;
             this.textWebfolder.Name = "textWebfolder";
             this.textWebfolder.ReadOnly = true;
             this.textWebfolder.Size = new System.Drawing.Size(322, 20);
