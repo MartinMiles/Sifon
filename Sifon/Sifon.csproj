@@ -37,7 +37,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>sifon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -446,6 +447,7 @@
       <DependentUpon>SqlSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Resources\Restore.Ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sifon.Abstractions\Sifon.Abstractions.csproj">
@@ -470,10 +472,14 @@
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\Restore.Ico" />
-    <Content Include="sifon.ico" />
+    <Content Include="Resources\About.ico" />
+    <Content Include="Resources\Backup.ico" />
+    <Content Include="Resources\docker.ico" />
+    <Content Include="Resources\Profiles.ico" />
+    <Content Include="Resources\Remove.ico" />
+    <Content Include="Resources\Sifon.ico" />
+    <Content Include="Resources\SifonForm.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
