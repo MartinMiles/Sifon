@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Feedback));
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.labelFeedback = new System.Windows.Forms.Label();
             this.textFeedback = new System.Windows.Forms.TextBox();
@@ -135,6 +136,7 @@
             this.ClientSize = new System.Drawing.Size(360, 332);
             this.Controls.Add(this.groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Feedback";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.checkBoxCrashLog = new System.Windows.Forms.CheckBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@
             this.ClientSize = new System.Drawing.Size(360, 174);
             this.Controls.Add(this.groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Sifon.Forms.Base;
 using Sifon.Code.Statics;
 
@@ -13,39 +11,45 @@ namespace Sifon.Forms.About
             InitializeComponent();
         }
 
+        private void About_Load(object sender, System.EventArgs e)
+        {
+            Text = $"{Settings.ProductVersion}";
+
+            buttonOK.Select();
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var blog = new ProcessStartInfo("https://Blog.MartinMiles.net");
-            Process.Start(blog);
+            Navigate("https://Blog.MartinMiles.net");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var email = new ProcessStartInfo("mailto:Sitecore.Professional@gmail.com");
-            Process.Start(email);
+            Navigate("mailto:Sitecore.Professional@gmail.com");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var twitter = new ProcessStartInfo("https://twitter.com/SitecoreMartin");
-            Process.Start(twitter);
-        }
-
-        private void About_Load(object sender, System.EventArgs e)
-        {
-            Text = $"{Settings.ProductVersion}";
+            Navigate("https://twitter.com/SitecoreMartin");
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var website = new ProcessStartInfo("http://Sifon.uk");
-            Process.Start(website);
+            Navigate("http://Sifon.uk");
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var website = new ProcessStartInfo("https://t.me/SitecoreTelegram");
-            Process.Start(website);
+            Navigate("https://t.me/SitecoreTelegram");
+        }
+
+        private void buttonCredits_Click(object sender, System.EventArgs e)
+        {
+            var credits = new Credits {StartPosition = FormStartPosition.CenterParent};
+            if (credits.ShowDialog() == DialogResult.OK)
+            {
+                credits.Dispose();
+            }
         }
     }
 }

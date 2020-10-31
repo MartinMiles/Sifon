@@ -73,7 +73,7 @@
             this.linkDelete.Location = new System.Drawing.Point(16, 255);
             this.linkDelete.Name = "linkDelete";
             this.linkDelete.Size = new System.Drawing.Size(112, 13);
-            this.linkDelete.TabIndex = 13;
+            this.linkDelete.TabIndex = 7;
             this.linkDelete.TabStop = true;
             this.linkDelete.Text = "Delete selected profile";
             this.linkDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -93,7 +93,7 @@
             this.textAdminPassword.Name = "textAdminPassword";
             this.textAdminPassword.PasswordChar = '*';
             this.textAdminPassword.Size = new System.Drawing.Size(125, 20);
-            this.textAdminPassword.TabIndex = 11;
+            this.textAdminPassword.TabIndex = 6;
             // 
             // labelAdminUsername
             // 
@@ -109,7 +109,7 @@
             this.textAdminUsername.Location = new System.Drawing.Point(19, 209);
             this.textAdminUsername.Name = "textAdminUsername";
             this.textAdminUsername.Size = new System.Drawing.Size(125, 20);
-            this.textAdminUsername.TabIndex = 9;
+            this.textAdminUsername.TabIndex = 5;
             // 
             // labelPrefix
             // 
@@ -132,7 +132,7 @@
             this.buttonRename.Location = new System.Drawing.Point(217, 250);
             this.buttonRename.Name = "buttonRename";
             this.buttonRename.Size = new System.Drawing.Size(67, 22);
-            this.buttonRename.TabIndex = 5;
+            this.buttonRename.TabIndex = 8;
             this.buttonRename.Text = "Rename";
             this.buttonRename.UseVisualStyleBackColor = true;
             this.buttonRename.Click += new System.EventHandler(this.buttonRename_Click);

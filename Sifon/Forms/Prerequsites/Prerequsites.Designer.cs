@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prerequsites));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelCheckResult = new System.Windows.Forms.Label();
             this.checkChocolatey = new System.Windows.Forms.CheckBox();
             this.checkGit = new System.Windows.Forms.CheckBox();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.labelCheckResult = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Host-level preprequites:";
+            // 
+            // labelCheckResult
+            // 
+            this.labelCheckResult.AutoSize = true;
+            this.labelCheckResult.Location = new System.Drawing.Point(13, 87);
+            this.labelCheckResult.Name = "labelCheckResult";
+            this.labelCheckResult.Size = new System.Drawing.Size(0, 13);
+            this.labelCheckResult.TabIndex = 3;
             // 
             // checkChocolatey
             // 
@@ -111,14 +120,6 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // labelCheckResult
-            // 
-            this.labelCheckResult.AutoSize = true;
-            this.labelCheckResult.Location = new System.Drawing.Point(13, 87);
-            this.labelCheckResult.Name = "labelCheckResult";
-            this.labelCheckResult.Size = new System.Drawing.Size(0, 13);
-            this.labelCheckResult.TabIndex = 3;
-            // 
             // Prerequsites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +131,7 @@
             this.Controls.Add(this.buttonInstall);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Prerequsites";

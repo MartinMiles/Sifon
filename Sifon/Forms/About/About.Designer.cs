@@ -23,11 +23,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonCredits = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.label10 = new System.Windows.Forms.Label();
@@ -53,11 +54,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonCredits);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.linkLabel5);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonOK);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.linkLabel4);
             this.groupBox1.Controls.Add(this.label10);
@@ -83,6 +85,16 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // buttonCredits
+            // 
+            this.buttonCredits.Location = new System.Drawing.Point(386, 409);
+            this.buttonCredits.Name = "buttonCredits";
+            this.buttonCredits.Size = new System.Drawing.Size(75, 23);
+            this.buttonCredits.TabIndex = 6;
+            this.buttonCredits.Text = "Credits";
+            this.buttonCredits.UseVisualStyleBackColor = true;
+            this.buttonCredits.Click += new System.EventHandler(this.buttonCredits_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -107,7 +119,7 @@
             this.linkLabel5.Location = new System.Drawing.Point(356, 371);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(151, 13);
-            this.linkLabel5.TabIndex = 30;
+            this.linkLabel5.TabIndex = 5;
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "https://t.me/SitecoreTelegram";
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
@@ -121,15 +133,15 @@
             this.label13.TabIndex = 29;
             this.label13.Text = "Telegram channel:";
             // 
-            // button1
+            // buttonOK
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(481, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOK.Location = new System.Drawing.Point(481, 409);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 7;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -146,7 +158,7 @@
             this.linkLabel4.Location = new System.Drawing.Point(356, 242);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(82, 13);
-            this.linkLabel4.TabIndex = 26;
+            this.linkLabel4.TabIndex = 1;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "https://Sifon.uk";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
@@ -202,7 +214,7 @@
             this.linkLabel3.Location = new System.Drawing.Point(356, 309);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(86, 13);
-            this.linkLabel3.TabIndex = 20;
+            this.linkLabel3.TabIndex = 2;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "@SitecoreMartin";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
@@ -222,7 +234,7 @@
             this.linkLabel2.Location = new System.Drawing.Point(356, 329);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(164, 13);
-            this.linkLabel2.TabIndex = 18;
+            this.linkLabel2.TabIndex = 3;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Sitecore.Professional@gmail.com";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
@@ -233,7 +245,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(356, 349);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(102, 13);
-            this.linkLabel1.TabIndex = 17;
+            this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Blog.MartinMiles.net";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -306,12 +318,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(204, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(326, 13);
+            this.label1.Size = new System.Drawing.Size(323, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Sifon is a helpful tool for many Sitecore back-end DevOps operation";
+            this.label1.Text = "Sifon is a helpful tool for many Sitecore back-end DevOps activities";
             // 
             // About
             // 
+            this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 466);
@@ -352,11 +365,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button buttonCredits;
     }
 }

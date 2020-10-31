@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Code.Events;
@@ -49,6 +50,12 @@ namespace Sifon.Forms.Base
         protected void SetWaitCursor(bool isWaiting)
         {
             Cursor = isWaiting ? Cursors.WaitCursor : Cursors.Arrow;
+        }
+
+        protected void Navigate(string url)
+        {
+            var website = new ProcessStartInfo(url);
+            Process.Start(website);
         }
     }
 }

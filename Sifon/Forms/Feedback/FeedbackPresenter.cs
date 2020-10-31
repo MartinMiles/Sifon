@@ -28,8 +28,8 @@ namespace Sifon.Forms.Feedback
         {
             try
             {
-                var result = await _apiProvider.SendFeedback<IFeedback, string>(e.Value);
-                _view.UpdateResult(result);
+                var errors = await _apiProvider.SendFeedback<IFeedback, string>(e.Value);
+                _view.UpdateResult(errors);
             }
             catch (Exception exception)
             {

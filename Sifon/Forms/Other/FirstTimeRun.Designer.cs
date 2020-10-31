@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstTimeRun));
             this.labelWarn3 = new System.Windows.Forms.Label();
             this.labelWarn2 = new System.Windows.Forms.Label();
             this.labelWarn1 = new System.Windows.Forms.Label();
@@ -119,7 +120,7 @@
             this.groupBox1.Size = new System.Drawing.Size(314, 254);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "WARNING!";
+            this.groupBox1.Text = "May we have your attention, please?";
             // 
             // buttonPrerequsites
             // 
@@ -169,6 +170,7 @@
             this.ClientSize = new System.Drawing.Size(344, 286);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FirstTimeRun";

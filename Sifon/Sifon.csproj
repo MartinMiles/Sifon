@@ -62,6 +62,12 @@
     <Compile Include="Forms\About\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\About\Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About\Credits.Designer.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Backup\Backup.Tooltips.cs">
       <SubType>Form</SubType>
       <DependentUpon>Backup.cs</DependentUpon>
@@ -376,6 +382,9 @@
     <Compile Include="OnStart.cs" />
     <EmbeddedResource Include="Forms\About\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\About\Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Backup\Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
