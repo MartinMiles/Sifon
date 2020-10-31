@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
