@@ -1,20 +1,20 @@
 using System;
 using System.Windows.Forms;
-using Sifon.Abstractions.Validation;
+using Sifon.Abstractions.Messages;
 using Sifon.Forms.Initialize;
 using Sifon.Forms.MainForm;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Extensions;
 using Sifon.Code.Logger;
 using Sifon.Code.Providers.Profile;
-using Sifon.Code.Validation;
+using Sifon.Shared.MessageBoxes;
 using Sifon.Statics;
 
 namespace Sifon
 {
     static class Program
     {
-        private static readonly IFormValidation FormValidation = new FormValidation();
+        private static readonly IDisplayMessage DisplayMessage = new DisplayMessage();
 
         [STAThread]
         static void Main()
@@ -38,7 +38,7 @@ namespace Sifon
                     if (e.InnerException is RemoteNotInitializedException)
                     {
                         
-                        if (FormValidation.ShowYesNo(Messages.General.YesNoCaption, Messages.Program.NoRemoteFolder))
+                        if (DisplayMessage.ShowYesNo(Messages.General.YesNoCaption, Messages.Program.NoRemoteFolder))
                         {
                             var initializeForm = new InitRemote
                             {
@@ -53,18 +53,18 @@ namespace Sifon
                             }
                             else
                             {
-                                FormValidation.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinueRemoting);
+                                DisplayMessage.ShowError(Messages.Program.InitializeFailure, Messages.Program.CannotContinueRemoting);
                             }
                         }
                         else
                         {
-                            FormValidation.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinueRemoting);
+                            DisplayMessage.ShowError(Messages.Program.RemoteExecutionError, Messages.Program.CannotContinueRemoting);
                         }
                     }
                     else
                     {
-                        FormValidation.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinueGeneric);
-                        FormValidation.ShowError(e.Message, $"{e.Message}{Environment.NewLine}{e.StackTrace}");
+                        DisplayMessage.ShowError(Messages.Program.ExecutionError, Messages.Program.CannotContinueGeneric);
+                        DisplayMessage.ShowError(e.Message, $"{e.Message}{Environment.NewLine}{e.StackTrace}");
                     }
 
                     SimpleLog.Log(e);

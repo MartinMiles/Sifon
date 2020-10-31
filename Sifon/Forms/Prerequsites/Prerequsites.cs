@@ -42,7 +42,7 @@ namespace Sifon.Forms.Prerequsites
             set => checkGit.Checked = value;
         }
 
-        public bool SIF { get; set; }   //TODO: Get rid of this prop if not used
+        public bool SIF { get; set; }   //TODO: Get rid of this prop if not used, or load by choco
 
         #endregion
 

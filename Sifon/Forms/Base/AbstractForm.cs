@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 using Sifon.Abstractions.Validation;
-using Sifon.Code.Validation;
+using Sifon.Shared.MessageBoxes;
+using Sifon.Shared.Validation;
 
 namespace Sifon.Forms.Base
 {
@@ -13,7 +14,8 @@ namespace Sifon.Forms.Base
             // Avoid putting any custom code within this ctor, otherwise designers stops working
             InitializeComponent();
 
-            _formValidation = new FormValidation();
+            _displayMessage = new DisplayMessage();
+            _formValidation = new FormValidation(_displayMessage);
 
             Load += (sender, args) => SetTooltips();
             Load += (sender, args) => AddPassiveValidationHandlers();

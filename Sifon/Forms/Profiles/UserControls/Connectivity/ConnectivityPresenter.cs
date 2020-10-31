@@ -90,11 +90,11 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
             if (_scriptWrapper.Results.Any())
             {
-                _formValidation.ShowInfo(Messages.Profiles.Connectivity.TestSolrCaption, Messages.Profiles.Connectivity.TestSolrSuccessful);
+                _displayMessage.ShowInfo(Messages.Profiles.Connectivity.TestSolrCaption, Messages.Profiles.Connectivity.TestSolrSuccessful);
             }
             else
             {
-                _formValidation.ShowError(Messages.Profiles.Connectivity.TestSolrCaption, Messages.Profiles.Connectivity.Errors.TestSolrFailed);
+                _displayMessage.ShowError(Messages.Profiles.Connectivity.TestSolrCaption, Messages.Profiles.Connectivity.Errors.TestSolrFailed);
             }
 
             _view.ToggleControls(true);

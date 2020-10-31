@@ -2,20 +2,19 @@
 using System.CodeDom.Compiler;
 using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace Sifon.Code.Metacode
 {
     internal class DynamicCodeRunner
     {
-        public static dynamic RunWithClassicSharpCodeProvider(string type, string method, object[] parameters)
+        public static dynamic RunWithClassicSharpCodeProvider(string type, string method, object[] parameters, string winformsAssemblyLocation)
         {
             var compiler = new Microsoft.CSharp.CSharpCodeProvider().CreateCompiler();
 
             var parms = new CompilerParameters();
             parms.ReferencedAssemblies.Add("System.dll");
             parms.ReferencedAssemblies.Add("System.Core.dll");
-            parms.ReferencedAssemblies.Add(typeof(Form).Assembly.Location);
+            parms.ReferencedAssemblies.Add(winformsAssemblyLocation);
             parms.GenerateInMemory = true;
 
             string assemblyPath = Assembly.GetExecutingAssembly().Location

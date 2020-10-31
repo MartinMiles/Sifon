@@ -4,22 +4,21 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Messages;
 using Sifon.Abstractions.Profiles;
-using Sifon.Abstractions.Validation;
 using Sifon.Code.Events;
 using Sifon.Code.Filesystem;
-using Sifon.Code.Validation;
+using Sifon.Shared.MessageBoxes;
 
 namespace Sifon.Shared.UserControls
 {
-    //TODO: Maybe some base control would work here rather than UserControl so that it will share validation wrappers?
-    public partial class FolderTreeView : UserControl, IFormValidation
+    public partial class FolderTreeView : UserControl
     {
         public event EventHandler<EventArgs<string>> DoubleClicked = delegate { };
         public event EventHandler<EventArgs> EditFinished = delegate { };
         public event EventHandler<EventArgs> CancelSent = delegate { };
 
-        private readonly FormValidation _formValidation;
+        private readonly IDisplayMessage _displayMessage;
         private IFilesystem _filesystem;
 
         public bool ShowFiles { get; set; }
@@ -35,7 +34,7 @@ namespace Sifon.Shared.UserControls
         {
             InitializeComponent();
 
-            _formValidation = new FormValidation();
+            _displayMessage = new DisplayMessage();
 
             fileExplorer.KeyDown += OnKeyDown;
             InitListboxContexMenu();
@@ -242,22 +241,17 @@ namespace Sifon.Shared.UserControls
 
         public bool ShowYesNo(string caption, string message)
         {
-            return _formValidation.ShowYesNo(caption, message);
+            return _displayMessage.ShowYesNo(caption, message);
         }
 
         public void ShowInfo(string caption, string message)
         {
-            _formValidation.ShowInfo(caption, message);
+            _displayMessage.ShowInfo(caption, message);
         }
 
         public void ShowError(string caption, string message)
         {
-            _formValidation.ShowError(caption, message);
-        }
-
-        public bool ShowValidationError(IEnumerable<string> errorList)
-        {
-            throw new NotImplementedException();
+            _displayMessage.ShowError(caption, message);
         }
 
         #endregion

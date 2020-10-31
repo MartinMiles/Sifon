@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
@@ -50,7 +49,7 @@ namespace Sifon.Forms.MainForm
             
         }
 
-
+        private string WinformsAssemblyLocation => typeof(Form).Assembly.Location;
 
         private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.ProfileName);
 
@@ -157,7 +156,7 @@ namespace Sifon.Forms.MainForm
             _containersProvider.AddContainersParameters(parameters);
 
             var metacode = new MetacodeHelper(e.Value);
-            var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters);
+            var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters, WinformsAssemblyLocation);
 
             bool isCompatibleVersion = metacode.IsCompatibleVersion;
 

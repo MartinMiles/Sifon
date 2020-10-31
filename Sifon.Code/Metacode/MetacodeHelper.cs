@@ -68,7 +68,7 @@ namespace Sifon.Code.Metacode
             }
         }
         
-        public Dictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters)
+        public Dictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters, string winformsAssemblyLocation)
         {
             var dynamicResultsDictionary = new Dictionary<string, object>();
             var regex = new Regex(Settings.Regex.Metacode.ExecutableFunction);
@@ -84,7 +84,7 @@ namespace Sifon.Code.Metacode
                     var methodParameters = match.Groups[4].Value;
                     var list = ExtractParameters(parameters, methodParameters);
 
-                    var dynamicMethodOutput = DynamicCodeRunner.RunWithClassicSharpCodeProvider(type, method, list);
+                    var dynamicMethodOutput = DynamicCodeRunner.RunWithClassicSharpCodeProvider(type, method, list, winformsAssemblyLocation);
                     if (output.NotEmpty() && dynamicMethodOutput != null)
                     {
                         dynamicResultsDictionary.Add(output, dynamicMethodOutput);

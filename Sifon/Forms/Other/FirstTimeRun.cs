@@ -42,6 +42,7 @@ namespace Sifon.Forms.Other
             buttonUnderstand.Enabled = enabled;
         }
 
+        // TODO: Move out to Sifon.Code
         private void InstallModuleOnFirstRun()
         {
             var ps = PowerShell.Create();

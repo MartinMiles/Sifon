@@ -32,18 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encryption\IEncryptor.cs" />
     <Compile Include="Forms\IFeedback.cs" />
     <Compile Include="Forms\IPrerequisites.cs" />
+    <Compile Include="Messages\IDisplayMessage.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreCheckboxes.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreFolders.cs" />

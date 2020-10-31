@@ -43,12 +43,12 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 
             if (_scriptWrapper.Results.Any())
             {
-                _view.ShowInfo("Success", "Your connection details are valid.");
+                _displayMessage.ShowInfo("Success", "Your connection details are valid.");
             }
 
             if (_scriptWrapper.Errors.Any() && _scriptWrapper.Errors.First() is RemoteTimeoutException)
             {
-                _view.ShowError("Connection Error", "Falied to connect to remote machine with specified parameters");
+                _displayMessage.ShowError("Connection Error", "Falied to connect to remote machine with specified parameters");
             }
 
             _view.ToggleTestButton(true);

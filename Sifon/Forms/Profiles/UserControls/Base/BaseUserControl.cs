@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sifon.Abstractions.Messages;
 using Sifon.Abstractions.Validation;
-using Sifon.Code.Validation;
+using Sifon.Shared.MessageBoxes;
+using Sifon.Shared.Validation;
 
 namespace Sifon.Forms.Profiles.UserControls.Base
 {
-    internal class BaseUserControl : AbstractUserControl, IBaseView, IFormValidation
+    internal class BaseUserControl : AbstractUserControl, IBaseView
     {
         public event EventHandler<EventArgs> Loaded = delegate { };
         private readonly IFormValidation _formValidation;
+        private readonly IDisplayMessage _displayMessage;
 
         public BaseUserControl()
         {
-            _formValidation = new FormValidation();
+            _displayMessage = new DisplayMessage();
+            _formValidation = new FormValidation(_displayMessage);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -33,7 +37,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
 
         public bool ShowYesNo(string caption, string message)
         {
-            return _formValidation.ShowYesNo(caption, message);
+            return _displayMessage.ShowYesNo(caption, message);
         }
         public bool ShowValidationError(IEnumerable<string> errorList)
         {
@@ -41,11 +45,11 @@ namespace Sifon.Forms.Profiles.UserControls.Base
         }
         public void ShowError(string caption, string message)
         {
-            _formValidation.ShowError(caption, message);
+            _displayMessage.ShowError(caption, message);
         }
         public void ShowInfo(string caption, string message)
         {
-            _formValidation.ShowInfo(caption, message);
+            _displayMessage.ShowInfo(caption, message);
         }
 
         #endregion
