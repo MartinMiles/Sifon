@@ -37,11 +37,13 @@
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.checkRemoting = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkRemoting);
             this.groupBox1.Controls.Add(this.labelCheckResult);
             this.groupBox1.Controls.Add(this.checkChocolatey);
             this.groupBox1.Controls.Add(this.checkGit);
@@ -120,6 +122,16 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // checkRemoting
+            // 
+            this.checkRemoting.AutoSize = true;
+            this.checkRemoting.Location = new System.Drawing.Point(16, 79);
+            this.checkRemoting.Name = "checkRemoting";
+            this.checkRemoting.Size = new System.Drawing.Size(182, 17);
+            this.checkRemoting.TabIndex = 4;
+            this.checkRemoting.Text = "WinRM (for PowerShell remoting)";
+            this.checkRemoting.UseVisualStyleBackColor = true;
+            // 
             // Prerequsites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,5 +166,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Label labelCheckResult;
+        private System.Windows.Forms.CheckBox checkRemoting;
     }
 }

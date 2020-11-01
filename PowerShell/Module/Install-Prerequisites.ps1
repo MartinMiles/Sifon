@@ -17,7 +17,8 @@ function Install-Prerequisites
         param ()
         if (!(Is-ChocoInstalled))
         {
-            try {
+            try 
+            {
                 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
                 
                 if (Is-ChocoInstalled)
@@ -42,15 +43,35 @@ function Install-Prerequisites
         return $true
     }
 
+	function Install-Remoting
+    {
+        try 
+        {
+            Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
+            Enable-PSRemoting -force | Out-Null
+            Set-Item wsman:localhost\client\trustedhosts -Value * -force 
+            return $true
+        }
+        catch 
+        {
+            $_.Exception.Message | Out-Null
+        }
+
+        return $false
+    }
+
     $activity = "Installing prerequisites"
 
     Write-Progress -Activity "Installing Chocolatey" -Status $activity -PercentComplete 3;
     $Choco = Install-Chocolatey
 
-    Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 62;
+    Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 52;
     $Git = Install-Git
+
+    Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 83;
+    $remoting = Install-Remoting
 
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;
 
-    return [System.Tuple]::Create($Choco, $Git)
+    return [System.Tuple]::Create($Choco, $Git, $remoting)
 }

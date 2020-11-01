@@ -16,7 +16,7 @@ namespace Sifon.Forms.Prerequsites
     internal class PrerequsitesPresenter
     {
         private readonly IPrerequisitesView _view;
-        private readonly ScriptWrapper<Tuple<bool, bool>> _scriptWrapper;
+        private readonly ScriptWrapper<Tuple<bool, bool, bool>> _scriptWrapper;
         protected readonly ProfilesProvider _profileService;
 
 
@@ -27,7 +27,7 @@ namespace Sifon.Forms.Prerequsites
             _view.InstallClicked += InstallClicked;
 
             _profileService = new ProfilesProvider();
-            _scriptWrapper = new ScriptWrapper<Tuple<bool,bool>>(_profileService.CreateLocal(), view, d => d.Convert<Tuple<bool, bool>>());
+            _scriptWrapper = new ScriptWrapper<Tuple<bool,bool,bool>>(_profileService.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool>>());
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }
