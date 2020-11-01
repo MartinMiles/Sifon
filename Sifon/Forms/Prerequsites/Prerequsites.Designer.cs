@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prerequsites));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkRemoting = new System.Windows.Forms.CheckBox();
             this.labelCheckResult = new System.Windows.Forms.Label();
             this.checkChocolatey = new System.Windows.Forms.CheckBox();
             this.checkGit = new System.Windows.Forms.CheckBox();
@@ -37,7 +38,6 @@
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.checkRemoting = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,15 +49,25 @@
             this.groupBox1.Controls.Add(this.checkGit);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 117);
+            this.groupBox1.Size = new System.Drawing.Size(280, 140);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Host-level preprequites:";
             // 
+            // checkRemoting
+            // 
+            this.checkRemoting.AutoSize = true;
+            this.checkRemoting.Location = new System.Drawing.Point(15, 79);
+            this.checkRemoting.Name = "checkRemoting";
+            this.checkRemoting.Size = new System.Drawing.Size(182, 17);
+            this.checkRemoting.TabIndex = 4;
+            this.checkRemoting.Text = "WinRM (for PowerShell remoting)";
+            this.checkRemoting.UseVisualStyleBackColor = true;
+            // 
             // labelCheckResult
             // 
             this.labelCheckResult.AutoSize = true;
-            this.labelCheckResult.Location = new System.Drawing.Point(13, 87);
+            this.labelCheckResult.Location = new System.Drawing.Point(13, 110);
             this.labelCheckResult.Name = "labelCheckResult";
             this.labelCheckResult.Size = new System.Drawing.Size(0, 13);
             this.labelCheckResult.TabIndex = 3;
@@ -86,7 +96,7 @@
             // 
             // buttonInstall
             // 
-            this.buttonInstall.Location = new System.Drawing.Point(135, 200);
+            this.buttonInstall.Location = new System.Drawing.Point(135, 219);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(75, 23);
             this.buttonInstall.TabIndex = 3;
@@ -97,7 +107,7 @@
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(10, 144);
+            this.progressLabel.Location = new System.Drawing.Point(10, 163);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(51, 13);
             this.progressLabel.TabIndex = 12;
@@ -107,14 +117,14 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(13, 160);
+            this.progressBar.Location = new System.Drawing.Point(13, 179);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(280, 23);
             this.progressBar.TabIndex = 11;
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(216, 200);
+            this.buttonClose.Location = new System.Drawing.Point(216, 219);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 4;
@@ -122,21 +132,11 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // checkRemoting
-            // 
-            this.checkRemoting.AutoSize = true;
-            this.checkRemoting.Location = new System.Drawing.Point(16, 79);
-            this.checkRemoting.Name = "checkRemoting";
-            this.checkRemoting.Size = new System.Drawing.Size(182, 17);
-            this.checkRemoting.TabIndex = 4;
-            this.checkRemoting.Text = "WinRM (for PowerShell remoting)";
-            this.checkRemoting.UseVisualStyleBackColor = true;
-            // 
             // Prerequsites
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 236);
+            this.ClientSize = new System.Drawing.Size(303, 255);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.progressBar);

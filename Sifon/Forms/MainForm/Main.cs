@@ -29,7 +29,14 @@ namespace Sifon.Forms.MainForm
         internal Main()
         {
             InitializeComponent();
-            new MainPresenter(this);
+            try
+            {
+                new MainPresenter(this);
+            }
+            catch (InvalidOperationException)
+            {
+                Load += (s, e) => Close();
+            }
         }
         
         private void Form_Load(object sender, EventArgs e)
@@ -156,10 +163,10 @@ namespace Sifon.Forms.MainForm
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
 
-        public void ShowFirstRunDialog()
+        public bool ShowFirstRunDialog()
         {
             var firstRunForm = new FirstTimeRun { StartPosition = FormStartPosition.CenterParent };
-            firstRunForm.ShowDialog();
+            return firstRunForm.ShowDialog() == DialogResult.OK;
         }
 
         public void ForceProfileDialogOnFirstRun()
@@ -182,11 +189,16 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
+        public void End()
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
         public void TerminateAsEmptyProfile()
         {
             MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            DialogResult = DialogResult.Cancel;
-            Close();
+            End();
         }
 
         private void menuContainersProfiles_Click(object sender, EventArgs e)
@@ -217,15 +229,6 @@ namespace Sifon.Forms.MainForm
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var about = new CheckUpdates { StartPosition = FormStartPosition.CenterParent };
-            if (about.ShowDialog() == DialogResult.OK)
-            {
-                about.Dispose();
-            }
-        }
-
-        private void chechPrerequsitesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var about = new Prerequsites.Prerequsites { StartPosition = FormStartPosition.CenterParent };
             if (about.ShowDialog() == DialogResult.OK)
             {
                 about.Dispose();

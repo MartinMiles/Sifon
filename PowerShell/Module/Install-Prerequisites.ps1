@@ -1,4 +1,4 @@
-function Install-Prerequisites
+function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM)
 {
     function Is-ChocoInstalled
     {
@@ -62,16 +62,26 @@ function Install-Prerequisites
 
     $activity = "Installing prerequisites"
 
-    Write-Progress -Activity "Installing Chocolatey" -Status $activity -PercentComplete 3;
-    $Choco = Install-Chocolatey
 
-    Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 52;
-    $Git = Install-Git
+    [bool]$Choco = $false;
+    if($InstallChoco){
+        Write-Progress -Activity "Installing Chocolatey" -Status $activity -PercentComplete 3;
+        $Choco = Install-Chocolatey
+    }
 
-    Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 83;
-    $remoting = Install-Remoting
+    [bool]$Git = $false;
+    if($InstallGit){
+        Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 52;
+        $Git = Install-Git
+    }
+
+    [bool]$Remoting = $false;
+    if($InstallWinRM){
+        Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 83;
+        $Remoting = Install-Remoting
+    }
 
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;
 
-    return [System.Tuple]::Create($Choco, $Git, $remoting)
+    return [System.Tuple]::Create($Choco, $Git, $Remoting)
 }

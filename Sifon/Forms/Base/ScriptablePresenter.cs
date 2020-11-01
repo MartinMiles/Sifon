@@ -57,7 +57,6 @@ namespace Sifon.Forms.Base
             RemoveHandlers();
             _scriptWrapper?.Finish();
             _view.FinishUI();
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
         }
 
         public async void PrepareAndStart(string script, Dictionary<string, dynamic> parameters)

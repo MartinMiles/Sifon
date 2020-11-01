@@ -40,7 +40,13 @@ namespace Sifon.Forms.Prerequsites
 
         private async void InstallClicked(object sender, EventArgs<IPrerequisites> e)
         {
-            await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites);
+            var parameters = new Dictionary<string, dynamic>();
+
+            parameters.Add("InstallChoco", e.Value.Chocolatey);
+            parameters.Add("InstallGit", e.Value.Git);
+            parameters.Add("InstallWinRM", e.Value.WinRM);
+
+            await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites, parameters);
 
             if (_scriptWrapper.Errors.Any())
             {

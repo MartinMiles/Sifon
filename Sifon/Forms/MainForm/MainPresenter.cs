@@ -28,10 +28,13 @@ namespace Sifon.Forms.MainForm
         {
             if (!_profilesService.Any)
             {
+                if (!view.ShowFirstRunDialog())
+                {
+                    throw new InvalidOperationException("Exited by user");
+                }
+
                 var provider = new ProfilesProvider();
                 provider.Save();
-
-                view.ShowFirstRunDialog();
 
                 view.ForceProfileDialogOnFirstRun();
                 _profilesService.Read();

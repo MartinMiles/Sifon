@@ -42,7 +42,11 @@ namespace Sifon.Forms.Prerequsites
             set => checkGit.Checked = value;
         }
 
-        public bool SIF { get; set; }   //TODO: Get rid of this prop if not used, or load by choco
+        public bool WinRM
+        {
+            get => checkRemoting.Checked;
+            set => checkRemoting.Checked = value;
+        }
 
         #endregion
 
@@ -50,6 +54,7 @@ namespace Sifon.Forms.Prerequsites
         {
             checkChocolatey.Enabled = enabled;
             checkGit.Enabled = enabled;
+            checkRemoting.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
             SetWaitCursor(!enabled);
