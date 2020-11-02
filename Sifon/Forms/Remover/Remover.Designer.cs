@@ -74,7 +74,7 @@
             this.checkDatabases.Location = new System.Drawing.Point(17, 26);
             this.checkDatabases.Name = "checkDatabases";
             this.checkDatabases.Size = new System.Drawing.Size(104, 17);
-            this.checkDatabases.TabIndex = 33;
+            this.checkDatabases.TabIndex = 54;
             this.checkDatabases.Text = "Drop databases:";
             this.checkDatabases.UseVisualStyleBackColor = true;
             this.checkDatabases.CheckedChanged += new System.EventHandler(this.checkDatabases_CheckedChanged);
@@ -85,7 +85,7 @@
             this.textDatabasePrefix.MaxLength = 50;
             this.textDatabasePrefix.Name = "textDatabasePrefix";
             this.textDatabasePrefix.Size = new System.Drawing.Size(270, 20);
-            this.textDatabasePrefix.TabIndex = 35;
+            this.textDatabasePrefix.TabIndex = 55;
             this.textDatabasePrefix.TextChanged += new System.EventHandler(this.textDatabasePrefix_TextChanged);
             // 
             // label1
@@ -114,7 +114,7 @@
             this.listDatabases.Name = "listDatabases";
             this.listDatabases.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listDatabases.Size = new System.Drawing.Size(270, 225);
-            this.listDatabases.TabIndex = 37;
+            this.listDatabases.TabIndex = 57;
             this.listDatabases.SelectedIndexChanged += new System.EventHandler(this.listDatabases_SelectedIndexChanged);
             // 
             // linkSelectAll
@@ -123,7 +123,7 @@
             this.linkSelectAll.Location = new System.Drawing.Point(187, 133);
             this.linkSelectAll.Name = "linkSelectAll";
             this.linkSelectAll.Size = new System.Drawing.Size(100, 13);
-            this.linkSelectAll.TabIndex = 39;
+            this.linkSelectAll.TabIndex = 56;
             this.linkSelectAll.TabStop = true;
             this.linkSelectAll.Text = "select all databases";
             this.linkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -162,7 +162,7 @@
             this.buttonBrowseHorizon.Location = new System.Drawing.Point(339, 264);
             this.buttonBrowseHorizon.Name = "buttonBrowseHorizon";
             this.buttonBrowseHorizon.Size = new System.Drawing.Size(41, 22);
-            this.buttonBrowseHorizon.TabIndex = 54;
+            this.buttonBrowseHorizon.TabIndex = 49;
             this.buttonBrowseHorizon.Text = "...";
             this.buttonBrowseHorizon.UseVisualStyleBackColor = true;
             this.buttonBrowseHorizon.Visible = false;
@@ -175,7 +175,7 @@
             this.textHorizonFolder.Name = "textHorizonFolder";
             this.textHorizonFolder.ReadOnly = true;
             this.textHorizonFolder.Size = new System.Drawing.Size(322, 20);
-            this.textHorizonFolder.TabIndex = 53;
+            this.textHorizonFolder.TabIndex = 48;
             this.textHorizonFolder.Visible = false;
             // 
             // textPublishingFolder
@@ -230,7 +230,7 @@
             this.checkCommerce.Location = new System.Drawing.Point(18, 360);
             this.checkCommerce.Name = "checkCommerce";
             this.checkCommerce.Size = new System.Drawing.Size(109, 17);
-            this.checkCommerce.TabIndex = 48;
+            this.checkCommerce.TabIndex = 52;
             this.checkCommerce.Text = "Clean Commerce:";
             this.checkCommerce.UseVisualStyleBackColor = true;
             this.checkCommerce.Visible = false;
@@ -359,7 +359,7 @@
             this.buttonRemove.Location = new System.Drawing.Point(305, 360);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemove.TabIndex = 30;
+            this.buttonRemove.TabIndex = 60;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);

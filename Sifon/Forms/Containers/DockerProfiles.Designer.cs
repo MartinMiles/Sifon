@@ -82,7 +82,7 @@
             this.linkRevealSa.Location = new System.Drawing.Point(291, 269);
             this.linkRevealSa.Name = "linkRevealSa";
             this.linkRevealSa.Size = new System.Drawing.Size(42, 13);
-            this.linkRevealSa.TabIndex = 30;
+            this.linkRevealSa.TabIndex = 9;
             this.linkRevealSa.TabStop = true;
             this.linkRevealSa.Text = "(reveal)";
             this.linkRevealSa.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRevealSa_LinkClicked);
@@ -93,7 +93,7 @@
             this.linkRevealAdmin.Location = new System.Drawing.Point(123, 269);
             this.linkRevealAdmin.Name = "linkRevealAdmin";
             this.linkRevealAdmin.Size = new System.Drawing.Size(42, 13);
-            this.linkRevealAdmin.TabIndex = 29;
+            this.linkRevealAdmin.TabIndex = 7;
             this.linkRevealAdmin.TabStop = true;
             this.linkRevealAdmin.Text = "(reveal)";
             this.linkRevealAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRevealAdmin_LinkClicked);
@@ -103,7 +103,7 @@
             this.buttonDefaults.Location = new System.Drawing.Point(15, 326);
             this.buttonDefaults.Name = "buttonDefaults";
             this.buttonDefaults.Size = new System.Drawing.Size(80, 22);
-            this.buttonDefaults.TabIndex = 28;
+            this.buttonDefaults.TabIndex = 10;
             this.buttonDefaults.Text = "Set defaults";
             this.buttonDefaults.UseVisualStyleBackColor = true;
             this.buttonDefaults.Click += new System.EventHandler(this.buttonDefaults_Click);
@@ -124,7 +124,7 @@
             this.textRepositoryFolder.Name = "textRepositoryFolder";
             this.textRepositoryFolder.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textRepositoryFolder.Size = new System.Drawing.Size(318, 20);
-            this.textRepositoryFolder.TabIndex = 26;
+            this.textRepositoryFolder.TabIndex = 5;
             // 
             // label1
             // 
@@ -141,7 +141,7 @@
             this.textRepositoryUrl.MaxLength = 255;
             this.textRepositoryUrl.Name = "textRepositoryUrl";
             this.textRepositoryUrl.Size = new System.Drawing.Size(318, 20);
-            this.textRepositoryUrl.TabIndex = 24;
+            this.textRepositoryUrl.TabIndex = 4;
             // 
             // linkDelete
             // 
@@ -151,7 +151,7 @@
             this.linkDelete.Location = new System.Drawing.Point(221, 70);
             this.linkDelete.Name = "linkDelete";
             this.linkDelete.Size = new System.Drawing.Size(112, 13);
-            this.linkDelete.TabIndex = 23;
+            this.linkDelete.TabIndex = 2;
             this.linkDelete.TabStop = true;
             this.linkDelete.Text = "Delete selected profile";
             this.linkDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDelete_LinkClicked);
@@ -172,7 +172,7 @@
             this.textSaPassword.Name = "textSaPassword";
             this.textSaPassword.PasswordChar = '*';
             this.textSaPassword.Size = new System.Drawing.Size(150, 20);
-            this.textSaPassword.TabIndex = 21;
+            this.textSaPassword.TabIndex = 8;
             // 
             // labelAdminUsername
             // 
@@ -190,14 +190,14 @@
             this.textAdminPassword.Name = "textAdminPassword";
             this.textAdminPassword.PasswordChar = '*';
             this.textAdminPassword.Size = new System.Drawing.Size(150, 20);
-            this.textAdminPassword.TabIndex = 19;
+            this.textAdminPassword.TabIndex = 6;
             // 
             // buttonAddRename
             // 
             this.buttonAddRename.Location = new System.Drawing.Point(266, 326);
             this.buttonAddRename.Name = "buttonAddRename";
             this.buttonAddRename.Size = new System.Drawing.Size(67, 22);
-            this.buttonAddRename.TabIndex = 18;
+            this.buttonAddRename.TabIndex = 11;
             this.buttonAddRename.Text = "Rename";
             this.buttonAddRename.UseVisualStyleBackColor = true;
             this.buttonAddRename.Click += new System.EventHandler(this.buttonAddRename_Click);
@@ -217,7 +217,7 @@
             this.textProfileName.MaxLength = 127;
             this.textProfileName.Name = "textProfileName";
             this.textProfileName.Size = new System.Drawing.Size(318, 20);
-            this.textProfileName.TabIndex = 16;
+            this.textProfileName.TabIndex = 3;
             // 
             // labelCombo
             // 
@@ -235,7 +235,7 @@
             this.comboProfiles.Location = new System.Drawing.Point(15, 43);
             this.comboProfiles.Name = "comboProfiles";
             this.comboProfiles.Size = new System.Drawing.Size(318, 21);
-            this.comboProfiles.TabIndex = 14;
+            this.comboProfiles.TabIndex = 1;
             this.comboProfiles.SelectedIndexChanged += new System.EventHandler(this.comboProfiles_SelectedIndexChanged);
             // 
             // DockerProfiles

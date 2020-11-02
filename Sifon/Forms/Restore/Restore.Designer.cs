@@ -81,7 +81,7 @@
             this.checkHorizon.Location = new System.Drawing.Point(22, 166);
             this.checkHorizon.Name = "checkHorizon";
             this.checkHorizon.Size = new System.Drawing.Size(102, 17);
-            this.checkHorizon.TabIndex = 60;
+            this.checkHorizon.TabIndex = 6;
             this.checkHorizon.Text = "Restore Horizon";
             this.checkHorizon.UseVisualStyleBackColor = true;
             // 
@@ -92,7 +92,7 @@
             this.checkPublishing.Location = new System.Drawing.Point(22, 189);
             this.checkPublishing.Name = "checkPublishing";
             this.checkPublishing.Size = new System.Drawing.Size(153, 17);
-            this.checkPublishing.TabIndex = 59;
+            this.checkPublishing.TabIndex = 7;
             this.checkPublishing.Text = "Restore Publishing Service";
             this.checkPublishing.UseVisualStyleBackColor = true;
             // 
@@ -103,7 +103,7 @@
             this.checkDatabases.Location = new System.Drawing.Point(324, 26);
             this.checkDatabases.Name = "checkDatabases";
             this.checkDatabases.Size = new System.Drawing.Size(158, 17);
-            this.checkDatabases.TabIndex = 35;
+            this.checkDatabases.TabIndex = 9;
             this.checkDatabases.Text = "Restore selected databases";
             this.checkDatabases.UseVisualStyleBackColor = true;
             this.checkDatabases.CheckedChanged += new System.EventHandler(this.checkDatabases_CheckedChanged);
@@ -115,7 +115,7 @@
             this.checkCommerce.Location = new System.Drawing.Point(22, 212);
             this.checkCommerce.Name = "checkCommerce";
             this.checkCommerce.Size = new System.Drawing.Size(182, 17);
-            this.checkCommerce.TabIndex = 58;
+            this.checkCommerce.TabIndex = 8;
             this.checkCommerce.Text = "Restore Sitecore Commerce sites";
             this.checkCommerce.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +125,7 @@
             this.textSourceFolder.MaxLength = 255;
             this.textSourceFolder.Name = "textSourceFolder";
             this.textSourceFolder.Size = new System.Drawing.Size(234, 20);
-            this.textSourceFolder.TabIndex = 50;
+            this.textSourceFolder.TabIndex = 1;
             this.textSourceFolder.TextChanged += new System.EventHandler(this.textSourceFolder_TextChanged);
             // 
             // label4
@@ -144,7 +144,7 @@
             this.listDatabases.Name = "listDatabases";
             this.listDatabases.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listDatabases.Size = new System.Drawing.Size(273, 238);
-            this.listDatabases.TabIndex = 32;
+            this.listDatabases.TabIndex = 11;
             this.listDatabases.SelectedIndexChanged += new System.EventHandler(this.listDatabases_SelectedIndexChanged);
             // 
             // linkSelectAll
@@ -153,7 +153,7 @@
             this.linkSelectAll.Location = new System.Drawing.Point(497, 27);
             this.linkSelectAll.Name = "linkSelectAll";
             this.linkSelectAll.Size = new System.Drawing.Size(100, 13);
-            this.linkSelectAll.TabIndex = 40;
+            this.linkSelectAll.TabIndex = 10;
             this.linkSelectAll.TabStop = true;
             this.linkSelectAll.Text = "select all databases";
             this.linkSelectAll.Visible = false;
@@ -164,7 +164,7 @@
             this.buttonBackupLocation.Location = new System.Drawing.Point(255, 50);
             this.buttonBackupLocation.Name = "buttonBackupLocation";
             this.buttonBackupLocation.Size = new System.Drawing.Size(41, 22);
-            this.buttonBackupLocation.TabIndex = 51;
+            this.buttonBackupLocation.TabIndex = 2;
             this.buttonBackupLocation.Text = "...";
             this.buttonBackupLocation.UseVisualStyleBackColor = true;
             this.buttonBackupLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
@@ -175,7 +175,7 @@
             this.buttonRestore.Location = new System.Drawing.Point(221, 264);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(75, 23);
-            this.buttonRestore.TabIndex = 53;
+            this.buttonRestore.TabIndex = 12;
             this.buttonRestore.Text = "Restore";
             this.buttonRestore.UseVisualStyleBackColor = true;
             this.buttonRestore.Click += new System.EventHandler(this.buttonRestore_Click);
@@ -196,7 +196,7 @@
             this.checkIdentity.Location = new System.Drawing.Point(22, 143);
             this.checkIdentity.Name = "checkIdentity";
             this.checkIdentity.Size = new System.Drawing.Size(202, 17);
-            this.checkIdentity.TabIndex = 57;
+            this.checkIdentity.TabIndex = 5;
             this.checkIdentity.Text = "Restore Identity Server website folder";
             this.checkIdentity.UseVisualStyleBackColor = true;
             // 
@@ -207,7 +207,7 @@
             this.checkFiles.Location = new System.Drawing.Point(23, 97);
             this.checkFiles.Name = "checkFiles";
             this.checkFiles.Size = new System.Drawing.Size(173, 17);
-            this.checkFiles.TabIndex = 54;
+            this.checkFiles.TabIndex = 3;
             this.checkFiles.Text = "Restore Sitecore website folder";
             this.checkFiles.UseVisualStyleBackColor = true;
             this.checkFiles.CheckedChanged += new System.EventHandler(this.checkFiles_CheckedChanged);
@@ -219,7 +219,7 @@
             this.checkXconnect.Location = new System.Drawing.Point(22, 120);
             this.checkXconnect.Name = "checkXconnect";
             this.checkXconnect.Size = new System.Drawing.Size(162, 17);
-            this.checkXconnect.TabIndex = 56;
+            this.checkXconnect.TabIndex = 4;
             this.checkXconnect.Text = "Restore xConnect site frolder";
             this.checkXconnect.UseVisualStyleBackColor = true;
             // 

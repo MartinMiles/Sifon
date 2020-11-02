@@ -76,7 +76,7 @@
             this.linkSelectAll.Location = new System.Drawing.Point(175, 27);
             this.linkSelectAll.Name = "linkSelectAll";
             this.linkSelectAll.Size = new System.Drawing.Size(100, 13);
-            this.linkSelectAll.TabIndex = 14;
+            this.linkSelectAll.TabIndex = 11;
             this.linkSelectAll.TabStop = true;
             this.linkSelectAll.Text = "select all databases";
             this.linkSelectAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -140,7 +140,7 @@
             this.checkPublishing.Location = new System.Drawing.Point(9, 120);
             this.checkPublishing.Name = "checkPublishing";
             this.checkPublishing.Size = new System.Drawing.Size(113, 17);
-            this.checkPublishing.TabIndex = 50;
+            this.checkPublishing.TabIndex = 6;
             this.checkPublishing.Text = "Publishing Service";
             this.checkPublishing.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +151,7 @@
             this.checkHorizon.Location = new System.Drawing.Point(155, 100);
             this.checkHorizon.Name = "checkHorizon";
             this.checkHorizon.Size = new System.Drawing.Size(62, 17);
-            this.checkHorizon.TabIndex = 49;
+            this.checkHorizon.TabIndex = 5;
             this.checkHorizon.Text = "Horizon";
             this.checkHorizon.UseVisualStyleBackColor = true;
             // 
@@ -159,10 +159,10 @@
             // 
             this.checkCommerce.AutoSize = true;
             this.checkCommerce.Enabled = false;
-            this.checkCommerce.Location = new System.Drawing.Point(155, 120);
+            this.checkCommerce.Location = new System.Drawing.Point(155, 119);
             this.checkCommerce.Name = "checkCommerce";
             this.checkCommerce.Size = new System.Drawing.Size(120, 17);
-            this.checkCommerce.TabIndex = 48;
+            this.checkCommerce.TabIndex = 7;
             this.checkCommerce.Text = "Commerce websites";
             this.checkCommerce.UseVisualStyleBackColor = true;
             // 
@@ -173,7 +173,7 @@
             this.checkIds.Location = new System.Drawing.Point(155, 80);
             this.checkIds.Name = "checkIds";
             this.checkIds.Size = new System.Drawing.Size(94, 17);
-            this.checkIds.TabIndex = 47;
+            this.checkIds.TabIndex = 3;
             this.checkIds.Text = "Identity Server";
             this.checkIds.UseVisualStyleBackColor = true;
             // 
@@ -184,7 +184,7 @@
             this.checkXconnect.Location = new System.Drawing.Point(9, 100);
             this.checkXconnect.Name = "checkXconnect";
             this.checkXconnect.Size = new System.Drawing.Size(100, 17);
-            this.checkXconnect.TabIndex = 46;
+            this.checkXconnect.TabIndex = 4;
             this.checkXconnect.Text = "xConnect folder";
             this.checkXconnect.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +218,7 @@
             this.buttonBackupLocation.Location = new System.Drawing.Point(238, 167);
             this.buttonBackupLocation.Name = "buttonBackupLocation";
             this.buttonBackupLocation.Size = new System.Drawing.Size(41, 22);
-            this.buttonBackupLocation.TabIndex = 27;
+            this.buttonBackupLocation.TabIndex = 9;
             this.buttonBackupLocation.Text = "...";
             this.buttonBackupLocation.UseVisualStyleBackColor = true;
             this.buttonBackupLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
@@ -238,7 +238,7 @@
             this.textDestinationFolderToBackup.MaxLength = 255;
             this.textDestinationFolderToBackup.Name = "textDestinationFolderToBackup";
             this.textDestinationFolderToBackup.Size = new System.Drawing.Size(230, 20);
-            this.textDestinationFolderToBackup.TabIndex = 26;
+            this.textDestinationFolderToBackup.TabIndex = 8;
             this.textDestinationFolderToBackup.Validating += new System.ComponentModel.CancelEventHandler(this.textDestinationFolder_Validating);
             // 
             // label2
@@ -259,7 +259,7 @@
             this.checkFiles.Location = new System.Drawing.Point(9, 80);
             this.checkFiles.Name = "checkFiles";
             this.checkFiles.Size = new System.Drawing.Size(133, 17);
-            this.checkFiles.TabIndex = 11;
+            this.checkFiles.TabIndex = 2;
             this.checkFiles.Text = "Sitecore website folder";
             this.checkFiles.UseVisualStyleBackColor = true;
             this.checkFiles.CheckedChanged += new System.EventHandler(this.checkFiles_CheckedChanged);
@@ -271,7 +271,7 @@
             this.comboInstances.Location = new System.Drawing.Point(9, 47);
             this.comboInstances.Name = "comboInstances";
             this.comboInstances.Size = new System.Drawing.Size(270, 21);
-            this.comboInstances.TabIndex = 7;
+            this.comboInstances.TabIndex = 1;
             this.comboInstances.SelectedIndexChanged += new System.EventHandler(this.comboInstances_SelectedIndexChanged);
             // 
             // buttonBackup
@@ -280,7 +280,7 @@
             this.buttonBackup.Location = new System.Drawing.Point(541, 362);
             this.buttonBackup.Name = "buttonBackup";
             this.buttonBackup.Size = new System.Drawing.Size(54, 23);
-            this.buttonBackup.TabIndex = 6;
+            this.buttonBackup.TabIndex = 13;
             this.buttonBackup.Text = "Backup";
             this.buttonBackup.UseVisualStyleBackColor = true;
             this.buttonBackup.Click += new System.EventHandler(this.buttonBackup_Click);

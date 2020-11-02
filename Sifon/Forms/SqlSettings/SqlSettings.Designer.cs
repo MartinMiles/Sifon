@@ -102,7 +102,7 @@
             this.linkReveal.Location = new System.Drawing.Point(310, 58);
             this.linkReveal.Name = "linkReveal";
             this.linkReveal.Size = new System.Drawing.Size(42, 13);
-            this.linkReveal.TabIndex = 16;
+            this.linkReveal.TabIndex = 14;
             this.linkReveal.TabStop = true;
             this.linkReveal.Text = "(reveal)";
             this.linkReveal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RevealPasswordClicked);
@@ -146,7 +146,7 @@
             this.buttonSave.Location = new System.Drawing.Point(246, 118);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(97, 23);
-            this.buttonSave.TabIndex = 15;
+            this.buttonSave.TabIndex = 16;
             this.buttonSave.Text = "Save and close";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -156,7 +156,7 @@
             this.buttonTest.Location = new System.Drawing.Point(187, 118);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(53, 23);
-            this.buttonTest.TabIndex = 14;
+            this.buttonTest.TabIndex = 15;
             this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);

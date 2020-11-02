@@ -19,6 +19,7 @@ namespace Sifon.Forms.SettingsForm
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             Raise_FormLoaded();
+            buttonSave.Focus();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

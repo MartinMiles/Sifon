@@ -124,7 +124,7 @@
             this.buttonSubmit.Location = new System.Drawing.Point(241, 270);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
-            this.buttonSubmit.TabIndex = 0;
+            this.buttonSubmit.TabIndex = 8;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSave_Click);

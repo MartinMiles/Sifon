@@ -111,7 +111,7 @@
             this.buttonInstall.Location = new System.Drawing.Point(135, 237);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(75, 23);
-            this.buttonInstall.TabIndex = 3;
+            this.buttonInstall.TabIndex = 6;
             this.buttonInstall.Text = "Install";
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.Install_Click);
@@ -139,7 +139,7 @@
             this.buttonClose.Location = new System.Drawing.Point(216, 237);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.TabIndex = 4;
+            this.buttonClose.TabIndex = 7;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
