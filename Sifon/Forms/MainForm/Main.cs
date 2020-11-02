@@ -125,6 +125,62 @@ namespace Sifon.Forms.MainForm
 
             ProfilesToolStripClicked(this, new EventArgs());
         }
+        
+        private void menuContainersProfiles_Click(object sender, EventArgs e)
+        {
+            var dockerProfiles = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
+            dockerProfiles.ShowDialog();
+            dockerProfiles.Dispose();
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var about = new About.About { StartPosition = FormStartPosition.CenterParent };
+            if (about.ShowDialog() == DialogResult.OK)
+            {
+                about.Dispose();
+            }
+        }
+
+        private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var feedback = new Feedback.Feedback { StartPosition = FormStartPosition.CenterParent };
+            if (feedback.ShowDialog() == DialogResult.OK)
+            {
+                feedback.Dispose();
+            }
+        }
+
+        private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var checkUpdates = new CheckUpdates { StartPosition = FormStartPosition.CenterParent };
+            if (checkUpdates.ShowDialog() == DialogResult.OK)
+            {
+                checkUpdates.Dispose();
+            }
+        }
+
+        private void installHostPrerequsitesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var prerequsites = new Prerequsites.Prerequsites { StartPosition = FormStartPosition.CenterParent };
+            if (prerequsites.ShowDialog() == DialogResult.OK)
+            {
+                prerequsites.Dispose();
+            }
+        }
+
+        private void sitecorePortalCredentialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new PortalCredentials.PortalCredentials { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var form = new SettingsForm.SettingsForm { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
 
         #endregion
 
@@ -176,19 +232,6 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
-        private void sitecorePortalCredentialsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new PortalCredentials.PortalCredentials { StartPosition = FormStartPosition.CenterParent };
-            form.ShowDialog();
-            form.Dispose();
-        }
-        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var form = new SettingsForm.SettingsForm { StartPosition = FormStartPosition.CenterParent };
-            form.ShowDialog();
-            form.Dispose();
-        }
-
         public void End()
         {
             DialogResult = DialogResult.Cancel;
@@ -201,38 +244,5 @@ namespace Sifon.Forms.MainForm
             End();
         }
 
-        private void menuContainersProfiles_Click(object sender, EventArgs e)
-        {
-            var form = new DockerProfiles { StartPosition = FormStartPosition.CenterParent };
-            form.ShowDialog();
-            form.Dispose();
-        }
-
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var about = new About.About { StartPosition = FormStartPosition.CenterParent };
-            if (about.ShowDialog() == DialogResult.OK)
-            {
-                about.Dispose();
-            }
-        }
-
-        private void sendFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var about = new Feedback.Feedback { StartPosition = FormStartPosition.CenterParent };
-            if (about.ShowDialog() == DialogResult.OK)
-            {
-                about.Dispose();
-            }
-        }
-
-        private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var about = new CheckUpdates { StartPosition = FormStartPosition.CenterParent };
-            if (about.ShowDialog() == DialogResult.OK)
-            {
-                about.Dispose();
-            }
-        }
     }
 }

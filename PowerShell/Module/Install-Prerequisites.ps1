@@ -1,4 +1,4 @@
-function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM)
+function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $InstallSIF)
 {
     function Is-ChocoInstalled
     {
@@ -60,6 +60,22 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM)
         return $false
     }
 
+    function Install-SIF
+    {
+        try 
+        {
+            Install-PackageProvider -Name NuGet -Force
+            Unregister-PSRepository -Name SitecoreGallery
+            Register-PSRepository -Name SitecoreGallery https://sitecore.myget.org/F/sc-powershell/api/v2
+            Install-Module SitecoreInstallFramework -Force
+            return $true
+        }
+        catch  
+        {
+            return $false
+        }
+    }
+
     $activity = "Installing prerequisites"
 
 
@@ -81,7 +97,13 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM)
         $Remoting = Install-Remoting
     }
 
+    [bool]$SIF = $false;
+    if($InstallSIF){
+        Write-Progress -Activity "Installing SIF" -Status $activity -PercentComplete 97;
+        $SIF = Install-SIF
+    }
+
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;
 
-    return [System.Tuple]::Create($Choco, $Git, $Remoting)
+    return [System.Tuple]::Create($Choco, $Git, $Remoting, $SIF)
 }

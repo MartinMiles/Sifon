@@ -16,7 +16,7 @@ namespace Sifon.Forms.Prerequsites
     internal class PrerequsitesPresenter
     {
         private readonly IPrerequisitesView _view;
-        private readonly ScriptWrapper<Tuple<bool, bool, bool>> _scriptWrapper;
+        private readonly ScriptWrapper<Tuple<bool, bool, bool, bool>> _scriptWrapper;
         protected readonly ProfilesProvider _profileService;
 
 
@@ -27,7 +27,9 @@ namespace Sifon.Forms.Prerequsites
             _view.InstallClicked += InstallClicked;
 
             _profileService = new ProfilesProvider();
-            _scriptWrapper = new ScriptWrapper<Tuple<bool,bool,bool>>(_profileService.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool>>());
+
+            _scriptWrapper = new ScriptWrapper<Tuple<bool,bool,bool,bool>>
+                (_profileService.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool, bool>>());
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }
@@ -45,6 +47,7 @@ namespace Sifon.Forms.Prerequsites
             parameters.Add("InstallChoco", e.Value.Chocolatey);
             parameters.Add("InstallGit", e.Value.Git);
             parameters.Add("InstallWinRM", e.Value.WinRM);
+            parameters.Add("InstallSIF", e.Value.SIF);
 
             await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites, parameters);
 
@@ -56,33 +59,9 @@ namespace Sifon.Forms.Prerequsites
             {
                 _view.Success(_scriptWrapper.Results.FirstOrDefault());
             }
-
-
-
-            //var result = _scriptWrapper.Results.FirstOrDefault();
-            //var excp = _scriptWrapper.Errors.FirstOrDefault();
-            //var errorMessage = excp is PSRemotingTransportException ? excp.Message : String.Empty;
-
-            //if (!string.IsNullOrWhiteSpace(result) && result.Contains("|"))
-            //{
-            //    var folders = result.Split('|');
-            //    _view.ScriptComplete(folders[0], folders[1], errorMessage);
-            //}
         }
 
         #region Script-related
-
-        private Dictionary<string, dynamic> CreateParameters(IRemoteSettings remoteSettings)
-        {
-            return new Dictionary<string, dynamic>
-            {
-                {"Activity", Settings.Initialize.ProgressActivityName},
-                {"RemoteHost", remoteSettings.RemoteHost},
-                {"Credentials", new PSCredential(remoteSettings.RemoteUsername, remoteSettings.RemotePassword.ToSecureString())},
-                {"RemoteDirectory", Settings.RemoteDirectory},
-                {"ModuleFiles", Modules.ToBeCopiedToRemote},
-            };
-        }
 
         private void ProgressReady(ProgressRecord data)
         {

@@ -48,6 +48,12 @@ namespace Sifon.Forms.Prerequsites
             set => checkRemoting.Checked = value;
         }
 
+        public bool SIF
+        {
+            get => checkSif.Checked;
+            set => checkSif.Checked = value;
+        }
+
         #endregion
 
         public void EnableControls(bool enabled)
@@ -55,6 +61,7 @@ namespace Sifon.Forms.Prerequsites
             checkChocolatey.Enabled = enabled;
             checkGit.Enabled = enabled;
             checkRemoting.Enabled = enabled;
+            checkSif.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
             SetWaitCursor(!enabled);
@@ -68,15 +75,16 @@ namespace Sifon.Forms.Prerequsites
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
 
-        public void UpdateView(Tuple<bool, bool, bool> bools)
+        public void UpdateView(Tuple<bool, bool, bool, bool> bools)
         {
             checkChocolatey.Checked = bools.Item1;
             checkGit.Checked = bools.Item2;
             checkRemoting.Checked = bools.Item3;
+            checkSif.Checked = bools.Item4;
 
             EnableControls(true);
             
-            if (bools.Item1 && bools.Item2 && bools.Item3)
+            if (bools.Item1 && bools.Item2 && bools.Item3 && bools.Item4)
             {
                 labelCheckResult.Text = "You've already got all the necessary prerequsites ";
                 buttonClose.Focus();
@@ -88,11 +96,12 @@ namespace Sifon.Forms.Prerequsites
             }
         }
 
-        public void Success(Tuple<bool, bool, bool> installationResult)
+        public void Success(Tuple<bool, bool, bool, bool> installationResult)
         {
             checkChocolatey.Checked = installationResult.Item1;
             checkGit.Checked = installationResult.Item2;
             checkRemoting.Checked = installationResult.Item3;
+            checkSif.Checked = installationResult.Item4;
 
             ShowInfo("Success", "Prerequsites have been installed");
             EnableControls(true);
@@ -121,7 +130,7 @@ namespace Sifon.Forms.Prerequsites
         }
         private void UpdateInstallButton()
         {
-            buttonInstall.Enabled = checkChocolatey.Checked || checkGit.Checked;
+            buttonInstall.Enabled = checkChocolatey.Checked || checkGit.Checked || checkRemoting.Checked || checkSif.Checked;
         }
     }
 }

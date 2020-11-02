@@ -5,5 +5,6 @@
         bool Chocolatey { get; set; }
         bool Git { get; set; }
         bool WinRM { get; set; }
+        bool SIF { get; set; }
     }
 }

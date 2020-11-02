@@ -80,6 +80,16 @@
             public const string SaveButton = "Once successfully tested, click this button to add / save the provided credentials";
         }
 
+        public static class Prerequsites
+        {
+            public const string Chocolatey = "Installs Chocolatey package management. Some plugins rely on Chocolatey for installing the dependencies";
+            public const string Git = "Installs Git which is required for downloading plugins from a community repository";
+            public const string Remoting = "Enable WinRM PowerShell Remoting client and whitelist all outbounding connections. No remote profiles will work without this enabled";
+            public const string SIF = "Installs Sitecore Install Framework which is required for many basic maintenance oprations on Sitecore instance";
+            public const string InstallButton = "Click this button to process with installation of the selected prerequsites";
+            public const string CloseButton = "Continue without installing prerequsites. You can install them later from Settings menu (not recommended)";
+        }
+
         public static class SettingsForm
         {
             public const string CrashLogCheckbox = "Please leave this box checked in order to help me making Sifon better by receiving anonymous crash logs from you";

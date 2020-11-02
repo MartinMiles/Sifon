@@ -84,9 +84,11 @@
     </Compile>
     <Compile Include="Forms\Feedback\Feedback.Tooltip.cs">
       <SubType>Form</SubType>
+      <DependentUpon>Feedback.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Feedback\Feedback.Validation.cs">
       <SubType>Form</SubType>
+      <DependentUpon>Feedback.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Feedback\FeedbackPresenter.cs" />
     <Compile Include="Forms\Feedback\IFeedbackView.cs" />
@@ -95,6 +97,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Prerequsites\Prerequsites.Designer.cs">
+      <DependentUpon>Prerequsites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prerequsites\Prerequsites.Tooltip.cs">
+      <SubType>Form</SubType>
       <DependentUpon>Prerequsites.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Prerequsites\PrerequsitesPresenter.cs" />
@@ -107,9 +113,11 @@
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsForm.Tooltip.cs">
       <SubType>Form</SubType>
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsForm.Validation.cs">
       <SubType>Form</SubType>
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
     <Compile Include="Forms\Updates\CheckUpdates.cs">
@@ -164,9 +172,11 @@
     </Compile>
     <Compile Include="Forms\Containers\DockerProfiles.Tooltips.cs">
       <SubType>Form</SubType>
+      <DependentUpon>DockerProfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Containers\DockerProfiles.Validation.cs">
       <SubType>Form</SubType>
+      <DependentUpon>DockerProfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Containers\DockerProfilesPresenter.cs" />
     <Compile Include="Forms\Containers\IDockerProfilesView.cs" />
@@ -211,7 +221,9 @@
     </Compile>
     <Compile Include="Forms\PortalCredentials\PortalCredentials.Tooltip.cs">
       <SubType>Form</SubType>
+      <DependentUpon>PortalCredentials.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Forms\PortalCredentials\PortalCredentialsPresenter.cs" />
     <Compile Include="Forms\Profiles\UserControls\Base\AbstractUserControl.cs">
       <SubType>UserControl</SubType>
@@ -393,6 +405,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Feedback\Feedback.resx">
       <DependentUpon>Feedback.cs</DependentUpon>
+      
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
@@ -477,6 +490,7 @@
   <ItemGroup>
     <Compile Include="Forms\PortalCredentials\PortalCredentials.Validation.cs">
       <SubType>Form</SubType>
+      <DependentUpon>PortalCredentials.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

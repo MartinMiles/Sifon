@@ -49,6 +49,7 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
+            this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -140,7 +141,8 @@ namespace Sifon.Forms.MainForm
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sitecorePortalCredentialsToolStripMenuItem,
-            this.settingsToolStripMenuItem1});
+            this.settingsToolStripMenuItem1,
+            this.installHostPrerequsitesToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -149,14 +151,14 @@ namespace Sifon.Forms.MainForm
             // 
             this.sitecorePortalCredentialsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sitecorePortalCredentialsToolStripMenuItem.Name = "sitecorePortalCredentialsToolStripMenuItem";
-            this.sitecorePortalCredentialsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.sitecorePortalCredentialsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.sitecorePortalCredentialsToolStripMenuItem.Text = "Sitecore Portal Credentials";
             this.sitecorePortalCredentialsToolStripMenuItem.Click += new System.EventHandler(this.sitecorePortalCredentialsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(212, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(251, 22);
             this.settingsToolStripMenuItem1.Text = "Application Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
@@ -294,6 +296,13 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
+            // installHostPrerequsitesToolStripMenuItem
+            // 
+            this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
+            this.installHostPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.installHostPrerequsitesToolStripMenuItem.Text = "Install Host-Machine Prerequsites";
+            this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AllowDrop = true;
@@ -348,6 +357,7 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem sendFeedbackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkUpdatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem installHostPrerequsitesToolStripMenuItem;
     }
 }
 

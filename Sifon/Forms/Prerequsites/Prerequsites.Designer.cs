@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prerequsites));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkSif = new System.Windows.Forms.CheckBox();
             this.checkRemoting = new System.Windows.Forms.CheckBox();
             this.labelCheckResult = new System.Windows.Forms.Label();
             this.checkChocolatey = new System.Windows.Forms.CheckBox();
@@ -43,16 +44,27 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkSif);
             this.groupBox1.Controls.Add(this.checkRemoting);
             this.groupBox1.Controls.Add(this.labelCheckResult);
             this.groupBox1.Controls.Add(this.checkChocolatey);
             this.groupBox1.Controls.Add(this.checkGit);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 140);
+            this.groupBox1.Size = new System.Drawing.Size(280, 160);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Host-level preprequites:";
+            // 
+            // checkSif
+            // 
+            this.checkSif.AutoSize = true;
+            this.checkSif.Location = new System.Drawing.Point(15, 102);
+            this.checkSif.Name = "checkSif";
+            this.checkSif.Size = new System.Drawing.Size(207, 17);
+            this.checkSif.TabIndex = 5;
+            this.checkSif.Text = "Latest Sitecore Install Framework (SIF)";
+            this.checkSif.UseVisualStyleBackColor = true;
             // 
             // checkRemoting
             // 
@@ -67,7 +79,7 @@
             // labelCheckResult
             // 
             this.labelCheckResult.AutoSize = true;
-            this.labelCheckResult.Location = new System.Drawing.Point(13, 110);
+            this.labelCheckResult.Location = new System.Drawing.Point(13, 129);
             this.labelCheckResult.Name = "labelCheckResult";
             this.labelCheckResult.Size = new System.Drawing.Size(0, 13);
             this.labelCheckResult.TabIndex = 3;
@@ -96,7 +108,7 @@
             // 
             // buttonInstall
             // 
-            this.buttonInstall.Location = new System.Drawing.Point(135, 219);
+            this.buttonInstall.Location = new System.Drawing.Point(135, 237);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(75, 23);
             this.buttonInstall.TabIndex = 3;
@@ -107,7 +119,7 @@
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(10, 163);
+            this.progressLabel.Location = new System.Drawing.Point(10, 181);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(51, 13);
             this.progressLabel.TabIndex = 12;
@@ -117,14 +129,14 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(13, 179);
+            this.progressBar.Location = new System.Drawing.Point(13, 197);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(280, 23);
             this.progressBar.TabIndex = 11;
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(216, 219);
+            this.buttonClose.Location = new System.Drawing.Point(216, 237);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 4;
@@ -136,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 255);
+            this.ClientSize = new System.Drawing.Size(303, 276);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.progressBar);
@@ -147,7 +159,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Prerequsites";
-            this.Text = "Prerequsites";
+            this.Text = "Install Prerequsites";
             this.Load += new System.EventHandler(this.Prerequsites_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -167,5 +179,6 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Label labelCheckResult;
         private System.Windows.Forms.CheckBox checkRemoting;
+        private System.Windows.Forms.CheckBox checkSif;
     }
 }
