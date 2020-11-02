@@ -22,10 +22,10 @@ namespace Sifon.Forms.MainForm
 
         private Size MenuSize => new Size(180, 22);
         
-        public void PopulateToolStripMenuItemWithPluginsAndScripts(PluginMenuItem pluginMenuItem)
+        public void PopulateToolStripMenuItemWithPluginsAndScripts(PluginMenuItem pluginMenuItem, bool isLocal)
         {
             pluginsToolStripMenuItem.DropDownItems.Clear();
-            DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem);
+            DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem, isLocal);
 
             MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
         }
@@ -59,7 +59,7 @@ namespace Sifon.Forms.MainForm
             return null;
         }
 
-        private void DirectorySearch(PluginMenuItem menuItem, ToolStripMenuItem parentMenuItem)
+        private void DirectorySearch(PluginMenuItem menuItem, ToolStripMenuItem parentMenuItem, bool isLocal)
         {
             try
             {
@@ -72,13 +72,13 @@ namespace Sifon.Forms.MainForm
 
                 parentMenuItem.Text = menuItem.DirectoryName;
 
-                AddScriptsToMenu(menuItem.Scripts, parentMenuItem);
+                AddScriptsToMenu(menuItem.Scripts, parentMenuItem, isLocal);
                 AddPluginsToMenu(menuItem.Plugins, parentMenuItem);
 
                 foreach (var itemChild in menuItem.Children)
                 {
                     var dirToolStripMenuItem = new ToolStripMenuItem { Size = MenuSize };
-                    DirectorySearch(itemChild, dirToolStripMenuItem);
+                    DirectorySearch(itemChild, dirToolStripMenuItem, isLocal);
                     parentMenuItem.DropDownItems.Add(dirToolStripMenuItem);
                 }
             }
@@ -107,12 +107,12 @@ namespace Sifon.Forms.MainForm
             }
         }
 
-        private void AddScriptsToMenu(Dictionary<string,string> scripts, ToolStripMenuItem dirToolStripMenuItem)
+        private void AddScriptsToMenu(Dictionary<string,string> scripts, ToolStripMenuItem dirToolStripMenuItem, bool isLocal)
         {
             foreach (var fileInfo in scripts)
             {
                 var metacode = new MetacodeHelper(fileInfo.Key);
-                if (metacode.IsCompatibleVersion)
+                if (metacode.IsCompatibleVersion && (isLocal || !metacode.LocalEnforcementValid))
                 {
                     var newToolStripMenuItem = new ToolStripMenuItem
                     {

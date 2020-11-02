@@ -115,7 +115,9 @@ namespace Sifon.Forms.Base
             ScriptRunnerComplete(this, new EventArgs<string>(sender.ScriptFile));
 
             _view.FinishUI();
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+
+            bool isLocal = !_profilesService.SelectedProfile.RemotingEnabled;
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), isLocal);
         }
 
         private void ObjectReady(PSObject data)

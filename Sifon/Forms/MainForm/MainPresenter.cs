@@ -63,7 +63,7 @@ namespace Sifon.Forms.MainForm
                 var profileNames = JustReadProfileNames;
                 _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
                 _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
-                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
             }
             else
             {
@@ -195,10 +195,13 @@ namespace Sifon.Forms.MainForm
             PrepareAndStart(script, parameters);
         }
 
+        public bool IsLocal => !SelectedProfile.RemotingEnabled;
+
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
+            
             _profilesService.SelectProfile(e.Value);
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
             _view.SetCaption(_profilesService.SelectedProfile.WindowCaptionSuffix);
 
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
@@ -206,7 +209,7 @@ namespace Sifon.Forms.MainForm
 
         private void ProfilesToolStripClicked(object sender, EventArgs e)
         {
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins));
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
 
             if (SelectedProfile != null)

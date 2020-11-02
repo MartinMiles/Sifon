@@ -20,11 +20,22 @@ namespace Sifon.Code.Metacode
         public string Name { get; private set; }
         public string Description { get; private set; }
 
+
+
+        public bool LocalEnforcementValid
+        {
+            get
+            {
+                var regex = new Regex(Settings.Regex.Metacode.LocallyEnforced, RegexOptions.IgnoreCase);
+                return _meta.Any(l => regex.Match(l).Success);
+            }
+        }
+
         public bool IsCompatibleVersion
         {
             get
             {
-                var regex = new Regex(Settings.Regex.Metacode.Compatibility);
+                var regex = new Regex(Settings.Regex.Metacode.Compatibility, RegexOptions.IgnoreCase);
 
                 foreach (string line in _meta)
                 {

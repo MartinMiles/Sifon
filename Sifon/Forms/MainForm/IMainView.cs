@@ -21,7 +21,7 @@ namespace Sifon.Forms.MainForm
 
         void LoadProfilesSelector(IEnumerable<string> profiles, string selectedProfileName);
         void ToolStripsEnabled(bool enabled);
-        void PopulateToolStripMenuItemWithPluginsAndScripts(PluginMenuItem pluginMenuItem);
+        void PopulateToolStripMenuItemWithPluginsAndScripts(PluginMenuItem pluginMenuItem, bool isLocal);
         void SetCaption(string captionSuffix);
         bool listBoxChangedFlag { get; set; }
         void BeginUI();
