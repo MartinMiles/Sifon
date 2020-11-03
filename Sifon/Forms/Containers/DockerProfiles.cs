@@ -30,7 +30,7 @@ namespace Sifon.Forms.Containers
             set => throw new NotImplementedException();
         }
 
-        public string ProfileName
+        public string ContainerProfileName
         {
             get => textProfileName.Text;
             set => throw new NotImplementedException();
@@ -48,7 +48,7 @@ namespace Sifon.Forms.Containers
             set => throw new NotImplementedException();
         }
 
-        public string AdminPassword
+        public string SitecoreAdminPassword
         {
             get => textAdminPassword.Text;
             set => throw new NotImplementedException();
@@ -57,6 +57,18 @@ namespace Sifon.Forms.Containers
         public string SaPassword
         {
             get => textSaPassword.Text;
+            set => throw new NotImplementedException();
+        }
+
+        public string InitializeScript
+        {
+            get => textInitialize.Text;
+            set => throw new NotImplementedException();
+        }
+
+        public string Notes
+        {
+            get => textNotes.Text;
             set => throw new NotImplementedException();
         }
 
@@ -99,23 +111,14 @@ namespace Sifon.Forms.Containers
 
         public void SetFields(IContainerProfile profile)
         {
-            textProfileName.Text = profile.ProfileName;
+            textProfileName.Text = profile.ContainerProfileName;
             textRepositoryUrl.Text = profile.Repository;
             textRepositoryFolder.Text = profile.Folder;
-            textAdminPassword.Text = profile.AdminPassword;
+            textAdminPassword.Text = profile.SitecoreAdminPassword;
             textSaPassword.Text = profile.SaPassword;
+            textInitialize.Text = profile.InitializeScript;
+            textNotes.Text = profile.Notes;
         }
-
-        //private void UpdateButtonsState()
-        //{
-        //    bool buttonsEnabled = textProfileName.Text.Length > 0
-        //                          && textRepositoryUrl.Text.Length > 0
-        //                          //&& textRepositoryFolder.Text.Length > 0 - can be blank
-        //                          && textAdminPassword.Text.Length > 0
-        //                          && textSaPassword.Text.Length > 0;
-
-        //    buttonRename.Enabled = buttonsEnabled;
-        //}
 
         #region Event handlers
 
@@ -149,6 +152,8 @@ namespace Sifon.Forms.Containers
                 textRepositoryFolder.Text = String.Empty;
                 textAdminPassword.Text = String.Empty;
                 textSaPassword.Text = String.Empty;
+                textInitialize.Text = String.Empty;
+                textNotes.Text = String.Empty;
             }
         }
 
@@ -159,16 +164,7 @@ namespace Sifon.Forms.Containers
                 SelectedProfileDeleted(this, e);
             }
         }
-
-        private void buttonDefaults_Click(object sender, EventArgs e)
-        {
-            textProfileName.Text = "Sitecore 10 XP0 - Getting Started";
-            textRepositoryUrl.Text = "https://github.com/Sitecore/docker-examples";
-            textRepositoryFolder.Text = "getting-started";
-            textAdminPassword.Text = "Password12345";
-            textSaPassword.Text = "Password12345";
-        }
-
+        
         #endregion
 
         private void linkRevealAdmin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -179,6 +175,11 @@ namespace Sifon.Forms.Containers
         private void linkRevealSa_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RevealPasswordWithinTextbox(textSaPassword, (LinkLabel)sender);
+        }
+
+        public void ShowConfirmation()
+        {
+            ShowInfo("Successful", "Your changes have been saved");
         }
     }
 }

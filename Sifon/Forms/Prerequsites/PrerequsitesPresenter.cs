@@ -36,7 +36,7 @@ namespace Sifon.Forms.Prerequsites
 
         private async void FormLoaded(object sender, EventArgs e)
         {
-            var results = await _scriptWrapper.Run(Modules.Functions.CheckPrerequisites);
+            await _scriptWrapper.Run(Modules.Functions.CheckPrerequisites);
             _view.UpdateView(_scriptWrapper.Results.FirstOrDefault());
         }
 

@@ -25,30 +25,34 @@ namespace Sifon.Forms.Containers
 
         protected void Loaded(object sender, EventArgs e)
         {
-            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ProfileName);
+            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ContainerProfileName);
         }
 
         private void ProfileAdded(object sender, EventArgs<IContainerProfile> e)
         {
             _containersProvider.Add(e.Value);
-            _containersProvider.SelectProfile(e.Value.ProfileName);
+            _containersProvider.SelectProfile(e.Value.ContainerProfileName);
             _containersProvider.Save();
 
             _view.SetFields(_containersProvider.SelectedProfile);
-            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ProfileName);
+            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ContainerProfileName);
         }
 
         private void ProfileRenamed(object sender, EventArgs<IContainerProfile> e)
         {
             var profile = _containersProvider.SelectedProfile;
 
-            profile.ProfileName = e.Value.ProfileName;
+            profile.ContainerProfileName = e.Value.ContainerProfileName;
             profile.Repository = e.Value.Repository;
             profile.Folder = e.Value.Folder;
-            profile.AdminPassword = e.Value.AdminPassword;
+            profile.SitecoreAdminPassword = e.Value.SitecoreAdminPassword;
             profile.SaPassword = e.Value.SaPassword;
+            profile.InitializeScript = e.Value.InitializeScript;
+            profile.Notes = e.Value.Notes;
+
             _containersProvider.Save();
-            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ProfileName);
+            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ContainerProfileName);
+            _view.ShowConfirmation();
         }
 
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
@@ -62,7 +66,7 @@ namespace Sifon.Forms.Containers
             _containersProvider.DeleteSelected();
             _containersProvider.Save();
 
-            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ProfileName);
+            _view.LoadProfilesDropdown(_containersProvider.Profiles, _containersProvider.SelectedProfile?.ContainerProfileName);
         }
     }
 }

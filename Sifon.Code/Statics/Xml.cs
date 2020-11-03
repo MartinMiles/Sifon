@@ -42,8 +42,10 @@ namespace Sifon.Code.Statics
             public const string ProfileName = "ProfileName";
             public const string Repository = "Repository";
             public const string Folder = "Folder";
-            public const string AdminPassword = "AdminPassword";
+            public const string SitecoreAdminPassword = "SitecoreAdminPassword";
             public const string SaPassword = "SaPassword";
+            public const string InitializeScript = "InitializeScript";
+            public const string Notes = "Notes";
         }
 
         public static class SettingRecord

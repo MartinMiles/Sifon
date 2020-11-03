@@ -148,9 +148,12 @@ namespace Sifon.Code.Providers.Profile
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
             parameters.Add("Profile", SelectedProfile);
 
-            var credential = new PSCredential(SelectedProfileSql.SqlAdminUsername, SelectedProfileSql.SqlAdminPassword.ToSecureString());
-            parameters.Add(Settings.Parameters.SqlCredentials, credential);
-            parameters.Add(Settings.Parameters.ServerInstance, SelectedProfileSql.SqlServer);
+            if (SelectedProfileSql != null)
+            {
+                var credential = new PSCredential(SelectedProfileSql.SqlAdminUsername, SelectedProfileSql.SqlAdminPassword.ToSecureString());
+                parameters.Add(Settings.Parameters.SqlCredentials, credential);
+                parameters.Add(Settings.Parameters.ServerInstance, SelectedProfileSql.SqlServer);
+            }
 
             foreach (var parameter in SelectedProfile.Parameters)
             {

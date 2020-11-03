@@ -36,6 +36,7 @@ namespace Sifon.Forms.MainForm
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,6 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -121,14 +121,14 @@ namespace Sifon.Forms.MainForm
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
-            this.profilesToolStripMenuItem1.Text = "Profiles";
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.profilesToolStripMenuItem1.Text = "Container Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(164, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             // 
             // pluginsToolStripMenuItem
@@ -161,6 +161,13 @@ namespace Sifon.Forms.MainForm
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(251, 22);
             this.settingsToolStripMenuItem1.Text = "Application Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
+            // 
+            // installHostPrerequsitesToolStripMenuItem
+            // 
+            this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
+            this.installHostPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.installHostPrerequsitesToolStripMenuItem.Text = "Install Host-Machine Prerequsites";
+            this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -295,13 +302,6 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.Size = new System.Drawing.Size(1394, 589);
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // installHostPrerequsitesToolStripMenuItem
-            // 
-            this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
-            this.installHostPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.installHostPrerequsitesToolStripMenuItem.Text = "Install Host-Machine Prerequsites";
-            this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
             // 
             // Main
             // 

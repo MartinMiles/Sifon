@@ -62,6 +62,7 @@
             public const string RepositoryFolder = "An optional parameter for a folder within the above repository, if docker-compose isn't located at the root level";
             public const string AdminPassword = "Sitecore instance admin password (the one traditionally used to be 'b')";
             public const string SaPassword = "SQL Server 'sa' administrative password";
+            public const string InitializeScript = "Script name along with parameters used for repository initialization with the above parameters";
 
             public const string RevealAdmin = "Shows and hides Sitecore instance admin password in this field";
             public const string RevealSa = "Shows and hides SQL Server 'sa' password in this field";

@@ -96,6 +96,7 @@
     <Compile Include="Model\PluginMenuItem.cs" />
     <Compile Include="Model\ProductVersion.cs" />
     <Compile Include="Model\Profiles\ContainerProfile.cs" />
+    <Compile Include="Model\Profiles\DefaultContainers.cs" />
     <Compile Include="Model\Profiles\Profile.cs" />
     <Compile Include="Model\Profiles\SettingRecord.cs" />
     <Compile Include="Model\Profiles\SqlServerRecord.cs" />

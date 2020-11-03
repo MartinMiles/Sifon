@@ -30,9 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockerProfiles));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textNotes = new System.Windows.Forms.TextBox();
+            this.labelInit = new System.Windows.Forms.Label();
+            this.buttonAddRename = new System.Windows.Forms.Button();
+            this.textInitialize = new System.Windows.Forms.TextBox();
             this.linkRevealSa = new System.Windows.Forms.LinkLabel();
             this.linkRevealAdmin = new System.Windows.Forms.LinkLabel();
-            this.buttonDefaults = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textRepositoryFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +46,6 @@
             this.textSaPassword = new System.Windows.Forms.TextBox();
             this.labelAdminUsername = new System.Windows.Forms.Label();
             this.textAdminPassword = new System.Windows.Forms.TextBox();
-            this.buttonAddRename = new System.Windows.Forms.Button();
             this.labelProfileName = new System.Windows.Forms.Label();
             this.textProfileName = new System.Windows.Forms.TextBox();
             this.labelCombo = new System.Windows.Forms.Label();
@@ -52,9 +55,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textNotes);
+            this.groupBox1.Controls.Add(this.labelInit);
+            this.groupBox1.Controls.Add(this.buttonAddRename);
+            this.groupBox1.Controls.Add(this.textInitialize);
             this.groupBox1.Controls.Add(this.linkRevealSa);
             this.groupBox1.Controls.Add(this.linkRevealAdmin);
-            this.groupBox1.Controls.Add(this.buttonDefaults);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textRepositoryFolder);
             this.groupBox1.Controls.Add(this.label1);
@@ -64,17 +71,61 @@
             this.groupBox1.Controls.Add(this.textSaPassword);
             this.groupBox1.Controls.Add(this.labelAdminUsername);
             this.groupBox1.Controls.Add(this.textAdminPassword);
-            this.groupBox1.Controls.Add(this.buttonAddRename);
             this.groupBox1.Controls.Add(this.labelProfileName);
             this.groupBox1.Controls.Add(this.textProfileName);
             this.groupBox1.Controls.Add(this.labelCombo);
             this.groupBox1.Controls.Add(this.comboProfiles);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 365);
+            this.groupBox1.Size = new System.Drawing.Size(349, 502);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Profile details:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 381);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Additional notes:";
+            // 
+            // textNotes
+            // 
+            this.textNotes.Location = new System.Drawing.Point(15, 397);
+            this.textNotes.MaxLength = 127;
+            this.textNotes.Multiline = true;
+            this.textNotes.Name = "textNotes";
+            this.textNotes.Size = new System.Drawing.Size(318, 48);
+            this.textNotes.TabIndex = 30;
+            // 
+            // labelInit
+            // 
+            this.labelInit.AutoSize = true;
+            this.labelInit.Location = new System.Drawing.Point(12, 326);
+            this.labelInit.Name = "labelInit";
+            this.labelInit.Size = new System.Drawing.Size(127, 13);
+            this.labelInit.TabIndex = 29;
+            this.labelInit.Text = "Init.ps1 script parameters:";
+            // 
+            // buttonAddRename
+            // 
+            this.buttonAddRename.Location = new System.Drawing.Point(266, 461);
+            this.buttonAddRename.Name = "buttonAddRename";
+            this.buttonAddRename.Size = new System.Drawing.Size(67, 22);
+            this.buttonAddRename.TabIndex = 12;
+            this.buttonAddRename.Text = "Rename";
+            this.buttonAddRename.UseVisualStyleBackColor = true;
+            this.buttonAddRename.Click += new System.EventHandler(this.buttonAddRename_Click);
+            // 
+            // textInitialize
+            // 
+            this.textInitialize.Location = new System.Drawing.Point(15, 342);
+            this.textInitialize.MaxLength = 127;
+            this.textInitialize.Name = "textInitialize";
+            this.textInitialize.Size = new System.Drawing.Size(318, 20);
+            this.textInitialize.TabIndex = 28;
             // 
             // linkRevealSa
             // 
@@ -98,24 +149,14 @@
             this.linkRevealAdmin.Text = "(reveal)";
             this.linkRevealAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRevealAdmin_LinkClicked);
             // 
-            // buttonDefaults
-            // 
-            this.buttonDefaults.Location = new System.Drawing.Point(15, 326);
-            this.buttonDefaults.Name = "buttonDefaults";
-            this.buttonDefaults.Size = new System.Drawing.Size(80, 22);
-            this.buttonDefaults.TabIndex = 10;
-            this.buttonDefaults.Text = "Set defaults";
-            this.buttonDefaults.UseVisualStyleBackColor = true;
-            this.buttonDefaults.Click += new System.EventHandler(this.buttonDefaults_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 200);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(191, 13);
+            this.label2.Size = new System.Drawing.Size(322, 13);
             this.label2.TabIndex = 27;
-            this.label2.Text = "GitHub repository folder (if not the root):";
+            this.label2.Text = "GitHub repository folder (when located not at the root of repository):";
             // 
             // textRepositoryFolder
             // 
@@ -192,16 +233,6 @@
             this.textAdminPassword.Size = new System.Drawing.Size(150, 20);
             this.textAdminPassword.TabIndex = 6;
             // 
-            // buttonAddRename
-            // 
-            this.buttonAddRename.Location = new System.Drawing.Point(266, 326);
-            this.buttonAddRename.Name = "buttonAddRename";
-            this.buttonAddRename.Size = new System.Drawing.Size(67, 22);
-            this.buttonAddRename.TabIndex = 11;
-            this.buttonAddRename.Text = "Rename";
-            this.buttonAddRename.UseVisualStyleBackColor = true;
-            this.buttonAddRename.Click += new System.EventHandler(this.buttonAddRename_Click);
-            // 
             // labelProfileName
             // 
             this.labelProfileName.AutoSize = true;
@@ -242,14 +273,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 393);
+            this.ClientSize = new System.Drawing.Size(378, 529);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DockerProfiles";
-            this.Text = "Containers Profiles - (experimental, local only)";
+            this.Text = "Container Profiles - (experimental, local only)";
             this.Load += new System.EventHandler(this.DockerProfiles_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -260,7 +291,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonDefaults;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textRepositoryFolder;
         private System.Windows.Forms.Label label1;
@@ -277,5 +307,9 @@
         private System.Windows.Forms.ComboBox comboProfiles;
         private System.Windows.Forms.LinkLabel linkRevealSa;
         private System.Windows.Forms.LinkLabel linkRevealAdmin;
+        private System.Windows.Forms.Label labelInit;
+        private System.Windows.Forms.TextBox textInitialize;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textNotes;
     }
 }

@@ -123,9 +123,10 @@ namespace Sifon.Code.Statics
             public static string[] Commerce = {"Authoring", "Ops", "Shops", "Minions", "BizFx"};
         }
 
-        public static class CotainerParameters
+        public static class ContainerParameters
         {
             public const string SaPassword = "SaPassword";
+            public const string InitParams = "InitParams";
         }
 
         public static class Parameters
@@ -144,8 +145,9 @@ namespace Sifon.Code.Statics
             public const string PortalCredentials = "PortalCredentials";
 
             //from containers
-            public const string ProfileName = "ProfileName";
+            public const string ContainerProfileName = "ContainerProfileName";
             public const string Repository = "Repository";
+            public const string SitecoreAdminPassword = "SitecoreAdminPassword";
 
             public const string Folder = "Folder";
 

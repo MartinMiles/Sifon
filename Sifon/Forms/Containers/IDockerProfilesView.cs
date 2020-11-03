@@ -15,5 +15,6 @@ namespace Sifon.Forms.Containers
 
         void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName);
         void SetFields(IContainerProfile profile);
+        void ShowConfirmation();
     }
 }

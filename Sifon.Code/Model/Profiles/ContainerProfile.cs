@@ -24,10 +24,12 @@ namespace Sifon.Code.Model.Profiles
 
         public bool Selected { get; set; }
         
-        public string ProfileName { get; set; }
+        public string ContainerProfileName { get; set; }
         public string Repository { get; set; }
         public string Folder { get; set; }
-        public string AdminPassword { get; set; }
+        public string SitecoreAdminPassword { get; set; }
         public string SaPassword { get; set; }
+        public string InitializeScript { get; set; }
+        public string Notes { get; set; }
     }
 }
