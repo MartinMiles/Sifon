@@ -14,6 +14,8 @@ namespace Sifon.Forms.Profiles
         private bool isFirstRunFlag;
 
         public event EventHandler<EventArgs> FormSaved = delegate { };
+        public event EventHandler<EventArgs> ContinueWithoutCreatingProfile = delegate { };
+
         
         internal ProfilesPresenter Presenter { get; private set; }
 
@@ -23,6 +25,8 @@ namespace Sifon.Forms.Profiles
         {
             isFirstRunFlag = firstRun;
             ctor();
+
+            buttonNoProfile.Visible = true;
         }
 
         public Profiles()
@@ -129,6 +133,15 @@ namespace Sifon.Forms.Profiles
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void buttonNoProfile_Click(object sender, EventArgs e)
+        {
+            if (ShowYesNo("Continue without creating local or remote profile? (not recommended)", "Most of the menu items and plugins will be unavailable to you without having at least one active profile\nThe only function remains active is running Sitecore in containers."))
+            {
+                ContinueWithoutCreatingProfile(this, new EventArgs());
+                Close();
+            }
         }
     }
 }

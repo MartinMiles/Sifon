@@ -196,10 +196,13 @@ namespace Sifon.Forms.MainForm
 
         public void ToolStripsEnabled(bool enabled)
         {
+            var children = pluginsToolStripMenuItem.DropDown.Items;
+
             backupToolStripMenuItem.Enabled = enabled;
             removeToolStripMenuItem1.Enabled = enabled;
             restoreToolStripMenuItem.Enabled = enabled;
-            pluginsToolStripMenuItem.Enabled = enabled;
+            pluginsToolStripMenuItem.Enabled 
+                = enabled || children.Count == 1 && children[0].Name.EndsWith("Get-SifonPlugins.ps1");
         }
 
         public void FinishUI()

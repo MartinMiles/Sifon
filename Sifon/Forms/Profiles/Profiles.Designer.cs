@@ -34,6 +34,7 @@ namespace Sifon.Forms.Profiles
             this.tabWebsite = new System.Windows.Forms.TabPage();
             this.tabConnectivity = new System.Windows.Forms.TabPage();
             this.tabParameters = new System.Windows.Forms.TabPage();
+            this.buttonNoProfile = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,11 +108,23 @@ namespace Sifon.Forms.Profiles
             this.tabParameters.Text = "Additional params";
             this.tabParameters.UseVisualStyleBackColor = true;
             // 
+            // buttonNoProfile
+            // 
+            this.buttonNoProfile.Location = new System.Drawing.Point(17, 354);
+            this.buttonNoProfile.Name = "buttonNoProfile";
+            this.buttonNoProfile.Size = new System.Drawing.Size(216, 26);
+            this.buttonNoProfile.TabIndex = 47;
+            this.buttonNoProfile.Text = "Don\'t create profile (I\'ll use containers only)";
+            this.buttonNoProfile.UseVisualStyleBackColor = true;
+            this.buttonNoProfile.Visible = false;
+            this.buttonNoProfile.Click += new System.EventHandler(this.buttonNoProfile_Click);
+            // 
             // Profiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 392);
+            this.Controls.Add(this.buttonNoProfile);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -136,5 +149,6 @@ namespace Sifon.Forms.Profiles
         private System.Windows.Forms.TabPage tabWebsite;
         private System.Windows.Forms.TabPage tabConnectivity;
         private System.Windows.Forms.TabPage tabParameters;
+        private System.Windows.Forms.Button buttonNoProfile;
     }
 }

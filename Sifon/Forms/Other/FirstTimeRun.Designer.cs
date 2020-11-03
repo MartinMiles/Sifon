@@ -120,7 +120,7 @@
             this.groupBox1.Size = new System.Drawing.Size(314, 254);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "May we have your attention, please?";
+            this.groupBox1.Text = "May I have your attention, please?";
             // 
             // buttonPrerequsites
             // 
@@ -138,9 +138,9 @@
             this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(16, 181);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 13);
+            this.label5.Size = new System.Drawing.Size(276, 13);
             this.label5.TabIndex = 20;
-            this.label5.Text = "one profile is set up correctly and selected.";
+            this.label5.Text = "one profile (local or remote) set up correctly and selected.";
             // 
             // label4
             // 

@@ -11,6 +11,7 @@ namespace Sifon.Forms.Profiles
     {
         event EventHandler<EventArgs> FormSaved;
         event EventHandler<EventArgs> BeforeFormClosing;
+        event EventHandler<EventArgs> ContinueWithoutCreatingProfile;
 
         void CloseDialog();
 

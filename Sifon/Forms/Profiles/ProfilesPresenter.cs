@@ -72,12 +72,22 @@ namespace Sifon.Forms.Profiles
             _view = profilesView;
             _view.FormSaved += FormSaved;
             _view.BeforeFormClosing += (sender, args) => FormClosing(sender, args);
+            _view.ContinueWithoutCreatingProfile += ContinueWithoutCreatingProfile;
 
             if (SelectedProfile != null)
             {
                 _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
                 _sqlService = new SqlServerRecordProvider();
             }
+        }
+
+        private void ContinueWithoutCreatingProfile(object sender, object args)
+        {
+            var fakeLocalProfile = ProfilesService.CreateLocal();
+            fakeLocalProfile.ProfileName = "Profile not created";
+            fakeLocalProfile.Prefix = "Please submit the actual values instead";
+            ProfilesService.Add(fakeLocalProfile);
+            ProfilesService.SelectProfile(fakeLocalProfile.ProfileName);
         }
 
         private void FormSaved(object sender, EventArgs e)

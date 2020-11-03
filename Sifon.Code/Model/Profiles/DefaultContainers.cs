@@ -9,7 +9,7 @@
             Folder = "getting-started",
             SitecoreAdminPassword = "Password12345",
             SaPassword = "Password12345",
-            InitializeScript = "Init.ps1",
+            InitializeScript = "-LicenseXmlPath $licensePath -SitecoreAdminPassword $SitecoreAdminPassword -SqlSaPassword $SaPassword",
             Notes = "A basic example of Sitecore 10 XP0 working in containers"
         };
 
@@ -20,7 +20,7 @@
             Folder = "",
             SitecoreAdminPassword = "Password12345",
             SaPassword = "Password12345",
-            InitializeScript = "Init.ps1",
+            InitializeScript = "-LicenseXmlPath $licensePath -AdminPassword $SitecoreAdminPassword",
             Notes = "The latest Lighthouse demo is built to support Sitecore Experience Platform 10.0 using Sitecore Experience Accelerator (SXA) 10.0."
         };
     }
