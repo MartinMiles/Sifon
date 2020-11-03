@@ -66,7 +66,7 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
         {
             Install-PackageProvider -Name NuGet -Force
             
-            if($null -ne (Get-PSRepository -name SitecoreGallery))
+            if($null -eq (Get-PSRepository -name SitecoreGallery -ErrorAction SilentlyContinue))
             {
                 Register-PSRepository -Name SitecoreGallery https://sitecore.myget.org/F/sc-powershell/api/v2
             }
