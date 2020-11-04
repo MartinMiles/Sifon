@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
@@ -59,7 +60,7 @@ namespace Sifon.Forms.Base
             _view.FinishUI();
         }
 
-        public async void PrepareAndStart(string script, Dictionary<string, dynamic> parameters)
+        public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters)
         {
             _scriptWrapper = new ScriptWrapper<PSObject>(SelectedProfile, _view, d => d);
 

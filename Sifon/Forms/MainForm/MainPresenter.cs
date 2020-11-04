@@ -161,8 +161,6 @@ namespace Sifon.Forms.MainForm
             var metacode = new MetacodeHelper(e.Value);
             var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters, WinformsAssemblyLocation);
 
-            bool isCompatibleVersion = metacode.IsCompatibleVersion;
-
             foreach (var metadataPair in metacodeResultsDictionary)
             {
                 // if we used external control to ask for file, add it then with a provided param
@@ -192,14 +190,15 @@ namespace Sifon.Forms.MainForm
                 }
             }
 
-            PrepareAndStart(script, parameters);
+            await PrepareAndStart(script, parameters);
+
+            _view.PluginsToolStripEnabled();
         }
 
         public bool IsLocal => !SelectedProfile.RemotingEnabled;
 
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
-            
             _profilesService.SelectProfile(e.Value);
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
             _view.SetCaption(_profilesService.SelectedProfile.WindowCaptionSuffix);

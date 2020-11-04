@@ -31,5 +31,6 @@ namespace Sifon.Forms.MainForm
         void ForceProfileDialogOnFirstRun();
         bool ShowFirstRunDialog();
         void TerminateAsEmptyProfile();
+        void PluginsToolStripEnabled();
     }
 }
