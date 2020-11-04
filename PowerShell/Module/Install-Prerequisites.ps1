@@ -38,7 +38,7 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
 
     function Install-Git
     {
-        choco install git.install -version 1.9.5.20150114 --force  | Out-Null
+        choco install git.install /GitOnlyOnPath --force  | Out-Null
         return $true
     }
 
