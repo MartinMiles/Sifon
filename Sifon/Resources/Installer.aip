@@ -40,7 +40,6 @@
     <ROW Component="APPDIR" ComponentId="{D35B0D03-8780-407A-A1DB-C347998C2082}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="CheckPrerequisites.ps1" ComponentId="{A5C6DD64-B1F5-48D1-8E55-6432BD62FDB6}" Directory_="Module_Dir" Attributes="0" KeyPath="CheckPrerequisites.ps1" Type="0"/>
     <ROW Component="InitializeRemote.ps1" ComponentId="{6BABC16A-2404-4FF4-9D86-A00E8BF87DA1}" Directory_="PowerShell_Dir" Attributes="0" KeyPath="InitializeRemote.ps1" Type="0"/>
-    <ROW Component="Microsoft.Web.Administration.dll" ComponentId="{8B71A2FE-73B9-4344-8470-282A8BE02223}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Microsoft.Web.Administration.dll"/>
     <ROW Component="Newtonsoft.Json.dll" ComponentId="{88DB8F2C-5DD5-48F1-8452-963E7DAC0D1C}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="ProductInformation" ComponentId="{69F1E81E-28CF-4269-9050-B01A8BD6A531}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="Sifon.Abstractions.dll" ComponentId="{9615E53B-EA96-42FC-85E1-FB3281F4297E}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Abstractions.dll"/>
@@ -55,7 +54,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="Sifon.exe" Component_="Sifon.exe" FileName="Sifon.exe" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="Microsoft.Web.Administration.dll" Component_="Microsoft.Web.Administration.dll" FileName="MICROS~1.DLL|Microsoft.Web.Administration.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Microsoft.Web.Administration.dll" SelfReg="false"/>
     <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Newtonsoft.Json.dll" SelfReg="false"/>
     <ROW File="Sifon.Abstractions.dll" Component_="Sifon.Abstractions.dll" FileName="SIFONA~1.DLL|Sifon.Abstractions.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.Abstractions.dll" SelfReg="false"/>
     <ROW File="Sifon.ApiClient.dll" Component_="Sifon.ApiClient.dll" FileName="SIFONA~2.DLL|Sifon.ApiClient.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.ApiClient.dll" SelfReg="false"/>
@@ -169,7 +167,6 @@
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
     <ROW Feature_="MainFeature" Component_="Sifon.exe"/>
-    <ROW Feature_="MainFeature" Component_="Microsoft.Web.Administration.dll"/>
     <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
     <ROW Feature_="MainFeature" Component_="Sifon.Abstractions.dll"/>
     <ROW Feature_="MainFeature" Component_="Sifon.ApiClient.dll"/>
