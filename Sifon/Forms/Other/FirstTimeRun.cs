@@ -1,5 +1,5 @@
-﻿using System.Management.Automation;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Sifon.Code.PowerShell;
 
 namespace Sifon.Forms.Other
 {
@@ -16,7 +16,8 @@ namespace Sifon.Forms.Other
             buttonPrerequsites.Enabled = false;
             buttonUnderstand.Enabled = false;
 
-            InstallModuleOnFirstRun();
+            var powerShellHelper = new PowerShellHelper();
+            powerShellHelper.InstallModuleOnFirstRun();
 
             buttonPrerequsites.Enabled = true;
             buttonUnderstand.Enabled = true;
@@ -40,26 +41,6 @@ namespace Sifon.Forms.Other
         {
             buttonPrerequsites.Enabled = enabled;
             buttonUnderstand.Enabled = enabled;
-        }
-
-        // TODO: Move out to Sifon.Code
-        private void InstallModuleOnFirstRun()
-        {
-            var ps = PowerShell.Create();
-
-            try
-            {
-                ps.AddCommand("Set-ExecutionPolicy")
-                    .AddArgument("Unrestricted")
-                    .AddParameter("Scope", "CurrentUser");
-
-                ps.Invoke();
-            }
-            catch (CmdletInvocationException) {}
-
-            ps = PowerShell.Create();
-            ps.AddCommand($".\\{Code.Statics.Modules.Directory}\\{Code.Statics.Modules.Files.Installer}");
-            ps.Invoke();
         }
 
         private void buttonUnderstand_Click(object sender, System.EventArgs e)

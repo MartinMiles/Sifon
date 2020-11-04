@@ -101,6 +101,7 @@
     <Compile Include="Model\Profiles\SettingRecord.cs" />
     <Compile Include="Model\Profiles\SqlServerRecord.cs" />
     <Compile Include="Model\SolrInfo.cs" />
+    <Compile Include="PowerShell\PowerShellHelper.cs" />
     <Compile Include="PowerShell\ProfileRunspaceFactory.cs" />
     <Compile Include="PowerShell\RemoteScriptCopier.cs" />
     <Compile Include="PowerShell\ScriptRunner.cs" />

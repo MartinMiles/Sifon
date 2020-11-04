@@ -137,7 +137,8 @@ namespace Sifon.Forms.Profiles
 
         private void buttonNoProfile_Click(object sender, EventArgs e)
         {
-            if (ShowYesNo("Continue without creating local or remote profile? (not recommended)", "Most of the menu items and plugins will be unavailable to you without having at least one active profile\nThe only function remains active is running Sitecore in containers."))
+            if (ShowYesNo("Continue without creating either local or remote profile?",
+                "This is not recommended.\n\nMost of the menu items and plugins will be unavailable to you without having at least one active profile.\n\nThe only function remaining active will be running Sitecore in containers.\n\nPlease choose only if do not have either local Sitecore instance or remote one accessible over WinRM."))
             {
                 ContinueWithoutCreatingProfile(this, new EventArgs());
                 Close();
