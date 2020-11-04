@@ -11,17 +11,6 @@ $remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -S
 
 Write-Progress -Activity $Activity -Status "Remote folder created" -PercentComplete 1
 
-# If ($Filenames)
-# {	
-	
-# 	For ($i=0; $i -lt $Filenames.Length; $i++) 
-# 	{
-#   		Copy-Item -Path $Filenames[$i] -Destination $remotePath.FullName -ToSession $session
-# 		$File = Split-Path $Filenames[$i] -leaf
-# 		Write-Progress -Activity $Activity -Status "Copying files: $File" -PercentComplete (($i) * 50 / $Filenames.Length);
-# 	}
-# }
-
 $ModulesPath = Invoke-Command -Session $session -ScriptBlock { New-Item -ItemType Directory -Path "$Env:Programfiles\WindowsPowerShell\Modules\Sifon" -Force }
 if($ModuleFiles){
 

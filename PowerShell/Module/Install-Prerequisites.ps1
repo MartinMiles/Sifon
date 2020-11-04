@@ -13,7 +13,6 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
 
     function Install-Chocolatey 
     {    
-        #[CmdletBinding(SupportsShouldProcess = $True)]
         param ()
         if (!(Is-ChocoInstalled))
         {
