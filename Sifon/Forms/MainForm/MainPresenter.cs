@@ -149,35 +149,18 @@ namespace Sifon.Forms.MainForm
 
         #endregion
 
+        public RemoteScriptCopier RemoteScriptCopier => new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
+
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
-            var _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
-
+            var metacode = new MetacodeHelper(e.Value);
             var parameters = new Dictionary<string, dynamic>();
+
             _profilesService.AddScriptProfileParameters(parameters);
             _settingsProvider.AddScriptSettingsParameters(parameters);
             _containersProvider.AddContainersParameters(parameters);
-
-            var metacode = new MetacodeHelper(e.Value);
-            var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters, WinformsAssemblyLocation);
-
-            foreach (var metadataPair in metacodeResultsDictionary)
-            {
-                // if we used external control to ask for file, add it then with a provided param
-                if (metadataPair.Value is string && ((string)metadataPair.Value).IsValidFilePath())
-                {
-                    string localFile = (string) metadataPair.Value;
-
-                    var resultedPath = await _remoteScriptCopier.CopyIfRemote(localFile);
-
-                    parameters.Add(metadataPair.Key.Trim('$'), resultedPath);
-                }
-                else
-                {
-                    parameters.Add(metadataPair.Key.Trim('$'), metadataPair.Value);
-                }
-            }
-
+            await AddParametersFromMetacode(parameters, metacode);
+            
             string script = await LocalOrRemote(e.Value);
             
             var scriptDependencies = metacode.IdentifyDependencies();
@@ -186,13 +169,35 @@ namespace Sifon.Forms.MainForm
                 string dependencyFile = $"{Path.GetDirectoryName(e.Value)}\\{dependency}";
                 if (File.Exists(dependencyFile))
                 {
-                    await _remoteScriptCopier.CopyIfRemote(dependencyFile);
+                    await RemoteScriptCopier.CopyIfRemote(dependencyFile);
                 }
             }
 
             await PrepareAndStart(script, parameters);
 
             _view.PluginsToolStripEnabled();
+        }
+
+        private async Task AddParametersFromMetacode(Dictionary<string, object> parameters, MetacodeHelper metacode)
+        {
+            var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters, WinformsAssemblyLocation);
+
+            foreach (var metadataPair in metacodeResultsDictionary)
+            {
+                // if we used external control to ask for file, add it then with a provided param
+                if (metadataPair.Value is string && ((string)metadataPair.Value).IsValidFilePath())
+                {
+                    string localFile = (string)metadataPair.Value;
+
+                    var resultedPath = await RemoteScriptCopier.CopyIfRemote(localFile);
+
+                    parameters.Add(metadataPair.Key.Trim('$'), resultedPath);
+                }
+                else
+                {
+                    parameters.Add(metadataPair.Key.Trim('$'), metadataPair.Value);
+                }
+            }
         }
 
         public bool IsLocal => !SelectedProfile.RemotingEnabled;

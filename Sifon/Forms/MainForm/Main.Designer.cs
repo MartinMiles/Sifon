@@ -121,14 +121,14 @@ namespace Sifon.Forms.MainForm
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.profilesToolStripMenuItem1.Text = "Container Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(168, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             // 
             // pluginsToolStripMenuItem
@@ -219,7 +219,7 @@ namespace Sifon.Forms.MainForm
             this.groupBox2.Margin = new System.Windows.Forms.Padding(8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(8, 80, 8, 8);
-            this.groupBox2.Size = new System.Drawing.Size(1410, 719);
+            this.groupBox2.Size = new System.Drawing.Size(1410, 771);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Output";
@@ -249,7 +249,7 @@ namespace Sifon.Forms.MainForm
             // 
             this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(8, 701);
+            this.statusLabel.Location = new System.Drawing.Point(8, 753);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(41, 13);
             this.statusLabel.TabIndex = 9;
@@ -299,7 +299,7 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.Name = "listBoxOutput";
             this.listBoxOutput.ScrollAlwaysVisible = true;
             this.listBoxOutput.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxOutput.Size = new System.Drawing.Size(1394, 589);
+            this.listBoxOutput.Size = new System.Drawing.Size(1394, 641);
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -308,7 +308,7 @@ namespace Sifon.Forms.MainForm
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1410, 719);
+            this.ClientSize = new System.Drawing.Size(1410, 771);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

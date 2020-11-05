@@ -64,6 +64,7 @@ namespace Sifon.Forms.Prerequsites
             checkSif.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
+            buttonClose.Enabled = enabled;
             SetWaitCursor(!enabled);
         }
 

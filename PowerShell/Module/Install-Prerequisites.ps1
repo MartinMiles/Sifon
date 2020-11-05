@@ -39,6 +39,7 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
     function Install-Git
     {
         choco install git.install /GitOnlyOnPath --force  | Out-Null
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
         return $true
     }
 

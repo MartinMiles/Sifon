@@ -88,12 +88,14 @@ namespace Sifon.Forms.Base
         {
             if (_scriptWrapper != null)
             {
-                _scriptWrapper.Complete += Complete;
-                _scriptWrapper.ObjectReady += ObjectReady;
-                _scriptWrapper.ProgressReady += ProgressReady;
-                _scriptWrapper.InformationReady += InformationReady;
-                _scriptWrapper.WarningReady += WarningReady;
-                _scriptWrapper.ErrorReady += ErrorReady;
+                _scriptWrapper.Complete -= Complete;
+                _scriptWrapper.ObjectReady -= ObjectReady;
+                _scriptWrapper.ProgressReady -= ProgressReady;
+                _scriptWrapper.InformationReady -= InformationReady;
+                _scriptWrapper.WarningReady -= WarningReady;
+                _scriptWrapper.ErrorReady -= ErrorReady;
+
+                _scriptWrapper = null;
             }
         }
 
@@ -116,6 +118,9 @@ namespace Sifon.Forms.Base
             ScriptRunnerComplete(this, new EventArgs<string>(sender.ScriptFile));
 
             _view.FinishUI();
+
+            //var powerShellHelper = new PowerShellHelper();
+            //powerShellHelper.EmptyOperation();
 
             bool isLocal = !_profilesService.SelectedProfile.RemotingEnabled;
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), isLocal);
