@@ -24,6 +24,7 @@ namespace Sifon.Forms.Prerequsites
 
         private void Install_Click(object sender, EventArgs e)
         {
+            labelCheckResult.Text = "Please be patient, it may take a while...";
             EnableControls(false);
             InstallClicked(this, new EventArgs<IPrerequisites>(this));
         }
@@ -112,11 +113,13 @@ namespace Sifon.Forms.Prerequsites
 
         public void Error(Exception e)
         {
+            labelCheckResult.Text = "Finished, however there were some errors occured.";
             ShowError("An error has occured", $"{e.Message}{Environment.NewLine}{e.StackTrace}");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            labelCheckResult.Text = "Done.";
             DialogResult = DialogResult.OK;
         }
 

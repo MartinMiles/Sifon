@@ -4,7 +4,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using Sifon.Abstractions.Forms;
-using Sifon.Abstractions.Profiles;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.PowerShell;
