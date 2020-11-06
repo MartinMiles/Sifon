@@ -27,7 +27,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <iconUrl>https://raw.githubusercontent.com/wiki/MartinMiles/Sifon/img/Icons/sifon_612.png</iconUrl>
     <copyright>2020 Martin Miles</copyright>
     
-    <licenseUrl>https://github.com/MartinMiles/Sifon/blob/master/LICENSE.md</licenseUrl>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     
     <projectSourceUrl>https://github.com/MartinMiles/Sifon/issues</projectSourceUrl>
     <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
