@@ -1,7 +1,7 @@
 ﻿VERIFICATION
 
 Sifon is open-source code project available from this repository:
-https://github.com/MartinMiles/Sifon
+  https://github.com/MartinMiles/Sifon
 
 Since it is compiled and built from [C#] and runs runs with [NET Framework 7.2], it becomes platform-agnostic and runs on both 32- and 64-bit [Windows 10] systems.
 
