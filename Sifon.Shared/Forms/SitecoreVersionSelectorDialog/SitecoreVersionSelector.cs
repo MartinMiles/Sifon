@@ -4,15 +4,15 @@ using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.VersionSelector;
 using Sifon.Code.VersionSelector;
 
-namespace Sifon.Shared.Forms.VersionSelectorDialog
+namespace Sifon.Shared.Forms.SitecoreVersionSelectorDialog
 {
-    public partial class VersionSelector : Form
+    public partial class SitecoreVersionSelector : Form
     {
         private IProfile _profile;
         public string _kernelPath;
         public IKernelHash _selectedVersion;
 
-        public VersionSelector()
+        public SitecoreVersionSelector()
         {
             InitializeComponent();
         }

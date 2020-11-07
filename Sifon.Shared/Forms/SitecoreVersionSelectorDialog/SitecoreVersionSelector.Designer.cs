@@ -1,6 +1,6 @@
-﻿namespace Sifon.Shared.Forms.VersionSelectorDialog
+﻿namespace Sifon.Shared.Forms.SitecoreVersionSelectorDialog
 {
-    partial class VersionSelector
+    partial class SitecoreVersionSelector
     {
         /// <summary>
         /// Required designer variable.
@@ -84,7 +84,7 @@
             this.Controls.Add(this.groupParameters);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "VersionSelector";
+            this.Name = "SitecoreVersionSelector";
             this.Text = "Sitecore version selector";
             this.Load += new System.EventHandler(this.Form_Load);
             this.groupParameters.ResumeLayout(false);

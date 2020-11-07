@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Plugins;
 using Sifon.Abstractions.Profiles;
 using Sifon.Shared.Forms.FolderBrowserDialog;
-using Sifon.Shared.Forms.VersionSelectorDialog;
+using Sifon.Shared.Forms.SitecoreVersionSelectorDialog;
 
 namespace Sifon.Plugins.Example.ShareAPI
 {
@@ -26,7 +26,7 @@ namespace Sifon.Plugins.Example.ShareAPI
             var version = String.Empty;
             string selectedPath = String.Empty;
 
-            var versionSelector = new VersionSelector { StartPosition = FormStartPosition.CenterParent, _kernelPath = KernelPath };
+            var versionSelector = new SitecoreVersionSelector { StartPosition = FormStartPosition.CenterParent, _kernelPath = KernelPath };
 
             if (versionSelector.ShowDialog() == DialogResult.OK)
             {

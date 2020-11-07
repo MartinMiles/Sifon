@@ -60,11 +60,11 @@
     <Compile Include="Forms\PackageVersionSelectorDialog\PackageVersionSelector.Designer.cs">
       <DependentUpon>PackageVersionSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.cs">
+    <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\VersionSelectorDialog\VersionSelector.Designer.cs">
-      <DependentUpon>VersionSelector.cs</DependentUpon>
+    <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.Designer.cs">
+      <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxes\DisplayMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,8 +107,8 @@
     <EmbeddedResource Include="Forms\PackageVersionSelectorDialog\PackageVersionSelector.resx">
       <DependentUpon>PackageVersionSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VersionSelectorDialog\VersionSelector.resx">
-      <DependentUpon>VersionSelector.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.resx">
+      <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderTreeView.resx">
       <DependentUpon>FolderTreeView.cs</DependentUpon>
