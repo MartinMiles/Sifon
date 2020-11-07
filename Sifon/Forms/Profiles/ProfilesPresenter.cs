@@ -83,6 +83,11 @@ namespace Sifon.Forms.Profiles
 
         private void ContinueWithoutCreatingProfile(object sender, object args)
         {
+            CreateDummyProfile();
+        }
+
+        public void CreateDummyProfile()
+        {
             var fakeLocalProfile = ProfilesService.CreateLocal();
             fakeLocalProfile.ProfileName = Settings.ProfileNotCreated;
             fakeLocalProfile.Prefix = "Please submit the actual values instead";

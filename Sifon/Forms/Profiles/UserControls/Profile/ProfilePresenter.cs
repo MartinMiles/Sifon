@@ -61,8 +61,15 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         }
         private void SelectedProfileDeleted(object sender, EventArgs e)
         {
+
+
             ProfilesService.DeleteSelected();
             ProfilesService.Save();
+
+            if (!Profiles.Any())
+            {
+                Presenter.CreateDummyProfile();
+            }
 
             _view.LoadProfilesDropdown(Profiles, SelectedProfile?.ProfileName);
         }
