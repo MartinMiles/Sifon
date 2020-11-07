@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -16,7 +17,7 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
         }
 
         // An entry point to this control
-        public IEnumerable<string> GetFile(string json)
+        public string[] GetFile(string json)
         {
             StartPosition = FormStartPosition.CenterParent;
 
@@ -26,7 +27,7 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
             {
                 if (ShowDialog() == DialogResult.OK)
                 {
-                    return Urls;
+                    return Urls.ToArray();
                 }
             }
 
@@ -49,6 +50,7 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
 
         private void PackageVersionSelector_Load(object sender, EventArgs e)
         {
+            buttonSelect.Select();
             PopulateInstancesDropdown(_items);
         }
 
