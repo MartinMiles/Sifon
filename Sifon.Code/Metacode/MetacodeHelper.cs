@@ -15,12 +15,12 @@ namespace Sifon.Code.Metacode
         private readonly IEnumerable<string> _meta;
         private readonly string[] powerShellBooleans = { "$true", "$false" };
 
+        private readonly string _scriptPath;
+
         #region Properties
 
         public string Name { get; private set; }
         public string Description { get; private set; }
-
-
 
         public bool LocalEnforcementValid
         {
@@ -52,6 +52,8 @@ namespace Sifon.Code.Metacode
             }
         }
 
+        private string ScriptFolder => Path.GetDirectoryName(_scriptPath);
+
         #endregion
 
         public MetacodeHelper(string scriptPath)
@@ -61,6 +63,7 @@ namespace Sifon.Code.Metacode
                 throw new FileNotFoundException($"File does not exist: {scriptPath}");
             }
 
+            _scriptPath = scriptPath;
             _meta = File.ReadAllLines(scriptPath).Where(l => l.StartsWith("###")).Select(s => s.Trim());
 
             ReadScriptNameAndDescription();
@@ -111,6 +114,7 @@ namespace Sifon.Code.Metacode
             var list = new List<object>();
             if (!string.IsNullOrWhiteSpace(methodParameters))
             {
+                // TODO: Test comma-containing values and replace with regex extract
                 var paramsArray = methodParameters.Split(',');
                 var stringValuePattern = new Regex(Settings.Regex.Metacode.Parameter);
 
@@ -151,8 +155,12 @@ namespace Sifon.Code.Metacode
                 }
             }
 
+            parameter = Regex.Replace(parameter, $"\\$PSScriptRoot", ScriptFolder, RegexOptions.IgnoreCase);
+
+
             return parameter;
         }
+
 
         public IEnumerable<string> IdentifyDependencies()
         {
