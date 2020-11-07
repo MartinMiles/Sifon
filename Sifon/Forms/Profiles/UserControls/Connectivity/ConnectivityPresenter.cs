@@ -58,7 +58,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
                     {
                         if (SelectedProfile != null)
                         {
-                            _view.SetSolrGrid(await _solrIdentifier.Identify(), SelectedProfile?.RemotingEnabled ?? false);
+                            _view.SetSolrCombobox(await _solrIdentifier.Identify(), SelectedProfile?.RemotingEnabled ?? false);
                             _view.SetSolrDropdownByProfile(SelectedProfile?.Solr);
                         }
                     }

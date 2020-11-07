@@ -79,6 +79,7 @@ namespace Sifon.Code.Statics
         }
 
         public const string ManualEntry = "== enter manually ==";
+        public const string ProfileNotCreated = "Profile not created";
 
         public static class Labels
         {

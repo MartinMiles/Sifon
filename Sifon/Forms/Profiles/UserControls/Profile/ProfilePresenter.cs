@@ -4,6 +4,7 @@ using System.Linq;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
 using Sifon.Code.Events;
+using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {
@@ -30,6 +31,11 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         private void ProfileAdded(object sender, EventArgs<IProfileUserControl> e)
         {
+            if (Presenter.Profiles.Count() == 1 && Presenter.Profiles.First() == Settings.ProfileNotCreated)
+            {
+                ProfilesService.DeleteSelected();
+            }
+
             ProfilesService.Add(e.Value);
             ProfilesService.SelectProfile(e.Value.ProfileName);
             ProfilesService.Save();

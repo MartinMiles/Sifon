@@ -84,7 +84,7 @@ namespace Sifon.Forms.Profiles
         private void ContinueWithoutCreatingProfile(object sender, object args)
         {
             var fakeLocalProfile = ProfilesService.CreateLocal();
-            fakeLocalProfile.ProfileName = "Profile not created";
+            fakeLocalProfile.ProfileName = Settings.ProfileNotCreated;
             fakeLocalProfile.Prefix = "Please submit the actual values instead";
             ProfilesService.Add(fakeLocalProfile);
             ProfilesService.SelectProfile(fakeLocalProfile.ProfileName);

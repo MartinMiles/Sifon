@@ -33,7 +33,7 @@ namespace Sifon.Code.Helpers
         public async Task<IEnumerable<SolrInfo>> Identify()
         {
             await _scriptWrapper.Run(Modules.Functions.FindSolrInstances);
-            return _scriptWrapper.Results.Where(r => r.Directory.NotEmpty() && r.Version != null);
+            return _scriptWrapper.Results.Where(r => r.Directory.NotEmpty() && r.Version != null).Distinct();
         }
 
         public void Finish()
