@@ -9,21 +9,21 @@ using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Forms.MainForm;
 using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.Filesystem;
 using Sifon.Code.Formatters.Output;
 using Sifon.Code.Formatters.Text;
 using Sifon.Code.Model;
 using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Base
 {
     internal abstract class ScriptablePresenter
     {
-        protected readonly ProfilesProvider _profilesService;
+        protected readonly IProfilesProvider _profilesProvider;
         protected readonly ISettingsProvider _settingsProvider;
-        protected readonly ContainersProvider _containersProvider;
+        protected readonly IContainersProvider _containersProvider;
 
         private ScriptWrapper<PSObject> _scriptWrapper;
         protected readonly IMainView _view;
@@ -35,14 +35,16 @@ namespace Sifon.Forms.Base
         private readonly ProgressFormatter _progressFormatter;
         private readonly ErrorFormatter _errorFormatter;
 
-        protected IProfile SelectedProfile => _profilesService.SelectedProfile;
+        protected IProfile SelectedProfile => _profilesProvider.SelectedProfile;
 
         internal ScriptablePresenter(IMainView view)
         {
+            // TODO: Review below
             _view = view;
-            _profilesService = new ProfilesProvider();
-            _settingsProvider = new SettingsProvider();
-            _containersProvider = new ContainersProvider();
+            _profilesProvider = Create.New<IProfilesProvider>();
+            _settingsProvider = Create.New<ISettingsProvider>();
+            _containersProvider = Create.New<IContainersProvider>();
+
             _view.ScriptFinishRequested += ScriptFinishRequested;
             _outputFormatter = new ConsoleOutputFormatter();
 
@@ -119,10 +121,7 @@ namespace Sifon.Forms.Base
 
             _view.FinishUI();
 
-            //var powerShellHelper = new PowerShellHelper();
-            //powerShellHelper.EmptyOperation();
-
-            bool isLocal = !_profilesService.SelectedProfile.RemotingEnabled;
+            bool isLocal = !_profilesProvider.SelectedProfile.RemotingEnabled;
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), isLocal);
         }
 

@@ -4,20 +4,20 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Model.Profiles;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class ContainersProvider
+    internal class ContainersProvider : IContainersProvider
     {
         private IEnumerable<ContainerProfile> _profiles;
 
-        public ContainersProvider()
+        internal ContainersProvider()
         {
             VerifyFirstRun();
-
             Read();
         }
 

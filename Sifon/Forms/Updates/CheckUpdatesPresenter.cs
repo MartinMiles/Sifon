@@ -1,9 +1,9 @@
 ﻿using System;
 using Sifon.Abstractions.Providers;
 using Sifon.ApiClient.Providers;
+using Sifon.Code.Factories;
 using Sifon.Code.Logger;
 using Sifon.Code.Model;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Updates
@@ -12,14 +12,14 @@ namespace Sifon.Forms.Updates
     {
         private readonly ICheckUpdatesView _view;
         private readonly IApiProvider _apiProvider;
-        private readonly SettingsProvider _settingsProvider;
+        private readonly ISettingsProvider _settingsProvider;
         
         public CheckUpdatesPresenter(ICheckUpdatesView view)
         {
             _view = view;
 
             _view.CheckClicked += CheckClicked;
-            _settingsProvider = new SettingsProvider();
+            _settingsProvider = Create.New<ISettingsProvider>();
 
             _apiProvider = new ApiProvider<bool> { EnableSendingExceptions = _settingsProvider.Read().SendCrashDetails };
         }

@@ -1,14 +1,15 @@
 ﻿using System;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
-using Sifon.Code.Providers.Profile;
+using Sifon.Code.Factories;
 
 namespace Sifon.Forms.Containers
 {
     internal class DockerProfilesPresenter
     {
         private readonly IDockerProfilesView _view;
-        private readonly ContainersProvider _containersProvider;
+        private readonly IContainersProvider _containersProvider;
 
         public DockerProfilesPresenter(IDockerProfilesView view)
         {
@@ -20,7 +21,7 @@ namespace Sifon.Forms.Containers
             _view.SelectedProfileChanged += SelectedProfileChanged;
             _view.SelectedProfileDeleted += SelectedProfileDeleted;
 
-            _containersProvider = new ContainersProvider();
+            _containersProvider = Create.New<IContainersProvider>();
         }
 
         protected void Loaded(object sender, EventArgs e)

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 using Sifon.Code.Helpers;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
@@ -17,7 +19,7 @@ namespace Sifon.Forms.SqlSettings
     {
         private readonly ISqlSettingsView _view;
         private readonly SqlServerRecordProvider _sqlService;
-        private readonly ProfilesProvider _profilesService;
+        private readonly IProfilesProvider _profilesProvider;
         private readonly ScriptWrapper<PSObject> _scriptWrapper;
         private readonly FakesHelper _fakesHelper;
 
@@ -26,7 +28,7 @@ namespace Sifon.Forms.SqlSettings
             _view = sqlSettingsView;
             _fakesHelper = new FakesHelper();
             _sqlService = new SqlServerRecordProvider();
-            _profilesService = new ProfilesProvider();
+            _profilesProvider = Create.New<IProfilesProvider>();
 
             _view.FormLoad += FormLoad;
             _view.TestClicked += TestClicked;
@@ -36,15 +38,15 @@ namespace Sifon.Forms.SqlSettings
             _view.SqlRecordDeleted += SqlRecordDeleted;
             _view.ClosingForm += ClosingForm;
 
-            _scriptWrapper = new ScriptWrapper<PSObject>(new ProfilesProvider().SelectedProfile, _view, d => d);
+            _scriptWrapper = new ScriptWrapper<PSObject>(_profilesProvider.SelectedProfile, _view, d => d);
         }
 
         private IEnumerable<string> ServerRecords => _sqlService.Read().Select(s => s.RecordName);
 
         private void FormLoad(object sender, EventArgs e)
         {
-            _view.PopulateServersDropdown(ServerRecords, _profilesService.SelectedProfile.SqlServer);
-            _view.ToggleRemoteWarning(_profilesService.SelectedProfile.RemotingEnabled);
+            _view.PopulateServersDropdown(ServerRecords, _profilesProvider.SelectedProfile.SqlServer);
+            _view.ToggleRemoteWarning(_profilesProvider.SelectedProfile.RemotingEnabled);
         }
 
         private void SelectedRecordChanged(object sender, EventArgs<string> e)
@@ -96,8 +98,8 @@ namespace Sifon.Forms.SqlSettings
             _sqlService.Add(e.Value);
             _sqlService.Save();
 
-            _profilesService.AssignSqlServer(e.Value.RecordName);
-            _profilesService.Save();
+            _profilesProvider.AssignSqlServer(e.Value.RecordName);
+            _profilesProvider.Save();
 
             _view.CloseDialog();
         }
@@ -107,8 +109,8 @@ namespace Sifon.Forms.SqlSettings
             _sqlService.UpdateSelected(e.Value.Item1, e.Value.Item2);
             _sqlService.Save();
 
-            _profilesService.AssignSqlServer(e.Value.Item1);
-            _profilesService.Save();
+            _profilesProvider.AssignSqlServer(e.Value.Item1);
+            _profilesProvider.Save();
 
             _view.CloseDialog();
         }
@@ -118,10 +120,10 @@ namespace Sifon.Forms.SqlSettings
             _sqlService.Delete(e.Value);
             _sqlService.Save();
 
-            _profilesService.AssignSqlServer(String.Empty);
-            _profilesService.Save();
+            _profilesProvider.AssignSqlServer(String.Empty);
+            _profilesProvider.Save();
 
-            _view.PopulateServersDropdown(ServerRecords, _profilesService.SelectedProfile.SqlServer);
+            _view.PopulateServersDropdown(ServerRecords, _profilesProvider.SelectedProfile.SqlServer);
         }
         private void ClosingForm(object sender, EventArgs e)
         {

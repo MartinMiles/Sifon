@@ -5,10 +5,10 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.Filesystem;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.Shared.Forms.FolderBrowserDialog;
 
@@ -16,7 +16,7 @@ namespace Sifon.Forms.Base
 {
     internal class BaseBackupRestorePresenter
     {
-        protected readonly ProfilesProvider _profileService;
+        protected readonly IProfilesProvider _profileProvider;
         protected readonly RemoteScriptCopier _remoteScriptCopier;
         protected readonly FilesystemFactory _filesystemFactory;
         protected readonly ISiteProvider _siteProvider;
@@ -25,8 +25,8 @@ namespace Sifon.Forms.Base
 
         internal BaseBackupRestorePresenter(IBaseBackupRestoreView view)
         {
-            _profileService = new ProfilesProvider();
-            var profile = _profileService.SelectedProfile;
+            _profileProvider = Create.New<IProfilesProvider>();
+            var profile = _profileProvider.SelectedProfile;
 
             _view = view;
             _view.FormLoaded += Loaded;

@@ -13,12 +13,12 @@ namespace Sifon.Code.PowerShell
 {
     internal class ScriptRunner : IScriptRunner
     {
-        private readonly System.Management.Automation.PowerShell powerShell;
-        readonly PSDataCollection<PSObject> outputCollection;
-        private readonly ISynchronizeInvoke invoker;
-        private IAsyncResult invokeResult;
-        private readonly ManualResetEvent stopEvent;
-        private readonly WaitHandle[] waitHandles;
+        private readonly System.Management.Automation.PowerShell _powerShell;
+        readonly PSDataCollection<PSObject> _outputCollection;
+        private readonly ISynchronizeInvoke _invoker;
+        private IAsyncResult _invokeResult;
+        private readonly ManualResetEvent _stopEvent;
+        private readonly WaitHandle[] _waitHandles;
 
         #region Delegates, events, syncronizers
 
@@ -57,15 +57,15 @@ namespace Sifon.Code.PowerShell
 
         internal ScriptRunner(Runspace runSpace, ISynchronizeInvoke invoker, string script, Dictionary<string, dynamic> parameters = null)
         {
-            this.invoker = invoker;
-            stopEvent = new ManualResetEvent(false);
-            waitHandles = new WaitHandle[] { null, stopEvent };
+            this._invoker = invoker;
+            _stopEvent = new ManualResetEvent(false);
+            _waitHandles = new WaitHandle[] { null, _stopEvent };
 
             ScriptFile = script;
             Parameters = parameters;
 
-            powerShell = System.Management.Automation.PowerShell.Create();
-            powerShell.Runspace = runSpace;
+            _powerShell = System.Management.Automation.PowerShell.Create();
+            _powerShell.Runspace = runSpace;
             
             var command = new Command(script);
             if (parameters != null)
@@ -75,10 +75,10 @@ namespace Sifon.Code.PowerShell
                     command.Parameters.Add(new CommandParameter(parameter.Key, parameter.Value));
                 }
             }
-            powerShell.Commands.AddCommand(command);
+            _powerShell.Commands.AddCommand(command);
 
-            outputCollection = new PSDataCollection<PSObject>();
-            outputCollection.DataAdded += OnObjectOutput;
+            _outputCollection = new PSDataCollection<PSObject>();
+            _outputCollection.DataAdded += OnObjectOutput;
 
             synchComplete = SyncComplete;
             synchObjectReady = SyncObjectReady;
@@ -89,29 +89,29 @@ namespace Sifon.Code.PowerShell
             synchVerboseReady = SyncVerboseReady;
             synchDebugReady = SyncDebugReady;
 
-            powerShell.InvocationStateChanged += StateChanged;
-            powerShell.Streams.Progress.DataAdded += OnProgress;
-            powerShell.Streams.Error.DataAdded += OnError;
-            powerShell.Streams.Information.DataAdded += OnInformation;
-            powerShell.Streams.Verbose.DataAdded += OnVerbose;
-            powerShell.Streams.Debug.DataAdded += OnDebug;
-            powerShell.Streams.Warning.DataAdded += OnWarning;
+            _powerShell.InvocationStateChanged += StateChanged;
+            _powerShell.Streams.Progress.DataAdded += OnProgress;
+            _powerShell.Streams.Error.DataAdded += OnError;
+            _powerShell.Streams.Information.DataAdded += OnInformation;
+            _powerShell.Streams.Verbose.DataAdded += OnVerbose;
+            _powerShell.Streams.Debug.DataAdded += OnDebug;
+            _powerShell.Streams.Warning.DataAdded += OnWarning;
         }
 
         #region Start / Stop
 
         public Task<PSDataCollection<PSObject>> Start()
         {
-            if (powerShell.InvocationStateInfo.State == PSInvocationState.NotStarted)
+            if (_powerShell.InvocationStateInfo.State == PSInvocationState.NotStarted)
             {
-                if (powerShell == null)
+                if (_powerShell == null)
                 {
                     throw new ArgumentNullException();
                 }
 
                 try
                 {
-                    return Task.Factory.FromAsync(powerShell.BeginInvoke<PSObject, PSObject>(null, outputCollection), EndInvoke);
+                    return Task.Factory.FromAsync(_powerShell.BeginInvoke<PSObject, PSObject>(null, _outputCollection), EndInvoke);
                 }
                 catch (InvalidRunspaceStateException e)
                 {
@@ -129,7 +129,7 @@ namespace Sifon.Code.PowerShell
         {
             try
             {
-                return powerShell.EndInvoke(result);
+                return _powerShell.EndInvoke(result);
             }
             catch (PipelineStoppedException e)
             {
@@ -145,11 +145,11 @@ namespace Sifon.Code.PowerShell
 
         public void Stop()
         {
-            stopEvent.Set();
+            _stopEvent.Set();
 
-            if (invokeResult != null)
+            if (_invokeResult != null)
             {
-                powerShell.EndInvoke(invokeResult);
+                _powerShell.EndInvoke(_invokeResult);
             }
         }
 
@@ -243,9 +243,9 @@ namespace Sifon.Code.PowerShell
         {
             try
             {
-                IAsyncResult asyncResult = invoker.BeginInvoke(method, args);
-                waitHandles[0] = asyncResult.AsyncWaitHandle;
-                return WaitHandle.WaitAny(waitHandles) == 0 ? invoker.EndInvoke(asyncResult) : null;
+                IAsyncResult asyncResult = _invoker.BeginInvoke(method, args);
+                _waitHandles[0] = asyncResult.AsyncWaitHandle;
+                return WaitHandle.WaitAny(_waitHandles) == 0 ? _invoker.EndInvoke(asyncResult) : null;
             }
             catch
             {

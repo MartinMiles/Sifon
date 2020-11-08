@@ -9,7 +9,6 @@ namespace Sifon.Forms.Remover
 {
     internal interface IRemoverView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
-        event EventHandler<EventArgs> FormLoaded;
         event EventHandler<EventArgs<string>> InstanceChanged;
         event EventHandler<EventArgs<string>> DatabaseFilterChanged;
 

@@ -5,15 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Model.BackupRestore;
+using Sifon.Abstractions.Providers;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 using Sifon.Code.Filesystem;
 using Sifon.Code.Metacode;
 using Sifon.Code.Model;
 using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.ScriptGenerators;
 using Sifon.Code.Statics;
 using Sifon.Statics;
@@ -26,18 +27,18 @@ namespace Sifon.Forms.MainForm
 
         internal MainPresenter(IMainView view): base(view)
         {
-            if (!_profilesService.Any)
+            if (!_profilesProvider.Any)
             {
                 if (!view.ShowFirstRunDialog())
                 {
                     throw new InvalidOperationException("Exited by user");
                 }
 
-                var provider = new ProfilesProvider();
+                var provider = Create.New<IProfilesProvider>();
                 provider.Save();
 
                 view.ForceProfileDialogOnFirstRun();
-                _profilesService.Read();
+                _profilesProvider.Read();
             }
 
             _filesystem = new FilesystemFactory(SelectedProfile, _view).CreateLocal();
@@ -54,7 +55,7 @@ namespace Sifon.Forms.MainForm
 
         private string WinformsAssemblyLocation => typeof(Form).Assembly.Location;
 
-        private IEnumerable<string> JustReadProfileNames => _profilesService.Read().Select(p => p.ProfileName);
+        private IEnumerable<string> JustReadProfileNames => _profilesProvider.Read().Select(p => p.ProfileName);
 
         private void Loaded(object sender, EventArgs e)
         {
@@ -73,7 +74,7 @@ namespace Sifon.Forms.MainForm
 
         private async Task<string> LocalOrRemote(string script)
         {
-            var _remoteScriptCopier = new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
+            var _remoteScriptCopier = new RemoteScriptCopier(_profilesProvider.SelectedProfile, _view);
             return await _remoteScriptCopier.CopyIfRemote(script);
         }
 
@@ -115,11 +116,11 @@ namespace Sifon.Forms.MainForm
             }
 
             var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Backup }};
-            _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddBackupRemoveParameters(parameters, model);
-            _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
+            _profilesProvider.AddScriptProfileParameters(parameters);
+            _profilesProvider.AddBackupRemoveParameters(parameters, model);
+            _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
-            PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
+            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
         }
 
         private async void RemoveToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
@@ -127,11 +128,11 @@ namespace Sifon.Forms.MainForm
             var model = e.Value;
 
             var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Remove }};
-            _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddBackupRemoveParameters(parameters, model);
-            _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
+            _profilesProvider.AddScriptProfileParameters(parameters);
+            _profilesProvider.AddBackupRemoveParameters(parameters, model);
+            _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
-            PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
+            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
         }
 
         private async void RestoreToolStripClicked(object sender, EventArgs<IRestoreViewModel> e)
@@ -139,24 +140,24 @@ namespace Sifon.Forms.MainForm
             var model = e.Value;
 
             var parameters = new Dictionary<string, dynamic> {{ Settings.Parameters.Activity, Messages.Activities.Restore }};
-            _profilesService.AddScriptProfileParameters(parameters);
-            _profilesService.AddBackupRemoveParameters(parameters, model);
-            _profilesService.AddRestoreParameters(parameters, model);
-            _profilesService.AddCommerceScriptParameters(parameters, model.CommerceSites);
-            
-            PrepareAndStart(await LocalOrRemote(ScriptFactory.Create(model, SelectedProfile).Script), parameters);
+            _profilesProvider.AddScriptProfileParameters(parameters);
+            _profilesProvider.AddBackupRemoveParameters(parameters, model);
+            _profilesProvider.AddRestoreParameters(parameters, model);
+            _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
+
+            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
          }
 
         #endregion
 
-        public RemoteScriptCopier RemoteScriptCopier => new RemoteScriptCopier(_profilesService.SelectedProfile, _view);
+        public RemoteScriptCopier RemoteScriptCopier => new RemoteScriptCopier(_profilesProvider.SelectedProfile, _view);
 
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
             var metacode = new MetacodeHelper(e.Value);
             var parameters = new Dictionary<string, dynamic>();
 
-            _profilesService.AddScriptProfileParameters(parameters);
+            _profilesProvider.AddScriptProfileParameters(parameters);
             _settingsProvider.AddScriptSettingsParameters(parameters);
             _containersProvider.AddContainersParameters(parameters);
             await AddParametersFromMetacode(parameters, metacode);
@@ -204,9 +205,9 @@ namespace Sifon.Forms.MainForm
 
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
-            _profilesService.SelectProfile(e.Value);
+            _profilesProvider.SelectProfile(e.Value);
             _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
-            _view.SetCaption(_profilesService.SelectedProfile.WindowCaptionSuffix);
+            _view.SetCaption(_profilesProvider.SelectedProfile.WindowCaptionSuffix);
 
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
         }

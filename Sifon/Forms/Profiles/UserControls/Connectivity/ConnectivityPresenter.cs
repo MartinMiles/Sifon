@@ -20,12 +20,13 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         private ScriptWrapper<SolrInfo> _scriptWrapper;
         private SolrIdentifier _solrIdentifier;
 
-        public ConnectivityPresenter(IConnectivityView view) : base(view)
+        internal ConnectivityPresenter(IConnectivityView view) : base(view)
         {
             _view = view;
             _view.TestSolr += TestSolr;
             _view.SqlServersUpdated += SqlServersUpdated;
         }
+
         protected override void Loaded(object sender, EventArgs e)
         {
             Presenter.ProfileChanged += ProfileChanged;
@@ -58,7 +59,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
                     {
                         if (SelectedProfile != null)
                         {
-                            _view.SetSolrCombobox(await _solrIdentifier.Identify(), SelectedProfile?.RemotingEnabled ?? false);
+                            _view.SetSolrGrid(await _solrIdentifier.Identify(), SelectedProfile?.RemotingEnabled ?? false);
                             _view.SetSolrDropdownByProfile(SelectedProfile?.Solr);
                         }
                     }

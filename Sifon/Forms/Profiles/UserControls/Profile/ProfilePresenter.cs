@@ -61,8 +61,6 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         }
         private void SelectedProfileDeleted(object sender, EventArgs e)
         {
-
-
             ProfilesService.DeleteSelected();
             ProfilesService.Save();
 

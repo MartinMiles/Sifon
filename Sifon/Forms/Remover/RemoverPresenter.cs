@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
+using Sifon.Abstractions.Providers;
 using Sifon.Forms.Base;
 using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.ViewModels;
 
@@ -28,7 +29,7 @@ namespace Sifon.Forms.Remover
             _view.DatabaseFilterChanged += DatabaseFilterChanged;
             _view.BeforeFormClosing += ClosingForm;
 
-            _scriptWrapper = new ScriptWrapper<string>(new ProfilesProvider().SelectedProfile, _view, d => d.ToString());
+            _scriptWrapper = new ScriptWrapper<string>(Create.New<IProfilesProvider>().SelectedProfile, _view, d => d.ToString());
             _scriptWrapper.Complete += Complete;
         }
 
@@ -57,7 +58,7 @@ namespace Sifon.Forms.Remover
             var viewModel = await BuildViewModel(e.Value);
             _view.SetWebfoldersAndCheckboxes(viewModel);
 
-            string databaseSearchPrefix = e.Value == Settings.ManualEntry ? String.Empty : _profileService.SelectedProfile.Prefix;
+            string databaseSearchPrefix = e.Value == Settings.ManualEntry ? String.Empty : _profileProvider.SelectedProfile.Prefix;
             await UpdateDatabasesListbox(databaseSearchPrefix);
 
             _view.ToggleControls(true);
@@ -84,7 +85,7 @@ namespace Sifon.Forms.Remover
         {
             var parameters = new Dictionary<string, dynamic>
             {
-                { "ServerInstance", _profileService.SelectedProfileSql.SqlServer},
+                { "ServerInstance", _profileProvider.SelectedProfileSql.SqlServer},
                 { "InstancePrefix", filterValue }
             };
 

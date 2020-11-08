@@ -111,6 +111,7 @@
     <Compile Include="Providers\PowerShellSiteProvider.cs" />
     <Compile Include="Providers\Profile\BaseEncryptedProvider.cs" />
     <Compile Include="Providers\Profile\ContainersProvider.cs" />
+    <Compile Include="Factories\Factory.cs" />
     <Compile Include="Providers\Profile\SettingsProvider.cs" />
     <Compile Include="ScriptGenerators\BackupScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\BaseScriptGenerator.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="ScriptGenerators\ParametersSampleScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\RemoverScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\RestoreScriptGenerator.cs" />
-    <Compile Include="ScriptGenerators\ScriptFactory.cs" />
+    <Compile Include="ScriptGenerators\ScriptGeneratorFactory.cs" />
     <Compile Include="Providers\Profile\ProfilesProvider.cs" />
     <Compile Include="Providers\Profile\SqlServerRecordProvider.cs" />
     <Compile Include="ScriptGenerators\ServiceScriptGenerator.cs" />

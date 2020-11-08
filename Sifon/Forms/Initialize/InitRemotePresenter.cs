@@ -4,7 +4,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -15,7 +17,7 @@ namespace Sifon.Forms.Initialize
     {
         private readonly InitRemoteView _view;
         private readonly ScriptWrapper<string> _scriptWrapper;
-        protected readonly ProfilesProvider _profileService;
+        protected readonly IProfilesProvider __profileProvider;
         private readonly IProfile _profile;
         private readonly Dictionary<string, dynamic> _parameters;
 
@@ -23,9 +25,9 @@ namespace Sifon.Forms.Initialize
         public InitRemotePresenter(InitRemoteView view, IRemoteSettings remoteSettings)
         {
             _view = view;
-            _profileService = new ProfilesProvider();
+            __profileProvider = Create.New<IProfilesProvider>();
 
-            _profile = _profileService.CreateLocal();
+            _profile = __profileProvider.CreateLocal();
             _parameters = CreateParameters(remoteSettings);
 
             _view.FormLoaded += FormLoaded;

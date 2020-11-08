@@ -16,7 +16,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         void SetSolrDropdownByProfile(string solrUrl);
         void LoadSolrDropdown();
         void LoadDatabaseServersDropdown(IEnumerable<string> sqlServers, string selectedSqlServerName);
-        void SetSolrCombobox(IEnumerable<SolrInfo> solrs, bool isRemote);
+        void SetSolrGrid(IEnumerable<SolrInfo> solrs, bool isRemote);
         void SetSolrValue(string selectedProfileSolr);
         void ShowSpinnerHideGrid(bool visible);
         void UpdateProgress(int value);

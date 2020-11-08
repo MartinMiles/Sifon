@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.Providers;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -15,13 +17,13 @@ namespace Sifon.Forms.Profiles
         private readonly IProfilesView _view;
         private readonly SqlServerRecordProvider _sqlService;
         private readonly PowerShellSiteProvider _siteProvider;
-        internal ProfilesProvider ProfilesService { get; private set; }
+        internal IProfilesProvider ProfilesProvider { get; private set; }
 
         #region Properties
 
-        internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.ProfileName);
+        internal IEnumerable<string> Profiles => ProfilesProvider.Read().Select(p => p.ProfileName);
 
-        internal IProfile SelectedProfile => ProfilesService.SelectedProfile;
+        internal IProfile SelectedProfile => ProfilesProvider.SelectedProfile;
 
         public IEnumerable<string> SqlServerNames => _sqlService.Read().Select(s => s.RecordName);
         internal bool RemoteNotInitializedExceptionAlredyFired { get; set; }
@@ -67,7 +69,7 @@ namespace Sifon.Forms.Profiles
 
         public ProfilesPresenter(IProfilesView profilesView)
         {
-            ProfilesService = new ProfilesProvider();
+            ProfilesProvider = Create.New<IProfilesProvider>();
 
             _view = profilesView;
             _view.FormSaved += FormSaved;
@@ -88,16 +90,16 @@ namespace Sifon.Forms.Profiles
 
         public void CreateDummyProfile()
         {
-            var fakeLocalProfile = ProfilesService.CreateLocal();
+            var fakeLocalProfile = ProfilesProvider.CreateLocal();
             fakeLocalProfile.ProfileName = Settings.ProfileNotCreated;
             fakeLocalProfile.Prefix = "Please submit the actual values instead";
-            ProfilesService.Add(fakeLocalProfile);
-            ProfilesService.SelectProfile(fakeLocalProfile.ProfileName);
+            ProfilesProvider.Add(fakeLocalProfile);
+            ProfilesProvider.SelectProfile(fakeLocalProfile.ProfileName);
         }
 
         private void FormSaved(object sender, EventArgs e)
         {
-            var profile = ProfilesService.CreateProfile();
+            var profile = ProfilesProvider.CreateProfile();
 
             profile.RemotingEnabled = _view.Remote.RemotingEnabled;
             profile.RemoteHost = _view.Remote.RemoteHost;
@@ -120,8 +122,8 @@ namespace Sifon.Forms.Profiles
 
             profile.Parameters = _view.Parameters != null ? _view.Parameters.Values : new Dictionary<string, string>();
 
-            ProfilesService.UpdateSelected(profile);
-            ProfilesService.Save();
+            ProfilesProvider.UpdateSelected(profile);
+            ProfilesProvider.Save();
             _view.CloseDialog();
         }
 

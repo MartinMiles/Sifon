@@ -16,7 +16,6 @@ namespace Sifon.ApiClient.Handlers
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            HttpResponseMessage response = null;
             string requestContentBase64String = string.Empty;
 
             string requestUri = HttpUtility.UrlEncode(request.RequestUri.AbsoluteUri.ToLower());

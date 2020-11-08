@@ -71,9 +71,11 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             dataGrid.Enabled = value;
         }
 
-        public void SetSolrCombobox(IEnumerable<SolrInfo> solrs, bool isRemote)
+        public void SetSolrGrid(IEnumerable<SolrInfo> solrs, bool isRemote)
         {
             if (solrs == null) return;
+
+            LoadSolrDropdown();
 
             foreach (var solrUrl in solrs.Select(s => s.Url))
             {

@@ -7,18 +7,18 @@ using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
 using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    //TODO: find all calls and use IProfilesProvider instead of ProfilesProvider
-    public class ProfilesProvider : BaseEncryptedProvider
+    internal class ProfilesProvider : BaseEncryptedProvider, IProfilesProvider
     {
         private IEnumerable<IProfile> _profiles;
 
-        public ProfilesProvider()
+        internal ProfilesProvider()
         {
             Read();
         }
@@ -206,6 +206,8 @@ namespace Sifon.Code.Providers.Profile
         {
             return new Model.Profiles.Profile();
         }
+
+        
         public IProfile CreateProfile(IRemoteSettings remoteSettings)
         {
             var profile = CreateProfile();

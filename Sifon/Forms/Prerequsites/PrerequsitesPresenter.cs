@@ -4,10 +4,11 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using Sifon.Abstractions.Forms;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Prerequsites
@@ -16,7 +17,7 @@ namespace Sifon.Forms.Prerequsites
     {
         private readonly IPrerequisitesView _view;
         private readonly ScriptWrapper<Tuple<bool, bool, bool, bool>> _scriptWrapper;
-        protected readonly ProfilesProvider _profileService;
+        protected readonly IProfilesProvider _profileProvider;
 
 
         public PrerequsitesPresenter(IPrerequisitesView view)
@@ -25,10 +26,10 @@ namespace Sifon.Forms.Prerequsites
             _view.FormLoaded += FormLoaded;
             _view.InstallClicked += InstallClicked;
 
-            _profileService = new ProfilesProvider();
+            _profileProvider = Create.New<IProfilesProvider>();
 
             _scriptWrapper = new ScriptWrapper<Tuple<bool,bool,bool,bool>>
-                (_profileService.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool, bool>>());
+                (_profileProvider.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool, bool>>());
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }

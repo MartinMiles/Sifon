@@ -2,7 +2,7 @@
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
-using Sifon.Code.Providers.Profile;
+using Sifon.Code.Factories;
 
 namespace Sifon.Forms.SettingsForm
 {
@@ -14,7 +14,7 @@ namespace Sifon.Forms.SettingsForm
         public SettingsFormPresenter(ISettingsFormView view)
         {
             _view = view;
-            _settingsProvider = new SettingsProvider();
+            _settingsProvider = Create.New<ISettingsProvider>();
 
             _view.FormLoaded += FormLoad;
             _view.ValuesChanged += ValuesChanged;

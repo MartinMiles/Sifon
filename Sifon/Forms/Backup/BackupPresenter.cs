@@ -75,15 +75,15 @@ namespace Sifon.Forms.Backup
 
         private async Task PopulateDatabases(BackupRemoverViewModel viewModel, string selectedSiteName)
         {
-            var selectedSitePrefix = _profileService.FindPrefixByName(selectedSiteName);
+            var selectedSitePrefix = _profileProvider.FindPrefixByName(selectedSiteName);
 
             var parameters = new Dictionary<string, dynamic>
             {
-                { Settings.Parameters.ServerInstance, _profileService.SelectedProfileSql.SqlServer},
+                { Settings.Parameters.ServerInstance, _profileProvider.SelectedProfileSql.SqlServer},
                 { Settings.Parameters.InstancePrefix, selectedSitePrefix}
             };
 
-            _scriptWrapper = new ScriptWrapper<string>(_profileService.SelectedProfile, _view, d => d.ToString());
+            _scriptWrapper = new ScriptWrapper<string>(_profileProvider.SelectedProfile, _view, d => d.ToString());
             await _scriptWrapper.Run(Modules.Functions.GetDatabases, parameters);
 
             if (viewModel.CommerceSites.Any())

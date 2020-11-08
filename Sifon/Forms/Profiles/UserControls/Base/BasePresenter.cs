@@ -1,6 +1,7 @@
 ﻿using System;
 using Sifon.Abstractions.Messages;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Providers.Profile;
 using Sifon.Shared.MessageBoxes;
 using Sifon.Statics;
@@ -25,7 +26,7 @@ namespace Sifon.Forms.Profiles.UserControls.Base
 
         internal ProfilesPresenter Presenter => _view.Presenter;
 
-        protected ProfilesProvider ProfilesService => Presenter?.ProfilesService;
+        protected IProfilesProvider ProfilesService => Presenter?.ProfilesProvider;
         internal IProfile SelectedProfile => ProfilesService?.SelectedProfile;
 
         protected abstract void Loaded(object sender, EventArgs e);

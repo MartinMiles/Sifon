@@ -5,6 +5,7 @@ using System.Management.Automation;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -22,13 +23,13 @@ namespace Sifon.Forms.PortalCredentials
         public PortalCredentialsPresenter(IPortalCredentialsView view)
         {
             _view = view;
-            _settingsProvider = new SettingsProvider();
+            _settingsProvider = Create.New<ISettingsProvider>();
 
             _view.FormLoaded += FormLoad;
             _view.TestClicked += TestClicked;
             _view.ValuesChanged += ValuesChanged;
 
-            var selectedProfile = new ProfilesProvider().SelectedProfile;
+            var selectedProfile = Create.New<IProfilesProvider>().SelectedProfile;
             _scriptWrapper = new ScriptWrapper<PSObject>(selectedProfile, _view, d => d);
         }
 

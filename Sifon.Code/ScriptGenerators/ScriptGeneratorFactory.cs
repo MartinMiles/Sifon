@@ -5,7 +5,7 @@ using Sifon.Abstractions.ScriptGenerators;
 
 namespace Sifon.Code.ScriptGenerators
 {
-    public class ScriptFactory
+    public class ScriptGeneratorFactory
     {
         public static IScript Create(IBackupRemoverViewModel model, IProfile profile)
         {

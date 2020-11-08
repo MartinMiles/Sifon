@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sifon.Code.Providers.Profile;
+using Sifon.Abstractions.Providers;
+using Sifon.Code.Factories;
 
 [TestClass]
 public class ProfileTest
@@ -8,8 +9,8 @@ public class ProfileTest
     [TestMethod]
     public void LoadProfiles()
     {
-        var _profiles = new ProfilesProvider();
-        var read = _profiles.Read();
+        var provider = Create.New<IProfilesProvider>();
+        var read = provider.Read();
         Assert.AreEqual(2, read.Count());
     }
 }

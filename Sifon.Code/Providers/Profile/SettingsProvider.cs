@@ -11,11 +11,11 @@ using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class SettingsProvider : BaseEncryptedProvider, ISettingsProvider
+    internal class SettingsProvider : BaseEncryptedProvider, ISettingsProvider
     {
         private ISettingRecord _entity;
 
-        public SettingsProvider()
+        internal SettingsProvider()
         {
             _entity = Read();
         }
