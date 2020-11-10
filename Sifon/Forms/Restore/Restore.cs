@@ -208,7 +208,7 @@ namespace Sifon.Forms.Restore
             DialogResult = DialogResult.Cancel;
         }
         
-        #region Loading State - to be reworked ort moved into base class
+        #region Loading State - could be reworked ort moved into base class
 
         private bool stateDatabaseReady;
         private bool stateSitesReady;

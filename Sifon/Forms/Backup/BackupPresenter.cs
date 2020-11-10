@@ -13,7 +13,6 @@ namespace Sifon.Forms.Backup
     internal class BackupPresenter : BaseBackupRestorePresenter
     {
         private readonly IBackupView _view;
-        //private IScriptWrapper<string> _scriptWrapper;
 
         internal BackupPresenter(IBackupView backupView) : base(backupView)
         {

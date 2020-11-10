@@ -171,13 +171,6 @@ namespace Sifon.Code.PowerShell
 
         public event WarningReadyDelegate WarningReady = delegate { };
         public event ErrorReadyDelegate ErrorReady = delegate { };
-        //public delegate void CompleteDelegate(IScriptRunner sender);
-
-        //public delegate void ProgressReadyDelegate(ProgressRecord data);
-        //public delegate void ErrorReadyDelegate(Exception exception);
-        //public delegate void ObjectReadyDelegate(T data);
-        //public delegate void InformationReadyDelegate(string message);
-        //public delegate void WarningReadyDelegate(string message);
 
         private void OnObjectDataReady(ScriptRunner sender, PSObject data)
         {

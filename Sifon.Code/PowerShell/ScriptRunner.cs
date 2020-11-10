@@ -138,7 +138,7 @@ namespace Sifon.Code.PowerShell
             catch (RemoteException e)
             {
                 // "is not recognized as the name of a cmdlet" - occurs when remote folder deleted but still presents in profile
-                // also happened whn tried to use existing remote profile with another VM that has not been initialized
+                // also happened when tried to use existing remote profile with another VM that has not been initialized
                 throw new RemoteNotInitializedException(e.Message, e);
             }
         }
@@ -243,7 +243,6 @@ namespace Sifon.Code.PowerShell
         {
             try
             {
-                //IAsyncResult asyncResult = _invoker.BeginInvoke(method, args);
                 _invokeResult = _invoker.BeginInvoke(method, args);
                 _waitHandles[0] = _invokeResult.AsyncWaitHandle;
                 return WaitHandle.WaitAny(_waitHandles) == 0 ? _invoker.EndInvoke(_invokeResult) : null;

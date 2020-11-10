@@ -55,7 +55,7 @@ namespace Sifon.Forms.Base
         {
             _validationMessages = new List<string>();
 
-            var filesystemWrapper = Create.WithCurrentProfile<IFilesystem>();
+            var filesystemWrapper = Create.WithCurrentProfile<IFilesystem>(_view);
 
             if (! await filesystemWrapper.DirectoryExists(destinationFolder))
             {

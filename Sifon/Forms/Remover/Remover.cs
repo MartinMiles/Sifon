@@ -245,11 +245,11 @@ namespace Sifon.Forms.Remover
             }
         }
 
-        private void textDatabasePrefix_TextChanged(object sender, EventArgs e)
+        private async void textDatabasePrefix_TextChanged(object sender, EventArgs e)
         {
             if (DatabaseFilterChanged != null)
             {
-                DatabaseFilterChanged(this, new EventArgs<string>(((TextBox)sender).Text.Trim()));
+                await DatabaseFilterChanged(this, new EventArgs<string>(((TextBox)sender).Text.Trim()));
             }
         }
 

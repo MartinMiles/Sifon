@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
