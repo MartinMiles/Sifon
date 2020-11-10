@@ -6,7 +6,7 @@ namespace Sifon.Forms.About
 {
     internal partial class About : BaseForm
     {
-        public About()
+        internal About()
         {
             InitializeComponent();
         }

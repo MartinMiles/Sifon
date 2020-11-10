@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
-using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 using Sifon.ViewModels;
@@ -13,21 +12,19 @@ namespace Sifon.Forms.Backup
 {
     internal class BackupPresenter : BaseBackupRestorePresenter
     {
-        private bool sitesReady = false;
-        private bool databasesReady = false;
         private readonly IBackupView _view;
-        private  ScriptWrapper<string> _scriptWrapper;
+        //private IScriptWrapper<string> _scriptWrapper;
 
         internal BackupPresenter(IBackupView backupView) : base(backupView)
         {
             _view = backupView;
-            _view.FormLoaded += Loaded;
+            _view.LoadedAsync += async (s, e) => { await Loaded(s, e); };
             _view.InstanceChanged += async (s, e) => { await InstanceChanged(s, e as EventArgs<string>); };
-            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e); };
+            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e as EventArgs<string>); };
             _view.BeforeFormClosing += ClosingForm;
         }
 
-        private async void Loaded(object sender, EventArgs e)
+        private async Task Loaded(object sender, EventArgs e)
         {
             _view.ToggleControls(false);
             _view.EnableDisableMainButton(false);
@@ -83,7 +80,7 @@ namespace Sifon.Forms.Backup
                 { Settings.Parameters.InstancePrefix, selectedSitePrefix}
             };
 
-            _scriptWrapper = new ScriptWrapper<string>(_profileProvider.SelectedProfile, _view, d => d.ToString());
+            //_scriptWrapper = Create.WithParam(_view, d => d.ToString());
             await _scriptWrapper.Run(Modules.Functions.GetDatabases, parameters);
 
             if (viewModel.CommerceSites.Any())
@@ -102,9 +99,9 @@ namespace Sifon.Forms.Backup
             _view.PopulateDatabasesListboxForSite(viewModel);
         }
 
-        private void ClosingForm(object sender, EventArgs e)
-        {
-            _scriptWrapper?.Finish();
-        }
+        //private void ClosingForm(object sender, EventArgs e)
+        //{
+        //    _scriptWrapper?.Finish();
+        //}
     }
 }

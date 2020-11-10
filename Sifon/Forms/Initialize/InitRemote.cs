@@ -12,7 +12,7 @@ namespace Sifon.Forms.Initialize
 
         public string RemoteFolder { get; private set; }
 
-        public InitRemote()
+        internal InitRemote()
         {
             InitializeComponent();
         }

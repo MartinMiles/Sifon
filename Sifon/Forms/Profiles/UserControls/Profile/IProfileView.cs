@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
 {

@@ -1,15 +1,17 @@
 ﻿using System;
+using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.ScriptGenerators;
 using Sifon.Code.Statics;
 
 namespace Sifon.Code.ScriptGenerators
 {
-    public class ServiceScriptGenerator
+    internal class ServiceScriptGenerator : IServiceScriptGenerator
     {
         private readonly string _prefix;
 
-        public ServiceScriptGenerator(string prefix)
+        internal ServiceScriptGenerator(IProfile profile)
         {
-            _prefix = prefix;
+            _prefix = profile.Prefix;
         }
 
         public string StopDependentServices()
@@ -41,6 +43,7 @@ namespace Sifon.Code.ScriptGenerators
                 }}
                 ";
         }
+
         public string StartPublishingService(string publishingServiceFolder)
         {
             return $@"

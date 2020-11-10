@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Containers
 {

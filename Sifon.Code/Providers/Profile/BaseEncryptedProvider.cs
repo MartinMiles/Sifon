@@ -3,11 +3,11 @@ using Sifon.Code.Encryption;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class BaseEncryptedProvider
+    internal class BaseEncryptedProvider
     {
         protected readonly IEncryptor Encryptor;
 
-        public BaseEncryptedProvider()
+        protected BaseEncryptedProvider()
         {
             Encryptor = new Encryptor();
         }

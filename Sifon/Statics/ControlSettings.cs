@@ -1,6 +1,6 @@
 ﻿namespace Sifon.Statics
 {
-    public static class ControlSettings
+    internal static class ControlSettings
     {
         public static class Grid
         {

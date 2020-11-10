@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.PortalCredentials
 {
@@ -11,7 +11,7 @@ namespace Sifon.Forms.PortalCredentials
         public event EventHandler<EventArgs<IPortalCredentials>> TestClicked = delegate { };
         public event EventHandler<EventArgs<IPortalCredentials>> ValuesChanged = delegate { };
 
-        public PortalCredentials()
+        internal PortalCredentials()
         {
             InitializeComponent();
             new PortalCredentialsPresenter(this);

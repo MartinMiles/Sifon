@@ -3,9 +3,9 @@ using Sifon.Code.PowerShell;
 
 namespace Sifon.Forms.Other
 {
-    public partial class FirstTimeRun : Form
+    internal partial class FirstTimeRun : Form
     {
-        public FirstTimeRun()
+        internal FirstTimeRun()
         {
             InitializeComponent();
         }

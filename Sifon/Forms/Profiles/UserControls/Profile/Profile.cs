@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
-using Sifon.Forms.Other;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
@@ -49,7 +48,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         #endregion
 
-        public Profile()
+        internal Profile()
         {
             InitializeComponent();
             new ProfilePresenter(this);

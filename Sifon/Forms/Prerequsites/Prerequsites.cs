@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
-using Sifon.Code.Events;
 using Sifon.Forms.Base;
 
 namespace Sifon.Forms.Prerequsites
@@ -10,7 +10,7 @@ namespace Sifon.Forms.Prerequsites
     {
         public event EventHandler<EventArgs<IPrerequisites>> InstallClicked = delegate {};
 
-        public Prerequsites()
+        internal Prerequsites()
         {
             InitializeComponent();
             new PrerequsitesPresenter(this);

@@ -7,10 +7,11 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Plugins;
-using Sifon.Code.Events;
+using Sifon.Code.Factories;
 using Sifon.Code.Helpers;
-using Sifon.Code.Metacode;
 using Sifon.Code.Model;
 using Sifon.Code.Statics;
 
@@ -65,7 +66,7 @@ namespace Sifon.Forms.MainForm
             {
                 parentMenuItem.Name = menuItem.DirectoryFullPath;
 
-                if (menuItem.DirectoryName == Settings.Plugins.Directory)
+                if (menuItem.DirectoryName == Folders.DirectoryName.Plugins)
                 {
                     menuItem.DirectoryName = parentMenuItem.Text;
                 }
@@ -111,7 +112,8 @@ namespace Sifon.Forms.MainForm
         {
             foreach (var fileInfo in scripts)
             {
-                var metacode = new MetacodeHelper(fileInfo.Key);
+                var metacode = Create.WithParam<IMetacodeHelper, string>(fileInfo.Key);
+
                 if (metacode.IsCompatibleVersion && (isLocal || !metacode.LocalEnforcementValid))
                 {
                     var newToolStripMenuItem = new ToolStripMenuItem

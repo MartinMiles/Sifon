@@ -6,6 +6,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;

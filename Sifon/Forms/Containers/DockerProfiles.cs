@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
 using Sifon.Forms.Profiles;
-using Sifon.Code.Events;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
@@ -76,7 +76,7 @@ namespace Sifon.Forms.Containers
 
         #endregion
 
-        public DockerProfiles()
+        internal DockerProfiles()
         {
             InitializeComponent();
             new DockerProfilesPresenter(this);

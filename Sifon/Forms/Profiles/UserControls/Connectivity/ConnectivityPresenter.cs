@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Helpers;
+using Sifon.Abstractions.Model;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Extensions;
 using Sifon.Code.Extensions.Models;
-using Sifon.Code.Helpers;
-using Sifon.Code.Model;
-using Sifon.Code.PowerShell;
+using Sifon.Code.Factories;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
@@ -17,8 +19,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
     internal class ConnectivityPresenter : BasePresenter
     {
         private readonly IConnectivityView _view;
-        private ScriptWrapper<SolrInfo> _scriptWrapper;
-        private SolrIdentifier _solrIdentifier;
+        private IScriptWrapper<ISolrInfo> _scriptWrapper;
+        private ISolrIdentifier _solrIdentifier;
 
         internal ConnectivityPresenter(IConnectivityView view) : base(view)
         {
@@ -27,11 +29,12 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             _view.SqlServersUpdated += SqlServersUpdated;
         }
 
-        protected override void Loaded(object sender, EventArgs e)
+        protected override async Task Loaded(object sender, EventArgs ea)
         {
-            Presenter.ProfileChanged += ProfileChanged;
+            Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
             Presenter.RemoteInitialized += RemoteInitialized;
             Presenter.FormClosing += FormClosing;
+
             RedrawForm();
         }
 
@@ -48,7 +51,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
                 _view.LoadSolrDropdown();
                 _view.SetSolrValue(SelectedProfile?.Solr);
 
-                _solrIdentifier = new SolrIdentifier(SelectedProfile, _view);
+                //TODO : Re-use here
+                _solrIdentifier = Create.WithCurrentProfile<ISolrIdentifier>(_view); // new SolrIdentifier( _view);
                 _solrIdentifier.OnProgressReady += (sender, args) => _view.UpdateProgress(args.Value);
 
                 if (!SelectedProfile.RemotingEnabled || SelectedProfile.RemoteFolder.NotEmpty())
@@ -85,9 +89,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             _view.ToggleControls(false);
 
-            _scriptWrapper = new ScriptWrapper<SolrInfo>(SelectedProfile, _view, SolrInfoExtensions.Convert);
-
-            await _scriptWrapper.Run(Modules.Functions.TestSolrEndpoint, new Dictionary<string, dynamic> {{ "Url", e.Value }});
+            await Run(e.Value);
 
             if (_scriptWrapper.Results.Any())
             {
@@ -101,8 +103,16 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             _view.ToggleControls(true);
         }
 
-        private void ProfileChanged(object sender, EventArgs<bool> e)
+        private async Task Run(string url)
         {
+            _scriptWrapper = Create.WithParam(_view, SolrInfoExtensions.Convert);
+            await _scriptWrapper.Run(Modules.Functions.TestSolrEndpoint, new Dictionary<string, dynamic> {{"Url", url }});
+        }
+
+        private async Task ProfileChanged(object sender, EventArgs<bool> e)
+        {
+            await Task.CompletedTask;
+
             if (SelectedProfile == null) return;
 
             _view.ShowSpinnerHideGrid(true);

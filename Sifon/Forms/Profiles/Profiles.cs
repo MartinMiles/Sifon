@@ -21,7 +21,7 @@ namespace Sifon.Forms.Profiles
 
         #region Constructors
 
-        public Profiles(bool firstRun)
+        internal Profiles(bool firstRun)
         {
             isFirstRunFlag = firstRun;
             ctor();
@@ -29,7 +29,7 @@ namespace Sifon.Forms.Profiles
             buttonNoProfile.Visible = true;
         }
 
-        public Profiles()
+        internal Profiles()
         {
             ctor();
         }

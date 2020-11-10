@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Sifon.Abstractions.Metacode;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
 using Sifon.Code.Helpers;
@@ -10,7 +11,7 @@ using Sifon.Code.Model;
 
 namespace Sifon.Code.Metacode
 {
-    public class MetacodeHelper
+    internal class MetacodeHelper: IMetacodeHelper
     {
         private readonly IEnumerable<string> _meta;
         private readonly string[] powerShellBooleans = { "$true", "$false" };
@@ -56,7 +57,7 @@ namespace Sifon.Code.Metacode
 
         #endregion
 
-        public MetacodeHelper(string scriptPath)
+        internal MetacodeHelper(string scriptPath)
         {
             if (!File.Exists(scriptPath))
             {
@@ -82,7 +83,7 @@ namespace Sifon.Code.Metacode
             }
         }
         
-        public Dictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters, string winformsAssemblyLocation)
+        public IDictionary<string, object> ExecuteMetacode(IDictionary<string, dynamic> parameters, string winformsAssemblyLocation)
         {
             var dynamicResultsDictionary = new Dictionary<string, object>();
             var regex = new Regex(Settings.Regex.Metacode.ExecutableFunction);

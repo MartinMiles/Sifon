@@ -1,4 +1,5 @@
 ﻿using System.Management.Automation;
+using Sifon.Code.Statics;
 
 namespace Sifon.Code.PowerShell
 {
@@ -21,7 +22,7 @@ namespace Sifon.Code.PowerShell
             }
 
             ps = System.Management.Automation.PowerShell.Create();
-            ps.AddCommand($".\\{Statics.Modules.Directory}\\{Statics.Modules.Files.Installer}");
+            ps.AddCommand($"{Folders.Module}\\{Modules.Files.Installer}");
             ps.Invoke();
         }
     }

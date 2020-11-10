@@ -15,7 +15,7 @@ namespace Sifon.Code.ScriptGenerators
 
         internal RemoverScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)
         {
-            Script = Path.Combine(Settings.Folders.Cache, $"Cleaner_{profile.Website}_{DateTime.Now:yyyy-MM-dd}.ps1");
+            Script = Path.Combine(Folders.Cache, $"Cleaner_{profile.Website}_{DateTime.Now:yyyy-MM-dd}.ps1");
 
             executionScript = GenerateParameters(CommerceSitesParameters);
 

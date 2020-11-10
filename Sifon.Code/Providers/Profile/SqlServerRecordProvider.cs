@@ -4,17 +4,18 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Model.Profiles;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions.Models;
 
 namespace Sifon.Code.Providers.Profile
 {
-    public class SqlServerRecordProvider : BaseEncryptedProvider
+    internal class SqlServerRecordProvider : BaseEncryptedProvider, ISqlServerRecordProvider
     {
         private IEnumerable<ISqlServerRecord> _entities;
 
-        public SqlServerRecordProvider()
+        internal SqlServerRecordProvider()
         {
             _entities = Read();
         }
@@ -30,10 +31,10 @@ namespace Sifon.Code.Providers.Profile
         {
             var items = new List<ISqlServerRecord>();
 
-            if (File.Exists(Settings.SettingsFolder.SqlProfilesPath))
+            if (File.Exists(Folders.SettingsFolder.SqlProfilesPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.SettingsFolder.SqlProfilesPath);
+                doc.Load(Folders.SettingsFolder.SqlProfilesPath);
 
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
@@ -63,7 +64,7 @@ namespace Sifon.Code.Providers.Profile
                 root.Add(record.Save());
             }
 
-            doc.Save(Settings.SettingsFolder.SqlProfilesPath);
+            doc.Save(Folders.SettingsFolder.SqlProfilesPath);
         }
 
         public void Delete(string name)

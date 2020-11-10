@@ -4,24 +4,25 @@ using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Helpers;
+using Sifon.Abstractions.Model;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Code.Extensions.Models;
-using Sifon.Code.Model;
-using Sifon.Code.PowerShell;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 using Sifon.Code.Statics;
 
 namespace Sifon.Code.Helpers
 {
-    public class SolrIdentifier
+    internal class SolrIdentifier : ISolrIdentifier
     {
-        private readonly ScriptWrapper<SolrInfo> _scriptWrapper;
+        private readonly IScriptWrapper<ISolrInfo> _scriptWrapper;
         public event EventHandler<EventArgs<int>> OnProgressReady = delegate { };
 
-        public SolrIdentifier(IProfile profile, ISynchronizeInvoke invoke)
+        internal SolrIdentifier(ISynchronizeInvoke invoke)
         {
-            _scriptWrapper = new ScriptWrapper<SolrInfo>(profile, invoke, SolrInfoExtensions.Convert);
+            _scriptWrapper = Create.WithParam(invoke, SolrInfoExtensions.Convert);
             _scriptWrapper.ProgressReady += ProgressReady;
         }
 
@@ -30,7 +31,7 @@ namespace Sifon.Code.Helpers
             OnProgressReady(this, new EventArgs<int>(data.PercentComplete));
         }
 
-        public async Task<IEnumerable<SolrInfo>> Identify()
+        public async Task<IEnumerable<ISolrInfo>> Identify()
         {
             await _scriptWrapper.Run(Modules.Functions.FindSolrInstances);
             return _scriptWrapper.Results.Where(r => r.Directory.NotEmpty() && r.Version != null).Distinct();

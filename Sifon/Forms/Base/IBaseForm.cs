@@ -2,7 +2,7 @@
 
 namespace Sifon.Forms.Base
 {
-    public interface IBaseForm
+    internal interface IBaseForm
     {
         event EventHandler<EventArgs> FormLoaded;
     }

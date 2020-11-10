@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Messages;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
-using Sifon.Code.Filesystem;
+using Sifon.Code.Factories;
 using Sifon.Shared.MessageBoxes;
 
 namespace Sifon.Shared.UserControls
@@ -26,7 +26,7 @@ namespace Sifon.Shared.UserControls
 
         public async Task InitAndShow(IProfile profile)
         {
-            _filesystem = new FilesystemFactory(profile, this).Create();
+            _filesystem = Create.WithProfile<IFilesystem>(profile, this);
             await CreateTree(fileExplorer);
         }
 
@@ -233,7 +233,7 @@ namespace Sifon.Shared.UserControls
 
             if (node != null)
             {
-                DoubleClicked(this, new Sifon.Code.Events.EventArgs<string>(node.Tag as string));
+                DoubleClicked(this, new EventArgs<string>(node.Tag as string));
             }
         }
 

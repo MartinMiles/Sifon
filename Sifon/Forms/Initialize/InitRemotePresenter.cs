@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
-using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Initialize
@@ -16,30 +15,27 @@ namespace Sifon.Forms.Initialize
     internal class InitRemotePresenter
     {
         private readonly InitRemoteView _view;
-        private readonly ScriptWrapper<string> _scriptWrapper;
-        protected readonly IProfilesProvider __profileProvider;
-        private readonly IProfile _profile;
-        private readonly Dictionary<string, dynamic> _parameters;
+        private readonly IScriptWrapper<string> _scriptWrapper;
+        private readonly IDictionary<string, dynamic> _parameters;
 
         // fake profile is initially passed: always runs local, also passes credentials
-        public InitRemotePresenter(InitRemoteView view, IRemoteSettings remoteSettings)
+        internal InitRemotePresenter(InitRemoteView view, IRemoteSettings remoteSettings)
         {
             _view = view;
-            __profileProvider = Create.New<IProfilesProvider>();
 
-            _profile = __profileProvider.CreateLocal();
             _parameters = CreateParameters(remoteSettings);
 
             _view.FormLoaded += FormLoaded;
 
-            _scriptWrapper = new ScriptWrapper<string>(_profile, _view, d => d?.ToString());
+            var localProfile = Create.New<IProfilesProvider>().CreateLocal();
+            _scriptWrapper = Create.WithParam(_view, d => d?.ToString(), localProfile);
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }
 
         private async void FormLoaded(object sender, EventArgs e)
         {
-            await _scriptWrapper.Run(Settings.Scripts.Remote.Initialize, _parameters);
+            await _scriptWrapper.Run(Folders.Scripts.InitializeRemote, _parameters);
 
             var result = _scriptWrapper.Results.FirstOrDefault();
             var excp = _scriptWrapper.Errors.FirstOrDefault();

@@ -10,7 +10,7 @@ namespace Sifon.Forms.Updates
     {
         public event EventHandler<EventArgs> CheckClicked = delegate { };
 
-        public CheckUpdates()
+        internal CheckUpdates()
         {
             InitializeComponent();
             new CheckUpdatesPresenter(this);

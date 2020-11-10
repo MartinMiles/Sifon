@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Validation;
+using Sifon.Forms.Base;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {
@@ -21,6 +22,6 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 
         event EventHandler<EventArgs<bool>> ToggleLastTabs;
         event EventHandler<EventArgs<string>> RemoteInitialized;
-        event EventHandler<EventArgs<IRemoteSettings>> TestRemote;
+        event BaseForm.AsyncEventHandler<EventArgs<IRemoteSettings>> TestRemote;
     }
 }

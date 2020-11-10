@@ -116,13 +116,13 @@
             this.groupBackup.Controls.Add(this.checkPublishing);
             this.groupBackup.Controls.Add(this.checkHorizon);
             this.groupBackup.Controls.Add(this.checkCommerce);
-            this.groupBackup.Controls.Add(this.checkIds);
-            this.groupBackup.Controls.Add(this.checkXconnect);
-            this.groupBackup.Controls.Add(this.label5);
-            this.groupBackup.Controls.Add(this.dataGrid);
-            this.groupBackup.Controls.Add(this.buttonBackupLocation);
-            this.groupBackup.Controls.Add(this.textInstanaceToBackup);
             this.groupBackup.Controls.Add(this.textDestinationFolderToBackup);
+            this.groupBackup.Controls.Add(this.buttonBackupLocation);
+            this.groupBackup.Controls.Add(this.checkIds);
+            this.groupBackup.Controls.Add(this.label5);
+            this.groupBackup.Controls.Add(this.checkXconnect);
+            this.groupBackup.Controls.Add(this.dataGrid);
+            this.groupBackup.Controls.Add(this.textInstanaceToBackup);
             this.groupBackup.Controls.Add(this.label2);
             this.groupBackup.Controls.Add(this.checkFiles);
             this.groupBackup.Controls.Add(this.comboInstances);
@@ -137,7 +137,7 @@
             // 
             this.checkPublishing.AutoSize = true;
             this.checkPublishing.Enabled = false;
-            this.checkPublishing.Location = new System.Drawing.Point(9, 120);
+            this.checkPublishing.Location = new System.Drawing.Point(9, 173);
             this.checkPublishing.Name = "checkPublishing";
             this.checkPublishing.Size = new System.Drawing.Size(113, 17);
             this.checkPublishing.TabIndex = 6;
@@ -148,7 +148,7 @@
             // 
             this.checkHorizon.AutoSize = true;
             this.checkHorizon.Enabled = false;
-            this.checkHorizon.Location = new System.Drawing.Point(155, 100);
+            this.checkHorizon.Location = new System.Drawing.Point(155, 153);
             this.checkHorizon.Name = "checkHorizon";
             this.checkHorizon.Size = new System.Drawing.Size(62, 17);
             this.checkHorizon.TabIndex = 5;
@@ -159,7 +159,7 @@
             // 
             this.checkCommerce.AutoSize = true;
             this.checkCommerce.Enabled = false;
-            this.checkCommerce.Location = new System.Drawing.Point(155, 119);
+            this.checkCommerce.Location = new System.Drawing.Point(155, 172);
             this.checkCommerce.Name = "checkCommerce";
             this.checkCommerce.Size = new System.Drawing.Size(120, 17);
             this.checkCommerce.TabIndex = 7;
@@ -170,7 +170,7 @@
             // 
             this.checkIds.AutoSize = true;
             this.checkIds.Enabled = false;
-            this.checkIds.Location = new System.Drawing.Point(155, 80);
+            this.checkIds.Location = new System.Drawing.Point(155, 133);
             this.checkIds.Name = "checkIds";
             this.checkIds.Size = new System.Drawing.Size(94, 17);
             this.checkIds.TabIndex = 3;
@@ -181,7 +181,7 @@
             // 
             this.checkXconnect.AutoSize = true;
             this.checkXconnect.Enabled = false;
-            this.checkXconnect.Location = new System.Drawing.Point(9, 100);
+            this.checkXconnect.Location = new System.Drawing.Point(9, 153);
             this.checkXconnect.Name = "checkXconnect";
             this.checkXconnect.Size = new System.Drawing.Size(100, 17);
             this.checkXconnect.TabIndex = 4;
@@ -191,7 +191,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 149);
+            this.label5.Location = new System.Drawing.Point(9, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 13);
             this.label5.TabIndex = 28;
@@ -215,7 +215,7 @@
             // 
             // buttonBackupLocation
             // 
-            this.buttonBackupLocation.Location = new System.Drawing.Point(238, 167);
+            this.buttonBackupLocation.Location = new System.Drawing.Point(238, 98);
             this.buttonBackupLocation.Name = "buttonBackupLocation";
             this.buttonBackupLocation.Size = new System.Drawing.Size(41, 22);
             this.buttonBackupLocation.TabIndex = 9;
@@ -234,7 +234,7 @@
             // 
             // textDestinationFolderToBackup
             // 
-            this.textDestinationFolderToBackup.Location = new System.Drawing.Point(9, 168);
+            this.textDestinationFolderToBackup.Location = new System.Drawing.Point(9, 99);
             this.textDestinationFolderToBackup.MaxLength = 255;
             this.textDestinationFolderToBackup.Name = "textDestinationFolderToBackup";
             this.textDestinationFolderToBackup.Size = new System.Drawing.Size(230, 20);
@@ -256,7 +256,7 @@
             this.checkFiles.Checked = true;
             this.checkFiles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkFiles.Enabled = false;
-            this.checkFiles.Location = new System.Drawing.Point(9, 80);
+            this.checkFiles.Location = new System.Drawing.Point(9, 133);
             this.checkFiles.Name = "checkFiles";
             this.checkFiles.Size = new System.Drawing.Size(133, 17);
             this.checkFiles.TabIndex = 2;
@@ -305,7 +305,7 @@
             this.Name = "Backup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Backup Sitecore instance";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Backup_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.Loaded);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

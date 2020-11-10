@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.SqlSettings
 {
-    public interface ISqlSettingsView : ISynchronizeInvoke
+    internal interface ISqlSettingsView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs<string>> SelectedRecordChanged;
         event EventHandler<EventArgs<string>> SqlRecordDeleted;

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Factories;
-using Sifon.Code.Providers;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
+using Sifon.Forms.Base;
 
 namespace Sifon.Forms.Profiles
 {
     internal class ProfilesPresenter
     {
         private readonly IProfilesView _view;
-        private readonly SqlServerRecordProvider _sqlService;
-        private readonly PowerShellSiteProvider _siteProvider;
+        private readonly ISqlServerRecordProvider _sqlService;
+        private readonly ISiteProvider _siteProvider;
+
         internal IProfilesProvider ProfilesProvider { get; private set; }
 
         #region Properties
@@ -29,6 +29,28 @@ namespace Sifon.Forms.Profiles
         internal bool RemoteNotInitializedExceptionAlredyFired { get; set; }
 
         #endregion
+
+        public event EventHandler<EventArgs> FormClosing = delegate { };
+        //public event EventHandler<EventArgs<bool>> ProfileChanged = delegate { };
+        public event BaseForm.AsyncEventHandler<EventArgs<bool>> ProfileChanged;
+
+
+
+        internal ProfilesPresenter(IProfilesView profilesView)
+        {
+            ProfilesProvider = Create.New<IProfilesProvider>();
+
+            _view = profilesView;
+            _view.FormSaved += FormSaved;
+            _view.BeforeFormClosing += (sender, args) => FormClosing(sender, args);
+            _view.ContinueWithoutCreatingProfile += ContinueWithoutCreatingProfile;
+
+            if (SelectedProfile != null)
+            {
+                _siteProvider = Create.WithCurrentProfile<ISiteProvider>(_view);
+                _sqlService = Create.New<ISqlServerRecordProvider>();
+            }
+        }
 
         public async Task<IEnumerable<string>> GetSitecoreSites()
         {
@@ -45,13 +67,12 @@ namespace Sifon.Forms.Profiles
             FocusOnSaveButton();
         }
 
-        public event EventHandler<EventArgs> FormClosing = delegate { };
-
-        public event EventHandler<EventArgs<bool>> ProfileChanged = delegate { };
-
-        public void Raise_ProfileChangedEvent(bool value)
+        public async void Raise_ProfileChangedEvent(bool value)
         {
-            ProfileChanged(this, new EventArgs<bool>(value));
+            if (ProfileChanged != null)
+            {
+                await ProfileChanged(this, new EventArgs<bool>(value));
+            }
             EnableSaveButton(value);
         }
 
@@ -65,22 +86,6 @@ namespace Sifon.Forms.Profiles
         public void EnableSaveButton(bool value)
         {
             _view.EnableSaveButton(value);
-        }
-
-        public ProfilesPresenter(IProfilesView profilesView)
-        {
-            ProfilesProvider = Create.New<IProfilesProvider>();
-
-            _view = profilesView;
-            _view.FormSaved += FormSaved;
-            _view.BeforeFormClosing += (sender, args) => FormClosing(sender, args);
-            _view.ContinueWithoutCreatingProfile += ContinueWithoutCreatingProfile;
-
-            if (SelectedProfile != null)
-            {
-                _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
-                _sqlService = new SqlServerRecordProvider();
-            }
         }
 
         private void ContinueWithoutCreatingProfile(object sender, object args)

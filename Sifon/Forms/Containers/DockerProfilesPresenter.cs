@@ -1,7 +1,7 @@
 ﻿using System;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Factories;
 
 namespace Sifon.Forms.Containers
@@ -11,7 +11,7 @@ namespace Sifon.Forms.Containers
         private readonly IDockerProfilesView _view;
         private readonly IContainersProvider _containersProvider;
 
-        public DockerProfilesPresenter(IDockerProfilesView view)
+        internal DockerProfilesPresenter(IDockerProfilesView view)
         {
             _view = view;
             _view.Loaded += Loaded;

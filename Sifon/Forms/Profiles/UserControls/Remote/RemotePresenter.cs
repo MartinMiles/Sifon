@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
 using Sifon.Code.Extensions;
 using Sifon.Code.PowerShell;
@@ -14,11 +15,11 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
         private readonly IRemoteView _view;
         private ScriptWrapper<string> _scriptWrapper;
 
-        public RemotePresenter(IRemoteView view) : base(view)
+        internal RemotePresenter(IRemoteView view) : base(view)
         {
             _view = view;
             _view.RemoteInitialized += RemoteInitialized;
-            _view.TestRemote += TestRemote;
+            _view.TestRemote += async (s, e) => { await TestRemote(s, e as EventArgs<IRemoteSettings>); };
         }
 
         private void ToggleLastTabs(object sender, EventArgs<bool> e)
@@ -26,15 +27,15 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             Presenter.ToggleLastTabs(e.Value);
         }
 
-        protected override void Loaded(object sender, EventArgs e)
+        protected override async Task Loaded(object sender, EventArgs ea)
         {
-            Presenter.ProfileChanged += ProfileChanged;
+            Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
             SetValues();
 
             _view.ToggleLastTabs += ToggleLastTabs;
         }
 
-        private async void TestRemote(object sender, EventArgs<IRemoteSettings> e)
+        private async Task TestRemote(object sender, EventArgs<IRemoteSettings> e)
         {
             var profile = ProfilesService.CreateProfile(e.Value);
             _scriptWrapper = new ScriptWrapper<string>(profile, _view, d => d.ToString());
@@ -65,8 +66,10 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             }
         }
 
-        private void ProfileChanged(object sender, EventArgs<bool> e)
+        private async Task ProfileChanged(object sender, EventArgs<bool> e)
         {
+            await Task.CompletedTask;
+
             _view.EnableControls(e.Value);
             SetValues();
         }

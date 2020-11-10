@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Factories;
-using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
@@ -17,10 +16,9 @@ namespace Sifon.Forms.PortalCredentials
     {
         private readonly IPortalCredentialsView _view;
         private readonly ISettingsProvider _settingsProvider;
+        private readonly IScriptWrapper<PSObject> _scriptWrapper;
 
-        private readonly ScriptWrapper<PSObject> _scriptWrapper;
-
-        public PortalCredentialsPresenter(IPortalCredentialsView view)
+        internal PortalCredentialsPresenter(IPortalCredentialsView view)
         {
             _view = view;
             _settingsProvider = Create.New<ISettingsProvider>();
@@ -29,8 +27,7 @@ namespace Sifon.Forms.PortalCredentials
             _view.TestClicked += TestClicked;
             _view.ValuesChanged += ValuesChanged;
 
-            var selectedProfile = Create.New<IProfilesProvider>().SelectedProfile;
-            _scriptWrapper = new ScriptWrapper<PSObject>(selectedProfile, _view, d => d);
+            _scriptWrapper = Create.WithParam(_view, d => d);
         }
 
         private void FormLoad(object sender, EventArgs e)

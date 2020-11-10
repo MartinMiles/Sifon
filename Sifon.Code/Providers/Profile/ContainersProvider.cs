@@ -23,7 +23,7 @@ namespace Sifon.Code.Providers.Profile
 
         private void VerifyFirstRun()
         {
-            if (!File.Exists(Settings.SettingsFolder.ContainersPath))
+            if (!File.Exists(Folders.SettingsFolder.ContainersPath))
             {
                 _profiles = new List<ContainerProfile>();
                 _profiles = _profiles.Append(DefaultContainers.Sitecore10XP);
@@ -56,10 +56,10 @@ namespace Sifon.Code.Providers.Profile
         {
             var items = new List<ContainerProfile>();
 
-            if (File.Exists(Settings.SettingsFolder.ContainersPath))
+            if (File.Exists(Folders.SettingsFolder.ContainersPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.SettingsFolder.ContainersPath);
+                doc.Load(Folders.SettingsFolder.ContainersPath);
 
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                 {
@@ -82,7 +82,7 @@ namespace Sifon.Code.Providers.Profile
                 root.Add(profile.Save());
             }
 
-            doc.Save(Settings.SettingsFolder.ContainersPath);
+            doc.Save(Folders.SettingsFolder.ContainersPath);
         }
 
         public void DeleteSelected()

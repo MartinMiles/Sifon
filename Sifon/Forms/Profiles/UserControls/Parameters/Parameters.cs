@@ -16,7 +16,7 @@ namespace Sifon.Forms.Profiles.UserControls.Parameters
 
         private int lines = 0;
 
-        public Parameters()
+        internal Parameters()
         {
             InitializeComponent();
             new ParametersPresenter(this);

@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Initialize;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
+using Sifon.Forms.Base;
 
 namespace Sifon.Forms.Profiles.UserControls.Remote
 {
     internal partial class Remote : BaseUserControl, IRemoteView, IRemoteSettings
     {
         #region Public events
+
         public event EventHandler<EventArgs<bool>> ToggleLastTabs = delegate { };
         public event EventHandler<EventArgs<string>> RemoteInitialized = delegate { };
-        public event EventHandler<EventArgs<IRemoteSettings>> TestRemote = delegate { };
+        public event BaseForm.AsyncEventHandler<EventArgs<IRemoteSettings>> TestRemote;
 
         #endregion
 
@@ -53,7 +55,7 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 
         #endregion
 
-        public Remote()
+        internal Remote()
         {
             InitializeComponent();
             new RemotePresenter(this);
@@ -153,10 +155,14 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
             initializeForm.Dispose();
         }
 
-        private void buttonTest_Click(object sender, EventArgs e)
+        private async void buttonTest_Click(object sender, EventArgs e)
         {
             ToggleTestButton(false);
-            TestRemote(this, new EventArgs<IRemoteSettings>(this));
+
+            if (TestRemote != null)
+            {
+                await TestRemote(this, new EventArgs<IRemoteSettings>(this));
+            }
         }
 
         public void ToggleTestButton(bool enabled)

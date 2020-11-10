@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Filesystem;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Factories;
-using Sifon.Code.Filesystem;
-using Sifon.Code.PowerShell;
-using Sifon.Code.Providers;
 using Sifon.Code.Statics;
 using Sifon.Shared.Forms.FolderBrowserDialog;
 
@@ -17,10 +16,9 @@ namespace Sifon.Forms.Base
     internal class BaseBackupRestorePresenter
     {
         protected readonly IProfilesProvider _profileProvider;
-        protected readonly RemoteScriptCopier _remoteScriptCopier;
-        protected readonly FilesystemFactory _filesystemFactory;
+        protected readonly IRemoteScriptCopier _remoteScriptCopier;
         protected readonly ISiteProvider _siteProvider;
-
+        protected readonly IScriptWrapper<string> _scriptWrapper;
         private readonly IBaseBackupRestoreView _view;
 
         internal BaseBackupRestorePresenter(IBaseBackupRestoreView view)
@@ -29,23 +27,19 @@ namespace Sifon.Forms.Base
             var profile = _profileProvider.SelectedProfile;
 
             _view = view;
-            _view.FormLoaded += Loaded;
+            
             _view.FolderBrowserClicked += (sender, e) => e.Value1.Text = ShowFolderSelector(profile, e.Value2);
             _view.AppendEnvironmentToCaption(profile.WindowCaptionSuffix);
 
-            _filesystemFactory = new FilesystemFactory(profile, _view);
-            _remoteScriptCopier = new RemoteScriptCopier(profile, _view);
-            _siteProvider = new PowerShellSiteProvider(profile, _view);
+            _scriptWrapper = Create.WithParam(_view, d => d.ToString());
+            _remoteScriptCopier = Create.WithCurrentProfile<IRemoteScriptCopier>(_view);
+            _siteProvider = Create.WithCurrentProfile<ISiteProvider>(_view);
         }
 
         private string ShowFolderSelector(IProfile profile, bool allowNewFolders)
         {
             var browser = new FolderBrowser(profile, allowNewFolders) { StartPosition = FormStartPosition.CenterParent };
             return browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
-        }
-
-        private void Loaded(object sender, EventArgs e)
-        {
         }
 
         #region Validation used on both Backup and Restore presenters
@@ -61,7 +55,7 @@ namespace Sifon.Forms.Base
         {
             _validationMessages = new List<string>();
 
-            var filesystemWrapper = _filesystemFactory.Create();
+            var filesystemWrapper = Create.WithCurrentProfile<IFilesystem>();
 
             if (! await filesystemWrapper.DirectoryExists(destinationFolder))
             {
@@ -72,5 +66,10 @@ namespace Sifon.Forms.Base
         }
 
         #endregion
+
+        protected void ClosingForm(object sender, EventArgs e)
+        {
+            _scriptWrapper?.Finish();
+        }
     }
 }

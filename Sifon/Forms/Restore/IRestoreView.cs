@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Restore
 {
     internal interface IRestoreView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
-        event EventHandler<EventArgs<string>> FolderSelected;
-        event EventHandler<EventArgs<string>> ValidateBeforeClose;
+        event BaseForm.AsyncEventHandler<EventArgs<string>> FolderSelected;
+        event BaseForm.AsyncEventHandler<EventArgs<string>> ValidateBeforeClose;
 
         void DisplayDatabases(IEnumerable<string> files);
         void SetRestoreButton(bool? enabled);

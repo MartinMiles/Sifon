@@ -57,7 +57,6 @@
     <Compile Include="BackupInfo\PowershellBackupInfoExtractor.cs" />
     <Compile Include="Encryption\Encryptor.cs" />
     <Compile Include="Encryption\SaltProvider.cs" />
-    <Compile Include="Events\TypedEventArgs.cs" />
     <Compile Include="Exceptions\RemoteNotInitializedException.cs" />
     <Compile Include="Exceptions\RemoteTimeoutException.cs" />
     <Compile Include="Extensions\Models\ContainerProfileExtensions.cs" />
@@ -69,8 +68,6 @@
     <Compile Include="Extensions\Models\SqlServerRecordExtensions.cs" />
     <Compile Include="Extensions\PSObjectExtensions.cs" />
     <Compile Include="Extensions\XmlExtension.cs" />
-    <Compile Include="Filesystem\FilesystemFactory.cs" />
-    <Compile Include="Filesystem\IFilesystem.cs" />
     <Compile Include="Filesystem\LocalFilesystem.cs" />
     <Compile Include="Formatters\Text\ErrorFormatter.cs" />
     <Compile Include="Formatters\Output\DataRowFormatter.cs" />
@@ -80,8 +77,6 @@
     <Compile Include="Formatters\Output\StringFormatter.cs" />
     <Compile Include="Formatters\Text\GenericTextFormatter.cs" />
     <Compile Include="Formatters\Text\ProgressFormatter.cs" />
-    <Compile Include="Helpers\FakesHelper.cs" />
-    <Compile Include="Helpers\PluginFactory.cs" />
     <Compile Include="Helpers\PluginHelper.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
     <Compile Include="Helpers\SolrIdentifier.cs" />
@@ -111,7 +106,7 @@
     <Compile Include="Providers\PowerShellSiteProvider.cs" />
     <Compile Include="Providers\Profile\BaseEncryptedProvider.cs" />
     <Compile Include="Providers\Profile\ContainersProvider.cs" />
-    <Compile Include="Factories\Factory.cs" />
+    <Compile Include="Factories\Create.cs" />
     <Compile Include="Providers\Profile\SettingsProvider.cs" />
     <Compile Include="ScriptGenerators\BackupScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\BaseScriptGenerator.cs" />
@@ -120,10 +115,10 @@
     <Compile Include="ScriptGenerators\ParametersSampleScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\RemoverScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\RestoreScriptGenerator.cs" />
-    <Compile Include="ScriptGenerators\ScriptGeneratorFactory.cs" />
     <Compile Include="Providers\Profile\ProfilesProvider.cs" />
     <Compile Include="Providers\Profile\SqlServerRecordProvider.cs" />
     <Compile Include="ScriptGenerators\ServiceScriptGenerator.cs" />
+    <Compile Include="Statics\Folders.cs" />
     <Compile Include="Statics\Modules.cs" />
     <Compile Include="Statics\Settings.cs" />
     <Compile Include="Statics\Validation.cs" />

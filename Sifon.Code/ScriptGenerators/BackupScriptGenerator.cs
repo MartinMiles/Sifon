@@ -15,7 +15,7 @@ namespace Sifon.Code.ScriptGenerators
 
         internal BackupScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)
         {
-            Script = Path.Combine(Settings.Folders.Cache, $"Backup_{profile.Website}_{DateTime.Now:yyyy-MM-dd}.ps1");
+            Script = Path.Combine(Folders.Cache, $"Backup_{profile.Website}_{DateTime.Now:yyyy-MM-dd}.ps1");
 
             executionScript = GenerateParameters(CommerceSitesParameters);
 

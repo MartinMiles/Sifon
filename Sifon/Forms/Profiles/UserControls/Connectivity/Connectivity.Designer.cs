@@ -136,9 +136,9 @@
             this.labelSolrInstances.AutoSize = true;
             this.labelSolrInstances.Location = new System.Drawing.Point(16, 72);
             this.labelSolrInstances.Name = "labelSolrInstances";
-            this.labelSolrInstances.Size = new System.Drawing.Size(76, 13);
+            this.labelSolrInstances.Size = new System.Drawing.Size(145, 13);
             this.labelSolrInstances.TabIndex = 6;
-            this.labelSolrInstances.Text = "Solr instances:";
+            this.labelSolrInstances.Text = "Solr instances auto-detected:";
             // 
             // comboSqlServers
             // 

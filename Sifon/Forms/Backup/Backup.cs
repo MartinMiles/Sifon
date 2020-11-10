@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Statics;
 
@@ -13,9 +13,9 @@ namespace Sifon.Forms.Backup
 {
     internal partial class Backup : BaseForm, IBackupView, IBackupRemoverViewModel
     {
+        public event AsyncEventHandler<EventArgs> LoadedAsync;
         public event AsyncEventHandler<EventArgs<string>> InstanceChanged;
-        public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
-
+        public event AsyncEventHandler<EventArgs<string>> ValidateBeforeClose;
 
         internal Backup()
         {
@@ -25,9 +25,12 @@ namespace Sifon.Forms.Backup
 
         #region Private form event handlers
 
-        private void Loaded(object sender, EventArgs e)
+        private async void Loaded(object sender, EventArgs e)
         {
-            Raise_FormLoaded();
+            if (LoadedAsync != null)
+            {
+                await LoadedAsync(sender, new EventArgs());
+            }
         }
 
         private string _siteDropdownRecentValue;
@@ -52,10 +55,14 @@ namespace Sifon.Forms.Backup
             checkDatabases.Checked = listDatabases.SelectedItems.Count > 0;
         }
 
-        private void buttonBackup_Click(object sender, EventArgs e)
+        private async void buttonBackup_Click(object sender, EventArgs e)
         {
             buttonBackup.Enabled = false;
-            ValidateBeforeClose(this, new EventArgs<string>(DestinationFolder));
+
+            if (ValidateBeforeClose != null)
+            {
+                 await ValidateBeforeClose(this, new EventArgs<string>(DestinationFolder));
+            }
         }
    
         private void buttonBackupLocation_Click(object sender, EventArgs e)
@@ -72,11 +79,6 @@ namespace Sifon.Forms.Backup
         private void checkDatabases_CheckedChanged(object sender, EventArgs e)
         {
             EnableDisableMainButton();
-        }
-
-        private void Backup_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Raise_FormClosing();
         }
 
         #endregion
@@ -98,11 +100,15 @@ namespace Sifon.Forms.Backup
 
         public void PopulateHostnamesListboxForSite(IEnumerable<KeyValuePair<string, string>> hostnames, string[] columnNames)
         {
+            if (IsDisposed) return;
+
             dataGrid.ShowDataGrid(hostnames, columnNames);
         }
 
         public void ToggleControls(bool enabled)
         {
+            if (IsDisposed) return;
+
             textDestinationFolderToBackup.Enabled = enabled;
             comboInstances.Enabled = enabled;
             checkDatabases.Enabled = enabled;
@@ -113,7 +119,7 @@ namespace Sifon.Forms.Backup
 
         public void DisplayErrors(IEnumerable<string> errors)
         {
-           if (errors.Any())
+            if (errors.Any())
             {
                 ShowError(Messages.Backup.RetrievingDatabasesFailed, errors.First());
             }
@@ -130,6 +136,8 @@ namespace Sifon.Forms.Backup
 
         public void SetFieldsAndCheckboxes(IBackupRestoreFolders model)
         {
+            if (IsDisposed) return;
+
             XConnectFolder = model.XConnectFolder;
             IdentityFolder = model.IdentityFolder;
             HorizonFolder = model.HorizonFolder;
@@ -163,11 +171,6 @@ namespace Sifon.Forms.Backup
                 ToggleControls(false);
                 DialogResult = DialogResult.OK;
             }
-        }
-
-        public override void CloseDialog()
-        {
-            DialogResult = DialogResult.Cancel;
         }
 
         public string Website => comboInstances.SelectedItem.ToString();
@@ -206,6 +209,20 @@ namespace Sifon.Forms.Backup
         public string[] Databases => listDatabases.Selected();
 
         #endregion
+
+        #endregion
+
+        #region Close form
+
+        public override void CloseDialog()
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            Raise_FormClosing();
+        }
 
         #endregion
     }

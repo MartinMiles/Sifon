@@ -11,7 +11,7 @@ namespace Sifon.Forms.Base
         // description provider.  This is the provider that normally handles
         // metadata for AbstractForm.  By doing this all we have to do is
         // override the areas we want to change.
-        public ConcreteClassProvider() : base(TypeDescriptor.GetProvider(typeof(AbstractForm))) { }
+        internal ConcreteClassProvider() : base(TypeDescriptor.GetProvider(typeof(AbstractForm))) { }
 
         // Tell anyone who reflects on us that the concrete form is the
         // form to reflect against, not the abstract form. This way, the

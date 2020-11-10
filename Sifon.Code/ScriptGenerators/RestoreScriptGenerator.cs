@@ -15,7 +15,7 @@ namespace Sifon.Code.ScriptGenerators
 
         internal RestoreScriptGenerator(IBackupRemoverViewModel model, IProfile profile) : base(model, profile)
         {
-            Script = Path.Combine(Settings.Folders.Cache, $"Restore_{new DirectoryInfo(model.WebsiteFolder).Name}_{DateTime.Now:yyyy-MM-dd}.ps1");
+            Script = Path.Combine(Folders.Cache, $"Restore_{new DirectoryInfo(model.WebsiteFolder).Name}_{DateTime.Now:yyyy-MM-dd}.ps1");
 
             executionScript = GenerateParameters(CommerceSitesParameters);
 

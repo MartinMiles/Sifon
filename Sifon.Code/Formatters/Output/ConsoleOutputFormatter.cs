@@ -1,9 +1,10 @@
 ﻿using System.Data;
 using System.Management.Automation;
+using Sifon.Abstractions.Formatters;
 
 namespace Sifon.Code.Formatters.Output
 {
-    public class ConsoleOutputFormatter
+    public class ConsoleOutputFormatter : IFormatter<PSObject>
     {
         internal IOutputFormatter CreateFormatter(PSObject obj)
         {

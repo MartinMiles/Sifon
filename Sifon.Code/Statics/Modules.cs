@@ -30,15 +30,13 @@ namespace Sifon.Code.Statics
             public const string CheckPrerequisites = "Check-Prerequisites";
             public const string InstallPrerequisites = "Install-Prerequisites";
         }
-
-        public const string Directory = "PowerShell\\Module";
-
+        
         public static class Files
         {
             public const string Installer = "_deploy_to_modules.ps1";
 
-            public static string ModuleManifest => Path.Combine(Settings.Folders.Module, "Sifon.psd1");
-            public static string ModuleDefinition => Path.Combine(Settings.Folders.Module, "Sifon.psm1");
+            public static string ModuleManifest => Path.Combine(Folders.Module, "Sifon.psd1");
+            public static string ModuleDefinition => Path.Combine(Folders.Module, "Sifon.psm1");
             public static string GetInstanceUrl => Combine(Functions.GetInstanceUrl);
             public static string DownloadResourceScript => Combine(Functions.DownloadResource);
             public static string DownloadResourceJson => Combine(Functions.DownloadResource, "json");
@@ -68,7 +66,7 @@ namespace Sifon.Code.Statics
 
             private static string Combine(string moduleParam, string ext = null)
             {
-                return Path.Combine(Settings.Folders.Module, $"{moduleParam}.{ext?? "ps1"}");
+                return Path.Combine(Folders.Module, $"{moduleParam}.{ext?? "ps1"}");
             }
         }
 

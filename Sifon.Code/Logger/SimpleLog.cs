@@ -14,8 +14,7 @@ using System.Xml.Linq;
 
 namespace Sifon.Code.Logger
 {
- 
-    /// Just write to a file using static methods. By default, the file is named e.g. "2013_04_21.log" and is written to the current working directory. 
+ /// Just write to a file using static methods. By default, the file is named e.g. "2013_04_21.log" and is written to the current working directory. 
     /// This class does not depend on anything. It can be used 'out of the box', no configuration necessary.
     /// 
     /// To keep it simple, it contains just the most essential features like 

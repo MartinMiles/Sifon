@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Backup
 {
     internal interface IBackupView : IBaseBackupRestoreView, ISynchronizeInvoke
     {
+        event BaseForm.AsyncEventHandler<EventArgs> LoadedAsync;
         event BaseForm.AsyncEventHandler<EventArgs<string>> InstanceChanged;
-        event EventHandler<EventArgs<string>> ValidateBeforeClose;
+        event BaseForm.AsyncEventHandler<EventArgs<string>> ValidateBeforeClose;
 
         void ToggleControls(bool enabled);
         void PopulateInstancesDropdown(IEnumerable<string> sitecoreInstances);

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
 using Sifon.Forms.Base;
 
 namespace Sifon.Forms.PortalCredentials

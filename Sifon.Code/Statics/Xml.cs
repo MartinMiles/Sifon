@@ -71,7 +71,7 @@ namespace Sifon.Code.Statics
 
         public static class Backup_Info
         {
-            public static string FilePath => Path.Combine(Settings.Folders.Cache, "BackupInfoFile.xml");
+            public static string FilePath => Path.Combine(Folders.Cache, "BackupInfoFile.xml");
 
             public const string NodeName = "backup";
             public const string Webroot = "Webroot";

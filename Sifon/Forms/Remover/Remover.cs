@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
 using Sifon.Statics;
@@ -15,9 +15,9 @@ namespace Sifon.Forms.Remover
 {
     internal partial class Remover : BaseForm, IRemoverView, IBackupRemoverViewModel
     {
-        public event EventHandler<EventArgs<string>> InstanceChanged = delegate { };
-        public event EventHandler<EventArgs<string>> DatabaseFilterChanged = delegate { };
-        public event EventHandler<EventArgs> ClosingForm = delegate { };
+        public event AsyncEventHandler<EventArgs> LoadedAsync;
+        public event AsyncEventHandler<EventArgs<string>> InstanceChanged;
+        public event AsyncEventHandler<EventArgs<string>> DatabaseFilterChanged;
 
         private string SelectedHostname => (string)comboInstances.SelectedItem;
 
@@ -62,7 +62,7 @@ namespace Sifon.Forms.Remover
 
         #endregion
 
-        public Remover()
+        internal Remover()
         {
             InitializeComponent();
             new RemoverPresenter(this);
@@ -70,16 +70,27 @@ namespace Sifon.Forms.Remover
 
         #region Form handlers
 
-        private void Remover_Load(object sender, EventArgs e)
+        private async void Remover_Load(object sender, EventArgs e)
         {
             ResetState();
-            Raise_FormLoaded();
+
+            if (LoadedAsync != null)
+            {
+                await LoadedAsync(sender, new EventArgs());
+            }
         }
 
-        private void comboInstances_SelectedIndexChanged(object sender, EventArgs e)
+        private string _dropdownRecentValue;
+
+        private async void comboInstances_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetState();
-            InstanceChanged.Invoke(this, new EventArgs<string>(SelectedHostname));
+            
+            if (_dropdownRecentValue != SelectedHostname && InstanceChanged != null)
+            {
+                _dropdownRecentValue = SelectedHostname;
+                await InstanceChanged(sender, new EventArgs<string>(SelectedHostname));
+            }   
         }
 
         #endregion
@@ -115,6 +126,8 @@ namespace Sifon.Forms.Remover
 
         public void ToggleControls(bool enabled)
         {
+            if (IsDisposed) return;
+
             textDatabasePrefix.Enabled = enabled;
             buttonRemove.Enabled = enabled;
             linkSelectAll.Visible = listDatabases.Items.Count > 0;
@@ -136,6 +149,8 @@ namespace Sifon.Forms.Remover
 
         public void SetWebfoldersAndCheckboxes(IBackupRestoreFolders model)
         {
+            if(IsDisposed) return;
+
             checkFiles.Checked = model.WebsiteFolder.NotEmpty();
 
             if (model.WebsiteFolder != null)
@@ -232,7 +247,10 @@ namespace Sifon.Forms.Remover
 
         private void textDatabasePrefix_TextChanged(object sender, EventArgs e)
         {
-            DatabaseFilterChanged(this, new EventArgs<string>(((TextBox)sender).Text.Trim()));
+            if (DatabaseFilterChanged != null)
+            {
+                DatabaseFilterChanged(this, new EventArgs<string>(((TextBox)sender).Text.Trim()));
+            }
         }
 
         #region Checkboxes enabling / disabling
@@ -318,16 +336,6 @@ namespace Sifon.Forms.Remover
             throw new NotImplementedException();
         }
 
-        public override void CloseDialog()
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void OnFormClosing(object sender, FormClosingEventArgs e)
-        {
-            ClosingForm(this, new EventArgs());
-        }
-        
         #region Loading State - to be reworked or moved into base class
 
         private bool stateDatabaseReady;
@@ -359,6 +367,20 @@ namespace Sifon.Forms.Remover
             stateDatabaseReady = false;
             stateSitesReady = false;
             SetWaitCursor(true);
+        }
+
+        #endregion
+
+        #region Close form
+
+        public override void CloseDialog()
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            Raise_FormClosing();
         }
 
         #endregion

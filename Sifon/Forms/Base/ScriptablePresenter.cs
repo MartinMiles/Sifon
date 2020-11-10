@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Filesystem;
+using Sifon.Abstractions.Formatters;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Forms.MainForm;
-using Sifon.Code.Events;
 using Sifon.Code.Factories;
-using Sifon.Code.Filesystem;
 using Sifon.Code.Formatters.Output;
 using Sifon.Code.Formatters.Text;
 using Sifon.Code.Model;
-using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Base
@@ -25,15 +25,15 @@ namespace Sifon.Forms.Base
         protected readonly ISettingsProvider _settingsProvider;
         protected readonly IContainersProvider _containersProvider;
 
-        private ScriptWrapper<PSObject> _scriptWrapper;
+        private IScriptWrapper<PSObject> _scriptWrapper;
         protected readonly IMainView _view;
-        private readonly ConsoleOutputFormatter _outputFormatter;
         private IFilesystem _filesystem;
-        protected IBackupRemoverViewModel model;
+        protected IBackupRemoverViewModel _model;
 
+        private readonly IFormatter<PSObject> _outputFormatter;
         private readonly GenericTextFormatter _genericTextFormatter;
-        private readonly ProgressFormatter _progressFormatter;
-        private readonly ErrorFormatter _errorFormatter;
+        private readonly IFormatter<ProgressRecord> _progressFormatter;
+        private readonly IFormatter<string> _errorFormatter;
 
         protected IProfile SelectedProfile => _profilesProvider.SelectedProfile;
 
@@ -46,8 +46,8 @@ namespace Sifon.Forms.Base
             _containersProvider = Create.New<IContainersProvider>();
 
             _view.ScriptFinishRequested += ScriptFinishRequested;
-            _outputFormatter = new ConsoleOutputFormatter();
 
+            _outputFormatter = new ConsoleOutputFormatter();
             _genericTextFormatter = new GenericTextFormatter();
             _progressFormatter = new ProgressFormatter();
             _errorFormatter = new ErrorFormatter();
@@ -64,7 +64,7 @@ namespace Sifon.Forms.Base
 
         public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters)
         {
-            _scriptWrapper = new ScriptWrapper<PSObject>(SelectedProfile, _view, d => d);
+            _scriptWrapper = Create.WithParam(_view, d => d);
 
             AddHandlers();
 
@@ -105,10 +105,10 @@ namespace Sifon.Forms.Base
         {
             var scriptFileToDelete = e.Value;
 
-            if (SelectedProfile.RemotingEnabled || scriptFileToDelete.StartsWith(Settings.Folders.Cache))
+            if (SelectedProfile.RemotingEnabled || scriptFileToDelete.StartsWith(Folders.Cache))
             {
                 // this cannot be used at constructor as SelectedProfile will be null when no profiles yet are created
-                _filesystem = new FilesystemFactory(SelectedProfile, _view).Create();
+                _filesystem = Create.WithProfile<IFilesystem>(SelectedProfile, _view);
                 _filesystem.DeleteFile(scriptFileToDelete);
             }
         }
@@ -122,7 +122,7 @@ namespace Sifon.Forms.Base
             _view.FinishUI();
 
             bool isLocal = !_profilesProvider.SelectedProfile.RemotingEnabled;
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), isLocal);
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), isLocal);
         }
 
         private void ObjectReady(PSObject data)

@@ -53,11 +53,11 @@ namespace Sifon.Code.PowerShell
 
         public string ScriptFile { get; private set; }
 
-        public Dictionary<string, dynamic> Parameters { get; private set; }
+        public IDictionary<string, dynamic> Parameters { get; private set; }
 
-        internal ScriptRunner(Runspace runSpace, ISynchronizeInvoke invoker, string script, Dictionary<string, dynamic> parameters = null)
+        internal ScriptRunner(Runspace runSpace, ISynchronizeInvoke invoker, string script, IDictionary<string, dynamic> parameters = null)
         {
-            this._invoker = invoker;
+            _invoker = invoker;
             _stopEvent = new ManualResetEvent(false);
             _waitHandles = new WaitHandle[] { null, _stopEvent };
 
@@ -149,7 +149,7 @@ namespace Sifon.Code.PowerShell
 
             if (_invokeResult != null)
             {
-                _powerShell.EndInvoke(_invokeResult);
+                _invoker.EndInvoke(_invokeResult);
             }
         }
 
@@ -243,9 +243,10 @@ namespace Sifon.Code.PowerShell
         {
             try
             {
-                IAsyncResult asyncResult = _invoker.BeginInvoke(method, args);
-                _waitHandles[0] = asyncResult.AsyncWaitHandle;
-                return WaitHandle.WaitAny(_waitHandles) == 0 ? _invoker.EndInvoke(asyncResult) : null;
+                //IAsyncResult asyncResult = _invoker.BeginInvoke(method, args);
+                _invokeResult = _invoker.BeginInvoke(method, args);
+                _waitHandles[0] = _invokeResult.AsyncWaitHandle;
+                return WaitHandle.WaitAny(_waitHandles) == 0 ? _invoker.EndInvoke(_invokeResult) : null;
             }
             catch
             {

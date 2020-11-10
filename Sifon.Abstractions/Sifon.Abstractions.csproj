@@ -33,12 +33,18 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encryption\IEncryptor.cs" />
+    <Compile Include="Events\TypedEventArgs.cs" />
+    <Compile Include="Filesystem\IFilesystem.cs" />
+    <Compile Include="Formatters\IFormatter.cs" />
     <Compile Include="Forms\IFeedback.cs" />
     <Compile Include="Forms\IPrerequisites.cs" />
+    <Compile Include="Helpers\ISolrIdentifier.cs" />
     <Compile Include="Messages\IDisplayMessage.cs" />
+    <Compile Include="Metacode\IMetacodeHelper.cs" />
     <Compile Include="Model\BackupRestore\EmbeddedActivity.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreCheckboxes.cs" />
     <Compile Include="Model\BackupRestore\IBackupRestoreFolders.cs" />
@@ -46,10 +52,12 @@
     <Compile Include="Model\BackupRestore\IDatabase.cs" />
     <Compile Include="Model\BackupRestore\IRestoreViewModel.cs" />
     <Compile Include="Model\BackupRestore\IRestoreZips.cs" />
-    <Compile Include="Model\Response\IScriptWrapperResponse.cs" />
+    <Compile Include="Model\ISolrInfo.cs" />
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Plugins\PluginProgress.cs" />
+    <Compile Include="PowerShell\IRemoteScriptCopier.cs" />
     <Compile Include="PowerShell\IScriptRunner.cs" />
+    <Compile Include="PowerShell\IScriptWrapper.cs" />
     <Compile Include="Profiles\IContainerProfile.cs" />
     <Compile Include="Profiles\ICrashDetails.cs" />
     <Compile Include="Profiles\IPortalCredentials.cs" />
@@ -65,7 +73,10 @@
     <Compile Include="Providers\IProfilesProvider.cs" />
     <Compile Include="Providers\ISettingsProvider.cs" />
     <Compile Include="Providers\ISiteProvider.cs" />
+    <Compile Include="Providers\ISqlServerRecordProvider.cs" />
+    <Compile Include="ScriptGenerators\IParametersSampleScriptGenerator.cs" />
     <Compile Include="ScriptGenerators\IScript.cs" />
+    <Compile Include="ScriptGenerators\IServiceScriptGenerator.cs" />
     <Compile Include="Validation\IFormValidation.cs" />
     <Compile Include="VersionSelector\IKernelHash.cs" />
   </ItemGroup>

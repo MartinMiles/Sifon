@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Model;
 using Sifon.Extensions;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Model;
 using Sifon.Code.Statics;
@@ -28,7 +29,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         #endregion
 
-        public Connectivity()
+        internal Connectivity()
         {
             InitializeComponent();
             new ConnectivityPresenter(this);
@@ -40,6 +41,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             comboSolrInstances.Items.Clear();
             comboSolrInstances.Items.Add(Settings.ManualEntry);
             comboSolrInstances.SelectedIndex = 0;
+
+            comboSolrInstances.Enabled = false;
         }
 
         public void SetSolrValue(string selectedProfileSolr)
@@ -71,7 +74,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             dataGrid.Enabled = value;
         }
 
-        public void SetSolrGrid(IEnumerable<SolrInfo> solrs, bool isRemote)
+        public void SetSolrGrid(IEnumerable<ISolrInfo> solrs, bool isRemote)
         {
             if (solrs == null) return;
 
@@ -81,6 +84,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             {
                 comboSolrInstances.Items.Add(solrUrl);
             }
+
+            comboSolrInstances.Enabled = true;
 
             var source = new BindingSource {DataSource = solrs};
             dataGrid.Columns.Clear();

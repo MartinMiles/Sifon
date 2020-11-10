@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Exceptions;
-using Sifon.Code.Providers;
+using Sifon.Code.Factories;
 using Sifon.Shared.Forms.FolderBrowserDialog;
-using Sifon.Shared.Statics;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
@@ -19,13 +18,27 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         private readonly IWebsiteView _view;
         protected ISiteProvider _siteProvider;
 
-        public WebsitePresenter(IWebsiteView view) : base(view)
+        internal WebsitePresenter(IWebsiteView view) : base(view)
         {
             _view = view;
            
-            _view.SelectedWebsiteChanged += SelectedWebsiteChanged;
-            _view.WebrootFolderChanged += WebrootFolderChanged;
+            _view.SelectedWebsiteChanged += async (s, e) => { await SelectedWebsiteChanged(s, e as EventArgs<string>); };
+            //_view.WebrootFolderChanged += WebrootFolderChanged;
+            _view.WebrootFolderChanged += async (s, e) => { await WebrootFolderChanged(s, e as EventArgs<string>); };
             _view.FolderBrowserClicked += (sender, args) => _view.SetWebrootTextbox(ShowFolderSelector(SelectedProfile, false));
+        }
+
+        protected override async Task Loaded(object sender, EventArgs ea)
+        {
+            Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
+
+            _siteProvider = Create.WithCurrentProfile<ISiteProvider>(_view);
+
+            await GetSitecoreSites();
+
+            //_view.EnableControls(e.Value);
+            _view.SetWebsiteDropdownByProfile(SelectedProfile.Website);
+            _view.SetWebrootTextbox(SelectedProfile.Webroot);
         }
 
         private string ShowFolderSelector(IProfile profile, bool allowNewFolders)
@@ -34,7 +47,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             return browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
         }
 
-        private async void WebrootFolderChanged(object sender, EventArgs<string> e)
+        private async Task WebrootFolderChanged(object sender, EventArgs<string> e)
         {
             try
             {
@@ -46,19 +59,6 @@ namespace Sifon.Forms.Profiles.UserControls.Website
                 ShowConnectivityError();
             }
         }
-
-        protected override async void Loaded(object sender, EventArgs e)
-        {
-            Presenter.ProfileChanged += ProfileChanged;
-
-            _siteProvider = new PowerShellSiteProvider(SelectedProfile, _view);
-
-            await GetSitecoreSites();
-
-            //_view.EnableControls(e.Value);
-            _view.SetWebsiteDropdownByProfile(SelectedProfile.Website);
-            _view.SetWebrootTextbox(SelectedProfile.Webroot);
-       }
 
         private async Task GetSitecoreSites()
         {
@@ -73,7 +73,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             }
         }
 
-        private async void ProfileChanged(object sender, EventArgs<bool> e)
+        private async Task ProfileChanged(object sender, EventArgs<bool> e)
         {
             _view.EnableControls(e.Value);
             _view.SetWebsiteDropdownByProfile(SelectedProfile?.Website);
@@ -86,7 +86,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             _view.ShowSiteHostnames(bindings, ControlSettings.Grid.HostnameColumns);
         }
         
-        private async void SelectedWebsiteChanged(object sender, EventArgs<string> e)
+        private async Task SelectedWebsiteChanged(object sender, EventArgs<string> e)
         {
             _view.EnableControls(false);
 

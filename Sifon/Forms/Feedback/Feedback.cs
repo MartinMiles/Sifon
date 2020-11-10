@@ -1,6 +1,6 @@
 ﻿using System;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
-using Sifon.Code.Events;
 using Sifon.Forms.Base;
 
 namespace Sifon.Forms.Feedback
@@ -9,7 +9,7 @@ namespace Sifon.Forms.Feedback
     {
         public event EventHandler<EventArgs<IFeedback>> SubmitClicked = delegate { };
 
-        public Feedback()
+        internal Feedback()
         {
             InitializeComponent();
             new FeedbackPresenter(this);

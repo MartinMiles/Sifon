@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
-using Sifon.Code.Helpers;
-using Sifon.Code.PowerShell;
-using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.Statics;
+using Sifon.Code.Model.Fake;
 
 namespace Sifon.Forms.SqlSettings
 {
-    public class SqlSettingsPresenter
+    internal class SqlSettingsPresenter
     {
         private readonly ISqlSettingsView _view;
-        private readonly SqlServerRecordProvider _sqlService;
+        private readonly ISqlServerRecordProvider _sqlService;
         private readonly IProfilesProvider _profilesProvider;
-        private readonly ScriptWrapper<PSObject> _scriptWrapper;
-        private readonly FakesHelper _fakesHelper;
+        private readonly IScriptWrapper<PSObject> _scriptWrapper;
 
-        public SqlSettingsPresenter(ISqlSettingsView sqlSettingsView)
+        internal SqlSettingsPresenter(ISqlSettingsView sqlSettingsView)
         {
             _view = sqlSettingsView;
-            _fakesHelper = new FakesHelper();
-            _sqlService = new SqlServerRecordProvider();
+            _sqlService = Create.New<ISqlServerRecordProvider>();
             _profilesProvider = Create.New<IProfilesProvider>();
 
             _view.FormLoad += FormLoad;
@@ -38,7 +35,7 @@ namespace Sifon.Forms.SqlSettings
             _view.SqlRecordDeleted += SqlRecordDeleted;
             _view.ClosingForm += ClosingForm;
 
-            _scriptWrapper = new ScriptWrapper<PSObject>(_profilesProvider.SelectedProfile, _view, d => d);
+            _scriptWrapper = Create.WithParam(_view, d => d);
         }
 
         private IEnumerable<string> ServerRecords => _sqlService.Read().Select(s => s.RecordName);
@@ -82,7 +79,7 @@ namespace Sifon.Forms.SqlSettings
                 return;
             }
 
-            if (_fakesHelper.ValidateQueryTime(results.Last()))
+            if (ValidateQueryTime(results.Last()))
             {
                 _view.ShowInfo(Messages.SqlSettings.Caption, Messages.General.Success);
             }
@@ -91,6 +88,17 @@ namespace Sifon.Forms.SqlSettings
             {
                 _view.ShowError(Messages.SqlSettings.Caption, errors.First());
             }
+        }
+
+        private bool ValidateQueryTime(PSObject psObject)
+        {
+            var queryTime = psObject.Convert<QueryTime>();
+            if (queryTime != null && queryTime.TimeOfQuery != DateTime.MinValue)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void SqlRecordAdded(object sender, EventArgs<ISqlServerRecord> e)

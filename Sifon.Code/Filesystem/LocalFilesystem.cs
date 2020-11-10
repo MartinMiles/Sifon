@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Filesystem;
 using Sifon.Code.Helpers;
 using Sifon.Code.VersionSelector;
 

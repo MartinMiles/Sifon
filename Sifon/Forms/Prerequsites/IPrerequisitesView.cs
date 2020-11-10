@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Prerequsites
 {
-    public interface IPrerequisitesView : ISynchronizeInvoke
+    internal interface IPrerequisitesView : ISynchronizeInvoke
     {
         event EventHandler<EventArgs> FormLoaded;
         event EventHandler<EventArgs<IPrerequisites>> InstallClicked;

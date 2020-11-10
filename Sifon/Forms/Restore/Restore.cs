@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Extensions;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
 using Sifon.Statics;
@@ -15,8 +15,8 @@ namespace Sifon.Forms.Restore
 {
     internal partial class Restore : BaseForm, IRestoreView, IRestoreViewModel
     {
-        public event EventHandler<EventArgs<string>> ValidateBeforeClose = delegate { };
-        public event EventHandler<EventArgs<string>> FolderSelected = delegate { };
+        public event AsyncEventHandler<EventArgs<string>> ValidateBeforeClose;
+        public event AsyncEventHandler<EventArgs<string>> FolderSelected;
 
         #region IBackupRestoreModel implementation
 
@@ -69,7 +69,7 @@ namespace Sifon.Forms.Restore
 
         #endregion
 
-        public Restore()
+        internal Restore()
         {
             InitializeComponent();
             new RestorePresenter(this);
@@ -105,10 +105,14 @@ namespace Sifon.Forms.Restore
             //SetRestoreButton(false);
         }
 
-        private void textSourceFolder_TextChanged(object sender, EventArgs e)
+        private async void textSourceFolder_TextChanged(object sender, EventArgs e)
         {
             ResetState();
-            FolderSelected(this, new EventArgs<string>(textSourceFolder.Text));
+
+            if (FolderSelected != null)
+            {
+                await FolderSelected(this, new EventArgs<string>(textSourceFolder.Text));
+            }
         }
 
         public void ShowDatagrid(IEnumerable<KeyValuePair<string, string>> list, string[] columns)
@@ -178,10 +182,14 @@ namespace Sifon.Forms.Restore
             SetRestoreButton(RestoreButtonCriteria);
         }
 
-        private void buttonRestore_Click(object sender, EventArgs e)
+        private async void buttonRestore_Click(object sender, EventArgs e)
         {
             buttonRestore.Enabled = false;
-            ValidateBeforeClose(this, new EventArgs<string>(textSourceFolder.Text));
+
+            if (ValidateBeforeClose != null)
+            {
+                await ValidateBeforeClose(this, new EventArgs<string>(textSourceFolder.Text));
+            }
         }
 
         public void ValidateAndRun(IEnumerable<string> validationMessages)

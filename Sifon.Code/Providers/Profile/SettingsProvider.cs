@@ -26,10 +26,10 @@ namespace Sifon.Code.Providers.Profile
         {
             _entity = new SettingRecord();
 
-            if (File.Exists(Settings.SettingsFolder.SettingsPath))
+            if (File.Exists(Folders.SettingsFolder.SettingsPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.SettingsFolder.SettingsPath);
+                doc.Load(Folders.SettingsFolder.SettingsPath);
 
                 _entity = new SettingRecord(doc.DocumentElement);
 
@@ -61,7 +61,7 @@ namespace Sifon.Code.Providers.Profile
         {
             var doc = new XDocument();
             doc.Add(_entity.Save(Encryptor));
-            doc.Save(Settings.SettingsFolder.SettingsPath);
+            doc.Save(Folders.SettingsFolder.SettingsPath);
         }
 
         #endregion

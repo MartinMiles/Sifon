@@ -27,34 +27,6 @@ namespace Sifon.Code.Statics
             internal const string PublishingHost = "Sitecore.Framework.Publishing.Host";
         }
 
-        public static class Folders
-        {
-            public static string Logs = Path.Combine(Environment.CurrentDirectory, "Logs");
-            public static string Cache = Path.Combine(Environment.CurrentDirectory, "Cache");
-            public static string Profiles => Path.Combine(Environment.CurrentDirectory, "Settings");
-            public static string Plugins => Path.Combine(Environment.CurrentDirectory, Settings.Plugins.Directory);
-            public static string PowerShell => Path.Combine(Environment.CurrentDirectory, "PowerShell");
-            public static string Module => Path.Combine(Environment.CurrentDirectory, Modules.Directory);
-        }
-
-        public static class Plugins
-        {
-            public const string Directory = "Sifon.Plugins";
-        }
-
-        public static class LogsFolder
-        {
-            public const string LogFilenamePrefix = "SifonLog_";
-        }
-
-        internal static class SettingsFolder
-        {
-            internal static string ProfilesPath = Path.Combine(Folders.Profiles, "Profiles.xml");
-            internal static string ContainersPath = Path.Combine(Folders.Profiles, "Containers.xml");
-            internal static string SqlProfilesPath = Path.Combine(Folders.Profiles, "SQL.xml");
-            internal static string SettingsPath = Path.Combine(Folders.Profiles, "Settings.xml");
-        }
-
         internal static class Regex
         {
             internal static class Metacode
@@ -67,14 +39,6 @@ namespace Sifon.Code.Statics
                 public const string Parameter = @"\""[^[\]]*\""";
                 //public const string Dependencies = "###\\s*Dependencies:\\s*(.*)";
                 public const string DependenciesToExtract = "\\\"([^\"]*)\\\"";
-            }
-        }
-
-        public static class Scripts
-        {
-            public static class Remote
-            {
-                public static string Initialize => Path.Combine(Folders.PowerShell, "Initialize-Remote.ps1");
             }
         }
 
@@ -171,7 +135,6 @@ namespace Sifon.Code.Statics
             public const string XConnectFolder = "XConnectFolder";
             public const string IdentityServerFolder = "IdentityServerFolder";
 
-            public const string Hostname = "Hostname";
             public const string Type = "type";
 
             //todo: check if the below correct - and move out unwanted

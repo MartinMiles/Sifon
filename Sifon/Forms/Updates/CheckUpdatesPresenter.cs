@@ -8,13 +8,13 @@ using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Updates
 {
-    public class CheckUpdatesPresenter
+    internal class CheckUpdatesPresenter
     {
         private readonly ICheckUpdatesView _view;
         private readonly IApiProvider _apiProvider;
         private readonly ISettingsProvider _settingsProvider;
-        
-        public CheckUpdatesPresenter(ICheckUpdatesView view)
+
+        internal CheckUpdatesPresenter(ICheckUpdatesView view)
         {
             _view = view;
 
@@ -24,7 +24,7 @@ namespace Sifon.Forms.Updates
             _apiProvider = new ApiProvider<bool> { EnableSendingExceptions = _settingsProvider.Read().SendCrashDetails };
         }
 
-        //TODO: Consider using monad to simplify the below
+        //TODO: Consider using monads to simplify the below
         private async void CheckClicked(object sender, EventArgs e)
         {
             try

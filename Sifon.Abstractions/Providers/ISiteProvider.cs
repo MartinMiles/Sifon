@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Model.Response;
+using Sifon.Abstractions.PowerShell;
 
 namespace Sifon.Abstractions.Providers
 {
@@ -16,6 +16,6 @@ namespace Sifon.Abstractions.Providers
         Task<string> GetPublishingService(string siteName);
         Task<IEnumerable<string>> GetDatabases(string serverInstance, string instancePrefix);
         Task<IEnumerable<string>> GetCommerceSites(string siteName);
-        Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName);
+        Task<IScriptWrapper<string>> GetCommerceDatabases(string siteName);
     }
 }

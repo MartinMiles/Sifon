@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
-using Sifon.Code.Filesystem;
+using Sifon.Code.Factories;
 using Sifon.Code.Statics;
 using Sifon.ViewModels;
 
@@ -21,15 +22,15 @@ namespace Sifon.Forms.Restore
         internal RestorePresenter(IRestoreView view) : base(view)
         {
             _view = view;
-            _view.FolderSelected += FolderSelected;
-            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e); };
-            _filesystem = _filesystemFactory.Create();
+            _view.FolderSelected += async (s, e) => { await FolderSelected(s, e as EventArgs<string>); };
+            _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e as EventArgs<string>); };
+            _filesystem = Create.WithCurrentProfile<IFilesystem>(_view);
 
             var backupInfoExtractorFactory = new BackupInfoExtractorFactory(_profileProvider.SelectedProfile, _view);
             _backupInfoExtractor = backupInfoExtractorFactory.Create();
         }
 
-        private async void FolderSelected(object sender, EventArgs<string> e)
+        private async Task FolderSelected(object sender, EventArgs<string> e)
         {
             var selectedFolder = e.Value;
 

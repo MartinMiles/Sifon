@@ -41,10 +41,10 @@ namespace Sifon.Code.Providers.Profile
         {
             var items = new List<IProfile>();
 
-            if (File.Exists(Settings.SettingsFolder.ProfilesPath))
+            if (File.Exists(Folders.SettingsFolder.ProfilesPath))
             {
                 var doc = new XmlDocument();
-                doc.Load(Settings.SettingsFolder.ProfilesPath);
+                doc.Load(Folders.SettingsFolder.ProfilesPath);
 
                 if(doc.DocumentElement != null)
                 { 
@@ -70,7 +70,7 @@ namespace Sifon.Code.Providers.Profile
                 root.Add(profile.Save(Encryptor));
             }
 
-            doc.Save(Settings.SettingsFolder.ProfilesPath);
+            doc.Save(Folders.SettingsFolder.ProfilesPath);
         }
 
         public void DeleteSelected()
@@ -235,7 +235,14 @@ namespace Sifon.Code.Providers.Profile
 
         public string FindPrefixByName(string siteName)
         {
-            return _profiles.FirstOrDefault(p => p.Website.Equals(siteName, StringComparison.InvariantCultureIgnoreCase))?.Prefix;
+            var possiblePrefix = _profiles.FirstOrDefault(p => p.Website.Equals(siteName, StringComparison.InvariantCultureIgnoreCase))?.Prefix;
+
+            if (possiblePrefix == null && siteName.Contains("."))
+            {
+                possiblePrefix = siteName.Substring(0, siteName.IndexOf("."));
+            }
+
+            return possiblePrefix;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Model;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
-using Sifon.Code.Model;
 
 namespace Sifon.Forms.Profiles.UserControls.Connectivity
 {
@@ -16,7 +16,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         void SetSolrDropdownByProfile(string solrUrl);
         void LoadSolrDropdown();
         void LoadDatabaseServersDropdown(IEnumerable<string> sqlServers, string selectedSqlServerName);
-        void SetSolrGrid(IEnumerable<SolrInfo> solrs, bool isRemote);
+        void SetSolrGrid(IEnumerable<ISolrInfo> solrs, bool isRemote);
         void SetSolrValue(string selectedProfileSolr);
         void ShowSpinnerHideGrid(bool visible);
         void UpdateProgress(int value);

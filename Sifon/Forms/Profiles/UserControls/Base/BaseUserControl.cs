@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Sifon.Abstractions.Messages;
 using Sifon.Abstractions.Validation;
+using Sifon.Forms.Base;
 using Sifon.Shared.MessageBoxes;
 using Sifon.Shared.Validation;
 
@@ -10,6 +11,8 @@ namespace Sifon.Forms.Profiles.UserControls.Base
     internal class BaseUserControl : AbstractUserControl, IBaseView
     {
         public event EventHandler<EventArgs> Loaded = delegate { };
+        public event BaseForm.AsyncEventHandler<EventArgs> LoadedAsync;
+
         private readonly IFormValidation _formValidation;
         private readonly IDisplayMessage _displayMessage;
 
@@ -19,10 +22,15 @@ namespace Sifon.Forms.Profiles.UserControls.Base
             _formValidation = new FormValidation(_displayMessage);
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            Loaded(this, e);
+
+            if (LoadedAsync != null)
+            {
+                await LoadedAsync(this, new EventArgs());
+            }
+            //Loaded(this, e);
         }
 
         public override void SetTooltips()

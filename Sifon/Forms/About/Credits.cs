@@ -6,7 +6,7 @@ namespace Sifon.Forms.About
 {
     internal partial class Credits : BaseForm
     {
-        public Credits()
+        internal Credits()
         {
             InitializeComponent();
         }

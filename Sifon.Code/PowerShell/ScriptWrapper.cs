@@ -6,14 +6,13 @@ using System.Management.Automation;
 using System.Management.Automation.Remoting;
 using System.Management.Automation.Runspaces;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Model.Response;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Exceptions;
 
 namespace Sifon.Code.PowerShell
 {
-    public class ScriptWrapper<T> : IScriptWrapperResponse<T>
+    public class ScriptWrapper<T> : IScriptWrapper<T>
     {
         private readonly IProfile _profile;
         private readonly ISynchronizeInvoke _invoker;
@@ -52,7 +51,7 @@ namespace Sifon.Code.PowerShell
             }
         }
         
-        public Task<PSDataCollection<PSObject>> Run(string script, Dictionary<string, dynamic> parameters = null)
+        public Task<PSDataCollection<PSObject>> Run(string script, IDictionary<string, dynamic> parameters = null)
         {
             CreateRunspace();
             StopScript();
@@ -166,18 +165,19 @@ namespace Sifon.Code.PowerShell
         #region Plumbing for events
 
         public event CompleteDelegate Complete = delegate { };
-        public event ObjectReadyDelegate ObjectReady = delegate { };
         public event ProgressReadyDelegate ProgressReady = delegate { };
+        public event ObjectReadyDelegate<T> ObjectReady = delegate { };
         public event InformationReadyDelegate InformationReady = delegate { };
+
         public event WarningReadyDelegate WarningReady = delegate { };
         public event ErrorReadyDelegate ErrorReady = delegate { };
+        //public delegate void CompleteDelegate(IScriptRunner sender);
 
-        public delegate void CompleteDelegate(IScriptRunner sender);
-        public delegate void ObjectReadyDelegate(T data);
-        public delegate void ProgressReadyDelegate(ProgressRecord data);
-        public delegate void ErrorReadyDelegate(Exception exception);
-        public delegate void InformationReadyDelegate(string message);
-        public delegate void WarningReadyDelegate(string message);
+        //public delegate void ProgressReadyDelegate(ProgressRecord data);
+        //public delegate void ErrorReadyDelegate(Exception exception);
+        //public delegate void ObjectReadyDelegate(T data);
+        //public delegate void InformationReadyDelegate(string message);
+        //public delegate void WarningReadyDelegate(string message);
 
         private void OnObjectDataReady(ScriptRunner sender, PSObject data)
         {

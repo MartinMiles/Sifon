@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Profile
@@ -14,7 +15,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         internal IEnumerable<string> Profiles => ProfilesService.Read().Select(p => p.ProfileName);
 
-        public ProfilePresenter(IProfileView view) : base(view)
+        internal ProfilePresenter(IProfileView view) : base(view)
         {
             _view = view;
 
@@ -24,8 +25,9 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             _view.SelectedProfileDeleted += SelectedProfileDeleted;
         }
 
-        protected override void Loaded(object sender, EventArgs e)
+        protected override async Task Loaded(object sender, EventArgs e)
         {
+            await Task.CompletedTask;
             _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
         }
 
@@ -59,6 +61,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             ProfilesService.SelectProfile(e.Value);
             _view.SetFields(SelectedProfile);
         }
+
         private void SelectedProfileDeleted(object sender, EventArgs e)
         {
             ProfilesService.DeleteSelected();

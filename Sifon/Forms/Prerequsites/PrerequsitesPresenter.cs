@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Remoting;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Providers;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
-using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.Prerequsites
@@ -16,20 +16,17 @@ namespace Sifon.Forms.Prerequsites
     internal class PrerequsitesPresenter
     {
         private readonly IPrerequisitesView _view;
-        private readonly ScriptWrapper<Tuple<bool, bool, bool, bool>> _scriptWrapper;
-        protected readonly IProfilesProvider _profileProvider;
+        private readonly IScriptWrapper<Tuple<bool, bool, bool, bool>> _scriptWrapper;
 
-
-        public PrerequsitesPresenter(IPrerequisitesView view)
+        internal PrerequsitesPresenter(IPrerequisitesView view)
         {
             _view = view;
             _view.FormLoaded += FormLoaded;
             _view.InstallClicked += InstallClicked;
 
-            _profileProvider = Create.New<IProfilesProvider>();
+            var localProfile = Create.New<IProfilesProvider>().CreateLocal();
 
-            _scriptWrapper = new ScriptWrapper<Tuple<bool,bool,bool,bool>>
-                (_profileProvider.CreateLocal(), view, d => d.Convert<Tuple<bool, bool, bool, bool>>());
+            _scriptWrapper = Create.WithParam(_view, d => d.Convert<Tuple<bool, bool, bool, bool>>(), localProfile);
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }

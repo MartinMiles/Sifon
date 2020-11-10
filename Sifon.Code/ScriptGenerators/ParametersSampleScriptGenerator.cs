@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Linq;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.ScriptGenerators;
 
 namespace Sifon.Code.ScriptGenerators
 {
-    public class ParametersSampleScriptGenerator
+    internal class ParametersSampleScriptGenerator : IParametersSampleScriptGenerator
     {
         private readonly IProfile _profile;
 
-        public ParametersSampleScriptGenerator(IProfile profile)
+        internal ParametersSampleScriptGenerator(IProfile profile)
         {
             _profile = profile;
         }

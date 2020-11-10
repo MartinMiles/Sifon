@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Statics;
 
 namespace Sifon.Forms.SqlSettings
@@ -33,7 +33,7 @@ namespace Sifon.Forms.SqlSettings
 
         #endregion
 
-        public SqlSettings()
+        internal SqlSettings()
         {
             InitializeComponent();
             new SqlSettingsPresenter(this);

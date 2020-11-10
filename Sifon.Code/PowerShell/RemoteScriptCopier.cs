@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
@@ -10,7 +11,7 @@ using Sifon.Code.Extensions;
 
 namespace Sifon.Code.PowerShell
 {
-    public class RemoteScriptCopier
+    internal class RemoteScriptCopier : IRemoteScriptCopier
     {
         private readonly IProfile _profile;
         private readonly string _remoteMachine;
@@ -19,7 +20,7 @@ namespace Sifon.Code.PowerShell
 
         private readonly ScriptWrapper<string> _scriptWrapper;
 
-        public RemoteScriptCopier(IProfile profile, ISynchronizeInvoke invoke)
+        internal RemoteScriptCopier(IProfile profile, ISynchronizeInvoke invoke)
         {
             _profile = profile;
             _remoteMachine = profile.RemoteHost;

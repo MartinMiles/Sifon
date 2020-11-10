@@ -5,15 +5,15 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Sifon.UserControls
 {
-    public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
+    internal class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
     {
-        public DataGridViewDisableButtonColumn()
+        internal DataGridViewDisableButtonColumn()
         {
             CellTemplate = new DataGridViewDisableButtonCell();
         }
     }
 
-    public class DataGridViewDisableButtonCell : DataGridViewButtonCell
+    internal class DataGridViewDisableButtonCell : DataGridViewButtonCell
     {
         public bool Enabled { get; set;}
 

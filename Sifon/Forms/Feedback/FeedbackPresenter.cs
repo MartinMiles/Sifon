@@ -1,17 +1,17 @@
 ﻿using System;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
 using Sifon.Abstractions.Providers;
 using Sifon.ApiClient.Providers;
-using Sifon.Code.Events;
 
 namespace Sifon.Forms.Feedback
 {
-    public class FeedbackPresenter
+    internal class FeedbackPresenter
     {
         private readonly IFeedbackView _view;
         private readonly IApiProvider _apiProvider;
 
-        public FeedbackPresenter(IFeedbackView view)
+        internal FeedbackPresenter(IFeedbackView view)
         {
             _view = view;
             _apiProvider = new ApiProvider<IFeedback>();

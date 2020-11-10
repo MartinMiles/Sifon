@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Profiles;
-using Sifon.Code.Events;
 using Sifon.Forms.Base;
 
 namespace Sifon.Forms.SettingsForm
@@ -10,7 +10,7 @@ namespace Sifon.Forms.SettingsForm
     {
         public event EventHandler<EventArgs<ICrashDetails>> ValuesChanged = delegate { };
 
-        public SettingsForm()
+        internal SettingsForm()
         {
             InitializeComponent();
             new SettingsFormPresenter(this);

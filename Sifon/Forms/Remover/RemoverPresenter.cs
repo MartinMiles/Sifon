@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
-using Sifon.Abstractions.Providers;
 using Sifon.Forms.Base;
-using Sifon.Code.Events;
-using Sifon.Code.Factories;
-using Sifon.Code.PowerShell;
 using Sifon.Code.Statics;
 using Sifon.ViewModels;
 
@@ -17,23 +14,21 @@ namespace Sifon.Forms.Remover
     internal class RemoverPresenter : BaseBackupRestorePresenter
     {
         private readonly IRemoverView _view;
-        private readonly ScriptWrapper<string> _scriptWrapper;
         private Dictionary<string, string> _commerceSites;
 
         internal RemoverPresenter(IRemoverView removerView) : base(removerView)
         {
             _view = removerView;
 
-            _view.FormLoaded += Loaded;
-            _view.InstanceChanged += InstanceChanged;
-            _view.DatabaseFilterChanged += DatabaseFilterChanged;
+            _view.LoadedAsync += async (s, e) => { await Loaded(s, e); };
+            _view.InstanceChanged += async (s, e) => { await InstanceChanged(s, e as EventArgs<string>); };
+            _view.DatabaseFilterChanged += async (s, e) => { await DatabaseFilterChanged(s, e as EventArgs<string>); };
             _view.BeforeFormClosing += ClosingForm;
 
-            _scriptWrapper = new ScriptWrapper<string>(Create.New<IProfilesProvider>().SelectedProfile, _view, d => d.ToString());
             _scriptWrapper.Complete += Complete;
         }
 
-        private async void Loaded(object sender, EventArgs e)
+        private async Task Loaded(object sender, EventArgs e)
         {
             var instances = await _siteProvider.GetSitecoreSites();
             _view.PopulateInstancesDropdown(instances);
@@ -44,21 +39,23 @@ namespace Sifon.Forms.Remover
             _view.FinishUI();
         }
 
-        private async void DatabaseFilterChanged(object sender, EventArgs<string> e)
+        private async Task DatabaseFilterChanged(object sender, EventArgs<string> e)
         {
             _view.ToggleControls(false);
             await UpdateDatabasesListbox(e.Value);
             _view.ToggleControls(true);
         }
 
-        private async void InstanceChanged(object sender, EventArgs<string> e)
+        private async Task InstanceChanged(object sender, EventArgs<string> e)
         {
             _view.ToggleControls(false);
 
             var viewModel = await BuildViewModel(e.Value);
             _view.SetWebfoldersAndCheckboxes(viewModel);
 
-            string databaseSearchPrefix = e.Value == Settings.ManualEntry ? String.Empty : _profileProvider.SelectedProfile.Prefix;
+            var prefix = _profileProvider.FindPrefixByName(e.Value);
+
+            string databaseSearchPrefix = e.Value == Settings.ManualEntry ? String.Empty : prefix;
             await UpdateDatabasesListbox(databaseSearchPrefix);
 
             _view.ToggleControls(true);
@@ -100,11 +97,6 @@ namespace Sifon.Forms.Remover
             }
 
             _view.PopulateDatabasesListboxForSite(_scriptWrapper.Results.Where(d => !Settings.Databases.ForbiddenDatabases.Contains(d)), _scriptWrapper.Errors.Select(ex => ex.Message));
-        }
-
-        private void ClosingForm(object sender, EventArgs e)
-        {
-            _scriptWrapper?.Finish();
         }
     }
 }

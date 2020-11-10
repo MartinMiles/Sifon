@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Sifon.Abstractions.Model.Response;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.PowerShell;
@@ -12,12 +12,12 @@ using Sifon.Code.Extensions;
 
 namespace Sifon.Code.Providers
 {
-    public class PowerShellSiteProvider : ISiteProvider
+    internal class PowerShellSiteProvider : ISiteProvider
     {
         private readonly ScriptWrapper<string> _scriptWrapperString;
         private readonly ScriptWrapper<KeyValuePair<string, string>> _scriptWrapper;
 
-        public PowerShellSiteProvider(IProfile profile, ISynchronizeInvoke invoke)
+        internal PowerShellSiteProvider(IProfile profile, ISynchronizeInvoke invoke)
         {
             _scriptWrapperString = new ScriptWrapper<string>(profile, invoke, d => d.ToString());
             _scriptWrapper = new ScriptWrapper<KeyValuePair<string, string>>(profile, invoke, Convert);
@@ -87,7 +87,7 @@ namespace Sifon.Code.Providers
             return _scriptWrapperString.Results;
         }
 
-        public async Task<IScriptWrapperResponse<string>> GetCommerceDatabases(string siteName)
+        public async Task<IScriptWrapper<string>> GetCommerceDatabases(string siteName)
         {
             var parameters = new Dictionary<string, dynamic> {{ "AuthoringWebroot", siteName}};
             await _scriptWrapperString.Run(Modules.Functions.GetCommerceDatabases, parameters);

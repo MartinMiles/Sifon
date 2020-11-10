@@ -223,7 +223,6 @@
       <SubType>Form</SubType>
       <DependentUpon>PortalCredentials.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\PortalCredentials\PortalCredentialsPresenter.cs" />
     <Compile Include="Forms\Profiles\UserControls\Base\AbstractUserControl.cs">
       <SubType>UserControl</SubType>
@@ -405,7 +404,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Feedback\Feedback.resx">
       <DependentUpon>Feedback.cs</DependentUpon>
-      
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
@@ -495,11 +493,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\About.ico" />
+    <Content Include="Resources\About.png" />
     <Content Include="Resources\Backup.ico" />
+    <Content Include="Resources\CheckUpdates.ico" />
+    <Content Include="Resources\Credits.ico" />
     <Content Include="Resources\docker.ico" />
+    <Content Include="Resources\Feedback.ico" />
+    <Content Include="Resources\FirstTimeRun.ico" />
+    <Content Include="Resources\InitRemote.ico" />
+    <Content Include="Resources\PortalCredentials.ico" />
+    <Content Include="Resources\Prerequsites.ico" />
     <Content Include="Resources\Profiles.ico" />
     <Content Include="Resources\Remove.ico" />
-    <Content Include="Resources\Sifon.ico" />
+    <Content Include="Resources\Settings.ico" />
     <Content Include="Resources\SifonForm.ico" />
     <Content Include="Sifon.ico" />
   </ItemGroup>

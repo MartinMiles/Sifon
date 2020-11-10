@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.VersionSelector;
-using Sifon.Code.Filesystem;
+using Sifon.Code.Factories;
+
 
 namespace Sifon.Code.VersionSelector
 {
@@ -13,7 +15,7 @@ namespace Sifon.Code.VersionSelector
 
         public VersionDetector(IProfile profile, ISynchronizeInvoke invoke)
         {
-            _filesystem = new FilesystemFactory(profile, invoke).Create();
+            _filesystem = Create.WithProfile<IFilesystem>(profile, invoke);
         }
 
         public async Task<IKernelHash> Identify(string kernelPath)

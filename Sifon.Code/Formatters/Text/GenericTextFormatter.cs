@@ -2,6 +2,7 @@
 
 namespace Sifon.Code.Formatters.Text
 {
+    // TODO: Turn this class into IFormatter<string> and split mute logic out of it
     public class GenericTextFormatter
     {
         private bool muteOutputFlag;

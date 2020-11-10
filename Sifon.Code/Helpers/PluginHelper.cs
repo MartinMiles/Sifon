@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using Sifon.Abstractions.Plugins;
 using Sifon.Code.Factories;
-using Sifon.Code.Model.Profiles;
 
 namespace Sifon.Code.Helpers
 {
     public class PluginHelper
     {
-        //private readonly PluginFactory _pluginFactory;
-
-        //public PluginHelper()
-        //{
-        //    //_pluginFactory = new PluginFactory();
-        //}
-
         public ICollection<IPlugin> LoadAllPlugins(IEnumerable<string> dllFileNames)
         {
             var assemblies = LoadAssemblies(dllFileNames);
@@ -73,12 +65,12 @@ namespace Sifon.Code.Helpers
 
         private ICollection<IPlugin> InstantiatePlugins(ICollection<Type> pluginTypes)
         {
-            ICollection<IPlugin> plugins = new List<IPlugin>(pluginTypes.Count);
+            var plugins = new List<IPlugin>(pluginTypes.Count);
             foreach (Type type in pluginTypes)
             {
                 try
                 {
-                    var plugin = Create.WithProfile<IPlugin>();  // _pluginFactory.Create(type);
+                    var plugin = Create.FromType<IPlugin>(type);
 
                     if (plugin != null)
                     {

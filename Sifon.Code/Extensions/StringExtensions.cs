@@ -19,21 +19,19 @@ namespace Sifon.Code.Extensions
         {
             try
             {
-                var path = Path.GetFullPath(filePath);
+                Path.GetFullPath(filePath);
                 return true;
             }
-            //catch (PathTooLongException ex)
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
         }
         public static string TrimEnd(this string source, string value)
         {
-            if (!source.EndsWith(value))
-                return source;
-
-            return source.Remove(source.LastIndexOf(value));
+            return source.EndsWith(value)
+                ? source.Remove(source.LastIndexOf(value))
+                : source;
         }
 
         public static SecureString ToSecureString(this string plainString)
@@ -44,7 +42,7 @@ namespace Sifon.Code.Extensions
             }
 
             var secureString = new SecureString();
-            foreach (char c in plainString.ToCharArray())
+            foreach (char c in plainString)
             {
                 secureString.AppendChar(c);
             }

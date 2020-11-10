@@ -76,7 +76,7 @@ namespace Sifon.Shared.UserControls.ThreadSafeFilePicker
 
                 DialogSuccess = true;
             }
-            catch (Exception err)
+            catch (Exception e)
             {
                 DialogSuccess = false;
             }

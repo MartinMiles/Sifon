@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Extensions;
 using Sifon.Forms.Profiles.UserControls.Base;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Statics;
+using Sifon.Forms.Base;
 using Sifon.Statics;
 
 namespace Sifon.Forms.Profiles.UserControls.Website
 {
     internal partial class Website : BaseUserControl, IWebsiteView
     {
-        public event EventHandler<EventArgs<string>> SelectedWebsiteChanged = delegate { };
-        public event EventHandler<EventArgs<string>> WebrootFolderChanged = delegate { };
+        //public event EventHandler<EventArgs<string>> SelectedWebsiteChanged = delegate { };
+        //public event EventHandler<EventArgs<string>> WebrootFolderChanged = delegate { };
+        public event BaseForm.AsyncEventHandler<EventArgs<string>> SelectedWebsiteChanged;
+        public event BaseForm.AsyncEventHandler<EventArgs<string>> WebrootFolderChanged;
+
         public event EventHandler<EventArgs> FolderBrowserClicked = delegate { };
         
         #region Expose fields properties
@@ -24,7 +28,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
         #endregion
 
-        public Website()
+        internal Website()
         {
             InitializeComponent();
             new WebsitePresenter(this);
@@ -81,11 +85,11 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             FolderBrowserClicked(this, new EventArgs());
         }
 
-        private void comboWebsites_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboWebsites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboWebsites.SelectedIndex > 0)
+            if (comboWebsites.SelectedIndex > 0 && SelectedWebsiteChanged != null)
             {
-                SelectedWebsiteChanged(this, new EventArgs<string>(SelectedSite));
+                await SelectedWebsiteChanged(this, new EventArgs<string>(SelectedSite));
             }
             else
             {

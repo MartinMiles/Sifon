@@ -15,9 +15,8 @@ namespace Sifon
         {
             get
             {
-                EnsureFoldersExist(new[] { Settings.Folders.Cache, Settings.Folders.Profiles, Settings.Folders.Plugins });
-
-                return ValidateFilesPresentOnLocal(new[] { Settings.Scripts.Remote.Initialize });
+                EnsureFoldersExist(new[] { Folders.Cache, Folders.Profiles, Folders.Plugins });
+                return ValidateFilesPresentOnLocal(new[] { Folders.Scripts.InitializeRemote });
             }
         }
 
@@ -90,7 +89,7 @@ namespace Sifon
 
         public void EnableLogger()
         {
-            SimpleLog.SetLogFile(Settings.Folders.Logs, Settings.LogsFolder.LogFilenamePrefix);
+            SimpleLog.SetLogFile(Folders.Logs, Folders.LogsFolder.LogFilenamePrefix);
         }
     }
 }

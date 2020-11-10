@@ -4,14 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.Filesystem;
+using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Model.BackupRestore;
+using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Providers;
+using Sifon.Abstractions.ScriptGenerators;
 using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
-using Sifon.Code.Events;
 using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
-using Sifon.Code.Filesystem;
 using Sifon.Code.Metacode;
 using Sifon.Code.Model;
 using Sifon.Code.PowerShell;
@@ -41,7 +44,7 @@ namespace Sifon.Forms.MainForm
                 _profilesProvider.Read();
             }
 
-            _filesystem = new FilesystemFactory(SelectedProfile, _view).CreateLocal();
+            _filesystem = Create.WithProfile<IFilesystem>(SelectedProfile, _view);
 
             _view.FormLoaded += Loaded;
             _view.SelectedProfileChanged += SelectedProfileChanged;
@@ -64,7 +67,7 @@ namespace Sifon.Forms.MainForm
                 var profileNames = JustReadProfileNames;
                 _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
                 _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
-                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
+                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
             }
             else
             {
@@ -74,7 +77,7 @@ namespace Sifon.Forms.MainForm
 
         private async Task<string> LocalOrRemote(string script)
         {
-            var _remoteScriptCopier = new RemoteScriptCopier(_profilesProvider.SelectedProfile, _view);
+            var _remoteScriptCopier = Create.WithCurrentProfile<IRemoteScriptCopier>(_view);
             return await _remoteScriptCopier.CopyIfRemote(script);
         }
 
@@ -83,7 +86,7 @@ namespace Sifon.Forms.MainForm
 
         private async void BackupToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
         {
-            model = e.Value;
+            var model = e.Value;
 
             await BackupInfoExtensions.CreateBackupInfo(SelectedProfile.Website, SelectedProfile.Webroot, SelectedProfile, _view);
 
@@ -120,7 +123,7 @@ namespace Sifon.Forms.MainForm
             _profilesProvider.AddBackupRemoveParameters(parameters, model);
             _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
-            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
+            await Run(model, parameters);
         }
 
         private async void RemoveToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
@@ -132,7 +135,7 @@ namespace Sifon.Forms.MainForm
             _profilesProvider.AddBackupRemoveParameters(parameters, model);
             _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
-            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
+            await Run(model, parameters);
         }
 
         private async void RestoreToolStripClicked(object sender, EventArgs<IRestoreViewModel> e)
@@ -145,16 +148,23 @@ namespace Sifon.Forms.MainForm
             _profilesProvider.AddRestoreParameters(parameters, model);
             _profilesProvider.AddCommerceScriptParameters(parameters, model.CommerceSites);
 
-            await PrepareAndStart(await LocalOrRemote(ScriptGeneratorFactory.Create(model, SelectedProfile).Script), parameters);
-         }
+            await Run(model, parameters);
+        }
+
+        private async Task Run(IBackupRemoverViewModel model, Dictionary<string, object> parameters)
+        {
+            var iScript = Create.WithParam<IScript>(model);
+            await PrepareAndStart(await LocalOrRemote(iScript.Script), parameters);
+        }
 
         #endregion
 
-        public RemoteScriptCopier RemoteScriptCopier => new RemoteScriptCopier(_profilesProvider.SelectedProfile, _view);
+        public IRemoteScriptCopier RemoteScriptCopier => Create.WithCurrentProfile<IRemoteScriptCopier>(_view);
 
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
-            var metacode = new MetacodeHelper(e.Value);
+            var metacode = Create.WithParam<IMetacodeHelper, string>(e.Value);
+
             var parameters = new Dictionary<string, dynamic>();
 
             _profilesProvider.AddScriptProfileParameters(parameters);
@@ -179,7 +189,7 @@ namespace Sifon.Forms.MainForm
             _view.PluginsToolStripEnabled();
         }
 
-        private async Task AddParametersFromMetacode(Dictionary<string, object> parameters, MetacodeHelper metacode)
+        private async Task AddParametersFromMetacode(Dictionary<string, object> parameters, IMetacodeHelper metacode)
         {
             var metacodeResultsDictionary = metacode.ExecuteMetacode(parameters, WinformsAssemblyLocation);
 
@@ -206,7 +216,7 @@ namespace Sifon.Forms.MainForm
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
             _profilesProvider.SelectProfile(e.Value);
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
             _view.SetCaption(_profilesProvider.SelectedProfile.WindowCaptionSuffix);
 
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
@@ -214,7 +224,7 @@ namespace Sifon.Forms.MainForm
 
         private void ProfilesToolStripClicked(object sender, EventArgs e)
         {
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Settings.Folders.Plugins), IsLocal);
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
 
             if (SelectedProfile != null)

@@ -24,6 +24,8 @@ namespace Sifon.Forms.Backup
 
         public void EnableDisableMainButton(bool? enabled = null)
         {
+            if (IsDisposed) return;
+
             if (enabled == null)
             {
                 if (FolderNotEmpty)
