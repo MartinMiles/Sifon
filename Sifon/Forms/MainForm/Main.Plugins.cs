@@ -114,7 +114,7 @@ namespace Sifon.Forms.MainForm
             {
                 var metacode = Create.WithParam<IMetacodeHelper, string>(fileInfo.Key);
 
-                if (metacode.IsCompatibleVersion && (isLocal || !metacode.LocalEnforcementValid))
+                if (metacode.IsCompatibleVersion && (isLocal || !metacode.DisplayLocalOnly))
                 {
                     var newToolStripMenuItem = new ToolStripMenuItem
                     {

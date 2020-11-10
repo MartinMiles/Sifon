@@ -15,10 +15,7 @@ using Sifon.Forms.Base;
 using Sifon.Code.BackupInfo;
 using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
-using Sifon.Code.Metacode;
 using Sifon.Code.Model;
-using Sifon.Code.PowerShell;
-using Sifon.Code.ScriptGenerators;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
@@ -26,8 +23,6 @@ namespace Sifon.Forms.MainForm
 {
     internal class MainPresenter : ScriptablePresenter
     {
-        private readonly IFilesystem _filesystem;
-
         internal MainPresenter(IMainView view): base(view)
         {
             if (!_profilesProvider.Any)
@@ -43,8 +38,6 @@ namespace Sifon.Forms.MainForm
                 view.ForceProfileDialogOnFirstRun();
                 _profilesProvider.Read();
             }
-
-            _filesystem = Create.WithProfile<IFilesystem>(SelectedProfile, _view);
 
             _view.FormLoaded += Loaded;
             _view.SelectedProfileChanged += SelectedProfileChanged;
@@ -164,15 +157,13 @@ namespace Sifon.Forms.MainForm
         private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
             var metacode = Create.WithParam<IMetacodeHelper, string>(e.Value);
+            string script = metacode.ExecuteLocalOnly ? e.Value : await LocalOrRemote(e.Value);
 
             var parameters = new Dictionary<string, dynamic>();
-
-            _profilesProvider.AddScriptProfileParameters(parameters);
+            _profilesProvider.AddScriptProfileParameters(parameters, metacode.ExecuteLocalOnly);
             _settingsProvider.AddScriptSettingsParameters(parameters);
             _containersProvider.AddContainersParameters(parameters);
             await AddParametersFromMetacode(parameters, metacode);
-            
-            string script = await LocalOrRemote(e.Value);
             
             var scriptDependencies = metacode.IdentifyDependencies();
             foreach (string dependency in scriptDependencies)
@@ -184,7 +175,7 @@ namespace Sifon.Forms.MainForm
                 }
             }
 
-            await PrepareAndStart(script, parameters);
+            await PrepareAndStart(script, parameters, metacode.ExecuteLocalOnly);
 
             _view.PluginsToolStripEnabled();
         }
@@ -248,12 +239,14 @@ namespace Sifon.Forms.MainForm
         {
             var di = new DirectoryInfo(baseDirectory);
 
+            var localFilesystem = Create.Filesystem.Local();
+
             var menuItem = new PluginMenuItem
             {
                 DirectoryName = di.Name,
                 DirectoryFullPath = di.FullName,
-                Scripts = _filesystem.GetFiles(di.FullName, ".ps1"),
-                Plugins = _filesystem.GetFiles(di.FullName, ".dll")
+                Scripts = localFilesystem.GetFiles(di.FullName, ".ps1"),
+                Plugins = localFilesystem.GetFiles(di.FullName, ".dll")
             };
 
             foreach (var chilDirectory in di.GetDirectories())

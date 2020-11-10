@@ -68,6 +68,7 @@
     <Compile Include="Extensions\Models\SqlServerRecordExtensions.cs" />
     <Compile Include="Extensions\PSObjectExtensions.cs" />
     <Compile Include="Extensions\XmlExtension.cs" />
+    <Compile Include="Factories\Create.Filesystem.cs" />
     <Compile Include="Filesystem\LocalFilesystem.cs" />
     <Compile Include="Formatters\Text\ErrorFormatter.cs" />
     <Compile Include="Formatters\Output\DataRowFormatter.cs" />

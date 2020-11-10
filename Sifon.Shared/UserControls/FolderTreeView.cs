@@ -26,7 +26,7 @@ namespace Sifon.Shared.UserControls
 
         public async Task InitAndShow(IProfile profile)
         {
-            _filesystem = Create.WithProfile<IFilesystem>(profile, this);
+            _filesystem = Create.Filesystem.WithSpecificProfile(profile, this);
             await CreateTree(fileExplorer);
         }
 

@@ -24,7 +24,7 @@ namespace Sifon.Abstractions.Providers
         void UpdateSelected(IProfile profile);
         void DeleteSelected();
 
-        void AddScriptProfileParameters(Dictionary<string, dynamic> parameters);
+        void AddScriptProfileParameters(Dictionary<string, dynamic> parameters, bool executeLocalEnforced = false);
         void AddBackupRemoveParameters(Dictionary<string, dynamic> parameters, IBackupRemoverViewModel model);
         void AddRestoreParameters(Dictionary<string, dynamic> parameters, IRestoreZips model);
 

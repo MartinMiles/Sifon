@@ -62,9 +62,18 @@ namespace Sifon.Forms.Base
             _view.FinishUI();
         }
 
-        public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters)
+        private IScriptWrapper<PSObject> LocalScriptWrapper
         {
-            _scriptWrapper = Create.WithParam(_view, d => d);
+            get
+            {
+                var localProfile = Create.New<IProfilesProvider>().CreateLocal();
+                return Create.WithParam(_view, d => d, localProfile);
+            }
+        }
+
+        public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters, bool enforceLocal = false)
+        {
+            _scriptWrapper = enforceLocal ? LocalScriptWrapper : Create.WithParam(_view, d => d);
 
             AddHandlers();
 
@@ -108,7 +117,7 @@ namespace Sifon.Forms.Base
             if (SelectedProfile.RemotingEnabled || scriptFileToDelete.StartsWith(Folders.Cache))
             {
                 // this cannot be used at constructor as SelectedProfile will be null when no profiles yet are created
-                _filesystem = Create.WithProfile<IFilesystem>(SelectedProfile, _view);
+                _filesystem = Create.Filesystem.WithCurrentProfile(_view);
                 _filesystem.DeleteFile(scriptFileToDelete);
             }
         }

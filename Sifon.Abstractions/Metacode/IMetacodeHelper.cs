@@ -5,7 +5,8 @@ namespace Sifon.Abstractions.Metacode
     public interface IMetacodeHelper
     {
         bool IsCompatibleVersion { get; }
-        bool LocalEnforcementValid { get; }
+        bool DisplayLocalOnly { get; }
+        bool ExecuteLocalOnly { get; }
         string Name { get; }
         string Description { get; }
 

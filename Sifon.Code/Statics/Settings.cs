@@ -34,7 +34,9 @@ namespace Sifon.Code.Statics
                 public const string Name = @"^###\s*(?i)Name(?-i):\s*(.*)$";
                 public const string Description = @"^###\s*(?i)Description(?-i):\s*(.*)$";
                 public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d{2})";
-                public const string LocallyEnforced = "###\\s?Local-only";
+                public const string DisplayLocalOnly = "###\\s?Display:\\s?Local";
+                public const string ExecuteLocalOnly = "###\\s?Execution:\\s?Local";
+
                 public const string ExecutableFunction = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
                 public const string Parameter = @"\""[^[\]]*\""";
                 //public const string Dependencies = "###\\s*Dependencies:\\s*(.*)";
@@ -108,6 +110,7 @@ namespace Sifon.Code.Statics
             public const string InstancePrefix = "InstancePrefix";
             public const string SqlCredentials = "SqlCredentials";
             public const string PortalCredentials = "PortalCredentials";
+            public const string IsRemote = "IsRemote";
 
             //from containers
             public const string ContainerProfileName = "ContainerProfileName";

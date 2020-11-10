@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Model.BackupRestore;
@@ -137,7 +138,7 @@ namespace Sifon.Code.Providers.Profile
             selectedProfile.Selected = true;
         }
 
-        public void AddScriptProfileParameters(Dictionary<string, dynamic> parameters)
+        public void AddScriptProfileParameters(Dictionary<string, dynamic> parameters, bool executeLocalEnforced = false)
         {
             parameters.Add(Settings.Parameters.Name, SelectedProfile.ProfileName);
             parameters.Add(Settings.Parameters.Prefix, SelectedProfile.Prefix);
@@ -146,6 +147,7 @@ namespace Sifon.Code.Providers.Profile
             parameters.Add(Settings.Parameters.Website, SelectedProfile.Website);
             parameters.Add(Settings.Parameters.Webroot, SelectedProfile.Webroot);
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
+            parameters.Add(Settings.Parameters.IsRemote, !executeLocalEnforced && SelectedProfile.RemotingEnabled);
             parameters.Add("Profile", SelectedProfile);
 
             if (SelectedProfileSql != null)

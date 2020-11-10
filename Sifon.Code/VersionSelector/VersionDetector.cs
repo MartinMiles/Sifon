@@ -15,7 +15,7 @@ namespace Sifon.Code.VersionSelector
 
         public VersionDetector(IProfile profile, ISynchronizeInvoke invoke)
         {
-            _filesystem = Create.WithProfile<IFilesystem>(profile, invoke);
+            _filesystem = Create.Filesystem.WithSpecificProfile(profile, invoke);
         }
 
         public async Task<IKernelHash> Identify(string kernelPath)

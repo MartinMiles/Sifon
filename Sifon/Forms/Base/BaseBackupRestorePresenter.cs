@@ -55,9 +55,9 @@ namespace Sifon.Forms.Base
         {
             _validationMessages = new List<string>();
 
-            var filesystemWrapper = Create.WithCurrentProfile<IFilesystem>(_view);
-
-            if (! await filesystemWrapper.DirectoryExists(destinationFolder))
+            var filesystem = Create.Filesystem.WithCurrentProfile(_view);
+            
+            if (! await filesystem.DirectoryExists(destinationFolder))
             {
                 _validationMessages.Add(Validation.Backup.DestinationFolderDoesNotExist);
             }

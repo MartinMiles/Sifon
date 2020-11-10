@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Management.Automation;
-using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Helpers;
 using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Model.BackupRestore;
@@ -10,7 +9,6 @@ using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Abstractions.ScriptGenerators;
-using Sifon.Code.Filesystem;
 using Sifon.Code.Helpers;
 using Sifon.Code.Metacode;
 using Sifon.Code.PowerShell;
@@ -21,7 +19,7 @@ using Sifon.Code.ScriptGenerators;
 namespace Sifon.Code.Factories
 {
     // This class is to be replaced with a decent DI container and resolver, when matured
-    public static class Create
+    public static partial class Create
     {
         public static T New<T>() where T : class
         {
@@ -47,7 +45,7 @@ namespace Sifon.Code.Factories
             var concreteTypes = new Dictionary<Type, Func<T>>
             {
                 {typeof(ISiteProvider), () => new PowerShellSiteProvider(profile, invoker) as T},
-                {typeof(IFilesystem), () => GetFilesystem(profile, invoker) as T},
+                //{typeof(IFilesystem), () => GetFilesystem(profile, invoker) as T},
                 {typeof(IRemoteScriptCopier), () => new RemoteScriptCopier(profile, invoker) as T},
                 {typeof(IParametersSampleScriptGenerator), () => new ParametersSampleScriptGenerator(profile) as T},
                 {typeof(IServiceScriptGenerator), () => new ServiceScriptGenerator(profile) as T},
@@ -92,13 +90,6 @@ namespace Sifon.Code.Factories
         {
             var profile = New<IProfilesProvider>().SelectedProfile;
             return Activator.CreateInstance(type, profile) as T;
-        }
-        
-        private static IFilesystem GetFilesystem(IProfile profile, ISynchronizeInvoke invoker)
-        {
-            return profile.RemotingEnabled
-                ? (IFilesystem) new RemoteFilesystem(profile, invoker)
-                : new LocalFilesystem();
         }
     }
 }

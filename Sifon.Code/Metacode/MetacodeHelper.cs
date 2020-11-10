@@ -23,11 +23,19 @@ namespace Sifon.Code.Metacode
         public string Name { get; private set; }
         public string Description { get; private set; }
 
-        public bool LocalEnforcementValid
+        public bool DisplayLocalOnly
         {
             get
             {
-                var regex = new Regex(Settings.Regex.Metacode.LocallyEnforced, RegexOptions.IgnoreCase);
+                var regex = new Regex(Settings.Regex.Metacode.DisplayLocalOnly, RegexOptions.IgnoreCase);
+                return _meta.Any(l => regex.Match(l).Success);
+            }
+        }
+        public bool ExecuteLocalOnly
+        {
+            get
+            {
+                var regex = new Regex(Settings.Regex.Metacode.ExecuteLocalOnly, RegexOptions.IgnoreCase);
                 return _meta.Any(l => regex.Match(l).Success);
             }
         }

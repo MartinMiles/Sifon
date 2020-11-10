@@ -24,7 +24,7 @@ namespace Sifon.Forms.Restore
             _view = view;
             _view.FolderSelected += async (s, e) => { await FolderSelected(s, e as EventArgs<string>); };
             _view.ValidateBeforeClose += async (s, e) => { await ValidateBeforeClose(s, e as EventArgs<string>); };
-            _filesystem = Create.WithCurrentProfile<IFilesystem>(_view);
+            _filesystem = Create.Filesystem.WithCurrentProfile(_view);
 
             var backupInfoExtractorFactory = new BackupInfoExtractorFactory(_profileProvider.SelectedProfile, _view);
             _backupInfoExtractor = backupInfoExtractorFactory.Create();
