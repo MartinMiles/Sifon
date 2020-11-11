@@ -6,7 +6,16 @@ param(
 	[string[]]$ModuleFiles
 )
 
+$testWSMan = Test-WSMan $RemoteHost -Credential $Credentials -Authentication Negotiate
+Write-Output "Test-WSMan: $testWSMan"
+
 $Session = New-PSSession -ComputerName $RemoteHost -Credential $Credentials
+if(-not($Session))
+{
+	Write-Warning "$RemoteHost inaccessible!"
+	exit
+}
+
 $remotePath = Invoke-Command -Session $session -ArgumentList $RemoteDirectory -ScriptBlock { param($RemoteDirectory) New-Item -ItemType Directory -Path $RemoteDirectory -Force }
 
 Write-Progress -Activity $Activity -Status "Remote folder created" -PercentComplete 1
