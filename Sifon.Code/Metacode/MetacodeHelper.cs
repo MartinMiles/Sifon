@@ -105,7 +105,7 @@ namespace Sifon.Code.Metacode
                     var type = match.Groups[2].Value;
                     var method = match.Groups[3].Value;
                     var methodParameters = match.Groups[4].Value;
-                    var list = ExtractParameters(parameters, methodParameters);
+                    var list = ExtractParameters(parameters, methodParameters).ToArray();
 
                     var dynamicMethodOutput = DynamicCodeRunner.RunWithClassicSharpCodeProvider(type, method, list, winformsAssemblyLocation);
                     if (output.NotEmpty() && dynamicMethodOutput != null)
@@ -123,11 +123,9 @@ namespace Sifon.Code.Metacode
             var list = new List<object>();
             if (!string.IsNullOrWhiteSpace(methodParameters))
             {
-                // TODO: Test comma-containing values and replace with regex extract
-                var paramsArray = methodParameters.Split(',');
                 var stringValuePattern = new Regex(Settings.Regex.Metacode.Parameter);
 
-                foreach (string parameter in paramsArray)
+                foreach (string parameter in ExtractCommaSeparatedFunctionParams(methodParameters))
                 {
                     var param = parameter.Trim();
                     string key = param.Trim('$');
@@ -152,6 +150,17 @@ namespace Sifon.Code.Metacode
             }
 
             return list.ToArray();
+        }
+
+        private IEnumerable<string> ExtractCommaSeparatedFunctionParams(string methodParameters)
+        {
+            var regex = new Regex(Settings.Regex.Metacode.FunctionParametersToExtract, RegexOptions.Compiled);
+                
+            var matchCollection = regex.Matches(methodParameters);
+            foreach (Match match in matchCollection)
+            {
+                yield return match.Groups[1].Value;
+            }
         }
 
         private string ExpandTokensWithinStringValues(string parameter, IDictionary<string, dynamic> parameters)

@@ -41,6 +41,7 @@ namespace Sifon.Code.Statics
                 public const string Parameter = @"\""[^[\]]*\""";
                 //public const string Dependencies = "###\\s*Dependencies:\\s*(.*)";
                 public const string DependenciesToExtract = "\\\"([^\"]*)\\\"";
+                public const string FunctionParametersToExtract = "(?:^|,\\s*)(\\\"(?:[^\\\"])*\\\"|[^,]*)";
             }
         }
 
