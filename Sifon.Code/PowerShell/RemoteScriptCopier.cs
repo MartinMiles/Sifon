@@ -5,9 +5,11 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Code.Providers.Profile;
 using Sifon.Code.Statics;
 using Sifon.Code.Extensions;
+using Sifon.Code.Factories;
 
 namespace Sifon.Code.PowerShell
 {
@@ -27,15 +29,17 @@ namespace Sifon.Code.PowerShell
             _username = profile.RemoteUsername;
             _password = profile.RemotePassword;
 
-            var fakeLocalProfile = new ProfilesProvider().CreateLocal();
-            _scriptWrapper = new ScriptWrapper<string>(fakeLocalProfile, invoke, d => d.ToString());
+            var fakeLocalProfile = Create.New<IProfilesProvider>().CreateLocal();
+            _scriptWrapper = new ScriptWrapper<string>(fakeLocalProfile, invoke, d => d?.ToString());
         }
         
         public async Task<string> CopyIfRemote(string scriptPath)
         {
             if (_profile.RemotingEnabled)
             {
+                //TODO: Improve remote scripting: Modules.Functions.CopyFileToRemote is called twice - to obtain folder and then to send into
                 var remoteFolder = await GetRemoteFolder();
+                if (remoteFolder == null) return null;
 
                 var parameters = Parameters;
                 parameters.Add("Filename", scriptPath);

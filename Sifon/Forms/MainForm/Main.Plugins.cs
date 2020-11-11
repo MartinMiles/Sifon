@@ -14,6 +14,7 @@ using Sifon.Code.Factories;
 using Sifon.Code.Helpers;
 using Sifon.Code.Model;
 using Sifon.Code.Statics;
+using Sifon.Shared.MessageBoxes;
 
 namespace Sifon.Forms.MainForm
 {
@@ -29,6 +30,12 @@ namespace Sifon.Forms.MainForm
             DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem, isLocal);
 
             MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
+        }
+
+        public void NotifyRemoteNotAccessible()
+        {
+            // TODO: Make Create class for Sifon.Shared (if needed)
+            new DisplayMessage().ShowError("An error occured", "Remote host isn't accessible at this time");
         }
 
         private void MoveContainerPluginsIntoTheirOwnMenu(ToolStripMenuItem pluginsToolStripMenuItem)
@@ -129,10 +136,13 @@ namespace Sifon.Forms.MainForm
             }
         }
 
-        private void scriptToolStripMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void scriptToolStripMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var scriptName = ((ToolStripItem)sender).Name;
-            ScriptToolStripClicked(this, new EventArgs<string>(scriptName));
+            if (ScriptToolStripClicked != null)
+            {
+                await ScriptToolStripClicked(this, new EventArgs<string>(scriptName));
+            }
         }
 
         private void RemoveClickEvent(Button b)

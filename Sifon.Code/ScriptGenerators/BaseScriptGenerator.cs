@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.Profiles;
+using Sifon.Abstractions.Providers;
 using Sifon.Abstractions.ScriptGenerators;
 using Sifon.Code.Factories;
 using Sifon.Code.Providers.Profile;
@@ -18,7 +19,7 @@ namespace Sifon.Code.ScriptGenerators
         protected internal string executionScript = String.Empty;
 
         public abstract string Script { get; protected set; }
-        protected internal ProfilesProvider _profilesService;
+        protected internal IProfilesProvider _profilesProvider;
         protected internal IServiceScriptGenerator _serviceScriptGenerator;
         protected internal IisScriptGenerator _iisScriptGenerator;
         protected internal FilesScriptGenerator _filesScriptGenerator;
@@ -29,7 +30,7 @@ namespace Sifon.Code.ScriptGenerators
         {
             _model = model;
 
-            _profilesService = new ProfilesProvider();
+            _profilesProvider = Create.New<IProfilesProvider>();
             _serviceScriptGenerator = Create.WithCurrentProfile<IServiceScriptGenerator>();
             _iisScriptGenerator = new IisScriptGenerator();
             _filesScriptGenerator = new FilesScriptGenerator();

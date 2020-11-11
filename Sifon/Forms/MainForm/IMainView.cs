@@ -5,6 +5,7 @@ using System.Drawing;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Code.Model;
+using Sifon.Forms.Base;
 
 namespace Sifon.Forms.MainForm
 {
@@ -17,7 +18,9 @@ namespace Sifon.Forms.MainForm
         event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked;
         event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked;
         event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked;
-        event EventHandler<EventArgs<string>> ScriptToolStripClicked;
+        //event EventHandler<EventArgs<string>> ScriptToolStripClicked;
+        event BaseForm.AsyncEventHandler<EventArgs<string>> ScriptToolStripClicked;
+
 
         void LoadProfilesSelector(IEnumerable<string> profiles, string selectedProfileName);
         void ToolStripsEnabled(bool enabled);
@@ -32,5 +35,6 @@ namespace Sifon.Forms.MainForm
         bool ShowFirstRunDialog();
         void TerminateAsEmptyProfile();
         void PluginsToolStripEnabled();
+        void NotifyRemoteNotAccessible();
     }
 }

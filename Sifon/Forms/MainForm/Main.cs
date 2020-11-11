@@ -6,6 +6,7 @@ using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Forms.Containers;
 using Sifon.Code.Statics;
+using Sifon.Forms.Base;
 using Sifon.Forms.Other;
 using Sifon.Forms.Updates;
 
@@ -22,7 +23,7 @@ namespace Sifon.Forms.MainForm
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked = delegate { };
-        public event EventHandler<EventArgs<string>> ScriptToolStripClicked = delegate { };
+        public event BaseForm.AsyncEventHandler<EventArgs<string>> ScriptToolStripClicked;
 
         #endregion
 

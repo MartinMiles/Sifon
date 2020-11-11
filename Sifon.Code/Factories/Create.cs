@@ -45,7 +45,6 @@ namespace Sifon.Code.Factories
             var concreteTypes = new Dictionary<Type, Func<T>>
             {
                 {typeof(ISiteProvider), () => new PowerShellSiteProvider(profile, invoker) as T},
-                //{typeof(IFilesystem), () => GetFilesystem(profile, invoker) as T},
                 {typeof(IRemoteScriptCopier), () => new RemoteScriptCopier(profile, invoker) as T},
                 {typeof(IParametersSampleScriptGenerator), () => new ParametersSampleScriptGenerator(profile) as T},
                 {typeof(IServiceScriptGenerator), () => new ServiceScriptGenerator(profile) as T},

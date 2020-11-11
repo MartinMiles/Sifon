@@ -45,8 +45,9 @@ namespace Sifon.Forms.MainForm
             _view.BackupToolStripClicked += BackupToolStripClicked;
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
-            _view.ScriptToolStripClicked += ScriptToolStripClicked;
-            
+            //_view.ScriptToolStripClicked += ScriptToolStripClicked;
+            _view.ScriptToolStripClicked += async (s, e) => { await ScriptToolStripClicked(s, e as EventArgs<string>); };
+
         }
 
         private string WinformsAssemblyLocation => typeof(Form).Assembly.Location;
@@ -154,10 +155,15 @@ namespace Sifon.Forms.MainForm
 
         public IRemoteScriptCopier RemoteScriptCopier => Create.WithCurrentProfile<IRemoteScriptCopier>(_view);
 
-        private async void ScriptToolStripClicked(object sender, EventArgs<string> e)
+        private async Task ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
             var metacode = Create.WithParam<IMetacodeHelper, string>(e.Value);
             string script = metacode.ExecuteLocalOnly ? e.Value : await LocalOrRemote(e.Value);
+            if (script == null)
+            {
+                _view.NotifyRemoteNotAccessible();
+                return;
+            }
 
             var parameters = new Dictionary<string, dynamic>();
             _profilesProvider.AddScriptProfileParameters(parameters, metacode.ExecuteLocalOnly);

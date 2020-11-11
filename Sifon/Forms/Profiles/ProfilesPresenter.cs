@@ -31,7 +31,6 @@ namespace Sifon.Forms.Profiles
         #endregion
 
         public event EventHandler<EventArgs> FormClosing = delegate { };
-        //public event EventHandler<EventArgs<bool>> ProfileChanged = delegate { };
         public event BaseForm.AsyncEventHandler<EventArgs<bool>> ProfileChanged;
 
 
