@@ -74,3 +74,7 @@ $getInstance = $path + "\Check-Prerequisites.ps1"
 
 $getInstance = $path + "\Verify-Git.ps1"
 . $getInstance
+
+$getInstance = $path + "\Show-Message.ps1"
+. $getInstance
+
