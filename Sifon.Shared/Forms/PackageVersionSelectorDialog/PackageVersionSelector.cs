@@ -17,7 +17,7 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
         }
 
         // An entry point to this control
-        public string[] GetFile(string json)
+        public string[][] GetFile(string json)
         {
             StartPosition = FormStartPosition.CenterParent;
 
@@ -27,7 +27,7 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
             {
                 if (ShowDialog() == DialogResult.OK)
                 {
-                    return Urls.ToArray();
+                    return Urls.Select(kvp => new[] { kvp.Key, kvp.Value }).ToArray();
                 }
             }
 
@@ -75,11 +75,11 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
             DialogResult = DialogResult.OK;
         }
 
-        private IEnumerable<string> Urls
+        private IDictionary<string, string> Urls
         {
             get
             {
-                var urls = new List<string>();
+                var urls = new Dictionary<string, string>();
 
                 if (comboVersions.SelectedItem != null)
                 {
@@ -90,11 +90,11 @@ namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
                         {
                             foreach (var subitem in item.dependencies)
                             {
-                                urls.Add(subitem.url);
+                                urls.Add(subitem.name, subitem.url);
                             }
                         }
 
-                        urls.Add(item.url);
+                        urls.Add(item.name, item.url);
                     }
                 }
 
