@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Security;
+using System.Text.RegularExpressions;
+using Sifon.Code.Statics;
 
 namespace Sifon.Code.Extensions
 {
@@ -19,13 +21,17 @@ namespace Sifon.Code.Extensions
         {
             try
             {
-                Path.GetFullPath(filePath);
-                return true;
+                if (Regex.IsMatch(filePath, ".+\\.[\\w]{1,10}$"))
+                {
+                    Path.GetFullPath(filePath);
+                    return true;
+                }
             }
             catch (Exception)
             {
-                return false;
             }
+            return false;
+
         }
 
         public static bool IsValidDirectoryPath(this string filePath)

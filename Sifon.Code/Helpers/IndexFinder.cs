@@ -30,7 +30,7 @@ namespace Sifon.Code.Helpers
             };
 
             await _scriptWrapper.Run(Modules.Functions.FindIndexes, parameters);
-            return _scriptWrapper.Results; //.Where(r => r.Directory.NotEmpty() && r.Version != null).Distinct();
+            return _scriptWrapper.Results;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Helpers;
 using Sifon.Abstractions.Profiles;
@@ -18,52 +19,63 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
 
         private async void IndexSelector_Load(object sender, EventArgs e)
         {
+            ToggleControls(false);
             var indexFinder = Create.WithProfile<IIndexFinder>(_profile, this);
             var indexes = await indexFinder.FindAll();
 
             buttonSelect.Select();
             PopulateDropdown(indexes);
+            ToggleControls(true);
+        }
+
+        private void ToggleControls(bool enabled)
+        {
+            buttonSelect.Enabled = enabled;
+            comboVersions.Enabled = enabled;
         }
 
         // This method is to be called from a Sifon PowerShell metadata started with tripple-hash character, as described below:
         // ### $SelectedFile = new Sifon.Shared.Forms.LocalFilePickerDialog.LocalFilePicker::GetFile("Caption","Label","Archives|*.zip","Button")
-        public string GetIndex(IProfile profile)
+        public string[] GetIndex(IProfile profile)
         {
             if (profile == null) return null;
             _profile = profile;
-
-            //TODO: from $Profile either local or remote
-            //_items = new List<string> {"sitecore_core_index", "sitecore_master_index", "sitecore_web_index"};
 
             StartPosition = FormStartPosition.CenterParent;
 
             if (ShowDialog() == DialogResult.OK)
             {
-                return IndexName;
+                var selected = comboVersions.SelectedItem as string;
+
+                comboVersions.Items.RemoveAt(0);
+                
+                return selected != ALL 
+                    ? new [] { selected } 
+                    : comboVersions.Items.Cast<string>().Select(item => item.ToString()).ToArray();
             }
 
             return null;
         }
 
+        const string ALL = "-= rebuild all indexes =-";
+
         public void PopulateDropdown(IEnumerable<string> items)
         {
             comboVersions.Items.Clear();
 
-            //comboVersions.ValueMember = "url";
-            //comboVersions.DisplayMember = "name";
-            comboVersions.DataSource = items;
-
-            //comboVersions.Items.Add()
-
+            foreach (var item in items)
+            {
+                comboVersions.Items.Add(item);
+            }
+            
             if (comboVersions.Items.Count > 0)
             {
+                comboVersions.Items.Insert(0, ALL);
                 comboVersions.SelectedIndex = 0;
             }
 
             buttonSelect.Enabled = comboVersions.Items.Count > 0;
         }
-
-        public string IndexName => comboVersions.SelectedItem as string;
 
         private void buttonSelect_Click(object sender, EventArgs e)
         {
