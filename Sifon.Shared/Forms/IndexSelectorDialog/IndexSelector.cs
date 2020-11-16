@@ -32,6 +32,7 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
         {
             buttonSelect.Enabled = enabled;
             comboVersions.Enabled = enabled;
+            Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
 
         // This method is to be called from a Sifon PowerShell metadata started with tripple-hash character, as described below:

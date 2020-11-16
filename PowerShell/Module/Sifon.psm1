@@ -81,3 +81,5 @@ $getInstance = $path + "\Show-Message.ps1"
 $getInstance = $path + "\Find-Indexes.ps1"
 . $getInstance
 
+$getInstance = $path + "\Show-Progress.ps1"
+. $getInstance

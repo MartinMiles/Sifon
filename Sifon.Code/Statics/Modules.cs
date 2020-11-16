@@ -31,6 +31,7 @@ namespace Sifon.Code.Statics
             public const string CheckPrerequisites = "Check-Prerequisites";
             public const string InstallPrerequisites = "Install-Prerequisites";
             public const string ShowMessage = "Show-Message";
+            public const string ShowProgress = "Show-Progress";
         }
         
         public static class Files
@@ -66,6 +67,7 @@ namespace Sifon.Code.Statics
             public static string CheckPrerequisites => Combine(Functions.CheckPrerequisites);
             public static string InstallPrerequisites => Combine(Functions.InstallPrerequisites);
             public static string ShowMessage => Combine(Functions.ShowMessage);
+            public static string ShowProgress => Combine(Functions.ShowProgress);
 
 
             private static string Combine(string moduleParam, string ext = null)
@@ -104,7 +106,8 @@ namespace Sifon.Code.Statics
             Files.GetHashMD5,
             Files.CheckPrerequisites,
             Files.InstallPrerequisites,
-            Files.ShowMessage
+            Files.ShowMessage,
+            Files.ShowProgress
         };
     }
 }

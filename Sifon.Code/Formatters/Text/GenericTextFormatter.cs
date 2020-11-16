@@ -30,7 +30,14 @@ namespace Sifon.Code.Formatters.Text
 
             line = muteOutputFlag ? String.Empty : line;
 
-            return IngnoreMuteCommandFromOutput(line);
+            line = IngnoreMuteCommandFromOutput(line);
+
+            return ReplaceDotWithNewLine(line);
+        }
+
+        private string ReplaceDotWithNewLine(string line)
+        {
+            return line.Length == 1 && line == "." ? Environment.NewLine : line;
         }
 
         public string FormatWarning(string line)
@@ -41,6 +48,7 @@ namespace Sifon.Code.Formatters.Text
 
             return IngnoreMuteCommandFromOutput(line);
         }
+
         public string FormatError(string line)
         {
             UpdateMuteStatus(line);
@@ -73,22 +81,27 @@ namespace Sifon.Code.Formatters.Text
             {
                 muteWarningFlag = true;
             }
+
             if (value.IndexOf(unmuteWarningContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteWarningFlag = false;
             }
+
             if (value.IndexOf(muteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteErrorFlag = true;
             }
+
             if (value.IndexOf(unmuteErrorContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteErrorFlag = false;
             }
+
             if (value.IndexOf(muteProgressContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteProgressFlag = true;
             }
+
             if (value.IndexOf(unmuteProgressContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteProgressFlag = false;
@@ -98,6 +111,7 @@ namespace Sifon.Code.Formatters.Text
             {
                 muteOutputFlag = true;
             }
+
             if (value.IndexOf(unmuteContent, StringComparison.CurrentCultureIgnoreCase) >= 0)
             {
                 muteOutputFlag = false;
