@@ -35,6 +35,10 @@ namespace Sifon.Code.PowerShell
         
         public async Task<string> CopyIfRemote(string scriptPath)
         {
+            // the below line and its implementation should be revised and validated.
+            // we do not copy folders to remote; but beware filepicker control against a remote profile
+            if (scriptPath.IsValidDirectoryPath()) return scriptPath;
+
             if (_profile.RemotingEnabled)
             {
                 //TODO: Improve remote scripting: Modules.Functions.CopyFileToRemote is called twice - to obtain folder and then to send into

@@ -27,6 +27,27 @@ namespace Sifon.Code.Extensions
                 return false;
             }
         }
+
+        public static bool IsValidDirectoryPath(this string filePath)
+        {
+            try
+            {
+                if (!Path.IsPathRooted(filePath)) return false;
+
+                if (File.Exists(filePath) && !File.GetAttributes(filePath).HasFlag(FileAttributes.Directory))
+                {
+                    return false;
+                }
+
+                Path.GetFullPath(filePath);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public static string TrimEnd(this string source, string value)
         {
             return source.EndsWith(value)
