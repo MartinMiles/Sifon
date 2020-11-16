@@ -23,6 +23,7 @@ namespace Sifon.Code.Statics
             internal const string ExtractBackupInfo = "Extract-BackupInfo";
             internal const string SaveBackupInfo = "Save-BackupInfo";
             internal const string FindSolrInstances = "Find-SolrInstances";
+            internal const string FindIndexes = "Find-Indexes";
             public const string TestSolrEndpoint = "Test-SolrEndpoint";
             internal const string GetDrives = "Get-Drives";
             internal const string GetFiles = "Get-Files";
@@ -57,6 +58,7 @@ namespace Sifon.Code.Statics
             public static string ExtractBackupInfo => Combine(Functions.ExtractBackupInfo);
             public static string SaveBackupInfo => Combine(Functions.SaveBackupInfo);
             public static string FindSolrInstances => Combine(Functions.FindSolrInstances);
+            public static string FindIndexes => Combine(Functions.FindIndexes);
             public static string TestSolrEndpoint => Combine(Functions.TestSolrEndpoint);
             public static string GetDrives => Combine(Functions.GetDrives);
             public static string GetFiles => Combine(Functions.GetFiles);
@@ -95,6 +97,7 @@ namespace Sifon.Code.Statics
             Files.ExtractBackupInfo,
             Files.SaveBackupInfo,
             Files.FindSolrInstances,
+            Files.FindIndexes,
             Files.TestSolrEndpoint,
             Files.GetDrives,
             Files.GetFiles,

@@ -78,6 +78,7 @@
     <Compile Include="Formatters\Output\StringFormatter.cs" />
     <Compile Include="Formatters\Text\GenericTextFormatter.cs" />
     <Compile Include="Formatters\Text\ProgressFormatter.cs" />
+    <Compile Include="Helpers\IndexFinder.cs" />
     <Compile Include="Helpers\PluginHelper.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
     <Compile Include="Helpers\SolrIdentifier.cs" />

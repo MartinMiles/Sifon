@@ -78,3 +78,6 @@ $getInstance = $path + "\Verify-Git.ps1"
 $getInstance = $path + "\Show-Message.ps1"
 . $getInstance
 
+$getInstance = $path + "\Find-Indexes.ps1"
+. $getInstance
+

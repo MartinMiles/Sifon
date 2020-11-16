@@ -48,6 +48,7 @@ namespace Sifon.Code.Factories
                 {typeof(IRemoteScriptCopier), () => new RemoteScriptCopier(profile, invoker) as T},
                 {typeof(IParametersSampleScriptGenerator), () => new ParametersSampleScriptGenerator(profile) as T},
                 {typeof(IServiceScriptGenerator), () => new ServiceScriptGenerator(profile) as T},
+                {typeof(IIndexFinder), () => new IndexFinder(profile, invoker) as T},
                 {typeof(ISolrIdentifier), () => new SolrIdentifier(invoker) as T}
             };
 

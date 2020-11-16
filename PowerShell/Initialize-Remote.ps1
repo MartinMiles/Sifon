@@ -7,7 +7,7 @@ param(
 )
 
 $testWSMan = Test-WSMan $RemoteHost -Credential $Credentials -Authentication Negotiate
-Write-Output "Test-WSMan: $testWSMan"
+#Write-Output "Test-WSMan: $testWSMan"
 
 $Session = New-PSSession -ComputerName $RemoteHost -Credential $Credentials
 if(-not($Session))

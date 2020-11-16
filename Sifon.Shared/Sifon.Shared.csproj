@@ -48,6 +48,12 @@
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.Designer.cs">
       <DependentUpon>FolderBrowser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IndexSelectorDialog\IndexSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IndexSelectorDialog\IndexSelector.Designer.cs">
+      <DependentUpon>IndexSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">
       <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IndexSelectorDialog\IndexSelector.resx">
+      <DependentUpon>IndexSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LocalFilePickerDialog\LocalFilePicker.resx">
       <DependentUpon>LocalFilePicker.cs</DependentUpon>

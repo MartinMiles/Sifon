@@ -11,7 +11,7 @@ $manifest = @{
 	GUID 			    = 'e382b374-6ffb-4ae7-9b40-0f99518640ad'
 	ModuleVersion 		= '0.99'
 	PowerShellVersion 	= '5.1'
-	FunctionsToExport 	= 'Copy-FileToRemote','Download-Resource','Get-ConnectionString','Get-InstanceUrl','Get-SiteFolder','Install-SitecorePackage','Install-SitecorePackageUsingRemoting','Verify-PortalCredentials','Get-SiteBindings','Get-SitecoreSites','Get-Databases','Get-CommerceDatabases','Test-PortalCredentials','Test-SqlServerConnection','Extract-BackupInfo','Save-BackupInfo','Find-SolrInstances','Test-SolrEndpoint','Get-Drives','Get-Files','Get-HashMD5','Install-Prerequisites','Check-Prerequisites','Verify-Git','Show-Message'
+	FunctionsToExport 	= 'Copy-FileToRemote','Download-Resource','Get-ConnectionString','Get-InstanceUrl','Get-SiteFolder','Install-SitecorePackage','Install-SitecorePackageUsingRemoting','Verify-PortalCredentials','Get-SiteBindings','Get-SitecoreSites','Get-Databases','Get-CommerceDatabases','Test-PortalCredentials','Test-SqlServerConnection','Extract-BackupInfo','Save-BackupInfo','Find-SolrInstances','Test-SolrEndpoint','Get-Drives','Get-Files','Get-HashMD5','Install-Prerequisites','Check-Prerequisites','Verify-Git','Show-Message','Find-Indexes'
 	ReleaseNotes 		= 'Accompanies Sifon. You may obtain your copy from https://Sifon.UK'
 	RootModule 		    = 'Sifon.psm1'
 }
