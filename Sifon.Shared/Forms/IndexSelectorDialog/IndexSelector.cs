@@ -26,11 +26,18 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
             buttonSelect.Select();
             PopulateDropdown(indexes);
             ToggleControls(true);
+
+            if (comboVersions.Items.Count == 0)
+            {
+                comboVersions.Items.Add(NOTHING);
+                comboVersions.SelectedIndex = 0;
+                comboVersions.Enabled = false;
+            }
         }
 
         private void ToggleControls(bool enabled)
         {
-            buttonSelect.Enabled = enabled;
+            buttonSelect.Enabled = enabled && comboVersions.Items.Count > 0;
             comboVersions.Enabled = enabled;
             Cursor = enabled ? Cursors.Arrow : Cursors.WaitCursor;
         }
@@ -59,6 +66,7 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
         }
 
         const string ALL = "-= rebuild all indexes =-";
+        const string NOTHING = "-= nothing found, could be a connection error =-";
 
         public void PopulateDropdown(IEnumerable<string> items)
         {
