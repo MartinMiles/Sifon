@@ -17,6 +17,7 @@ namespace Sifon.Code.Model.Profiles
 
         public SettingRecord()
         {
+            SendCrashDetails = true;
         }
         public SettingRecord(XmlNode _node)
         {

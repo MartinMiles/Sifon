@@ -24,7 +24,6 @@ namespace Sifon.Forms.Updates
             _apiProvider = new ApiProvider<bool> { EnableSendingExceptions = _settingsProvider.Read().SendCrashDetails };
         }
 
-        //TODO: Consider using monads to simplify the below
         private async void CheckClicked(object sender, EventArgs e)
         {
             try
