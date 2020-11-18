@@ -68,6 +68,10 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             {
                 comboProfiles.SelectedIndex = 0;
             }
+            else if (comboProfiles.Items.Count == 2 && comboProfiles.Items[1] as string == Settings.ProfileNotCreated)
+            {
+                comboProfiles.SelectedIndex = 0;
+            }
             else if (comboProfiles.Items.Contains(selectedProfileName))
             {
                 comboProfiles.SelectedItem = selectedProfileName;
