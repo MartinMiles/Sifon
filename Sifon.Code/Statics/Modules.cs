@@ -32,6 +32,8 @@ namespace Sifon.Code.Statics
             public const string InstallPrerequisites = "Install-Prerequisites";
             public const string ShowMessage = "Show-Message";
             public const string ShowProgress = "Show-Progress";
+            public const string VerifyGit = "Verify-Git";
+            public const string VerifyNetCore = "Verify-NetCore";
         }
         
         public static class Files
@@ -63,11 +65,13 @@ namespace Sifon.Code.Statics
             public static string TestSolrEndpoint => Combine(Functions.TestSolrEndpoint);
             public static string GetDrives => Combine(Functions.GetDrives);
             public static string GetFiles => Combine(Functions.GetFiles);
-            public static string GetHashMD5 => Combine(Functions.CheckPrerequisites);
+            public static string GetHashMD5 => Combine(Functions.GetHashMD5);
             public static string CheckPrerequisites => Combine(Functions.CheckPrerequisites);
             public static string InstallPrerequisites => Combine(Functions.InstallPrerequisites);
             public static string ShowMessage => Combine(Functions.ShowMessage);
             public static string ShowProgress => Combine(Functions.ShowProgress);
+            public static string VerifyGit => Combine(Functions.VerifyGit);
+            public static string VerifyNetCore => Combine(Functions.VerifyNetCore);
 
 
             private static string Combine(string moduleParam, string ext = null)
@@ -107,7 +111,9 @@ namespace Sifon.Code.Statics
             Files.CheckPrerequisites,
             Files.InstallPrerequisites,
             Files.ShowMessage,
-            Files.ShowProgress
+            Files.ShowProgress,
+            Files.VerifyGit,
+            Files.VerifyNetCore
         };
     }
 }

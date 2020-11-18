@@ -83,3 +83,6 @@ $getInstance = $path + "\Find-Indexes.ps1"
 
 $getInstance = $path + "\Show-Progress.ps1"
 . $getInstance
+
+$getInstance = $path + "\Verify-NetCore.ps1"
+. $getInstance

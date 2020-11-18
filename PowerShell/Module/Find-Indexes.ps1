@@ -5,6 +5,11 @@ function Find-Indexes
     [string]$AdminPassword
 )
 {
+    if (!(Get-Module -ListAvailable -Name SPE))
+    {
+        return $null
+    } 
+
     [string]$Url = Get-InstanceUrl -Webroot $Webroot
     $session = New-ScriptSession -Username $AdminUsername -Password $AdminPassword -ConnectionUri $Url
     
