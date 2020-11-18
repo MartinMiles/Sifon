@@ -1,4 +1,6 @@
-﻿using Sifon.Forms.Profiles.UserControls.Connectivity;
+﻿using System;
+using System.Windows.Forms;
+using Sifon.Forms.Profiles.UserControls.Connectivity;
 using Sifon.Forms.Profiles.UserControls.Profile;
 using Sifon.Forms.Profiles.UserControls.Remote;
 using Sifon.Forms.Profiles.UserControls.Website;
@@ -60,6 +62,8 @@ namespace Sifon.Forms.Profiles
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(325, 335);
             this.tabControl1.TabIndex = 46;
+            this.tabControl1.Selected += TabControl1_Selected;
+
             // 
             // tabProfile
             // 
@@ -142,6 +146,7 @@ namespace Sifon.Forms.Profiles
         }
 
         #endregion
+
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabProfile;

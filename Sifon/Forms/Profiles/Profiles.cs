@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
 using Sifon.Forms.Base;
 using Sifon.Forms.Profiles.UserControls.Connectivity;
 using Sifon.Forms.Profiles.UserControls.Parameters;
@@ -15,8 +16,9 @@ namespace Sifon.Forms.Profiles
 
         public event EventHandler<EventArgs> FormSaved = delegate { };
         public event EventHandler<EventArgs> ContinueWithoutCreatingProfile = delegate { };
+        public event EventHandler<EventArgs<int>> TabChanged = delegate { };
 
-        
+
         internal ProfilesPresenter Presenter { get; private set; }
 
         #region Constructors
@@ -43,6 +45,13 @@ namespace Sifon.Forms.Profiles
         }
 
         #endregion
+
+        private void TabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            int index = (sender as TabControl).SelectedIndex;
+            TabChanged(this, new EventArgs<int>(index));
+        }
+
 
         #region Access properties
 

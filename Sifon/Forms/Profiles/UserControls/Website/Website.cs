@@ -111,5 +111,11 @@ namespace Sifon.Forms.Profiles.UserControls.Website
                 ShowError("Validation Error", "Web root does not seem to be a valid path");
             }
         }
+
+        public void ShowRemoteWarning()
+        {
+            var message = $"As you've have just created a new remote profile,{Environment.NewLine}please click 'Save and Close' to apply the changes{Environment.NewLine}then re-open this window to enable auto-detection";
+            ShowInfo("Remote profile", message);
+        }
     }
 }

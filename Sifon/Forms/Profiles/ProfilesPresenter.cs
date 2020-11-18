@@ -43,11 +43,20 @@ namespace Sifon.Forms.Profiles
             _view.FormSaved += FormSaved;
             _view.BeforeFormClosing += (sender, args) => FormClosing(sender, args);
             _view.ContinueWithoutCreatingProfile += ContinueWithoutCreatingProfile;
+            _view.TabChanged += TabChanged;
 
             if (SelectedProfile != null)
             {
                 _siteProvider = Create.WithCurrentProfile<ISiteProvider>(_view);
                 _sqlService = Create.New<ISqlServerRecordProvider>();
+            }
+        }
+
+        private void TabChanged(object sender, EventArgs<int> e)
+        {
+            if (e.Value == 2 && _view.Remote.RemotingEnabled && !ProfilesProvider.SelectedProfile.RemotingEnabled)
+            {
+                _view.Website.ShowRemoteWarning();
             }
         }
 
