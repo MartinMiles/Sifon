@@ -1,9 +1,14 @@
 function Show-Progress
 (
     [int]$Percent,
-    [string]$Activity = '',
+    [string]$Activity = 'Operation in progress',
     [string]$Status = ''
 )
 {
-    Write-Progress -Activity $Activity -Status $Status -PercentComplete $Percent
+    if($Status.Length > 0){
+        Write-Progress -PercentComplete $Percent -Activity $Activity -Status $Status
+    }
+    else{
+        Write-Progress -PercentComplete $Percent -Activity $Activity
+    }    
 }
