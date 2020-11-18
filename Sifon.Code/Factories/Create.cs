@@ -56,7 +56,7 @@ namespace Sifon.Code.Factories
         }
 
         public static IScriptWrapper<T> WithParam<T>(ISynchronizeInvoke invoker, Func<PSObject, T> convert, IProfile profile = null) 
-            where T : class
+            //where T : class
         {
             var currentProfile = profile ?? New<IProfilesProvider>().SelectedProfile;
             return new ScriptWrapper<T>(currentProfile, invoker, convert);

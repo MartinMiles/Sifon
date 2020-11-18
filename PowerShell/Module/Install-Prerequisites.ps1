@@ -1,5 +1,12 @@
-function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $InstallSIF)
+# function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $InstallSIF)
+function Install-Prerequisites([bool[]]$InstallValues)
 {
+    [bool]$InstallChoco = $InstallValues[0]
+    [bool]$InstallGit = $InstallValues[1]
+    [bool]$InstallWinRM = $InstallValues[2]
+    [bool]$InstallSIF = $InstallValues[3]
+    [bool]$InstallNetCore = $InstallValues[4]
+
     function Is-ChocoInstalled
     {
         try {
@@ -80,6 +87,12 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
         }
     }
 
+    function Install-NetCore
+    {
+        choco install dotnetcore-sdk --force  | Out-Null
+        return (Verify-NetCore -Type 'SDK')
+    }
+
     $activity = "Installing prerequisites"
 
 
@@ -97,17 +110,23 @@ function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $Insta
 
     [bool]$Remoting = $false;
     if($InstallWinRM){
-        Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 83;
+        Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 71;
         $Remoting = Install-Remoting
     }
 
     [bool]$SIF = $false;
     if($InstallSIF){
-        Write-Progress -Activity "Installing SIF" -Status $activity -PercentComplete 97;
+        Write-Progress -Activity "Installing SIF" -Status $activity -PercentComplete 83;
         $SIF = Install-SIF
+    }
+
+    [bool]$NetCore = $false;
+    if($InstallNetCore){
+        Write-Progress -Activity "Installing .NET Core SDk" -Status $activity -PercentComplete 97;
+        $NetCore = Install-NetCore
     }
 
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;
 
-    return [System.Tuple]::Create($Choco, $Git, $Remoting, $SIF)
+    return @($Choco, $Git, $Remoting, $SIF, $NetCore)
 }

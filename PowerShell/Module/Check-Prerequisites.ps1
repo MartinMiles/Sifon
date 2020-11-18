@@ -35,19 +35,23 @@ function Check-Prerequisites()
     
     $isChocoInstalled = Has-Choco
 
-    Write-Progress -Activity "Checking Git" -Status $activity -PercentComplete 57;
+    Write-Progress -Activity "Checking Git" -Status $activity -PercentComplete 38;
     
     $isGitInstalled = Verify-Git 
 
-        Write-Progress -Activity "Checking PowerShell remoting" -Status $activity -PercentComplete 82;
+    Write-Progress -Activity "Checking PowerShell remoting" -Status $activity -PercentComplete 61;
 
-        $remoting = WsMan-Enabled
+    $remoting = WsMan-Enabled
 
-        Write-Progress -Activity "Checking SIF" -Status $activity -PercentComplete 97;
+    Write-Progress -Activity "Checking SIF" -Status $activity -PercentComplete 83;
 
-        $SIF = Verify-SIF
+    $SIF = Verify-SIF
+
+    Write-Progress -Activity "Checking .NET Core SDK" -Status $activity -PercentComplete 97;
+
+    $NetCore = (Verify-NetCore -Type 'SDK')
 
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;    
 
-    return [System.Tuple]::Create($isChocoInstalled, $isGitInstalled, $remoting,$SIF)
+    return @($isChocoInstalled, $isGitInstalled, $remoting, $SIF, $NetCore)
 }

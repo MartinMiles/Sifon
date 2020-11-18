@@ -11,6 +11,7 @@ namespace Sifon.Forms.Prerequsites
             new ToolTip().SetToolTip(checkGit, Tooltips.Prerequsites.Git);
             new ToolTip().SetToolTip(checkRemoting, Tooltips.Prerequsites.Remoting);
             new ToolTip().SetToolTip(checkSif, Tooltips.Prerequsites.SIF);
+            new ToolTip().SetToolTip(checkNetCore, Tooltips.Prerequsites.NetCore);
             new ToolTip().SetToolTip(buttonInstall, Tooltips.Prerequsites.InstallButton);
             new ToolTip().SetToolTip(buttonClose, Tooltips.Prerequsites.CloseButton);
         }
