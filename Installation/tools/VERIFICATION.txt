@@ -18,10 +18,10 @@ Package maintainer is software author himself. The contact details:
 Package content:
 
   Microsoft .NET libraries:
-    - Microsoft.Web.Administration.dll                                      
     - Newtonsoft.Json.dll                                                   
 
   Sifon business logic DLLs:
+    - Sifon.Abstractions.dll
     - Sifon.ApiClient.dll
     - Sifon.Code.dll
     - Sifon.Shared.dll
