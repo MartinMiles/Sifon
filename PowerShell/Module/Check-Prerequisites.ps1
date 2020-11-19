@@ -15,7 +15,7 @@ function Check-Prerequisites()
     {
 
         try {
-            $WSMan = [bool](Test-WSMan | % { $_.wsmid -ne $null }) 
+            $WSMan = [bool](Test-WSMan -ErrorAction SilentlyContinue | % { $_.wsmid -ne $null }) 
             return $WSMan
         }
         catch {
