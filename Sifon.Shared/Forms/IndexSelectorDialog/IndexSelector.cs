@@ -65,7 +65,7 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
             return null;
         }
 
-        const string ALL = "-= rebuild all indexes =-";
+        const string ALL = "-= process all the indexes =-";
         const string NOTHING = "-= nothing found, could be a connection error =-";
 
         public void PopulateDropdown(IEnumerable<string> items)
