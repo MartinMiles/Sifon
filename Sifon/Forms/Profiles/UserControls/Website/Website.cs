@@ -102,7 +102,7 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         {
             var newValue = ((TextBox) sender).Text.Trim();
 
-            if (newValue.IsValidFilePath())
+            if (newValue.IsValidDirectoryPath())
             {
                 WebrootFolderChanged(this, new EventArgs<string>(newValue));
             }
