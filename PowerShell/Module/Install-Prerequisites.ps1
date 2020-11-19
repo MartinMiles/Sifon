@@ -45,8 +45,11 @@ function Install-Prerequisites([bool[]]$InstallValues)
 
     function Install-Git
     {
+        $ProgressPreference = "SilentlyContinue"
         choco install git.install /GitOnlyOnPath --force  | Out-Null
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+        $ProgressPreference = "Continue"
+
         return $true
     }
 
@@ -89,7 +92,11 @@ function Install-Prerequisites([bool[]]$InstallValues)
 
     function Install-NetCore
     {
+        $ProgressPreference = "SilentlyContinue"
         choco install dotnetcore-sdk --force  | Out-Null
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+        $ProgressPreference = "Continue"
+
         return (Verify-NetCore -Type 'SDK')
     }
 
@@ -104,25 +111,25 @@ function Install-Prerequisites([bool[]]$InstallValues)
 
     [bool]$Git = $false;
     if($InstallGit){
-        Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 52;
+        Write-Progress -Activity "Installing Git" -Status $activity -PercentComplete 22;
         $Git = Install-Git
     }
 
     [bool]$Remoting = $false;
     if($InstallWinRM){
-        Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 71;
+        Write-Progress -Activity "Installing PowerShell Remoting" -Status $activity -PercentComplete 47;
         $Remoting = Install-Remoting
     }
 
     [bool]$SIF = $false;
     if($InstallSIF){
-        Write-Progress -Activity "Installing SIF" -Status $activity -PercentComplete 83;
+        Write-Progress -Activity "Installing SIF" -Status $activity -PercentComplete 53;
         $SIF = Install-SIF
     }
 
     [bool]$NetCore = $false;
     if($InstallNetCore){
-        Write-Progress -Activity "Installing .NET Core SDk" -Status $activity -PercentComplete 97;
+        Write-Progress -Activity "Installing .NET Core SDk" -Status $activity -PercentComplete 71;
         $NetCore = Install-NetCore
     }
 
