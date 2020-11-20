@@ -95,6 +95,7 @@
         public static class SettingsForm
         {
             public const string CrashLogCheckbox = "Please leave this box checked in order to help me making Sifon better by receiving anonymous crash logs from you";
+            public const string PluginsRepository = "This is a repository to be cloned under application plugin folder from a GitHub";
             public const string DoneButton = "Clicking this button saves the changes and closes this dialog";
         }
 

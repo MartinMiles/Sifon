@@ -53,6 +53,7 @@ namespace Sifon.Code.Providers.Profile
         public void SaveCrashDetails(ICrashDetails crashDetails)
         {
             _entity.SendCrashDetails = crashDetails.SendCrashDetails;
+            _entity.PluginsRepository = crashDetails.PluginsRepository;
 
             SaveSettings();
         }

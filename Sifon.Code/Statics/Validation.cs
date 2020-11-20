@@ -16,6 +16,10 @@
             public const string FeedbackMessage = "Feedback not in correct format";
         }
 
+        public static class SettingsForm
+        {
+            public const string PluginsRepository = "Plugins repository shoud be located at GitHub\n";
+        }
         public static class Profiles
         {
             public static class Profile

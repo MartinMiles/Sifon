@@ -26,8 +26,10 @@ namespace Sifon.Forms.SettingsForm
         {
             // No need to do validation yet as single checkbox is always valid
             // Later use this clause: if(!ValidateForm()) return;
-
-            ValuesChanged(this, new EventArgs<ICrashDetails>(this));
+            if (ValidateValues())
+            {
+                ValuesChanged(this, new EventArgs<ICrashDetails>(this));
+            }
         }
 
         #region Interface implementation
@@ -46,9 +48,11 @@ namespace Sifon.Forms.SettingsForm
 
         #endregion
 
+        
         public void SetView(ICrashDetails entity)
-        {
+        { 
             SendCrashDetails = entity.SendCrashDetails;
+            PluginsRepository = entity.PluginsRepository;
         }
 
         public void UpdateResult()

@@ -25,6 +25,13 @@ namespace Sifon.Statics
             public const string Folder = @"^[A-Za-z0-9-._]*$";
             public const string Password = @"[^\ ]";
         }
+
+        public static class SettingsForm
+        {
+            public const string PluginsRepository = @"https:\/\/github.com\/.*";
+
+        }
+
         public static class Profile
         {
             public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
