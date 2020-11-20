@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using Sifon.Code.Helpers;
 
 namespace Sifon.Code.Statics
@@ -11,7 +9,8 @@ namespace Sifon.Code.Statics
         public static readonly string ProductVersion = $"Sifon v{VersionNumber}";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
-
+        public const string PluginRepository = "https://github.com/MartinMiles/Sifon.Plugins.git";
+        
         internal static class Services
         {
             internal const string MarketingAutomation = "MarketingAutomationService";

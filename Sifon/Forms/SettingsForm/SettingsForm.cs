@@ -30,11 +30,21 @@ namespace Sifon.Forms.SettingsForm
             ValuesChanged(this, new EventArgs<ICrashDetails>(this));
         }
 
+        #region Interface implementation
+
         public bool SendCrashDetails
         {
             get => checkBoxCrashLog.Checked;
             set => checkBoxCrashLog.Checked = value;
         }
+
+        public string PluginsRepository
+        {
+            get => textRepository.Text;
+            set => textRepository.Text = value;
+        }
+
+        #endregion
 
         public void SetView(ICrashDetails entity)
         {
