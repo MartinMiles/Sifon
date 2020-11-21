@@ -74,6 +74,7 @@ namespace Sifon.Code.Providers.Profile
             if (_entity.PortalUsername.NotEmpty() && _entity.PortalPassword.NotEmpty())
             {
                 TestScriptSettingsParameters(parameters, _entity.PortalUsername, _entity.PortalPassword);
+                parameters.Add(Settings.Parameters.PluginsRepository, _entity.PluginsRepository);
             }
         }
 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
-using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
