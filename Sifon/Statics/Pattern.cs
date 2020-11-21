@@ -41,7 +41,7 @@ namespace Sifon.Statics
         }
         public static class SqlSettings
         {
-            public const string Name = @"^[A-Za-z0-9-._]*$";
+            public const string Name = @"^[A-Za-z0-9-. _]*$";
             public const string Instance = @"^[\\(\\)A-Za-z0-9-._]*$";
             public const string Username = @"^[A-Za-z0-9-._]*$";
             public const string Password = @"[^\ ]";

@@ -10,6 +10,7 @@ using Sifon.Code.Extensions;
 using Sifon.Code.Factories;
 using Sifon.Code.Statics;
 using Sifon.ViewModels;
+using System.Text.RegularExpressions;
 
 namespace Sifon.Forms.Restore
 {
@@ -81,10 +82,16 @@ namespace Sifon.Forms.Restore
         private bool IsMainSitecoreSite(string key)
         {
             return !CheckCommerceSite(key)
-                   && !key.Contains(Settings.Parameters.XConnect)
-                   && !key.Contains(Settings.Parameters.IdentityServer)
-                   && !key.Contains(Settings.Parameters.Horizon)
-                   && !key.Contains(Settings.Parameters.PublishingService);
+                   && NotContains(key, Settings.Parameters.XConnect)
+                   && NotContains(key, Settings.Parameters.IdentityServer)
+                   && NotContains(key, Settings.Parameters.Horizon)
+                   && NotContains(key, Settings.Parameters.PublishingService);
+        }
+
+        private bool NotContains(string candidateFullPath, string fileNamePattern)
+        {
+            string pattern = $@"^.*\\.*{fileNamePattern}[^\\]*$";
+            return !Regex.IsMatch(candidateFullPath, pattern);
         }
 
         private bool CheckCommerceSite(string site)
