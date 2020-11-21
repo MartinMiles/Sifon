@@ -35,19 +35,23 @@ namespace Sifon.Forms.Restore
         {
             var selectedFolder = e.Value;
 
-            var directoryExists = await _filesystem.DirectoryExists(selectedFolder);
-
-            if (selectedFolder.NotEmpty() && directoryExists)
+            if(selectedFolder.NotEmpty())
             {
-                var iRestoreModel = await BuildViewModel(selectedFolder);
-                _view.SetSites(iRestoreModel);
-            }
-            else
-            {
-                _view.DisplayDatabases(new string[]{});
+                var directoryExists = await _filesystem.DirectoryExists(selectedFolder);
+
+                if (selectedFolder.NotEmpty() && directoryExists)
+                {
+                    var iRestoreModel = await BuildViewModel(selectedFolder);
+                    _view.SetSites(iRestoreModel);
+                }
+                else
+                {
+                    _view.DisplayDatabases(new string[]{});
+                }
+
+                _view.SetRestoreButtonTitle(Settings.Buttons.Restore);
             }
 
-            _view.SetRestoreButtonTitle(Settings.Buttons.Restore);
             _view.SetRestoreButton(null);
         }
 
