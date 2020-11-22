@@ -14,13 +14,15 @@ namespace Sifon.Code.Model.Profiles
         public string PortalPassword { get; set; } = String.Empty;
         public bool SendCrashDetails { get; set; }
         public string PluginsRepository { get; set; } = String.Empty;
-
+        public bool AlignVersions { get; set; }
+        
         #region Constructors
 
         public SettingRecord()
         {
             SendCrashDetails = true;
             PluginsRepository = Settings.PluginRepository;
+            AlignVersions = true;
         }
         public SettingRecord(XmlNode _node)
         {

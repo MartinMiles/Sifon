@@ -111,6 +111,7 @@ namespace Sifon.Code.Statics
             public const string SqlCredentials = "SqlCredentials";
             public const string PortalCredentials = "PortalCredentials";
             public const string PluginsRepository = "PluginsRepository";
+            public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
 
             //from containers

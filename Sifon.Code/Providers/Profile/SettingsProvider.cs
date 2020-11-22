@@ -54,6 +54,7 @@ namespace Sifon.Code.Providers.Profile
         {
             _entity.SendCrashDetails = crashDetails.SendCrashDetails;
             _entity.PluginsRepository = crashDetails.PluginsRepository;
+            _entity.AlignVersions = crashDetails.AlignVersions;
 
             SaveSettings();
         }
@@ -74,7 +75,14 @@ namespace Sifon.Code.Providers.Profile
             if (_entity.PortalUsername.NotEmpty() && _entity.PortalPassword.NotEmpty())
             {
                 TestScriptSettingsParameters(parameters, _entity.PortalUsername, _entity.PortalPassword);
+            }
+
+            if (_entity.PluginsRepository.NotEmpty())
+            {
+                string branch = _entity.AlignVersions ? $"v{Settings.VersionNumber}" : "master";
+
                 parameters.Add(Settings.Parameters.PluginsRepository, _entity.PluginsRepository);
+                parameters.Add(Settings.Parameters.VersionBranch, branch);
             }
         }
 

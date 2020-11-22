@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using Sifon.Forms.Base;
 using Sifon.Code.Statics;
+using Sifon.Code.Encryption;
 
 namespace Sifon.Forms.About
 {
@@ -25,7 +26,7 @@ namespace Sifon.Forms.About
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Navigate("mailto:Sitecore.Professional@gmail.com");
+            Navigate("mailto:Sitecore.Professional@gmail.com?subject=Sifon");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -50,6 +51,11 @@ namespace Sifon.Forms.About
             {
                 credits.Dispose();
             }
+        }
+
+        private void PictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ShowInfo("Sifon ID", new SaltProvider().UUID);
         }
     }
 }
