@@ -76,7 +76,8 @@ namespace Sifon.Code.ScriptGenerators
         protected void ShowFinalOutput(string operationName)
         {
             executionScript += Environment.NewLine;
-            executionScript += $@"Write-Output ""#COLOR:Green# {operationName} completed.""";
+            executionScript += ".";
+            executionScript += $@"Show-Message -Fore White -Back Yellow -Text ""{operationName} completed.""";
         }
 
         protected void SaveScriptToCacheFile()
