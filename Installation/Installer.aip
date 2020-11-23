@@ -5,16 +5,17 @@
     <ROW Property="AI_ThemeStyle" Value="aero" MultiBuildValue="DefaultBuild:classic" MsiKey="AI_ThemeStyle"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="A must-have tool for any Sitecore developer" ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="sitecore.professional@gmail.com"/>
     <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="Sifon.exe" Type="8"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://Sifon.UK"/>
     <ROW Property="BannerBitmap" Value="banner" MultiBuildValue="DefaultBuild:BannerBitmap.png" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:DialogBitmap.png" Type="1" MsiKey="DialogBitmap"/>
     <ROW Property="Manufacturer" Value="Martin Miles"/>
-    <ROW Property="ProductCode" Value="1033:{A985E3DE-4166-4ACA-A9FC-8688C0F89A2B} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{723F5369-7937-4BF2-9F43-685833B0EAB1} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Sifon"/>
-    <ROW Property="ProductVersion" Value="1.00" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.01" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="TabBackground" Value="sifon2.png" Type="1" MsiKey="TabBackground"/>
@@ -41,65 +42,69 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{D35B0D03-8780-407A-A1DB-C347998C2082}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="CheckPrerequisites.ps1" ComponentId="{A5C6DD64-B1F5-48D1-8E55-6432BD62FDB6}" Directory_="Module_Dir" Attributes="0" KeyPath="CheckPrerequisites.ps1" Type="0"/>
-    <ROW Component="GetSifonPlugins.ps1" ComponentId="{CCF9E72E-5CA8-46F9-8557-FE6CDC9716FB}" Directory_="Sifon.Plugins_Dir" Attributes="0" KeyPath="GetSifonPlugins.ps1" Type="0"/>
-    <ROW Component="InitializeRemote.ps1" ComponentId="{6BABC16A-2404-4FF4-9D86-A00E8BF87DA1}" Directory_="PowerShell_Dir" Attributes="0" KeyPath="InitializeRemote.ps1" Type="0"/>
-    <ROW Component="Newtonsoft.Json.dll" ComponentId="{88DB8F2C-5DD5-48F1-8452-963E7DAC0D1C}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="GetSifonPlugins.ps1" ComponentId="{72204DE2-8AC2-46E4-A693-84F5BA1DD248}" Directory_="Sifon.Plugins_Dir" Attributes="0" KeyPath="GetSifonPlugins.ps1" Type="0"/>
+    <ROW Component="InitializeRemote.ps1" ComponentId="{6A10E68B-45BB-43E3-A5F2-CDC3D729D87B}" Directory_="PowerShell_Dir" Attributes="0" KeyPath="InitializeRemote.ps1" Type="0"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{7E087C08-8829-453D-8982-4773476AA5FD}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="ProductInformation" ComponentId="{69F1E81E-28CF-4269-9050-B01A8BD6A531}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="Sifon.Abstractions.dll" ComponentId="{9615E53B-EA96-42FC-85E1-FB3281F4297E}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Abstractions.dll"/>
-    <ROW Component="Sifon.ApiClient.dll" ComponentId="{0CE98AE9-A0D0-4F92-8571-8982438831B6}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.ApiClient.dll"/>
-    <ROW Component="Sifon.Code.dll" ComponentId="{77DC78F2-E3FA-4E65-85FC-3F5F975D9DEF}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Code.dll"/>
-    <ROW Component="Sifon.Shared.dll" ComponentId="{DA82E7B5-33B4-4336-AB67-C6A224A1DF27}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Shared.dll"/>
-    <ROW Component="Sifon.exe" ComponentId="{288E6113-D22E-4F30-A1A5-1F3EAA2CB216}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.exe"/>
+    <ROW Component="Sifon.Abstractions.dll" ComponentId="{C73E5266-1BAF-47E5-9CAB-6BED0B20797E}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Abstractions.dll"/>
+    <ROW Component="Sifon.ApiClient.dll" ComponentId="{32F0C074-1EA2-4CFB-AF2D-96F992073910}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.ApiClient.dll"/>
+    <ROW Component="Sifon.Code.dll" ComponentId="{47EADBDA-85E8-4ED8-82D4-3625476E5ED2}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Code.dll"/>
+    <ROW Component="Sifon.Shared.dll" ComponentId="{3E24D6BE-2903-49D2-BEFA-4ACEF7A0977B}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.Shared.dll"/>
+    <ROW Component="Sifon.exe" ComponentId="{D2213200-ADF4-4324-9210-B87035ED0FAB}" Directory_="Sifon_Dir" Attributes="0" KeyPath="Sifon.exe"/>
+    <ROW Component="_deploy_to_modules.ps1" ComponentId="{6C5DAB54-86EF-4274-87EE-2E2C9476C9B2}" Directory_="Module_Dir" Attributes="0" KeyPath="_deploy_to_modules.ps1" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="Sifon.exe" Component_="Sifon.exe" FileName="Sifon.exe" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Newtonsoft.Json.dll" SelfReg="false"/>
-    <ROW File="Sifon.Abstractions.dll" Component_="Sifon.Abstractions.dll" FileName="SIFONA~1.DLL|Sifon.Abstractions.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.Abstractions.dll" SelfReg="false"/>
-    <ROW File="Sifon.ApiClient.dll" Component_="Sifon.ApiClient.dll" FileName="SIFONA~2.DLL|Sifon.ApiClient.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.ApiClient.dll" SelfReg="false"/>
-    <ROW File="Sifon.Code.dll" Component_="Sifon.Code.dll" FileName="SIFONC~1.DLL|Sifon.Code.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.Code.dll" SelfReg="false"/>
-    <ROW File="Sifon.Shared.dll" Component_="Sifon.Shared.dll" FileName="SIFONS~1.DLL|Sifon.Shared.dll" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.Shared.dll" SelfReg="false"/>
-    <ROW File="InitializeRemote.ps1" Component_="InitializeRemote.ps1" FileName="INITIA~1.PS1|Initialize-Remote.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Initialize-Remote.ps1" SelfReg="false"/>
-    <ROW File="CheckPrerequisites.ps1" Component_="CheckPrerequisites.ps1" FileName="CHECK-~1.PS1|Check-Prerequisites.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Check-Prerequisites.ps1" SelfReg="false"/>
-    <ROW File="CopyFileToRemote.ps1" Component_="CheckPrerequisites.ps1" FileName="COPY-F~1.PS1|Copy-FileToRemote.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Copy-FileToRemote.ps1" SelfReg="false"/>
-    <ROW File="DownloadResource.json" Component_="CheckPrerequisites.ps1" FileName="DOWNLO~1.JSO|Download-Resource.json" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Download-Resource.json" SelfReg="false"/>
-    <ROW File="DownloadResource.ps1" Component_="CheckPrerequisites.ps1" FileName="DOWNLO~1.PS1|Download-Resource.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Download-Resource.ps1" SelfReg="false"/>
-    <ROW File="ExtractBackupInfo.ps1" Component_="CheckPrerequisites.ps1" FileName="EXTRAC~1.PS1|Extract-BackupInfo.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Extract-BackupInfo.ps1" SelfReg="false"/>
-    <ROW File="FindSolrInstances.ps1" Component_="CheckPrerequisites.ps1" FileName="FIND-S~1.PS1|Find-SolrInstances.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Find-SolrInstances.ps1" SelfReg="false"/>
-    <ROW File="GetCommerceDatabases.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-CO~1.PS1|Get-CommerceDatabases.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-CommerceDatabases.ps1" SelfReg="false"/>
-    <ROW File="GetConnectionString.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-CO~2.PS1|Get-ConnectionString.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-ConnectionString.ps1" SelfReg="false"/>
-    <ROW File="GetDatabases.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-DA~1.PS1|Get-Databases.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-Databases.ps1" SelfReg="false"/>
-    <ROW File="GetDrives.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-DR~1.PS1|Get-Drives.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-Drives.ps1" SelfReg="false"/>
-    <ROW File="GetFiles.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-FI~1.PS1|Get-Files.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-Files.ps1" SelfReg="false"/>
-    <ROW File="GetHashMD5.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-HA~1.PS1|Get-HashMD5.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-HashMD5.ps1" SelfReg="false"/>
-    <ROW File="GetInstanceUrl.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-IN~1.PS1|Get-InstanceUrl.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-InstanceUrl.ps1" SelfReg="false"/>
-    <ROW File="GetSiteBindings.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-SI~1.PS1|Get-SiteBindings.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-SiteBindings.ps1" SelfReg="false"/>
-    <ROW File="GetSitecoreSites.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-SI~2.PS1|Get-SitecoreSites.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-SitecoreSites.ps1" SelfReg="false"/>
-    <ROW File="GetSiteFolder.ps1" Component_="CheckPrerequisites.ps1" FileName="GET-SI~3.PS1|Get-SiteFolder.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Get-SiteFolder.ps1" SelfReg="false"/>
-    <ROW File="InstallPrerequisites.ps1" Component_="CheckPrerequisites.ps1" FileName="INSTAL~1.PS1|Install-Prerequisites.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Install-Prerequisites.ps1" SelfReg="false"/>
-    <ROW File="InstallSitecorePackage.aspx" Component_="CheckPrerequisites.ps1" FileName="INSTAL~1.ASP|Install-SitecorePackage.aspx" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Install-SitecorePackage.aspx" SelfReg="false"/>
-    <ROW File="InstallSitecorePackage.ps1" Component_="CheckPrerequisites.ps1" FileName="INSTAL~2.PS1|Install-SitecorePackage.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Install-SitecorePackage.ps1" SelfReg="false"/>
-    <ROW File="InstallSitecorePackageUsingRemoting.ps1" Component_="CheckPrerequisites.ps1" FileName="INSTAL~3.PS1|Install-SitecorePackageUsingRemoting.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Install-SitecorePackageUsingRemoting.ps1" SelfReg="false"/>
-    <ROW File="SaveBackupInfo.ps1" Component_="CheckPrerequisites.ps1" FileName="SAVE-B~1.PS1|Save-BackupInfo.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Save-BackupInfo.ps1" SelfReg="false"/>
-    <ROW File="Sifon.psd1" Component_="CheckPrerequisites.ps1" FileName="SIFON~1.PSD|Sifon.psd1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Sifon.psd1" SelfReg="false"/>
-    <ROW File="Sifon.psm1" Component_="CheckPrerequisites.ps1" FileName="SIFON~1.PSM|Sifon.psm1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Sifon.psm1" SelfReg="false"/>
-    <ROW File="TestPortalCredentials.ps1" Component_="CheckPrerequisites.ps1" FileName="TEST-P~1.PS1|Test-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Test-PortalCredentials.ps1" SelfReg="false"/>
-    <ROW File="TestSolrEndpoint.ps1" Component_="CheckPrerequisites.ps1" FileName="TEST-S~1.PS1|Test-SolrEndpoint.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Test-SolrEndpoint.ps1" SelfReg="false"/>
-    <ROW File="TestSqlServerConnection.ps1" Component_="CheckPrerequisites.ps1" FileName="TEST-S~2.PS1|Test-SqlServerConnection.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Test-SqlServerConnection.ps1" SelfReg="false"/>
-    <ROW File="VerifyPortalCredentials.ps1" Component_="CheckPrerequisites.ps1" FileName="VERIFY~1.PS1|Verify-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Verify-PortalCredentials.ps1" SelfReg="false"/>
-    <ROW File="_deploy_to_modules.ps1" Component_="CheckPrerequisites.ps1" FileName="_DEPLO~1.PS1|_deploy_to_modules.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\_deploy_to_modules.ps1" SelfReg="false"/>
-    <ROW File="GetSifonPlugins.ps1" Component_="GetSifonPlugins.ps1" FileName="GET-SI~1.PS1|Get-SifonPlugins.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\Sifon.Plugins\Get-SifonPlugins.ps1" SelfReg="false"/>
-    <ROW File="VerifyGit.ps1" Component_="CheckPrerequisites.ps1" FileName="VERIFY~2.PS1|Verify-Git.ps1" Attributes="0" SourcePath="..\..\..\..\Sifon\PowerShell\Module\Verify-Git.ps1" SelfReg="false"/>
+    <ROW File="InitializeRemote.ps1" Component_="InitializeRemote.ps1" FileName="INITIA~1.PS1|Initialize-Remote.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Initialize-Remote.ps1" SelfReg="false"/>
+    <ROW File="GetSifonPlugins.ps1" Component_="GetSifonPlugins.ps1" FileName="GET-SI~1.PS1|Get-SifonPlugins.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.Plugins\Get-SifonPlugins.ps1" SelfReg="false"/>
+    <ROW File="Sifon.exe" Component_="Sifon.exe" FileName="Sifon.exe" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="Sifon.Abstractions.dll" Component_="Sifon.Abstractions.dll" FileName="SIFONA~1.DLL|Sifon.Abstractions.dll" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Sifon.ApiClient.dll" Component_="Sifon.ApiClient.dll" FileName="SIFONA~2.DLL|Sifon.ApiClient.dll" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.ApiClient.dll" SelfReg="false"/>
+    <ROW File="Sifon.Code.dll" Component_="Sifon.Code.dll" FileName="SIFONC~1.DLL|Sifon.Code.dll" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.Code.dll" SelfReg="false"/>
+    <ROW File="Sifon.Shared.dll" Component_="Sifon.Shared.dll" FileName="SIFONS~1.DLL|Sifon.Shared.dll" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\Sifon.Shared.dll" SelfReg="false"/>
+    <ROW File="_deploy_to_modules.ps1" Component_="_deploy_to_modules.ps1" FileName="_DEPLO~1.PS1|_deploy_to_modules.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\_deploy_to_modules.ps1" SelfReg="false"/>
+    <ROW File="CheckPrerequisites.ps1" Component_="_deploy_to_modules.ps1" FileName="CHECK-~1.PS1|Check-Prerequisites.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Check-Prerequisites.ps1" SelfReg="false"/>
+    <ROW File="CopyFileToRemote.ps1" Component_="_deploy_to_modules.ps1" FileName="COPY-F~1.PS1|Copy-FileToRemote.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Copy-FileToRemote.ps1" SelfReg="false"/>
+    <ROW File="DownloadResource.json" Component_="_deploy_to_modules.ps1" FileName="DOWNLO~1.JSO|Download-Resource.json" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Download-Resource.json" SelfReg="false"/>
+    <ROW File="DownloadResource.ps1" Component_="_deploy_to_modules.ps1" FileName="DOWNLO~1.PS1|Download-Resource.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Download-Resource.ps1" SelfReg="false"/>
+    <ROW File="ExtractBackupInfo.ps1" Component_="_deploy_to_modules.ps1" FileName="EXTRAC~1.PS1|Extract-BackupInfo.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Extract-BackupInfo.ps1" SelfReg="false"/>
+    <ROW File="FindIndexes.ps1" Component_="_deploy_to_modules.ps1" FileName="FIND-I~1.PS1|Find-Indexes.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Find-Indexes.ps1" SelfReg="false"/>
+    <ROW File="FindSolrInstances.ps1" Component_="_deploy_to_modules.ps1" FileName="FIND-S~1.PS1|Find-SolrInstances.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Find-SolrInstances.ps1" SelfReg="false"/>
+    <ROW File="GetCommerceDatabases.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-CO~1.PS1|Get-CommerceDatabases.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-CommerceDatabases.ps1" SelfReg="false"/>
+    <ROW File="GetConnectionString.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-CO~2.PS1|Get-ConnectionString.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-ConnectionString.ps1" SelfReg="false"/>
+    <ROW File="GetDatabases.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-DA~1.PS1|Get-Databases.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-Databases.ps1" SelfReg="false"/>
+    <ROW File="GetDrives.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-DR~1.PS1|Get-Drives.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-Drives.ps1" SelfReg="false"/>
+    <ROW File="GetFiles.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-FI~1.PS1|Get-Files.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-Files.ps1" SelfReg="false"/>
+    <ROW File="GetHashMD5.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-HA~1.PS1|Get-HashMD5.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-HashMD5.ps1" SelfReg="false"/>
+    <ROW File="GetInstanceUrl.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-IN~1.PS1|Get-InstanceUrl.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-InstanceUrl.ps1" SelfReg="false"/>
+    <ROW File="GetSiteBindings.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~1.PS1|Get-SiteBindings.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SiteBindings.ps1" SelfReg="false"/>
+    <ROW File="GetSitecoreSites.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~2.PS1|Get-SitecoreSites.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SitecoreSites.ps1" SelfReg="false"/>
+    <ROW File="GetSiteFolder.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~3.PS1|Get-SiteFolder.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SiteFolder.ps1" SelfReg="false"/>
+    <ROW File="InstallPrerequisites.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~1.PS1|Install-Prerequisites.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Prerequisites.ps1" SelfReg="false"/>
+    <ROW File="InstallSitecorePackage.aspx" Component_="_deploy_to_modules.ps1" FileName="INSTAL~1.ASP|Install-SitecorePackage.aspx" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-SitecorePackage.aspx" SelfReg="false"/>
+    <ROW File="InstallSitecorePackage.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~2.PS1|Install-SitecorePackage.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-SitecorePackage.ps1" SelfReg="false"/>
+    <ROW File="InstallSitecorePackageUsingRemoting.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~3.PS1|Install-SitecorePackageUsingRemoting.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-SitecorePackageUsingRemoting.ps1" SelfReg="false"/>
+    <ROW File="SaveBackupInfo.ps1" Component_="_deploy_to_modules.ps1" FileName="SAVE-B~1.PS1|Save-BackupInfo.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Save-BackupInfo.ps1" SelfReg="false"/>
+    <ROW File="ShowMessage.ps1" Component_="_deploy_to_modules.ps1" FileName="SHOW-M~1.PS1|Show-Message.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Show-Message.ps1" SelfReg="false"/>
+    <ROW File="ShowProgress.ps1" Component_="_deploy_to_modules.ps1" FileName="SHOW-P~1.PS1|Show-Progress.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Show-Progress.ps1" SelfReg="false"/>
+    <ROW File="Sifon.psd1" Component_="_deploy_to_modules.ps1" FileName="SIFON~1.PSD|Sifon.psd1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Sifon.psd1" SelfReg="false"/>
+    <ROW File="Sifon.psm1" Component_="_deploy_to_modules.ps1" FileName="SIFON~1.PSM|Sifon.psm1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Sifon.psm1" SelfReg="false"/>
+    <ROW File="TestPortalCredentials.ps1" Component_="_deploy_to_modules.ps1" FileName="TEST-P~1.PS1|Test-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Test-PortalCredentials.ps1" SelfReg="false"/>
+    <ROW File="TestSolrEndpoint.ps1" Component_="_deploy_to_modules.ps1" FileName="TEST-S~1.PS1|Test-SolrEndpoint.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Test-SolrEndpoint.ps1" SelfReg="false"/>
+    <ROW File="TestSqlServerConnection.ps1" Component_="_deploy_to_modules.ps1" FileName="TEST-S~2.PS1|Test-SqlServerConnection.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Test-SqlServerConnection.ps1" SelfReg="false"/>
+    <ROW File="VerifyGit.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~1.PS1|Verify-Git.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-Git.ps1" SelfReg="false"/>
+    <ROW File="VerifyNetCore.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~2.PS1|Verify-NetCore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-NetCore.ps1" SelfReg="false"/>
+    <ROW File="VerifyPortalCredentials.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~3.PS1|Verify-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-PortalCredentials.ps1" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="..\..\..\..\Sifon" PackageFileName="Sifon" Languages="en" InstallationType="4" ExtUI="true" UseLargeSchema="true" MsiPackageType="x64"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="tools" PackageFileName="Sifon" Languages="en" InstallationType="4" ExtUI="true" UseLargeSchema="true" MsiPackageType="x64"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -124,7 +129,7 @@
     <ROW Name="DialogBitmap.png" SourcePath="Images\DialogBitmap.png"/>
     <ROW Name="ShortcutFlags.dll" SourcePath="&lt;AI_CUSTACTS&gt;ShortcutFlags.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
-    <ROW Name="sifon2.png" SourcePath="..\..\..\..\Sifon_prev\Icons2\sifon2.png"/>
+    <ROW Name="sifon2.png" SourcePath="..\..\..\Sifon_prev\Icons2\sifon2.png"/>
     <ATTRIBUTE name="DeletedRows" value="tabback"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
@@ -188,11 +193,12 @@
     <ROW Feature_="MainFeature" Component_="Sifon.Code.dll"/>
     <ROW Feature_="MainFeature" Component_="Sifon.Shared.dll"/>
     <ROW Feature_="MainFeature" Component_="InitializeRemote.ps1"/>
-    <ROW Feature_="MainFeature" Component_="CheckPrerequisites.ps1"/>
     <ROW Feature_="MainFeature" Component_="GetSifonPlugins.ps1"/>
+    <ROW Feature_="MainFeature" Component_="_deploy_to_modules.ps1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Sifon.exe" SourcePath="Images\Sifon.ico" Index="0"/>
+    <ROW Name="Sifon_1.exe" SourcePath="..\Sifon\Sifon.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -224,8 +230,8 @@
     <ROW Registry="Version" Root="-1" Key="Software\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="Sifon" Directory_="DesktopFolder" Name="Sifon" Component_="Sifon.exe" Target="[#Sifon.exe]" Description="Sifon for Sitecore" Hotkey="0" Icon_="Sifon.exe" IconIndex="0" ShowCmd="1" WkDir="Sifon_Dir" CustomFlags="1"/>
-    <ROW Shortcut="Sifon_1" Directory_="ProgramMenuFolder" Name="Sifon" Component_="Sifon.exe" Target="[#Sifon.exe]" Description="Sifon for Sitecore" Hotkey="0" Icon_="Sifon.exe" IconIndex="0" ShowCmd="1" WkDir="Sifon_Dir"/>
+    <ROW Shortcut="Sifon" Directory_="DesktopFolder" Name="Sifon" Component_="Sifon.exe" Target="[#Sifon.exe]" Description="Sifon for Sitecore" Hotkey="0" Icon_="Sifon_1.exe" IconIndex="0" ShowCmd="1" WkDir="Sifon_Dir" CustomFlags="1"/>
+    <ROW Shortcut="Sifon_1" Directory_="ProgramMenuFolder" Name="Sifon" Component_="Sifon.exe" Target="[#Sifon.exe]" Description="Sifon for Sitecore" Hotkey="0" Icon_="Sifon_1.exe" IconIndex="0" ShowCmd="1" WkDir="Sifon_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

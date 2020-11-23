@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
-using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
@@ -27,15 +26,18 @@ namespace Sifon.Forms.MainForm
         {
             if (!_profilesProvider.Any)
             {
+                // first time run
                 if (!view.ShowFirstRunDialog())
                 {
                     throw new InvalidOperationException("Exited by user");
                 }
-
+                
                 var provider = Create.New<IProfilesProvider>();
                 provider.Save();
 
-                view.ForceProfileDialogOnFirstRun();
+                CreateDummyProfile(provider);
+
+                //view.ForceProfileDialogOnFirstRun();
                 _profilesProvider.Read();
             }
 
@@ -45,9 +47,17 @@ namespace Sifon.Forms.MainForm
             _view.BackupToolStripClicked += BackupToolStripClicked;
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
-            //_view.ScriptToolStripClicked += ScriptToolStripClicked;
             _view.ScriptToolStripClicked += async (s, e) => { await ScriptToolStripClicked(s, e as EventArgs<string>); };
+        }
 
+        // copied from ProfilesPresenter
+        public void CreateDummyProfile(IProfilesProvider profilesProvider)
+        {
+            var fakeLocalProfile = profilesProvider.CreateLocal();
+            fakeLocalProfile.ProfileName = Settings.ProfileNotCreated;
+            fakeLocalProfile.Prefix = "Please submit the actual values instead";
+            profilesProvider.Add(fakeLocalProfile);
+            profilesProvider.SelectProfile(fakeLocalProfile.ProfileName);
         }
 
         private string WinformsAssemblyLocation => typeof(Form).Assembly.Location;

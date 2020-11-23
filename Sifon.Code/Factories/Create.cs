@@ -48,6 +48,7 @@ namespace Sifon.Code.Factories
                 {typeof(IRemoteScriptCopier), () => new RemoteScriptCopier(profile, invoker) as T},
                 {typeof(IParametersSampleScriptGenerator), () => new ParametersSampleScriptGenerator(profile) as T},
                 {typeof(IServiceScriptGenerator), () => new ServiceScriptGenerator(profile) as T},
+                {typeof(IIndexFinder), () => new IndexFinder(profile, invoker) as T},
                 {typeof(ISolrIdentifier), () => new SolrIdentifier(invoker) as T}
             };
 
@@ -55,7 +56,7 @@ namespace Sifon.Code.Factories
         }
 
         public static IScriptWrapper<T> WithParam<T>(ISynchronizeInvoke invoker, Func<PSObject, T> convert, IProfile profile = null) 
-            where T : class
+            //where T : class
         {
             var currentProfile = profile ?? New<IProfilesProvider>().SelectedProfile;
             return new ScriptWrapper<T>(currentProfile, invoker, convert);

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Security;
+using System.Text.RegularExpressions;
+using Sifon.Code.Statics;
 
 namespace Sifon.Code.Extensions
 {
@@ -19,6 +21,30 @@ namespace Sifon.Code.Extensions
         {
             try
             {
+                if (Regex.IsMatch(filePath, ".+\\.[\\w]{1,10}$"))
+                {
+                    Path.GetFullPath(filePath);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return false;
+
+        }
+
+        public static bool IsValidDirectoryPath(this string filePath)
+        {
+            try
+            {
+                if (!Path.IsPathRooted(filePath)) return false;
+
+                if (File.Exists(filePath) && !File.GetAttributes(filePath).HasFlag(FileAttributes.Directory))
+                {
+                    return false;
+                }
+
                 Path.GetFullPath(filePath);
                 return true;
             }
@@ -27,6 +53,7 @@ namespace Sifon.Code.Extensions
                 return false;
             }
         }
+
         public static string TrimEnd(this string source, string value)
         {
             return source.EndsWith(value)

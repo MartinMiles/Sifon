@@ -87,6 +87,7 @@
             public const string Git = "Installs Git which is required for downloading plugins from a community repository";
             public const string Remoting = "Enable WinRM PowerShell Remoting client and whitelist all outbounding connections. No remote profiles will work without this enabled";
             public const string SIF = "Installs Sitecore Install Framework which is required for many basic maintenance oprations on Sitecore instance";
+            public const string NetCore = "Installs .Net Core SDK which is required for many Sitecore CLI";
             public const string InstallButton = "Click this button to process with installation of the selected prerequsites";
             public const string CloseButton = "Continue without installing prerequsites. You can install them later from Settings menu (not recommended)";
         }
@@ -94,6 +95,7 @@
         public static class SettingsForm
         {
             public const string CrashLogCheckbox = "Please leave this box checked in order to help me making Sifon better by receiving anonymous crash logs from you";
+            public const string PluginsRepository = "This is a repository to be cloned under application plugin folder from a GitHub";
             public const string DoneButton = "Clicking this button saves the changes and closes this dialog";
         }
 

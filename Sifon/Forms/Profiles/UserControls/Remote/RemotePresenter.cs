@@ -29,6 +29,8 @@ namespace Sifon.Forms.Profiles.UserControls.Remote
 
         protected override async Task Loaded(object sender, EventArgs ea)
         {
+            await Task.CompletedTask;
+
             Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
             SetValues();
 

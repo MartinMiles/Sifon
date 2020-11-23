@@ -45,7 +45,12 @@ namespace Sifon.ApiClient.Providers
             if (!EnableSendingExceptions) return String.Empty;
 
             var dict = new Dictionary<string, string> {
-                {"UUID", UUID}, {"Version", Settings.VersionNumber}, {"Message", e.Message}, {"StackTrace", e.StackTrace}
+                { "UUID", UUID},
+                { "Version", Settings.VersionNumber},
+                { "Message", e.Message},
+                { "StackTrace", e.StackTrace},
+                { "InnerMessage", e.InnerException?.Message ?? String.Empty },
+                { "InnerStackTrace", e.InnerException?.StackTrace ?? String.Empty }
             };
 
             var content = new FormUrlEncodedContent(dict.AsEnumerable());

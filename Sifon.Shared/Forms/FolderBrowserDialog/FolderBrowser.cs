@@ -24,7 +24,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
         {
             await folderTreeView.InitAndShow(profile);
             buttonNewFolder.Visible = allowCreateNewFolder;
-            Text = Statics.Controls.FolderBrowser.Caption + profile.WindowCaptionSuffix;
+            Text = $"{Statics.Controls.FolderBrowser.Caption} - {profile.WindowCaptionSuffix}";
         }
 
         private void buttonNewFolder_Click(object sender, EventArgs e)

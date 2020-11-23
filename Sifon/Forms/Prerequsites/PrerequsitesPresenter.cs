@@ -16,7 +16,7 @@ namespace Sifon.Forms.Prerequsites
     internal class PrerequsitesPresenter
     {
         private readonly IPrerequisitesView _view;
-        private readonly IScriptWrapper<Tuple<bool, bool, bool, bool>> _scriptWrapper;
+        private readonly IScriptWrapper<bool> _scriptWrapper;
 
         internal PrerequsitesPresenter(IPrerequisitesView view)
         {
@@ -26,7 +26,7 @@ namespace Sifon.Forms.Prerequsites
 
             var localProfile = Create.New<IProfilesProvider>().CreateLocal();
 
-            _scriptWrapper = Create.WithParam(_view, d => d.Convert<Tuple<bool, bool, bool, bool>>(), localProfile);
+            _scriptWrapper = Create.WithParam(_view, d => bool.Parse(d.ToString()), localProfile);
             _scriptWrapper.ProgressReady += ProgressReady;
             _scriptWrapper.ErrorReady += ErrorReady;
         }
@@ -34,17 +34,15 @@ namespace Sifon.Forms.Prerequsites
         private async void FormLoaded(object sender, EventArgs e)
         {
             await _scriptWrapper.Run(Modules.Functions.CheckPrerequisites);
-            _view.UpdateView(_scriptWrapper.Results.FirstOrDefault());
+            _view.UpdateView(_scriptWrapper.Results.ToArray());
         }
 
         private async void InstallClicked(object sender, EventArgs<IPrerequisites> e)
         {
             var parameters = new Dictionary<string, dynamic>();
 
-            parameters.Add("InstallChoco", e.Value.Chocolatey);
-            parameters.Add("InstallGit", e.Value.Git);
-            parameters.Add("InstallWinRM", e.Value.WinRM);
-            parameters.Add("InstallSIF", e.Value.SIF);
+            var InstallValues = new bool[] { e.Value.Chocolatey, e.Value.Git, e.Value.WinRM, e.Value.SIF, e.Value.NetCore };
+            parameters.Add("InstallValues", InstallValues);
 
             await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites, parameters);
 
@@ -54,7 +52,7 @@ namespace Sifon.Forms.Prerequsites
             }
             else
             {
-                _view.Success(_scriptWrapper.Results.FirstOrDefault());
+                _view.Success(_scriptWrapper.Results.ToArray());
             }
         }
 

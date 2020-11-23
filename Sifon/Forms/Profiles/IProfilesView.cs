@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Sifon.Abstractions.Events;
 using Sifon.Forms.Profiles.UserControls.Connectivity;
 using Sifon.Forms.Profiles.UserControls.Parameters;
 using Sifon.Forms.Profiles.UserControls.Remote;
@@ -12,6 +13,7 @@ namespace Sifon.Forms.Profiles
         event EventHandler<EventArgs> FormSaved;
         event EventHandler<EventArgs> BeforeFormClosing;
         event EventHandler<EventArgs> ContinueWithoutCreatingProfile;
+        event EventHandler<EventArgs<int>> TabChanged;
 
         void CloseDialog();
 

@@ -11,6 +11,8 @@ using Sifon.Code.Logger;
 using Sifon.Code.Providers.Profile;
 using Sifon.Shared.MessageBoxes;
 using Sifon.Statics;
+using Sifon.ApiClient.Providers;
+using System.Threading.Tasks;
 
 namespace Sifon
 {
@@ -69,7 +71,18 @@ namespace Sifon
                         DisplayMessage.ShowError(e.Message, $"{e.Message}{Environment.NewLine}{e.StackTrace}");
                     }
 
+                    var _settingsProvider = Create.New<ISettingsProvider>();
+                    var _apiProvider = new ApiProvider<bool> { EnableSendingExceptions = _settingsProvider.Read().SendCrashDetails };
+
+                    Task.Run(async () =>
+                        {
+                            var submitResult = await _apiProvider.SendException(e);
+                        }
+                    ).GetAwaiter().GetResult();                   
+
                     SimpleLog.Log(e);
+
+                    int k = 0;
                 }
             }
         }

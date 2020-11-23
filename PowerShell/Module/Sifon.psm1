@@ -74,3 +74,15 @@ $getInstance = $path + "\Check-Prerequisites.ps1"
 
 $getInstance = $path + "\Verify-Git.ps1"
 . $getInstance
+
+$getInstance = $path + "\Show-Message.ps1"
+. $getInstance
+
+$getInstance = $path + "\Find-Indexes.ps1"
+. $getInstance
+
+$getInstance = $path + "\Show-Progress.ps1"
+. $getInstance
+
+$getInstance = $path + "\Verify-NetCore.ps1"
+. $getInstance

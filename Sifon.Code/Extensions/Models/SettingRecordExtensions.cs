@@ -14,6 +14,8 @@ namespace Sifon.Code.Extensions.Models
             _this.PortalUsername = node.ChildNodes.GetTextValue(Xml.SettingRecord.PortalUsername, Xml.Attributes.Value);
             _this.PortalPassword = node.ChildNodes.GetTextValue(Xml.SettingRecord.PortalPassword, Xml.Attributes.Value);
             _this.SendCrashDetails = node.ChildNodes.GetBoolValue(Xml.SettingRecord.SendCrashDetails, Xml.Attributes.Value);
+            _this.PluginsRepository = node.ChildNodes.GetTextValue(Xml.SettingRecord.PluginsRepository, Xml.Attributes.Value);
+            _this.AlignVersions = node.ChildNodes.GetBoolValue(Xml.SettingRecord.AlignVersions, Xml.Attributes.Value);
         }
 
         internal static XElement Save(this ISettingRecord settingRecord, IEncryptor encryptor)
@@ -31,6 +33,14 @@ namespace Sifon.Code.Extensions.Models
             var sendCrashDetails = new XElement(Xml.SettingRecord.SendCrashDetails);
             sendCrashDetails.SetAttributeValue(Xml.Attributes.Value, settingRecord.SendCrashDetails);
             root.Add(sendCrashDetails);
+
+            var pluginsRepository = new XElement(Xml.SettingRecord.PluginsRepository);
+            pluginsRepository.SetAttributeValue(Xml.Attributes.Value, settingRecord.PluginsRepository);
+            root.Add(pluginsRepository);
+
+            var alignVersions = new XElement(Xml.SettingRecord.AlignVersions);
+            alignVersions.SetAttributeValue(Xml.Attributes.Value, settingRecord.AlignVersions);
+            root.Add(alignVersions);
 
             return root;
         }

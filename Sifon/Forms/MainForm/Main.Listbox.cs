@@ -15,7 +15,7 @@ namespace Sifon.Forms.MainForm
 
         public void AppendLine(string line, Color? color = null)
         {
-            if (!string.IsNullOrWhiteSpace(line))
+            if (!string.IsNullOrEmpty(line))
             {
                 if (color != null)
                 {

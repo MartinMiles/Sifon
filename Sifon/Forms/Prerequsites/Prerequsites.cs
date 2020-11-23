@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
@@ -54,6 +55,12 @@ namespace Sifon.Forms.Prerequsites
             get => checkSif.Checked;
             set => checkSif.Checked = value;
         }
+        
+        public bool NetCore
+        {
+            get => checkNetCore.Checked;
+            set => checkNetCore.Checked = value;
+        }
 
         #endregion
 
@@ -63,6 +70,7 @@ namespace Sifon.Forms.Prerequsites
             checkGit.Enabled = enabled;
             checkRemoting.Enabled = enabled;
             checkSif.Enabled = enabled;
+            checkNetCore.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
             buttonClose.Enabled = enabled;
@@ -77,16 +85,17 @@ namespace Sifon.Forms.Prerequsites
             progressLabel.Text = $"Progress: {percentComplete}%";
         }
 
-        public void UpdateView(Tuple<bool, bool, bool, bool> bools)
+        public void UpdateView(bool[] bools)
         {
-            checkChocolatey.Checked = bools.Item1;
-            checkGit.Checked = bools.Item2;
-            checkRemoting.Checked = bools.Item3;
-            checkSif.Checked = bools.Item4;
+            checkChocolatey.Checked = bools[0];
+            checkGit.Checked = bools[1];
+            checkRemoting.Checked = bools[2];
+            checkSif.Checked = bools[3];
+            checkNetCore.Checked = bools[4];
 
             EnableControls(true);
             
-            if (bools.Item1 && bools.Item2 && bools.Item3 && bools.Item4)
+            if (bools.All(b => b))
             {
                 labelCheckResult.Text = "You've already got all the necessary prerequsites ";
                 buttonClose.Focus();
@@ -98,12 +107,13 @@ namespace Sifon.Forms.Prerequsites
             }
         }
 
-        public void Success(Tuple<bool, bool, bool, bool> installationResult)
+        public void Success(bool[] installationResult)
         {
-            checkChocolatey.Checked = installationResult.Item1;
-            checkGit.Checked = installationResult.Item2;
-            checkRemoting.Checked = installationResult.Item3;
-            checkSif.Checked = installationResult.Item4;
+            checkChocolatey.Checked = installationResult[0];
+            checkGit.Checked = installationResult[1];
+            checkRemoting.Checked = installationResult[2];
+            checkSif.Checked = installationResult[3];
+            checkNetCore.Checked = installationResult[4];
 
             ShowInfo("Success", "Prerequsites have been installed");
             EnableControls(true);

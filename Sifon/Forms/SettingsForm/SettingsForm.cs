@@ -8,6 +8,9 @@ namespace Sifon.Forms.SettingsForm
 {
     internal partial class SettingsForm : BaseForm, ISettingsFormView, ICrashDetails
     {
+        const string MASTER =  "Use master branch of a repository";
+        const string VERSION = "Align to a version matching branch";
+
         public event EventHandler<EventArgs<ICrashDetails>> ValuesChanged = delegate { };
 
         internal SettingsForm()
@@ -18,17 +21,29 @@ namespace Sifon.Forms.SettingsForm
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+            PopulateVersionsCombo();
             Raise_FormLoaded();
             buttonSave.Focus();
+        }
+
+        private void PopulateVersionsCombo()
+        {
+            comboBranching.Items.Clear();
+            comboBranching.Items.Add(MASTER);
+            comboBranching.Items.Add(VERSION);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // No need to do validation yet as single checkbox is always valid
             // Later use this clause: if(!ValidateForm()) return;
-
-            ValuesChanged(this, new EventArgs<ICrashDetails>(this));
+            if (ValidateValues())
+            {
+                ValuesChanged(this, new EventArgs<ICrashDetails>(this));
+            }
         }
+
+        #region Interface implementation
 
         public bool SendCrashDetails
         {
@@ -36,9 +51,25 @@ namespace Sifon.Forms.SettingsForm
             set => checkBoxCrashLog.Checked = value;
         }
 
-        public void SetView(ICrashDetails entity)
+        public string PluginsRepository
         {
+            get => textRepository.Text;
+            set => textRepository.Text = value;
+        }
+
+        public bool AlignVersions
+        {
+            get => comboBranching.SelectedItem == VERSION;
+            set => comboBranching.SelectedItem = value ? VERSION : MASTER;
+        }
+
+        #endregion
+
+        public void SetView(ICrashDetails entity)
+        { 
             SendCrashDetails = entity.SendCrashDetails;
+            PluginsRepository = entity.PluginsRepository;
+            AlignVersions = entity.AlignVersions;
         }
 
         public void UpdateResult()

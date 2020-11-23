@@ -28,6 +28,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         protected override async Task Loaded(object sender, EventArgs e)
         {
             await Task.CompletedTask;
+
             _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
         }
 

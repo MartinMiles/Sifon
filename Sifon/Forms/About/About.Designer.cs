@@ -1,4 +1,7 @@
-﻿namespace Sifon.Forms.About
+﻿using System;
+using System.Windows.Forms;
+
+namespace Sifon.Forms.About
 {
     partial class About
     {
@@ -103,6 +106,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(180, 440);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDoubleClick += PictureBox1_MouseDoubleClick;
             // 
             // label17
             // 

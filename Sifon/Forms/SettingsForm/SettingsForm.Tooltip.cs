@@ -8,6 +8,7 @@ namespace Sifon.Forms.SettingsForm
         protected override void SetTooltips()
         {
             new ToolTip().SetToolTip(checkBoxCrashLog, Tooltips.SettingsForm.CrashLogCheckbox);
+            new ToolTip().SetToolTip(textRepository, Tooltips.SettingsForm.PluginsRepository);
             new ToolTip().SetToolTip(buttonSave, Tooltips.SettingsForm.DoneButton);
         }
     }

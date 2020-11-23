@@ -11,8 +11,8 @@ namespace Sifon.Forms.Prerequsites
         event EventHandler<EventArgs<IPrerequisites>> InstallClicked;
 
         void UpdateProgressBar(int percentComplete, string statusLabelText);
-        void UpdateView(Tuple<bool, bool, bool, bool> firstOrDefault);
-        void Success(Tuple<bool, bool, bool, bool> firstOrDefault);
+        void UpdateView(bool[] firstOrDefault);
+        void Success(bool[] firstOrDefault);
         void Error(Exception firstOrDefault);
     }
 }

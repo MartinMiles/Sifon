@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using Sifon.Code.Helpers;
 
 namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string VersionNumber = "1.00";
+        public const string VersionNumber = "1.01";
         public static readonly string ProductVersion = $"Sifon v{VersionNumber}";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
-
+        public const string PluginRepository = "https://github.com/MartinMiles/Sifon.Plugins.git";
+        
         internal static class Services
         {
             internal const string MarketingAutomation = "MarketingAutomationService";
@@ -111,6 +110,8 @@ namespace Sifon.Code.Statics
             public const string InstancePrefix = "InstancePrefix";
             public const string SqlCredentials = "SqlCredentials";
             public const string PortalCredentials = "PortalCredentials";
+            public const string PluginsRepository = "PluginsRepository";
+            public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
 
             //from containers

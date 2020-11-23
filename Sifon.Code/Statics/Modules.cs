@@ -23,12 +23,17 @@ namespace Sifon.Code.Statics
             internal const string ExtractBackupInfo = "Extract-BackupInfo";
             internal const string SaveBackupInfo = "Save-BackupInfo";
             internal const string FindSolrInstances = "Find-SolrInstances";
+            internal const string FindIndexes = "Find-Indexes";
             public const string TestSolrEndpoint = "Test-SolrEndpoint";
             internal const string GetDrives = "Get-Drives";
             internal const string GetFiles = "Get-Files";
             internal const string GetHashMD5 = "Get-HashMD5";
             public const string CheckPrerequisites = "Check-Prerequisites";
             public const string InstallPrerequisites = "Install-Prerequisites";
+            public const string ShowMessage = "Show-Message";
+            public const string ShowProgress = "Show-Progress";
+            public const string VerifyGit = "Verify-Git";
+            public const string VerifyNetCore = "Verify-NetCore";
         }
         
         public static class Files
@@ -56,12 +61,17 @@ namespace Sifon.Code.Statics
             public static string ExtractBackupInfo => Combine(Functions.ExtractBackupInfo);
             public static string SaveBackupInfo => Combine(Functions.SaveBackupInfo);
             public static string FindSolrInstances => Combine(Functions.FindSolrInstances);
+            public static string FindIndexes => Combine(Functions.FindIndexes);
             public static string TestSolrEndpoint => Combine(Functions.TestSolrEndpoint);
             public static string GetDrives => Combine(Functions.GetDrives);
             public static string GetFiles => Combine(Functions.GetFiles);
-            public static string GetHashMD5 => Combine(Functions.CheckPrerequisites);
+            public static string GetHashMD5 => Combine(Functions.GetHashMD5);
             public static string CheckPrerequisites => Combine(Functions.CheckPrerequisites);
             public static string InstallPrerequisites => Combine(Functions.InstallPrerequisites);
+            public static string ShowMessage => Combine(Functions.ShowMessage);
+            public static string ShowProgress => Combine(Functions.ShowProgress);
+            public static string VerifyGit => Combine(Functions.VerifyGit);
+            public static string VerifyNetCore => Combine(Functions.VerifyNetCore);
 
 
             private static string Combine(string moduleParam, string ext = null)
@@ -93,12 +103,17 @@ namespace Sifon.Code.Statics
             Files.ExtractBackupInfo,
             Files.SaveBackupInfo,
             Files.FindSolrInstances,
+            Files.FindIndexes,
             Files.TestSolrEndpoint,
             Files.GetDrives,
             Files.GetFiles,
             Files.GetHashMD5,
             Files.CheckPrerequisites,
-            Files.InstallPrerequisites
+            Files.InstallPrerequisites,
+            Files.ShowMessage,
+            Files.ShowProgress,
+            Files.VerifyGit,
+            Files.VerifyNetCore
         };
     }
 }

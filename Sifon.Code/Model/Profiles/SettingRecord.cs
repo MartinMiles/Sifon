@@ -2,6 +2,7 @@
 using System.Xml;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Extensions.Models;
+using Sifon.Code.Statics;
 
 namespace Sifon.Code.Model.Profiles
 {
@@ -12,11 +13,16 @@ namespace Sifon.Code.Model.Profiles
         public string PortalUsername { get; set; } = String.Empty;
         public string PortalPassword { get; set; } = String.Empty;
         public bool SendCrashDetails { get; set; }
-
+        public string PluginsRepository { get; set; } = String.Empty;
+        public bool AlignVersions { get; set; }
+        
         #region Constructors
 
         public SettingRecord()
         {
+            SendCrashDetails = true;
+            PluginsRepository = Settings.PluginRepository;
+            AlignVersions = true;
         }
         public SettingRecord(XmlNode _node)
         {
