@@ -19,6 +19,8 @@ namespace Sifon.Forms.Profiles.UserControls.Parameters
 
         protected override async Task Loaded(object sender, EventArgs ea)
         {
+            await Task.CompletedTask;
+
             if (Presenter.SelectedProfile == null) return;
 
             Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };

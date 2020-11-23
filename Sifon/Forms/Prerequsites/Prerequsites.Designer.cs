@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prerequsites));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkNetCore = new System.Windows.Forms.CheckBox();
             this.checkSif = new System.Windows.Forms.CheckBox();
             this.checkRemoting = new System.Windows.Forms.CheckBox();
             this.labelCheckResult = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.checkNetCore = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Host-level preprequites:";
+            // 
+            // checkNetCore
+            // 
+            this.checkNetCore.AutoSize = true;
+            this.checkNetCore.Location = new System.Drawing.Point(16, 125);
+            this.checkNetCore.Name = "checkNetCore";
+            this.checkNetCore.Size = new System.Drawing.Size(101, 17);
+            this.checkNetCore.TabIndex = 6;
+            this.checkNetCore.Text = ".NET Core SDK";
+            this.checkNetCore.UseVisualStyleBackColor = true;
             // 
             // checkSif
             // 
@@ -145,16 +155,6 @@
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // checkNetCore
-            // 
-            this.checkNetCore.AutoSize = true;
-            this.checkNetCore.Location = new System.Drawing.Point(16, 125);
-            this.checkNetCore.Name = "checkNetCore";
-            this.checkNetCore.Size = new System.Drawing.Size(119, 17);
-            this.checkNetCore.TabIndex = 6;
-            this.checkNetCore.Text = ".NET Core SDK 3.1";
-            this.checkNetCore.UseVisualStyleBackColor = true;
             // 
             // Prerequsites
             // 

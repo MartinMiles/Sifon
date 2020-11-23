@@ -31,6 +31,8 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         protected override async Task Loaded(object sender, EventArgs ea)
         {
+            await Task.CompletedTask;
+
             Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
             Presenter.RemoteInitialized += RemoteInitialized;
             Presenter.FormClosing += FormClosing;
