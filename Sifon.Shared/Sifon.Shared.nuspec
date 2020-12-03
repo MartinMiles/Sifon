@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://Sifon.UK</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/MartinMiles/Sifon/master/Sifon/Sifon.ico</iconUrl>
+    <description>Sifon.Abstractions is a shared library across all Sifon projects</description>
+    <releaseNotes>This is a counterpart DLL reference ot be used with relevant Sifon $version$ projects</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Sifon Abstractions</tags>
+    <repository type="git" url="https://github.com/MartinMiles/Sifon.Packages.git"></repository>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2" />
+    </dependencies>
+  </metadata>
+</package>
