@@ -32,7 +32,7 @@ namespace Sifon.Code.Statics
             {
                 public const string Name = @"^###\s*(?i)Name(?-i):\s*(.*)$";
                 public const string Description = @"^###\s*(?i)Description(?-i):\s*(.*)$";
-                public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d{2})";
+                public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d\\.\\d)";
                 public const string DisplayLocalOnly = "###\\s?Display:\\s?Local";
                 public const string ExecuteLocalOnly = "###\\s?Execution:\\s?Local";
 

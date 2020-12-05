@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Sifon.Shared.Forms.Base;
 using Sifon.Shared.UserControls.ThreadSafeFilePicker;
 
 namespace Sifon.Shared.Forms.LocalFilePickerDialog
 {
-    public partial class LocalFilePicker : Form
+    public partial class LocalFilePicker : BaseDialog
     {
         #region Passed parameters
 

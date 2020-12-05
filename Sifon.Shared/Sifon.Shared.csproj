@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Base\BaseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +75,12 @@
     </Compile>
     <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.Designer.cs">
       <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextEditorDialog\TextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextEditorDialog\TextEditor.Designer.cs">
+      <DependentUpon>TextEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxes\DisplayMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.resx">
       <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextEditorDialog\TextEditor.resx">
+      <DependentUpon>TextEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderTreeView.resx">
       <DependentUpon>FolderTreeView.cs</DependentUpon>

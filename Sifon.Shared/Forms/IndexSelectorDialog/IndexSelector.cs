@@ -5,10 +5,11 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Helpers;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Factories;
+using Sifon.Shared.Forms.Base;
 
 namespace Sifon.Shared.Forms.IndexSelectorDialog
 {
-    public partial class IndexSelector : Form
+    public partial class IndexSelector : BaseDialog
     {
         private IProfile _profile;
 

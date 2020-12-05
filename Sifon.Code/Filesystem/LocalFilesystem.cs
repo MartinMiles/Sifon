@@ -124,5 +124,20 @@ namespace Sifon.Code.Filesystem
             var hashProvider = new HashProvider();
             return await TaskHelper<string>.AsyncPattern(hashProvider.CalculateMD5, kernelPath);
         }
+
+        public async Task<string> ReadTextFile(string filePath)
+        {
+            await Task.CompletedTask;
+
+            if (!File.Exists(filePath)) return null;
+
+            return File.ReadAllText(filePath);
+        }
+
+        public async Task SaveTextFile(string filePath, string content)
+        {
+            await Task.CompletedTask;
+
+        }
     }
 }

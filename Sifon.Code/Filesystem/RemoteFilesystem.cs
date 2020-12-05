@@ -122,5 +122,17 @@ namespace Sifon.Code.Filesystem
             await _scriptWrapper.Run(Modules.Functions.GetHashMD5, parameters);
             return _scriptWrapper.Results.FirstOrDefault();
         }
+
+        public async Task<string> ReadTextFile(string filePath)
+        {
+            var parameters = new Dictionary<string, dynamic> { { "Path", filePath } };
+            await _scriptWrapper.Run("Get-Content", parameters);
+            return string.Join("\r\n", _scriptWrapper.Results);
+        }
+
+        public async Task SaveTextFile(string filePath, string content)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
