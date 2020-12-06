@@ -2,6 +2,7 @@
 using Sifon.Abstractions.Forms;
 using Sifon.Forms.Base;
 using System;
+using System.Windows.Forms;
 
 namespace Sifon.Forms.Solr
 {
@@ -112,5 +113,99 @@ namespace Sifon.Forms.Solr
         {
             Raise_FolderBrowserClicked(textFolder, true);
         }
+
+
+        //public void SetSolrGrid(IEnumerable<ISolrInfo> solrs, bool isRemote)
+        //{
+        //    if (solrs == null) return;
+
+        //    LoadSolrDropdown();
+
+        //    foreach (var solrUrl in solrs.Select(s => s.Url))
+        //    {
+        //        comboSolrInstances.Items.Add(solrUrl);
+        //    }
+
+        //    comboSolrInstances.Enabled = true;
+
+        //    var source = new BindingSource { DataSource = solrs };
+        //    dataGrid.Columns.Clear();
+        //    dataGrid.Rows.Clear();
+        //    dataGrid.Refresh();
+        //    dataGrid.AutoGenerateColumns = false;
+
+        //    var version = new DataGridViewTextBoxColumn
+        //    {
+        //        HeaderText = "Version",
+        //        DataPropertyName = "Version",
+        //        ReadOnly = true,
+        //        Name = "Version",
+        //        Width = 50,
+        //    };
+        //    version.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //    version.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        //    var links = new DataGridViewLinkColumn
+        //    {
+        //        UseColumnTextForLinkValue = false,
+        //        Name = "Url",
+        //        HeaderText = "URL",
+        //        ReadOnly = true,
+        //        DataPropertyName = "Url",
+        //        ActiveLinkColor = Color.White,
+        //        LinkBehavior = LinkBehavior.SystemDefault,
+        //        LinkColor = Color.Blue,
+        //        TrackVisitedState = true,
+        //        VisitedLinkColor = Color.Blue,
+        //        AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+        //        DefaultCellStyle = { SelectionBackColor = BackColor }
+        //    };
+
+        //    var buttons = new DataGridViewDisableButtonColumn
+        //    {
+        //        HeaderText = "Directory",
+        //        DataPropertyName = "Directory",
+        //        Text = "Open",
+        //        Name = "Directory",
+        //        Width = 55,
+        //        UseColumnTextForButtonValue = true
+        //    };
+        //    buttons.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+        //    dataGrid.BackgroundColor = Color.White;
+        //    dataGrid.RowHeadersVisible = false;
+        //    dataGrid.DataSource = source;
+
+        //    dataGrid.Columns.Add(version);
+        //    dataGrid.Columns.Add(links);
+        //    dataGrid.Columns.Add(buttons);
+
+        //    dataGrid.DataBindingComplete += (sender, args) => { ((DataGridView)sender).ClearSelection(); };
+        //    dataGrid.CellClick += CellClick;
+        //    dataGrid.CellToolTipTextNeeded += CellToolTipTextNeeded;
+
+        //    dataGrid.Visible = true;
+
+        //    labelSolrGrid.Text = solrs.Any() ? Messages.Profiles.Connectivity.InstancesFound : Messages.Profiles.Connectivity.Errors.InstancesNotFound;
+
+        //    dataGrid.SetButtonColumnEnable(2, !isRemote);
+        //}
+
+        //private void CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex < 0) return;
+
+        //    var item = ((BindingSource)dataGrid.DataSource).Current as SolrInfo;
+
+        //    if (item != null && e.ColumnIndex == 1 || e.ColumnIndex == 2)
+        //    {
+        //        var cell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewDisableButtonCell;
+        //        if (cell != null && cell.Enabled && ((string)cell.Value).NotEmpty())
+        //        {
+        //            Process.Start(e.ColumnIndex == 2 ? item.Directory : item.Url);
+        //        }
+        //    }
+        //}
     }
 }

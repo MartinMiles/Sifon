@@ -40,7 +40,14 @@
             this.comboVersion = new System.Windows.Forms.ComboBox();
             this.textFolder = new System.Windows.Forms.TextBox();
             this.buttonInstall = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelSolrInstances = new System.Windows.Forms.Label();
+            this.comboSolrInstances = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -164,11 +171,69 @@
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGrid);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.labelSolrInstances);
+            this.groupBox2.Controls.Add(this.comboSolrInstances);
+            this.groupBox2.Location = new System.Drawing.Point(13, 141);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(286, 190);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Instances:";
+            // 
+            // labelSolrInstances
+            // 
+            this.labelSolrInstances.AutoSize = true;
+            this.labelSolrInstances.Location = new System.Drawing.Point(15, 27);
+            this.labelSolrInstances.Name = "labelSolrInstances";
+            this.labelSolrInstances.Size = new System.Drawing.Size(145, 13);
+            this.labelSolrInstances.TabIndex = 21;
+            this.labelSolrInstances.Text = "Solr instances auto-detected:";
+            // 
+            // comboSolrInstances
+            // 
+            this.comboSolrInstances.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSolrInstances.FormattingEnabled = true;
+            this.comboSolrInstances.Location = new System.Drawing.Point(18, 43);
+            this.comboSolrInstances.Name = "comboSolrInstances";
+            this.comboSolrInstances.Size = new System.Drawing.Size(246, 21);
+            this.comboSolrInstances.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(208, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Uninstall";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGrid
+            // 
+            this.dataGrid.AllowUserToAddRows = false;
+            this.dataGrid.AllowUserToDeleteRows = false;
+            this.dataGrid.AllowUserToResizeColumns = false;
+            this.dataGrid.AllowUserToResizeRows = false;
+            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Location = new System.Drawing.Point(13, 70);
+            this.dataGrid.Name = "dataGrid";
+            this.dataGrid.ReadOnly = true;
+            this.dataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGrid.RowHeadersVisible = false;
+            this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGrid.Size = new System.Drawing.Size(267, 87);
+            this.dataGrid.TabIndex = 46;
+            this.dataGrid.Visible = false;
+            // 
             // InstallSolr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 145);
+            this.ClientSize = new System.Drawing.Size(314, 343);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -179,6 +244,9 @@
             this.Load += new System.EventHandler(this.InstallSolr_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +264,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private UserControls.LoadingCircle loadingCircle;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelSolrInstances;
+        private System.Windows.Forms.ComboBox comboSolrInstances;
+        private System.Windows.Forms.DataGridView dataGrid;
     }
 }
