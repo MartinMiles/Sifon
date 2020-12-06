@@ -89,3 +89,7 @@ $getInstance = $path + "\Verify-NetCore.ps1"
 
 $getInstance = $path + "\Install-ModuleFromGithub.ps1"
 . $getInstance
+
+$getInstance = $path + "\Install-Solr.ps1"
+. $getInstance
+

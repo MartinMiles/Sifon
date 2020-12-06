@@ -114,6 +114,12 @@ namespace Sifon.Code.Statics
             public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
 
+            //Solr installer
+            public const string SolrVersion = "Version";
+            public const string SolrHostname = "Hostname";
+            public const string SolrPort = "Port";
+            public const string SolrFolder = "Folder"; 
+
             //from containers
             public const string ContainerProfileName = "ContainerProfileName";
             public const string Repository = "Repository";

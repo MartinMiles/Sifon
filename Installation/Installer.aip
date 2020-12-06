@@ -99,6 +99,8 @@
     <ROW File="VerifyGit.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~1.PS1|Verify-Git.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-Git.ps1" SelfReg="false"/>
     <ROW File="VerifyNetCore.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~2.PS1|Verify-NetCore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-NetCore.ps1" SelfReg="false"/>
     <ROW File="VerifyPortalCredentials.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~3.PS1|Verify-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-PortalCredentials.ps1" SelfReg="false"/>
+    <ROW File="InstallModuleFromGithub.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~4.PS1|Install-ModuleFromGithub.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-ModuleFromGithub.ps1" SelfReg="false"/>
+    <ROW File="InstallSolr.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~5.PS1|Install-Solr.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Solr.ps1" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>

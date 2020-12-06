@@ -42,12 +42,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +122,22 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
+    <Compile Include="Forms\Solr\IInstallSolr.cs" />
+    <Compile Include="Forms\Solr\InstallSolr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Designer.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Tooltip.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Validation.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolrPresenter.cs" />
     <Compile Include="Forms\Updates\CheckUpdates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Solr\InstallSolr.resx">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Updates\CheckUpdates.resx">
       <DependentUpon>CheckUpdates.cs</DependentUpon>

@@ -45,6 +45,7 @@
     <Compile Include="Formatters\IFormatter.cs" />
     <Compile Include="Forms\IFeedback.cs" />
     <Compile Include="Forms\IPrerequisites.cs" />
+    <Compile Include="Forms\ISolrInstall.cs" />
     <Compile Include="Helpers\IIndexFinder.cs" />
     <Compile Include="Helpers\ISolrIdentifier.cs" />
     <Compile Include="Messages\IDisplayMessage.cs" />

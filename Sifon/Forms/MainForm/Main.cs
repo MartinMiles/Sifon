@@ -183,6 +183,13 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
+        private void installSolrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Solr.InstallSolr { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
+
         #endregion
 
         public void BeginUI()
@@ -255,6 +262,5 @@ namespace Sifon.Forms.MainForm
             MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             End();
         }
-
     }
 }

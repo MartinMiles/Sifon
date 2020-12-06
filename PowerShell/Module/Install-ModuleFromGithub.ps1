@@ -6,7 +6,7 @@ function Install-ModuleFromGithub
 {
 	$moduleFolder = "c:\Program Files\WindowsPowerShell\Modules\$ModuleName\"
 	Remove-Item $moduleFolder -Recurse -ErrorAction Ignore
-	New-Item -ItemType Directory -Force -Path $moduleFolder
+	New-Item -ItemType Directory -Force -Path $moduleFolder | Out-Null
 
 	$psm = "$ModuleName.psm1"
 	Invoke-RestMethod ($UriBase) -OutFile ($moduleFolder + $psm)

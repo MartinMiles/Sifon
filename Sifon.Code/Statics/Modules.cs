@@ -35,6 +35,7 @@ namespace Sifon.Code.Statics
             public const string VerifyGit = "Verify-Git";
             public const string VerifyNetCore = "Verify-NetCore";
             public const string InstallModuleFromGithub = "Install-ModuleFromGithub";
+            public const string InstallSolr = "Install-Solr";
         }
         
         public static class Files
@@ -74,7 +75,7 @@ namespace Sifon.Code.Statics
             public static string VerifyGit => Combine(Functions.VerifyGit);
             public static string VerifyNetCore => Combine(Functions.VerifyNetCore);
             public static string InstallModuleFromGithub => Combine(Functions.InstallModuleFromGithub);
-
+            public static string InstallSolr => Combine(Functions.InstallSolr);
 
             private static string Combine(string moduleParam, string ext = null)
             {
@@ -116,7 +117,8 @@ namespace Sifon.Code.Statics
             Files.ShowProgress,
             Files.VerifyGit,
             Files.VerifyNetCore,
-            Files.InstallModuleFromGithub
+            Files.InstallModuleFromGithub,
+            Files.InstallSolr
         };
     }
 }
