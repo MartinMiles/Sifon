@@ -34,16 +34,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textFolderSuffix = new System.Windows.Forms.TextBox();
-            this.buttonBackupLocation = new System.Windows.Forms.Button();
+            this.buttonLocation = new System.Windows.Forms.Button();
             this.labelFolder = new System.Windows.Forms.Label();
             this.textPort = new System.Windows.Forms.TextBox();
             this.comboVersion = new System.Windows.Forms.ComboBox();
             this.textFolder = new System.Windows.Forms.TextBox();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelSolrInstances = new System.Windows.Forms.Label();
-            this.comboSolrInstances = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.loadingCircleGrid = new Sifon.UserControls.LoadingCircle();
+            this.labelSolrGrid = new System.Windows.Forms.Label();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,25 +55,25 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textFolderSuffix);
-            this.groupBox1.Controls.Add(this.buttonBackupLocation);
+            this.groupBox1.Controls.Add(this.buttonLocation);
             this.groupBox1.Controls.Add(this.labelFolder);
             this.groupBox1.Controls.Add(this.textPort);
             this.groupBox1.Controls.Add(this.comboVersion);
             this.groupBox1.Controls.Add(this.textFolder);
             this.groupBox1.Controls.Add(this.buttonInstall);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 166);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 122);
+            this.groupBox1.Size = new System.Drawing.Size(300, 122);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Parameters:";
+            this.groupBox1.Text = "Install new Solr instance:";
             // 
             // loadingCircle
             // 
             this.loadingCircle.Active = false;
             this.loadingCircle.Color = System.Drawing.Color.DarkGray;
             this.loadingCircle.InnerCircleRadius = 5;
-            this.loadingCircle.Location = new System.Drawing.Point(136, 83);
+            this.loadingCircle.Location = new System.Drawing.Point(150, 83);
             this.loadingCircle.Name = "loadingCircle";
             this.loadingCircle.NumberSpoke = 12;
             this.loadingCircle.OuterCircleRadius = 11;
@@ -106,21 +105,21 @@
             // 
             // textFolderSuffix
             // 
-            this.textFolderSuffix.Location = new System.Drawing.Point(179, 43);
+            this.textFolderSuffix.Location = new System.Drawing.Point(199, 43);
             this.textFolderSuffix.Name = "textFolderSuffix";
             this.textFolderSuffix.ReadOnly = true;
             this.textFolderSuffix.Size = new System.Drawing.Size(57, 20);
             this.textFolderSuffix.TabIndex = 2;
             // 
-            // buttonBackupLocation
+            // buttonLocation
             // 
-            this.buttonBackupLocation.Location = new System.Drawing.Point(235, 42);
-            this.buttonBackupLocation.Name = "buttonBackupLocation";
-            this.buttonBackupLocation.Size = new System.Drawing.Size(30, 22);
-            this.buttonBackupLocation.TabIndex = 3;
-            this.buttonBackupLocation.Text = "...";
-            this.buttonBackupLocation.UseVisualStyleBackColor = true;
-            this.buttonBackupLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
+            this.buttonLocation.Location = new System.Drawing.Point(255, 42);
+            this.buttonLocation.Name = "buttonLocation";
+            this.buttonLocation.Size = new System.Drawing.Size(30, 22);
+            this.buttonLocation.TabIndex = 3;
+            this.buttonLocation.Text = "...";
+            this.buttonLocation.UseVisualStyleBackColor = true;
+            this.buttonLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
             // 
             // labelFolder
             // 
@@ -158,58 +157,54 @@
             // 
             this.textFolder.Location = new System.Drawing.Point(20, 43);
             this.textFolder.Name = "textFolder";
-            this.textFolder.Size = new System.Drawing.Size(160, 20);
+            this.textFolder.Size = new System.Drawing.Size(180, 20);
             this.textFolder.TabIndex = 1;
             // 
             // buttonInstall
             // 
-            this.buttonInstall.Location = new System.Drawing.Point(200, 83);
+            this.buttonInstall.Location = new System.Drawing.Point(220, 83);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(65, 23);
             this.buttonInstall.TabIndex = 6;
             this.buttonInstall.Text = "Install";
             this.buttonInstall.UseVisualStyleBackColor = true;
-            this.buttonInstall.Click += new System.EventHandler(this.button1_Click);
+            this.buttonInstall.Click += new System.EventHandler(this.install_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.loadingCircleGrid);
+            this.groupBox2.Controls.Add(this.labelSolrGrid);
             this.groupBox2.Controls.Add(this.dataGrid);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.labelSolrInstances);
-            this.groupBox2.Controls.Add(this.comboSolrInstances);
-            this.groupBox2.Location = new System.Drawing.Point(13, 141);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(286, 190);
+            this.groupBox2.Size = new System.Drawing.Size(300, 148);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Instances:";
+            this.groupBox2.Text = "Existing Solr instances:";
             // 
-            // labelSolrInstances
+            // loadingCircleGrid
             // 
-            this.labelSolrInstances.AutoSize = true;
-            this.labelSolrInstances.Location = new System.Drawing.Point(15, 27);
-            this.labelSolrInstances.Name = "labelSolrInstances";
-            this.labelSolrInstances.Size = new System.Drawing.Size(145, 13);
-            this.labelSolrInstances.TabIndex = 21;
-            this.labelSolrInstances.Text = "Solr instances auto-detected:";
+            this.loadingCircleGrid.Active = false;
+            this.loadingCircleGrid.Color = System.Drawing.Color.DarkGray;
+            this.loadingCircleGrid.InnerCircleRadius = 5;
+            this.loadingCircleGrid.Location = new System.Drawing.Point(114, 73);
+            this.loadingCircleGrid.Name = "loadingCircleGrid";
+            this.loadingCircleGrid.NumberSpoke = 12;
+            this.loadingCircleGrid.OuterCircleRadius = 11;
+            this.loadingCircleGrid.RotationSpeed = 100;
+            this.loadingCircleGrid.Size = new System.Drawing.Size(75, 23);
+            this.loadingCircleGrid.SpokeThickness = 2;
+            this.loadingCircleGrid.StylePreset = Sifon.UserControls.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircleGrid.TabIndex = 51;
+            this.loadingCircleGrid.Text = "loadingCircle1";
             // 
-            // comboSolrInstances
+            // labelSolrGrid
             // 
-            this.comboSolrInstances.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboSolrInstances.FormattingEnabled = true;
-            this.comboSolrInstances.Location = new System.Drawing.Point(18, 43);
-            this.comboSolrInstances.Name = "comboSolrInstances";
-            this.comboSolrInstances.Size = new System.Drawing.Size(246, 21);
-            this.comboSolrInstances.TabIndex = 22;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(208, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Uninstall";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelSolrGrid.AutoSize = true;
+            this.labelSolrGrid.Location = new System.Drawing.Point(15, 27);
+            this.labelSolrGrid.Name = "labelSolrGrid";
+            this.labelSolrGrid.Size = new System.Drawing.Size(0, 13);
+            this.labelSolrGrid.TabIndex = 47;
             // 
             // dataGrid
             // 
@@ -218,7 +213,7 @@
             this.dataGrid.AllowUserToResizeColumns = false;
             this.dataGrid.AllowUserToResizeRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(13, 70);
+            this.dataGrid.Location = new System.Drawing.Point(18, 43);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -232,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 343);
+            this.ClientSize = new System.Drawing.Size(323, 300);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -260,14 +255,13 @@
         private System.Windows.Forms.TextBox textPort;
         private System.Windows.Forms.Label labelFolder;
         private System.Windows.Forms.TextBox textFolderSuffix;
-        private System.Windows.Forms.Button buttonBackupLocation;
+        private System.Windows.Forms.Button buttonLocation;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private UserControls.LoadingCircle loadingCircle;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelSolrInstances;
-        private System.Windows.Forms.ComboBox comboSolrInstances;
         private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.Label labelSolrGrid;
+        private UserControls.LoadingCircle loadingCircleGrid;
     }
 }

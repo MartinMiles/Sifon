@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupSQL = new System.Windows.Forms.GroupBox();
+            this.buttonInstallSolr = new System.Windows.Forms.Button();
             this.loadingCircle = new Sifon.UserControls.LoadingCircle();
             this.buttonTest = new System.Windows.Forms.Button();
             this.textSolr = new System.Windows.Forms.TextBox();
@@ -46,6 +47,7 @@
             // 
             // groupSQL
             // 
+            this.groupSQL.Controls.Add(this.buttonInstallSolr);
             this.groupSQL.Controls.Add(this.loadingCircle);
             this.groupSQL.Controls.Add(this.buttonTest);
             this.groupSQL.Controls.Add(this.textSolr);
@@ -63,6 +65,16 @@
             this.groupSQL.TabIndex = 30;
             this.groupSQL.TabStop = false;
             this.groupSQL.Text = "Connectivity:";
+            // 
+            // buttonInstallSolr
+            // 
+            this.buttonInstallSolr.Location = new System.Drawing.Point(224, 86);
+            this.buttonInstallSolr.Name = "buttonInstallSolr";
+            this.buttonInstallSolr.Size = new System.Drawing.Size(65, 23);
+            this.buttonInstallSolr.TabIndex = 51;
+            this.buttonInstallSolr.Text = "Install Solr";
+            this.buttonInstallSolr.UseVisualStyleBackColor = true;
+            this.buttonInstallSolr.Click += new System.EventHandler(this.buttonInstallSolr_Click);
             // 
             // loadingCircle
             // 
@@ -84,7 +96,7 @@
             // 
             this.buttonTest.Location = new System.Drawing.Point(224, 135);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(62, 22);
+            this.buttonTest.Size = new System.Drawing.Size(65, 22);
             this.buttonTest.TabIndex = 49;
             this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -127,7 +139,7 @@
             this.dataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGrid.RowHeadersVisible = false;
             this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGrid.Size = new System.Drawing.Size(267, 87);
+            this.dataGrid.Size = new System.Drawing.Size(270, 87);
             this.dataGrid.TabIndex = 45;
             this.dataGrid.Visible = false;
             // 
@@ -155,7 +167,7 @@
             this.comboSolrInstances.FormattingEnabled = true;
             this.comboSolrInstances.Location = new System.Drawing.Point(19, 88);
             this.comboSolrInstances.Name = "comboSolrInstances";
-            this.comboSolrInstances.Size = new System.Drawing.Size(267, 21);
+            this.comboSolrInstances.Size = new System.Drawing.Size(199, 21);
             this.comboSolrInstances.TabIndex = 20;
             this.comboSolrInstances.SelectedIndexChanged += new System.EventHandler(this.comboSolr_SelectedIndexChanged);
             // 
@@ -172,7 +184,7 @@
             // 
             this.buttonSqlConnection.Location = new System.Drawing.Point(224, 38);
             this.buttonSqlConnection.Name = "buttonSqlConnection";
-            this.buttonSqlConnection.Size = new System.Drawing.Size(62, 23);
+            this.buttonSqlConnection.Size = new System.Drawing.Size(65, 23);
             this.buttonSqlConnection.TabIndex = 17;
             this.buttonSqlConnection.Text = "Edit";
             this.buttonSqlConnection.UseVisualStyleBackColor = true;
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Label labelSolr;
         private System.Windows.Forms.Button buttonTest;
         private Sifon.UserControls.LoadingCircle loadingCircle;
+        private System.Windows.Forms.Button buttonInstallSolr;
     }
 }

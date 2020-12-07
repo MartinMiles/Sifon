@@ -7,8 +7,18 @@ function Install-Solr
 	[bool]$Uninstall = $false
 )
 {
-	if(Test-Path ($Folder + '\solr-' + $Version)){
+	[bool]$folderExists = Test-Path ($Folder + '\solr-' + $Version)
+
+	if($folderExists)
+	{
 		if($false -eq $Uninstall){
+			return $false
+		}
+	}
+
+	if(!($folderExists))
+	{
+		if($true -eq $Uninstall){
 			return $false
 		}
 	}

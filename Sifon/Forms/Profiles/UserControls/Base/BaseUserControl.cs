@@ -30,7 +30,6 @@ namespace Sifon.Forms.Profiles.UserControls.Base
             {
                 await LoadedAsync(this, new EventArgs());
             }
-            //Loaded(this, e);
         }
 
         public override void SetTooltips()

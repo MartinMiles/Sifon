@@ -7,7 +7,6 @@ namespace Sifon.Statics
     {
         public const string ColorPattern = @"#COLOR:(\w{2,12})# *";
 
-
         public static class Feedback
         {
             public const string Name = @"^[A-Za-z0-9-+()@ .,_]*$";
@@ -39,6 +38,13 @@ namespace Sifon.Statics
             public const string AdminUsername = @"^[A-Za-z0-9-._]*$";
             public const string AdminPassword = @"[^\ ]";
         }
+
+        public static class InstallSolr
+        {
+            public const string Folder = @"^[a-zA-Z]:\\(((?![<>:""\/\\|?*]).)+((?<![ .])\\)?)*$";
+            public const string Port = @"^\d{2,5}$";
+        }
+
         public static class SqlSettings
         {
             public const string Name = @"^[A-Za-z0-9-. _]*$";

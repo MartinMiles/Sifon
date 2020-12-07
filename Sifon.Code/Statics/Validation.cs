@@ -2,6 +2,12 @@
 {
     public static class Validation
     {
+        public static class InstallSolr
+        {
+            public const string Folder = "Please provide valid folder path to install into";
+            public const string Port = "Please provide valid ports number";
+        }
+
         public static class General
         {
             public const string ErrorsList = "The following error(s) occur:\n\n";

@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Forms\Updates\CheckUpdatesPresenter.cs" />
     <Compile Include="Forms\Updates\ICheckUpdatesView.cs" />
+    <Compile Include="Forms\Solr\SolrHelper.cs" />
     <Compile Include="Statics\ControlSettings.cs" />
     <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="UserControls\LoadingCircle.cs">

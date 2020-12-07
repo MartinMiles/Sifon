@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Sifon.Statics;
 
 namespace Sifon.Forms.Solr
 {
@@ -6,13 +7,13 @@ namespace Sifon.Forms.Solr
     {
         protected override void SetTooltips()
         {
-            //new ToolTip().SetToolTip(checkChocolatey, Tooltips.Prerequsites.Chocolatey);
-            //new ToolTip().SetToolTip(checkGit, Tooltips.Prerequsites.Git);
-            //new ToolTip().SetToolTip(checkRemoting, Tooltips.Prerequsites.Remoting);
-            //new ToolTip().SetToolTip(checkSif, Tooltips.Prerequsites.SIF);
-            //new ToolTip().SetToolTip(checkNetCore, Tooltips.Prerequsites.NetCore);
-            //new ToolTip().SetToolTip(buttonInstall, Tooltips.Prerequsites.InstallButton);
-            //new ToolTip().SetToolTip(buttonClose, Tooltips.Prerequsites.CloseButton);
+            new ToolTip().SetToolTip(textFolder, Tooltips.InstallSolr.Folder);
+            new ToolTip().SetToolTip(textFolderSuffix, Tooltips.InstallSolr.FolderSuffix);
+            new ToolTip().SetToolTip(buttonLocation, Tooltips.InstallSolr.Location);
+            new ToolTip().SetToolTip(comboVersion, Tooltips.InstallSolr.Version);
+            new ToolTip().SetToolTip(textPort, Tooltips.InstallSolr.Port);
+            new ToolTip().SetToolTip(buttonInstall, Tooltips.InstallSolr.InstallButton);
+            new ToolTip().SetToolTip(dataGrid, Tooltips.InstallSolr.Grid);
         }
     }
 }

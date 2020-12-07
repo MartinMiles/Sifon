@@ -119,6 +119,7 @@ namespace Sifon.Code.Statics
             public const string SolrHostname = "Hostname";
             public const string SolrPort = "Port";
             public const string SolrFolder = "Folder"; 
+            public const string SolrUninstall = "Uninstall"; 
 
             //from containers
             public const string ContainerProfileName = "ContainerProfileName";
