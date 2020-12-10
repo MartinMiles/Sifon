@@ -6,7 +6,7 @@ using Sifon.Code.Statics;
 
 namespace Sifon.Code.Model.Profiles
 {
-    internal class SettingRecord : ISettingRecord, ICrashDetails
+    internal class SettingRecord : ISettingRecord
     {
         protected XmlNode node;
 
@@ -14,6 +14,7 @@ namespace Sifon.Code.Model.Profiles
         public string PortalPassword { get; set; } = String.Empty;
         public bool SendCrashDetails { get; set; }
         public string PluginsRepository { get; set; } = String.Empty;
+        public string CustomPluginsFolder { get; set; } = String.Empty;
         public bool AlignVersions { get; set; }
         
         #region Constructors

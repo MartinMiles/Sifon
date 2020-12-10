@@ -20,6 +20,7 @@ namespace Sifon.Forms.MainForm
         public event EventHandler<EventArgs> ScriptFinishRequested = delegate { };
         public event EventHandler<EventArgs<string>> SelectedProfileChanged = delegate { };
         public event EventHandler<EventArgs> ProfilesToolStripClicked = delegate { };
+        public event EventHandler<EventArgs> SettingsChanged = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked = delegate { };
@@ -176,10 +177,15 @@ namespace Sifon.Forms.MainForm
             form.ShowDialog();
             form.Dispose();
         }
+
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var form = new SettingsForm.SettingsForm { StartPosition = FormStartPosition.CenterParent };
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                SettingsChanged(this, new EventArgs());
+            }
+
             form.Dispose();
         }
 

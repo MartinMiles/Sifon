@@ -50,11 +50,12 @@ namespace Sifon.Code.Providers.Profile
             SaveSettings();
         }
 
-        public void SaveCrashDetails(ICrashDetails crashDetails)
+        public void SaveCrashDetails(ICrashDetails settings)
         {
-            _entity.SendCrashDetails = crashDetails.SendCrashDetails;
-            _entity.PluginsRepository = crashDetails.PluginsRepository;
-            _entity.AlignVersions = crashDetails.AlignVersions;
+            _entity.SendCrashDetails = settings.SendCrashDetails;
+            _entity.PluginsRepository = settings.PluginsRepository;
+            _entity.CustomPluginsFolder = settings.CustomPluginsFolder;
+            _entity.AlignVersions = settings.AlignVersions;
 
             SaveSettings();
         }

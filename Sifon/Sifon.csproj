@@ -122,6 +122,8 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
+    <Compile Include="Code\DialogEnhancements\OffsetWinDialog.cs" />
+    <Compile Include="Code\DialogEnhancements\SizeWinDialog.cs" />
     <Compile Include="Forms\Solr\IInstallSolr.cs" />
     <Compile Include="Forms\Solr\InstallSolr.cs">
       <SubType>Form</SubType>
@@ -393,7 +395,7 @@
     <Compile Include="Forms\MainForm\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\StartUp\Program.cs" />
     <Compile Include="Forms\Profiles\Profiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,7 +410,7 @@
     <Compile Include="Forms\SqlSettings\SqlSettings.Designer.cs">
       <DependentUpon>SqlSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="OnStart.cs" />
+    <Compile Include="Code\StartUp\OnStart.cs" />
     <EmbeddedResource Include="Forms\About\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +533,7 @@
     <Content Include="Resources\SifonForm.ico" />
     <Content Include="Sifon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

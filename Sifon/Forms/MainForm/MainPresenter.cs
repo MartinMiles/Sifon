@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
@@ -44,6 +45,7 @@ namespace Sifon.Forms.MainForm
             _view.FormLoaded += Loaded;
             _view.SelectedProfileChanged += SelectedProfileChanged;
             _view.ProfilesToolStripClicked += ProfilesToolStripClicked;
+            _view.SettingsChanged += SettingsChanged;
             _view.BackupToolStripClicked += BackupToolStripClicked;
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
@@ -71,7 +73,8 @@ namespace Sifon.Forms.MainForm
                 var profileNames = JustReadProfileNames;
                 _view.LoadProfilesSelector(profileNames, SelectedProfile.ProfileName);
                 _view.ToolStripsEnabled(ToolStripsEnabled(profileNames));
-                _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
+
+                UpdatePluginsMenu(IsLocal);
             }
             else
             {
@@ -223,7 +226,9 @@ namespace Sifon.Forms.MainForm
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
         {
             _profilesProvider.SelectProfile(e.Value);
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
+
+            UpdatePluginsMenu(IsLocal);
+
             _view.SetCaption(_profilesProvider.SelectedProfile.WindowCaptionSuffix);
 
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
@@ -231,7 +236,8 @@ namespace Sifon.Forms.MainForm
 
         private void ProfilesToolStripClicked(object sender, EventArgs e)
         {
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), IsLocal);
+            UpdatePluginsMenu(IsLocal);
+
             _view.ToolStripsEnabled(ToolStripsEnabled(JustReadProfileNames));
 
             if (SelectedProfile != null)
@@ -243,6 +249,12 @@ namespace Sifon.Forms.MainForm
                 _view.TerminateAsEmptyProfile();
             }
         }
+
+        private void SettingsChanged(object sender, EventArgs e)
+        {
+            UpdatePluginsMenu(IsLocal);
+        }
+
 
         private bool ToolStripsEnabled(IEnumerable<string> profileNames)
         {

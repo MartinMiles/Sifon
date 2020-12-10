@@ -28,7 +28,6 @@ namespace Sifon.Forms.MainForm
         {
             pluginsToolStripMenuItem.DropDownItems.Clear();
             DirectorySearch(pluginMenuItem, pluginsToolStripMenuItem, isLocal);
-
             MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
         }
 
@@ -77,6 +76,7 @@ namespace Sifon.Forms.MainForm
                 {
                     menuItem.DirectoryName = parentMenuItem.Text;
                 }
+
 
                 parentMenuItem.Text = menuItem.DirectoryName;
 
