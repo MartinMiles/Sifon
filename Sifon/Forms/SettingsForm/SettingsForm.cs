@@ -109,7 +109,7 @@ namespace Sifon.Forms.SettingsForm
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Navigate("https://Sifon.UK");
+            Navigate("https://sifon.uk/docs/Settings.md");
         }
     }
 }
