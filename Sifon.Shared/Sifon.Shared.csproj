@@ -148,5 +148,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Downloader.ico" />
+    <Content Include="Resources\FolderBrowser.ico" />
+    <Content Include="Resources\Notepad.ico" />
+    <Content Include="Resources\Package.ico" />
+    <Content Include="Resources\Solr.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

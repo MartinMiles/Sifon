@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Downloader));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboVersion = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,7 @@
             this.groupBox1.Controls.Add(this.comboVersion);
             this.groupBox1.Location = new System.Drawing.Point(11, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(180, 60);
+            this.groupBox1.Size = new System.Drawing.Size(195, 60);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product versions";
@@ -78,9 +79,9 @@
             this.comboVersion.FormattingEnabled = true;
             this.comboVersion.Items.AddRange(new object[] {
             "Sitecore XP 10.0"});
-            this.comboVersion.Location = new System.Drawing.Point(14, 26);
+            this.comboVersion.Location = new System.Drawing.Point(15, 24);
             this.comboVersion.Name = "comboVersion";
-            this.comboVersion.Size = new System.Drawing.Size(149, 21);
+            this.comboVersion.Size = new System.Drawing.Size(164, 21);
             this.comboVersion.TabIndex = 3;
             // 
             // groupBox2
@@ -94,7 +95,7 @@
             this.groupBox2.Controls.Add(this.checkProdContainers);
             this.groupBox2.Location = new System.Drawing.Point(11, 132);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(180, 185);
+            this.groupBox2.Size = new System.Drawing.Size(195, 185);
             this.groupBox2.TabIndex = 200;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product resources";
@@ -184,7 +185,7 @@
             this.groupBox3.Controls.Add(this.checkModSalesforce);
             this.groupBox3.Controls.Add(this.checkModDynamics);
             this.groupBox3.Controls.Add(this.checkModCLI);
-            this.groupBox3.Location = new System.Drawing.Point(204, 16);
+            this.groupBox3.Location = new System.Drawing.Point(220, 16);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(304, 334);
             this.groupBox3.TabIndex = 300;
@@ -323,7 +324,7 @@
             // 
             // buttonLocation
             // 
-            this.buttonLocation.Location = new System.Drawing.Point(170, 30);
+            this.buttonLocation.Location = new System.Drawing.Point(185, 30);
             this.buttonLocation.Name = "buttonLocation";
             this.buttonLocation.Size = new System.Drawing.Size(21, 22);
             this.buttonLocation.TabIndex = 2;
@@ -334,16 +335,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 15);
+            this.label5.Location = new System.Drawing.Point(9, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 31;
-            this.label5.Text = "Download into:";
+            this.label5.Text = "Download folder:";
             // 
             // buttonDownload
             // 
             this.buttonDownload.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonDownload.Location = new System.Drawing.Point(85, 326);
+            this.buttonDownload.Location = new System.Drawing.Point(100, 326);
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(107, 23);
             this.buttonDownload.TabIndex = 24;
@@ -354,7 +355,7 @@
             // linkAll
             // 
             this.linkAll.AutoSize = true;
-            this.linkAll.Location = new System.Drawing.Point(19, 330);
+            this.linkAll.Location = new System.Drawing.Point(22, 330);
             this.linkAll.Name = "linkAll";
             this.linkAll.Size = new System.Drawing.Size(64, 13);
             this.linkAll.TabIndex = 301;
@@ -367,7 +368,7 @@
             this.textDestinationFolder.Location = new System.Drawing.Point(11, 31);
             this.textDestinationFolder.MaxLength = 255;
             this.textDestinationFolder.Name = "textDestinationFolder";
-            this.textDestinationFolder.Size = new System.Drawing.Size(160, 20);
+            this.textDestinationFolder.Size = new System.Drawing.Size(175, 20);
             this.textDestinationFolder.TabIndex = 1;
             this.textDestinationFolder.TextChanged += new System.EventHandler(this.textDestinationFolder_TextChanged);
             // 
@@ -375,7 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 361);
+            this.ClientSize = new System.Drawing.Size(534, 361);
             this.Controls.Add(this.linkAll);
             this.Controls.Add(this.buttonDownload);
             this.Controls.Add(this.textDestinationFolder);
@@ -385,6 +386,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Downloader";

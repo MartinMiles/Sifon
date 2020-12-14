@@ -124,7 +124,7 @@ namespace Sifon.Shared.Forms.DownloaderDialog
 
                 if (platform == null)
                 {
-                    MessageBox.Show($"Patform {selectedPlatform} not found.\nPlease veryfy json file with the resources", "Error");
+                    MessageBox.Show($"Patform {selectedPlatform} not found.\nPlease verify json file has valid resources", "Error");
                     return;
                 }
 

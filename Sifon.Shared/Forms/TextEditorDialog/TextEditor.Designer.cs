@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextEditor));
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textContent = new System.Windows.Forms.TextBox();
@@ -78,6 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 453);
             this.Controls.Add(this.groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "TextEditor";
             this.Text = "   Editor";
