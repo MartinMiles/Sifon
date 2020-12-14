@@ -14,7 +14,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -42,12 +42,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +122,24 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsForm\SettingsFormPresenter.cs" />
+    <Compile Include="Code\DialogEnhancements\OffsetWinDialog.cs" />
+    <Compile Include="Code\DialogEnhancements\SizeWinDialog.cs" />
+    <Compile Include="Forms\Solr\IInstallSolr.cs" />
+    <Compile Include="Forms\Solr\InstallSolr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Designer.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Tooltip.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolr.Validation.cs">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Solr\InstallSolrPresenter.cs" />
     <Compile Include="Forms\Updates\CheckUpdates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +148,7 @@
     </Compile>
     <Compile Include="Forms\Updates\CheckUpdatesPresenter.cs" />
     <Compile Include="Forms\Updates\ICheckUpdatesView.cs" />
+    <Compile Include="Forms\Solr\SolrHelper.cs" />
     <Compile Include="Statics\ControlSettings.cs" />
     <Compile Include="UserControls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="UserControls\LoadingCircle.cs">
@@ -374,7 +395,7 @@
     <Compile Include="Forms\MainForm\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\StartUp\Program.cs" />
     <Compile Include="Forms\Profiles\Profiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,7 +410,7 @@
     <Compile Include="Forms\SqlSettings\SqlSettings.Designer.cs">
       <DependentUpon>SqlSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="OnStart.cs" />
+    <Compile Include="Code\StartUp\OnStart.cs" />
     <EmbeddedResource Include="Forms\About\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Solr\InstallSolr.resx">
+      <DependentUpon>InstallSolr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Updates\CheckUpdates.resx">
       <DependentUpon>CheckUpdates.cs</DependentUpon>
@@ -509,6 +533,7 @@
     <Content Include="Resources\SifonForm.ico" />
     <Content Include="Sifon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -38,7 +38,27 @@ namespace Sifon.Forms.About
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Navigate("https://www.linkedin.com/in/michaellwest/");
+            Navigate("https://www.linkedin.com/in/michaellwest");
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Navigate("https://github.com/jermdavis");
+        }
+
+        private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Navigate("https://www.linkedin.com/in/djdavis");
+        }
+
+        private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Navigate("https://michaellwest.blogspot.com");
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Navigate("https://jermdavis.wordpress.com");
         }
     }
 }

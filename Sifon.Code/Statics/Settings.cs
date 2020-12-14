@@ -5,7 +5,7 @@ namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string VersionNumber = "1.01";
+        public const string VersionNumber = "1.2.1";
         public static readonly string ProductVersion = $"Sifon v{VersionNumber}";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
@@ -32,7 +32,7 @@ namespace Sifon.Code.Statics
             {
                 public const string Name = @"^###\s*(?i)Name(?-i):\s*(.*)$";
                 public const string Description = @"^###\s*(?i)Description(?-i):\s*(.*)$";
-                public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d{2})";
+                public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d\\.\\d)";
                 public const string DisplayLocalOnly = "###\\s?Display:\\s?Local";
                 public const string ExecuteLocalOnly = "###\\s?Execution:\\s?Local";
 
@@ -113,6 +113,13 @@ namespace Sifon.Code.Statics
             public const string PluginsRepository = "PluginsRepository";
             public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
+
+            //Solr installer
+            public const string SolrVersion = "Version";
+            public const string SolrHostname = "Hostname";
+            public const string SolrPort = "Port";
+            public const string SolrFolder = "Folder"; 
+            public const string SolrUninstall = "Uninstall"; 
 
             //from containers
             public const string ContainerProfileName = "ContainerProfileName";

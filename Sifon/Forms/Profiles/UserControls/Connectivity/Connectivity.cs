@@ -147,11 +147,11 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
-                var item = ((BindingSource)dataGrid.DataSource).Current as SolrInfo;
+                var item = ((BindingSource)dataGrid.DataSource)[e.RowIndex] as SolrInfo;
 
                 if (item != null && e.ColumnIndex == 2)
                 {
-                    e.ToolTipText = item.Directory;
+                    e.ToolTipText = item.Directory.Replace("\\server\\solr", String.Empty);
                 }
             }
         }
@@ -223,6 +223,17 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
             dataGrid.Visible = false;
             loadingCircle.Visible = false;
             labelSolrGrid.Text = Messages.Profiles.Connectivity.InitializationRequired;
+        }
+
+        private void buttonInstallSolr_Click(object sender, EventArgs e)
+        {
+            var solr = new Solr.InstallSolr{ StartPosition = FormStartPosition.CenterParent };
+            if (solr.ShowDialog() == DialogResult.OK)
+            {
+                solr.Dispose();
+            }
+
+            Presenter.Raise_ProfileChangedEvent(true);
         }
     }
 }

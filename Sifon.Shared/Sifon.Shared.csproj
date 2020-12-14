@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sifon.Shared</RootNamespace>
     <AssemblyName>Sifon.Shared</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -42,6 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Downloader\Platform.cs" />
+    <Compile Include="Code\Downloader\Resource.cs" />
+    <Compile Include="Forms\Base\BaseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DownloaderDialog\Downloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DownloaderDialog\Downloader.Designer.cs">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     </Compile>
     <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.Designer.cs">
       <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextEditorDialog\TextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextEditorDialog\TextEditor.Designer.cs">
+      <DependentUpon>TextEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxes\DisplayMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +122,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\DownloaderDialog\Downloader.resx">
+      <DependentUpon>Downloader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FolderBrowserDialog\FolderBrowser.resx">
       <DependentUpon>FolderBrowser.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,9 +140,20 @@
     <EmbeddedResource Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.resx">
       <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextEditorDialog\TextEditor.resx">
+      <DependentUpon>TextEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderTreeView.resx">
       <DependentUpon>FolderTreeView.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Downloader.ico" />
+    <Content Include="Resources\FolderBrowser.ico" />
+    <Content Include="Resources\Notepad.ico" />
+    <Content Include="Resources\Package.ico" />
+    <Content Include="Resources\Solr.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

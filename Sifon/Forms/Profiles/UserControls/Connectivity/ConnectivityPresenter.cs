@@ -31,21 +31,14 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
         protected override async Task Loaded(object sender, EventArgs ea)
         {
-            await Task.CompletedTask;
-
             Presenter.ProfileChanged += async (s, e) => { await ProfileChanged(s, e as EventArgs<bool>); };
-            Presenter.RemoteInitialized += RemoteInitialized;
+            Presenter.RemoteInitialized += async (s, e) => { await RedrawForm(); };
             Presenter.FormClosing += FormClosing;
 
-            RedrawForm();
+            await RedrawForm();
         }
 
-        private void RemoteInitialized(object sender, EventArgs e)
-        {
-            RedrawForm();
-        }
-
-        private async void RedrawForm()
+        private async Task RedrawForm()
         {
             if (SelectedProfile != null)
             {
@@ -54,7 +47,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
                 _view.SetSolrValue(SelectedProfile?.Solr);
 
                 //TODO : Re-use here
-                _solrIdentifier = Create.WithCurrentProfile<ISolrIdentifier>(_view); // new SolrIdentifier( _view);
+                _solrIdentifier = Create.WithCurrentProfile<ISolrIdentifier>(_view);
                 _solrIdentifier.OnProgressReady += (sender, args) => _view.UpdateProgress(args.Value);
 
                 if (!SelectedProfile.RemotingEnabled || SelectedProfile.RemoteFolder.NotEmpty())
@@ -119,7 +112,7 @@ namespace Sifon.Forms.Profiles.UserControls.Connectivity
 
             _view.ShowSpinnerHideGrid(true);
 
-            RedrawForm();
+            await RedrawForm();
 
             _view.ToggleControls(e.Value);
         }

@@ -49,15 +49,15 @@ add-type @"
         
         $RestError = $null
         Try {
-        $response = Invoke-RestMethod -Uri $Url -Method Get -ErrorVariable RestError -ErrorAction SilentlyContinue -TimeoutSec 1
+            $response = Invoke-RestMethod -Uri $Url -Method Get -ErrorVariable RestError -ErrorAction SilentlyContinue -TimeoutSec 1
         } Catch {
-        $RestError = $_
+            $RestError = $_
         }
 
         if ($RestError)
         {
-            $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
-            $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
+            # $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
+            # $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
         }
         else {
        

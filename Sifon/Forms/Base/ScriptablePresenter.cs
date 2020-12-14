@@ -10,6 +10,7 @@ using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
+using Sifon.Code.Extensions;
 using Sifon.Forms.MainForm;
 using Sifon.Code.Factories;
 using Sifon.Code.Formatters.Output;
@@ -131,7 +132,20 @@ namespace Sifon.Forms.Base
             _view.FinishUI();
 
             bool isLocal = !_profilesProvider.SelectedProfile.RemotingEnabled;
-            _view.PopulateToolStripMenuItemWithPluginsAndScripts(GetPluginsAndScripts(Folders.Plugins), isLocal);
+            UpdatePluginsMenu(isLocal);
+        }
+
+        protected void UpdatePluginsMenu(bool isLocal)
+        {
+            var plugins = GetPluginsAndScripts(Folders.Plugins);
+
+            var customPluginsFolder = _settingsProvider.Read().CustomPluginsFolder;
+            if (customPluginsFolder.NotEmpty())
+            {
+                plugins.Combine(GetPluginsAndScripts(customPluginsFolder));
+            }
+
+            _view.PopulateToolStripMenuItemWithPluginsAndScripts(plugins, isLocal);
         }
 
         private void ObjectReady(PSObject data)

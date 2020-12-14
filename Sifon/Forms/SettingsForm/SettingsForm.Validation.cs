@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using Sifon.Code.Statics;
 using Sifon.Statics;
@@ -25,6 +26,11 @@ namespace Sifon.Forms.SettingsForm
         public bool ValidateValues()
         {
             var messages = new List<string>();
+
+            if (!Directory.Exists(CustomPluginsFolder))
+            {
+                messages.Add("User plugins folder provided does not exist on a drive");
+            }
 
             if (!Regex.IsMatch(textRepository.Text, Pattern.SettingsForm.PluginsRepository))
             {

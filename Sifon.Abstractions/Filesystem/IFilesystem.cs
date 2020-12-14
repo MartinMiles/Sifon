@@ -24,5 +24,7 @@ namespace Sifon.Abstractions.Filesystem
 
         Task<bool> DeleteDirectory(string nodeFullPath);
         Task<string> GetHashMd5(string kernelPath);
+        Task<string> ReadTextFile(string filePath);
+        Task SaveTextFile(string filePath, string content);
     }
 }

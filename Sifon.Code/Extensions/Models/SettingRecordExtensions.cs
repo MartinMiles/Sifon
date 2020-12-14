@@ -15,6 +15,7 @@ namespace Sifon.Code.Extensions.Models
             _this.PortalPassword = node.ChildNodes.GetTextValue(Xml.SettingRecord.PortalPassword, Xml.Attributes.Value);
             _this.SendCrashDetails = node.ChildNodes.GetBoolValue(Xml.SettingRecord.SendCrashDetails, Xml.Attributes.Value);
             _this.PluginsRepository = node.ChildNodes.GetTextValue(Xml.SettingRecord.PluginsRepository, Xml.Attributes.Value);
+            _this.CustomPluginsFolder = node.ChildNodes.GetTextValue(Xml.SettingRecord.CustomPluginsFolder, Xml.Attributes.Value);
             _this.AlignVersions = node.ChildNodes.GetBoolValue(Xml.SettingRecord.AlignVersions, Xml.Attributes.Value);
         }
 
@@ -37,6 +38,10 @@ namespace Sifon.Code.Extensions.Models
             var pluginsRepository = new XElement(Xml.SettingRecord.PluginsRepository);
             pluginsRepository.SetAttributeValue(Xml.Attributes.Value, settingRecord.PluginsRepository);
             root.Add(pluginsRepository);
+
+            var customPluginsFolder = new XElement(Xml.SettingRecord.CustomPluginsFolder);
+            customPluginsFolder.SetAttributeValue(Xml.Attributes.Value, settingRecord.CustomPluginsFolder);
+            root.Add(customPluginsFolder);
 
             var alignVersions = new XElement(Xml.SettingRecord.AlignVersions);
             alignVersions.SetAttributeValue(Xml.Attributes.Value, settingRecord.AlignVersions);

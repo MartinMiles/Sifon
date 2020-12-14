@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Sifon.Code.Model
 {
@@ -19,6 +20,37 @@ namespace Sifon.Code.Model
         public override string ToString()
         {
             return DirectoryName;
+        }
+
+
+        public void Combine(PluginMenuItem second)
+        {
+            this.Children.AddRange(second.Children);
+            Dedupe(this);
+
+            this.Scripts = this.Scripts.Union(second.Scripts)
+                .ToDictionary(k => k.Key, v => v.Value);
+
+            //return first;
+        }
+
+        private void Dedupe(PluginMenuItem pmi)
+        {
+            var g = pmi.Children.GroupBy(p => p.DirectoryName);
+
+            foreach (var grp in g)
+            {
+                if (grp.Count() > 1)
+                {
+                    var zeroItem = grp.ElementAt(0);
+
+                    for (int i = 1; i < grp.Count(); i++)
+                    {
+                        zeroItem.Combine(grp.ElementAt(i));
+                        pmi.Children.Remove(grp.ElementAt(i));
+                    }
+                }
+            }
         }
     }
 }

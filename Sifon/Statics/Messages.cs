@@ -82,7 +82,7 @@
             {
                 public const string SolrDetectionInProgress = "PLEASE WAIT! Identifying Solr instance in progress:";
                 public const string InitializationRequired = "Solr auto-identifier for remote is not available \nuntil you initialize remote endpoint";
-                public const string InstancesFound = "The following Solr instance have been found:";
+                public const string InstancesFound = "The following Solr instance(s) have been found:";
                 public const string TestSolrCaption = "Test Solr Connection";
                 public const string TestSolrSuccessful = "Successfully connected";
 

@@ -17,7 +17,7 @@ namespace Sifon.Shared.Validation
 
         public bool ShowValidationError(IEnumerable<string> errorList)
         {
-            var errorBuilder = new StringBuilder(Code.Statics.Validation.General.ErrorsList);
+            var errorBuilder = new StringBuilder(Sifon.Code.Statics.Validation.General.ErrorsList);
 
             foreach (var error in errorList)
             {
@@ -26,7 +26,7 @@ namespace Sifon.Shared.Validation
 
             if (errorList.Any())
             {
-                _displayMessage.ShowError(Code.Statics.Validation.General.MessageBoxCapture, errorBuilder.ToString());
+                _displayMessage.ShowError(Sifon.Code.Statics.Validation.General.MessageBoxCapture, errorBuilder.ToString());
             }
 
             return !errorList.Any();

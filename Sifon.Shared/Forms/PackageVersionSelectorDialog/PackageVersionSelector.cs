@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Sifon.Shared.Forms.Base;
 
 namespace Sifon.Shared.Forms.PackageVersionSelectorDialog
 {
-    public partial class PackageVersionSelector : Form
+    public partial class PackageVersionSelector : BaseDialog
     {
         private IEnumerable<Item> _items;
 

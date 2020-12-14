@@ -81,6 +81,17 @@
             public const string SaveButton = "Once successfully tested, click this button to add / save the provided credentials";
         }
 
+        public static class InstallSolr
+        {
+            public const string Folder = "Folder that Solr instance will be installed into";
+            public const string FolderSuffix = "An instalation subfolder for Solr instance and version";
+            public const string Location = "Click this button to browse and select a folder that Solr instance will be installed into";
+            public const string Version = "Select the version of Solr to be installed";
+            public const string Port = "Select a port for Solr instance to be served at";
+            public const string InstallButton = "Once ready, press this button to install Solr instance with the selected parameters";
+            public const string Grid = "These are the Solr instances already installed at the target";
+        }
+
         public static class Prerequsites
         {
             public const string Chocolatey = "Installs Chocolatey package management. Some plugins rely on Chocolatey for installing the dependencies";

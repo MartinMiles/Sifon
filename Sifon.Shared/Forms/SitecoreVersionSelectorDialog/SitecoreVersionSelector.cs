@@ -3,10 +3,11 @@ using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.VersionSelector;
 using Sifon.Code.VersionSelector;
+using Sifon.Shared.Forms.Base;
 
 namespace Sifon.Shared.Forms.SitecoreVersionSelectorDialog
 {
-    public partial class SitecoreVersionSelector : Form
+    public partial class SitecoreVersionSelector : BaseDialog
     {
         private IProfile _profile;
         public string _kernelPath;

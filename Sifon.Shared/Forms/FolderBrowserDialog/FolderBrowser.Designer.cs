@@ -23,10 +23,11 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FolderBrowser));
             this.buttonSelect = new System.Windows.Forms.Button();
-            this.folderTreeView = new FolderTreeView();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonNewFolder = new System.Windows.Forms.Button();
+            this.folderTreeView = new Sifon.Shared.UserControls.FolderTreeView();
             this.SuspendLayout();
             // 
             // buttonSelect
@@ -38,14 +39,6 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.buttonSelect.Text = "OK";
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
-            // 
-            // folderTreeView
-            // 
-            this.folderTreeView.Location = new System.Drawing.Point(13, 13);
-            this.folderTreeView.Name = "folderTreeView";
-            this.folderTreeView.ShowFiles = false;
-            this.folderTreeView.Size = new System.Drawing.Size(400, 360);
-            this.folderTreeView.TabIndex = 0;
             // 
             // buttonCancel
             // 
@@ -68,6 +61,14 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.buttonNewFolder.UseVisualStyleBackColor = true;
             this.buttonNewFolder.Click += new System.EventHandler(this.buttonNewFolder_Click);
             // 
+            // folderTreeView
+            // 
+            this.folderTreeView.Location = new System.Drawing.Point(13, 13);
+            this.folderTreeView.Name = "folderTreeView";
+            this.folderTreeView.ShowFiles = false;
+            this.folderTreeView.Size = new System.Drawing.Size(400, 360);
+            this.folderTreeView.TabIndex = 0;
+            // 
             // FolderBrowser
             // 
             this.AcceptButton = this.buttonSelect;
@@ -79,6 +80,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.folderTreeView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FolderBrowser";

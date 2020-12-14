@@ -7,7 +7,7 @@ using Sifon.Code.Logger;
 using Sifon.Code.Statics;
 using Sifon.Statics;
 
-namespace Sifon
+namespace Sifon.Code.StartUp
 {
     internal class OnStart
     {
