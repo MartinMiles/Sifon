@@ -77,8 +77,6 @@
             // 
             this.comboVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboVersion.FormattingEnabled = true;
-            this.comboVersion.Items.AddRange(new object[] {
-            "Sitecore XP 10.0"});
             this.comboVersion.Location = new System.Drawing.Point(15, 24);
             this.comboVersion.Name = "comboVersion";
             this.comboVersion.Size = new System.Drawing.Size(164, 21);

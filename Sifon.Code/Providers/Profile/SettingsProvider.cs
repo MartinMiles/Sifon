@@ -52,6 +52,7 @@ namespace Sifon.Code.Providers.Profile
 
         public void SaveCrashDetails(ICrashDetails settings)
         {
+            _entity.UseDownloadCDN = settings.UseDownloadCDN;
             _entity.SendCrashDetails = settings.SendCrashDetails;
             _entity.PluginsRepository = settings.PluginsRepository;
             _entity.CustomPluginsFolder = settings.CustomPluginsFolder;
@@ -85,6 +86,9 @@ namespace Sifon.Code.Providers.Profile
                 parameters.Add(Settings.Parameters.PluginsRepository, _entity.PluginsRepository);
                 parameters.Add(Settings.Parameters.VersionBranch, branch);
             }
+
+            parameters.Add(Settings.Parameters.UseDownloadCDN, _entity.UseDownloadCDN);
+
         }
 
         public void TestScriptSettingsParameters(IDictionary<string, object> parameters, string username, string password)

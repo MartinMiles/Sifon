@@ -13,6 +13,7 @@ namespace Sifon.Code.Extensions.Models
         {
             _this.PortalUsername = node.ChildNodes.GetTextValue(Xml.SettingRecord.PortalUsername, Xml.Attributes.Value);
             _this.PortalPassword = node.ChildNodes.GetTextValue(Xml.SettingRecord.PortalPassword, Xml.Attributes.Value);
+            _this.UseDownloadCDN = node.ChildNodes.GetBoolValue(Xml.SettingRecord.UseDownloadCDN, Xml.Attributes.Value);
             _this.SendCrashDetails = node.ChildNodes.GetBoolValue(Xml.SettingRecord.SendCrashDetails, Xml.Attributes.Value);
             _this.PluginsRepository = node.ChildNodes.GetTextValue(Xml.SettingRecord.PluginsRepository, Xml.Attributes.Value);
             _this.CustomPluginsFolder = node.ChildNodes.GetTextValue(Xml.SettingRecord.CustomPluginsFolder, Xml.Attributes.Value);
@@ -30,6 +31,10 @@ namespace Sifon.Code.Extensions.Models
             var password = new XElement(Xml.SettingRecord.PortalPassword);
             password.SetAttributeValue(Xml.Attributes.Value, encryptor.Encrypt(settingRecord.PortalPassword));
             root.Add(password);
+
+            var useDownloadCDn = new XElement(Xml.SettingRecord.UseDownloadCDN);
+            useDownloadCDn.SetAttributeValue(Xml.Attributes.Value, settingRecord.UseDownloadCDN);
+            root.Add(useDownloadCDn);
 
             var sendCrashDetails = new XElement(Xml.SettingRecord.SendCrashDetails);
             sendCrashDetails.SetAttributeValue(Xml.Attributes.Value, settingRecord.SendCrashDetails);
