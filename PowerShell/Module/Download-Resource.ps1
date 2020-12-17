@@ -33,5 +33,10 @@ Function Download-Resource([PSCredential]$PortalCredentials, [string]$ResourceUr
 			Install-SitecoreConfiguration  @params
 		Write-Output "Sifon-UnmuteOutput"
 	}
-	Commit-Download
+
+	# The below commented as there's no more credential required for downloading Sitecore resources (from 15/12/2020)
+	# Commit-Download
+
+	# Instead of Commit-Download just use basic Invoke-WebRequest
+	Invoke-WebRequest -Uri $ResourceUrl -OutFile $TargertFilename
 }
