@@ -26,7 +26,7 @@ namespace Sifon.Forms.SettingsForm
         {
             PopulateVersionsCombo();
             Raise_FormLoaded();
-            buttonSave.Focus();
+            buttonSave.Select();
         }
 
         private void PopulateVersionsCombo()

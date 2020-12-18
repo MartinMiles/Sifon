@@ -69,7 +69,7 @@
             this.groupBox1.Location = new System.Drawing.Point(11, 61);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(195, 60);
-            this.groupBox1.TabIndex = 100;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product versions";
             // 
@@ -80,7 +80,7 @@
             this.comboVersion.Location = new System.Drawing.Point(15, 24);
             this.comboVersion.Name = "comboVersion";
             this.comboVersion.Size = new System.Drawing.Size(164, 21);
-            this.comboVersion.TabIndex = 3;
+            this.comboVersion.TabIndex = 31;
             // 
             // groupBox2
             // 
@@ -94,7 +94,7 @@
             this.groupBox2.Location = new System.Drawing.Point(11, 132);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(195, 185);
-            this.groupBox2.TabIndex = 200;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product resources";
             // 
@@ -104,7 +104,7 @@
             this.checkProdBlobAndCDN.Location = new System.Drawing.Point(14, 112);
             this.checkProdBlobAndCDN.Name = "checkProdBlobAndCDN";
             this.checkProdBlobAndCDN.Size = new System.Drawing.Size(134, 17);
-            this.checkProdBlobAndCDN.TabIndex = 8;
+            this.checkProdBlobAndCDN.TabIndex = 45;
             this.checkProdBlobAndCDN.Text = "Blob Storage and CDN";
             this.checkProdBlobAndCDN.UseVisualStyleBackColor = true;
             // 
@@ -114,7 +114,7 @@
             this.checkProdUpgrade.Location = new System.Drawing.Point(14, 158);
             this.checkProdUpgrade.Name = "checkProdUpgrade";
             this.checkProdUpgrade.Size = new System.Drawing.Size(104, 17);
-            this.checkProdUpgrade.TabIndex = 10;
+            this.checkProdUpgrade.TabIndex = 47;
             this.checkProdUpgrade.Text = "Upgrade options";
             this.checkProdUpgrade.UseVisualStyleBackColor = true;
             // 
@@ -124,7 +124,7 @@
             this.checkProdReleaseInfo.Location = new System.Drawing.Point(14, 135);
             this.checkProdReleaseInfo.Name = "checkProdReleaseInfo";
             this.checkProdReleaseInfo.Size = new System.Drawing.Size(119, 17);
-            this.checkProdReleaseInfo.TabIndex = 9;
+            this.checkProdReleaseInfo.TabIndex = 46;
             this.checkProdReleaseInfo.Text = "Release information";
             this.checkProdReleaseInfo.UseVisualStyleBackColor = true;
             // 
@@ -134,7 +134,7 @@
             this.checkProdAzure.Location = new System.Drawing.Point(14, 89);
             this.checkProdAzure.Name = "checkProdAzure";
             this.checkProdAzure.Size = new System.Drawing.Size(111, 17);
-            this.checkProdAzure.TabIndex = 7;
+            this.checkProdAzure.TabIndex = 44;
             this.checkProdAzure.Text = "Azure AppService";
             this.checkProdAzure.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +144,7 @@
             this.checkProdOnPrem.Location = new System.Drawing.Point(14, 66);
             this.checkProdOnPrem.Name = "checkProdOnPrem";
             this.checkProdOnPrem.Size = new System.Drawing.Size(142, 17);
-            this.checkProdOnPrem.TabIndex = 6;
+            this.checkProdOnPrem.TabIndex = 43;
             this.checkProdOnPrem.Text = "On Premises deployment";
             this.checkProdOnPrem.UseVisualStyleBackColor = true;
             // 
@@ -154,7 +154,7 @@
             this.checkProdSIF.Location = new System.Drawing.Point(14, 43);
             this.checkProdSIF.Name = "checkProdSIF";
             this.checkProdSIF.Size = new System.Drawing.Size(81, 17);
-            this.checkProdSIF.TabIndex = 5;
+            this.checkProdSIF.TabIndex = 42;
             this.checkProdSIF.Text = "SIF and etc";
             this.checkProdSIF.UseVisualStyleBackColor = true;
             // 
@@ -164,7 +164,7 @@
             this.checkProdContainers.Location = new System.Drawing.Point(14, 20);
             this.checkProdContainers.Name = "checkProdContainers";
             this.checkProdContainers.Size = new System.Drawing.Size(133, 17);
-            this.checkProdContainers.TabIndex = 4;
+            this.checkProdContainers.TabIndex = 41;
             this.checkProdContainers.Text = "Container deployments";
             this.checkProdContainers.UseVisualStyleBackColor = true;
             // 
@@ -186,7 +186,7 @@
             this.groupBox3.Location = new System.Drawing.Point(220, 16);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(304, 334);
-            this.groupBox3.TabIndex = 300;
+            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Modules";
             // 
@@ -196,7 +196,7 @@
             this.checkModMigrationXDB.Location = new System.Drawing.Point(15, 301);
             this.checkModMigrationXDB.Name = "checkModMigrationXDB";
             this.checkModMigrationXDB.Size = new System.Drawing.Size(184, 17);
-            this.checkModMigrationXDB.TabIndex = 23;
+            this.checkModMigrationXDB.TabIndex = 63;
             this.checkModMigrationXDB.Text = "Sitecore xDB Data Migration Tool";
             this.checkModMigrationXDB.UseVisualStyleBackColor = true;
             // 
@@ -206,7 +206,7 @@
             this.checkModPublishing.Location = new System.Drawing.Point(15, 275);
             this.checkModPublishing.Name = "checkModPublishing";
             this.checkModPublishing.Size = new System.Drawing.Size(193, 17);
-            this.checkModPublishing.TabIndex = 22;
+            this.checkModPublishing.TabIndex = 62;
             this.checkModPublishing.Text = "Sitecore Publishing Service Module";
             this.checkModPublishing.UseVisualStyleBackColor = true;
             // 
@@ -216,7 +216,7 @@
             this.checkModJSS.Location = new System.Drawing.Point(15, 252);
             this.checkModJSS.Name = "checkModJSS";
             this.checkModJSS.Size = new System.Drawing.Size(162, 17);
-            this.checkModJSS.TabIndex = 21;
+            this.checkModJSS.TabIndex = 61;
             this.checkModJSS.Text = "Sitecore JavaScript Services";
             this.checkModJSS.UseVisualStyleBackColor = true;
             // 
@@ -226,7 +226,7 @@
             this.checkModIdentity.Location = new System.Drawing.Point(15, 229);
             this.checkModIdentity.Name = "checkModIdentity";
             this.checkModIdentity.Size = new System.Drawing.Size(102, 17);
-            this.checkModIdentity.TabIndex = 20;
+            this.checkModIdentity.TabIndex = 60;
             this.checkModIdentity.Text = "Sitecore Identity";
             this.checkModIdentity.UseVisualStyleBackColor = true;
             // 
@@ -236,7 +236,7 @@
             this.checkModHorizon.Location = new System.Drawing.Point(15, 206);
             this.checkModHorizon.Name = "checkModHorizon";
             this.checkModHorizon.Size = new System.Drawing.Size(104, 17);
-            this.checkModHorizon.TabIndex = 19;
+            this.checkModHorizon.TabIndex = 59;
             this.checkModHorizon.Text = "Sitecore Horizon";
             this.checkModHorizon.UseVisualStyleBackColor = true;
             // 
@@ -246,7 +246,7 @@
             this.checkModHeadless.Location = new System.Drawing.Point(15, 183);
             this.checkModHeadless.Name = "checkModHeadless";
             this.checkModHeadless.Size = new System.Drawing.Size(164, 17);
-            this.checkModHeadless.TabIndex = 18;
+            this.checkModHeadless.TabIndex = 58;
             this.checkModHeadless.Text = "Sitecore Headless Rendering";
             this.checkModHeadless.UseVisualStyleBackColor = true;
             // 
@@ -256,7 +256,7 @@
             this.checkModSXA.Location = new System.Drawing.Point(15, 160);
             this.checkModSXA.Name = "checkModSXA";
             this.checkModSXA.Size = new System.Drawing.Size(178, 17);
-            this.checkModSXA.TabIndex = 17;
+            this.checkModSXA.TabIndex = 57;
             this.checkModSXA.Text = "Sitecore Experience Accelerator";
             this.checkModSXA.UseVisualStyleBackColor = true;
             // 
@@ -266,7 +266,7 @@
             this.checkModDEF.Location = new System.Drawing.Point(15, 137);
             this.checkModDEF.Name = "checkModDEF";
             this.checkModDEF.Size = new System.Drawing.Size(197, 17);
-            this.checkModDEF.TabIndex = 16;
+            this.checkModDEF.TabIndex = 56;
             this.checkModDEF.Text = "Sitecore Data Exchange Framework";
             this.checkModDEF.UseVisualStyleBackColor = true;
             // 
@@ -276,7 +276,7 @@
             this.checkModCMP.Location = new System.Drawing.Point(15, 114);
             this.checkModCMP.Name = "checkModCMP";
             this.checkModCMP.Size = new System.Drawing.Size(191, 17);
-            this.checkModCMP.TabIndex = 15;
+            this.checkModCMP.TabIndex = 55;
             this.checkModCMP.Text = "Sitecore Connect for Sitecore CMP";
             this.checkModCMP.UseVisualStyleBackColor = true;
             // 
@@ -286,7 +286,7 @@
             this.checkModSalesforceCloud.Location = new System.Drawing.Point(15, 91);
             this.checkModSalesforceCloud.Name = "checkModSalesforceCloud";
             this.checkModSalesforceCloud.Size = new System.Drawing.Size(256, 17);
-            this.checkModSalesforceCloud.TabIndex = 14;
+            this.checkModSalesforceCloud.TabIndex = 54;
             this.checkModSalesforceCloud.Text = "Sitecore Connect for Salesforce Marketing Cloud";
             this.checkModSalesforceCloud.UseVisualStyleBackColor = true;
             // 
@@ -296,7 +296,7 @@
             this.checkModSalesforce.Location = new System.Drawing.Point(15, 68);
             this.checkModSalesforce.Name = "checkModSalesforce";
             this.checkModSalesforce.Size = new System.Drawing.Size(203, 17);
-            this.checkModSalesforce.TabIndex = 13;
+            this.checkModSalesforce.TabIndex = 53;
             this.checkModSalesforce.Text = "Sitecore Connect for Salesforce CRM";
             this.checkModSalesforce.UseVisualStyleBackColor = true;
             // 
@@ -306,7 +306,7 @@
             this.checkModDynamics.Location = new System.Drawing.Point(15, 45);
             this.checkModDynamics.Name = "checkModDynamics";
             this.checkModDynamics.Size = new System.Drawing.Size(283, 17);
-            this.checkModDynamics.TabIndex = 12;
+            this.checkModDynamics.TabIndex = 52;
             this.checkModDynamics.Text = "Sitecore Connect for Microsoft Dynamics 365 for Sales";
             this.checkModDynamics.UseVisualStyleBackColor = true;
             // 
@@ -316,7 +316,7 @@
             this.checkModCLI.Location = new System.Drawing.Point(15, 22);
             this.checkModCLI.Name = "checkModCLI";
             this.checkModCLI.Size = new System.Drawing.Size(84, 17);
-            this.checkModCLI.TabIndex = 11;
+            this.checkModCLI.TabIndex = 51;
             this.checkModCLI.Text = "Sitecore CLI";
             this.checkModCLI.UseVisualStyleBackColor = true;
             // 
@@ -345,7 +345,7 @@
             this.buttonDownload.Location = new System.Drawing.Point(100, 326);
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(107, 23);
-            this.buttonDownload.TabIndex = 24;
+            this.buttonDownload.TabIndex = 7;
             this.buttonDownload.Text = "Download selected resources";
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
@@ -356,7 +356,7 @@
             this.linkAll.Location = new System.Drawing.Point(22, 330);
             this.linkAll.Name = "linkAll";
             this.linkAll.Size = new System.Drawing.Size(64, 13);
-            this.linkAll.TabIndex = 301;
+            this.linkAll.TabIndex = 6;
             this.linkAll.TabStop = true;
             this.linkAll.Text = "Uncheck all";
             this.linkAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAll_LinkClicked);

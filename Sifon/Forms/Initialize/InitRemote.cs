@@ -24,6 +24,8 @@ namespace Sifon.Forms.Initialize
             Text = $"Initializing Sifon on {RemoteSettings.RemoteHost}";
 
             Raise_FormLoaded();
+
+            buttonDone.Select();
         }
 
         private void done_Click(object sender, EventArgs e)

@@ -98,7 +98,7 @@
             this.textNotes.Multiline = true;
             this.textNotes.Name = "textNotes";
             this.textNotes.Size = new System.Drawing.Size(318, 48);
-            this.textNotes.TabIndex = 30;
+            this.textNotes.TabIndex = 11;
             // 
             // labelInit
             // 
@@ -125,7 +125,7 @@
             this.textInitialize.MaxLength = 127;
             this.textInitialize.Name = "textInitialize";
             this.textInitialize.Size = new System.Drawing.Size(318, 20);
-            this.textInitialize.TabIndex = 28;
+            this.textInitialize.TabIndex = 10;
             // 
             // linkRevealSa
             // 

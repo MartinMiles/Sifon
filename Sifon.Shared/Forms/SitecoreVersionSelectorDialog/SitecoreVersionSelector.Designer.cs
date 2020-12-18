@@ -53,7 +53,7 @@
             this.buttonSelect.Location = new System.Drawing.Point(172, 87);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelect.TabIndex = 2;
+            this.buttonSelect.TabIndex = 12;
             this.buttonSelect.Text = "Select";
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonPatch_Click);
@@ -74,9 +74,9 @@
             this.comboVersions.Location = new System.Drawing.Point(21, 47);
             this.comboVersions.Name = "comboVersions";
             this.comboVersions.Size = new System.Drawing.Size(226, 21);
-            this.comboVersions.TabIndex = 0;
+            this.comboVersions.TabIndex = 11;
             // 
-            // VersionSelector
+            // SitecoreVersionSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

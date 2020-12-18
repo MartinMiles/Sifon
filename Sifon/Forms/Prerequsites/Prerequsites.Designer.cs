@@ -64,7 +64,7 @@
             this.checkNetCore.Location = new System.Drawing.Point(16, 125);
             this.checkNetCore.Name = "checkNetCore";
             this.checkNetCore.Size = new System.Drawing.Size(101, 17);
-            this.checkNetCore.TabIndex = 6;
+            this.checkNetCore.TabIndex = 5;
             this.checkNetCore.Text = ".NET Core SDK";
             this.checkNetCore.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@
             this.checkSif.Location = new System.Drawing.Point(15, 102);
             this.checkSif.Name = "checkSif";
             this.checkSif.Size = new System.Drawing.Size(207, 17);
-            this.checkSif.TabIndex = 5;
+            this.checkSif.TabIndex = 4;
             this.checkSif.Text = "Latest Sitecore Install Framework (SIF)";
             this.checkSif.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@
             this.checkRemoting.Location = new System.Drawing.Point(15, 79);
             this.checkRemoting.Name = "checkRemoting";
             this.checkRemoting.Size = new System.Drawing.Size(182, 17);
-            this.checkRemoting.TabIndex = 4;
+            this.checkRemoting.TabIndex = 3;
             this.checkRemoting.Text = "WinRM (for PowerShell remoting)";
             this.checkRemoting.UseVisualStyleBackColor = true;
             // 
