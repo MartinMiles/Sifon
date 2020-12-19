@@ -24,6 +24,16 @@ namespace Sifon.Shared.Forms.IndexSelectorDialog
             var indexFinder = Create.WithProfile<IIndexFinder>(_profile, this);
             var indexes = await indexFinder.FindAll();
 
+            if (indexes.Count() == 1 && indexes.First() == "NO_SPE")
+            {
+                ShowError(
+                    "Error retrieving indexes",
+                    "Sitecore PowerShell Remoting should be enabled at the destination machine");
+
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+
             buttonSelect.Select();
             PopulateDropdown(indexes);
             ToggleControls(true);
