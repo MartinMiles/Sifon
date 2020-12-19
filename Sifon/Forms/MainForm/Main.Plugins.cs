@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -128,11 +129,21 @@ namespace Sifon.Forms.MainForm
                         Name = fileInfo.Key,
                         Text = metacode.Name ?? fileInfo.Value,
                         Size = MenuSize,
-                        ToolTipText = metacode.Description ?? String.Empty
+                        ToolTipText = $"{metacode.Description}  (right click to edit)" ?? String.Empty,
                     };
+                    newToolStripMenuItem.MouseDown += MouseDowned;
                     newToolStripMenuItem.Click += scriptToolStripMenuItemToolStripMenuItem_Click;
                     dirToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
                 }
+            }
+        }
+
+        private void MouseDowned(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var scriptName = ((ToolStripItem)sender).Name;
+                Process.Start(scriptName);
             }
         }
 
