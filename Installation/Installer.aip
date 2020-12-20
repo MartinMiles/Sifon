@@ -101,6 +101,8 @@
     <ROW File="VerifyPortalCredentials.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~3.PS1|Verify-PortalCredentials.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-PortalCredentials.ps1" SelfReg="false"/>
     <ROW File="InstallModuleFromGithub.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~4.PS1|Install-ModuleFromGithub.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-ModuleFromGithub.ps1" SelfReg="false"/>
     <ROW File="InstallSolr.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~5.PS1|Install-Solr.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Solr.ps1" SelfReg="false"/>
+    <ROW File="ReadUrlContent.ps1" Component_="_deploy_to_modules.ps1" FileName="READ-U~1.PS1|Read-UrlContent.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Read-UrlContent.ps1" SelfReg="false"/>
+    <ROW File="GetIdentityToken.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-ID~1.PS1|Get-IdentityToken.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-IdentityToken.ps1" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
