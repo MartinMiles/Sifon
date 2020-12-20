@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonBackupLocation = new System.Windows.Forms.Button();
+            this.buttonLocation = new System.Windows.Forms.Button();
             this.pathTextbox = new System.Windows.Forms.TextBox();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.textInstanaceToBackup = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonBackupLocation
+            // buttonLocation
             // 
-            this.buttonBackupLocation.Location = new System.Drawing.Point(340, 33);
-            this.buttonBackupLocation.Name = "buttonBackupLocation";
-            this.buttonBackupLocation.Size = new System.Drawing.Size(47, 22);
-            this.buttonBackupLocation.TabIndex = 29;
-            this.buttonBackupLocation.Text = "...";
-            this.buttonBackupLocation.UseVisualStyleBackColor = true;
-            this.buttonBackupLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
+            this.buttonLocation.Location = new System.Drawing.Point(340, 33);
+            this.buttonLocation.Name = "buttonLocation";
+            this.buttonLocation.Size = new System.Drawing.Size(47, 22);
+            this.buttonLocation.TabIndex = 29;
+            this.buttonLocation.Text = "...";
+            this.buttonLocation.UseVisualStyleBackColor = true;
+            this.buttonLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
             // 
             // pathTextbox
             // 
@@ -78,7 +78,7 @@
             this.ClientSize = new System.Drawing.Size(399, 99);
             this.Controls.Add(this.textInstanaceToBackup);
             this.Controls.Add(this.buttonInstall);
-            this.Controls.Add(this.buttonBackupLocation);
+            this.Controls.Add(this.buttonLocation);
             this.Controls.Add(this.pathTextbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -92,7 +92,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonBackupLocation;
+        private System.Windows.Forms.Button buttonLocation;
         private System.Windows.Forms.TextBox pathTextbox;
         private System.Windows.Forms.Button buttonInstall;
         private System.Windows.Forms.Label textInstanaceToBackup;

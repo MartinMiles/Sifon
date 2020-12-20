@@ -11,6 +11,12 @@ namespace Sifon.Shared.Forms.Base
         public BaseDialog()
         {
             _displayMessage = new DisplayMessage();
+
+            Load += (sender, args) => SetTooltips();
+        }
+
+        protected virtual void SetTooltips()
+        {
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

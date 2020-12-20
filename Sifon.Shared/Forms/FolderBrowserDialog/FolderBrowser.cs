@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 using Sifon.Abstractions.Profiles;
+using Sifon.Shared.Forms.Base;
 
 namespace Sifon.Shared.Forms.FolderBrowserDialog
 {
-    public partial class FolderBrowser : Form
+    public partial class FolderBrowser : BaseDialog
     {
         public string SelectedPath { get; private set; }
 
