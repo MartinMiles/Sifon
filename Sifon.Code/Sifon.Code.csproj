@@ -82,6 +82,7 @@
     <Compile Include="Helpers\IndexFinder.cs" />
     <Compile Include="Helpers\PluginHelper.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
+    <Compile Include="Helpers\RequestHelper.cs" />
     <Compile Include="Helpers\SolrIdentifier.cs" />
     <Compile Include="Helpers\StaticsHelper.cs" />
     <Compile Include="Helpers\TaskHelper.cs" />

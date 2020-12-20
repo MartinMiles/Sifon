@@ -47,6 +47,7 @@
     <Compile Include="Forms\IPrerequisites.cs" />
     <Compile Include="Forms\ISolrInstall.cs" />
     <Compile Include="Helpers\IIndexFinder.cs" />
+    <Compile Include="Helpers\IRequestHelper.cs" />
     <Compile Include="Helpers\ISolrIdentifier.cs" />
     <Compile Include="Messages\IDisplayMessage.cs" />
     <Compile Include="Metacode\IMetacodeHelper.cs" />
