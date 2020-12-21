@@ -16,7 +16,7 @@
     <bugTrackerUrl>https://github.com/MartinMiles/Sifon/issues</bugTrackerUrl>
     <tags>Sifon Sitecore PowerShell Backup Restore</tags>
     <summary>A must-have tool for any Sitecore developer, to simplify most of your day-to-day DevOps activities</summary>    
-    <description>Sifon brings you the abilit of making backups and restore of either local or remote VMs. It serves as a PowerShell host, allowing users creating own plugins to interact with local or remote instances. Finally, Sifon supports Sitecore running in containers.</description>
+    <description>Sifon brings you the ability of making backups and restore of either local or remote VMs. It serves as a PowerShell host, allowing users creating own plugins to interact with local or remote instances. Finally, Sifon supports Sitecore running in containers.</description>
     <releaseNotes>http://sifon.uk/docs/ReleaseNotes.md</releaseNotes>
 </metadata>
   <files>

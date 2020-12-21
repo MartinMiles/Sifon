@@ -7,7 +7,7 @@ function Get-IdentityToken
 {
     $tokenendpointurl = $identityserverUrl + "/connect/token"
     $granttype = "password" # client_credentials / password 
-    $client_id = "postman-api"
+    $client_id = "sifon-api"
     $client_secret = "ClientSecret"
     $scope = "openid"
 
