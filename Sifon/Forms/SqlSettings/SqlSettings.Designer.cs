@@ -62,7 +62,7 @@
             this.groupBox1.Location = new System.Drawing.Point(10, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(354, 157);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SQL Server:";
             // 
@@ -102,7 +102,7 @@
             this.linkReveal.Location = new System.Drawing.Point(310, 58);
             this.linkReveal.Name = "linkReveal";
             this.linkReveal.Size = new System.Drawing.Size(42, 13);
-            this.linkReveal.TabIndex = 14;
+            this.linkReveal.TabIndex = 25;
             this.linkReveal.TabStop = true;
             this.linkReveal.Text = "(reveal)";
             this.linkReveal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RevealPasswordClicked);
@@ -113,7 +113,7 @@
             this.textPassword.MaxLength = 255;
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(156, 20);
-            this.textPassword.TabIndex = 13;
+            this.textPassword.TabIndex = 24;
             // 
             // label4
             // 
@@ -130,7 +130,7 @@
             this.textUsername.MaxLength = 255;
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(156, 20);
-            this.textUsername.TabIndex = 12;
+            this.textUsername.TabIndex = 23;
             // 
             // label5
             // 
@@ -146,7 +146,7 @@
             this.buttonSave.Location = new System.Drawing.Point(246, 118);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(97, 23);
-            this.buttonSave.TabIndex = 16;
+            this.buttonSave.TabIndex = 27;
             this.buttonSave.Text = "Save and close";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -156,7 +156,7 @@
             this.buttonTest.Location = new System.Drawing.Point(187, 118);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(53, 23);
-            this.buttonTest.TabIndex = 15;
+            this.buttonTest.TabIndex = 26;
             this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
@@ -167,7 +167,7 @@
             this.textInstance.MaxLength = 255;
             this.textInstance.Name = "textInstance";
             this.textInstance.Size = new System.Drawing.Size(164, 20);
-            this.textInstance.TabIndex = 11;
+            this.textInstance.TabIndex = 22;
             // 
             // label2
             // 
@@ -184,7 +184,7 @@
             this.textName.MaxLength = 255;
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(164, 20);
-            this.textName.TabIndex = 10;
+            this.textName.TabIndex = 21;
             // 
             // label1
             // 
@@ -202,7 +202,7 @@
             this.groupBox2.Location = new System.Drawing.Point(10, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(354, 66);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SQL Servers:";
             // 
@@ -211,7 +211,7 @@
             this.buttonDelete.Location = new System.Drawing.Point(268, 28);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDelete.TabIndex = 2;
+            this.buttonDelete.TabIndex = 12;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -223,7 +223,7 @@
             this.comboBoxServers.Location = new System.Drawing.Point(10, 28);
             this.comboBoxServers.Name = "comboBoxServers";
             this.comboBoxServers.Size = new System.Drawing.Size(252, 21);
-            this.comboBoxServers.TabIndex = 1;
+            this.comboBoxServers.TabIndex = 11;
             this.comboBoxServers.SelectedIndexChanged += new System.EventHandler(this.comboBoxServers_SelectedIndexChanged);
             // 
             // SqlSettings

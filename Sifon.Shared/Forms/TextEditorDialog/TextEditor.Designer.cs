@@ -45,7 +45,7 @@
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(792, 427);
-            this.groupBox.TabIndex = 0;
+            this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "File content:";
             // 
@@ -56,7 +56,7 @@
             this.buttonSave.Location = new System.Drawing.Point(701, 393);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 1;
+            this.buttonSave.TabIndex = 12;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
@@ -71,7 +71,7 @@
             this.textContent.Name = "textContent";
             this.textContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textContent.Size = new System.Drawing.Size(764, 368);
-            this.textContent.TabIndex = 0;
+            this.textContent.TabIndex = 11;
             // 
             // TextEditor
             // 

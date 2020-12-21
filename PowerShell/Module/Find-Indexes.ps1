@@ -7,7 +7,7 @@ function Find-Indexes
 {
     if (!(Get-Module -ListAvailable -Name SPE))
     {
-        return $null
+        return "NO_SPE"
     } 
 
     [string]$Url = Get-InstanceUrl -Webroot $Webroot

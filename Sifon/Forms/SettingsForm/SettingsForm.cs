@@ -26,7 +26,7 @@ namespace Sifon.Forms.SettingsForm
         {
             PopulateVersionsCombo();
             Raise_FormLoaded();
-            buttonSave.Focus();
+            buttonSave.Select();
         }
 
         private void PopulateVersionsCombo()
@@ -48,6 +48,11 @@ namespace Sifon.Forms.SettingsForm
 
         #region Interface implementation
 
+        public bool UseDownloadCDN
+        {
+            get => checkDownloadCDN.Checked;
+            set => checkDownloadCDN.Checked = value;
+        }
         public bool SendCrashDetails
         {
             get => checkBoxCrashLog.Checked;
@@ -75,7 +80,8 @@ namespace Sifon.Forms.SettingsForm
         #endregion
 
         public void SetView(ICrashDetails entity)
-        { 
+        {
+            UseDownloadCDN = entity.UseDownloadCDN;
             SendCrashDetails = entity.SendCrashDetails;
             PluginsRepository = entity.PluginsRepository;
             CustomPluginsFolder = entity.CustomPluginsFolder;

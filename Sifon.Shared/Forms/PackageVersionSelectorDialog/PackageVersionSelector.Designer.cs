@@ -44,7 +44,7 @@
             this.groupParameters.Location = new System.Drawing.Point(12, 12);
             this.groupParameters.Name = "groupParameters";
             this.groupParameters.Size = new System.Drawing.Size(370, 129);
-            this.groupParameters.TabIndex = 2;
+            this.groupParameters.TabIndex = 1;
             this.groupParameters.TabStop = false;
             this.groupParameters.Text = "Which version of package would you like to install?";
             // 
@@ -54,7 +54,7 @@
             this.buttonSelect.Location = new System.Drawing.Point(273, 88);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelect.TabIndex = 2;
+            this.buttonSelect.TabIndex = 12;
             this.buttonSelect.Text = "Select";
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
@@ -75,7 +75,7 @@
             this.comboVersions.Location = new System.Drawing.Point(21, 47);
             this.comboVersions.Name = "comboVersions";
             this.comboVersions.Size = new System.Drawing.Size(327, 21);
-            this.comboVersions.TabIndex = 0;
+            this.comboVersions.TabIndex = 11;
             // 
             // PackageVersionSelector
             // 

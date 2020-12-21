@@ -34,6 +34,11 @@ namespace Sifon.Code.Extensions
 
         }
 
+        public static bool IsRelativePath(this string filePath)
+        {
+            return Regex.IsMatch(filePath, "^\\/[^\\/]+\\/[^\\/].*$|^\\/[^\\/].*$");
+        }
+
         public static bool IsValidDirectoryPath(this string filePath)
         {
             try

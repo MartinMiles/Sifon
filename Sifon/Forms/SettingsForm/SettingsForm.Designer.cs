@@ -37,6 +37,7 @@
             this.checkBoxCrashLog = new System.Windows.Forms.CheckBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkDownloadCDN = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.linkFindMore = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(323, 133);
-            this.groupBox.TabIndex = 0;
+            this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Plugins repository:";
             // 
@@ -69,7 +70,7 @@
             this.label1.Location = new System.Drawing.Point(10, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 13);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Repository branching policy:";
             // 
             // comboBranching
@@ -87,7 +88,7 @@
             this.labelRepository.Location = new System.Drawing.Point(10, 25);
             this.labelRepository.Name = "labelRepository";
             this.labelRepository.Size = new System.Drawing.Size(305, 13);
-            this.labelRepository.TabIndex = 3;
+            this.labelRepository.TabIndex = 1;
             this.labelRepository.Text = "Plugins repository (which gets cloned under the \'Plugins\' menu):";
             // 
             // textRepository
@@ -102,10 +103,10 @@
             this.checkBoxCrashLog.AutoSize = true;
             this.checkBoxCrashLog.Checked = true;
             this.checkBoxCrashLog.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCrashLog.Location = new System.Drawing.Point(10, 29);
+            this.checkBoxCrashLog.Location = new System.Drawing.Point(10, 26);
             this.checkBoxCrashLog.Name = "checkBoxCrashLog";
             this.checkBoxCrashLog.Size = new System.Drawing.Size(303, 17);
-            this.checkBoxCrashLog.TabIndex = 1;
+            this.checkBoxCrashLog.TabIndex = 31;
             this.checkBoxCrashLog.Text = "Send anonymous crash logs to developer to improve Sifon ";
             this.checkBoxCrashLog.UseVisualStyleBackColor = true;
             // 
@@ -114,20 +115,33 @@
             this.buttonSave.Location = new System.Drawing.Point(263, 378);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 0;
+            this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Done";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkDownloadCDN);
             this.groupBox1.Controls.Add(this.checkBoxCrashLog);
             this.groupBox1.Location = new System.Drawing.Point(12, 290);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(323, 74);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Other settings:";
+            // 
+            // checkDownloadCDN
+            // 
+            this.checkDownloadCDN.AutoSize = true;
+            this.checkDownloadCDN.Checked = true;
+            this.checkDownloadCDN.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkDownloadCDN.Location = new System.Drawing.Point(10, 49);
+            this.checkDownloadCDN.Name = "checkDownloadCDN";
+            this.checkDownloadCDN.Size = new System.Drawing.Size(300, 17);
+            this.checkDownloadCDN.TabIndex = 32;
+            this.checkDownloadCDN.Text = "Use Sitecore GEO-distributed CDN to download resources";
+            this.checkDownloadCDN.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -151,7 +165,7 @@
             this.linkFindMore.Location = new System.Drawing.Point(153, 79);
             this.linkFindMore.Name = "linkFindMore";
             this.linkFindMore.Size = new System.Drawing.Size(160, 13);
-            this.linkFindMore.TabIndex = 10;
+            this.linkFindMore.TabIndex = 21;
             this.linkFindMore.TabStop = true;
             this.linkFindMore.Text = "(click to find out how that works)";
             this.linkFindMore.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -188,7 +202,7 @@
             this.buttonCustomPluginsLocation.Location = new System.Drawing.Point(277, 98);
             this.buttonCustomPluginsLocation.Name = "buttonCustomPluginsLocation";
             this.buttonCustomPluginsLocation.Size = new System.Drawing.Size(30, 22);
-            this.buttonCustomPluginsLocation.TabIndex = 6;
+            this.buttonCustomPluginsLocation.TabIndex = 23;
             this.buttonCustomPluginsLocation.Text = "...";
             this.buttonCustomPluginsLocation.UseVisualStyleBackColor = true;
             this.buttonCustomPluginsLocation.Click += new System.EventHandler(this.buttonCustomPluginsLocation_Click);
@@ -207,7 +221,7 @@
             this.textCustomPluginsFolder.Location = new System.Drawing.Point(7, 99);
             this.textCustomPluginsFolder.Name = "textCustomPluginsFolder";
             this.textCustomPluginsFolder.Size = new System.Drawing.Size(272, 20);
-            this.textCustomPluginsFolder.TabIndex = 2;
+            this.textCustomPluginsFolder.TabIndex = 22;
             // 
             // SettingsForm
             // 
@@ -253,5 +267,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel linkFindMore;
+        private System.Windows.Forms.CheckBox checkDownloadCDN;
     }
 }

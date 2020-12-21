@@ -35,7 +35,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.buttonSelect.Location = new System.Drawing.Point(257, 381);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelect.TabIndex = 1;
+            this.buttonSelect.TabIndex = 2;
             this.buttonSelect.Text = "OK";
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
@@ -46,7 +46,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.buttonCancel.Location = new System.Drawing.Point(338, 381);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -56,7 +56,7 @@ namespace Sifon.Shared.Forms.FolderBrowserDialog
             this.buttonNewFolder.Location = new System.Drawing.Point(13, 381);
             this.buttonNewFolder.Name = "buttonNewFolder";
             this.buttonNewFolder.Size = new System.Drawing.Size(103, 23);
-            this.buttonNewFolder.TabIndex = 3;
+            this.buttonNewFolder.TabIndex = 1;
             this.buttonNewFolder.Text = "Make New Folder";
             this.buttonNewFolder.UseVisualStyleBackColor = true;
             this.buttonNewFolder.Click += new System.EventHandler(this.buttonNewFolder_Click);

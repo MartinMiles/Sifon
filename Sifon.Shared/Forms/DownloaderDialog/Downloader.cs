@@ -20,6 +20,7 @@ namespace Sifon.Shared.Forms.DownloaderDialog
         private IProfile _profile;
         private string _json;
         private List<Resource> _resources;
+        private IEnumerable<Platform> _platforms = new List<Platform>();
 
         public Downloader()
         {
@@ -28,16 +29,13 @@ namespace Sifon.Shared.Forms.DownloaderDialog
 
         private void Downloader_Load(object sender, EventArgs e)
         {
-            if (comboVersion.Items.Count > 0)
-            {
-                comboVersion.SelectedIndex = comboVersion.Items.Count - 1;
-            }
-
             buttonDownload.Select();
 
             Destination = $"{Environment.CurrentDirectory}\\Downloads";
 
             CheckUncheckAll(true);
+
+            PopulateVersionsCombo();
 
             foreach (var checkBox in CheckBoxes)
             {
@@ -45,6 +43,26 @@ namespace Sifon.Shared.Forms.DownloaderDialog
             }
 
             UpdateButtonState();
+        }
+
+        private void PopulateVersionsCombo()
+        {
+            if (File.Exists(_json))
+            {
+                _platforms = JsonConvert.DeserializeObject<IEnumerable<Platform>>(File.ReadAllText(_json));
+
+                comboVersion.Items.Clear();
+
+                foreach (var platform in _platforms)
+                {
+                    comboVersion.Items.Add(platform.name);
+                }
+
+                if (comboVersion.Items.Count > 0)
+                {
+                    comboVersion.SelectedIndex = comboVersion.Items.Count - 1;
+                }
+            }
         }
 
         private void CheckedChanged(object sender, EventArgs e)
@@ -116,11 +134,12 @@ namespace Sifon.Shared.Forms.DownloaderDialog
                 DialogResult = DialogResult.Abort;
             }
 
-            if (File.Exists(_json))
+            if (_platforms.Any())
             {
                 string selectedPlatform = comboVersion.SelectedItem as string;
-                var platforms = JsonConvert.DeserializeObject<IEnumerable<Platform>>(File.ReadAllText(_json));
-                var platform = platforms.FirstOrDefault(p => p.name.Trim() == selectedPlatform);
+                //var platforms = JsonConvert.DeserializeObject<IEnumerable<Platform>>(File.ReadAllText(_json));
+                
+                var platform = _platforms.FirstOrDefault(p => p.name.Trim() == selectedPlatform);
 
                 if (platform == null)
                 {

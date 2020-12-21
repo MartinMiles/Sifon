@@ -93,3 +93,8 @@ $getInstance = $path + "\Install-ModuleFromGithub.ps1"
 $getInstance = $path + "\Install-Solr.ps1"
 . $getInstance
 
+$getInstance = $path + "\Read-UrlContent.ps1"
+. $getInstance
+
+$getInstance = $path + "\Get-IdentityToken.ps1"
+. $getInstance

@@ -54,11 +54,19 @@
     <Compile Include="Forms\DownloaderDialog\Downloader.Designer.cs">
       <DependentUpon>Downloader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DownloaderDialog\Downloader.Tooltip.cs">
+      <DependentUpon>Downloader.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.Designer.cs">
       <DependentUpon>FolderBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FolderBrowserDialog\FolderBrowser.Tooltip.cs">
+      <DependentUpon>FolderBrowser.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\IndexSelectorDialog\IndexSelector.cs">
       <SubType>Form</SubType>
@@ -66,11 +74,19 @@
     <Compile Include="Forms\IndexSelectorDialog\IndexSelector.Designer.cs">
       <DependentUpon>IndexSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IndexSelectorDialog\IndexSelector.Tooltip.cs">
+      <DependentUpon>IndexSelector.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.Designer.cs">
       <DependentUpon>LocalFilePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocalFilePickerDialog\LocalFilePicker.Tooltip.cs">
+      <DependentUpon>LocalFilePicker.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PackageVersionSelectorDialog\PackageVersionSelector.cs">
       <SubType>Form</SubType>
@@ -78,17 +94,29 @@
     <Compile Include="Forms\PackageVersionSelectorDialog\PackageVersionSelector.Designer.cs">
       <DependentUpon>PackageVersionSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PackageVersionSelectorDialog\PackageVersionSelector.Tooltip.cs">
+      <DependentUpon>PackageVersionSelector.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.Designer.cs">
       <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SitecoreVersionSelectorDialog\SitecoreVersionSelector.Tooltip.cs">
+      <DependentUpon>SitecoreVersionSelector.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\TextEditorDialog\TextEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TextEditorDialog\TextEditor.Designer.cs">
       <DependentUpon>TextEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextEditorDialog\TextEditor.Tooltip.cs">
+      <DependentUpon>TextEditor.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="MessageBoxes\DisplayMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

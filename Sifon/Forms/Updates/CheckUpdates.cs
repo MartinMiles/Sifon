@@ -19,6 +19,7 @@ namespace Sifon.Forms.Updates
         private void CheckUpdates_Load(object sender, EventArgs e)
         {
             Raise_FormLoaded();
+            buttonCheck.Select();
         }
 
         private void buttonCheck_Click(object sender, EventArgs e)

@@ -36,6 +36,8 @@ namespace Sifon.Code.Statics
             public const string VerifyNetCore = "Verify-NetCore";
             public const string InstallModuleFromGithub = "Install-ModuleFromGithub";
             public const string InstallSolr = "Install-Solr";
+            public const string ReadUrlContent = "Read-UrlContent";
+            public const string GetIdentityToken = "Get-IdentityToken";
         }
         
         public static class Files
@@ -76,6 +78,8 @@ namespace Sifon.Code.Statics
             public static string VerifyNetCore => Combine(Functions.VerifyNetCore);
             public static string InstallModuleFromGithub => Combine(Functions.InstallModuleFromGithub);
             public static string InstallSolr => Combine(Functions.InstallSolr);
+            public static string ReadUrlContent => Combine(Functions.ReadUrlContent);
+            public static string GetIdentityToken => Combine(Functions.GetIdentityToken);
 
             private static string Combine(string moduleParam, string ext = null)
             {
@@ -118,7 +122,9 @@ namespace Sifon.Code.Statics
             Files.VerifyGit,
             Files.VerifyNetCore,
             Files.InstallModuleFromGithub,
-            Files.InstallSolr
+            Files.InstallSolr,
+            Files.ReadUrlContent,
+            Files.GetIdentityToken
         };
     }
 }

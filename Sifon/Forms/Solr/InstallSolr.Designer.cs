@@ -64,7 +64,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 166);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 122);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Install new Solr instance:";
             // 
@@ -109,14 +109,14 @@
             this.textFolderSuffix.Name = "textFolderSuffix";
             this.textFolderSuffix.ReadOnly = true;
             this.textFolderSuffix.Size = new System.Drawing.Size(57, 20);
-            this.textFolderSuffix.TabIndex = 2;
+            this.textFolderSuffix.TabIndex = 22;
             // 
             // buttonLocation
             // 
             this.buttonLocation.Location = new System.Drawing.Point(255, 42);
             this.buttonLocation.Name = "buttonLocation";
             this.buttonLocation.Size = new System.Drawing.Size(30, 22);
-            this.buttonLocation.TabIndex = 3;
+            this.buttonLocation.TabIndex = 23;
             this.buttonLocation.Text = "...";
             this.buttonLocation.UseVisualStyleBackColor = true;
             this.buttonLocation.Click += new System.EventHandler(this.buttonBackupLocation_Click);
@@ -135,7 +135,7 @@
             this.textPort.Location = new System.Drawing.Point(85, 83);
             this.textPort.Name = "textPort";
             this.textPort.Size = new System.Drawing.Size(45, 20);
-            this.textPort.TabIndex = 5;
+            this.textPort.TabIndex = 25;
             // 
             // comboVersion
             // 
@@ -150,7 +150,7 @@
             this.comboVersion.Location = new System.Drawing.Point(19, 83);
             this.comboVersion.Name = "comboVersion";
             this.comboVersion.Size = new System.Drawing.Size(60, 21);
-            this.comboVersion.TabIndex = 4;
+            this.comboVersion.TabIndex = 24;
             this.comboVersion.SelectedIndexChanged += new System.EventHandler(this.comboVersion_SelectedIndexChanged);
             // 
             // textFolder
@@ -158,14 +158,14 @@
             this.textFolder.Location = new System.Drawing.Point(20, 43);
             this.textFolder.Name = "textFolder";
             this.textFolder.Size = new System.Drawing.Size(180, 20);
-            this.textFolder.TabIndex = 1;
+            this.textFolder.TabIndex = 21;
             // 
             // buttonInstall
             // 
             this.buttonInstall.Location = new System.Drawing.Point(220, 83);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(65, 23);
-            this.buttonInstall.TabIndex = 6;
+            this.buttonInstall.TabIndex = 26;
             this.buttonInstall.Text = "Install";
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.install_Click);

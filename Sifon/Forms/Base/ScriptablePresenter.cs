@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Sifon.Abstractions.Events;
@@ -140,7 +141,7 @@ namespace Sifon.Forms.Base
             var plugins = GetPluginsAndScripts(Folders.Plugins);
 
             var customPluginsFolder = _settingsProvider.Read().CustomPluginsFolder;
-            if (customPluginsFolder.NotEmpty())
+            if (customPluginsFolder.NotEmpty() && File.Exists(customPluginsFolder))
             {
                 plugins.Combine(GetPluginsAndScripts(customPluginsFolder));
             }
