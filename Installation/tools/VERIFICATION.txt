@@ -3,7 +3,7 @@
 Sifon is open-source code project available from this repository:
   https://github.com/MartinMiles/Sifon
 
-Since it is compiled and built from [C#] and runs runs with [NET Framework 4.7.2], it becomes platform-agnostic and runs on both 32- and 64-bit [Windows 10] systems.
+Since it is compiled and built from [C#] and runs runs with [NET Framework 4.8], it becomes platform-agnostic and runs on both 32- and 64-bit [Windows 10] systems.
 
 Project website with docs, quick start, demonstration videos and and videoguides:
 http://sifon.uk/
@@ -34,9 +34,15 @@ Package content:
     - PowerShell - contains Sifon PowerShell module with scripted business logic to run on remote machines (by WinRM), each function has its own file with a verbose explanatory name.
 
 
+Binaries / MSI
+- are available for all the version incliding historical versions from Release Notes pages (https://sifon.uk/docs/ReleaseNotes.md)
+- version number there is in fact a link for a corresponding version from /downloads folder (i.e. https://sifon.uk/download/Sifon_1.2.3.msi and same pattern)
+- binary installers are not included at GitHub repository as they remain in history forever and will extremely grow repo in size. 
+
+
 Additional notes:
 - package created from MSI done with Advanced Installer 17.3
-- the installer source for MSI is opensource and available at https://github.com/MartinMiles/Sifon/blob/master/Sifon/Resources/Installer.aip
+- the installer source for MSI is opensource and available at https://github.com/MartinMiles/Sifon/blob/master/Installation/Installer.aip
 - as Sifon is a toolbelt for Sitecore instance administrators with a PowerShell host, it DOES require admin rights on machine
 - the software intself does not make much sense without Sitecore installed: the one and only useful feature will remain installing Sitecore in Docker in that case
 - on the first run Sifon installs PowerShell module (also called Sifon) into c:\Program Files\WindowsPowerShell\Modules\Sifon folder (required for WinRM management)
