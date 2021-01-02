@@ -44,8 +44,8 @@ Additional notes:
 - package created from MSI done with Advanced Installer 17.3
 - the installer source for MSI is opensource and available at https://github.com/MartinMiles/Sifon/blob/master/Installation/Installer.aip
 - as Sifon is a toolbelt for Sitecore instance administrators with a PowerShell host, it DOES require admin rights on machine
-- the software intself does not make much sense without Sitecore installed: the one and only useful feature will remain installing Sitecore in Docker in that case
+- the software itself does not make much sense without Sitecore installed: the one and only useful feature will remain installing Sitecore in Docker in that case
 - on the first run Sifon installs PowerShell module (also called Sifon) into c:\Program Files\WindowsPowerShell\Modules\Sifon folder (required for WinRM management)
-- having Sitecore installed isn't necessry to enter the main view, despite user will be asked providing these details on the first run in order to create at least 1 profile
+- having Sitecore installed isn't necessary to enter the main view, despite user will be asked providing these details on the first run in order to create at least 1 profile
 - will launch with a profile created with dummy data, but most functions will obviously be disabled
 - Chocolatey Uninstaller: included, as it needs to remove PowerShell module being installed at: c:\Program Files\WindowsPowerShell\Modules\Sifon
