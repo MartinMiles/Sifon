@@ -20,7 +20,11 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 ## Downloads and documentation
 
-You may download your copy of Sifon from the [project website](http://sifon.uk "Sifon's Homepage").
+The easiest way to install **Sifon** is using Chocolatey:
+
+`cinst sifon`
+
+You may also download Sifon from the [project website](http://sifon.uk "Sifon's Homepage").
 
 
 ## License
