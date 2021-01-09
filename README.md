@@ -29,4 +29,4 @@ You may also download Sifon from the [project website](http://sifon.uk "Sifon's 
 
 ## License
 
-Sifon is distributed free of charge under [GNU General Public License v3 (GPL-3)](https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License v3 (GPL-3)") license
+Sifon is distributed free of charge under [GNU General Public License v3 (GPL-3)](https://www.gnu.org/licenses/gpl-3.0.en.html "GNU General Public License v3 (GPL-3)") license.
