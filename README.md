@@ -1,6 +1,6 @@
 # Sifon [![Build Status](https://travis-ci.org/MartinMiles/Sifon.svg?branch=master)](https://travis-ci.org/MartinMiles/Sifon)
 
-A must-have tool for any Sitecore developer, to simplify most of your day-to-day DevOps activities
+A must-have tool for any Sitecore developer, to simplify most of your day-to-day DevOps activities.
 
 ![Sifon](https://raw.githubusercontent.com/wiki/MartinMiles/Sifon/img/main.png "Sifon main interface") 
 
