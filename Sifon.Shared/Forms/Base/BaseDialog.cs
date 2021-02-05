@@ -1,16 +1,21 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using Sifon.Abstractions.Messages;
+using Sifon.Abstractions.Validation;
 using Sifon.Shared.MessageBoxes;
+using Sifon.Shared.Validation;
 
 namespace Sifon.Shared.Forms.Base
 {
     public class BaseDialog : Form
     {
         private readonly IDisplayMessage _displayMessage;
+        private readonly IFormValidation _formValidation;
 
         public BaseDialog()
         {
             _displayMessage = new DisplayMessage();
+            _formValidation = new FormValidation(_displayMessage);
 
             Load += (sender, args) => SetTooltips();
         }
@@ -42,6 +47,11 @@ namespace Sifon.Shared.Forms.Base
         protected internal void ShowError(string caption, string message)
         {
             _displayMessage.ShowError(caption, message);
+        }
+
+        public bool ShowValidationError(IEnumerable<string> errorList)
+        {
+            return _formValidation.ShowValidationError(errorList);
         }
     }
 }

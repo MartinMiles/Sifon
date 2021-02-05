@@ -118,6 +118,15 @@
       <DependentUpon>TextEditor.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\UrlPickerDialog\UrlPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UrlPickerDialog\UrlPicker.Designer.cs">
+      <DependentUpon>UrlPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UrlPickerDialog\UrlPicker.Validation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MessageBoxes\DisplayMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statics\Controls.cs" />
@@ -170,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextEditorDialog\TextEditor.resx">
       <DependentUpon>TextEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UrlPickerDialog\UrlPicker.resx">
+      <DependentUpon>UrlPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\FolderTreeView.resx">
       <DependentUpon>FolderTreeView.cs</DependentUpon>
