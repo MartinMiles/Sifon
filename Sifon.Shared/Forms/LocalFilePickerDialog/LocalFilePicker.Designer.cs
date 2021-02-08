@@ -46,11 +46,14 @@
             // 
             // pathTextbox
             // 
+            this.pathTextbox.AllowDrop = true;
             this.pathTextbox.Location = new System.Drawing.Point(12, 35);
             this.pathTextbox.MaxLength = 255;
             this.pathTextbox.Name = "pathTextbox";
             this.pathTextbox.Size = new System.Drawing.Size(330, 20);
             this.pathTextbox.TabIndex = 28;
+            this.pathTextbox.DragDrop += new System.Windows.Forms.DragEventHandler(this.pathTextbox_DragDrop);
+            this.pathTextbox.DragEnter += new System.Windows.Forms.DragEventHandler(this.pathTextbox_DragEnter);
             // 
             // buttonInstall
             // 
@@ -73,6 +76,7 @@
             // LocalFilePicker
             // 
             this.AcceptButton = this.buttonInstall;
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 99);
@@ -85,6 +89,8 @@
             this.MinimizeBox = false;
             this.Name = "LocalFilePicker";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.LocalFilePicker_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.LocalFilePicker_DragEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
