@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -83,10 +84,14 @@ namespace Sifon.Shared.Forms.InstallerDialog
                 _validationMessages.Add("Please make sure your URL is in correct format");
             }
 
+            if (!File.Exists(licenseTextbox.Text.Trim()))
+            {
+                _validationMessages.Add("License file foes not exist at the provided path");
+            }
+
             return ShowValidationError(_validationMessages);
         }
 
         #endregion
-
     }
 }
