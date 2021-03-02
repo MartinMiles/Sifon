@@ -3,66 +3,52 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Factories;
 using Sifon.Code.VersionSelector;
-using Sifon.Shared.Code.Downloader;
 using Sifon.Shared.Forms.Base;
 using Sifon.Shared.Forms.FolderBrowserDialog;
 using Sifon.Shared.UserControls.ThreadSafeFilePicker;
 
-namespace Sifon.Shared.Forms.InstallerDialog
+namespace Sifon.Forms.Install
 {
-    public partial class Installer : BaseDialog
+    public partial class Install : BaseDialog
     {
-        public Installer()
+        public Install()
         {
             InitializeComponent();
         }
 
-        public dynamic Install(/*IProfile profile, string json*/)
+        public dynamic Parameters => new
         {
-            StartPosition = FormStartPosition.CenterParent;
+            DownloadFile = SelectedVersion.Key,
+            DownloadHash = SelectedVersion.Value,
 
-            if (ShowDialog() == DialogResult.OK)
-            {
-                var test = new
-                {
-                    DownloadFile = SelectedVersion.Key,
-                    DownloadHash = SelectedVersion.Value,
+            RemotingEnabled = false,
+            RemotingHost = textHostname.Text.Trim(),
+            RemotingUsername = textUsername.Text.Trim(),
+            RemotingPassword = textPassword.Text.Trim(),
 
-                    RemotingEnabled = false,
-                    RemotingHost = textHostname.Text.Trim(),
-                    RemotingUsername = textUsername.Text.Trim(),
-                    RemotingPassword = textPassword.Text.Trim(),
+            SitePhysicalRoot = textDestinationFolder.Text.Trim(),
+            LicenseFile = licenseTextbox.Text.Trim(),
+            SitecoreAdminPassword = adminPasswordText.Text.Trim(),
 
-                    SitePhysicalRoot = textDestinationFolder.Text.Trim(),
-                    LicenseFile = licenseTextbox.Text.Trim(),
-                    SitecoreAdminPassword = adminPasswordText.Text.Trim(),
+            SqlServer = sqlServerText.Text.Trim(),
+            SqlAdminUser = sqlServerUsernameText.Text.Trim(),
+            SqlAdminPassword = sqlServerPasswordText.Text.Trim(),
 
-                    SqlServer = sqlServerText.Text.Trim(),
-                    SqlAdminUser = sqlServerUsernameText.Text.Trim(),
-                    SqlAdminPassword = sqlServerPasswordText.Text.Trim(),
+            Prefix = prefixText.Text.Trim(),
+            SitecoreSiteName = sitecoreSiteText.Text.Trim(),
+            XConnectSiteName = xconnectText.Text.Trim(),
+            IdentityServerSiteName = identityServerText.Text.Trim(),
 
-                    Prefix = prefixText.Text.Trim(),
-                    SitecoreSiteName = sitecoreSiteText.Text.Trim(),
-                    XConnectSiteName = xconnectText.Text.Trim(),
-                    IdentityServerSiteName = identityServerText.Text.Trim(),
+            SolrUrl = solrUrlText.Text.Trim(),
+            SolrService = solrServiceText.Text.Trim(),
+            SolrRoot = solrRootFolderText.Text.Trim(),
 
-                    SolrUrl = solrUrlText.Text.Trim(),
-                    SolrService = solrServiceText.Text.Trim(),
-                    SolrRoot = solrRootFolderText.Text.Trim(),
-
-                    InstallPrerequisites = installPrerequisites.Checked,
-                    CreateProfile = createSifonProfile.Checked
-                };
-
-                return test;
-            }
-
-            return null;
-        }
+            InstallPrerequisites = installPrerequisites.Checked,
+            CreateProfile = createSifonProfile.Checked
+        };
 
         private KeyValuePair<string, string> SelectedVersion
         {
@@ -77,7 +63,6 @@ namespace Sifon.Shared.Forms.InstallerDialog
 
                 var selectedVersion = comboVersions.SelectedItem as KernelHash;
                 return resources.FirstOrDefault(r => r.Key.StartsWith(selectedVersion.Product));
-
             }
         }
 
@@ -174,7 +159,7 @@ namespace Sifon.Shared.Forms.InstallerDialog
             comboVersions.SelectedIndex = last;
 
             textDestinationFolder.Text = @"C:\inetpub\wwwroot";
-            licenseTextbox.Text = @"license.xml";
+            licenseTextbox.Text = @"c:\Install\license.xml";
             adminPasswordText.Text = "b";
 
             prefixText.Text = "xp";

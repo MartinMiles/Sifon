@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sifon.Shared.Forms.InstallerDialog
+namespace Sifon.Forms.Install
 {
-    partial class Installer
+    partial class Install
     {
         #region Passive validation on text changed and character entered
 

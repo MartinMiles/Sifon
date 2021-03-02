@@ -1,6 +1,6 @@
-﻿namespace Sifon.Shared.Forms.InstallerDialog
+﻿namespace Sifon.Forms.Install
 {
-    partial class Installer
+    partial class Install
     {
         /// <summary>
         /// Required designer variable.
@@ -604,7 +604,7 @@
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.install_Click);
             // 
-            // Installer
+            // Install
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -617,7 +617,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.SQLGroupbox);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Installer";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Install";
             this.Text = "Siteore XP0 Installer";
             this.Load += new System.EventHandler(this.Installer_Load);
             this.groupBox3.ResumeLayout(false);

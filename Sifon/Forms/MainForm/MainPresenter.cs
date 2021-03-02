@@ -46,6 +46,7 @@ namespace Sifon.Forms.MainForm
             _view.SelectedProfileChanged += SelectedProfileChanged;
             _view.ProfilesToolStripClicked += ProfilesToolStripClicked;
             _view.SettingsChanged += SettingsChanged;
+            _view.InstallToolStripClicked += InstallToolStripClicked; 
             _view.BackupToolStripClicked += BackupToolStripClicked;
             _view.RestoreToolStripClicked += RestoreToolStripClicked;
             _view.RemoveToolStripClicked += RemoveToolStripClicked;
@@ -88,8 +89,16 @@ namespace Sifon.Forms.MainForm
             return await _remoteScriptCopier.CopyIfRemote(script);
         }
 
-        #region Backup-Remove-Restore
+        #region Install-Backup-Remove-Restore
 
+        private async void InstallToolStripClicked(object sender, EventArgs<dynamic> e)
+        {
+            // TODO: Enforce local instllation OR create remote on a fly from params
+            var dictionary = new Dictionary<string, object> { { "Params", e.Value } };
+
+            await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary);
+            //_view.PluginsToolStripEnabled(); or other menus
+        }
 
         private async void BackupToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)
         {

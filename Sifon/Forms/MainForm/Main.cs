@@ -21,6 +21,7 @@ namespace Sifon.Forms.MainForm
         public event EventHandler<EventArgs<string>> SelectedProfileChanged = delegate { };
         public event EventHandler<EventArgs> ProfilesToolStripClicked = delegate { };
         public event EventHandler<EventArgs> SettingsChanged = delegate { };
+        public event EventHandler<EventArgs<dynamic>> InstallToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked = delegate { };
@@ -210,6 +211,7 @@ namespace Sifon.Forms.MainForm
 
         public void ToolStripsEnabled(bool enabled)
         {
+            installToolStripMenuItem.Enabled = enabled;
             backupToolStripMenuItem.Enabled = enabled;
             removeToolStripMenuItem1.Enabled = enabled;
             restoreToolStripMenuItem.Enabled = enabled;
@@ -267,6 +269,19 @@ namespace Sifon.Forms.MainForm
         {
             MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             End();
+        }
+
+        private void installToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var install = new Install.Install { StartPosition = FormStartPosition.CenterParent };
+            
+            if (install.ShowDialog() == DialogResult.OK)
+            {
+                install.Dispose();
+                InstallToolStripClicked(this, new EventArgs<dynamic>(install.Parameters));
+            }
+
+            install.Dispose();
         }
     }
 }

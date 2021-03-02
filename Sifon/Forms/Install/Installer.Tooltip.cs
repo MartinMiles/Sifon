@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace Sifon.Shared.Forms.InstallerDialog
+namespace Sifon.Forms.Install
 {
-    partial class Installer
+    partial class Install
     {
         protected override void SetTooltips()
         {
