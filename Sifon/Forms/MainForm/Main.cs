@@ -211,7 +211,6 @@ namespace Sifon.Forms.MainForm
 
         public void ToolStripsEnabled(bool enabled)
         {
-            installToolStripMenuItem.Enabled = enabled;
             backupToolStripMenuItem.Enabled = enabled;
             removeToolStripMenuItem1.Enabled = enabled;
             restoreToolStripMenuItem.Enabled = enabled;
