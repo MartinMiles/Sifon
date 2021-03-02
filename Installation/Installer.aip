@@ -134,7 +134,6 @@
     <ROW Name="DialogBitmap.png" SourcePath="Images\DialogBitmap.png"/>
     <ROW Name="ShortcutFlags.dll" SourcePath="&lt;AI_CUSTACTS&gt;ShortcutFlags.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
-    <ROW Name="sifon2.png" SourcePath="..\..\..\Sifon_prev\Icons2\sifon2.png"/>
     <ATTRIBUTE name="DeletedRows" value="tabback"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">

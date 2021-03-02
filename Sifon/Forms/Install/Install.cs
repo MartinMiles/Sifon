@@ -56,6 +56,7 @@ namespace Sifon.Forms.Install
             {
                 var resources = new Dictionary<string, string>
                 {
+                    {"Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip", "88666D3532F24973939C1CC140E12A27"},
                     {"Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", "DCD3DC6E7C544C3685EC41DD781D3187"},
                     {"Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", "9486629B50A847A5B62D59474CBAC53C"},
                     {"Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", "7F9D170F0A4B4B598323629A7B7122EA"}
@@ -75,9 +76,11 @@ namespace Sifon.Forms.Install
         private void PopulateDropbox()
         {
             comboVersions.Items.Clear();
-            comboVersions.DataSource = Settings.Hashes.Where(h => h.Product.StartsWith("Sitecore 10")).ToList();
             comboVersions.DisplayMember = "Product";
             comboVersions.ValueMember = "Version";
+            comboVersions.DataSource = Settings.Hashes
+                .Where(h => h.Product.StartsWith("Sitecore 10") || h.Product.StartsWith("Sitecore 9.3"))
+                .ToList();
         }
 
         private void install_Click(object sender, EventArgs e)

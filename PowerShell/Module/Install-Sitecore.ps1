@@ -64,7 +64,7 @@ function Install-Sitecore
         SqlServer = $Params.SqlServer
         SqlAdminUser = $Params.SqlAdminUser
         SqlAdminPassword = $Params.SqlAdminPassword
-        SitecoreAdminPassword = $Params.SqlAdminPassword
+        SitecoreAdminPassword = $Params.SitecoreAdminPassword
         SolrUrl = $Params.SolrUrl
         SolrRoot = $Params.SolrRoot
         SolrService = $Params.SolrService
