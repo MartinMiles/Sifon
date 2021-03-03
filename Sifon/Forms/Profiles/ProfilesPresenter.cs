@@ -137,6 +137,7 @@ namespace Sifon.Forms.Profiles
 
             ProfilesProvider.UpdateSelected(profile);
             ProfilesProvider.Save();
+
             _view.CloseDialog();
         }
 

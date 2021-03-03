@@ -25,5 +25,7 @@ namespace Sifon.Abstractions.Profiles
         int OperationTimeout { get; }
 
         string WindowCaptionSuffix { get; }
+
+        ISqlServerRecord AppendSQL(string sqlServer, string sqlAdminUser, string sqlAdminPassword);
     }
 }

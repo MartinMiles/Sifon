@@ -9,6 +9,7 @@ using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Metacode;
 using Sifon.Abstractions.Model.BackupRestore;
 using Sifon.Abstractions.PowerShell;
+using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Abstractions.ScriptGenerators;
 using Sifon.Forms.Base;
@@ -93,11 +94,48 @@ namespace Sifon.Forms.MainForm
 
         private async void InstallToolStripClicked(object sender, EventArgs<dynamic> e)
         {
-            // TODO: Enforce local instllation OR create remote on a fly from params
+            // TODO: Enforce local installation OR create remote on a fly from params
             var dictionary = new Dictionary<string, object> { { "Params", e.Value } };
 
             await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary);
-            //_view.PluginsToolStripEnabled(); or other menus
+
+            if (e.Value.CreateProfile)
+            {
+                CreateProfileFrom(e.Value);
+            }
+
+            _view.UpdateProgressBar(100, "Sitecore installation complete");
+        }
+
+        private void CreateProfileFrom(dynamic value)
+        {
+            var profileProvider = Create.New<IProfilesProvider>();
+            var profile = profileProvider.CreateProfile((string)value.Prefix);
+
+            profile.RemotingEnabled = value.RemotingEnabled;
+            profile.RemoteHost = value.RemotingHost;
+            profile.RemoteUsername = value.RemotingUsername;
+            profile.RemotePassword = value.RemotingPassword;
+
+            profile.Webroot = value.SitePhysicalRoot;
+            profile.AdminPassword = value.SitecoreAdminPassword;
+            profile.AdminUsername = "admin";
+
+            profile.Prefix = value.Prefix;
+            profile.Website = value.SitecoreSiteName;
+            profile.Solr = value.SolrUrl;
+
+            var sqlRecord = profile.AppendSQL(value.SqlServer, value.SqlAdminUser, value.SqlAdminPassword);
+
+            var sqlProvider = Create.New<ISqlServerRecordProvider>();
+            sqlProvider.Add(sqlRecord);
+            sqlProvider.Save();
+
+            _profilesProvider.Append(profile);
+            _profilesProvider.Save();
+            _profilesProvider.SelectProfile(profile.ProfileName);
+
+            _view.LoadProfilesSelector(JustReadProfileNames, profile.ProfileName);
         }
 
         private async void BackupToolStripClicked(object sender, EventArgs<IBackupRemoverViewModel> e)

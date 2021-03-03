@@ -17,10 +17,11 @@ namespace Sifon.Abstractions.Providers
         void Save();
 
         IProfile CreateLocal();
-        IProfile CreateProfile();
+        IProfile CreateProfile(string proposedName = null);
         IProfile CreateProfile(IRemoteSettings remoteSettings);
 
         void Add(IProfileUserControl p);
+        void Append(IProfile profile);
         void UpdateSelected(IProfile profile);
         void DeleteSelected();
 
