@@ -276,7 +276,6 @@ namespace Sifon.Forms.MainForm
             
             if (install.ShowDialog() == DialogResult.OK)
             {
-                install.Dispose();
                 InstallToolStripClicked(this, new EventArgs<dynamic>(install.Parameters));
             }
 
