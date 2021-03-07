@@ -52,6 +52,7 @@ namespace Sifon.Forms.Install
             RemotingHost = textRemoteHostname.Text.Trim(),
             RemotingUsername = textRemoteUsername.Text.Trim(),
             RemotingPassword = textRemotePassword.Text.Trim(),
+            RemotingFolder = RemoteFolder,
 
             SitePhysicalRoot = textDestinationFolder.Text.Trim(),
             LicenseFile = licenseTextbox.Text.Trim(),

@@ -115,6 +115,7 @@ namespace Sifon.Forms.MainForm
             profile.RemoteHost = value.RemotingHost;
             profile.RemoteUsername = value.RemotingUsername;
             profile.RemotePassword = value.RemotingPassword;
+            profile.RemoteFolder = value.RemotingPassword;
 
             profile.Webroot = value.SitePhysicalRoot;
             profile.AdminPassword = value.SitecoreAdminPassword;
