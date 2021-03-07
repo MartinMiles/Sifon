@@ -1,33 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sifon.Abstractions.Events;
+using Sifon.Abstractions.PowerShell;
+using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Factories;
 using Sifon.Code.VersionSelector;
-using Sifon.Shared.Forms.Base;
+using Sifon.Forms.Base;
 using Sifon.Shared.Forms.FolderBrowserDialog;
 using Sifon.Shared.UserControls.ThreadSafeFilePicker;
 
 namespace Sifon.Forms.Install
 {
-    public partial class Install : BaseDialog
+    internal partial class Install : BaseForm, IInstallView, ISqlServerRecord
     {
+        public event EventHandler<EventArgs> Loaded = delegate { };
+
+        public event BaseForm.AsyncEventHandler<EventArgs<IRemoteSettings>> TestRemote;
+        public event EventHandler<EventArgs<string, IRemoteSettings>> TestSolr = delegate { };
+        public event EventHandler<EventArgs<ISqlServerRecord, IRemoteSettings>> TestSqlClicked = delegate { };
+
         public Install()
         {
             InitializeComponent();
+            new InstallPresenter(this);
+        }
+
+        private void Installer_Load(object sender, EventArgs e)
+        {
+            PopulateDropbox();
+
+            AddPassiveValidationHandlersForRemoting();
+            AddPassiveValidationHandlersForSQL();
+            AddPassiveValidationHandlersForSolr();
+
+            buttonSetDefaults.Select();
         }
 
         public dynamic Parameters => new
         {
+            Profile = CreateProfileFromRemoteSettings(this),
             DownloadFile = SelectedVersion.Key,
             DownloadHash = SelectedVersion.Value,
 
-            RemotingEnabled = false,
-            RemotingHost = textHostname.Text.Trim(),
-            RemotingUsername = textUsername.Text.Trim(),
-            RemotingPassword = textPassword.Text.Trim(),
+            RemotingEnabled = checkBoxRemote.Checked,
+            RemotingHost = textRemoteHostname.Text.Trim(),
+            RemotingUsername = textRemoteUsername.Text.Trim(),
+            RemotingPassword = textRemotePassword.Text.Trim(),
 
             SitePhysicalRoot = textDestinationFolder.Text.Trim(),
             LicenseFile = licenseTextbox.Text.Trim(),
@@ -67,12 +91,6 @@ namespace Sifon.Forms.Install
             }
         }
 
-        private void Installer_Load(object sender, EventArgs e)
-        {
-            PopulateDropbox();
-            AddPassiveValidationHandlers();
-        }
-
         private void PopulateDropbox()
         {
             comboVersions.Items.Clear();
@@ -83,25 +101,71 @@ namespace Sifon.Forms.Install
                 .ToList();
         }
 
-        private void install_Click(object sender, EventArgs e)
+        private async void install_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
+                ToggleControls(false);
+                loadingCircle.Visible = true;
+                loadingCircle.Active = true;
+
+                await CopyLicenseIfRemote();
                 DialogResult = DialogResult.OK;
             }
         }
 
-        private void buttonTestRemoting_Click(object sender, EventArgs e)
+        //TODO: duplicated same method from presenter for Install class
+        private IProfile CreateProfileFromRemoteSettings(IRemoteSettings remoteSettings)
         {
-
+            var profileProvider = Create.New<IProfilesProvider>();
+            return profileProvider.CreateProfile(remoteSettings);
         }
+
+        private async Task CopyLicenseIfRemote()
+        {
+            var remoteScriptCopier = Create.WithProfile<IRemoteScriptCopier>(ProfileForInstallation, this);
+
+            var licenseFile = licenseTextbox.Text.Trim();
+            if (File.Exists(licenseFile))
+            {
+                licenseTextbox.Text = await remoteScriptCopier.CopyIfRemote(licenseFile);
+            }
+        }
+
+        private async void buttonTestRemoting_Click(object sender, EventArgs e)
+        {
+            if (ValidateTestRemoting() && TestRemote != null)
+            {
+                ToggleControls(false);
+                await TestRemote(this, new EventArgs<IRemoteSettings>(this));
+            }
+        }
+
+        private void buttonTestSQL_Click(object sender, EventArgs e)
+        {
+            //if (!ValidateForm()) return;
+
+            TestSqlClicked(this, new EventArgs<ISqlServerRecord, IRemoteSettings>(this, this));
+        }
+
+        private void buttonTestSolr_Click(object sender, EventArgs e)
+        {
+            TestSolr(this, new EventArgs<string, IRemoteSettings>(solrUrlText.Text.Trim(), this));
+        }
+
+        public void SetRemoteSettings(IRemoteSettings remoteSettings)
+        {
+            RemoteFolder = remoteSettings.RemoteFolder;
+
+            ToggleControls(true);
+            UpdateButtonsState();
+        }
+
+        IProfile ProfileForInstallation => Create.New<IProfilesProvider>().CreateProfile(this);
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO: Fake profile
-            var profile = Create.New<IProfilesProvider>().CreateLocal();
-
-            var browser = new FolderBrowser(profile, true) { StartPosition = FormStartPosition.CenterParent };
+            var browser = new FolderBrowser(ProfileForInstallation, true) { StartPosition = FormStartPosition.CenterParent };
             if (browser.ShowDialog() == DialogResult.OK)
             {
                 textDestinationFolder.Text = browser.SelectedPath;
@@ -110,10 +174,7 @@ namespace Sifon.Forms.Install
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //TODO: Fake profile
-            var profile = Create.New<IProfilesProvider>().CreateLocal();
-
-            var browser = new FolderBrowser(profile, true) { StartPosition = FormStartPosition.CenterParent };
+            var browser = new FolderBrowser(ProfileForInstallation, true) { StartPosition = FormStartPosition.CenterParent };
             if (browser.ShowDialog() == DialogResult.OK)
             {
                 solrRootFolderText.Text = browser.SelectedPath;
@@ -137,23 +198,6 @@ namespace Sifon.Forms.Install
             }
 
             licenseTextbox.Text = dlg.FilePath.Trim();
-            //FilePath = dlg.FilePath.Trim();
-
-            //if (Validation != null)
-            //{
-            //    string validationResult = Validation(pathTextbox.Text);
-
-            //    buttonInstall.Enabled = string.IsNullOrWhiteSpace(validationResult);
-
-            //    if (!buttonInstall.Enabled)
-            //    {
-            //        MessageBox.Show(validationResult, "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    else
-            //    {
-            //        buttonInstall.Focus();
-            //    }
-            //}
         }
 
         private void SetDefaults_Click(object sender, EventArgs e)
@@ -162,7 +206,7 @@ namespace Sifon.Forms.Install
             comboVersions.SelectedIndex = last;
 
             textDestinationFolder.Text = @"C:\inetpub\wwwroot";
-            licenseTextbox.Text = @"c:\Install\license.xml";
+            licenseTextbox.Text = @"c:\license.xml";
             adminPasswordText.Text = "b";
 
             prefixText.Text = "xp";
@@ -182,16 +226,71 @@ namespace Sifon.Forms.Install
 
         private void checkBoxRemote_CheckedChanged(object sender, EventArgs e)
         {
-            ToggleRemotingControls();
+            ToggleRemotingControls(true);
+            UpdateButtonsState();
+            UpdateSqlButtonsState();
+            UpdateSolrButtonsState();
+
+            groupBoxSql.Text = checkBoxRemote.Checked ? "SQL Server (relative to a remote machine)" : "SQL Server";
+            groupBoxSolr.Text = checkBoxRemote.Checked ? "Solr (relative to a remote machine)" : "Solr";
         }
 
-        private void ToggleRemotingControls()
+        public void ToggleControls(bool enabled)
         {
-            textHostname.Enabled = checkBoxRemote.Checked;
-            textUsername.Enabled = checkBoxRemote.Checked;
-            textPassword.Enabled = checkBoxRemote.Checked;
-            linkRevealRemoting.Enabled = checkBoxRemote.Checked;
-            buttonTestRemoting.Enabled = checkBoxRemote.Checked;
+            comboVersions.Enabled = enabled;
+            installPrerequisites.Enabled = enabled;
+            createSifonProfile.Enabled = enabled;
+
+            prefixText.Enabled = enabled;
+            sitecoreSiteText.Enabled = enabled;
+            xconnectText.Enabled = enabled;
+            identityServerText.Enabled = enabled;
+
+            textDestinationFolder.Enabled = enabled;
+            licenseTextbox.Enabled = enabled;
+            adminPasswordText.Enabled = enabled;
+
+            solrUrlText.Enabled = enabled;
+            solrServiceText.Enabled = enabled;
+            solrRootFolderText.Enabled = enabled;
+
+            sqlServerText.Enabled = enabled;
+            sqlServerUsernameText.Enabled = enabled;
+            sqlServerPasswordText.Enabled = enabled;
+            
+            buttonTestRemoting.Enabled = enabled && IsRemotingBlockValid();
+            targetFolderButton.Enabled = enabled && IsRemotingBlockValid();
+            buttonSolrFolder.Enabled = enabled && IsRemotingBlockValid();
+
+            UpdateSqlButtonsState();
+            UpdateSolrButtonsState();
+
+            ToggleRemotingControls(enabled);
+
+            revealSitecoreAdminPassword.Enabled = enabled && checkBoxRemote.Checked;
+            linkRevealSqlPassword.Enabled = enabled && checkBoxRemote.Checked;
+            licenseFileButton.Enabled = enabled;
+
+            checkBoxRemote.Enabled = enabled;
+            textRemoteHostname.Enabled = enabled;
+            textRemoteUsername.Enabled = enabled;
+            textRemotePassword.Enabled = enabled;
+
+            buttonSetDefaults.Enabled = enabled;
+            buttonInstall.Enabled = enabled;
+            buttonTestSQL.Enabled = enabled;
+            buttonTestSolr.Enabled = enabled;
+        }
+
+        private void ToggleRemotingControls(bool enabled)
+        {
+            textRemoteHostname.Enabled = enabled && checkBoxRemote.Checked;
+            textRemoteUsername.Enabled = enabled && checkBoxRemote.Checked;
+            textRemotePassword.Enabled = enabled && checkBoxRemote.Checked;
+            linkRevealRemoting.Enabled = enabled && checkBoxRemote.Checked;
+            buttonTestRemoting.Enabled = enabled && checkBoxRemote.Checked && IsRemotingBlockValid();
+            buttonSolrFolder.Enabled = enabled && (!checkBoxRemote.Checked || IsRemotingBlockValid());
+            targetFolderButton.Enabled = enabled && (!checkBoxRemote.Checked || IsRemotingBlockValid());
         }
 
         #region Reveal / Hide
@@ -201,7 +300,7 @@ namespace Sifon.Forms.Install
 
         private void linkReveal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            RevealPassword(sender, textPassword);
+            RevealPassword(sender, textRemotePassword);
         }
 
         private void revealSitecoreAdminPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -246,6 +345,31 @@ namespace Sifon.Forms.Install
                 e.Effect = DragDropEffects.Copy;
             }
         }
+
+        #endregion
+
+        #region ISqlServerRecord implementation
+
+        public string RecordName => throw new NotImplementedException("Not used");
+        public string SqlServer => sqlServerText.Text.Trim();
+        public string SqlAdminUsername => sqlServerUsernameText.Text.Trim();
+
+        public string SqlAdminPassword
+        {
+            get => sqlServerPasswordText.Text.Trim();
+            set => throw new NotImplementedException("Not used");
+        }
+
+        #endregion
+
+        #region IRemoteSettings implementation
+
+        public bool RemotingEnabled { get => checkBoxRemote.Checked; set => throw new NotImplementedException(); }
+
+        public string RemoteHost { get => textRemoteHostname.Text.Trim(); set => textRemoteHostname.Text = value; }
+        public string RemoteUsername { get => textRemoteUsername.Text.Trim(); set => textRemoteUsername.Text = value; }
+        public string RemotePassword { get => textRemotePassword.Text.Trim(); set => textRemotePassword.Text = value; }
+        public string RemoteFolder { get; set; } = String.Empty;
 
         #endregion
     }

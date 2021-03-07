@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Forms\Feedback\FeedbackPresenter.cs" />
     <Compile Include="Forms\Feedback\IFeedbackView.cs" />
+    <Compile Include="Forms\Install\IInstallView.cs" />
     <Compile Include="Forms\Install\Install.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +109,7 @@
       <DependentUpon>Install.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Install\InstallPresenter.cs" />
     <Compile Include="Forms\Prerequsites\IPrerequisitesView.cs" />
     <Compile Include="Forms\Prerequsites\Prerequsites.cs">
       <SubType>Form</SubType>

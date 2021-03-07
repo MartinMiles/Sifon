@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
-using Sifon.Abstractions.Filesystem;
 using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;

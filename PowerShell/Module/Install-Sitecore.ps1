@@ -39,6 +39,13 @@ function Install-Sitecore
 
     $folder = (Get-Location).Path + "\Downloads\Install"
 
+    if(Test-Path -Path $folder)
+    {
+        Write-Output "Sifon-MuteErrors"
+            Remove-Item -LiteralPath $folder -Force -Recurse | Out-Null
+        Write-Output "Sifon-UnmuteErrors"
+    }
+
     New-Item -ItemType Directory -Force -Path $folder | Out-Null
     Show-Progress -Percent 15  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
     Write-Output "Sifon-MuteProgress"
@@ -90,14 +97,12 @@ function Install-Sitecore
     Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\XP0-SingleDeveloper.log"
     Pop-Location
 
-    Write-Output "Sifon-MuteErrors"
     if(Test-Path -Path $folder)
     {
-        Remove-Item -LiteralPath $folder -Force -Recurse | Out-Null
+        Write-Output "Sifon-MuteErrors"
+            Remove-Item -LiteralPath $folder -Force -Recurse | Out-Null
+        Write-Output "Sifon-UnmuteErrors"
     }
-    Write-Output "Sifon-UnmuteErrors"
-
 
     Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
-
 }

@@ -94,10 +94,9 @@ namespace Sifon.Forms.MainForm
 
         private async void InstallToolStripClicked(object sender, EventArgs<dynamic> e)
         {
-            // TODO: Enforce local installation OR create remote on a fly from params
             var dictionary = new Dictionary<string, object> { { "Params", e.Value } };
 
-            await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary);
+            await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary, e.Value.Profile);
 
             if (e.Value.CreateProfile)
             {

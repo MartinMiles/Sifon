@@ -266,7 +266,7 @@ namespace Sifon.Forms.MainForm
 
         public void TerminateAsEmptyProfile()
         {
-            MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("A profile folder is not initialized or no active profile found.\nThat is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             End();
         }
 
