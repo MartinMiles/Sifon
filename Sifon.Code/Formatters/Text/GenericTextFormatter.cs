@@ -44,6 +44,11 @@ namespace Sifon.Code.Formatters.Text
                 var groups = Regex.Match(line, "Message(.*)");
                 return groups.Groups[1].Value;
             }
+            if (line.StartsWith("WriteProgress"))
+            {
+                var groups = Regex.Match(line, "Message(.*)");
+                return groups.Groups[1].Value;
+            }
 
             if (line.StartsWith("WriteInformationStream"))
             {

@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sifon.Code.Extensions;
 using Sifon.Code.Helpers;
+using Sifon.Code.Progress;
 using Sifon.Statics;
 
 namespace Sifon.Forms.MainForm
 {
     partial class Main
     {
+        private ProgressHook _progressHook;
+
         #region ListboxOutput updating
 
         public bool listBoxChangedFlag { get; set; } = false;
@@ -66,8 +71,22 @@ namespace Sifon.Forms.MainForm
                 }
             }
 
+            ProgressHook(line.Trim());
+
             e.Graphics.DrawString(line, e.Font, brush, e.Bounds, StringFormat.GenericDefault);
             e.DrawFocusRectangle();
+        }
+
+        private void ProgressHook(string line)
+        {
+            if (_progressHook != null)
+            {
+                if (_progressHook.Replacements.ContainsKey(line))
+                {
+                    var m = Regex.Match(line, _progressHook.ReplacementPattern);
+                    UpdateProgressBar(_progressHook.Replacements[line.Trim()], m.Groups[1].Value);
+                }
+            }
         }
 
         private void timerOutput_Tick(object sender, EventArgs e)

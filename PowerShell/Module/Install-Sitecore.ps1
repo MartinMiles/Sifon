@@ -5,13 +5,19 @@ function Install-Sitecore
         $Params
     )
 
-    $Params.DownloadFile
-    $Url = "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx"
-
-    "InstallPrerequisites = $($Params.InstallPrerequisites)"
-    "CreateProfile = $($Params.CreateProfile)"
+    "."
+    Show-Message -Fore white -Back yellow -Text "Sitecore XP0 Installation"
     "."
 
+    "Parameters:"
+    "==========="
+    "Installation package: $($Params.DownloadFile)"
+    "Install prerequisites: $($Params.InstallPrerequisites)"
+    "Create Sifon profile: $($Params.CreateProfile)"
+    "."
+    
+    $Url = "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx"
+    
     # todo copy license to destination (on remote)
 
     New-Item -ItemType Directory -Force -Path ((Get-Location).Path + "\Downloads\") | Out-Null
@@ -19,7 +25,10 @@ function Install-Sitecore
     [string]$FullPath = (Get-Location).Path + "\Downloads\" + $Params.DownloadFile
     if(!(Test-Path -Path $FullPath))
     {
-        Show-Progress -Percent 10  -Activity "Downloading $($Params.DownloadFile) ..."  -Status "Downloading Sitecore"
+        "."
+        Show-Message -Fore white -Back LightGray -Text @("Sitecore installation package not found locally.","Downloading it from Sitecore development portal.")
+        "."    
+        Show-Progress -Percent 3  -Activity "Downloading $($Params.DownloadFile) ..."  -Status "Downloading Sitecore"
         Write-Output "Sifon-MuteProgress"
             Invoke-WebRequest -Uri $Url -OutFile $FullPath
         Write-Output "Sifon-UnmuteProgress"
@@ -47,10 +56,11 @@ function Install-Sitecore
     }
 
     New-Item -ItemType Directory -Force -Path $folder | Out-Null
-    Show-Progress -Percent 15  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
+    Show-Progress -Percent 8  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
     Write-Output "Sifon-MuteProgress"
+        "Extracting installation package: $FullPath"
         Expand-Archive -Path $FullPath -DestinationPath $folder
-        
+        "."
         $conf = Get-ChildItem -Path $folder -Filter "XP0 Configuration files*.zip"
         
         Expand-Archive -Path "$folder\$conf" -DestinationPath $folder
@@ -59,7 +69,7 @@ function Install-Sitecore
 
     if($Params.InstallPrerequisites)
     {
-        Show-Progress -Percent 21  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
+        Show-Progress -Percent 11  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
         Write-Output "Sifon-MuteProgress"
             Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
         Write-Output "Sifon-UnmuteProgress"        
@@ -94,7 +104,9 @@ function Install-Sitecore
     }
 
     Push-Location $folder
-    Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\XP0-SingleDeveloper.log"
+    Write-Output "Sifon-MuteProgress"
+        Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\XP0-SingleDeveloper.log"
+    Write-Output "Sifon-UnmuteProgress"
     Pop-Location
 
     if(Test-Path -Path $folder)

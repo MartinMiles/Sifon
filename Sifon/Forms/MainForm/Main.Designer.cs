@@ -25,6 +25,7 @@ namespace Sifon.Forms.MainForm
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.installToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,7 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.installToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetAllExistingSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -83,6 +84,13 @@ namespace Sifon.Forms.MainForm
             this.menuStrip1.Size = new System.Drawing.Size(1410, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // installToolStripMenuItem
+            // 
+            this.installToolStripMenuItem.Name = "installToolStripMenuItem";
+            this.installToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.installToolStripMenuItem.Text = "Install";
+            this.installToolStripMenuItem.Click += new System.EventHandler(this.installToolStripMenuItem_Click);
             // 
             // backupToolStripMenuItem
             // 
@@ -146,7 +154,8 @@ namespace Sifon.Forms.MainForm
             this.sitecorePortalCredentialsToolStripMenuItem,
             this.settingsToolStripMenuItem1,
             this.installSolrToolStripMenuItem,
-            this.installHostPrerequsitesToolStripMenuItem});
+            this.installHostPrerequsitesToolStripMenuItem,
+            this.resetAllExistingSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -314,12 +323,12 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
-            // installToolStripMenuItem
+            // resetAllExistingSettingsToolStripMenuItem
             // 
-            this.installToolStripMenuItem.Name = "installToolStripMenuItem";
-            this.installToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.installToolStripMenuItem.Text = "Install";
-            this.installToolStripMenuItem.Click += new System.EventHandler(this.installToolStripMenuItem_Click);
+            this.resetAllExistingSettingsToolStripMenuItem.Name = "resetAllExistingSettingsToolStripMenuItem";
+            this.resetAllExistingSettingsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.resetAllExistingSettingsToolStripMenuItem.Text = "Reset All Existing Settings";
+            this.resetAllExistingSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetAllExistingSettingsToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -378,6 +387,7 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem installHostPrerequsitesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installSolrToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetAllExistingSettingsToolStripMenuItem;
     }
 }
 

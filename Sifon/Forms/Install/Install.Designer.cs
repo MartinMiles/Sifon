@@ -499,11 +499,11 @@
             // buttonTestRemoting
             // 
             this.buttonTestRemoting.Enabled = false;
-            this.buttonTestRemoting.Location = new System.Drawing.Point(132, 216);
+            this.buttonTestRemoting.Location = new System.Drawing.Point(111, 216);
             this.buttonTestRemoting.Name = "buttonTestRemoting";
-            this.buttonTestRemoting.Size = new System.Drawing.Size(141, 23);
+            this.buttonTestRemoting.Size = new System.Drawing.Size(162, 23);
             this.buttonTestRemoting.TabIndex = 26;
-            this.buttonTestRemoting.Text = "Test Remote Connection";
+            this.buttonTestRemoting.Text = "Test and Initialize Remote Host";
             this.buttonTestRemoting.UseVisualStyleBackColor = true;
             this.buttonTestRemoting.Click += new System.EventHandler(this.buttonTestRemoting_Click);
             // 

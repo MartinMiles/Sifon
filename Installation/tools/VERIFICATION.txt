@@ -36,7 +36,7 @@ Package content:
 
 Binaries / MSI
 - are available for all the version including historical versions from Release Notes page (https://sifon.uk/docs/ReleaseNotes.md)
-- version number is in fact a link for a corresponding version from /downloads folder (i.e. https://sifon.uk/download/Sifon_1.2.3.msi and same pattern)
+- version number is in fact a link for a corresponding version from /downloads folder (i.e. https://sifon.uk/download/Sifon_1.2.4.msi or same pattern)
 - binary installers are not included at GitHub repository as they remain in history forever and will extremely grow repo in size. 
 
 

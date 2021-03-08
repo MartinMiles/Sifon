@@ -10,6 +10,7 @@ using Sifon.Abstractions.PowerShell;
 using Sifon.Abstractions.Profiles;
 using Sifon.Abstractions.Providers;
 using Sifon.Code.Factories;
+using Sifon.Code.Progress;
 using Sifon.Code.VersionSelector;
 using Sifon.Forms.Base;
 using Sifon.Shared.Forms.FolderBrowserDialog;
@@ -42,7 +43,9 @@ namespace Sifon.Forms.Install
             buttonSetDefaults.Select();
         }
 
-        public dynamic Parameters => new
+        #region Publically exposed properties
+
+        internal dynamic Parameters => new
         {
             Profile = CreateProfileFromRemoteSettings(this),
             DownloadFile = SelectedVersion.Key,
@@ -74,6 +77,32 @@ namespace Sifon.Forms.Install
             InstallPrerequisites = installPrerequisites.Checked,
             CreateProfile = createSifonProfile.Checked
         };
+
+        internal ProgressHook ProgressHook => new ProgressHook(@"\[\-*\s(.*)\s\-*\]")
+        {
+            Replacements = new Dictionary<string, int>
+            {
+                {"[------------------- GeneratePasswords : SetVariable -------------------------]", 15},
+                {"[---------- IdentityServer_CreatePaths : EnsurePath --------------------------]", 16},
+                {"[----------- IdentityServer_InstallWDP : WebDeploy ---------------------------]", 17},
+                {"[--------- IdentityServer_StartWebsite : ManageWebsite -----------------------]", 18},
+                {"[----------- XConnectXP0_CreateWebsite : Website---------------------------- -]", 23},
+                {"[------------- XConnectXP0_StopAppPool : ManageAppPool---------------------- -]", 24},
+                {"[---- XConnectXP0_RemoveDefaultBinding : WebBinding --------------------------]", 25},
+                {"[---------- XConnectXP0_SetPermissions : FilePermissions-------------------- -]", 26},
+                {"[-------------- XConnectXP0_InstallWDP : WebDeploy ---------------------------]", 27},
+                {"[-------------- XConnectXP0_SetLicense : Copy --------------------------------]", 35},
+                {"[------------- XConnectXP0_CleanShards : Command -----------------------------]", 36},
+                {"[------------- SitecoreSolr_CleanCores : EnsurePath --------------------------]", 41},
+                {"[------------- SitecoreXP0_CreatePaths : EnsurePath --------------------------]", 45},
+                {"[-------------- SitecoreXP0_InstallWDP : WebDeploy ---------------------------]", 47},
+                {"[-------------- SitecoreXP0_SetLicense : Copy --------------------------------]", 86},
+                {"[-------- SitecoreXP0_UpdateSolrSchema : SitecoreUrl -------------------------]", 87},
+                {"[--------- SitecoreXP0_DisplayPassword : WriteInformation --------------------]", 99}
+            }
+        };
+
+        #endregion
 
         private KeyValuePair<string, string> SelectedVersion
         {
