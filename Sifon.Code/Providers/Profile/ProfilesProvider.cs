@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using Sifon.Abstractions.Model.BackupRestore;
@@ -25,6 +24,11 @@ namespace Sifon.Code.Providers.Profile
         }
 
         #region CRUD
+
+        public void Append(IProfile p)
+        {
+            _profiles = _profiles.Append(p);
+        }
 
         public void Add(IProfileUserControl p)
         {
@@ -119,7 +123,7 @@ namespace Sifon.Code.Providers.Profile
 
         private IProfile GetByName(string profileName)
         {
-            return _profiles.FirstOrDefault(p => p.ProfileName == profileName);
+            return _profiles.FirstOrDefault(p => String.Equals(p.ProfileName, profileName, StringComparison.OrdinalIgnoreCase));
         }
 
         public void SelectProfile(string selectedProfileName)
@@ -204,12 +208,33 @@ namespace Sifon.Code.Providers.Profile
             profile.SqlServer = sqlServerRecordName;
         }
 
-        public IProfile CreateProfile()
+        public IProfile CreateProfile(string proposedName = null)
         {
-            return new Model.Profiles.Profile();
+            var profile = new Model.Profiles.Profile();
+
+            if (!string.IsNullOrWhiteSpace(proposedName))
+            {
+                profile.ProfileName = ProposeProfileName(proposedName);
+            }
+
+            return profile;
         }
 
-        
+        private string ProposeProfileName(string prefix)
+        {
+            int count = 1;
+            string tempName = prefix;
+            var _p = GetByName(tempName);
+
+            while (_p != null)
+            {
+                tempName = $"{_p.ProfileName} ({count++})";
+                _p = GetByName(tempName);
+            }
+
+            return tempName;
+        }
+
         public IProfile CreateProfile(IRemoteSettings remoteSettings)
         {
             var profile = CreateProfile();

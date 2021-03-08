@@ -35,6 +35,7 @@ namespace Sifon.Code.Statics
             public const string LogFilenamePrefix = "SifonLog_";
         }
 
+        //TODO: move to other file consts?
         public static class Scripts
         {
             public static string InitializeRemote => Path.Combine(PowerShell, "Initialize-Remote.ps1");

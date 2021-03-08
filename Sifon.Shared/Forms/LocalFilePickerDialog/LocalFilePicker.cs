@@ -92,5 +92,36 @@ namespace Sifon.Shared.Forms.LocalFilePickerDialog
         {
             DialogResult = DialogResult.OK;
         }
+
+        #region Drag / drop 
+
+        private void LocalFilePicker_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void LocalFilePicker_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                pathTextbox.Text = file;
+            }
+        }
+
+        private void pathTextbox_DragEnter(object sender, DragEventArgs e)
+        {
+            LocalFilePicker_DragEnter(sender, e);
+        }
+
+        private void pathTextbox_DragDrop(object sender, DragEventArgs e)
+        {
+            LocalFilePicker_DragDrop(sender, e);
+        }
+
+        #endregion
     }
 }

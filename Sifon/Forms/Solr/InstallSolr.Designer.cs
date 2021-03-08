@@ -143,6 +143,7 @@
             this.comboVersion.FormattingEnabled = true;
             this.comboVersion.Items.AddRange(new object[] {
             "6.6.2",
+            "6.6.5",
             "7.2.1",
             "7.5.0",
             "8.1.1",

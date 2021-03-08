@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Progress\ProgressHook.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\DataGridViewExtensions.cs" />
     <Compile Include="Extensions\ListBoxExtensions.cs" />
@@ -94,6 +95,22 @@
     </Compile>
     <Compile Include="Forms\Feedback\FeedbackPresenter.cs" />
     <Compile Include="Forms\Feedback\IFeedbackView.cs" />
+    <Compile Include="Forms\Install\IInstallView.cs" />
+    <Compile Include="Forms\Install\Install.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Install\Install.Designer.cs">
+      <DependentUpon>Install.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Install\Installer.Tooltip.cs">
+      <DependentUpon>Install.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Install\Installer.Validation.cs">
+      <DependentUpon>Install.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Install\InstallPresenter.cs" />
     <Compile Include="Forms\Prerequsites\IPrerequisitesView.cs" />
     <Compile Include="Forms\Prerequsites\Prerequsites.cs">
       <SubType>Form</SubType>
@@ -428,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Initialize\InitRemote.resx">
       <DependentUpon>InitRemote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Install\Install.resx">
+      <DependentUpon>Install.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Other\FirstTimeRun.resx">
       <DependentUpon>FirstTimeRun.cs</DependentUpon>

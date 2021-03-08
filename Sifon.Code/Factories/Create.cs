@@ -11,6 +11,7 @@ using Sifon.Abstractions.Providers;
 using Sifon.Abstractions.ScriptGenerators;
 using Sifon.Code.Helpers;
 using Sifon.Code.Metacode;
+using Sifon.Code.Model.Profiles;
 using Sifon.Code.PowerShell;
 using Sifon.Code.Providers;
 using Sifon.Code.Providers.Profile;
@@ -27,8 +28,7 @@ namespace Sifon.Code.Factories
                 { typeof(IProfilesProvider), () => new ProfilesProvider() as T },
                 { typeof(ISettingsProvider), () => new SettingsProvider() as T },
                 { typeof(IContainersProvider), () => new ContainersProvider() as T },
-
-                { typeof(ISqlServerRecordProvider), () => new SqlServerRecordProvider() as T },
+                { typeof(ISqlServerRecordProvider), () => new SqlServerRecordProvider() as T }
             };
 
             return concreteTypes[typeof(T)]();

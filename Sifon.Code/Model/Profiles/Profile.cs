@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
+using Microsoft.PowerShell.Commands;
 using Sifon.Abstractions.Encryption;
 using Sifon.Abstractions.Profiles;
 using Sifon.Code.Extensions.Models;
@@ -66,6 +67,18 @@ namespace Sifon.Code.Model.Profiles
         public int OperationTimeout { get; } = 60 * 5;
 
         public string WindowCaptionSuffix => $"{ProfileName} - {(RemotingEnabled ? $"REMOTE [{RemoteHost}]" : "(local instance)")}";
+        public ISqlServerRecord AppendSQL(string sqlServer, string sqlAdminUser, string sqlAdminPassword)
+        {
+            var sql = new SqlServerRecord();
+            sql.RecordName = this.ProfileName;
+            sql.SqlServer = sqlServer;
+            sql.SqlAdminUsername = sqlAdminUser;
+            sql.SqlAdminPassword = sqlAdminPassword;
+            sql.Save();
+
+            SqlServer = sql.RecordName;
+            return sql;
+        }
 
         public override string ToString()
         {

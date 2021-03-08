@@ -16,6 +16,7 @@ namespace Sifon.Forms.MainForm
         event EventHandler<EventArgs<string>> SelectedProfileChanged;
         event EventHandler<EventArgs> ProfilesToolStripClicked;
         event EventHandler<EventArgs> SettingsChanged;
+        event EventHandler<EventArgs<dynamic>> InstallToolStripClicked;
         event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked;
         event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked;
         event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked;

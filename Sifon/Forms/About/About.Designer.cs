@@ -51,12 +51,14 @@ namespace Sifon.Forms.About
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.buttonCredits);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label17);
@@ -106,12 +108,11 @@ namespace Sifon.Forms.About
             this.pictureBox1.Size = new System.Drawing.Size(180, 440);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDoubleClick += PictureBox1_MouseDoubleClick;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(204, 202);
+            this.label17.Location = new System.Drawing.Point(204, 218);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(257, 13);
             this.label17.TabIndex = 31;
@@ -159,7 +160,7 @@ namespace Sifon.Forms.About
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(356, 242);
+            this.linkLabel4.Location = new System.Drawing.Point(356, 250);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(82, 13);
             this.linkLabel4.TabIndex = 1;
@@ -170,7 +171,7 @@ namespace Sifon.Forms.About
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(204, 242);
+            this.label10.Location = new System.Drawing.Point(204, 250);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 13);
             this.label10.TabIndex = 25;
@@ -179,7 +180,7 @@ namespace Sifon.Forms.About
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(204, 183);
+            this.label9.Location = new System.Drawing.Point(204, 199);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(340, 13);
             this.label9.TabIndex = 24;
@@ -188,7 +189,7 @@ namespace Sifon.Forms.About
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(204, 165);
+            this.label8.Location = new System.Drawing.Point(204, 181);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(285, 13);
             this.label8.TabIndex = 23;
@@ -197,7 +198,7 @@ namespace Sifon.Forms.About
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(204, 147);
+            this.label7.Location = new System.Drawing.Point(204, 163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(352, 13);
             this.label7.TabIndex = 22;
@@ -206,7 +207,7 @@ namespace Sifon.Forms.About
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(204, 129);
+            this.label4.Location = new System.Drawing.Point(204, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(329, 13);
             this.label4.TabIndex = 21;
@@ -275,7 +276,7 @@ namespace Sifon.Forms.About
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(204, 279);
+            this.label12.Location = new System.Drawing.Point(204, 285);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 13);
             this.label12.TabIndex = 11;
@@ -284,7 +285,7 @@ namespace Sifon.Forms.About
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(204, 111);
+            this.label6.Location = new System.Drawing.Point(204, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(341, 13);
             this.label6.TabIndex = 5;
@@ -293,7 +294,7 @@ namespace Sifon.Forms.About
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(204, 91);
+            this.label5.Location = new System.Drawing.Point(204, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 4;
@@ -304,9 +305,9 @@ namespace Sifon.Forms.About
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(204, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 13);
+            this.label3.Size = new System.Drawing.Size(216, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "- Sitecore XP and XC 9.* versions 10.0";
+            this.label3.Text = "- Sitecore XP and XC 9.* up to versions 10.1";
             // 
             // label2
             // 
@@ -325,6 +326,15 @@ namespace Sifon.Forms.About
             this.label1.Size = new System.Drawing.Size(323, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sifon is a helpful tool for many Sitecore back-end DevOps activities";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(204, 109);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(349, 13);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "- Installs Sitcore in the most powerfull intuitive way,  local or over network";
             // 
             // About
             // 
@@ -376,5 +386,6 @@ namespace Sifon.Forms.About
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button buttonCredits;
+        private Label label18;
     }
 }

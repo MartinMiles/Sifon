@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
@@ -9,6 +10,7 @@ using Sifon.Code.Statics;
 using Sifon.Forms.Base;
 using Sifon.Forms.Other;
 using Sifon.Forms.Updates;
+using Sifon.Shared.MessageBoxes;
 
 namespace Sifon.Forms.MainForm
 {
@@ -21,6 +23,7 @@ namespace Sifon.Forms.MainForm
         public event EventHandler<EventArgs<string>> SelectedProfileChanged = delegate { };
         public event EventHandler<EventArgs> ProfilesToolStripClicked = delegate { };
         public event EventHandler<EventArgs> SettingsChanged = delegate { };
+        public event EventHandler<EventArgs<dynamic>> InstallToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> BackupToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IBackupRemoverViewModel>> RemoveToolStripClicked = delegate { };
         public event EventHandler<EventArgs<IRestoreViewModel>> RestoreToolStripClicked = delegate { };
@@ -265,8 +268,57 @@ namespace Sifon.Forms.MainForm
 
         public void TerminateAsEmptyProfile()
         {
-            MessageBox.Show("A profile folder is not initialized.\nIt is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("A profile folder is not initialized or no active profile found.\nThat is requred for Sifon to run and function\nPlease configure at least one local profile", "First Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             End();
+        }
+
+        private void installToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var install = new Install.Install { StartPosition = FormStartPosition.CenterParent };
+
+            if (install.ShowDialog() == DialogResult.OK)
+            {
+                _progressHook = install.ProgressHook;
+                InstallToolStripClicked(this, new EventArgs<dynamic>(install.Parameters));
+            }
+
+            install.Dispose();
+        }
+
+        private void resetAllExistingSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (new DisplayMessage().ShowYesNo("Are you sure you would like to progress?",
+                "Choosing 'Yes' deletes existing settings/profiles.\nIt will turn Sifon into the initial state.\n\nApplication will also restart upon completion.")
+            )
+            {
+                if (Directory.Exists(Folders.Profiles))
+                {
+                    DeleteDirectory(Folders.Profiles);
+                }
+
+                Application.Restart();
+                Environment.Exit(0);
+            }
+        }
+
+        // TODO: also copy this method into API replacing the system one (for local profiles)
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
         }
     }
 }

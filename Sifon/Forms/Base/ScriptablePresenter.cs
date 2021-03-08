@@ -73,6 +73,21 @@ namespace Sifon.Forms.Base
             }
         }
 
+        // TODO: rework duplicates for the two below methods
+        public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters, IProfile profile)
+        {
+            _scriptWrapper = Create.WithParam(_view, d => d, profile);
+
+            AddHandlers();
+
+            _view.BeginUI();
+
+            await _scriptWrapper.Run(script, parameters);
+
+            RemoveHandlers();
+            _view.FinishUI();
+        }
+
         public async Task PrepareAndStart(string script, Dictionary<string, dynamic> parameters, bool enforceLocal = false)
         {
             _scriptWrapper = enforceLocal ? LocalScriptWrapper : Create.WithParam(_view, d => d);

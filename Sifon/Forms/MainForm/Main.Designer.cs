@@ -25,6 +25,7 @@ namespace Sifon.Forms.MainForm
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.installToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,8 +37,8 @@ namespace Sifon.Forms.MainForm
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.installSolrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,7 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
+            this.resetAllExistingSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -68,6 +70,7 @@ namespace Sifon.Forms.MainForm
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.installToolStripMenuItem,
             this.backupToolStripMenuItem,
             this.removeToolStripMenuItem1,
             this.restoreToolStripMenuItem,
@@ -81,6 +84,13 @@ namespace Sifon.Forms.MainForm
             this.menuStrip1.Size = new System.Drawing.Size(1410, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // installToolStripMenuItem
+            // 
+            this.installToolStripMenuItem.Name = "installToolStripMenuItem";
+            this.installToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.installToolStripMenuItem.Text = "Install";
+            this.installToolStripMenuItem.Click += new System.EventHandler(this.installToolStripMenuItem_Click);
             // 
             // backupToolStripMenuItem
             // 
@@ -144,7 +154,8 @@ namespace Sifon.Forms.MainForm
             this.sitecorePortalCredentialsToolStripMenuItem,
             this.settingsToolStripMenuItem1,
             this.installSolrToolStripMenuItem,
-            this.installHostPrerequsitesToolStripMenuItem});
+            this.installHostPrerequsitesToolStripMenuItem,
+            this.resetAllExistingSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -164,19 +175,19 @@ namespace Sifon.Forms.MainForm
             this.settingsToolStripMenuItem1.Text = "Application Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
-            // installHostPrerequsitesToolStripMenuItem
-            // 
-            this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
-            this.installHostPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.installHostPrerequsitesToolStripMenuItem.Text = "Install Prerequsites";
-            this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
-            // 
             // installSolrToolStripMenuItem
             // 
             this.installSolrToolStripMenuItem.Name = "installSolrToolStripMenuItem";
             this.installSolrToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.installSolrToolStripMenuItem.Text = "Install Solr";
             this.installSolrToolStripMenuItem.Click += new System.EventHandler(this.installSolrToolStripMenuItem_Click);
+            // 
+            // installHostPrerequsitesToolStripMenuItem
+            // 
+            this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
+            this.installHostPrerequsitesToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.installHostPrerequsitesToolStripMenuItem.Text = "Install Prerequsites";
+            this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -312,6 +323,13 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
+            // resetAllExistingSettingsToolStripMenuItem
+            // 
+            this.resetAllExistingSettingsToolStripMenuItem.Name = "resetAllExistingSettingsToolStripMenuItem";
+            this.resetAllExistingSettingsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.resetAllExistingSettingsToolStripMenuItem.Text = "Reset All Existing Settings";
+            this.resetAllExistingSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetAllExistingSettingsToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AllowDrop = true;
@@ -368,6 +386,8 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem checkUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installHostPrerequsitesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installSolrToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem installToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetAllExistingSettingsToolStripMenuItem;
     }
 }
 

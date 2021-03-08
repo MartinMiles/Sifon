@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Sifon.Code.Formatters.Text
 {
@@ -31,8 +32,31 @@ namespace Sifon.Code.Formatters.Text
             line = muteOutputFlag ? String.Empty : line;
 
             line = IngnoreMuteCommandFromOutput(line);
+            line = ProcessUnrecognizedStreams(line);
 
             return ReplaceDotWithNewLine(line);
+        }
+
+        private string ProcessUnrecognizedStreams(string line)
+        {
+            if (line.StartsWith("WriteWarningStream"))
+            {
+                var groups = Regex.Match(line, "Message(.*)");
+                return groups.Groups[1].Value;
+            }
+            if (line.StartsWith("WriteProgress"))
+            {
+                var groups = Regex.Match(line, "Message(.*)");
+                return groups.Groups[1].Value;
+            }
+
+            if (line.StartsWith("WriteInformationStream"))
+            {
+                var groups = Regex.Match(line, "MessageData(.*)");
+                return groups.Groups[1].Value;
+            }
+
+            return line;
         }
 
         private string ReplaceDotWithNewLine(string line)
