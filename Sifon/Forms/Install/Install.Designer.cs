@@ -244,7 +244,7 @@
             this.sitecoreSiteText.Location = new System.Drawing.Point(18, 97);
             this.sitecoreSiteText.Name = "sitecoreSiteText";
             this.sitecoreSiteText.Size = new System.Drawing.Size(180, 20);
-            this.sitecoreSiteText.TabIndex = 31;
+            this.sitecoreSiteText.TabIndex = 32;
             // 
             // identityServerLabel
             // 
@@ -260,7 +260,7 @@
             this.identityServerText.Location = new System.Drawing.Point(18, 201);
             this.identityServerText.Name = "identityServerText";
             this.identityServerText.Size = new System.Drawing.Size(180, 20);
-            this.identityServerText.TabIndex = 33;
+            this.identityServerText.TabIndex = 34;
             // 
             // xconnectLabel
             // 
@@ -276,7 +276,7 @@
             this.xconnectText.Location = new System.Drawing.Point(18, 148);
             this.xconnectText.Name = "xconnectText";
             this.xconnectText.Size = new System.Drawing.Size(180, 20);
-            this.xconnectText.TabIndex = 32;
+            this.xconnectText.TabIndex = 33;
             // 
             // label6
             // 
