@@ -79,6 +79,23 @@ function Install-Sitecore
         Write-Output "Sifon-UnmuteProgress"        
     }
 
+
+    if([System.Environment]::OSVersion.Version.Build -ge 22000)
+    {
+        New-Item `
+        'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+        -Force | Out-Null
+            
+        New-ItemProperty `
+        -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+        -name 'Enabled' -value '0' -PropertyType 'DWord' -Force | Out-Null
+            
+        New-ItemProperty `
+        -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+        -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
+    }
+
+
     # Install XP0 via combined partials file.
     $singleDeveloperParams = @{
         Path = "$folder\XP0-SingleDeveloper.json"
