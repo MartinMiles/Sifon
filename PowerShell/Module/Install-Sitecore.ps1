@@ -69,9 +69,13 @@ function Install-Sitecore
 
     if($Params.InstallPrerequisites)
     {
+        $prereqs = "$folder\prerequisites.json"
+        (Get-Content $prereqs).replace('https://download.microsoft.com/download/C/F/F/CFF3A0B8-99D4-41A2-AE1A-496C08BEB904/WebPlatformInstaller_amd64_en-US.msi', 'https://go.microsoft.com/fwlink/?LinkId=287166') | Set-Content $prereqs
+        (Get-Content $prereqs).replace('https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe', 'https://go.microsoft.com/fwlink/?linkid=863265') | Set-Content $prereqs
+
         Show-Progress -Percent 11  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
         Write-Output "Sifon-MuteProgress"
-            Install-SitecoreConfiguration -Path "$folder\prerequisites.json"
+            Install-SitecoreConfiguration -Path $prereqs
         Write-Output "Sifon-UnmuteProgress"        
     }
 
