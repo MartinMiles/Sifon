@@ -76,9 +76,34 @@ function Install-Sitecore
         Show-Progress -Percent 11  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
         Write-Output "Sifon-MuteProgress"
             Install-SitecoreConfiguration -Path $prereqs
+
+            "==================================="
+            "Installing additional prerequisites:"
+            "==================================="
+            function Install-Feature ($feature)
+            {
+                $mst = (Get-WindowsOptionalFeature -online -FeatureName $feature).State
+                if($mst -and $mst -eq 'Enabled')
+                {
+                    "$feature already enabled"
+                }
+                else
+                {
+                    "Installing $feature ..."
+                    Enable-WindowsOptionalFeature -online -FeatureName $feature 
+                    "$feature has been installed"
+                }
+            }            
+            
+            Install-Feature("IIS-NetFxExtensibility")
+            Install-Feature("IIS-ASPNET")
+            Install-Feature("IIS-HttpRedirect")
+            Install-Feature("IIS-BasicAuthentication")
+            Install-Feature("IIS-ManagementScriptingTools")
+            Install-Feature("IIS-HostableWebCore")
+
         Write-Output "Sifon-UnmuteProgress"        
     }
-
 
     if([System.Environment]::OSVersion.Version.Build -ge 22000)
     {
