@@ -113,7 +113,8 @@ namespace Sifon.Forms.Install
                     {"Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip", "88666D3532F24973939C1CC140E12A27"},
                     {"Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", "DCD3DC6E7C544C3685EC41DD781D3187"},
                     {"Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", "9486629B50A847A5B62D59474CBAC53C"},
-                    {"Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", "7F9D170F0A4B4B598323629A7B7122EA"}
+                    {"Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", "7F9D170F0A4B4B598323629A7B7122EA"},
+                    {"Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", "F85D6FB55C3F4F6B98291FDDB43D89D2"}
                 };
 
                 var selectedVersion = comboVersions.SelectedItem as KernelHash;
