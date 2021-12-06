@@ -1,4 +1,4 @@
-function Install-Sitecore
+function Install-DownloadSitecore
 {
     param(
         [Parameter(Mandatory=$true)]

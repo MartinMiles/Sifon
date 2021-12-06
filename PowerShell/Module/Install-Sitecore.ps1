@@ -24,6 +24,7 @@ function Install-Sitecore
     #     -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
     # }
 
+    $folder = (Get-Location).Path + "\Downloads\Install"
 
     # Install XP0 via combined partials file.
     $singleDeveloperParams = @{

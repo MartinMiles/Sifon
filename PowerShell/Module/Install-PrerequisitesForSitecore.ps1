@@ -1,4 +1,4 @@
-function Install-Sitecore
+function Install-PrerequisitesForSitecore
 {
     param(
         [Parameter(Mandatory=$true)]
@@ -7,6 +7,8 @@ function Install-Sitecore
 
     if($Params.InstallPrerequisites)
     {
+        $folder = (Get-Location).Path + "\Downloads\Install"
+        
         "."
         $prereqs = "$folder\prerequisites.json"
         (Get-Content $prereqs).replace('https://download.microsoft.com/download/C/F/F/CFF3A0B8-99D4-41A2-AE1A-496C08BEB904/WebPlatformInstaller_amd64_en-US.msi', 'https://go.microsoft.com/fwlink/?LinkId=287166') | Set-Content $prereqs

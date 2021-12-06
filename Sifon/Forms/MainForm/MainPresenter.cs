@@ -105,6 +105,7 @@ namespace Sifon.Forms.MainForm
                 CreateProfileFrom(e.Value);
             }
 
+            // todo: validate in debugger why 100% mark never hit there
             _view.UpdateProgressBar(100, "Sitecore installation complete");
         }
 
