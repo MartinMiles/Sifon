@@ -8,6 +8,8 @@ namespace Sifon.Code.Statics
         {
             internal const string GetInstanceUrl = "Get-InstanceUrl";
             internal const string DownloadResource = "Download-Resource";
+            public const string InstallDownloadSitecore = "Install-DownloadSitecore";
+            public const string InstallPrerequisitesForSitecore = "Install-PrerequisitesForSitecore";
             public const string InstallSitecore = "Install-Sitecore";
             internal const string InstallSitecorePackage = "Install-SitecorePackage";
             internal const string CopyFileToRemote = "Copy-FileToRemote";
@@ -50,6 +52,8 @@ namespace Sifon.Code.Statics
             public static string GetInstanceUrl => Combine(Functions.GetInstanceUrl);
             public static string DownloadResourceScript => Combine(Functions.DownloadResource);
             public static string DownloadResourceJson => Combine(Functions.DownloadResource, "json");
+            public static string InstallDownloadSitecore => Combine(Functions.InstallDownloadSitecore);
+            public static string InstallPrerequisitesForSitecore => Combine(Functions.InstallPrerequisitesForSitecore);
             public static string InstallSitecore => Combine(Functions.InstallSitecore);
             public static string InstallSitecorePackage => Combine(Functions.InstallSitecorePackage);
             public static string InstallSitecorePackageAspx => Combine(Functions.InstallSitecorePackage, "aspx");

@@ -96,6 +96,8 @@ namespace Sifon.Forms.MainForm
         {
             var dictionary = new Dictionary<string, object> { { "Params", e.Value } };
 
+            await PrepareAndStart(Modules.Functions.InstallDownloadSitecore, dictionary, e.Value.Profile);
+            await PrepareAndStart(Modules.Functions.InstallPrerequisitesForSitecore, dictionary, e.Value.Profile);
             await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary, e.Value.Profile);
 
             if (e.Value.CreateProfile)

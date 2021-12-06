@@ -9,116 +9,20 @@ function Install-Sitecore
     Show-Message -Fore white -Back yellow -Text "Sitecore XP0 Installation"
     "."
 
-    "Parameters:"
-    "==========="
-    "Installation package: $($Params.DownloadFile)"
-    "Install prerequisites: $($Params.InstallPrerequisites)"
-    "Create Sifon profile: $($Params.CreateProfile)"
-    "."
-    
-    $Url = "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx"
-    
-    # todo copy license to destination (on remote)
-
-    New-Item -ItemType Directory -Force -Path ((Get-Location).Path + "\Downloads\") | Out-Null
-
-    [string]$FullPath = (Get-Location).Path + "\Downloads\" + $Params.DownloadFile
-    if(!(Test-Path -Path $FullPath))
-    {
-        "."
-        Show-Message -Fore white -Back LightGray -Text @("Sitecore installation package not found locally.","Downloading it from Sitecore development portal.")
-        "."    
-        Show-Progress -Percent 3  -Activity "Downloading $($Params.DownloadFile) ..."  -Status "Downloading Sitecore"
-        Write-Output "Sifon-MuteProgress"
-            Invoke-WebRequest -Uri $Url -OutFile $FullPath
-        Write-Output "Sifon-UnmuteProgress"
-    }
-    else
-    {
-        "Found file: $FullPath"
-    }
-
-    if(!(Test-Path -Path $FullPath))
-    {
-        "."
-        Show-Message -Fore red -Back yellow -Text @("XP0 installer not downloaded.","File missing at: $FullPath")    
-
-        exit
-    }
-
-    $folder = (Get-Location).Path + "\Downloads\Install"
-
-    if(Test-Path -Path $folder)
-    {
-        Write-Output "Sifon-MuteErrors"
-            Remove-Item -LiteralPath $folder -Force -Recurse | Out-Null
-        Write-Output "Sifon-UnmuteErrors"
-    }
-
-    New-Item -ItemType Directory -Force -Path $folder | Out-Null
-    Show-Progress -Percent 8  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
-    Write-Output "Sifon-MuteProgress"
-        "Extracting installation package: $FullPath"
-        Expand-Archive -Path $FullPath -DestinationPath $folder
-        "."
-        $conf = Get-ChildItem -Path $folder -Filter "XP0 Configuration files*.zip"
-        
-        Expand-Archive -Path "$folder\$conf" -DestinationPath $folder
-    Write-Output "Sifon-UnmuteProgress"
-
-
-    if($Params.InstallPrerequisites)
-    {
-        $prereqs = "$folder\prerequisites.json"
-        (Get-Content $prereqs).replace('https://download.microsoft.com/download/C/F/F/CFF3A0B8-99D4-41A2-AE1A-496C08BEB904/WebPlatformInstaller_amd64_en-US.msi', 'https://go.microsoft.com/fwlink/?LinkId=287166') | Set-Content $prereqs
-        (Get-Content $prereqs).replace('https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe', 'https://go.microsoft.com/fwlink/?linkid=863265') | Set-Content $prereqs
-
-        Show-Progress -Percent 11  -Activity "Installing prerequisites"  -Status "Installing prerequisites"
-        Write-Output "Sifon-MuteProgress"
-            Install-SitecoreConfiguration -Path $prereqs
-
-            "==================================="
-            "Installing additional prerequisites:"
-            "==================================="
-            function Install-Feature ($feature)
-            {
-                $mst = (Get-WindowsOptionalFeature -online -FeatureName $feature).State
-                if($mst -and $mst -eq 'Enabled')
-                {
-                    "$feature already enabled"
-                }
-                else
-                {
-                    "Installing $feature ..."
-                    Enable-WindowsOptionalFeature -online -FeatureName $feature 
-                    "$feature has been installed"
-                }
-            }            
+    # if([System.Environment]::OSVersion.Version.Build -ge 22000)
+    # {
+    #     New-Item `
+    #     'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+    #     -Force | Out-Null
             
-            Install-Feature("IIS-NetFxExtensibility")
-            Install-Feature("IIS-ASPNET")
-            Install-Feature("IIS-HttpRedirect")
-            Install-Feature("IIS-BasicAuthentication")
-            Install-Feature("IIS-ManagementScriptingTools")
-            Install-Feature("IIS-HostableWebCore")
-
-        Write-Output "Sifon-UnmuteProgress"        
-    }
-
-    if([System.Environment]::OSVersion.Version.Build -ge 22000)
-    {
-        New-Item `
-        'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-        -Force | Out-Null
+    #     New-ItemProperty `
+    #     -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+    #     -name 'Enabled' -value '0' -PropertyType 'DWord' -Force | Out-Null
             
-        New-ItemProperty `
-        -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-        -name 'Enabled' -value '0' -PropertyType 'DWord' -Force | Out-Null
-            
-        New-ItemProperty `
-        -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-        -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
-    }
+    #     New-ItemProperty `
+    #     -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
+    #     -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
+    # }
 
 
     # Install XP0 via combined partials file.
