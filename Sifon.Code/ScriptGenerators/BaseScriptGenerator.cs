@@ -77,6 +77,7 @@ namespace Sifon.Code.ScriptGenerators
         {
             executionScript += Environment.NewLine;
             executionScript += ".";
+            executionScript += Environment.NewLine;
             executionScript += $@"Show-Message -Fore White -Back Yellow -Text ""{operationName} completed.""";
         }
 
