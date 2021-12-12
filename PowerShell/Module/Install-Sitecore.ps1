@@ -9,22 +9,14 @@ function Install-Sitecore
     Show-Message -Fore white -Back yellow -Text "Sitecore XP0 Installation"
     "."
 
-    # if([System.Environment]::OSVersion.Version.Build -ge 22000)
-    # {
-    #     New-Item `
-    #     'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-    #     -Force | Out-Null
-            
-    #     New-ItemProperty `
-    #     -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-    #     -name 'Enabled' -value '0' -PropertyType 'DWord' -Force | Out-Null
-            
-    #     New-ItemProperty `
-    #     -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' `
-    #     -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
-    # }
-
     $folder = (Get-Location).Path + "\Downloads\Install"
+
+    if($Params.WindowsBuild -ge 22000)
+    {
+        $json = "$folder\xconnect-xp0.json"
+        Write-Output $json
+        (Get-Content $json -raw) -replace '{?\s*\"Name\": \"\[variable\(''Services\.MarketingAutomationEngine\.Name''\)\]\",?\s*\"Status\": \"Running\"?\s*},', '' | Out-File $json -NoNewLine
+    }    
 
     # Install XP0 via combined partials file.
     $singleDeveloperParams = @{
@@ -65,6 +57,36 @@ function Install-Sitecore
         Write-Output "Sifon-MuteErrors"
             Remove-Item -LiteralPath $folder -Force -Recurse | Out-Null
         Write-Output "Sifon-UnmuteErrors"
+    }
+
+    if($Params.WindowsBuild -ge 22000)
+    {
+        Function ReplaceWebsiteBinding {
+            Param(
+                [string] $sitename,
+                [string] $oldBinding
+            );
+        
+            $wsbindings = (Get-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings)
+
+            for($i=0;$i -lt ($wsbindings.Collection).length;$i++){
+
+                if((($wsbindings.Collection[$i]).bindingInformation).Contains($oldBinding)){
+                    
+                    ($wsbindings.Collection[$i]).bindingInformation = $oldBinding;
+                    ($wsbindings.Collection[$i]).sslFlags=33
+                 }
+            }
+            
+            Set-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings -Value $wsbindings
+            # Get-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings
+        }
+
+        ReplaceWebsiteBinding "$XConnectSiteName" "*:443:$XConnectSiteName"
+
+        Restart-WebAppPool "$XConnectSiteName"
+
+        Start-Service -Name "$XConnectSiteName-MarketingAutomationService"
     }
 
     Show-Progress -Percent 100  -Activity "Done"  -Status "Done"

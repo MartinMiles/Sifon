@@ -75,7 +75,9 @@ namespace Sifon.Forms.Install
             SolrRoot = solrRootFolderText.Text.Trim(),
 
             InstallPrerequisites = installPrerequisites.Checked,
-            CreateProfile = createSifonProfile.Checked
+            CreateProfile = createSifonProfile.Checked,
+
+            WindowsBuild = System.Environment.OSVersion.Version.Build
         };
 
         internal ProgressHook ProgressHook => new ProgressHook(@"\[\-*\s(.*)\s\-*\]")
