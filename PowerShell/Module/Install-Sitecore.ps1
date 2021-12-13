@@ -82,6 +82,7 @@ function Install-Sitecore
             # Get-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings
         }
 
+        $XConnectSiteName = $Params.XConnectSiteName;
         ReplaceWebsiteBinding "$XConnectSiteName" "*:443:$XConnectSiteName"
 
         Restart-WebAppPool "$XConnectSiteName"
