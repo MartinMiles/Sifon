@@ -59,36 +59,5 @@ function Install-Sitecore
         Write-Output "Sifon-UnmuteErrors"
     }
 
-    if($Params.WindowsBuild -ge 22000)
-    {
-        Function ReplaceWebsiteBinding {
-            Param(
-                [string] $sitename,
-                [string] $oldBinding
-            );
-        
-            $wsbindings = (Get-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings)
-
-            for($i=0;$i -lt ($wsbindings.Collection).length;$i++){
-
-                if((($wsbindings.Collection[$i]).bindingInformation).Contains($oldBinding)){
-                    
-                    ($wsbindings.Collection[$i]).bindingInformation = $oldBinding;
-                    ($wsbindings.Collection[$i]).sslFlags=33
-                 }
-            }
-            
-            Set-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings -Value $wsbindings
-            # Get-ItemProperty -Path "IIS:\Sites\$sitename" -Name Bindings
-        }
-
-        $XConnectSiteName = $Params.XConnectSiteName;
-        ReplaceWebsiteBinding "$XConnectSiteName" "*:443:$XConnectSiteName"
-
-        Restart-WebAppPool "$XConnectSiteName"
-
-        Start-Service -Name "$XConnectSiteName-MarketingAutomationService"
-    }
-
     Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
 }
