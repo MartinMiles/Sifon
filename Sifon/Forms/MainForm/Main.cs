@@ -240,7 +240,7 @@ namespace Sifon.Forms.MainForm
 
         public void UpdateProgressBar(int percentComplete, string statusLabelText)
         {
-            if (percentComplete < 0) return;
+            if (percentComplete < 0 || progressBar.Value > percentComplete) return;
 
             progressBar.Value = percentComplete;
             statusLabel.Text = statusLabelText;
