@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,9 @@ namespace Sifon.Forms.MainForm
             var toolStripMenuItem1 = new ToolStripMenuItem { Text = Statics.ContextMenu.CopyClipboard };
             toolStripMenuItem1.Click += contextMenu_CopyLineToClipboard_Click;
 
+            var toolStripMenuItem4 = new ToolStripMenuItem { Text = Statics.ContextMenu.OpenInBrowser };
+            toolStripMenuItem4.Click += contextMenu_OpenInBrowser_Click;
+
             var toolStripMenuItem3 = new ToolStripMenuItem { Text = Statics.ContextMenu.SaveToFile };
             toolStripMenuItem3.Click += contextMenu_SaveToOutput_Click;
 
@@ -28,10 +32,21 @@ namespace Sifon.Forms.MainForm
             collectionRoundMenuStrip = new ContextMenuStrip();
             collectionRoundMenuStrip.Items.AddRange(new ToolStripItem[]
             {
-                toolStripMenuItem1, toolStripMenuItem3, toolStripMenuItem2
+                toolStripMenuItem4, toolStripMenuItem1, toolStripMenuItem3, toolStripMenuItem2
             });
 
             listBoxOutput.MouseDown += myListBox_MouseDown;
+        }
+
+        private void contextMenu_OpenInBrowser_Click(object sender, EventArgs e)
+        {
+            Navigate(GetOutputLines(true));
+        }
+
+        protected void Navigate(string url)
+        {
+            var website = new ProcessStartInfo(url);
+            Process.Start(website);
         }
 
         private void contextMenu_CopyLineToClipboard_Click(object sender, EventArgs e)
@@ -83,6 +98,14 @@ namespace Sifon.Forms.MainForm
             if (e.Button != MouseButtons.Right) return;
             collectionRoundMenuStrip.Show(Cursor.Position);
             collectionRoundMenuStrip.Visible = true;
+
+            var line = GetOutputLines(true);
+            
+			Uri uriResult;
+            bool isValidLink = Uri.TryCreate(line, UriKind.Absolute, out uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            collectionRoundMenuStrip.Items[0].Visible = isValidLink;
         }
 
         #endregion

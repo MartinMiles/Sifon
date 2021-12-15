@@ -10,8 +10,11 @@ function Install-Sitecore
     "."
 
     $folder = (Get-Location).Path + "\Downloads\Install"
-
-    if($Params.WindowsBuild -ge 22000)
+    
+    $WindowsBuildNumber = (get-wmiobject -Class win32_OperatingSystem).BuildNumber;
+    $buildNumber = [int]$WindowsBuildNumber
+    
+    if($buildNumber -ge 22000)
     {
         $json = "$folder\xconnect-xp0.json"
         Write-Output $json
@@ -59,5 +62,25 @@ function Install-Sitecore
         Write-Output "Sifon-UnmuteErrors"
     }
 
+    if($buildNumber -ge 22000)
+    {
+        "."
+        "."
+        $Win11_Message  = @(
+            "Attention!",
+            "",
+            "It looks as the target machine run on Windows 11, therefore an extra step may be required.",
+            "",
+            "Marketing Automation service is currently stopped, you can start it manually in few steps.",
+            "Please select and right-click the URL below to open it in a browser to find out more info.",
+            "",
+            "https://Sifon.UK/win-11"
+            );
+
+        Show-Message -Fore yellow -Back red -Text $Win11_Message
+        "."
+        "."
+    }
+    
     Show-Progress -Percent 100  -Activity "Done"  -Status "Done"
 }
