@@ -1,8 +1,8 @@
 function Install-Solr
 (
-	[string]$Version = "8.4.0",
+	[string]$Version = "8.8.2",
 	[string]$Folder = "c:\solr",
-	[string]$Port = "8840",
+	[string]$Port = "8882",
 	[string]$Hostname = "localhost",
 	[bool]$Uninstall = $false
 )
