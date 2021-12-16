@@ -159,7 +159,7 @@ namespace Sifon.Shared.Forms.DownloaderDialog
                     }
                 }
 
-                _resources.ForEach(r => r.path = $"{platform.name}\\{r.path}");
+                _resources.ForEach(r => r.path = $"{platform.folder}\\{r.path}");
             }
         }
 

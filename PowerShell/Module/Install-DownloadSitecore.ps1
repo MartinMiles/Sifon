@@ -20,9 +20,12 @@ function Install-DownloadSitecore
     
     # todo copy license to destination (on remote)
 
-    New-Item -ItemType Directory -Force -Path ((Get-Location).Path + "\Downloads\") | Out-Null
+    # Sample path: c:\Program Files\Sifon\Downloads\10.0.1\On Premises deployment\Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip
+    $directory = (Get-Location).Path + "\Downloads\" + $Params.DownloadFolder + "\On Premises deployment\"
 
-    [string]$FullPath = (Get-Location).Path + "\Downloads\" + $Params.DownloadFile
+    New-Item -ItemType Directory -Force -Path $directory | Out-Null
+
+    [string]$FullPath = $directory + $Params.DownloadFile
     if(!(Test-Path -Path $FullPath))
     {
         "."

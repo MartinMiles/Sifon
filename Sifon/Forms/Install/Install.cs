@@ -48,8 +48,9 @@ namespace Sifon.Forms.Install
         internal dynamic Parameters => new
         {
             Profile = CreateProfileFromRemoteSettings(this),
-            DownloadFile = SelectedVersion.Key,
-            DownloadHash = SelectedVersion.Value,
+            DownloadFolder = SelectedVersion.Folder,
+            DownloadFile = SelectedVersion.File,
+            DownloadHash = SelectedVersion.Hash,
 
             RemotingEnabled = checkBoxRemote.Checked,
             RemotingHost = textRemoteHostname.Text.Trim(),
@@ -104,22 +105,31 @@ namespace Sifon.Forms.Install
 
         #endregion
 
-        private KeyValuePair<string, string> SelectedVersion
+        internal class DownloadItem
+        {
+
+            public string File { get; set; }
+            public string Hash { get; set; }
+            public string Folder { get; set; }
+        }
+
+        private DownloadItem SelectedVersion
         {
             get
             {
-                var resources = new Dictionary<string, string>
+                var resources = new List<DownloadItem> 
                 {
-                    {"Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip", "88666D3532F24973939C1CC140E12A27"},
-                    {"Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", "DCD3DC6E7C544C3685EC41DD781D3187"},
-                    {"Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", "9486629B50A847A5B62D59474CBAC53C"},
-                    {"Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", "7F9D170F0A4B4B598323629A7B7122EA"},
-                    {"Sitecore 10.1.1 rev. 005862 (WDP XP0 packages).zip", "4EF9CECDC77D4733850E5487E17C6EF8"},
-                    {"Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", "F85D6FB55C3F4F6B98291FDDB43D89D2"}
+                    new DownloadItem { File="Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip",  Hash = "88666D3532F24973939C1CC140E12A27", Folder="9.3.0"},
+                    new DownloadItem { File="Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", Hash = "DCD3DC6E7C544C3685EC41DD781D3187", Folder="10.0.0"},
+                    new DownloadItem { File="Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", Hash = "9486629B50A847A5B62D59474CBAC53C", Folder="10.0.1"},
+                    new DownloadItem { File="Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", Hash = "7F9D170F0A4B4B598323629A7B7122EA", Folder="10.1.0"},
+                    new DownloadItem { File="Sitecore 10.1.1 rev. 005862 (WDP XP0 packages).zip", Hash = "4EF9CECDC77D4733850E5487E17C6EF8", Folder="10.1.1"},
+                    new DownloadItem { File="Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", Hash = "F85D6FB55C3F4F6B98291FDDB43D89D2", Folder="10.2.0"}
+
                 };
 
                 var selectedVersion = comboVersions.SelectedItem as KernelHash;
-                return resources.FirstOrDefault(r => r.Key.StartsWith(selectedVersion.Product));
+                return resources.FirstOrDefault(r => r.File.StartsWith(selectedVersion.Product));
             }
         }
 
