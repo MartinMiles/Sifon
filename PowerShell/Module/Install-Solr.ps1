@@ -23,18 +23,16 @@ function Install-Solr
 		}
 	}
 
-	$moduleName = 'SharedInstallationUtilities'
-	Install-ModuleFromGithub -ModuleName $moduleName -UriBase "https://raw.githubusercontent.com/Sitecore/Sitecore.HabitatHome.Utilities/master/Shared/assets/modules/SharedInstallationUtilities/SharedInstallationUtilities.psm1"
-	Import-Module -Name $moduleName
+	# $moduleName = 'SharedInstallationUtilities'
+	# Install-ModuleFromGithub -ModuleName $moduleName -UriBase "https://raw.githubusercontent.com/Sitecore/Sitecore.HabitatHome.Utilities/master/Shared/assets/modules/SharedInstallationUtilities/SharedInstallationUtilities.psm1"
+	# Import-Module -Name $moduleName
 	
 	$sif = Get-Module -ListAvailable -Name 'SitecoreInstallFramework'
 	if ($sif)
 	{
 		Import-SitecoreInstallFramework -version $sif.Version -repositoryName "SitecoreGallery" -repositoryUrl "https://sitecore.myget.org/F/sc-powershell/api/v2/"    
 
- 		$jsonName = $MyInvocation.MyCommand.Name + '.json'
-				
-		Invoke-RestMethod 'https://raw.githubusercontent.com/Sitecore/Sitecore.HabitatHome.Utilities/master/XP/install/assets/configuration/XP0/Solr-SingleDeveloper.json' -OutFile $jsonName
+ 		$jsonName = "c:\Program Files\WindowsPowerShell\Modules\Sifon\" + $MyInvocation.MyCommand.Name + '.json'
 
 		$solrInstallConfigurationPath = Resolve-Path $jsonName
 
@@ -53,8 +51,6 @@ function Install-Solr
 			Install-SitecoreConfiguration -Path $solrInstallConfigurationPath @params
 		}
 
-		Remove-Item  $jsonName -Force
-		
 		Remove-Item -LiteralPath "c:\Program Files\WindowsPowerShell\Modules\$moduleName" -Force -Recurse
 		return $true
 	}
