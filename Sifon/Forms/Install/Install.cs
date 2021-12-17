@@ -256,9 +256,9 @@ namespace Sifon.Forms.Install
             xconnectText.Text = $"{prefixText.Text}.xconnect";
             identityServerText.Text = $"{prefixText.Text}.identityserver";
 
-            solrUrlText.Text = "https://localhost:8840/solr";
-            solrServiceText.Text = "solr-8.4.0";
-            solrRootFolderText.Text = @"c:\Solr\solr-8.4.0";
+            solrUrlText.Text = "https://localhost:8882/solr";
+            solrServiceText.Text = "solr-8.8.2";
+            solrRootFolderText.Text = @"c:\Solr\solr-8.8.2";
 
             sqlServerText.Text = "(local)";
             sqlServerUsernameText.Text = "sa";
