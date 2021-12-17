@@ -74,10 +74,10 @@ function Install-Sitecore
             "Marketing Automation service is currently stopped, you can start it manually in few steps.",
             "Please select and right-click the URL below to open it in a browser to find out more info.",
             "",
-            "https://Sifon.UK/win-11"
+            "https://sifon.uk/docs/Windows-11.md"
             );
 
-        Show-Message -Fore yellow -Back red -Text $Win11_Message
+        Show-Message -Fore white -Back yellow -Text $Win11_Message
         "."
         "."
     }
