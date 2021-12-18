@@ -252,9 +252,9 @@ namespace Sifon.Forms.Install
             adminPasswordText.Text = "b";
 
             prefixText.Text = "xp";
-            sitecoreSiteText.Text = $"{prefixText.Text}.dev.local";
-            xconnectText.Text = $"{prefixText.Text}.xconnect";
-            identityServerText.Text = $"{prefixText.Text}.identityserver";
+            sitecoreSiteText.Text = $"{prefixText.Text}.local";
+            xconnectText.Text = $"xconnect.{prefixText.Text}.local";
+            identityServerText.Text = $"identityserver.{prefixText.Text}.local";
 
             solrUrlText.Text = "https://localhost:8882/solr";
             solrServiceText.Text = "solr-8.8.2";
