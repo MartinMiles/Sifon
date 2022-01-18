@@ -46,7 +46,7 @@ function Install-Sitecore
             XConnectCollectionService = "https://$($Params.XConnectSiteName)"
             ClientSecret = "SIF-Default"
             AllowedCorsOrigins = "https://$($Params.SitecoreSiteName)"
-            SitePhysicalRoot = "$($Params.SitePhysicalRoot)\$($Params.SitecoreSiteName)"
+            SitePhysicalRoot = $Params.SitePhysicalRoot
     }
 
     Push-Location $folder

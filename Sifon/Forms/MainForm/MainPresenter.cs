@@ -120,7 +120,7 @@ namespace Sifon.Forms.MainForm
             profile.RemotePassword = value.RemotingPassword;
             profile.RemoteFolder = value.RemotingPassword;
 
-            profile.Webroot = value.SitePhysicalRoot;
+            profile.Webroot = value.SitePhysicalRoot + "\\" + value.SitecoreSiteName;
             profile.AdminPassword = value.SitecoreAdminPassword;
             profile.AdminUsername = "admin";
 
