@@ -101,11 +101,7 @@ namespace Sifon.Forms.MainForm
 
             var line = GetOutputLines(true);
             
-			Uri uriResult;
-            bool isValidLink = Uri.TryCreate(line, UriKind.Absolute, out uriResult)
-                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-
-            collectionRoundMenuStrip.Items[0].Visible = isValidLink;
+            collectionRoundMenuStrip.Items[0].Visible = IsValidLink(line);
         }
 
         #endregion

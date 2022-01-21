@@ -329,6 +329,7 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.Size = new System.Drawing.Size(1394, 641);
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBoxOutput.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxOutput_MouseDoubleClick);
             // 
             // Main
             // 
