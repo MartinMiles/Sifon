@@ -12,13 +12,13 @@
     <ROW Property="BannerBitmap" Value="banner" MultiBuildValue="DefaultBuild:BannerBitmap.png" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:DialogBitmap.png" Type="1" MsiKey="DialogBitmap"/>
     <ROW Property="Manufacturer" Value="Martin Miles"/>
-    <ROW Property="ProductCode" Value="1033:{8FE07B8F-8E80-4427-966A-C9F9094307EE} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{037010D5-6A61-4649-8FAF-DE2F6397C444} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Sifon"/>
-    <ROW Property="ProductVersion" Value="1.2.4" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.2.5" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
-    <ROW Property="TabBackground" Value="sifon2.png" Type="1" MsiKey="TabBackground"/>
+    <ROW Property="TabBackground" Type="1" MsiKey="TabBackground"/>
     <ROW Property="UpgradeCode" Value="{6B9E500F-C36C-4262-BEA2-AC54C49585B1}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -104,6 +104,9 @@
     <ROW File="ReadUrlContent.ps1" Component_="_deploy_to_modules.ps1" FileName="READ-U~1.PS1|Read-UrlContent.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Read-UrlContent.ps1" SelfReg="false"/>
     <ROW File="GetIdentityToken.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-ID~1.PS1|Get-IdentityToken.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-IdentityToken.ps1" SelfReg="false"/>
     <ROW File="InstallSitecore.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~6.PS1|Install-Sitecore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Sitecore.ps1" SelfReg="false"/>
+    <ROW File="GetSitecoreVersion.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~4.PS1|Get-SitecoreVersion.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SitecoreVersion.ps1" SelfReg="false"/>
+    <ROW File="VerifyNetCoreHosting.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~4.PS1|Verify-NetCoreHosting.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-NetCoreHosting.ps1" SelfReg="false"/>
+    <ROW File="InstallSolr.json" Component_="_deploy_to_modules.ps1" FileName="INSTAL~1.JSO|Install-Solr.json" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Solr.json" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
