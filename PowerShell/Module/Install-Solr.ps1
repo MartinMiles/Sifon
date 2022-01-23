@@ -30,7 +30,7 @@ function Install-Solr
 	$sif = Get-Module -ListAvailable -Name 'SitecoreInstallFramework'
 	if ($sif)
 	{
-		Import-SitecoreInstallFramework -version $sif.Version -repositoryName "SitecoreGallery" -repositoryUrl "https://sitecore.myget.org/F/sc-powershell/api/v2/"    
+		Import-Module -Name SitecoreInstallFramework -version $sif.Version #-repositoryName "SitecoreGallery" -repositoryUrl "https://sitecore.myget.org/F/sc-powershell/api/v2/"    
 
  		$jsonName = "c:\Program Files\WindowsPowerShell\Modules\Sifon\" + $MyInvocation.MyCommand.Name + '.json'
 
@@ -51,7 +51,7 @@ function Install-Solr
 			Install-SitecoreConfiguration -Path $solrInstallConfigurationPath @params
 		}
 
-		Remove-Item -LiteralPath "c:\Program Files\WindowsPowerShell\Modules\$moduleName" -Force -Recurse
+		#Remove-Item -LiteralPath "c:\Program Files\WindowsPowerShell\Modules\$moduleName" -Force -Recurse
 		return $true
 	}
 	else
