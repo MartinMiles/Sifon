@@ -6,6 +6,7 @@ namespace Sifon.Abstractions.Metacode
     {
         bool IsCompatibleVersion { get; }
         bool DisplayLocalOnly { get; }
+        bool RequiresProfile { get; }
         bool ExecuteLocalOnly { get; }
         string Name { get; }
         string Description { get; }

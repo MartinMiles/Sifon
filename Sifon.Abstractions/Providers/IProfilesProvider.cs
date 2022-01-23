@@ -10,6 +10,7 @@ namespace Sifon.Abstractions.Providers
         ISqlServerRecord SelectedProfileSql { get; }
 
         bool Any { get; }
+        int Count { get; }
 
         void SelectProfile(string selectedProfileName);
 

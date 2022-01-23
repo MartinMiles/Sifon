@@ -38,5 +38,6 @@ namespace Sifon.Forms.MainForm
         void TerminateAsEmptyProfile();
         void PluginsToolStripEnabled();
         void NotifyRemoteNotAccessible();
+        void NotifyRequiresProfile();
     }
 }

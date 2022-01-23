@@ -226,8 +226,8 @@ namespace Sifon.Forms.MainForm
 
             bool othersEnabled = backupToolStripMenuItem.Enabled;
 
-            pluginsToolStripMenuItem.Enabled
-                = othersEnabled || children.Count == 1 && children[0].Name.EndsWith("Get-SifonPlugins.ps1");
+            //pluginsToolStripMenuItem.Enabled
+            //    = othersEnabled || children.Count == 1 && children[0].Name.EndsWith("Get-SifonPlugins.ps1");
         }
 
         public void FinishUI()

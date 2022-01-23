@@ -35,7 +35,8 @@ namespace Sifon.Code.Statics
                 public const string Compatibility = "###\\s*Compatibility:\\s*Sifon\\s(\\d\\.\\d\\.\\d)";
                 public const string DisplayLocalOnly = "###\\s?Display:\\s?Local";
                 public const string ExecuteLocalOnly = "###\\s?Execution:\\s?Local";
-
+                public const string RequiresProfile = "###\\s?Requires\\sProfile:\\s?(\\w+)";
+                
                 public const string ExecutableFunction = "###\\s*(\\$\\w*)\\s*=\\s*new\\s*(.*)::(.*)\\(((\"?[^\"]*\"?)*)\\)";
                 public const string Parameter = @"\""[^[\]]*\""";
                 //public const string Dependencies = "###\\s*Dependencies:\\s*(.*)";

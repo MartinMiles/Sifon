@@ -120,6 +120,7 @@ namespace Sifon.Code.Providers.Profile
         public ISqlServerRecord SelectedProfileSql => SelectedProfile.SqlServerRecord;
 
         public bool Any => _profiles.Any();
+        public int Count => _profiles.Count();
 
         private IProfile GetByName(string profileName)
         {
