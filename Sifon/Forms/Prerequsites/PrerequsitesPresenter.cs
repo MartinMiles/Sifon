@@ -41,7 +41,14 @@ namespace Sifon.Forms.Prerequsites
         {
             var parameters = new Dictionary<string, dynamic>();
 
-            var InstallValues = new bool[] { e.Value.Chocolatey, e.Value.Git, e.Value.WinRM, e.Value.SIF, e.Value.NetCore };
+            var InstallValues = new [] 
+                { e.Value.Chocolatey,
+                    e.Value.Git,
+                    e.Value.WinRM,
+                    e.Value.SIF,
+                    e.Value.NetCore,
+                    e.Value.SqlServer
+                };
             parameters.Add("InstallValues", InstallValues);
 
             await _scriptWrapper.Run(Modules.Functions.InstallPrerequisites, parameters);

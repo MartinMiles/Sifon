@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -37,6 +38,34 @@ namespace Sifon.Code.Metacode
             {
                 var regex = new Regex(Settings.Regex.Metacode.ExecuteLocalOnly, RegexOptions.IgnoreCase);
                 return _meta.Any(l => regex.Match(l).Success);
+            }
+        }
+        public bool RequiresProfile
+        {
+            get
+            {
+                bool prequiresProfile = true;
+
+                var regex = new Regex(Settings.Regex.Metacode.RequiresProfile, RegexOptions.IgnoreCase);
+                //return _meta.Any(l => regex.Match(l).Success);
+
+                foreach (string line in _meta)
+                {
+                    if (line.StartsWith("###") 
+                        && line.IndexOf("Requires Profile:", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        var matchCollection = regex.Matches(line);
+
+                        foreach (Match match in matchCollection)
+                        {
+                            var _bool = match.Groups[1].Value;
+                            Boolean.TryParse(_bool, out prequiresProfile);
+                            
+                        }
+                    }
+                }
+
+                return prequiresProfile;
             }
         }
 

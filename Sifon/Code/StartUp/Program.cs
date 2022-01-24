@@ -80,8 +80,6 @@ namespace Sifon.Code.StartUp
                     ).GetAwaiter().GetResult();                   
 
                     SimpleLog.Log(e);
-
-                    int k = 0;
                 }
             }
         }

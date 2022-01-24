@@ -96,6 +96,8 @@ namespace Sifon.Forms.MainForm
         {
             var dictionary = new Dictionary<string, object> { { "Params", e.Value } };
 
+            await PrepareAndStart(Modules.Functions.InstallDownloadSitecore, dictionary, e.Value.Profile);
+            await PrepareAndStart(Modules.Functions.InstallPrerequisitesForSitecore, dictionary, e.Value.Profile);
             await PrepareAndStart(Modules.Functions.InstallSitecore, dictionary, e.Value.Profile);
 
             if (e.Value.CreateProfile)
@@ -103,6 +105,7 @@ namespace Sifon.Forms.MainForm
                 CreateProfileFrom(e.Value);
             }
 
+            // todo: validate in debugger why 100% mark never hit there
             _view.UpdateProgressBar(100, "Sitecore installation complete");
         }
 
@@ -117,7 +120,7 @@ namespace Sifon.Forms.MainForm
             profile.RemotePassword = value.RemotingPassword;
             profile.RemoteFolder = value.RemotingPassword;
 
-            profile.Webroot = value.SitePhysicalRoot;
+            profile.Webroot = value.SitePhysicalRoot + "\\" + value.SitecoreSiteName;
             profile.AdminPassword = value.SitecoreAdminPassword;
             profile.AdminUsername = "admin";
 
@@ -218,6 +221,15 @@ namespace Sifon.Forms.MainForm
         private async Task ScriptToolStripClicked(object sender, EventArgs<string> e)
         {
             var metacode = Create.WithParam<IMetacodeHelper, string>(e.Value);
+
+            if (metacode.RequiresProfile 
+                && _profilesProvider.SelectedProfile.ProfileName == "Profile not created" 
+                && _profilesProvider.Count == 1)
+            {
+                _view.NotifyRequiresProfile();
+                return;
+            }
+                
             string script = metacode.ExecuteLocalOnly ? e.Value : await LocalOrRemote(e.Value);
             if (script == null)
             {

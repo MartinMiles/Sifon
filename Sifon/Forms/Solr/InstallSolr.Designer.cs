@@ -147,7 +147,8 @@
             "7.2.1",
             "7.5.0",
             "8.1.1",
-            "8.4.0"});
+            "8.4.0",
+            "8.8.2"});
             this.comboVersion.Location = new System.Drawing.Point(19, 83);
             this.comboVersion.Name = "comboVersion";
             this.comboVersion.Size = new System.Drawing.Size(60, 21);

@@ -61,6 +61,12 @@ namespace Sifon.Forms.Prerequsites
             get => checkNetCore.Checked;
             set => checkNetCore.Checked = value;
         }
+        
+        public bool SqlServer
+        {
+            get => checkSqlServer.Checked;
+            set => checkSqlServer.Checked = value;
+        }
 
         #endregion
 
@@ -71,6 +77,7 @@ namespace Sifon.Forms.Prerequsites
             checkRemoting.Enabled = enabled;
             checkSif.Enabled = enabled;
             checkNetCore.Enabled = enabled;
+            checkSqlServer.Enabled = enabled;
 
             buttonInstall.Enabled = enabled;
             buttonClose.Enabled = enabled;
@@ -92,6 +99,7 @@ namespace Sifon.Forms.Prerequsites
             checkRemoting.Checked = bools[2];
             checkSif.Checked = bools[3];
             checkNetCore.Checked = bools[4];
+            checkSqlServer.Checked = bools[5];
 
             EnableControls(true);
             
@@ -114,6 +122,7 @@ namespace Sifon.Forms.Prerequsites
             checkRemoting.Checked = installationResult[2];
             checkSif.Checked = installationResult[3];
             checkNetCore.Checked = installationResult[4];
+            checkSqlServer.Checked = installationResult[5];
 
             ShowInfo("Success", "Prerequsites have been installed");
             EnableControls(true);
@@ -144,7 +153,11 @@ namespace Sifon.Forms.Prerequsites
         }
         private void UpdateInstallButton()
         {
-            buttonInstall.Enabled = checkChocolatey.Checked || checkGit.Checked || checkRemoting.Checked || checkSif.Checked;
+            buttonInstall.Enabled = checkChocolatey.Checked 
+                                    || checkGit.Checked 
+                                    || checkRemoting.Checked 
+                                    || checkSif.Checked 
+                                    || checkSqlServer.Checked;
         }
     }
 }

@@ -32,6 +32,10 @@ namespace Sifon.Forms.MainForm
             MoveContainerPluginsIntoTheirOwnMenu(pluginsToolStripMenuItem);
         }
 
+        public void NotifyRequiresProfile()
+        {
+            new DisplayMessage().ShowError("Cannot run this scrip now", "This script requires a non-default profile correctly set up in order to be run");
+        }
         public void NotifyRemoteNotAccessible()
         {
             // TODO: Make Create class for Sifon.Shared (if needed)

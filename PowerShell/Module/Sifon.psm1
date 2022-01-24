@@ -99,5 +99,17 @@ $getInstance = $path + "\Read-UrlContent.ps1"
 $getInstance = $path + "\Get-IdentityToken.ps1"
 . $getInstance
 
+$getInstance = $path + "\Install-DownloadSitecore.ps1"
+. $getInstance
+
+$getInstance = $path + "\Install-PrerequisitesForSitecore.ps1"
+. $getInstance
+
 $getInstance = $path + "\Install-Sitecore.ps1"
+. $getInstance
+
+$getInstance = $path + "\Verify-NetCoreHosting"
+. $getInstance
+
+$getInstance = $path + "\Get-SitecoreVersion"
 . $getInstance

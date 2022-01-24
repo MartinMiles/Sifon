@@ -39,6 +39,7 @@ namespace Sifon.Forms.MainForm
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.installSolrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetAllExistingSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@ namespace Sifon.Forms.MainForm
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOutput = new System.Windows.Forms.ListBox();
-            this.resetAllExistingSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -125,21 +125,23 @@ namespace Sifon.Forms.MainForm
             this.containersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.profilesToolStripMenuItem1,
             this.menuContainerPlugins});
+            this.containersToolStripMenuItem.Enabled = false;
             this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
             this.containersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.containersToolStripMenuItem.Text = "Containers";
+            this.containersToolStripMenuItem.ToolTipText = "Containers are temporary unavailable in this version";
             // 
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.profilesToolStripMenuItem1.Text = "Container Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(168, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             // 
             // pluginsToolStripMenuItem
@@ -189,6 +191,13 @@ namespace Sifon.Forms.MainForm
             this.installHostPrerequsitesToolStripMenuItem.Text = "Install Prerequsites";
             this.installHostPrerequsitesToolStripMenuItem.Click += new System.EventHandler(this.installHostPrerequsitesToolStripMenuItem_Click);
             // 
+            // resetAllExistingSettingsToolStripMenuItem
+            // 
+            this.resetAllExistingSettingsToolStripMenuItem.Name = "resetAllExistingSettingsToolStripMenuItem";
+            this.resetAllExistingSettingsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.resetAllExistingSettingsToolStripMenuItem.Text = "Reset All Existing Settings";
+            this.resetAllExistingSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetAllExistingSettingsToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -202,22 +211,23 @@ namespace Sifon.Forms.MainForm
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem1.Text = "About Sifon";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // checkUpdatesToolStripMenuItem
             // 
             this.checkUpdatesToolStripMenuItem.Name = "checkUpdatesToolStripMenuItem";
-            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkUpdatesToolStripMenuItem.Text = "Check Updates";
             this.checkUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkUpdatesToolStripMenuItem_Click);
             // 
             // sendFeedbackToolStripMenuItem
             // 
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
-            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
+            this.sendFeedbackToolStripMenuItem.Visible = false;
             this.sendFeedbackToolStripMenuItem.Click += new System.EventHandler(this.sendFeedbackToolStripMenuItem_Click);
             // 
             // timerOutput
@@ -322,13 +332,7 @@ namespace Sifon.Forms.MainForm
             this.listBoxOutput.Size = new System.Drawing.Size(1394, 641);
             this.listBoxOutput.TabIndex = 1;
             this.listBoxOutput.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // resetAllExistingSettingsToolStripMenuItem
-            // 
-            this.resetAllExistingSettingsToolStripMenuItem.Name = "resetAllExistingSettingsToolStripMenuItem";
-            this.resetAllExistingSettingsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.resetAllExistingSettingsToolStripMenuItem.Text = "Reset All Existing Settings";
-            this.resetAllExistingSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetAllExistingSettingsToolStripMenuItem_Click);
+            this.listBoxOutput.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxOutput_MouseDoubleClick);
             // 
             // Main
             // 

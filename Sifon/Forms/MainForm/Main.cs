@@ -226,8 +226,8 @@ namespace Sifon.Forms.MainForm
 
             bool othersEnabled = backupToolStripMenuItem.Enabled;
 
-            pluginsToolStripMenuItem.Enabled
-                = othersEnabled || children.Count == 1 && children[0].Name.EndsWith("Get-SifonPlugins.ps1");
+            //pluginsToolStripMenuItem.Enabled
+            //    = othersEnabled || children.Count == 1 && children[0].Name.EndsWith("Get-SifonPlugins.ps1");
         }
 
         public void FinishUI()
@@ -240,7 +240,7 @@ namespace Sifon.Forms.MainForm
 
         public void UpdateProgressBar(int percentComplete, string statusLabelText)
         {
-            if (percentComplete < 0) return;
+            if (percentComplete < 0 || progressBar.Value == 100) return;
 
             progressBar.Value = percentComplete;
             statusLabel.Text = statusLabelText;
@@ -319,6 +319,31 @@ namespace Sifon.Forms.MainForm
             }
 
             Directory.Delete(target_dir, false);
+        }
+
+        private void listBoxOutput_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            int index = listBox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                var value = listBox.SelectedItem.ToString();
+                if (value.Contains("#")) 
+                {
+                    value = value.Substring(value.LastIndexOf("#") + 1);
+                    if (IsValidLink(value))
+                    {
+                        Navigate(value);
+                    }
+                }
+            }
+        }
+
+        private bool IsValidLink(string line)
+        {
+            Uri uriResult;
+            return Uri.TryCreate(line, UriKind.Absolute, out uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Sifon.Forms.About
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.buttonCredits = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace Sifon.Forms.About
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,15 @@ namespace Sifon.Forms.About
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(204, 109);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(349, 13);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "- Installs Sitcore in the most powerfull intuitive way,  local or over network";
+            // 
             // buttonCredits
             // 
             this.buttonCredits.Location = new System.Drawing.Point(386, 409);
@@ -114,9 +123,9 @@ namespace Sifon.Forms.About
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(204, 218);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(257, 13);
+            this.label17.Size = new System.Drawing.Size(342, 13);
             this.label17.TabIndex = 31;
-            this.label17.Text = "- Basic support for Sitecore in containers with Docker";
+            this.label17.Text = "- Extends with extremely powerfull plugin ecosystem, available in 1 click";
             // 
             // linkLabel5
             // 
@@ -307,7 +316,7 @@ namespace Sifon.Forms.About
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "- Sitecore XP and XC 9.* up to versions 10.1";
+            this.label3.Text = "- Sitecore XP and XC 9.* up to versions 10.2";
             // 
             // label2
             // 
@@ -326,15 +335,6 @@ namespace Sifon.Forms.About
             this.label1.Size = new System.Drawing.Size(323, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sifon is a helpful tool for many Sitecore back-end DevOps activities";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(204, 109);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(349, 13);
-            this.label18.TabIndex = 32;
-            this.label18.Text = "- Installs Sitcore in the most powerfull intuitive way,  local or over network";
             // 
             // About
             // 
