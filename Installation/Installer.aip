@@ -107,6 +107,8 @@
     <ROW File="GetSitecoreVersion.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~4.PS1|Get-SitecoreVersion.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SitecoreVersion.ps1" SelfReg="false"/>
     <ROW File="VerifyNetCoreHosting.ps1" Component_="_deploy_to_modules.ps1" FileName="VERIFY~4.PS1|Verify-NetCoreHosting.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Verify-NetCoreHosting.ps1" SelfReg="false"/>
     <ROW File="InstallSolr.json" Component_="_deploy_to_modules.ps1" FileName="INSTAL~1.JSO|Install-Solr.json" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Solr.json" SelfReg="false"/>
+    <ROW File="InstallDownloadSitecore.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~7.PS1|Install-DownloadSitecore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-DownloadSitecore.ps1" SelfReg="false"/>
+    <ROW File="InstallPrerequisitesForSitecore.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~8.PS1|Install-PrerequisitesForSitecore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-PrerequisitesForSitecore.ps1" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>

@@ -1,4 +1,4 @@
-# function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $InstallSIF)
+# function Install-Prerequisites($InstallChoco, $InstallGit, $InstallWinRM, $InstallSIF, $InstallNetCore, $InstallSqlServer)
 function Install-Prerequisites([bool[]]$InstallValues)
 {
     [bool]$InstallChoco = $InstallValues[0]
@@ -6,6 +6,7 @@ function Install-Prerequisites([bool[]]$InstallValues)
     [bool]$InstallWinRM = $InstallValues[2]
     [bool]$InstallSIF = $InstallValues[3]
     [bool]$InstallNetCore = $InstallValues[4]
+    [bool]$InstallSqlServer = $InstallValues[5]
 
     function Is-ChocoInstalled
     {
@@ -100,6 +101,26 @@ function Install-Prerequisites([bool[]]$InstallValues)
         return (Verify-NetCore -Type 'SDK')
     }
 
+    function Verify-SqlServer
+    {
+        if (Get-Module -ListAvailable -Name SqlServer){
+    		return $true
+	} 
+	else {
+		return $false
+	}
+    }
+
+    function Install-SqlServer
+    {
+        $ProgressPreference = "SilentlyContinue"
+	Install-Module SqlServer -AllowClobber -Force  | Out-Null
+        $ProgressPreference = "Continue"
+
+        return (Verify-SqlServer)
+    }
+
+
     $activity = "Installing prerequisites"
 
 
@@ -133,7 +154,14 @@ function Install-Prerequisites([bool[]]$InstallValues)
         $NetCore = Install-NetCore
     }
 
+    [bool]$SqlServer = $false;
+    if($InstallSqlServer){
+        Write-Progress -Activity "Installing SQL Server PowerShell module" -Status $activity -PercentComplete 83;
+        $SqlServer = Install-SqlServer
+    }
+
+
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;
 
-    return @($Choco, $Git, $Remoting, $SIF, $NetCore)
+    return @($Choco, $Git, $Remoting, $SIF, $NetCore, $SqlServer)
 }

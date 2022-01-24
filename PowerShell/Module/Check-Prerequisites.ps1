@@ -29,6 +29,16 @@ function Check-Prerequisites()
         return $null -ne $version
     }
 
+    function Verify-SqlServer
+    {
+        if (Get-Module -ListAvailable -Name SqlServer){
+    		return $true
+	} 
+	else {
+		return $false
+	}
+    }
+
     $activity = "Checking prerequisites"
 
     Write-Progress -Activity "Checking Chocolatey" -Status $activity -PercentComplete 3;
@@ -51,7 +61,13 @@ function Check-Prerequisites()
 
     $NetCore = (Verify-NetCore -Type 'SDK')
 
+    Write-Progress -Activity "Done" -Status $activity -PercentComplete 98;    
+
+    $SqlServer = (Verify-SqlServer)
+
     Write-Progress -Activity "Done" -Status $activity -PercentComplete 100;    
 
-    return @($isChocoInstalled, $isGitInstalled, $remoting, $SIF, $NetCore)
+
+
+    return @($isChocoInstalled, $isGitInstalled, $remoting, $SIF, $NetCore, $SqlServer)
 }

@@ -7,5 +7,6 @@
         bool WinRM { get; set; }
         bool SIF { get; set; }
         bool NetCore { get; set; }
+        bool SqlServer { get; set; }
     }
 }
