@@ -58,7 +58,7 @@ namespace Sifon.Forms.About
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Navigate("https://jermdavis.wordpress.com");
+            Navigate("https://blog.jermdavis.dev");
         }
     }
 }

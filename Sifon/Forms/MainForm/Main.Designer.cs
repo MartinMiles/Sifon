@@ -125,21 +125,23 @@ namespace Sifon.Forms.MainForm
             this.containersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.profilesToolStripMenuItem1,
             this.menuContainerPlugins});
+            this.containersToolStripMenuItem.Enabled = false;
             this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
             this.containersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.containersToolStripMenuItem.Text = "Containers";
+            this.containersToolStripMenuItem.ToolTipText = "Containers are temporary unavailable in this version";
             // 
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.profilesToolStripMenuItem1.Text = "Container Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(168, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             // 
             // pluginsToolStripMenuItem
@@ -209,22 +211,23 @@ namespace Sifon.Forms.MainForm
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem1.Text = "About Sifon";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // checkUpdatesToolStripMenuItem
             // 
             this.checkUpdatesToolStripMenuItem.Name = "checkUpdatesToolStripMenuItem";
-            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkUpdatesToolStripMenuItem.Text = "Check Updates";
             this.checkUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkUpdatesToolStripMenuItem_Click);
             // 
             // sendFeedbackToolStripMenuItem
             // 
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
-            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
+            this.sendFeedbackToolStripMenuItem.Visible = false;
             this.sendFeedbackToolStripMenuItem.Click += new System.EventHandler(this.sendFeedbackToolStripMenuItem_Click);
             // 
             // timerOutput
