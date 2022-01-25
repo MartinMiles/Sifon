@@ -59,6 +59,8 @@ namespace Sifon.Forms.Prerequsites
             }
             else
             {
+                await _scriptWrapper.Run(Modules.Functions.CheckPrerequisites);
+                _view.UpdateView(_scriptWrapper.Results.ToArray());
                 _view.Success(_scriptWrapper.Results.ToArray());
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
@@ -94,12 +95,12 @@ namespace Sifon.Forms.Prerequsites
 
         public void UpdateView(bool[] bools)
         {
-            checkChocolatey.Checked = bools[0];
-            checkGit.Checked = bools[1];
-            checkRemoting.Checked = bools[2];
-            checkSif.Checked = bools[3];
-            checkNetCore.Checked = bools[4];
-            checkSqlServer.Checked = bools[5];
+            checkChocolatey.ForeColor = bools[0] ? Color.Green : Color.Red;
+            checkGit.ForeColor = bools[1] ? Color.Green : Color.Red;
+            checkRemoting.ForeColor = bools[2] ? Color.Green : Color.Red;
+            checkSif.ForeColor = bools[3] ? Color.Green : Color.Red;
+            checkNetCore.ForeColor = bools[4] ? Color.Green : Color.Red;
+            checkSqlServer.ForeColor = bools[5] ? Color.Green : Color.Red;
 
             EnableControls(true);
             
@@ -113,16 +114,10 @@ namespace Sifon.Forms.Prerequsites
             {
                 buttonInstall.Focus();
             }
-        }
+        }   
 
         public void Success(bool[] installationResult)
         {
-            checkChocolatey.Checked = installationResult[0];
-            checkGit.Checked = installationResult[1];
-            checkRemoting.Checked = installationResult[2];
-            checkSif.Checked = installationResult[3];
-            checkNetCore.Checked = installationResult[4];
-            checkSqlServer.Checked = installationResult[5];
 
             ShowInfo("Success", "Prerequsites have been installed");
             EnableControls(true);
