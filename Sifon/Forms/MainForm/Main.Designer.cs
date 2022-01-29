@@ -134,14 +134,14 @@ namespace Sifon.Forms.MainForm
             // profilesToolStripMenuItem1
             // 
             this.profilesToolStripMenuItem1.Name = "profilesToolStripMenuItem1";
-            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.profilesToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.profilesToolStripMenuItem1.Text = "Container Profiles";
             this.profilesToolStripMenuItem1.Click += new System.EventHandler(this.menuContainersProfiles_Click);
             // 
             // menuContainerPlugins
             // 
             this.menuContainerPlugins.Name = "menuContainerPlugins";
-            this.menuContainerPlugins.Size = new System.Drawing.Size(180, 22);
+            this.menuContainerPlugins.Size = new System.Drawing.Size(168, 22);
             this.menuContainerPlugins.Text = "Plugins / Actions";
             // 
             // pluginsToolStripMenuItem
@@ -227,7 +227,6 @@ namespace Sifon.Forms.MainForm
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
             this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
-            this.sendFeedbackToolStripMenuItem.Visible = false;
             this.sendFeedbackToolStripMenuItem.Click += new System.EventHandler(this.sendFeedbackToolStripMenuItem_Click);
             // 
             // timerOutput
