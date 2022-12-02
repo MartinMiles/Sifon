@@ -156,5 +156,18 @@ namespace Sifon.Forms.Solr
             _loading.Visible = false;
             _labelSolrGrid.Text = Messages.Profiles.Connectivity.InitializationRequired;
         }
+
+        internal static string SuggestValidPort(string port)
+        {
+            var input = $"8{port.Replace(".", "")}";
+
+            int portNumber;
+            if (int.TryParse(input, out portNumber) && portNumber <= 65535)
+            {
+                return input;
+            }
+
+            return $"{port.Replace(".", "")}";
+        }
     }
 }
