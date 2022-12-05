@@ -62,7 +62,7 @@
             this.groupBox1.Size = new System.Drawing.Size(354, 263);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Provide your credentials:";
+            this.groupBox1.Text = "Provide your credentials - (this is obsolete feature):";
             // 
             // label6
             // 

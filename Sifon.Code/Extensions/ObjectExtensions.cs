@@ -11,7 +11,18 @@ namespace Sifon.Code.Extensions
             if (source == null) ThrowExceptionWhenSourceArgumentIsNull();
 
             var dictionary = new Dictionary<string, T>();
-            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
+
+            PropertyDescriptorCollection properties;
+            try
+            {
+                properties = TypeDescriptor.GetProperties(source);
+            }
+            catch (Exception e)
+            {
+                properties = TypeDescriptor.GetProperties(source);
+            }
+
+            foreach (PropertyDescriptor property in properties)
             {
                 object value = property.GetValue(source);
                 if (IsOfType<T>(value))

@@ -314,9 +314,10 @@ namespace Sifon.Forms.About
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(204, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 13);
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(200, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "- Sitecore XP and XC 9.* up to versions 10.2";
+            this.label3.Text = "- Sitecore XP and XC up to versions 10.3";
             // 
             // label2
             // 

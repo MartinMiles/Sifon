@@ -64,7 +64,7 @@ namespace Sifon.Forms.Solr
         private void comboVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             string port = comboVersion.SelectedItem as string;
-            textPort.Text = $"8{port.Replace(".", "")}";
+            textPort.Text = SolrHelper.SuggestValidPort(port);
             textFolderSuffix.Text = $"/solr-{port}";
             ActiveControl = buttonInstall;
         }

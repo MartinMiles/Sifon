@@ -109,7 +109,7 @@ namespace Sifon.Forms.Solr
 
         private async Task UninstallClicked(object sender, EventArgs<string> e)
         {
-            string pattern = "(\\w{1}:\\\\.*)\\\\solr-(\\d\\.\\d\\.\\d)\\\\.*";
+            string pattern = "(\\w{1}:\\\\.*)\\\\solr-(\\d\\.\\d{1,2}\\.\\d)\\\\.*";
 
             var regex = new Regex(pattern);
             var match = regex.Match(e.Value);
@@ -118,7 +118,7 @@ namespace Sifon.Forms.Solr
                 var parameters = new Dictionary<string, dynamic>
                 {
                     { Settings.Parameters.SolrVersion, match.Groups[2].Value},
-                    { Settings.Parameters.SolrPort, $"8{match.Groups[2].Value.Replace(".","")}"},
+                    { Settings.Parameters.SolrPort, SolrHelper.SuggestValidPort(match.Groups[2].Value.Replace(".",""))},
                     { Settings.Parameters.SolrHostname, "localhost"},
                     { Settings.Parameters.SolrFolder, match.Groups[1].Value},
                     { Settings.Parameters.SolrUninstall, true}

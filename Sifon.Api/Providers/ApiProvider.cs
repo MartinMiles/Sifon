@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Security;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Sifon.Abstractions.Providers;
@@ -28,6 +30,9 @@ namespace Sifon.ApiClient.Providers
 
             var content = new FormUrlEncodedContent(dict.AsEnumerable());
 
+#if DEBUG
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+#endif
             var httpResponseMessage = await MakeApiCall(Settings.Api.HostBase, Settings.Api.Feedback, content);
             httpResponseMessage.EnsureSuccessStatusCode();
             return await FetchResult<U>(httpResponseMessage);
@@ -59,9 +64,9 @@ namespace Sifon.ApiClient.Providers
             return await FetchResult<string>(httpResponseMessage);
         }
 
-        #endregion
+#endregion
 
-        #region Private methods
+#region Private methods
 
         private async Task<HttpResponseMessage> MakeGetCall(string host, string api)
         {
@@ -88,6 +93,6 @@ namespace Sifon.ApiClient.Providers
             return default(U);
         }
 
-        #endregion
+#endregion
     }
 }
