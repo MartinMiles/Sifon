@@ -124,7 +124,8 @@ namespace Sifon.Forms.Install
                     new DownloadItem { File="Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", Hash = "9486629B50A847A5B62D59474CBAC53C", Folder="10.0.1"},
                     new DownloadItem { File="Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", Hash = "7F9D170F0A4B4B598323629A7B7122EA", Folder="10.1.0"},
                     new DownloadItem { File="Sitecore 10.1.1 rev. 005862 (WDP XP0 packages).zip", Hash = "4EF9CECDC77D4733850E5487E17C6EF8", Folder="10.1.1"},
-                    new DownloadItem { File="Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", Hash = "F85D6FB55C3F4F6B98291FDDB43D89D2", Folder="10.2.0"}
+                    new DownloadItem { File="Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", Hash = "F85D6FB55C3F4F6B98291FDDB43D89D2", Folder="10.2.0"},
+                    new DownloadItem { File="Sitecore 10.3.0 rev. 008463 (WDP XP0 packages).zip", Hash = "698FD008261148CA96B828E06AB1732E", Folder="10.3.0"}
 
                 };
 
@@ -256,9 +257,9 @@ namespace Sifon.Forms.Install
             xconnectText.Text = $"xconnect.{prefixText.Text}.local";
             identityServerText.Text = $"identityserver.{prefixText.Text}.local";
 
-            solrUrlText.Text = "https://localhost:8882/solr";
-            solrServiceText.Text = "solr-8.8.2";
-            solrRootFolderText.Text = @"c:\Solr\solr-8.8.2";
+            solrUrlText.Text = "https://localhost:8112/solr";
+            solrServiceText.Text = "solr-8.11.2";
+            solrRootFolderText.Text = @"c:\Solr\solr-8.11.2";
 
             sqlServerText.Text = "(local)";
             sqlServerUsernameText.Text = "sa";

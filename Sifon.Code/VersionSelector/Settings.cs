@@ -16,7 +16,8 @@ namespace Sifon.Code.VersionSelector
             new KernelHash { Version = "10.0.1", Original = "ece60d8414632ed563ef541d05e0cb91" },
             new KernelHash { Version = "10.1.0", Original = "5d3cf364ca04a04395f9e39db9d2d2ff" },
             new KernelHash { Version = "10.1.1", Original = "5d3cf364ca04a04395f9e39db9d2d2ff" },
-            new KernelHash { Version = "10.2.0", Original = "97ba18f8511c4c6ccbe94778542aa203" } 
+            new KernelHash { Version = "10.2.0", Original = "97ba18f8511c4c6ccbe94778542aa203" }, 
+            new KernelHash { Version = "10.3.0", Original = "97ba18f8511c4c6ccbe94778542aa203" } //TDO: Update with actual value
         };
     }
 }
