@@ -14,16 +14,7 @@ function Install-Sitecore
     $WindowsBuildNumber = (get-wmiobject -Class win32_OperatingSystem).BuildNumber;
     $buildNumber = [int]$WindowsBuildNumber
     
-    # change and test for XM
-    if($buildNumber -ge 22000)
-    {
-        $json = "$folder\xconnect-xp0.json"
-        Write-Output $json
-        (Get-Content $json -raw) -replace '{?\s*\"Name\": \"\[variable\(''Services\.MarketingAutomationEngine\.Name''\)\]\",?\s*\"Status\": \"Running\"?\s*},', '' | Out-File $json -NoNewLine
-    }    
-
-
- 
+     
      If($Params.IsXM) 
      { 
         $SiteCoreContentManagementPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cm.scwdp.zip").FullName
@@ -62,6 +53,13 @@ function Install-Sitecore
     }
 
     else { 
+        if($buildNumber -ge 22000)
+        {
+            $json = "$folder\xconnect-xp0.json"
+            Write-Output $json
+            (Get-Content $json -raw) -replace '{?\s*\"Name\": \"\[variable\(''Services\.MarketingAutomationEngine\.Name''\)\]\",?\s*\"Status\": \"Running\"?\s*},', '' | Out-File $json -NoNewLine
+        }    
+
         $singleDeveloperParams = @{
         Path = "$folder\\XP0-SingleDeveloper.json"
         SqlServer = $Params.SqlServer
