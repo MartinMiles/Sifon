@@ -14,6 +14,7 @@ function Install-Sitecore
     $WindowsBuildNumber = (get-wmiobject -Class win32_OperatingSystem).BuildNumber;
     $buildNumber = [int]$WindowsBuildNumber
     
+    # change and test for XM
     if($buildNumber -ge 22000)
     {
         $json = "$folder\xconnect-xp0.json"
@@ -21,9 +22,48 @@ function Install-Sitecore
         (Get-Content $json -raw) -replace '{?\s*\"Name\": \"\[variable\(''Services\.MarketingAutomationEngine\.Name''\)\]\",?\s*\"Status\": \"Running\"?\s*},', '' | Out-File $json -NoNewLine
     }    
 
-    # Install XP0 via combined partials file.
-    $singleDeveloperParams = @{
-        Path = "$folder\XP0-SingleDeveloper.json"
+
+ 
+     If($Params.IsXM) 
+     { 
+        $SiteCoreContentManagementPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cm.scwdp.zip").FullName
+        $SitecoreContentDeliveryPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cd.scwdp.zip").FullName
+        $IdentityServerPackage = (Get-ChildItem "$folder\Sitecore.IdentityServer * rev. * (OnPrem)_identityserver.scwdp.zip").FullName
+        "SiteCoreContentManagementPackage = $SiteCoreContentManagementPackage"
+        "SitecoreContentDeliveryPackage = $SitecoreContentDeliveryPackage"
+        "IdentityServerPackage = $IdentityServerPackage"
+
+        $singleDeveloperParams = @{
+        Path = "$folder\\XM1-SingleDeveloper.json"
+        SqlServer = $Params.SqlServer
+        SqlAdminUser = $Params.SqlAdminUser
+        SqlAdminPassword = $Params.SqlAdminPassword
+        SitecoreAdminPassword = $Params.SitecoreAdminPassword
+        SolrUrl = $Params.SolrUrl
+        SolrRoot = $Params.SolrRoot
+        SolrService = $Params.SolrService
+        Prefix = $Params.Prefix
+        IdentityServerCertificateName = $Params.IdentityServerSiteName
+        IdentityServerSiteName = $Params.IdentityServerSiteName
+        LicenseFile = $Params.LicenseFile
+        SiteCoreContentManagementPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cm.scwdp.zip").FullName
+        SitecoreContentDeliveryPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cd.scwdp.zip").FullName
+        IdentityServerPackage = (Get-ChildItem "$folder\Sitecore.IdentityServer * rev. * (OnPrem)_identityserver.scwdp.zip").FullName
+        SitecoreContentManagementSitename = $Params.SitecoreSiteName
+        SitecoreContentDeliverySitename = $Params.SitecoreSiteName + "_cd"
+        PasswordRecoveryUrl = "https://$($Params.SitecoreSiteName)"
+        SitecoreIdentityAuthority = "https://$($Params.IdentityServerSiteName)"
+        ClientSecret =  "SIF-Default"
+        AllowedCorsOrigins = "https://$($Params.SitecoreSiteName)"
+        SitePhysicalRoot = $Params.SitePhysicalRoot
+        Update = $false
+        DeployToElasticPoolName = ""
+        }
+    }
+
+    else { 
+        $singleDeveloperParams = @{
+        Path = "$folder\\XP0-SingleDeveloper.json"
         SqlServer = $Params.SqlServer
         SqlAdminUser = $Params.SqlAdminUser
         SqlAdminPassword = $Params.SqlAdminPassword
@@ -47,11 +87,12 @@ function Install-Sitecore
             ClientSecret = "SIF-Default"
             AllowedCorsOrigins = "https://$($Params.SitecoreSiteName)"
             SitePhysicalRoot = $Params.SitePhysicalRoot
+        }  
     }
 
     Push-Location $folder
     Write-Output "Sifon-MuteProgress"
-        Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\XP0-SingleDeveloper.log"
+        Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$folder\SingleDeveloper.log"
     Write-Output "Sifon-UnmuteProgress"
     Pop-Location
 
