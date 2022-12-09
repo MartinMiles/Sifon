@@ -76,7 +76,9 @@ namespace Sifon.Forms.Install
             SolrRoot = solrRootFolderText.Text.Trim(),
 
             InstallPrerequisites = installPrerequisites.Checked,
-            CreateProfile = createSifonProfile.Checked
+            CreateProfile = createSifonProfile.Checked,
+
+            IsXM = SelectedVersion.Name.EndsWith("XM")
         };
 
         internal ProgressHook ProgressHook => new ProgressHook(@"\[\-*\s(.*)\s\-*\]")
@@ -107,41 +109,35 @@ namespace Sifon.Forms.Install
 
         internal class DownloadItem
         {
-
+            public string Name { get; set; }
             public string File { get; set; }
             public string Hash { get; set; }
             public string Folder { get; set; }
         }
 
-        private DownloadItem SelectedVersion
+        private List<DownloadItem> Versions = new List<DownloadItem>
         {
-            get
-            {
-                var resources = new List<DownloadItem> 
-                {
-                    new DownloadItem { File="Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip",  Hash = "88666D3532F24973939C1CC140E12A27", Folder="9.3.0"},
-                    new DownloadItem { File="Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", Hash = "DCD3DC6E7C544C3685EC41DD781D3187", Folder="10.0.0"},
-                    new DownloadItem { File="Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", Hash = "9486629B50A847A5B62D59474CBAC53C", Folder="10.0.1"},
-                    new DownloadItem { File="Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", Hash = "7F9D170F0A4B4B598323629A7B7122EA", Folder="10.1.0"},
-                    new DownloadItem { File="Sitecore 10.1.1 rev. 005862 (WDP XP0 packages).zip", Hash = "4EF9CECDC77D4733850E5487E17C6EF8", Folder="10.1.1"},
-                    new DownloadItem { File="Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", Hash = "F85D6FB55C3F4F6B98291FDDB43D89D2", Folder="10.2.0"},
-                    new DownloadItem { File="Sitecore 10.3.0 rev. 008463 (WDP XP0 packages).zip", Hash = "698FD008261148CA96B828E06AB1732E", Folder="10.3.0"}
+            new DownloadItem { Name = "Sitecore 9.3.0 XP", File="Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip",  Hash = "88666D3532F24973939C1CC140E12A27", Folder="9.3.0"},
+            new DownloadItem { Name = "Sitecore 10.0.0 XP", File="Sitecore 10.0.0 rev. 004346 (WDP XP0 packages).zip", Hash = "DCD3DC6E7C544C3685EC41DD781D3187", Folder="10.0.0"},
+            new DownloadItem { Name = "Sitecore 10.0.1 XP", File="Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip", Hash = "9486629B50A847A5B62D59474CBAC53C", Folder="10.0.1"},
+            new DownloadItem { Name = "Sitecore 10.1.0 XP", File="Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip", Hash = "7F9D170F0A4B4B598323629A7B7122EA", Folder="10.1.0"},
+            new DownloadItem { Name = "Sitecore 10.1.1 XP", File="Sitecore 10.1.1 rev. 005862 (WDP XP0 packages).zip", Hash = "4EF9CECDC77D4733850E5487E17C6EF8", Folder="10.1.1"},
+            new DownloadItem { Name = "Sitecore 10.2.0 XP", File="Sitecore 10.2.0 rev. 006766 (WDP XP0 packages).zip", Hash = "F85D6FB55C3F4F6B98291FDDB43D89D2", Folder="10.2.0 XP"},
+            //new DownloadItem { Name = "Sitecore 10.2.0 XM", File="Sitecore 10.2.0 rev. 006766 (WDP XM1 packages).zip", Hash = "7285CC247EFC4C3A911D849F22412764", Folder="10.2.0 XM"},
+            new DownloadItem { Name = "Sitecore 10.3.0 XP", File="Sitecore 10.3.0 rev. 008463 (WDP XP0 packages).zip", Hash = "698FD008261148CA96B828E06AB1732E", Folder="10.3.0 XP"},
+            new DownloadItem { Name = "Sitecore 10.3.0 XM", File="Sitecore 10.3.0 rev. 008463 (WDP XM1 packages).zip", Hash = "F822AC26C1AC4805BA78E36E82545093", Folder="10.3.0 XM"}
+        };
 
-                };
-
-                var selectedVersion = comboVersions.SelectedItem as KernelHash;
-                return resources.FirstOrDefault(r => r.File.StartsWith(selectedVersion.Product));
-            }
-        }
-
+        private DownloadItem SelectedVersion => comboVersions.SelectedItem as DownloadItem;
         private void PopulateDropbox()
         {
             comboVersions.Items.Clear();
-            comboVersions.DisplayMember = "Product";
-            comboVersions.ValueMember = "Version";
-            comboVersions.DataSource = Settings.Hashes
-                .Where(h => h.Product.StartsWith("Sitecore 10") || h.Product.StartsWith("Sitecore 9.3"))
-                .ToList();
+            comboVersions.DisplayMember = "Name";
+            comboVersions.ValueMember = "Folder";
+            comboVersions.DataSource = Versions;
+            //comboVersions.DataSource = Settings.Hashes
+            //    .Where(h => h.Product.StartsWith("Sitecore 10") || h.Product.StartsWith("Sitecore 9.3"))
+            //    .ToList();
         }
 
         private async void install_Click(object sender, EventArgs e)
@@ -252,9 +248,9 @@ namespace Sifon.Forms.Install
             licenseTextbox.Text = @"c:\license.xml";
             adminPasswordText.Text = "b";
 
-            prefixText.Text = "xp";
-            sitecoreSiteText.Text = $"{prefixText.Text}.local";
-            xconnectText.Text = $"xconnect.{prefixText.Text}.local";
+            prefixText.Text = IsXmSelected ? "xm" : "xp";
+            sitecoreSiteText.Text = IsXmSelected ? $"cm.{prefixText.Text}.local" : $"{prefixText.Text}.local";
+            xconnectText.Text = IsXmSelected ? $"cd.{prefixText.Text}.local" : $"xconnect.{prefixText.Text}.local";
             identityServerText.Text = $"identityserver.{prefixText.Text}.local";
 
             solrUrlText.Text = "https://localhost:8112/solr";
@@ -415,5 +411,13 @@ namespace Sifon.Forms.Install
         public string RemoteFolder { get; set; } = String.Empty;
 
         #endregion
+
+        private bool IsXmSelected => ((DownloadItem)comboVersions.SelectedItem).Name.EndsWith("XM");
+
+        private void comboVersions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sitecoreSiteLabel.Text = IsXmSelected ? "Sitecore CM site:" : "Sitecore site:";
+            xconnectLabel.Text = IsXmSelected ? "Sitecore CD site:" : "XConnect site:";
+        }
     }
 }

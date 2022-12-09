@@ -44,7 +44,7 @@ function Install-DownloadSitecore
     if(!(Test-Path -Path $FullPath))
     {
         "."
-        Show-Message -Fore red -Back yellow -Text @("XP0 installer not downloaded.","File missing at: $FullPath")
+        Show-Message -Fore red -Back yellow -Text @("Installer not downloaded.","File missing at: $FullPath")
         exit
     }
 
@@ -60,10 +60,10 @@ function Install-DownloadSitecore
     New-Item -ItemType Directory -Force -Path $folder | Out-Null
     Show-Progress -Percent 8  -Activity "Extracting $($Params.DownloadFile) ..."  -Status "Extracting Sitecore"
     Write-Output "Sifon-MuteProgress"
-        "Extracting installation package: $FullPath"
+        "Extracting installation package: $FullPath into: $folder"
         Expand-Archive -Path $FullPath -DestinationPath $folder
         "."
-        $conf = Get-ChildItem -Path $folder -Filter "XP0 Configuration files*.zip"
+        $conf = Get-ChildItem -Path $folder -Filter "* Configuration files*.zip"
         
         Expand-Archive -Path "$folder\$conf" -DestinationPath $folder
     Write-Output "Sifon-UnmuteProgress"
