@@ -248,9 +248,9 @@ namespace Sifon.Forms.Install
             licenseTextbox.Text = @"c:\license.xml";
             adminPasswordText.Text = "b";
 
-            prefixText.Text = "xp";
-            sitecoreSiteText.Text = $"{prefixText.Text}.local";
-            xconnectText.Text = $"xconnect.{prefixText.Text}.local";
+            prefixText.Text = IsXmSelected ? "xm" : "xp";
+            sitecoreSiteText.Text = IsXmSelected ? $"cm.{prefixText.Text}.local" : $"{prefixText.Text}.local";
+            xconnectText.Text = IsXmSelected ? $"cd.{prefixText.Text}.local" : $"xconnect.{prefixText.Text}.local";
             identityServerText.Text = $"identityserver.{prefixText.Text}.local";
 
             solrUrlText.Text = "https://localhost:8112/solr";
@@ -411,5 +411,13 @@ namespace Sifon.Forms.Install
         public string RemoteFolder { get; set; } = String.Empty;
 
         #endregion
+
+        private bool IsXmSelected => ((DownloadItem)comboVersions.SelectedItem).Name.EndsWith("XM");
+
+        private void comboVersions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sitecoreSiteLabel.Text = IsXmSelected ? "Sitecore CM site:" : "Sitecore site:";
+            xconnectLabel.Text = IsXmSelected ? "Sitecore CD site:" : "XConnect site:";
+        }
     }
 }

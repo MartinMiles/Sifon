@@ -208,7 +208,7 @@
             this.createSifonProfile.CheckState = System.Windows.Forms.CheckState.Checked;
             this.createSifonProfile.Location = new System.Drawing.Point(15, 201);
             this.createSifonProfile.Name = "createSifonProfile";
-            this.createSifonProfile.Size = new System.Drawing.Size(214, 17);
+            this.createSifonProfile.Size = new System.Drawing.Size(227, 27);
             this.createSifonProfile.TabIndex = 13;
             this.createSifonProfile.Text = "Create Sifon profile for installed instance";
             this.createSifonProfile.UseVisualStyleBackColor = true;
@@ -512,7 +512,7 @@
             this.checkBoxRemote.AutoSize = true;
             this.checkBoxRemote.Location = new System.Drawing.Point(17, 29);
             this.checkBoxRemote.Name = "checkBoxRemote";
-            this.checkBoxRemote.Size = new System.Drawing.Size(233, 17);
+            this.checkBoxRemote.Size = new System.Drawing.Size(246, 27);
             this.checkBoxRemote.TabIndex = 21;
             this.checkBoxRemote.Text = "Install Sitecore into a remote machine or VM";
             this.checkBoxRemote.UseVisualStyleBackColor = true;
@@ -662,7 +662,7 @@
             this.installPrerequisites.CheckState = System.Windows.Forms.CheckState.Checked;
             this.installPrerequisites.Location = new System.Drawing.Point(15, 178);
             this.installPrerequisites.Name = "installPrerequisites";
-            this.installPrerequisites.Size = new System.Drawing.Size(229, 17);
+            this.installPrerequisites.Size = new System.Drawing.Size(242, 27);
             this.installPrerequisites.TabIndex = 12;
             this.installPrerequisites.Text = "Install Prerequisites for this Sitecore version";
             this.installPrerequisites.UseVisualStyleBackColor = true;
@@ -684,6 +684,7 @@
             this.comboVersions.Name = "comboVersions";
             this.comboVersions.Size = new System.Drawing.Size(256, 21);
             this.comboVersions.TabIndex = 11;
+            this.comboVersions.SelectedIndexChanged += new System.EventHandler(this.comboVersions_SelectedIndexChanged);
             // 
             // buttonInstall
             // 

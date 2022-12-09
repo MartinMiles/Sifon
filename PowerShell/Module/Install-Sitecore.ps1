@@ -17,13 +17,6 @@ function Install-Sitecore
      
      If($Params.IsXM) 
      { 
-        $SiteCoreContentManagementPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cm.scwdp.zip").FullName
-        $SitecoreContentDeliveryPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cd.scwdp.zip").FullName
-        $IdentityServerPackage = (Get-ChildItem "$folder\Sitecore.IdentityServer * rev. * (OnPrem)_identityserver.scwdp.zip").FullName
-        "SiteCoreContentManagementPackage = $SiteCoreContentManagementPackage"
-        "SitecoreContentDeliveryPackage = $SitecoreContentDeliveryPackage"
-        "IdentityServerPackage = $IdentityServerPackage"
-
         $singleDeveloperParams = @{
         Path = "$folder\\XM1-SingleDeveloper.json"
         SqlServer = $Params.SqlServer
@@ -41,7 +34,7 @@ function Install-Sitecore
         SitecoreContentDeliveryPackage = (Get-ChildItem "$folder\Sitecore * rev. * (XM) (OnPrem)_cd.scwdp.zip").FullName
         IdentityServerPackage = (Get-ChildItem "$folder\Sitecore.IdentityServer * rev. * (OnPrem)_identityserver.scwdp.zip").FullName
         SitecoreContentManagementSitename = $Params.SitecoreSiteName
-        SitecoreContentDeliverySitename = $Params.SitecoreSiteName + "_cd"
+        SitecoreContentDeliverySitename = $Params.XConnectSiteName
         PasswordRecoveryUrl = "https://$($Params.SitecoreSiteName)"
         SitecoreIdentityAuthority = "https://$($Params.IdentityServerSiteName)"
         ClientSecret =  "SIF-Default"
