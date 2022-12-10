@@ -78,7 +78,7 @@ namespace Sifon.Forms.Install
             }
         }
 
-        // TODO: duplicates same method from SqlSettingsPresenter
+        // TODO: duplicates same method from SqlSettingsPresenter and install database
         private bool ValidateQueryTime(PSObject psObject)
         {
             var queryTime = psObject.Convert<QueryTime>();

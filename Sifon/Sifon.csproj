@@ -160,6 +160,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Solr\InstallSolrPresenter.cs" />
+    <Compile Include="Forms\SQL\IInstallDatabase.cs" />
+    <Compile Include="Forms\SQL\InstallSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SQL\InstallSQL.Designer.cs">
+      <DependentUpon>InstallSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SQL\InstallDatabasePresenter.cs" />
     <Compile Include="Forms\Updates\CheckUpdates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +503,9 @@
     <EmbeddedResource Include="Forms\Solr\InstallSolr.resx">
       <DependentUpon>InstallSolr.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SQL\InstallSQL.resx">
+      <DependentUpon>InstallSQL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Updates\CheckUpdates.resx">
       <DependentUpon>CheckUpdates.cs</DependentUpon>
     </EmbeddedResource>
@@ -513,6 +524,9 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
+    <Compile Include="Forms\SQL\InstallSQL.Validation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <None Include="Resources\Restore.Ico" />
   </ItemGroup>
   <ItemGroup>

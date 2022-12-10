@@ -108,8 +108,11 @@ $getInstance = $path + "\Install-PrerequisitesForSitecore.ps1"
 $getInstance = $path + "\Install-Sitecore.ps1"
 . $getInstance
 
-$getInstance = $path + "\Verify-NetCoreHosting"
+$getInstance = $path + "\Verify-NetCoreHosting.ps1"
 . $getInstance
 
-$getInstance = $path + "\Get-SitecoreVersion"
+$getInstance = $path + "\Get-SitecoreVersion.ps1"
+. $getInstance
+
+$getInstance = $path + "\Install-SQLServer.ps1"
 . $getInstance

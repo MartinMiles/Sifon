@@ -116,6 +116,10 @@ namespace Sifon.Code.Statics
             public const string IsRemote = "IsRemote";
             public const string UseDownloadCDN = "UseDownloadCDN";
 
+            //Database installer
+            public const string DatabaseServerInstance = "Version";
+            public const string DatabaseServerPassword = "Password";
+
             //Solr installer
             public const string SolrVersion = "Version";
             public const string SolrHostname = "Hostname";

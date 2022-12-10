@@ -199,6 +199,13 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
+        private void installSQLServerExpressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new SQL.InstallSQL { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
+
         #endregion
 
         public void BeginUI()
