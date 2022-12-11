@@ -307,7 +307,7 @@ namespace Sifon.Forms.Install
             ToggleRemotingControls(enabled);
 
             revealSitecoreAdminPassword.Enabled = enabled && checkBoxRemote.Checked;
-            linkRevealSqlPassword.Enabled = enabled && checkBoxRemote.Checked;
+            linkRevealSqlPassword.Enabled = enabled /*&& checkBoxRemote.Checked*/;
             licenseFileButton.Enabled = enabled;
 
             checkBoxRemote.Enabled = enabled;
@@ -425,9 +425,7 @@ namespace Sifon.Forms.Install
             var form = new SQL.InstallSQL { StartPosition = FormStartPosition.CenterParent };
             if (form.ShowDialog() == DialogResult.OK)
             {
-
-                buttonInstall.Enabled = false;
-                buttonInstall.Hide();
+                buttonInstallSQL.Enabled = false;
                 sqlServerText.Text = $".\\{form.Instance}";
                 sqlServerUsernameText.Text = "sa";
                 sqlServerPasswordText.Text = form.Password;
