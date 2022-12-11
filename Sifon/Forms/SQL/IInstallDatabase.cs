@@ -9,6 +9,6 @@ namespace Sifon.Forms.SQL
     {
         event EventHandler<EventArgs<IDatabaseInstall>> InstallClicked;
 
-        void ToggleControls(bool enabled);
+        void UpdateView(bool enabled);
     }
 }

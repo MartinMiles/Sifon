@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -284,7 +285,9 @@ namespace Sifon.Forms.MainForm
 
         private void installToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var install = new Install.Install { StartPosition = FormStartPosition.CenterParent };
+            var install = new Install.Install { StartPosition = FormStartPosition.Manual };
+
+            install.Location = new Point(Location.X + 100,install.Location.Y + 280);
 
             if (install.ShowDialog() == DialogResult.OK)
             {

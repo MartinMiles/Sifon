@@ -13,6 +13,7 @@ namespace Sifon.Forms.SQL
         public InstallSQL()
         {
             InitializeComponent();
+            new InstallDatabasePresenter(this);
         }
 
         private void defaultsButton_Click(object sender, EventArgs e)
@@ -29,8 +30,6 @@ namespace Sifon.Forms.SQL
             ToggleSpinner(false);
 
             InstallClicked(this, new EventArgs<IDatabaseInstall>(this));
-
-
         }
 
         public void ToggleControls(bool enabled)
@@ -68,7 +67,13 @@ namespace Sifon.Forms.SQL
 
         public string Instance
         {
-            get => textInstance.Text;
+            get
+            {
+                string instance = textInstance.Text.Trim();
+                return instance.StartsWith(".\\") ? instance.Substring(2) : instance;
+
+            }
+
             set => textInstance.Text = value;
         }
 

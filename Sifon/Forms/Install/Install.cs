@@ -419,5 +419,21 @@ namespace Sifon.Forms.Install
             sitecoreSiteLabel.Text = IsXmSelected ? "Sitecore CM site:" : "Sitecore site:";
             xconnectLabel.Text = IsXmSelected ? "Sitecore CD site:" : "XConnect site:";
         }
+
+        private void buttonInstallSQL_Click(object sender, EventArgs e)
+        {
+            var form = new SQL.InstallSQL { StartPosition = FormStartPosition.CenterParent };
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+                buttonInstall.Enabled = false;
+                buttonInstall.Hide();
+                sqlServerText.Text = $".\\{form.Instance}";
+                sqlServerUsernameText.Text = "sa";
+                sqlServerPasswordText.Text = form.Password;
+            }
+
+            form.Dispose();
+        }
     }
 }

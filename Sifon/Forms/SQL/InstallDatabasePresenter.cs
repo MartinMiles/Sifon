@@ -43,20 +43,18 @@ namespace Sifon.Forms.SQL
 
         private async void InstallClicked(object sender, EventArgs<IDatabaseInstall> e)
         {
+            string instance = e.Value.Instance;
+
             var parameters = new Dictionary<string, dynamic>
             {
-                { Settings.Parameters.DatabaseServerInstance, e.Value.Instance},
+                { Settings.Parameters.DatabaseServerInstance, instance},
                 { Settings.Parameters.DatabaseServerPassword, e.Value.Password}
-                //{ Settings.Parameters.SolrHostname, e.Value.Hostname},
-                //{ Settings.Parameters.SolrFolder, e.Value.Folder}
             };
 
             await _scriptWrapper.Run(Modules.Functions.InstallDatabaseServer, parameters);
             ValidateSqlResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
             
-            _view.ToggleControls(true);
-
-            //await _view.OnLoad();
+            _view.UpdateView(true);
         }
 
         private void ValidateSqlResult(IEnumerable<PSObject> results, IEnumerable<string> errors)
