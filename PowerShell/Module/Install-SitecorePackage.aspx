@@ -54,10 +54,14 @@
         new Installer().InstallPackage(package, context);
         
         // TODO: Investigate why these two below lines do not work with 10.3 XP
-        // YThe second liner responds as: Exception Details: Sitecore.Jobs.AsyncUI.InvalidContextException: Current context is not a job
+        // The second line responds as: Exception Details: Sitecore.Jobs.AsyncUI.InvalidContextException: Current context is not a job
 
-        // string action = Installer.GetPostStep(context);
-        // new Installer().ExecutePostStep(action, context);
+	    try{
+          string action = Installer.GetPostStep(context);
+          new Installer().ExecutePostStep(action, context);
+	    }
+	    catch{
+	    }
     }
 </script>
 <body>
