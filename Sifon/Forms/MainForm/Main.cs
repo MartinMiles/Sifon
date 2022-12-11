@@ -72,7 +72,10 @@ namespace Sifon.Forms.MainForm
 
             foreach (var profile in profiles)
             {
-                comboProfiles.Items.Add(profile);
+                if (!(profiles.Count() > 1 && profile == Settings.ProfileNotCreated))
+                {
+                    comboProfiles.Items.Add(profile);
+                }
             }
 
             if (comboProfiles.Items.Count > 0)
