@@ -241,8 +241,8 @@ namespace Sifon.Forms.Install
 
         private void SetDefaults_Click(object sender, EventArgs e)
         {
-            var last = comboVersions.Items.Count - 1;
-            comboVersions.SelectedIndex = last;
+            //var last = comboVersions.Items.Count - 1;
+            //comboVersions.SelectedIndex = last;
 
             textDestinationFolder.Text = @"C:\inetpub\wwwroot";
             licenseTextbox.Text = @"c:\license.xml";
@@ -257,7 +257,7 @@ namespace Sifon.Forms.Install
             solrServiceText.Text = "solr-8.11.2";
             solrRootFolderText.Text = @"c:\Solr\solr-8.11.2";
 
-            sqlServerText.Text = "(local)";
+            sqlServerText.Text = ".\\SQLSERVER";
             sqlServerUsernameText.Text = "sa";
             sqlServerPasswordText.Text = "SA_PASSWORD";
 
