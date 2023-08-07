@@ -50,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.prefixText = new System.Windows.Forms.TextBox();
             this.groupBoxSql = new System.Windows.Forms.GroupBox();
+            this.buttonInstallSQL = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonTestSQL = new System.Windows.Forms.Button();
             this.linkRevealSqlPassword = new System.Windows.Forms.LinkLabel();
@@ -296,6 +297,7 @@
             // 
             // groupBoxSql
             // 
+            this.groupBoxSql.Controls.Add(this.buttonInstallSQL);
             this.groupBoxSql.Controls.Add(this.label4);
             this.groupBoxSql.Controls.Add(this.buttonTestSQL);
             this.groupBoxSql.Controls.Add(this.linkRevealSqlPassword);
@@ -312,6 +314,16 @@
             this.groupBoxSql.TabStop = false;
             this.groupBoxSql.Text = "SQL Server:";
             // 
+            // buttonInstallSQL
+            // 
+            this.buttonInstallSQL.Location = new System.Drawing.Point(18, 201);
+            this.buttonInstallSQL.Name = "buttonInstallSQL";
+            this.buttonInstallSQL.Size = new System.Drawing.Size(78, 23);
+            this.buttonInstallSQL.TabIndex = 46;
+            this.buttonInstallSQL.Text = "Install SQL";
+            this.buttonInstallSQL.UseVisualStyleBackColor = true;
+            this.buttonInstallSQL.Click += new System.EventHandler(this.buttonInstallSQL_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -323,11 +335,11 @@
             // buttonTestSQL
             // 
             this.buttonTestSQL.Enabled = false;
-            this.buttonTestSQL.Location = new System.Drawing.Point(75, 201);
+            this.buttonTestSQL.Location = new System.Drawing.Point(102, 201);
             this.buttonTestSQL.Name = "buttonTestSQL";
-            this.buttonTestSQL.Size = new System.Drawing.Size(123, 23);
+            this.buttonTestSQL.Size = new System.Drawing.Size(96, 23);
             this.buttonTestSQL.TabIndex = 45;
-            this.buttonTestSQL.Text = "Test SQL Connection";
+            this.buttonTestSQL.Text = "Test Connection";
             this.buttonTestSQL.UseVisualStyleBackColor = true;
             this.buttonTestSQL.Click += new System.EventHandler(this.buttonTestSQL_Click);
             // 
@@ -814,5 +826,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button buttonInstallSQL;
     }
 }

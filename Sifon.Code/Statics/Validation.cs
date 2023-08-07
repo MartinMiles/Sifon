@@ -1,7 +1,13 @@
 ﻿namespace Sifon.Code.Statics
 {
     public static class Validation
-    {
+    {   
+        public static class InstallDatabase
+        {
+            public const string Instance = "Please provide valid SQL Express instance name";
+            public const string Password = "Please provide valid password";
+        }
+
         public static class InstallSolr
         {
             public const string Folder = "Please provide valid folder path to install into";

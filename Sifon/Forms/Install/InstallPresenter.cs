@@ -48,8 +48,11 @@ namespace Sifon.Forms.Install
             _view.ToggleControls(false);
 
             var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.ServerInstance, e.Value1.SqlServer } };
-            var credentials = new PSCredential(e.Value1.SqlAdminUsername, e.Value1.SqlAdminPassword.ToSecureString());
-            parameters.Add(Settings.Parameters.SqlCredentials, credentials);
+            //var credentials = new PSCredential(e.Value1.SqlAdminUsername, e.Value1.SqlAdminPassword.ToSecureString());
+            //parameters.Add(Settings.Parameters.SqlCredentials, credentials);
+
+            parameters.Add("Username", e.Value1.SqlAdminUsername);
+            parameters.Add("Password", e.Value1.SqlAdminPassword);
 
             _sqlScriptWrapper = Create.WithParam(_view, d => d, profile);
             await _sqlScriptWrapper.Run(Modules.Functions.TestSqlServerConnection, parameters);
@@ -78,7 +81,7 @@ namespace Sifon.Forms.Install
             }
         }
 
-        // TODO: duplicates same method from SqlSettingsPresenter
+        // TODO: duplicates same method from SqlSettingsPresenter and install database
         private bool ValidateQueryTime(PSObject psObject)
         {
             var queryTime = psObject.Convert<QueryTime>();

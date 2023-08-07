@@ -223,7 +223,7 @@ namespace Sifon.Forms.MainForm
             var metacode = Create.WithParam<IMetacodeHelper, string>(e.Value);
 
             if (metacode.RequiresProfile 
-                && _profilesProvider.SelectedProfile.ProfileName == "Profile not created" 
+                && _profilesProvider.SelectedProfile.ProfileName == Settings.ProfileNotCreated
                 && _profilesProvider.Count == 1)
             {
                 _view.NotifyRequiresProfile();

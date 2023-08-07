@@ -39,6 +39,12 @@ namespace Sifon.Statics
             public const string AdminPassword = @"[^\ ]";
         }
 
+        public static class InstallDatabase
+        {
+            public const string Instance = @"^(.\\)?[A-Za-z0-9]{1,}$";
+            public const string Password = @"[^\ ]";
+        }
+
         public static class InstallSolr
         {
             public const string Folder = @"^[a-zA-Z]:\\(((?![<>:""\/\\|?*]).)+((?<![ .])\\)?)*$";

@@ -95,6 +95,7 @@ function Install-Prerequisites([bool[]]$InstallValues)
     {
         $ProgressPreference = "SilentlyContinue"
         choco install dotnetcore-sdk --force  | Out-Null
+        choco install dotnet-6.0-sdk --force  | Out-Null
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
         $ProgressPreference = "Continue"
 

@@ -43,6 +43,7 @@
     <Compile Include="Events\TypedEventArgs.cs" />
     <Compile Include="Filesystem\IFilesystem.cs" />
     <Compile Include="Formatters\IFormatter.cs" />
+    <Compile Include="Forms\IDatabaseInstall.cs" />
     <Compile Include="Forms\IFeedback.cs" />
     <Compile Include="Forms\IPrerequisites.cs" />
     <Compile Include="Forms\ISolrInstall.cs" />

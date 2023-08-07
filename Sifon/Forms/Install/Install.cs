@@ -241,8 +241,8 @@ namespace Sifon.Forms.Install
 
         private void SetDefaults_Click(object sender, EventArgs e)
         {
-            var last = comboVersions.Items.Count - 1;
-            comboVersions.SelectedIndex = last;
+            //var last = comboVersions.Items.Count - 1;
+            //comboVersions.SelectedIndex = last;
 
             textDestinationFolder.Text = @"C:\inetpub\wwwroot";
             licenseTextbox.Text = @"c:\license.xml";
@@ -257,7 +257,7 @@ namespace Sifon.Forms.Install
             solrServiceText.Text = "solr-8.11.2";
             solrRootFolderText.Text = @"c:\Solr\solr-8.11.2";
 
-            sqlServerText.Text = "(local)";
+            sqlServerText.Text = ".\\SQLSERVER";
             sqlServerUsernameText.Text = "sa";
             sqlServerPasswordText.Text = "SA_PASSWORD";
 
@@ -307,7 +307,7 @@ namespace Sifon.Forms.Install
             ToggleRemotingControls(enabled);
 
             revealSitecoreAdminPassword.Enabled = enabled && checkBoxRemote.Checked;
-            linkRevealSqlPassword.Enabled = enabled && checkBoxRemote.Checked;
+            linkRevealSqlPassword.Enabled = enabled /*&& checkBoxRemote.Checked*/;
             licenseFileButton.Enabled = enabled;
 
             checkBoxRemote.Enabled = enabled;
@@ -418,6 +418,20 @@ namespace Sifon.Forms.Install
         {
             sitecoreSiteLabel.Text = IsXmSelected ? "Sitecore CM site:" : "Sitecore site:";
             xconnectLabel.Text = IsXmSelected ? "Sitecore CD site:" : "XConnect site:";
+        }
+
+        private void buttonInstallSQL_Click(object sender, EventArgs e)
+        {
+            var form = new SQL.InstallSQL { StartPosition = FormStartPosition.CenterParent };
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                buttonInstallSQL.Enabled = false;
+                sqlServerText.Text = $".\\{form.Instance}";
+                sqlServerUsernameText.Text = "sa";
+                sqlServerPasswordText.Text = form.Password;
+            }
+
+            form.Dispose();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Sifon.Code.Statics
             public const string VerifyNetCore = "Verify-NetCore";
             public const string InstallModuleFromGithub = "Install-ModuleFromGithub";
             public const string InstallSolr = "Install-Solr";
+            public const string InstallDatabaseServer = "Install-SQLServer";
             public const string ReadUrlContent = "Read-UrlContent";
             public const string GetIdentityToken = "Get-IdentityToken";
         }
@@ -86,6 +87,7 @@ namespace Sifon.Code.Statics
             public static string InstallSolr => Combine(Functions.InstallSolr);
             public static string ReadUrlContent => Combine(Functions.ReadUrlContent);
             public static string GetIdentityToken => Combine(Functions.GetIdentityToken);
+            public static string InstallSqlServer => Combine(Functions.InstallDatabaseServer);
 
             private static string Combine(string moduleParam, string ext = null)
             {
@@ -131,7 +133,8 @@ namespace Sifon.Code.Statics
             Files.InstallModuleFromGithub,
             Files.InstallSolr,
             Files.ReadUrlContent,
-            Files.GetIdentityToken
+            Files.GetIdentityToken,
+            Files.InstallSqlServer
         };
     }
 }

@@ -38,6 +38,7 @@ namespace Sifon.Forms.MainForm
             this.sitecorePortalCredentialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.installSolrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.installSQLServerExpressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.installHostPrerequsitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetAllExistingSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -156,6 +157,7 @@ namespace Sifon.Forms.MainForm
             this.sitecorePortalCredentialsToolStripMenuItem,
             this.settingsToolStripMenuItem1,
             this.installSolrToolStripMenuItem,
+            this.installSQLServerExpressToolStripMenuItem,
             this.installHostPrerequsitesToolStripMenuItem,
             this.resetAllExistingSettingsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
@@ -184,6 +186,13 @@ namespace Sifon.Forms.MainForm
             this.installSolrToolStripMenuItem.Text = "Install Solr";
             this.installSolrToolStripMenuItem.Click += new System.EventHandler(this.installSolrToolStripMenuItem_Click);
             // 
+            // installSQLServerExpressToolStripMenuItem
+            // 
+            this.installSQLServerExpressToolStripMenuItem.Name = "installSQLServerExpressToolStripMenuItem";
+            this.installSQLServerExpressToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.installSQLServerExpressToolStripMenuItem.Text = "Install SQL Server Express";
+            this.installSQLServerExpressToolStripMenuItem.Click += new System.EventHandler(this.installSQLServerExpressToolStripMenuItem_Click);
+            // 
             // installHostPrerequsitesToolStripMenuItem
             // 
             this.installHostPrerequsitesToolStripMenuItem.Name = "installHostPrerequsitesToolStripMenuItem";
@@ -211,21 +220,21 @@ namespace Sifon.Forms.MainForm
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
             this.aboutToolStripMenuItem1.Text = "About Sifon";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // checkUpdatesToolStripMenuItem
             // 
             this.checkUpdatesToolStripMenuItem.Name = "checkUpdatesToolStripMenuItem";
-            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkUpdatesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.checkUpdatesToolStripMenuItem.Text = "Check Updates";
             this.checkUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkUpdatesToolStripMenuItem_Click);
             // 
             // sendFeedbackToolStripMenuItem
             // 
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
-            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
             this.sendFeedbackToolStripMenuItem.Click += new System.EventHandler(this.sendFeedbackToolStripMenuItem_Click);
             // 
@@ -391,6 +400,7 @@ namespace Sifon.Forms.MainForm
         private System.Windows.Forms.ToolStripMenuItem installSolrToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetAllExistingSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem installSQLServerExpressToolStripMenuItem;
     }
 }
 

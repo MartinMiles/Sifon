@@ -5,7 +5,7 @@ namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string VersionNumber = "1.3.1";
+        public const string VersionNumber = "1.3.3";
         public static readonly string ProductVersion = $"Sifon v{VersionNumber}";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
@@ -115,6 +115,10 @@ namespace Sifon.Code.Statics
             public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
             public const string UseDownloadCDN = "UseDownloadCDN";
+
+            //Database installer
+            public const string DatabaseServerInstance = "Version";
+            public const string DatabaseServerPassword = "Password";
 
             //Solr installer
             public const string SolrVersion = "Version";

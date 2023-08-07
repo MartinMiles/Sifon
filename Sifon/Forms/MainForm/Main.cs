@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -72,7 +73,10 @@ namespace Sifon.Forms.MainForm
 
             foreach (var profile in profiles)
             {
-                comboProfiles.Items.Add(profile);
+                if (!(profiles.Count() > 1 && profile == Settings.ProfileNotCreated))
+                {
+                    comboProfiles.Items.Add(profile);
+                }
             }
 
             if (comboProfiles.Items.Count > 0)
@@ -199,6 +203,13 @@ namespace Sifon.Forms.MainForm
             form.Dispose();
         }
 
+        private void installSQLServerExpressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new SQL.InstallSQL { StartPosition = FormStartPosition.CenterParent };
+            form.ShowDialog();
+            form.Dispose();
+        }
+
         #endregion
 
         public void BeginUI()
@@ -274,7 +285,9 @@ namespace Sifon.Forms.MainForm
 
         private void installToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var install = new Install.Install { StartPosition = FormStartPosition.CenterParent };
+            var install = new Install.Install { StartPosition = FormStartPosition.Manual };
+
+            install.Location = new Point(Location.X + 100,install.Location.Y + 280);
 
             if (install.ShowDialog() == DialogResult.OK)
             {
