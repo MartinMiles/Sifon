@@ -3,13 +3,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>sifon</id>
-    <version>1.3.3</version>
+    <version>1.3.4</version>
     <owners>Martin Miles</owners>
     <title>Sifon</title>
     <authors>Martin Miles</authors>
     <projectUrl>https://Sifon.UK</projectUrl>
     <iconUrl>https://rawcdn.githack.com/wiki/MartinMiles/Sifon/img/Icons/sifon_612.png</iconUrl>
-    <copyright>2022 Martin Miles</copyright>
+    <copyright>2023 Martin Miles</copyright>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectSourceUrl>https://github.com/MartinMiles/Sifon</projectSourceUrl>
     <packageSourceUrl>https://github.com/MartinMiles/Sifon</packageSourceUrl>
