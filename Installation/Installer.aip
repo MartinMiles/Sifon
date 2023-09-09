@@ -12,10 +12,10 @@
     <ROW Property="BannerBitmap" Value="banner" MultiBuildValue="DefaultBuild:BannerBitmap.png" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:DialogBitmap.png" Type="1" MsiKey="DialogBitmap"/>
     <ROW Property="Manufacturer" Value="Martin Miles"/>
-    <ROW Property="ProductCode" Value="1033:{D9D1EFF1-852A-4B42-AEA7-A18389AE1F88} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{9D607E7F-DC55-4F54-9B02-2A36E1CF8F35} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Sifon"/>
-    <ROW Property="ProductVersion" Value="1.3.3" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.3.4" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="TabBackground" Type="1" MsiKey="TabBackground"/>
