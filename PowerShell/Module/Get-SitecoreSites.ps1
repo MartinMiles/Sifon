@@ -1,12 +1,17 @@
-function Get-SitecoreSites([bool]$All){
+function Get-SitecoreSites([bool]$IsXM){
     
-    $dllToCheck = if ($All) { "\bin\Sitecore.Nexus.Licensing.dll" } else { "\bin\Sitecore.Kernel.dll" }
+    # $dllToCheck = if ($All) { "\bin\Sitecore.Nexus.Licensing.dll" } else {  }
 
-    Get-ChildItem -Path IIS:\Sites `
-    | where { Test-Path($_.PhysicalPath + $dllToCheck)  } `
-    | % {$_.Name }
+    if($IsXM){
+        Get-ChildItem -Path IIS:\Sites | where { Test-Path($_.PhysicalPath + "\bin\Sitecore.Kernel.dll")  } | where { -not (Test-Path($_.PhysicalPath + "\bin\Sitecore.Framework.Common.dll"))  } |% {$_.Name }
+    }
+    else{
+        Get-ChildItem -Path IIS:\Sites | where { Test-Path($_.PhysicalPath + "\bin\Sitecore.Framework.Common.dll")  } | % {$_.Name }
+    }
+
+
 }
 
 # Sample usage:
-#   Get-SitecoreSites               # returns web roles only
-#   Get-SitecoreSites -All $true    # returns web roles AND xconnect, used from Profiles Websites control
+#   Get-SitecoreSites                # returns roles for XP (no IDS)
+#   Get-SitecoreSites -IsXM $true    # returns roles for XM (no IDS)
