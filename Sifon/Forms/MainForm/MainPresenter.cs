@@ -120,12 +120,18 @@ namespace Sifon.Forms.MainForm
             profile.RemotePassword = value.RemotingPassword;
             profile.RemoteFolder = value.RemotingPassword;
 
-            profile.Webroot = value.SitePhysicalRoot + "\\" + value.SitecoreSiteName;
             profile.AdminPassword = value.SitecoreAdminPassword;
             profile.AdminUsername = "admin";
 
+            profile.IsXM = value.IsXM;
             profile.Prefix = value.Prefix;
             profile.Website = value.SitecoreSiteName;
+            profile.Webroot = value.SitePhysicalRoot + "\\" + value.SitecoreSiteName;
+            profile.XConnectSiteName = value.XConnectSiteName;
+            profile.XConnectSiteRoot = value.SitePhysicalRoot + "\\" + value.XConnectSiteName;
+            profile.CDSiteName = value.CDSiteName;
+            profile.CDSiteRoot = value.SitePhysicalRoot + "\\" + value.CDSiteName;
+
             profile.Solr = value.SolrUrl;
 
             var sqlRecord = profile.AppendSQL(value.SqlServer, value.SqlAdminUser, value.SqlAdminPassword);

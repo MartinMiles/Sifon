@@ -34,7 +34,10 @@ namespace Sifon.Code.Providers.Profile
         {
             var profile = new Model.Profiles.Profile
             {
-                ProfileName = p.ProfileName, Prefix = p.Prefix, AdminUsername = p.AdminUsername,
+                IsXM = p.IsXM,
+                ProfileName = p.ProfileName, 
+                Prefix = p.Prefix, 
+                AdminUsername = p.AdminUsername,
                 AdminPassword = p.AdminPassword
             };
 
@@ -101,6 +104,7 @@ namespace Sifon.Code.Providers.Profile
             var selected = _profiles.FirstOrDefault(p => p.Selected);
             if (selected != null)
             {
+                selected.IsXM = profile.IsXM;
                 selected.RemotingEnabled = profile.RemotingEnabled;
                 selected.RemoteHost = profile.RemoteHost;
                 selected.RemoteUsername = profile.RemoteUsername;
@@ -109,6 +113,10 @@ namespace Sifon.Code.Providers.Profile
                 selected.Prefix = profile.Prefix;
                 selected.Webroot = profile.Webroot;
                 selected.Website = profile.Website;
+                selected.XConnectSiteName = profile.XConnectSiteName;
+                selected.XConnectSiteRoot = profile.XConnectSiteRoot;
+                selected.CDSiteName = profile.CDSiteName;
+                selected.CDSiteRoot = profile.CDSiteRoot;
                 selected.Solr = profile.Solr;
                 selected.SqlServer = profile.SqlServer;
                 selected.Parameters = profile.Parameters;
@@ -152,6 +160,8 @@ namespace Sifon.Code.Providers.Profile
             parameters.Add(Settings.Parameters.Website, SelectedProfile.Website);
             parameters.Add(Settings.Parameters.Webroot, SelectedProfile.Webroot);
             parameters.Add(Settings.Parameters.Solr, SelectedProfile.Solr);
+            //TODO: Add new parameters to be exmplicitly passed, rather than through a profile
+            parameters.Add(Settings.Parameters.IsXM, !executeLocalEnforced && SelectedProfile.RemotingEnabled);
             parameters.Add(Settings.Parameters.IsRemote, !executeLocalEnforced && SelectedProfile.RemotingEnabled);
             parameters.Add("Profile", SelectedProfile);
 
@@ -168,6 +178,7 @@ namespace Sifon.Code.Providers.Profile
             }
         }
         
+        //TODO: Add support for XM topology for Backup and restore
         public void AddBackupRemoveParameters(Dictionary<string, dynamic> parameters, IBackupRemoverViewModel model)
         {
             parameters.Add(Settings.Parameters.TargetFolder, model.DestinationFolder);

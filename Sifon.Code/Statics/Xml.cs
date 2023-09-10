@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Sifon.Abstractions.Profiles;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Sifon.Code.Statics
 {
@@ -32,6 +34,12 @@ namespace Sifon.Code.Statics
             public const string SqlServer = "SqlServer";
             public const string Parameters = "AdditionalParameters";
             public const string Parameter = "Parameter";
+
+            public const string IsXM = "IsXM";
+            public const string XConnectSiteName = "XConnectSiteName";
+            public const string XConnectSiteRoot = "XConnectSiteRoot";
+            public const string CDSiteName = "CDSiteName";
+            public const string CDSiteRoot = "CDSiteRoot";
         }
 
         public static class ContainerProfile

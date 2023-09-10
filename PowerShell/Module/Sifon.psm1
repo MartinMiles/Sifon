@@ -27,7 +27,7 @@ $getInstance = $path + "\Install-SitecorePackageUsingRemoting.ps1"
 $getInstance = $path + "\Verify-PortalCredentials.ps1"
 . $getInstance
 
-$getInstance = $path + "\Get-SiteBindings.ps1"
+$getInstance = $path + "\Get-Bindings.ps1"
 . $getInstance
 
 $getInstance = $path + "\Get-SitecoreSites.ps1"

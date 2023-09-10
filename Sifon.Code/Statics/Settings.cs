@@ -114,6 +114,7 @@ namespace Sifon.Code.Statics
             public const string PluginsRepository = "PluginsRepository";
             public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
+            public const string IsXM = "IsXM";
             public const string UseDownloadCDN = "UseDownloadCDN";
 
             //Database installer

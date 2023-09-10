@@ -38,7 +38,8 @@ namespace Sifon.Forms.Backup
 
             _view.ToggleControls(false);
 
-            var bindings = await _siteProvider.GetBindings(e.Value);
+            // TODO: possibly change signature to array
+            var bindings = await _siteProvider.GetBindings(new[] { e.Value });
             _view.PopulateHostnamesListboxForSite(bindings, ControlSettings.Grid.HostnameColumns);
 
             var viewModel = await BuildViewModel(e.Value);

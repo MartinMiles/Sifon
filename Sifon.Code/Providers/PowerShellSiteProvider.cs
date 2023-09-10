@@ -35,9 +35,9 @@ namespace Sifon.Code.Providers
             return _scriptWrapperString.Results;
         }
 
-        public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string siteName)
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string[] siteNames)
         {
-            await _scriptWrapper.Run(Modules.Functions.GetBindings, new Dictionary<string, dynamic> {{ "SiteNameOrPath", siteName }});
+            await _scriptWrapper.Run(Modules.Functions.GetBindings, new Dictionary<string, dynamic> {{ "SiteNameOrPath", siteNames }});
             return _scriptWrapper.Results;
         }
 

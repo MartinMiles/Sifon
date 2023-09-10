@@ -22,6 +22,11 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
 
         #region Expose fields properties
 
+        public bool IsXM
+        {
+            get => (string)comboTopologies.SelectedItem == "XM";
+            set => textProfileName.SelectedText = value ? "XM" : "XP";
+        }
         public string ProfileName
         {
             get => textProfileName.Text.Trim();
@@ -54,7 +59,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             new ProfilePresenter(this);
         }
         
-        public void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName)
+        public void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName, bool isXM)
         {
             comboProfiles.Items.Clear();
             comboProfiles.Items.Add(Settings.Dropdowns.AddNewProfile);
@@ -76,6 +81,8 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             {
                 comboProfiles.SelectedItem = selectedProfileName;
             }
+
+            comboTopologies.SelectedIndex = isXM ? 0 : 1;
 
             UpdateButtonsState();
         }   
@@ -106,6 +113,11 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             }
 
             Presenter.Raise_ProfileChangedEvent(comboProfiles.SelectedIndex > 0);
+        }
+
+        private void comboTopologies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Presenter.Raise_TopologyChangedEvent(IsXM);
         }
 
         private void buttonRename_Click(object sender, EventArgs e)

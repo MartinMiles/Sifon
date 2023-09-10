@@ -29,7 +29,8 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         {
             await Task.CompletedTask;
 
-            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName);
+            
+            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile?.ProfileName, Presenter.SelectedProfile.IsXM);
         }
 
         private void ProfileAdded(object sender, EventArgs<IProfileUserControl> e)
@@ -43,7 +44,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             ProfilesService.SelectProfile(e.Value.ProfileName);
             ProfilesService.Save();
 
-            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile.ProfileName);
+            _view.LoadProfilesDropdown(Presenter.Profiles, Presenter.SelectedProfile.ProfileName, Presenter.SelectedProfile.IsXM);
         }
 
         private void ProfileRenamed(object sender, EventArgs<IProfileUserControl> e)
@@ -52,9 +53,10 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
             SelectedProfile.Prefix = e.Value.Prefix;
             SelectedProfile.AdminUsername = e.Value.AdminUsername;
             SelectedProfile.AdminPassword = e.Value.AdminPassword;
+            SelectedProfile.IsXM = e.Value.IsXM;
             ProfilesService.Save();
 
-            _view.LoadProfilesDropdown(Profiles, SelectedProfile.ProfileName);
+            _view.LoadProfilesDropdown(Profiles, SelectedProfile.ProfileName, e.Value.IsXM);
         }
 
         private void SelectedProfileChanged(object sender, EventArgs<string> e)
@@ -73,7 +75,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
                 Presenter.CreateDummyProfile();
             }
 
-            _view.LoadProfilesDropdown(Profiles, SelectedProfile?.ProfileName);
+            _view.LoadProfilesDropdown(Profiles, SelectedProfile?.ProfileName, SelectedProfile.IsXM);
         }
     }
 }
