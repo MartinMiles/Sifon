@@ -59,9 +59,9 @@ namespace Sifon.Forms.Profiles
             }
         }
 
-        public async Task<IEnumerable<string>> GetSitecoreSites()
+        public async Task<IEnumerable<string>> GetSitecoreSites(bool isXM)
         {
-            return await _siteProvider.GetSitecoreSites();
+            return await _siteProvider.GetSitecoreSites(isXM); // passing true will include XConnect sites as well, but still no IDS
         }
 
         #region Outer events

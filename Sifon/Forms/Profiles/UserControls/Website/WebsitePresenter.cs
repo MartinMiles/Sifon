@@ -36,11 +36,9 @@ namespace Sifon.Forms.Profiles.UserControls.Website
 
             _siteProvider = Create.WithCurrentProfile<ISiteProvider>(_view);
 
-            await GetSitecoreSites();
-
-            //_view.EnableControls(e.Value);
-
-            var isXM = SelectedProfile.IsXM;
+            bool isXM = SelectedProfile.IsXM; 
+            await GetSitecoreSites(isXM);
+                        
 
             _view.SetWebsiteDropdownByProfile(SelectedProfile);
             _view.SetPathTextboxes(SelectedProfile.Webroot, isXM ? SelectedProfile.CDSiteRoot: SelectedProfile.XConnectSiteRoot);
@@ -55,11 +53,11 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             return browser.ShowDialog() == DialogResult.OK ? browser.SelectedPath : String.Empty;
         }
 
-        private async Task GetSitecoreSites()
+        private async Task GetSitecoreSites(bool isXM)
         {
             try
             {
-                var sitecoreSites = await Presenter.GetSitecoreSites();
+                var sitecoreSites = await Presenter.GetSitecoreSites(isXM);
                 _view.LoadWebsitesDropdown(sitecoreSites);
 
                 var sites = sitecoreSites.Cast<string>().ToArray();

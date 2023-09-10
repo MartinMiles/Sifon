@@ -29,9 +29,10 @@ namespace Sifon.Code.Providers
             return infos == null ? default(KeyValuePair<string, string>) : new KeyValuePair<string, string>(infos[0], infos[1]);
         }
 
-        public async Task<IEnumerable<string>> GetSitecoreSites()
+        public async Task<IEnumerable<string>> GetSitecoreSites(bool isXM = false)
         {
-            await _scriptWrapperString.Run(Modules.Functions.GetSitecoreSites);
+            var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.IsXM, isXM } };
+            await _scriptWrapperString.Run(Modules.Functions.GetSitecoreSites, parameters);
             return _scriptWrapperString.Results;
         }
 
