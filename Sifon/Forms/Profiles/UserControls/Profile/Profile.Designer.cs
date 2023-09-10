@@ -74,10 +74,10 @@
             // labelTopology
             // 
             this.labelTopology.AutoSize = true;
-            this.labelTopology.Location = new System.Drawing.Point(29, 124);
+            this.labelTopology.Location = new System.Drawing.Point(423, 56);
             this.labelTopology.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelTopology.Name = "labelTopology";
-            this.labelTopology.Size = new System.Drawing.Size(54, 13);
+            this.labelTopology.Size = new System.Drawing.Size(107, 25);
             this.labelTopology.TabIndex = 14;
             this.labelTopology.Text = "Topology:";
             // 
@@ -88,10 +88,10 @@
             this.comboTopologies.Items.AddRange(new object[] {
             "XM",
             "XP"});
-            this.comboTopologies.Location = new System.Drawing.Point(35, 155);
+            this.comboTopologies.Location = new System.Drawing.Point(429, 87);
             this.comboTopologies.Margin = new System.Windows.Forms.Padding(6);
             this.comboTopologies.Name = "comboTopologies";
-            this.comboTopologies.Size = new System.Drawing.Size(526, 33);
+            this.comboTopologies.Size = new System.Drawing.Size(132, 33);
             this.comboTopologies.TabIndex = 13;
             this.comboTopologies.SelectedIndexChanged += new System.EventHandler(this.comboTopologies_SelectedIndexChanged);
             // 
@@ -103,7 +103,7 @@
             this.linkDelete.Location = new System.Drawing.Point(32, 490);
             this.linkDelete.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.linkDelete.Name = "linkDelete";
-            this.linkDelete.Size = new System.Drawing.Size(112, 13);
+            this.linkDelete.Size = new System.Drawing.Size(226, 25);
             this.linkDelete.TabIndex = 7;
             this.linkDelete.TabStop = true;
             this.linkDelete.Text = "Delete selected profile";
@@ -115,7 +115,7 @@
             this.labelAdminPassword.Location = new System.Drawing.Point(312, 371);
             this.labelAdminPassword.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelAdminPassword.Name = "labelAdminPassword";
-            this.labelAdminPassword.Size = new System.Drawing.Size(87, 13);
+            this.labelAdminPassword.Size = new System.Drawing.Size(176, 25);
             this.labelAdminPassword.TabIndex = 12;
             this.labelAdminPassword.Text = "Admin password:";
             // 
@@ -125,7 +125,7 @@
             this.textAdminPassword.Margin = new System.Windows.Forms.Padding(6);
             this.textAdminPassword.Name = "textAdminPassword";
             this.textAdminPassword.PasswordChar = '*';
-            this.textAdminPassword.Size = new System.Drawing.Size(246, 20);
+            this.textAdminPassword.Size = new System.Drawing.Size(246, 31);
             this.textAdminPassword.TabIndex = 6;
             // 
             // labelAdminUsername
@@ -134,7 +134,7 @@
             this.labelAdminUsername.Location = new System.Drawing.Point(32, 371);
             this.labelAdminUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelAdminUsername.Name = "labelAdminUsername";
-            this.labelAdminUsername.Size = new System.Drawing.Size(88, 13);
+            this.labelAdminUsername.Size = new System.Drawing.Size(179, 25);
             this.labelAdminUsername.TabIndex = 10;
             this.labelAdminUsername.Text = "Admin username:";
             // 
@@ -143,7 +143,7 @@
             this.textAdminUsername.Location = new System.Drawing.Point(38, 402);
             this.textAdminUsername.Margin = new System.Windows.Forms.Padding(6);
             this.textAdminUsername.Name = "textAdminUsername";
-            this.textAdminUsername.Size = new System.Drawing.Size(246, 20);
+            this.textAdminUsername.Size = new System.Drawing.Size(246, 31);
             this.textAdminUsername.TabIndex = 5;
             // 
             // labelPrefix
@@ -152,7 +152,7 @@
             this.labelPrefix.Location = new System.Drawing.Point(32, 265);
             this.labelPrefix.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelPrefix.Name = "labelPrefix";
-            this.labelPrefix.Size = new System.Drawing.Size(120, 13);
+            this.labelPrefix.Size = new System.Drawing.Size(243, 25);
             this.labelPrefix.TabIndex = 8;
             this.labelPrefix.Text = "Sitecore instance prefix:";
             // 
@@ -161,7 +161,7 @@
             this.textPrefix.Location = new System.Drawing.Point(38, 296);
             this.textPrefix.Margin = new System.Windows.Forms.Padding(6);
             this.textPrefix.Name = "textPrefix";
-            this.textPrefix.Size = new System.Drawing.Size(526, 20);
+            this.textPrefix.Size = new System.Drawing.Size(526, 31);
             this.textPrefix.TabIndex = 4;
             // 
             // buttonRename
@@ -178,19 +178,19 @@
             // labelProfileName
             // 
             this.labelProfileName.AutoSize = true;
-            this.labelProfileName.Location = new System.Drawing.Point(29, 194);
+            this.labelProfileName.Location = new System.Drawing.Point(31, 158);
             this.labelProfileName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(68, 13);
+            this.labelProfileName.Size = new System.Drawing.Size(138, 25);
             this.labelProfileName.TabIndex = 4;
             this.labelProfileName.Text = "Profile name:";
             // 
             // textProfileName
             // 
-            this.textProfileName.Location = new System.Drawing.Point(35, 225);
+            this.textProfileName.Location = new System.Drawing.Point(37, 189);
             this.textProfileName.Margin = new System.Windows.Forms.Padding(6);
             this.textProfileName.Name = "textProfileName";
-            this.textProfileName.Size = new System.Drawing.Size(526, 20);
+            this.textProfileName.Size = new System.Drawing.Size(526, 31);
             this.textProfileName.TabIndex = 3;
             // 
             // labelCombo
@@ -199,7 +199,7 @@
             this.labelCombo.Location = new System.Drawing.Point(32, 56);
             this.labelCombo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelCombo.Name = "labelCombo";
-            this.labelCombo.Size = new System.Drawing.Size(83, 13);
+            this.labelCombo.Size = new System.Drawing.Size(167, 25);
             this.labelCombo.TabIndex = 2;
             this.labelCombo.Text = "Selected profile:";
             // 
@@ -210,7 +210,7 @@
             this.comboProfiles.Location = new System.Drawing.Point(38, 87);
             this.comboProfiles.Margin = new System.Windows.Forms.Padding(6);
             this.comboProfiles.Name = "comboProfiles";
-            this.comboProfiles.Size = new System.Drawing.Size(526, 33);
+            this.comboProfiles.Size = new System.Drawing.Size(379, 33);
             this.comboProfiles.TabIndex = 0;
             this.comboProfiles.SelectedIndexChanged += new System.EventHandler(this.comboProfiles_SelectedIndexChanged);
             // 

@@ -12,10 +12,10 @@
     <ROW Property="BannerBitmap" Value="banner" MultiBuildValue="DefaultBuild:BannerBitmap.png" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:DialogBitmap.png" Type="1" MsiKey="DialogBitmap"/>
     <ROW Property="Manufacturer" Value="Martin Miles"/>
-    <ROW Property="ProductCode" Value="1033:{9D607E7F-DC55-4F54-9B02-2A36E1CF8F35} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{9EB1111E-4226-494B-BC42-F8AF74C14890} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Sifon"/>
-    <ROW Property="ProductVersion" Value="1.3.4" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.3.5" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="TabBackground" Type="1" MsiKey="TabBackground"/>
@@ -81,7 +81,6 @@
     <ROW File="GetFiles.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-FI~1.PS1|Get-Files.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-Files.ps1" SelfReg="false"/>
     <ROW File="GetHashMD5.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-HA~1.PS1|Get-HashMD5.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-HashMD5.ps1" SelfReg="false"/>
     <ROW File="GetInstanceUrl.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-IN~1.PS1|Get-InstanceUrl.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-InstanceUrl.ps1" SelfReg="false"/>
-    <ROW File="GetSiteBindings.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~1.PS1|Get-SiteBindings.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SiteBindings.ps1" SelfReg="false"/>
     <ROW File="GetSitecoreSites.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~2.PS1|Get-SitecoreSites.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SitecoreSites.ps1" SelfReg="false"/>
     <ROW File="GetSiteFolder.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-SI~3.PS1|Get-SiteFolder.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-SiteFolder.ps1" SelfReg="false"/>
     <ROW File="InstallPrerequisites.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~1.PS1|Install-Prerequisites.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-Prerequisites.ps1" SelfReg="false"/>
@@ -110,6 +109,7 @@
     <ROW File="InstallDownloadSitecore.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~7.PS1|Install-DownloadSitecore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-DownloadSitecore.ps1" SelfReg="false"/>
     <ROW File="InstallPrerequisitesForSitecore.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~8.PS1|Install-PrerequisitesForSitecore.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-PrerequisitesForSitecore.ps1" SelfReg="false"/>
     <ROW File="InstallSQLServer.ps1" Component_="_deploy_to_modules.ps1" FileName="INSTAL~9.PS1|Install-SQLServer.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Install-SQLServer.ps1" SelfReg="false"/>
+    <ROW File="GetBindings.ps1" Component_="_deploy_to_modules.ps1" FileName="GET-BI~1.PS1|Get-Bindings.ps1" Attributes="0" SourcePath="..\..\..\Program Files\Sifon\PowerShell\Module\Get-Bindings.ps1" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
