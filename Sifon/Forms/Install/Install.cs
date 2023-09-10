@@ -45,7 +45,7 @@ namespace Sifon.Forms.Install
 
         #region Publically exposed properties
 
-        private bool IsXM => comboVersions.SelectedText.EndsWith("XM");
+        private bool IsXM => SelectedVersion.Name.EndsWith("XM");
 
         internal dynamic Parameters => new
         {
