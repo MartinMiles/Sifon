@@ -128,9 +128,9 @@ namespace Sifon.Forms.MainForm
             profile.Website = value.SitecoreSiteName;
             profile.Webroot = value.SitePhysicalRoot + "\\" + value.SitecoreSiteName;
             profile.XConnectSiteName = value.XConnectSiteName;
-            profile.XConnectSiteRoot = value.SitePhysicalRoot + "\\" + value.XConnectSiteName;
+            profile.XConnectSiteRoot = value.IsXM ? String.Empty : (value.SitePhysicalRoot + "\\" + value.XConnectSiteName);
             profile.CDSiteName = value.CDSiteName;
-            profile.CDSiteRoot = value.SitePhysicalRoot + "\\" + value.CDSiteName;
+            profile.CDSiteRoot = value.IsXM ? (value.SitePhysicalRoot + "\\" + value.CDSiteName) : String.Empty;
 
             profile.Solr = value.SolrUrl;
 

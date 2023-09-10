@@ -71,8 +71,8 @@ namespace Sifon.Forms.Install
             IsXM = IsXM,
             Prefix = prefixText.Text.Trim(),
             SitecoreSiteName = sitecoreSiteText.Text.Trim(),
-            XConnectSiteName = IsXM ? String.Empty : xconnectText.Text.Trim(),
-            CDSiteName = IsXM ? xconnectText.Text.Trim() : String.Empty,
+            XConnectSiteName = xconnectText.Text.Trim(),
+            CDSiteName = xconnectText.Text.Trim(),
             IdentityServerSiteName = identityServerText.Text.Trim(),
 
             SolrUrl = solrUrlText.Text.Trim(),
