@@ -5,7 +5,7 @@ namespace Sifon.Code.Statics
 {
     public static class Settings
     {
-        public const string VersionNumber = "1.3.4";
+        public const string VersionNumber = "1.3.5";
         public static readonly string ProductVersion = $"Sifon v{VersionNumber}";
         public const string BackupInfoFile = "BackupInfo.xml";
         public const string RemoteDirectory = "Sifon";
@@ -114,6 +114,7 @@ namespace Sifon.Code.Statics
             public const string PluginsRepository = "PluginsRepository";
             public const string VersionBranch = "VersionBranch";
             public const string IsRemote = "IsRemote";
+            public const string IsXM = "IsXM";
             public const string UseDownloadCDN = "UseDownloadCDN";
 
             //Database installer

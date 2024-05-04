@@ -32,8 +32,7 @@ namespace Sifon.Forms.Profiles
 
         public event EventHandler<EventArgs> FormClosing = delegate { };
         public event BaseForm.AsyncEventHandler<EventArgs<bool>> ProfileChanged;
-
-
+        public event BaseForm.AsyncEventHandler<EventArgs<bool>> TopologyChanged;
 
         internal ProfilesPresenter(IProfilesView profilesView)
         {
@@ -60,9 +59,9 @@ namespace Sifon.Forms.Profiles
             }
         }
 
-        public async Task<IEnumerable<string>> GetSitecoreSites()
+        public async Task<IEnumerable<string>> GetSitecoreSites(bool isXM)
         {
-            return await _siteProvider.GetSitecoreSites();
+            return await _siteProvider.GetSitecoreSites(isXM); // passing true will include XConnect sites as well, but still no IDS
         }
 
         #region Outer events
@@ -83,6 +82,16 @@ namespace Sifon.Forms.Profiles
             }
             EnableSaveButton(value);
         }
+
+        public async void Raise_TopologyChangedEvent(bool value)
+        {
+            if (TopologyChanged != null)
+            {
+                await TopologyChanged(this, new EventArgs<bool>(value));
+            }
+            //EnableSaveButton(value);
+        }
+
 
         public void ToggleLastTabs(bool enabled)
         {
@@ -114,6 +123,8 @@ namespace Sifon.Forms.Profiles
         {
             var profile = ProfilesProvider.CreateProfile();
 
+            profile.IsXM = _view.Profile.IsXM;
+
             profile.RemotingEnabled = _view.Remote.RemotingEnabled;
             profile.RemoteHost = _view.Remote.RemoteHost;
             profile.RemoteUsername = _view.Remote.RemoteUsername;
@@ -123,15 +134,37 @@ namespace Sifon.Forms.Profiles
             profile.Prefix = _view.Profile.Prefix;
 
             profile.Webroot = _view.Website?.Webroot ?? "";
+            if (profile.IsXM)
+            {
+                profile.CDSiteRoot = _view.Website?.WebrootCD ?? "";
+            }
+            else
+            {
+                profile.XConnectSiteRoot = _view.Website?.WebrootCD ?? "";
+            }
+
 
             if (_view.Website?.SelectedSite != null)
             {
                 profile.Website = _view.Website.SelectedSite == Settings.Dropdowns.NotSet ? "" : _view.Website.SelectedSite;
             }
+            
+            var site2 = _view.Website?.SelecetedCD;    
+            if (site2 != null)
+            {
+                site2 = site2 == Settings.Dropdowns.NotSet ? "" : site2;
+                if (profile.IsXM)
+                {
+                    profile.CDSiteName = site2;
+                }
+                else
+                {
+                    profile.XConnectSiteName = site2;
+                }
+            }
 
             profile.Solr = _view.Connectivity == null ||_view.Connectivity.Solr == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Solr;
             profile.SqlServer = _view.Connectivity == null || _view.Connectivity.Sql == Settings.Dropdowns.NotSet ? "" : _view.Connectivity.Sql;
-
 
             profile.Parameters = _view.Parameters != null ? _view.Parameters.Values : new Dictionary<string, string>();
 

@@ -2,6 +2,8 @@
 {
     public interface IProfileUserControl
     {
+        bool IsXM { get; set; }
+
         string ProfileName { get; set; }
 
         string Prefix { get; set; }

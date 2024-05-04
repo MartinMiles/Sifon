@@ -13,7 +13,7 @@ namespace Sifon.Forms.Profiles.UserControls.Profile
         event EventHandler<EventArgs<string>> SelectedProfileChanged;
         event EventHandler<EventArgs> SelectedProfileDeleted;
 
-        void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName);
+        void LoadProfilesDropdown(IEnumerable<string> profiles, string selectedProfileName, bool isXM);
 
         void SetFields(IProfileUserControl profile);
     }

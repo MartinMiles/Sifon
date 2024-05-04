@@ -43,11 +43,21 @@ namespace Sifon.Code.Model.Profiles
 
         public bool Empty { get; set; }
 
+        public bool IsXM { get; set; }
+
         public string Website { get; set; }
 
         public string Solr { get; set; }
 
         public string Webroot { get; set; }
+        
+        public string XConnectSiteName { get; set; }
+
+        public string XConnectSiteRoot { get; set; }
+
+        public string CDSiteName { get; set; }
+
+        public string CDSiteRoot { get; set; }
 
         public string SqlServer { get; set; }
 
@@ -59,6 +69,7 @@ namespace Sifon.Code.Model.Profiles
 
         public Dictionary<string, string> Parameters { get; set; }
 
+
         #endregion
 
         public ISqlServerRecord SqlServerRecord => this.GetSqlProfile();
@@ -67,6 +78,7 @@ namespace Sifon.Code.Model.Profiles
         public int OperationTimeout { get; } = 60 * 5;
 
         public string WindowCaptionSuffix => $"{ProfileName} - {(RemotingEnabled ? $"REMOTE [{RemoteHost}]" : "(local instance)")}";
+
         public ISqlServerRecord AppendSQL(string sqlServer, string sqlAdminUser, string sqlAdminPassword)
         {
             var sql = new SqlServerRecord();

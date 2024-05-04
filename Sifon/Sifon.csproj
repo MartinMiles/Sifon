@@ -126,6 +126,7 @@
       <DependentUpon>Prerequsites.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Prerequsites\PrerequsitesPresenter.cs" />
+    <Compile Include="Forms\Profiles\UserControls\Website\SelectedWebsiteChangedArgs.cs" />
     <Compile Include="Forms\SettingsForm\ISettingsFormView.cs" />
     <Compile Include="Forms\SettingsForm\SettingsForm.cs">
       <SubType>Form</SubType>

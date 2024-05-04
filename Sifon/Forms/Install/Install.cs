@@ -45,6 +45,8 @@ namespace Sifon.Forms.Install
 
         #region Publically exposed properties
 
+        private bool IsXM => SelectedVersion.Name.EndsWith("XM");
+
         internal dynamic Parameters => new
         {
             Profile = CreateProfileFromRemoteSettings(this),
@@ -66,9 +68,11 @@ namespace Sifon.Forms.Install
             SqlAdminUser = sqlServerUsernameText.Text.Trim(),
             SqlAdminPassword = sqlServerPasswordText.Text.Trim(),
 
+            IsXM = IsXM,
             Prefix = prefixText.Text.Trim(),
             SitecoreSiteName = sitecoreSiteText.Text.Trim(),
             XConnectSiteName = xconnectText.Text.Trim(),
+            CDSiteName = xconnectText.Text.Trim(),
             IdentityServerSiteName = identityServerText.Text.Trim(),
 
             SolrUrl = solrUrlText.Text.Trim(),
@@ -76,9 +80,7 @@ namespace Sifon.Forms.Install
             SolrRoot = solrRootFolderText.Text.Trim(),
 
             InstallPrerequisites = installPrerequisites.Checked,
-            CreateProfile = createSifonProfile.Checked,
-
-            IsXM = SelectedVersion.Name.EndsWith("XM")
+            CreateProfile = createSifonProfile.Checked
         };
 
         internal ProgressHook ProgressHook => new ProgressHook(@"\[\-*\s(.*)\s\-*\]")

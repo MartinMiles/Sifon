@@ -17,7 +17,7 @@ namespace Sifon.Code.Statics
             internal const string GetConnectionString = "Get-ConnectionString";
             internal const string InstallSitecorePackageUsingRemoting = "Install-SitecorePackageUsingRemoting";
             internal const string GetSiteFolder = "Get-SiteFolder";
-            internal const string GetBindings = "Get-SiteBindings";
+            internal const string GetBindings = "Get-Bindings";
             internal const string GetSitecoreSites = "Get-SitecoreSites";
             public const string GetDatabases = "Get-Databases";
             internal const string GetCommerceDatabases = "Get-CommerceDatabases";

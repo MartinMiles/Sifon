@@ -6,9 +6,9 @@ namespace Sifon.Abstractions.Providers
 {
     public interface ISiteProvider
     {
-        Task<IEnumerable<string>> GetSitecoreSites();
+        Task<IEnumerable<string>> GetSitecoreSites(bool isXM = false);
 
-        Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string siteName);
+        Task<IEnumerable<KeyValuePair<string, string>>> GetBindings(string[] siteNames);
         Task<string> GetSitePath(string siteName);
         Task<string> GetXconnect(string siteName);
         Task<string> GetIDS(string siteName);

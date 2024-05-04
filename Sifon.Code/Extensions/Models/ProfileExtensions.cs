@@ -32,6 +32,11 @@ namespace Sifon.Code.Extensions.Models
             profile.AdminPassword = encryptor.Decrypt(node.ChildNodes.GetTextValue(Xml.Profile.AdminPassword, Xml.Attributes.Value));
             profile.Webroot = node.ChildNodes.GetTextValue(Xml.Profile.Webroot, Xml.Attributes.Value);
             profile.Website = node.ChildNodes.GetTextValue(Xml.Profile.Website, Xml.Attributes.Value);
+            profile.IsXM = node.ChildNodes.GetBoolValue(Xml.Profile.IsXM, Xml.Attributes.Value);
+            profile.XConnectSiteName = node.ChildNodes.GetTextValue(Xml.Profile.XConnectSiteName, Xml.Attributes.Value);
+            profile.XConnectSiteRoot = node.ChildNodes.GetTextValue(Xml.Profile.XConnectSiteRoot, Xml.Attributes.Value);
+            profile.CDSiteName = node.ChildNodes.GetTextValue(Xml.Profile.CDSiteName, Xml.Attributes.Value);
+            profile.CDSiteRoot = node.ChildNodes.GetTextValue(Xml.Profile.CDSiteRoot, Xml.Attributes.Value);
             profile.Solr = node.ChildNodes.GetTextValue(Xml.Profile.Solr, Xml.Attributes.Value);
             profile.SqlServer = node.ChildNodes.GetTextValue(Xml.Profile.SqlServer, Xml.Attributes.Value);
             profile.Parameters = ReadParameters(node.ChildNodes);
@@ -109,6 +114,26 @@ namespace Sifon.Code.Extensions.Models
             var webroot = new XElement(Xml.Profile.Webroot);
             webroot.SetAttributeValue(Xml.Attributes.Value, profile.Webroot);
             root.Add(webroot);
+
+            var isXM = new XElement(Xml.Profile.IsXM);
+            isXM.SetAttributeValue(Xml.Attributes.Value, profile.IsXM);
+            root.Add(isXM);
+
+            var xConnectSiteName = new XElement(Xml.Profile.XConnectSiteName);
+            xConnectSiteName.SetAttributeValue(Xml.Attributes.Value, profile.XConnectSiteName);
+            root.Add(xConnectSiteName);
+
+            var xConnectSiteRoot = new XElement(Xml.Profile.XConnectSiteRoot);
+            xConnectSiteRoot.SetAttributeValue(Xml.Attributes.Value, profile.XConnectSiteRoot);
+            root.Add(xConnectSiteRoot);
+
+            var cdSiteName = new XElement(Xml.Profile.CDSiteName);
+            cdSiteName.SetAttributeValue(Xml.Attributes.Value, profile.CDSiteName);
+            root.Add(cdSiteName);
+
+            var cdSiteRoot = new XElement(Xml.Profile.CDSiteRoot);
+            cdSiteRoot.SetAttributeValue(Xml.Attributes.Value, profile.CDSiteRoot);
+            root.Add(cdSiteRoot);
 
             var solr = new XElement(Xml.Profile.Solr);
             solr.SetAttributeValue(Xml.Attributes.Value, profile.Solr);

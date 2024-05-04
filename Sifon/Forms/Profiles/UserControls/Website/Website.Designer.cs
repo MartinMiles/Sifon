@@ -30,10 +30,18 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelWebrootCD = new System.Windows.Forms.Label();
+            this.labelWebsiteCD = new System.Windows.Forms.Label();
+            this.buttonWebrootCD = new System.Windows.Forms.Button();
+            this.textWebrootCD = new System.Windows.Forms.TextBox();
+            this.comboWebsitesCD = new System.Windows.Forms.ComboBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.labelWebsites = new System.Windows.Forms.Label();
-            this.labelWebroot = new System.Windows.Forms.Label();
+            this.labelWebsiteCM = new System.Windows.Forms.Label();
+            this.labelWebrootCM = new System.Windows.Forms.Label();
             this.labelGrid = new System.Windows.Forms.Label();
             this.comboWebsites = new System.Windows.Forms.ComboBox();
             this.buttonWebroot = new System.Windows.Forms.Button();
@@ -44,19 +52,75 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelWebrootCD);
+            this.groupBox3.Controls.Add(this.labelWebsiteCD);
+            this.groupBox3.Controls.Add(this.buttonWebrootCD);
+            this.groupBox3.Controls.Add(this.textWebrootCD);
+            this.groupBox3.Controls.Add(this.comboWebsitesCD);
             this.groupBox3.Controls.Add(this.dataGrid);
-            this.groupBox3.Controls.Add(this.labelWebsites);
-            this.groupBox3.Controls.Add(this.labelWebroot);
+            this.groupBox3.Controls.Add(this.labelWebsiteCM);
+            this.groupBox3.Controls.Add(this.labelWebrootCM);
             this.groupBox3.Controls.Add(this.labelGrid);
             this.groupBox3.Controls.Add(this.comboWebsites);
             this.groupBox3.Controls.Add(this.buttonWebroot);
             this.groupBox3.Controls.Add(this.textWebroot);
-            this.groupBox3.Location = new System.Drawing.Point(5, 10);
+            this.groupBox3.Location = new System.Drawing.Point(10, 19);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(305, 295);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox3.Size = new System.Drawing.Size(610, 567);
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Instance info:";
+            // 
+            // labelWebrootCD
+            // 
+            this.labelWebrootCD.AutoSize = true;
+            this.labelWebrootCD.Location = new System.Drawing.Point(267, 145);
+            this.labelWebrootCD.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelWebrootCD.Name = "labelWebrootCD";
+            this.labelWebrootCD.Size = new System.Drawing.Size(230, 25);
+            this.labelWebrootCD.TabIndex = 49;
+            this.labelWebrootCD.Text = "CD website root folder:";
+            // 
+            // labelWebsiteCD
+            // 
+            this.labelWebsiteCD.AutoSize = true;
+            this.labelWebsiteCD.Location = new System.Drawing.Point(30, 145);
+            this.labelWebsiteCD.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelWebsiteCD.Name = "labelWebsiteCD";
+            this.labelWebsiteCD.Size = new System.Drawing.Size(127, 25);
+            this.labelWebsiteCD.TabIndex = 48;
+            this.labelWebsiteCD.Text = "CD website:";
+            // 
+            // buttonWebrootCD
+            // 
+            this.buttonWebrootCD.Location = new System.Drawing.Point(501, 173);
+            this.buttonWebrootCD.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonWebrootCD.Name = "buttonWebrootCD";
+            this.buttonWebrootCD.Size = new System.Drawing.Size(78, 40);
+            this.buttonWebrootCD.TabIndex = 47;
+            this.buttonWebrootCD.Text = "...";
+            this.buttonWebrootCD.UseVisualStyleBackColor = true;
+            this.buttonWebrootCD.Click += new System.EventHandler(this.buttonWebrootCD_Click);
+            // 
+            // textWebrootCD
+            // 
+            this.textWebrootCD.Location = new System.Drawing.Point(270, 174);
+            this.textWebrootCD.Margin = new System.Windows.Forms.Padding(6);
+            this.textWebrootCD.Name = "textWebrootCD";
+            this.textWebrootCD.Size = new System.Drawing.Size(227, 32);
+            this.textWebrootCD.TabIndex = 46;
+            // 
+            // comboWebsitesCD
+            // 
+            this.comboWebsitesCD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboWebsitesCD.FormattingEnabled = true;
+            this.comboWebsitesCD.Location = new System.Drawing.Point(38, 174);
+            this.comboWebsitesCD.Margin = new System.Windows.Forms.Padding(6);
+            this.comboWebsitesCD.Name = "comboWebsitesCD";
+            this.comboWebsitesCD.Size = new System.Drawing.Size(225, 33);
+            this.comboWebsitesCD.TabIndex = 45;
             // 
             // dataGrid
             // 
@@ -64,40 +128,69 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.AllowUserToResizeColumns = false;
             this.dataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(19, 159);
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGrid.Location = new System.Drawing.Point(38, 306);
+            this.dataGrid.Margin = new System.Windows.Forms.Padding(6);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGrid.RowHeadersVisible = false;
+            this.dataGrid.RowHeadersWidth = 82;
             this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGrid.Size = new System.Drawing.Size(263, 110);
+            this.dataGrid.Size = new System.Drawing.Size(541, 212);
             this.dataGrid.TabIndex = 44;
             // 
-            // labelWebsites
+            // labelWebsiteCM
             // 
-            this.labelWebsites.AutoSize = true;
-            this.labelWebsites.Location = new System.Drawing.Point(15, 26);
-            this.labelWebsites.Name = "labelWebsites";
-            this.labelWebsites.Size = new System.Drawing.Size(62, 13);
-            this.labelWebsites.TabIndex = 3;
-            this.labelWebsites.Text = "IIS website:";
+            this.labelWebsiteCM.AutoSize = true;
+            this.labelWebsiteCM.Location = new System.Drawing.Point(30, 39);
+            this.labelWebsiteCM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelWebsiteCM.Name = "labelWebsiteCM";
+            this.labelWebsiteCM.Size = new System.Drawing.Size(130, 25);
+            this.labelWebsiteCM.TabIndex = 3;
+            this.labelWebsiteCM.Text = "CM website:";
             // 
-            // labelWebroot
+            // labelWebrootCM
             // 
-            this.labelWebroot.AutoSize = true;
-            this.labelWebroot.Location = new System.Drawing.Point(15, 87);
-            this.labelWebroot.Name = "labelWebroot";
-            this.labelWebroot.Size = new System.Drawing.Size(99, 13);
-            this.labelWebroot.TabIndex = 11;
-            this.labelWebroot.Text = "Website root folder:";
+            this.labelWebrootCM.AutoSize = true;
+            this.labelWebrootCM.Location = new System.Drawing.Point(267, 47);
+            this.labelWebrootCM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelWebrootCM.Name = "labelWebrootCM";
+            this.labelWebrootCM.Size = new System.Drawing.Size(233, 25);
+            this.labelWebrootCM.TabIndex = 11;
+            this.labelWebrootCM.Text = "CM website root folder:";
             // 
             // labelGrid
             // 
             this.labelGrid.AutoSize = true;
-            this.labelGrid.Location = new System.Drawing.Point(15, 139);
+            this.labelGrid.Location = new System.Drawing.Point(30, 256);
+            this.labelGrid.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelGrid.Name = "labelGrid";
-            this.labelGrid.Size = new System.Drawing.Size(169, 13);
+            this.labelGrid.Size = new System.Drawing.Size(342, 25);
             this.labelGrid.TabIndex = 9;
             this.labelGrid.Text = "Bindings for the selected instance:";
             // 
@@ -105,17 +198,18 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             // 
             this.comboWebsites.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboWebsites.FormattingEnabled = true;
-            this.comboWebsites.Location = new System.Drawing.Point(19, 45);
+            this.comboWebsites.Location = new System.Drawing.Point(38, 87);
+            this.comboWebsites.Margin = new System.Windows.Forms.Padding(6);
             this.comboWebsites.Name = "comboWebsites";
-            this.comboWebsites.Size = new System.Drawing.Size(263, 21);
+            this.comboWebsites.Size = new System.Drawing.Size(225, 33);
             this.comboWebsites.TabIndex = 30;
-            this.comboWebsites.SelectedIndexChanged += new System.EventHandler(this.comboWebsites_SelectedIndexChanged);
             // 
             // buttonWebroot
             // 
-            this.buttonWebroot.Location = new System.Drawing.Point(243, 101);
+            this.buttonWebroot.Location = new System.Drawing.Point(501, 86);
+            this.buttonWebroot.Margin = new System.Windows.Forms.Padding(6);
             this.buttonWebroot.Name = "buttonWebroot";
-            this.buttonWebroot.Size = new System.Drawing.Size(39, 22);
+            this.buttonWebroot.Size = new System.Drawing.Size(78, 40);
             this.buttonWebroot.TabIndex = 41;
             this.buttonWebroot.Text = "...";
             this.buttonWebroot.UseVisualStyleBackColor = true;
@@ -123,19 +217,20 @@ namespace Sifon.Forms.Profiles.UserControls.Website
             // 
             // textWebroot
             // 
-            this.textWebroot.Location = new System.Drawing.Point(19, 102);
+            this.textWebroot.Location = new System.Drawing.Point(275, 87);
+            this.textWebroot.Margin = new System.Windows.Forms.Padding(6);
             this.textWebroot.Name = "textWebroot";
-            this.textWebroot.Size = new System.Drawing.Size(225, 20);
+            this.textWebroot.Size = new System.Drawing.Size(227, 32);
             this.textWebroot.TabIndex = 40;
-            this.textWebroot.TextChanged += new System.EventHandler(this.textWebroot_TextChanged);
             // 
             // Website
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox3);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Website";
-            this.Size = new System.Drawing.Size(317, 310);
+            this.Size = new System.Drawing.Size(634, 596);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
@@ -146,12 +241,17 @@ namespace Sifon.Forms.Profiles.UserControls.Website
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label labelWebsites;
-        private System.Windows.Forms.Label labelWebroot;
+        private System.Windows.Forms.Label labelWebsiteCM;
+        private System.Windows.Forms.Label labelWebrootCM;
         private System.Windows.Forms.Label labelGrid;
         private System.Windows.Forms.ComboBox comboWebsites;
         private System.Windows.Forms.Button buttonWebroot;
         private System.Windows.Forms.TextBox textWebroot;
         private DataGridView dataGrid;
+        private ComboBox comboWebsitesCD;
+        private Button buttonWebrootCD;
+        private TextBox textWebrootCD;
+        private Label labelWebsiteCD;
+        private Label labelWebrootCD;
     }
 }
