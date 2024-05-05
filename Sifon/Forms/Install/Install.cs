@@ -133,7 +133,7 @@ namespace Sifon.Forms.Install
 
             new DownloadItem { Name = "Sitecore 10.4.0 XP", File="Sitecore 10.4.0 rev. 010422 (WDP XP0 packages).zip", Folder="10.4.0 XP",
                 Hash = "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XP0%20packages).zip" },
-            new DownloadItem { Name = "Sitecore 10.4.0 XM", File="Sitecore 10.4.0 rev. 010422 (WDP XP0 packages).zip", Folder="10.4.0 XM", 
+            new DownloadItem { Name = "Sitecore 10.4.0 XM", File="Sitecore 10.4.0 rev. 010422 (WDP XM1 packages).zip", Folder="10.4.0 XM", 
                 Hash = "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XM1%20packages).zip"}
         };
 
