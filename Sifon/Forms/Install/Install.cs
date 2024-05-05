@@ -129,7 +129,12 @@ namespace Sifon.Forms.Install
             new DownloadItem { Name = "Sitecore 10.3.0 XP", File="Sitecore 10.3.0 rev. 008463 (WDP XP0 packages).zip", Hash = "698FD008261148CA96B828E06AB1732E", Folder="10.3.0 XP"},
             new DownloadItem { Name = "Sitecore 10.3.0 XM", File="Sitecore 10.3.0 rev. 008463 (WDP XM1 packages).zip", Hash = "F822AC26C1AC4805BA78E36E82545093", Folder="10.3.0 XM"},
             new DownloadItem { Name = "Sitecore 10.3.1 XP", File="Sitecore 10.3.1 rev. 009452 (WDP XP0 packages).zip", Hash = "299C1FE1D3C744218E96910DD6E4E5A4", Folder="10.3.1 XP"},
-            new DownloadItem { Name = "Sitecore 10.3.1 XM", File="Sitecore 10.3.1 rev. 009452 (WDP XM1 packages).zip", Hash = "3B382C4D4E5F492E9484A2697C15846D", Folder="10.3.1 XM"}
+            new DownloadItem { Name = "Sitecore 10.3.1 XM", File="Sitecore 10.3.1 rev. 009452 (WDP XM1 packages).zip", Hash = "3B382C4D4E5F492E9484A2697C15846D", Folder="10.3.1 XM"},
+
+            new DownloadItem { Name = "Sitecore 10.4.0 XP", File="Sitecore 10.4.0 rev. 010422 (WDP XP0 packages).zip", Folder="10.4.0 XP",
+                Hash = "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XP0%20packages).zip" },
+            new DownloadItem { Name = "Sitecore 10.4.0 XM", File="Sitecore 10.4.0 rev. 010422 (WDP XP0 packages).zip", Folder="10.4.0 XM", 
+                Hash = "https://scdp.blob.core.windows.net/downloads/Sitecore%20Experience%20Platform/104/Sitecore%20Experience%20Platform%20104/Sitecore%2010.4.0%20rev.%20010422%20(WDP%20XM1%20packages).zip"}
         };
 
         private DownloadItem SelectedVersion => comboVersions.SelectedItem as DownloadItem;
