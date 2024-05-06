@@ -6,7 +6,7 @@ function Install-DownloadSitecore
     )
 
     "."
-    Show-Message -Fore white -Back yellow -Text "Sitecore XP0 Installation"
+    Show-Message -Fore white -Back yellow -Text "Sitecore Installation"
     "."
 
     "Parameters:"
