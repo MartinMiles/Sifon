@@ -65,9 +65,13 @@ namespace Sifon.Forms.SQL
                 _displayMessage.ShowError(Messages.SqlSettings.Caption, Messages.SqlSettings.Errors.NoResults);
             }
 
-            if (ValidateQueryTime(results.First()))
+            if (results.Count() > 1)
             {
-                _displayMessage.ShowInfo(Messages.SqlSettings.Caption, Messages.General.Success);
+                var oneBeforeLastResult = results.Take(results.Count() - 1).LastOrDefault();
+                if (ValidateQueryTime(oneBeforeLastResult))
+                {
+                    _displayMessage.ShowInfo(Messages.SqlSettings.Caption, Messages.General.Success);
+                }
             }
 
             if (errors.Any())
