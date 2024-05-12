@@ -118,7 +118,9 @@ namespace Sifon.Code.Statics
             public const string UseDownloadCDN = "UseDownloadCDN";
 
             //Database installer
-            public const string DatabaseServerInstance = "Version";
+            public const string DatabaseServerEdition = "Edition";
+            public const string DatabaseServerVersion = "Version";
+            public const string DatabaseServerInstance = "Instance";
             public const string DatabaseServerPassword = "Password";
 
             //Solr installer

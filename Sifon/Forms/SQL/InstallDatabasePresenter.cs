@@ -43,11 +43,11 @@ namespace Sifon.Forms.SQL
 
         private async void InstallClicked(object sender, EventArgs<IDatabaseInstall> e)
         {
-            string instance = e.Value.Instance;
-
             var parameters = new Dictionary<string, dynamic>
             {
-                { Settings.Parameters.DatabaseServerInstance, instance},
+                { Settings.Parameters.DatabaseServerEdition, e.Value.Edition},
+                { Settings.Parameters.DatabaseServerVersion, e.Value.Version},
+                { Settings.Parameters.DatabaseServerInstance, e.Value.Instance},
                 { Settings.Parameters.DatabaseServerPassword, e.Value.Password}
             };
 

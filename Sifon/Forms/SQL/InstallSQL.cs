@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
@@ -14,11 +15,49 @@ namespace Sifon.Forms.SQL
         {
             InitializeComponent();
             new InstallDatabasePresenter(this);
+
+            PopulateEditions();
+            PopulateVersions();
         }
+
+        private void PopulateEditions()
+        {
+            comboEditions.Items.Clear();
+            comboEditions.DisplayMember = "Display";
+            comboEditions.ValueMember = "Code";
+            comboEditions.DataSource = Editions;
+        }
+        private void PopulateVersions()
+        {
+            comboVersions.Items.Clear();
+            comboVersions.DisplayMember = "Display";
+            comboVersions.ValueMember = "Code";
+            comboVersions.DataSource = Versions;
+        }
+
+        private List<ComboItem> Versions = new List<ComboItem>
+        {
+            new ComboItem { Code = "Latest", Display="Latest version (chocolatey)" },
+            new ComboItem { Code = "2019", Display="Microsoft SQL Server 2019" },
+            new ComboItem { Code = "2017", Display="Microsoft SQL Server 2017" },
+            new ComboItem { Code = "2016", Display="Microsoft SQL Server 2016" }
+        };
+
+        private List<ComboItem> Editions = new List<ComboItem>
+        {
+            new ComboItem { Code = "Express",   Display="EXPRESS: lightweight, 10 Gb per database limit" },
+            new ComboItem { Code = "Developer", Display="DEVELOPER: non-prod development-limited" },
+        };
+
+        internal class ComboItem
+        {
+            public string Code { get; set; }
+            public string Display { get; set; }
+        }     
 
         private void defaultsButton_Click(object sender, EventArgs e)
         {
-            textInstance.Text = ".\\SQLSERVER";
+            textInstance.Text = SelectedEdition.Code == "Express" ? ".\\SQLSERVER" : ".";
             textPassword.Text = "SA_PASSWORD";
         }
 
@@ -34,6 +73,8 @@ namespace Sifon.Forms.SQL
 
         public void ToggleControls(bool enabled)
         {
+            comboEditions.Enabled = enabled;
+            comboVersions.Enabled = enabled;
             textInstance.Enabled = enabled;
             buttonInstall.Enabled = enabled;
             textPassword.Enabled = enabled;
@@ -54,7 +95,7 @@ namespace Sifon.Forms.SQL
             {
                 ShowInfo("Success", "SQL Server Express instance has been successfully installed");
                 DialogResult = DialogResult.OK;
-                Close();
+               Close();
 
             }
             else
@@ -63,8 +104,23 @@ namespace Sifon.Forms.SQL
             }
         }
 
+        private ComboItem SelectedEdition => comboEditions.SelectedItem as ComboItem;
+        private ComboItem SelectedVersion => comboVersions.SelectedItem as ComboItem;
+
         #region IDatabaseInstall
 
+        public string Edition
+        {
+            get => SelectedEdition.Code;
+            set => throw new NotImplementedException();
+        }
+        
+        public string Version
+        {
+            get => SelectedVersion.Code;
+            set => throw new NotImplementedException();
+        }
+        
         public string Instance
         {
             get

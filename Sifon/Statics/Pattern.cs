@@ -41,7 +41,7 @@ namespace Sifon.Statics
 
         public static class InstallDatabase
         {
-            public const string Instance = @"^(.\\)?[A-Za-z0-9]{1,}$";
+            public const string Instance = @"^(.)?(\\)?[A-Za-z0-9]{0,}$";
             public const string Password = @"[^\ ]";
         }
 

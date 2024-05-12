@@ -1,5 +1,7 @@
 function Install-SQLServer
 (
+	[string]$Edition = "Express",
+	[string]$Version = "Latest",
 	[string]$Instance = "SQLSERVER",
 	[string]$Password = "SA_PASSWORD"
 )
