@@ -8,9 +8,9 @@ function Install-SQLServer
 {
 	# Check if $Instance starts with ".\" and remove it
 	if ($Instance.StartsWith(".\")) {
-		$Instance = $Instance -replace '^\.\', ''
+		$Instance = $Instance -replace '^\.\\', ''
 	}
-		
+
 	# Define the version and package mappings
 	$VersionMappings = @{
 		"Express" = @{
@@ -39,13 +39,25 @@ function Install-SQLServer
 	# Base command for Chocolatey to install SQL Server
 	$BaseCommand = "choco install $Package $VersionParam"
 
+	$instanceInfo = ""
+	if($Instance -ne ""){
+		$InstanceInfo = "/INSTANCEID=$Instance /INSTANCENAME=$Instance"
+	}
+
 	# Additional arguments for installation
-	$AdditionalArgs = "-o -ia `'/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=install /INSTANCEID=$Instance /INSTANCENAME=$Instance /UPDATEENABLED=FALSE /SECURITYMODE=SQL /SAPWD=$Password'` -f -y"
+	if ($Edition -eq "Express") 
+	{ 
+		$AdditionalArgs = "-o -ia `'/IACCEPTSQLSERVERLICENSETERMS /Q /ACTION=install $InstanceInfo /UPDATEENABLED=FALSE /SECURITYMODE=SQL /SAPWD=$Password'` -f -y"
+	}
+	else{
+		$AdditionalArgs = "--params=`'$InstanceInfo /FEATURES=SQLENGINE /SECURITYMODE=SQL /SAPWD=$Password`'"
+	}
 
 	# Construct the command
 	$Command = "$BaseCommand $AdditionalArgs"
-
+	
 	# Execute the command
+	$Command
 	Invoke-Expression $Command
 	
 	try{
@@ -61,4 +73,4 @@ function Install-SQLServer
 }
 
 # Example:
-# Install-SQLServer -Edition "Express" -Version "Latest" -Instance "SQLSERVER" -Password "SA_PASSWORD"
+# Install-SQLServer -Edition "Developer" -Version "2019" -Instance "SQLSERVER" -Password "SA_PASSWORD"
