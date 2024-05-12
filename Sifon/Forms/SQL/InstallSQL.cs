@@ -93,7 +93,7 @@ namespace Sifon.Forms.SQL
 
             if (result)
             {
-                ShowInfo("Success", "SQL Server instance has been successfully installed");
+                //no need to ShowInfo("Success") as it was already been мфдшвфеув фтв shown by actual GetDate from server
                 DialogResult = DialogResult.OK;
                Close();
 
