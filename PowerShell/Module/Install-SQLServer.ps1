@@ -40,9 +40,16 @@ function Install-SQLServer
 	$BaseCommand = "choco install $Package $VersionParam"
 
 	$instanceInfo = ""
+	if($Instance -eq ".")
+	{
+		$Instance=""
+	}
+
 	if($Instance -ne ""){
 		$InstanceInfo = "/INSTANCEID=$Instance /INSTANCENAME=$Instance"
 	}
+	
+
 
 	# Additional arguments for installation
 	if ($Edition -eq "Express") 
@@ -58,9 +65,10 @@ function Install-SQLServer
 	
 	# Execute the command
 	$Command
-	Invoke-Expression $Command
+	# Invoke-Expression $Command
 	
 	try{
+		".\$Instance" 
 		Invoke-Sqlcmd -Query "ALTER LOGIN sa ENABLE" -ServerInstance ".\$Instance"  -TrustServerCertificate
 		Invoke-Sqlcmd -Query "ALTER LOGIN sa WITH PASSWORD='$Password'" -ServerInstance ".\$Instance"  -TrustServerCertificate
 		Invoke-Sqlcmd -Query "SELECT GETDATE() AS TimeOfQuery" -ServerInstance ".\$Instance" -Username "sa" -Password "$Password"  -TrustServerCertificate
@@ -73,4 +81,4 @@ function Install-SQLServer
 }
 
 # Example:
-# Install-SQLServer -Edition "Developer" -Version "2019" -Instance "SQLSERVER" -Password "SA_PASSWORD"
+Install-SQLServer -Edition "Developer" -Version "2019" -Instance "ABC" -Password "SA_PASSWORD"
