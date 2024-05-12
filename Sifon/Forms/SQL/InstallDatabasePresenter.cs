@@ -53,8 +53,9 @@ namespace Sifon.Forms.SQL
 
             await _scriptWrapper.Run(Modules.Functions.InstallDatabaseServer, parameters);
             ValidateSqlResult(_scriptWrapper.Results, _scriptWrapper.Errors.Select(ex => ex.Message));
-            
-            _view.UpdateView(true);
+
+            var result = _scriptWrapper.Results.FirstOrDefault();
+            _view.UpdateView(result?.BaseObject is bool boolValue && boolValue);
         }
 
         private void ValidateSqlResult(IEnumerable<PSObject> results, IEnumerable<string> errors)
@@ -62,7 +63,6 @@ namespace Sifon.Forms.SQL
             if (!results.Any())
             {
                 _displayMessage.ShowError(Messages.SqlSettings.Caption, Messages.SqlSettings.Errors.NoResults);
-                return;
             }
 
             if (ValidateQueryTime(results.Last()))

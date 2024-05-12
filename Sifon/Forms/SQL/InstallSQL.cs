@@ -86,21 +86,21 @@ namespace Sifon.Forms.SQL
             loadingCircle.Active = !enabled;
         }
 
-        public void UpdateView(bool result) // TODO: Do we need this method at all ?
+        public void UpdateView(bool result)
         {
             ToggleControls(true);
             ToggleSpinner(true);
 
             if (result)
             {
-                ShowInfo("Success", "SQL Server Express instance has been successfully installed");
+                ShowInfo("Success", "SQL Server instance has been successfully installed");
                 DialogResult = DialogResult.OK;
                Close();
 
             }
             else
             {
-                ShowError("Something went wrong", "Solr instance has NOT been installed");
+                ShowError("Something went wrong", "SQL Server has NOT been installed");
             }
         }
 
