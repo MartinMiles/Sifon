@@ -6,7 +6,7 @@ function Install-DownloadSitecore
     )
 
     "."
-    Show-Message -Fore white -Back yellow -Text "Sitecore XP0 Installation"
+    Show-Message -Fore white -Back yellow -Text "Sitecore Installation"
     "."
 
     "Parameters:"
@@ -16,8 +16,9 @@ function Install-DownloadSitecore
     "Create Sifon profile: $($Params.CreateProfile)"
     "."
     
-    $Url = "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx"
-    
+    $Url = if ($Params.DownloadHash.Length -eq 32) { "https://sitecoredev.azureedge.net/~/media/" + $Params.DownloadHash + ".ashx" } else { $Params.DownloadHash }
+
+
     # todo copy license to destination (on remote)
 
     # Sample path: c:\Program Files\Sifon\Downloads\10.0.1\On Premises deployment\Sitecore 10.0.1 rev. 004842 (WDP XP0 packages).zip
