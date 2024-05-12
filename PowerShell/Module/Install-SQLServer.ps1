@@ -64,11 +64,10 @@ function Install-SQLServer
 	$Command = "$BaseCommand $AdditionalArgs"
 	
 	# Execute the command
-	$Command
-	# Invoke-Expression $Command
+	# $Command
+	Invoke-Expression $Command
 	
 	try{
-		".\$Instance" 
 		Invoke-Sqlcmd -Query "ALTER LOGIN sa ENABLE" -ServerInstance ".\$Instance"  -TrustServerCertificate
 		Invoke-Sqlcmd -Query "ALTER LOGIN sa WITH PASSWORD='$Password'" -ServerInstance ".\$Instance"  -TrustServerCertificate
 		Invoke-Sqlcmd -Query "SELECT GETDATE() AS TimeOfQuery" -ServerInstance ".\$Instance" -Username "sa" -Password "$Password"  -TrustServerCertificate
@@ -81,4 +80,4 @@ function Install-SQLServer
 }
 
 # Example:
-Install-SQLServer -Edition "Developer" -Version "2019" -Instance "ABC" -Password "SA_PASSWORD"
+# Install-SQLServer -Edition "Developer" -Version "2019" -Instance "ABC" -Password "SA_PASSWORD"
