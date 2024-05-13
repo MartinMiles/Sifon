@@ -86,9 +86,14 @@ namespace Sifon.Forms.SQL
 
             if (errors.Any())
             {
-                if(errors.First().Contains("Error Locating Server"))
+                string error = errors.First();
+                if (error.Contains("Error Locating Server"))
                 {
                     _displayMessage.ShowInfo(Messages.SqlSettings.Caption, "Such an instance does not exist, you're good to go!");
+                }
+                else
+                {
+                    _displayMessage.ShowError(Messages.SqlSettings.Caption, error);
                 }
             }
             else
