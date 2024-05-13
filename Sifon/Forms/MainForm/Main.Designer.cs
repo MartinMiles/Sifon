@@ -184,14 +184,14 @@ namespace Sifon.Forms.MainForm
             // 
             this.installSolrToolStripMenuItem.Name = "installSolrToolStripMenuItem";
             this.installSolrToolStripMenuItem.Size = new System.Drawing.Size(426, 44);
-            this.installSolrToolStripMenuItem.Text = "Install Solr";
+            this.installSolrToolStripMenuItem.Text = "Install local Solr";
             this.installSolrToolStripMenuItem.Click += new System.EventHandler(this.installSolrToolStripMenuItem_Click);
             // 
             // installSQLServerExpressToolStripMenuItem
             // 
             this.installSQLServerExpressToolStripMenuItem.Name = "installSQLServerExpressToolStripMenuItem";
             this.installSQLServerExpressToolStripMenuItem.Size = new System.Drawing.Size(426, 44);
-            this.installSQLServerExpressToolStripMenuItem.Text = "Install SQL Server";
+            this.installSQLServerExpressToolStripMenuItem.Text = "Install local SQL Server";
             this.installSQLServerExpressToolStripMenuItem.Click += new System.EventHandler(this.installSQLServerExpressToolStripMenuItem_Click);
             // 
             // installHostPrerequsitesToolStripMenuItem

@@ -4,7 +4,7 @@
     {
         string Edition { get; set; }
         string Version { get; set; }
-        string Instance { get; set; }
-        string Password { get; set; }
+        string SqlServer { get; set; }
+        string SqlAdminPassword { get; set; }
     }
 }

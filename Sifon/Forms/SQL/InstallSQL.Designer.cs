@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboEditions = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonTest);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboEditions);
             this.groupBox1.Controls.Add(this.label1);
@@ -64,6 +66,17 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Install new SQL Server instance:";
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.Location = new System.Drawing.Point(268, 413);
+            this.buttonTest.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(146, 44);
+            this.buttonTest.TabIndex = 57;
+            this.buttonTest.Text = "Test if exists";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTestIfExists);
             // 
             // label3
             // 
@@ -119,7 +132,7 @@
             this.loadingCircle.Active = false;
             this.loadingCircle.Color = System.Drawing.Color.DarkGray;
             this.loadingCircle.InnerCircleRadius = 5;
-            this.loadingCircle.Location = new System.Drawing.Point(234, 413);
+            this.loadingCircle.Location = new System.Drawing.Point(179, 413);
             this.loadingCircle.Margin = new System.Windows.Forms.Padding(6);
             this.loadingCircle.Name = "loadingCircle";
             this.loadingCircle.NumberSpoke = 12;
@@ -190,7 +203,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InstallSQL";
-            this.Text = "Install SQL Server";
+            this.Text = "Install local SQL Server";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -211,5 +224,6 @@
         private System.Windows.Forms.ComboBox comboEditions;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboVersions;
+        private System.Windows.Forms.Button buttonTest;
     }
 }

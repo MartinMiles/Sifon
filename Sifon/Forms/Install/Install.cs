@@ -469,9 +469,9 @@ namespace Sifon.Forms.Install
             if (form.ShowDialog() == DialogResult.OK)
             {
                 buttonInstallSQL.Enabled = false;
-                sqlServerText.Text = $".\\{form.Instance}";
+                sqlServerText.Text = $".\\{form.SqlServer}";
                 sqlServerUsernameText.Text = "sa";
-                sqlServerPasswordText.Text = form.Password;
+                sqlServerPasswordText.Text = form.SqlAdminPassword;
             }
 
             form.Dispose();

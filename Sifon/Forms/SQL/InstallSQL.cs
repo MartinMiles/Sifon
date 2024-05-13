@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
+using Sifon.Abstractions.Profiles;
 using Sifon.Forms.Base;
 
 namespace Sifon.Forms.SQL
 {
-    internal partial class InstallSQL : BaseForm, IDatabaseInstall, IInstallDatabase
+    internal partial class InstallSQL : BaseForm, IDatabaseInstall, IInstallDatabase, ISqlServerRecord
     {
         public event EventHandler<EventArgs<IDatabaseInstall>> InstallClicked = delegate { };
+        public event EventHandler<EventArgs<ISqlServerRecord>> TestSqlClicked = delegate { };
 
         public InstallSQL()
         {
@@ -77,10 +79,11 @@ namespace Sifon.Forms.SQL
             comboVersions.Enabled = enabled;
             textInstance.Enabled = enabled;
             buttonInstall.Enabled = enabled;
+            buttonTest.Enabled = enabled;
             textPassword.Enabled = enabled;
             button1.Enabled = enabled;
         }
-        private void ToggleSpinner(bool enabled)
+        public void ToggleSpinner(bool enabled)
         {
             loadingCircle.Visible = !enabled;
             loadingCircle.Active = !enabled;
@@ -121,7 +124,7 @@ namespace Sifon.Forms.SQL
             set => throw new NotImplementedException();
         }
         
-        public string Instance
+        public string SqlServer
         {
             get
             {
@@ -133,12 +136,26 @@ namespace Sifon.Forms.SQL
             set => textInstance.Text = value;
         }
 
-        public string Password
+        public string SqlAdminPassword
         {
             get => textPassword.Text;
             set => textPassword.Text = value;
         }
 
+        public string RecordName => throw new NotImplementedException();
+
+        public string SqlAdminUsername => "sa";
+
         #endregion
+
+        private void buttonTestIfExists(object sender, EventArgs e)
+        {
+            if (!ValidateForm()) return;
+
+            ToggleControls(false);
+            ToggleSpinner(false);
+
+            TestSqlClicked(this, new EventArgs<ISqlServerRecord>(this));
+        }
     }
 }

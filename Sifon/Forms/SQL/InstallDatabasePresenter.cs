@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Sifon.Abstractions.Events;
 using Sifon.Abstractions.Forms;
 using Sifon.Abstractions.Messages;
@@ -25,6 +23,7 @@ namespace Sifon.Forms.SQL
         private readonly IInstallDatabase _view;
         private readonly IProfile _profile;
         private IScriptWrapper<PSObject> _scriptWrapper;
+        private IScriptWrapper<PSObject> _sqlScriptWrapper;
 
         protected readonly IDisplayMessage _displayMessage;
 
@@ -33,6 +32,7 @@ namespace Sifon.Forms.SQL
             _view = view;
 
             _view.InstallClicked += InstallClicked;
+            _view.TestSqlClicked += TestSqlClicked;
 
             _profile = Create.New<IProfilesProvider>().SelectedProfile;
 
@@ -47,8 +47,8 @@ namespace Sifon.Forms.SQL
             {
                 { Settings.Parameters.DatabaseServerEdition, e.Value.Edition},
                 { Settings.Parameters.DatabaseServerVersion, e.Value.Version},
-                { Settings.Parameters.DatabaseServerInstance, e.Value.Instance},
-                { Settings.Parameters.DatabaseServerPassword, e.Value.Password}
+                { Settings.Parameters.DatabaseServerInstance, e.Value.SqlServer},
+                { Settings.Parameters.DatabaseServerPassword, e.Value.SqlAdminPassword}
             };
 
             await _scriptWrapper.Run(Modules.Functions.InstallDatabaseServer, parameters);
@@ -58,6 +58,44 @@ namespace Sifon.Forms.SQL
             _view.UpdateView(result?.BaseObject is bool boolValue && boolValue);
         }
 
+        private async void TestSqlClicked(object sender, EventArgs<ISqlServerRecord> e)
+        {
+            _view.ToggleControls(false);
+
+            string serverInstance = e.Value.SqlServer.StartsWith(".\\") ? e.Value.SqlServer : $".\\{e.Value.SqlServer}";
+
+            var parameters = new Dictionary<string, dynamic> { { Settings.Parameters.ServerInstance, serverInstance } };
+            parameters.Add("Username", e.Value.SqlAdminUsername);
+            parameters.Add("Password", e.Value.SqlAdminPassword);
+
+            _sqlScriptWrapper = Create.WithParam(_view, d => d);
+            await _sqlScriptWrapper.Run(Modules.Functions.TestSqlServerConnection, parameters);
+
+            ValidateTestSql(_sqlScriptWrapper.Results, _sqlScriptWrapper.Errors.Select(ex => ex.Message));
+
+            _view.ToggleControls(true);
+            _view.ToggleSpinner(true);
+        }
+
+        private void ValidateTestSql(IEnumerable<PSObject> results, IEnumerable<string> errors)
+        {
+            if (!results.Any())
+            {
+                _displayMessage.ShowError(Messages.SqlSettings.Caption, Messages.SqlSettings.Errors.NoResults);
+            }
+
+            if (errors.Any())
+            {
+                if(errors.First().Contains("Error Locating Server"))
+                {
+                    _displayMessage.ShowInfo(Messages.SqlSettings.Caption, "Such an instance does not exist, you're good to go!");
+                }
+            }
+            else
+            {
+                _displayMessage.ShowError(Messages.SqlSettings.Caption, "Such instance already exists, test out with other parameters.");
+            }
+        }
         private void ValidateSqlResult(IEnumerable<PSObject> results, IEnumerable<string> errors)
         {
             if (!results.Any())
