@@ -22,7 +22,7 @@ A must-have tool for any Sitecore developer, to simplify most of your day-to-day
 
 The easiest way to install **Sifon** is using Chocolatey:
 
-`cinst sifon`
+`choco install sifon`
 
 You may also download Sifon from the [project website](http://sifon.uk "Sifon's Homepage").
 
